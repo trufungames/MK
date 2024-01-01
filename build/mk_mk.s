@@ -10,7 +10,7 @@ __Z15initTitleScreenv:
 	cmp.l #__ZL8BLACKPAL+512,%a0
 	jne .L2
 	pea __ZL13buffer320x240
-	pea BMP_TITLESCREEN
+	move.l #8397504,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL13buffer320x240,44(%a0)
@@ -35,21 +35,21 @@ __Z14initGameAssetsv:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l sprite,%a0
-	move.l #11584352,620(%a0)
-	move.l #10011424,812(%a0)
+	move.l #11649184,620(%a0)
+	move.l #10076256,812(%a0)
 	moveq #1,%d0
 	move.l %d0,580(%a0)
 	move.l %d0,772(%a0)
 	pea 16.w
 	pea 14.w
-	move.l #12108640,-(%sp)
+	move.l #12173472,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	addq.l #8,%sp
 	moveq #16,%d0
 	move.l %d0,(%sp)
 	pea 15.w
-	move.l #11060000,-(%sp)
+	move.l #11124832,-(%sp)
 	jsr (%a2)
 	lea (12,%sp),%sp
 	move.l -4(%fp),%a2
@@ -60,7 +60,7 @@ __Z14initGameAssetsv:
 __Z25switchScreenChooseFighterv:
 	link.w %fp,#0
 	pea __ZL13buffer320x240
-	pea BMP_CHOOSEFIGHTER
+	move.l #8436128,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL13buffer320x240,44(%a0)
@@ -73,7 +73,7 @@ __Z25switchScreenChooseFighterv:
 	addq.l #8,%sp
 	pea 256.w
 	clr.l -(%sp)
-	pea BMP_CHOOSEFIGHTER_clut
+	move.l #8461824,-(%sp)
 	jsr jsfLoadClut
 	clr.b _fadedIn
 	clr.b _fadedOut
@@ -106,7 +106,7 @@ __Z17SetPlayerPalettesv:
 .L16:
 	pea 16.w
 	pea 14.w
-	move.l #12108688,-(%sp)
+	move.l #12173520,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d1
@@ -139,7 +139,7 @@ __Z17SetPlayerPalettesv:
 .L25:
 	pea 16.w
 	pea 15.w
-	move.l #12108688,-(%sp)
+	move.l #12173520,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -183,7 +183,7 @@ __Z17SetPlayerPalettesv:
 .L24:
 	pea 16.w
 	pea 15.w
-	move.l #9487072,-(%sp)
+	move.l #9551904,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -203,7 +203,7 @@ __Z17SetPlayerPalettesv:
 .L10:
 	pea 16.w
 	pea 14.w
-	move.l #8962752,-(%sp)
+	move.l #9027584,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d1
@@ -221,7 +221,7 @@ __Z17SetPlayerPalettesv:
 .L11:
 	pea 16.w
 	pea 14.w
-	move.l #12108640,-(%sp)
+	move.l #12173472,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d0
@@ -239,7 +239,7 @@ __Z17SetPlayerPalettesv:
 .L12:
 	pea 16.w
 	pea 14.w
-	move.l #11060000,-(%sp)
+	move.l #11124832,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d2
@@ -257,7 +257,7 @@ __Z17SetPlayerPalettesv:
 .L13:
 	pea 16.w
 	pea 14.w
-	move.l #11584320,-(%sp)
+	move.l #11649152,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d1
@@ -275,7 +275,7 @@ __Z17SetPlayerPalettesv:
 .L14:
 	pea 16.w
 	pea 14.w
-	move.l #10011392,-(%sp)
+	move.l #10076224,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d0
@@ -293,7 +293,7 @@ __Z17SetPlayerPalettesv:
 .L15:
 	pea 16.w
 	pea 14.w
-	move.l #9487072,-(%sp)
+	move.l #9551904,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #1,%d2
@@ -311,7 +311,7 @@ __Z17SetPlayerPalettesv:
 .L19:
 	pea 16.w
 	pea 15.w
-	move.l #8962752,-(%sp)
+	move.l #9027584,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -331,7 +331,7 @@ __Z17SetPlayerPalettesv:
 .L20:
 	pea 16.w
 	pea 15.w
-	move.l #12108640,-(%sp)
+	move.l #12173472,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -351,7 +351,7 @@ __Z17SetPlayerPalettesv:
 .L21:
 	pea 16.w
 	pea 15.w
-	move.l #11060000,-(%sp)
+	move.l #11124832,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -371,7 +371,7 @@ __Z17SetPlayerPalettesv:
 .L22:
 	pea 16.w
 	pea 15.w
-	move.l #11584320,-(%sp)
+	move.l #11649152,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -391,7 +391,7 @@ __Z17SetPlayerPalettesv:
 .L23:
 	pea 16.w
 	pea 15.w
-	move.l #10011392,-(%sp)
+	move.l #10076224,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	clr.l (%sp)
@@ -412,7 +412,7 @@ __Z17SetPlayerPalettesv:
 	.globl	__Z9basicmainv
 __Z9basicmainv:
 	link.w %fp,#0
-	movem.l #15420,-(%sp)
+	movem.l #15932,-(%sp)
 	clr.l __ZL4pad1
 	clr.l __ZL4pad2
 	pea 20.w
@@ -425,6 +425,7 @@ __Z9basicmainv:
 	move.l #rapUnpack,%d3
 	lea jsfLoadClut,%a5
 	lea jsfGetPadPressed,%a4
+	move.l #__Z11sfxP1CursorP12SoundHandler,%d5
 	move.l #__Z17SetPlayerPalettesv,%d4
 	move.w raptor_ticks,%a0
 	move.l %a0,_lastTicks
@@ -436,7 +437,7 @@ __Z9basicmainv:
 	move.b #1,_fadedIn
 	moveq #60,%d2
 .L37:
-	pea BMP_TITLESCREEN_clut
+	move.l #8435616,-(%sp)
 	pea 256.w
 	clr.l -(%sp)
 	jsr (%a3)
@@ -469,8 +470,8 @@ __Z9basicmainv:
 	move.l %d0,__ZL4pad2
 	move.l __ZL4pad1,%d2
 	move.l JAGPAD_LEFT,%d1
-	move.l %d1,%d5
-	and.l %d2,%d5
+	move.l %d1,%d6
+	and.l %d2,%d6
 	addq.l #4,%sp
 	jeq .L40
 	move.l _p1Cursor,%d0
@@ -481,6 +482,10 @@ __Z9basicmainv:
 	cmp.l %d0,%d1
 	jeq .L61
 .L42:
+	pea __ZL12soundHandler
+	move.l %d5,%a0
+	jsr (%a0)
+	addq.l #4,%sp
 	move.l %d4,%a0
 	jsr (%a0)
 	move.l __ZL4pad2,%d0
@@ -496,6 +501,10 @@ __Z9basicmainv:
 	cmp.l %d0,%d1
 	jeq .L63
 .L51:
+	pea __ZL12soundHandler
+	move.l %d5,%a0
+	jsr (%a0)
+	addq.l #4,%sp
 	move.l %d4,%a0
 	jsr (%a0)
 .L69:
@@ -516,6 +525,10 @@ __Z9basicmainv:
 .L61:
 	moveq #6,%d0
 	move.l %d0,_p1Cursor
+	pea __ZL12soundHandler
+	move.l %d5,%a0
+	jsr (%a0)
+	addq.l #4,%sp
 	move.l %d4,%a0
 	jsr (%a0)
 	move.l __ZL4pad2,%d0
@@ -534,6 +547,10 @@ __Z9basicmainv:
 .L63:
 	moveq #6,%d0
 	move.l %d0,_p2Cursor
+	pea __ZL12soundHandler
+	move.l %d5,%a0
+	jsr (%a0)
+	addq.l #4,%sp
 	move.l %d4,%a0
 	jsr (%a0)
 	jra .L69
@@ -559,7 +576,7 @@ __Z9basicmainv:
 	jne .L39
 	move.b #1,_fadedOut
 	pea __ZL13buffer320x240
-	pea BMP_CHOOSEFIGHTER
+	move.l #8436128,-(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
 	move.l sprite,%a0
@@ -573,7 +590,7 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	pea 256.w
 	clr.l -(%sp)
-	pea BMP_CHOOSEFIGHTER_clut
+	move.l #8461824,-(%sp)
 	jsr (%a5)
 	clr.b _fadedIn
 	clr.b _fadedOut
@@ -585,8 +602,8 @@ __Z9basicmainv:
 	addq.l #4,%sp
 	jra .L68
 .L40:
-	move.l %d2,%d5
-	and.l JAGPAD_RIGHT,%d5
+	move.l %d2,%d6
+	and.l JAGPAD_RIGHT,%d6
 	jeq .L43
 	move.l _p1Cursor,%d0
 	addq.l #1,%d0
@@ -633,8 +650,8 @@ __Z9basicmainv:
 	move.l %d0,_p2Cursor
 	jra .L51
 .L43:
-	move.l %d2,%d5
-	and.l JAGPAD_UP,%d5
+	move.l %d2,%d6
+	and.l JAGPAD_UP,%d6
 	jeq .L45
 	move.l _p1Cursor,%d0
 	moveq #4,%d1
@@ -723,12 +740,18 @@ sprite:
 .lcomm __ZL4pad1,4
 .lcomm __ZL4pad2,4
 .lcomm __ZL8BLACKPAL,512
+	.even
+__ZL12soundHandler:
+	.byte	1
+	.byte	0
+	.long	1
+	.long	1
 .lcomm __ZL13buffer320x240,76800
 	.even
 __ZL11fighterCage:
 	.long	1
 	.long	3
-	.long	8438464
+	.long	8503296
 	.long	7
 	.long	9
 	.long	4
@@ -757,7 +780,7 @@ __ZL11fighterCage:
 __ZL11fighterKano:
 	.long	2
 	.long	3
-	.long	11584352
+	.long	11649184
 	.long	7
 	.long	9
 	.long	4
@@ -786,7 +809,7 @@ __ZL11fighterKano:
 __ZL14fighterSubzero:
 	.long	6
 	.long	3
-	.long	10011424
+	.long	10076256
 	.long	12
 	.long	9
 	.long	4
@@ -815,7 +838,7 @@ __ZL14fighterSubzero:
 __ZL12fighterSonya:
 	.long	7
 	.long	3
-	.long	11060032
+	.long	11124864
 	.long	7
 	.long	7
 	.long	4
@@ -844,7 +867,7 @@ __ZL12fighterSonya:
 __ZL13fighterRaiden:
 	.long	3
 	.long	3
-	.long	9487104
+	.long	9551936
 	.long	10
 	.long	9
 	.long	4
@@ -873,7 +896,7 @@ __ZL13fighterRaiden:
 __ZL11fighterKang:
 	.long	4
 	.long	3
-	.long	8962784
+	.long	9027616
 	.long	7
 	.long	9
 	.long	4
@@ -902,7 +925,7 @@ __ZL11fighterKang:
 __ZL15fighterScorpion:
 	.long	5
 	.long	3
-	.long	10011424
+	.long	10076256
 	.long	7
 	.long	9
 	.long	4
@@ -931,7 +954,7 @@ __ZL15fighterScorpion:
 __ZL12fighterCage2:
 	.long	1
 	.long	4
-	.long	8438464
+	.long	8503296
 	.long	7
 	.long	9
 	.long	4
@@ -960,7 +983,7 @@ __ZL12fighterCage2:
 __ZL12fighterKano2:
 	.long	2
 	.long	4
-	.long	11584352
+	.long	11649184
 	.long	7
 	.long	9
 	.long	4
@@ -989,7 +1012,7 @@ __ZL12fighterKano2:
 __ZL15fighterSubzero2:
 	.long	6
 	.long	4
-	.long	10011424
+	.long	10076256
 	.long	12
 	.long	9
 	.long	4
@@ -1018,7 +1041,7 @@ __ZL15fighterSubzero2:
 __ZL13fighterSonya2:
 	.long	7
 	.long	4
-	.long	11060032
+	.long	11124864
 	.long	7
 	.long	7
 	.long	4
@@ -1047,7 +1070,7 @@ __ZL13fighterSonya2:
 __ZL14fighterRaiden2:
 	.long	3
 	.long	4
-	.long	9487104
+	.long	9551936
 	.long	10
 	.long	9
 	.long	4
@@ -1076,7 +1099,7 @@ __ZL14fighterRaiden2:
 __ZL12fighterKang2:
 	.long	4
 	.long	4
-	.long	8962784
+	.long	9027616
 	.long	7
 	.long	9
 	.long	4
@@ -1105,7 +1128,7 @@ __ZL12fighterKang2:
 __ZL16fighterScorpion2:
 	.long	5
 	.long	4
-	.long	10011424
+	.long	10076256
 	.long	7
 	.long	9
 	.long	4

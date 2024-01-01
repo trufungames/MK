@@ -1,28 +1,26 @@
 #define BMP_DOTLAST 0x8022B0
-extern void *BMP_TITLESCREEN asm("BMP_TITLESCREEN");
-extern void *BMP_TITLESCREEN_clut asm("BMP_TITLESCREEN_clut");
-extern void *BMP_CHOOSEFIGHTER asm("BMP_CHOOSEFIGHTER");
-extern void *BMP_CHOOSEFIGHTER_clut asm("BMP_CHOOSEFIGHTER_clut");
-#define BMP_P1_SELECTOR 0x8022C0
-#define BMP_P2_SELECTOR 0x8072C0
-#define BMPCAGE 0x80C2C0
-#define BMPCAGE_clut 0x88C2C0
-#define BMPKANG 0x88C2E0
-#define BMPKANG_clut 0x90C2E0
-#define BMPRAIDEN 0x90C300
-#define BMPRAIDEN_clut 0x98C300
-#define BMPSUBZERO 0x98C320
-#define BMPSUBZERO_clut 0xA8C320
-#define BMPSONYA 0xA8C340
-#define BMPSONYA_clut 0xB0C340
-#define BMPKANO 0xB0C360
-#define BMPKANO_clut 0xB8C360
-#define PAL_SCORPION 0xB8C380
-#define PAL_SCORPION_clut 0xB8C390
-#define PAL_REPTILE 0xB8C3B0
-#define PAL_REPTILE_clut 0xB8C3C0
-extern void *explode_sam asm("explode_sam");
-extern void *explode_sam_end asm("explode_sam_end");
+#define BMP_TITLESCREEN 0x8022C0
+#define BMP_TITLESCREEN_clut 0x80B7A0
+#define BMP_CHOOSEFIGHTER 0x80B9A0
+#define BMP_CHOOSEFIGHTER_clut 0x811E00
+#define BMP_P1_SELECTOR 0x812000
+#define BMP_P2_SELECTOR 0x817000
+#define BMPCAGE 0x81C000
+#define BMPCAGE_clut 0x89C000
+#define BMPKANG 0x89C020
+#define BMPKANG_clut 0x91C020
+#define BMPRAIDEN 0x91C040
+#define BMPRAIDEN_clut 0x99C040
+#define BMPSUBZERO 0x99C060
+#define BMPSUBZERO_clut 0xA9C060
+#define BMPSONYA 0xA9C080
+#define BMPSONYA_clut 0xB1C080
+#define BMPKANO 0xB1C0A0
+#define BMPKANO_clut 0xB9C0A0
+#define PAL_SCORPION 0xB9C0C0
+#define PAL_SCORPION_clut 0xB9C0D0
+#define PAL_REPTILE 0xB9C0F0
+#define PAL_REPTILE_clut 0xB9C100
 extern void *fight_sam asm("fight_sam");
 extern void *fight_sam_end asm("fight_sam_end");
 extern void *johnnycage_sam asm("johnnycage_sam");

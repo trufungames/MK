@@ -20,7 +20,7 @@ bool fadedOut = false;
 int gameStartTicks = rapTicks;
 int ticksPerSec = 60;
 int lastTicks = 0;
-static	SoundHandler soundHandler = {
+static SoundHandler soundHandler = {
 	true,  //sound on/off
 	false,  //music on/off
 	1,  //sound volume
@@ -445,7 +445,7 @@ void basicmain()
 
 				for (int i = 0; i < 60; i++)
 				{
-					rapFadeClut(0,256,(int *)(int)STRPTR(BMP_TITLESCREEN_clut));
+					rapFadeClut(0,256,(int *)(int)(void *)(BMP_TITLESCREEN_clut));
 					jsfVsync(0); 
 				}
 			}
@@ -515,17 +515,7 @@ void basicmain()
 
 			if (p1CursorChanged)
 			{
-				// sfxP1Cursor(&soundHandler);
-				// //cursor changed, so let's move the cursor and show the fighter
-				// fighterHide(&fighterCage);
-				// fighterHide(&fighterKano);
-				// fighterHide(&fighterSubzero);
-				// fighterHide(&fighterSonya);
-				// fighterHide(&fighterRaiden);
-				// fighterHide(&fighterKang);
-				// fighterHide(&fighterScorpion);
-				// sprite[LIGHTNING].active = R_is_inactive;
-
+				sfxP1Cursor(&soundHandler);
 				SetPlayerPalettes();
 			}
 
@@ -573,17 +563,7 @@ void basicmain()
 
 			if (p2CursorChanged)
 			{
-				// sfxP1Cursor(&soundHandler);
-				// //cursor changed, so let's move the cursor and show the fighter
-				// fighterHide(&fighterCage);
-				// fighterHide(&fighterKano);
-				// fighterHide(&fighterSubzero);
-				// fighterHide(&fighterSonya);
-				// fighterHide(&fighterRaiden);
-				// fighterHide(&fighterKang);
-				// fighterHide(&fighterScorpion);
-				// sprite[LIGHTNING].active = R_is_inactive;
-
+				sfxP1Cursor(&soundHandler);
 				SetPlayerPalettes();
 			}
 		}
@@ -598,7 +578,7 @@ void initTitleScreen()
 		BLACKPAL[i] = 0;
 	}
 
-	rapUnpack((int)STRPTR(BMP_TITLESCREEN),(int)(int*)buffer320x240);
+	rapUnpack(BMP_TITLESCREEN,(int)(int*)buffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)buffer320x240;
 	sprite[BACKGROUND].active=R_is_active;
 
@@ -623,7 +603,7 @@ void initGameAssets()
 
 void switchScreenChooseFighter()
 {
-	rapUnpack((int)STRPTR(BMP_CHOOSEFIGHTER),(int)(int*)buffer320x240);
+	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)buffer320x240);
 	sprite[BACKGROUND].gfxbase = (int)buffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 
@@ -632,7 +612,7 @@ void switchScreenChooseFighter()
 
 	onTitleScreen = false;
 	onScreenChooseFighter = true;
-	jsfLoadClut((unsigned short *)STRPTR(BMP_CHOOSEFIGHTER_clut),0,256);
+	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,256);
 
 	fadedIn = false;
 	fadedOut = false;

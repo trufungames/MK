@@ -1,24 +1,4 @@
 .dphrase
-BMP_TITLESCREEN: incbin "build/title_screen.bmp.gfxdata.pack"
-BMP_TITLESCREEN_end:
-BMP_TITLESCREEN_clut: incbin "build/title_screen.bmp.clut"
-BMP_TITLESCREEN_clut_end:
-.extern BMP_TITLESCREEN
-.extern BMP_TITLESCREEN_clut
-.dphrase
-BMP_CHOOSEFIGHTER: incbin "build/choose_your_fighter.bmp.gfxdata.pack"
-BMP_CHOOSEFIGHTER_end:
-BMP_CHOOSEFIGHTER_clut: incbin "build/choose_your_fighter.bmp.clut"
-BMP_CHOOSEFIGHTER_clut_end:
-.extern BMP_CHOOSEFIGHTER
-.extern BMP_CHOOSEFIGHTER_clut
-.dphrase
-explode_sam: incbin "build/explosion.wav.raw"
-.dc.b 0,0,0
-explode_sam_end:
-.extern explode_sam
-.extern explode_sam_end
-.dphrase
 fight_sam: incbin "build/fight_16.wav.raw"
 .dc.b 0,0,0
 fight_sam_end:
