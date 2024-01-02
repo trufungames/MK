@@ -33,6 +33,7 @@
 ROM,BMP_DOTLAST,gfx_clut16,ASSETS\GFX\dotlast.BMP
 ROM,BMP_TITLESCREEN,gfx_clut_pack,assets\gfx\title_screen.bmp
 ROM,BMP_CHOOSEFIGHTER,gfx_clut_pack,assets\gfx\choose_your_fighter.bmp
+ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
 ROM,BMPCAGE,gfx_clut,ASSETS\GFX\cage.BMP
@@ -43,6 +44,20 @@ ROM,BMPSONYA,gfx_clut,ASSETS\GFX\sonya.BMP
 ROM,BMPKANO,gfx_clut,ASSETS\GFX\kano.BMP
 ROM,PAL_SCORPION,gfx_clut,ASSETS\GFX\pal_scorpion.BMP
 ROM,PAL_REPTILE,gfx_clut,ASSETS\GFX\pal_reptile.BMP
+ROM,BMP_LIGHTNING,gfx_clut,ASSETS\GFX\lightning.BMP
+ROM,BMP_PT_CAGE,gfx_clut,ASSETS\GFX\pt_cage.BMP
+ROM,BMP_PT_KANO,gfx_clut,ASSETS\GFX\pt_kano.BMP
+ROM,BMP_PT_KANG,gfx_clut,ASSETS\GFX\pt_liukang.BMP
+ROM,BMP_PT_RAIDEN,gfx_clut,ASSETS\GFX\pt_raiden.BMP
+ROM,BMP_PT_SCORPION,gfx_clut,ASSETS\GFX\pt_scorpion.BMP
+ROM,BMP_PT_SONYA,gfx_clut,ASSETS\GFX\pt_sonya.BMP
+ROM,BMP_PT_SUBZERO,gfx_clut,ASSETS\GFX\pt_subzero.BMP
+ROM,BMP_PIT_BACKGROUND,gfx_clut_pack,assets\gfx\stage_pit_background.bmp
+ROM,BMP_PIT_SPIKES,gfx_clut_pack,assets\gfx\stage_pit_spikes.bmp
+ROM,BMP_PIT_MOON,gfx_clut_pack,assets\gfx\stage_pit_moon.bmp
+ROM,BMP_PIT_CLOUDS1,gfx_clut_pack,assets\gfx\stage_pit_clouds1.bmp
+ROM,BMP_PIT_CLOUDS2,gfx_clut_pack,assets\gfx\stage_pit_clouds2.bmp
+ROM,BMP_PIT_CLOUDS3,gfx_clut_pack,assets\gfx\stage_pit_clouds3.bmp
 
 ABS,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
 ABS,johnnycage_sam,sfx_raw8000,ASSETS\SFX\johnnycage.wav

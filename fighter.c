@@ -55,7 +55,7 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
     }
     else
     {
-        sprite[fighter->spriteIndex].x_ = 227;
+        sprite[fighter->spriteIndex].x_ = 230;
 
         if (fighter->fighterIndex == CAGE)
         {

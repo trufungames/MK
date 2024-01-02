@@ -57,7 +57,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #10076256,44(%a0)
+	move.l #10083168,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -70,7 +70,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #8503296,44(%a0)
+	move.l #8510208,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -83,7 +83,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #11649184,44(%a0)
+	move.l #11656096,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -96,7 +96,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #9551936,44(%a0)
+	move.l #9558848,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -109,7 +109,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #9027616,44(%a0)
+	move.l #9034528,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -122,7 +122,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #11124864,44(%a0)
+	move.l #11131776,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -141,8 +141,8 @@ __Z21fighterMakeSelectableP7Fighterb:
 	add.l %d0,%a1
 	tst.b 15(%fp)
 	jne .L22
-	move.w #227,8(%a1)
-	moveq #28,%d0
+	move.w #230,8(%a1)
+	moveq #25,%d0
 	not.b %d0
 	moveq #1,%d1
 	cmp.l (%a0),%d1
@@ -168,8 +168,8 @@ __Z21fighterMakeSelectableP7Fighterb:
 	unlk %fp
 	rts
 .L23:
-	move.w #211,8(%a1)
-	move.b #-45,%d0
+	move.w #214,8(%a1)
+	move.b #-42,%d0
 	moveq #-1,%d1
 	move.l %d1,24(%a1)
 	move.l %d1,206(%a0)
