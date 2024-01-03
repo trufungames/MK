@@ -4,6 +4,8 @@
 #include "fighter.h"
 #include "sound.h"
 #include "impactFrame.h"
+#include "blood.h"
+#include "spritedelay.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
@@ -11,6 +13,7 @@
 static int pad1;
 static int pad2;
 static int imageBuffer[1136*896/4];
+static int imageBuffer320x240[320*240/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
 int p2Cursor = 2;
@@ -1738,6 +1741,323 @@ void basicmain()
 	struct Fighter* fighter1Ptr;
 	struct Fighter* fighter2Ptr; 
 
+fighterCage.idleFrames = &cageIdleFrames;
+	fighterCage.walkFrames = &cageWalkFrames;
+	fighterCage.jumpFrames = &cageJumpFrames;
+	fighterCage.jumpRollFrames = &cageJumpRollFrames;
+	fighterCage.duckFrames = &cageDuckFrames;
+	fighterCage.blockFrames = &cageBlockFrames;
+	fighterCage.blockHitFrames = &cageBlockHitFrames;
+	fighterCage.blockDuckFrames = &cageBlockDuckFrames;
+	fighterCage.blockDuckHitFrames = &cageBlockDuckHitFrames;
+	fighterCage.punchLowFrames = &cagePunchLowFrames;
+	fighterCage.punchHighFrames = &cagePunchHighFrames;
+	fighterCage.kickLowFrames = &cageKickLowFrames;
+	fighterCage.kickHighFrames = &cageKickHighFrames;
+	fighterCage.jumpPunchFrames = &cageJumpPunchFrames;
+	fighterCage.jumpKickFrames = &cageJumpKickFrames;
+	fighterCage.uppercutFrames = &cageUppercutFrames;
+	fighterCage.hitLowFrames = &cageHitLowFrames;
+	fighterCage.hitHighFrames = &cageHitHighFrames;
+	fighterCage.hitBackFrames = &cageHitBackFrames;
+	fighterCage.hitFallFrames = &cageHitFallFrames;
+	fighterCage.hitSweepFrames = &cageHitSweepFrames;
+	fighterCage.kipUpFrames = &cageKipUpFrames;
+	fighterCage.sweepFrames = &cageSweepFrames;
+	fighterCage2.idleFrames = &cageIdleFrames;
+	fighterCage2.walkFrames = &cageWalkFrames;
+	fighterCage.jumpFrames = &cageJumpFrames;
+	fighterCage.jumpRollFrames = &cageJumpRollFrames;
+	fighterCage2.duckFrames = &cageDuckFrames;
+	fighterCage2.blockFrames = &cageBlockFrames;
+	fighterCage2.blockHitFrames = &cageBlockHitFrames;
+	fighterCage2.blockDuckFrames = &cageBlockDuckFrames;
+	fighterCage2.blockDuckHitFrames = &cageBlockDuckHitFrames;
+	fighterCage2.punchLowFrames = &cagePunchLowFrames;
+	fighterCage2.punchHighFrames = &cagePunchHighFrames;
+	fighterCage2.kickLowFrames = &cageKickLowFrames;
+	fighterCage2.kickHighFrames = &cageKickHighFrames;
+	fighterCage.jumpPunchFrames = &cageJumpPunchFrames;
+	fighterCage.jumpKickFrames = &cageJumpKickFrames;
+	fighterCage2.uppercutFrames = &cageUppercutFrames;
+	fighterCage2.hitLowFrames = &cageHitLowFrames;
+	fighterCage2.hitHighFrames = &cageHitHighFrames;
+	fighterCage2.hitBackFrames = &cageHitBackFrames;
+	fighterCage2.hitFallFrames = &cageHitFallFrames;
+	fighterCage2.hitSweepFrames = &cageHitSweepFrames;
+	fighterCage2.kipUpFrames = &cageKipUpFrames;
+	fighterCage2.sweepFrames = &cageSweepFrames;
+	//Kano
+	fighterKano.idleFrames = &kanoIdleFrames;
+	fighterKano.walkFrames = &kanoWalkFrames;
+	fighterKano.jumpFrames = &kanoJumpFrames;
+	fighterKano.duckFrames = &kanoDuckFrames;
+	fighterKano.blockFrames = &kanoBlockFrames;
+	fighterKano.blockHitFrames = &kanoBlockHitFrames;
+	fighterKano.blockDuckFrames = &kanoBlockDuckFrames;
+	fighterKano.blockDuckHitFrames = &kanoBlockDuckHitFrames;
+	fighterKano.punchLowFrames = &kanoPunchLowFrames;
+	fighterKano.punchHighFrames = &kanoPunchHighFrames;
+	fighterKano.kickLowFrames = &kanoKickLowFrames;
+	fighterKano.kickHighFrames = &kanoKickHighFrames;
+	fighterKano.jumpPunchFrames = &kanoJumpPunchFrames;
+	fighterKano.jumpKickFrames = &kanoJumpKickFrames;
+	fighterKano.uppercutFrames = &kanoUppercutFrames;
+	fighterKano.sweepFrames = &kanoSweepFrames;
+	fighterKano.hitLowFrames = &kanoHitLowFrames;
+	fighterKano.hitHighFrames = &kanoHitHighFrames;
+	fighterKano.hitBackFrames = &kanoHitBackFrames;
+	fighterKano.hitFallFrames = &kanoHitFallFrames;
+	fighterKano.hitSweepFrames = &kanoHitSweepFrames;
+	fighterKano.kipUpFrames = &kanoKipUpFrames;
+	fighterKano2.idleFrames = &kanoIdleFrames;
+	fighterKano2.walkFrames = &kanoWalkFrames;
+	fighterKano2.jumpFrames = &kanoJumpFrames;
+	fighterKano2.duckFrames = &kanoDuckFrames;
+	fighterKano2.blockFrames = &kanoBlockFrames;
+	fighterKano2.blockHitFrames = &kanoBlockHitFrames;
+	fighterKano2.blockDuckFrames = &kanoBlockDuckFrames;
+	fighterKano2.blockDuckHitFrames = &kanoBlockDuckHitFrames;
+	fighterKano2.punchLowFrames = &kanoPunchLowFrames;
+	fighterKano2.punchHighFrames = &kanoPunchHighFrames;
+	fighterKano2.kickLowFrames = &kanoKickLowFrames;
+	fighterKano2.kickHighFrames = &kanoKickHighFrames;
+	fighterKano2.jumpPunchFrames = &kanoJumpPunchFrames;
+	fighterKano2.jumpKickFrames = &kanoJumpKickFrames;
+	fighterKano2.uppercutFrames = &kanoUppercutFrames;
+	fighterKano2.sweepFrames = &kanoSweepFrames;
+	fighterKano2.hitLowFrames = &kanoHitLowFrames;
+	fighterKano2.hitHighFrames = &kanoHitHighFrames;
+	fighterKano2.hitBackFrames = &kanoHitBackFrames;
+	fighterKano2.hitFallFrames = &kanoHitFallFrames;
+	fighterKano2.hitSweepFrames = &kanoHitSweepFrames;
+	fighterKano2.kipUpFrames = &kanoKipUpFrames;
+	//Raiden
+	fighterRaiden.idleFrames = &raidenIdleFrames;
+	fighterRaiden.walkFrames = &raidenWalkFrames;
+	fighterRaiden.jumpFrames = &raidenJumpFrames;
+	fighterRaiden.duckFrames = &raidenDuckFrames;
+	fighterRaiden.blockFrames = &raidenBlockFrames;
+	fighterRaiden.blockHitFrames = &raidenBlockHitFrames;
+	fighterRaiden.blockDuckFrames = &raidenBlockDuckFrames;
+	fighterRaiden.blockDuckHitFrames = &raidenBlockDuckHitFrames;
+	fighterRaiden.punchLowFrames = &raidenPunchLowFrames;
+	fighterRaiden.punchHighFrames = &raidenPunchHighFrames;
+	fighterRaiden.kickLowFrames = &raidenKickLowFrames;
+	fighterRaiden.kickHighFrames = &raidenKickHighFrames;
+	fighterRaiden.jumpPunchFrames = &raidenJumpPunchFrames;
+	fighterRaiden.jumpKickFrames = &raidenJumpKickFrames;
+	fighterRaiden.uppercutFrames = &raidenUppercutFrames;
+	fighterRaiden.sweepFrames = &raidenSweepFrames;
+	fighterRaiden.kipUpFrames = &raidenKipUpFrames;
+	fighterRaiden.hitLowFrames = &raidenHitLowFrames;
+	fighterRaiden.hitHighFrames = &raidenHitHighFrames;
+	fighterRaiden.hitBackFrames = &raidenHitBackFrames;
+	fighterRaiden.hitFallFrames = &raidenHitFallFrames;
+	fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
+	fighterRaiden2.idleFrames = &raidenIdleFrames;
+	fighterRaiden2.walkFrames = &raidenWalkFrames;
+	fighterRaiden2.jumpFrames = &raidenJumpFrames;
+	fighterRaiden2.duckFrames = &raidenDuckFrames;
+	fighterRaiden2.blockFrames = &raidenBlockFrames;
+	fighterRaiden2.blockHitFrames = &raidenBlockHitFrames;
+	fighterRaiden2.blockDuckFrames = &raidenBlockDuckFrames;
+	fighterRaiden2.blockDuckHitFrames = &raidenBlockDuckHitFrames;
+	fighterRaiden2.punchLowFrames = &raidenPunchLowFrames;
+	fighterRaiden2.punchHighFrames = &raidenPunchHighFrames;
+	fighterRaiden2.kickLowFrames = &raidenKickLowFrames;
+	fighterRaiden2.kickHighFrames = &raidenKickHighFrames;
+	fighterRaiden2.jumpPunchFrames = &raidenJumpPunchFrames;
+	fighterRaiden2.jumpKickFrames = &raidenJumpKickFrames;
+	fighterRaiden2.uppercutFrames = &raidenUppercutFrames;
+	fighterRaiden2.sweepFrames = &raidenSweepFrames;
+	fighterRaiden2.kipUpFrames = &raidenKipUpFrames;
+	fighterRaiden2.hitLowFrames = &raidenHitLowFrames;
+	fighterRaiden2.hitHighFrames = &raidenHitHighFrames;
+	fighterRaiden2.hitBackFrames = &raidenHitBackFrames;
+	fighterRaiden2.hitFallFrames = &raidenHitFallFrames;
+	fighterRaiden2.hitSweepFrames = &raidenHitSweepFrames;
+	//Liu Kang
+	fighterKang.idleFrames = &kangIdleFrames;
+	fighterKang.walkFrames = &kangWalkFrames;
+	fighterKang.jumpFrames = &kangJumpFrames;
+	fighterKang.duckFrames = &kangDuckFrames;
+	fighterKang.blockFrames = &kangBlockFrames;
+	fighterKang.blockHitFrames = &kangBlockHitFrames;
+	fighterKang.blockDuckFrames = &kangBlockDuckFrames;
+	fighterKang.blockDuckHitFrames = &kangBlockDuckHitFrames;
+	fighterKang.punchLowFrames = &kangPunchLowFrames;
+	fighterKang.punchHighFrames = &kangPunchHighFrames;
+	fighterKang.kickLowFrames = &kangKickLowFrames;
+	fighterKang.kickHighFrames = &kangKickHighFrames;
+	fighterKang.jumpPunchFrames = &kangJumpPunchFrames;
+	fighterKang.jumpKickFrames = &kangJumpKickFrames;
+	fighterKang.uppercutFrames = &kangUppercutFrames;
+	fighterKang.kipUpFrames = &kangKipUpFrames;
+	fighterKang.sweepFrames = &kangSweepFrames;
+	fighterKang.hitLowFrames = &kangHitLowFrames;
+	fighterKang.hitHighFrames = &kangHitHighFrames;
+	fighterKang.hitBackFrames = &kangHitBackFrames;
+	fighterKang.hitFallFrames = &kangHitFallFrames;
+	fighterKang.hitSweepFrames = &kangHitSweepFrames;
+	fighterKang2.idleFrames = &kangIdleFrames;
+	fighterKang2.walkFrames = &kangWalkFrames;
+	fighterKang2.jumpFrames = &kangJumpFrames;
+	fighterKang2.duckFrames = &kangDuckFrames;
+	fighterKang2.blockFrames = &kangBlockFrames;
+	fighterKang2.blockHitFrames = &kangBlockHitFrames;
+	fighterKang2.blockDuckFrames = &kangBlockDuckFrames;
+	fighterKang2.blockDuckHitFrames = &kangBlockDuckHitFrames;
+	fighterKang2.punchLowFrames = &kangPunchLowFrames;
+	fighterKang2.punchHighFrames = &kangPunchHighFrames;
+	fighterKang2.kickLowFrames = &kangKickLowFrames;
+	fighterKang2.kickHighFrames = &kangKickHighFrames;
+	fighterKang2.jumpKickFrames = &kangJumpKickFrames;
+	fighterKang2.uppercutFrames = &kangUppercutFrames;
+	fighterKang2.uppercutFrames = &kangUppercutFrames;
+	fighterKang2.kipUpFrames = &kangKipUpFrames;
+	fighterKang2.sweepFrames = &kangSweepFrames;
+	fighterKang2.hitLowFrames = &kangHitLowFrames;
+	fighterKang2.hitHighFrames = &kangHitHighFrames;
+	fighterKang2.hitBackFrames = &kangHitBackFrames;
+	fighterKang2.hitFallFrames = &kangHitFallFrames;
+	fighterKang2.hitSweepFrames = &kangHitSweepFrames;
+	//Scorpion
+	fighterScorpion.idleFrames = &scorpionIdleFrames;
+	fighterScorpion.walkFrames = &scorpionWalkFrames;
+	fighterScorpion.jumpFrames = &subzeroJumpFrames;
+	fighterScorpion.duckFrames = &subzeroDuckFrames;
+	fighterScorpion.blockFrames = &subzeroBlockFrames;
+	fighterScorpion.blockHitFrames = &subzeroBlockHitFrames;
+	fighterScorpion.blockDuckFrames = &subzeroBlockDuckFrames;
+	fighterScorpion.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+	fighterScorpion.punchLowFrames = &subzeroPunchLowFrames;
+	fighterScorpion.punchHighFrames = &subzeroPunchHighFrames;
+	fighterScorpion.kickLowFrames = &subzeroKickLowFrames;
+	fighterScorpion.kickHighFrames = &subzeroKickHighFrames;
+	fighterScorpion.jumpPunchFrames = &subzeroJumpPunchFrames;
+	fighterScorpion.jumpKickFrames = &subzeroJumpKickFrames;
+	fighterScorpion.uppercutFrames = &subzeroUppercutFrames;
+	fighterScorpion.kipUpFrames = &subzeroKipUpFrames;
+	fighterScorpion.sweepFrames = &subzeroSweepFrames;
+	fighterScorpion.hitLowFrames = &subzeroHitLowFrames;
+	fighterScorpion.hitHighFrames = &subzeroHitHighFrames;
+	fighterScorpion.hitBackFrames = &subzeroHitBackFrames;
+	fighterScorpion.hitFallFrames = &subzeroHitFallFrames;
+	fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
+	fighterScorpion2.idleFrames = &scorpionIdleFrames;
+	fighterScorpion2.walkFrames = &scorpionWalkFrames;
+	fighterScorpion2.jumpFrames = &subzeroJumpFrames;
+	fighterScorpion2.duckFrames = &subzeroDuckFrames;
+	fighterScorpion2.blockFrames = &subzeroBlockFrames;
+	fighterScorpion2.blockHitFrames = &subzeroBlockHitFrames;
+	fighterScorpion2.blockDuckFrames = &subzeroBlockDuckFrames;
+	fighterScorpion2.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+	fighterScorpion2.punchLowFrames = &subzeroPunchLowFrames;
+	fighterScorpion2.punchHighFrames = &subzeroPunchHighFrames;
+	fighterScorpion2.kickLowFrames = &subzeroKickLowFrames;
+	fighterScorpion2.kickHighFrames = &subzeroKickHighFrames;
+	fighterScorpion2.jumpPunchFrames = &subzeroJumpPunchFrames;
+	fighterScorpion2.jumpKickFrames = &subzeroJumpKickFrames;
+	fighterScorpion2.uppercutFrames = &subzeroUppercutFrames;
+	fighterScorpion2.kipUpFrames = &subzeroKipUpFrames;
+	fighterScorpion2.sweepFrames = &subzeroSweepFrames;
+	fighterScorpion2.hitLowFrames = &subzeroHitLowFrames;
+	fighterScorpion2.hitHighFrames = &subzeroHitHighFrames;
+	fighterScorpion2.hitBackFrames = &subzeroHitBackFrames;
+	fighterScorpion2.hitFallFrames = &subzeroHitFallFrames;
+	fighterScorpion2.hitSweepFrames = &subzeroHitSweepFrames;
+	//Sub-Zero
+	fighterSubzero.idleFrames = &subzeroIdleFrames;
+	fighterSubzero.walkFrames = &subzeroWalkFrames;
+	fighterSubzero.jumpFrames = &subzeroJumpFrames;
+	fighterSubzero.duckFrames = &subzeroDuckFrames;
+	fighterSubzero.blockFrames = &subzeroBlockFrames;
+	fighterSubzero.blockHitFrames = &subzeroBlockHitFrames;
+	fighterSubzero.blockDuckFrames = &subzeroBlockDuckFrames;
+	fighterSubzero.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+	fighterSubzero.punchLowFrames = &subzeroPunchLowFrames;
+	fighterSubzero.punchHighFrames = &subzeroPunchHighFrames;
+	fighterSubzero.kickLowFrames = &subzeroKickLowFrames;
+	fighterSubzero.kickHighFrames = &subzeroKickHighFrames;
+	fighterSubzero.jumpPunchFrames = &subzeroJumpPunchFrames;
+	fighterSubzero.jumpKickFrames = &subzeroJumpKickFrames;
+	fighterSubzero.uppercutFrames = &subzeroUppercutFrames;
+	fighterSubzero.kipUpFrames = &subzeroKipUpFrames;
+	fighterSubzero.sweepFrames = &subzeroSweepFrames;
+	fighterSubzero.hitLowFrames = &subzeroHitLowFrames;
+	fighterSubzero.hitHighFrames = &subzeroHitHighFrames;
+	fighterSubzero.hitBackFrames = &subzeroHitBackFrames;
+	fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
+	fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
+	fighterSubzero2.idleFrames = &subzeroIdleFrames;
+	fighterSubzero2.walkFrames = &subzeroWalkFrames;
+	fighterSubzero2.jumpFrames = &subzeroJumpFrames;
+	fighterSubzero2.duckFrames = &subzeroDuckFrames;
+	fighterSubzero2.blockFrames = &subzeroBlockFrames;
+	fighterSubzero2.blockHitFrames = &subzeroBlockHitFrames;
+	fighterSubzero2.blockDuckFrames = &subzeroBlockDuckFrames;
+	fighterSubzero2.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+	fighterSubzero2.punchLowFrames = &subzeroPunchLowFrames;
+	fighterSubzero2.punchHighFrames = &subzeroPunchHighFrames;
+	fighterSubzero2.kickLowFrames = &subzeroKickLowFrames;
+	fighterSubzero2.kickHighFrames = &subzeroKickHighFrames;
+	fighterSubzero2.jumpPunchFrames = &subzeroJumpPunchFrames;
+	fighterSubzero2.jumpKickFrames = &subzeroJumpKickFrames;
+	fighterSubzero2.uppercutFrames = &subzeroUppercutFrames;
+	fighterSubzero2.kipUpFrames = &subzeroKipUpFrames;
+	fighterSubzero2.sweepFrames = &subzeroSweepFrames;
+	fighterSubzero2.hitLowFrames = &subzeroHitLowFrames;
+	fighterSubzero2.hitHighFrames = &subzeroHitHighFrames;
+	fighterSubzero2.hitBackFrames = &subzeroHitBackFrames;
+	fighterSubzero2.hitFallFrames = &subzeroHitFallFrames;
+	fighterSubzero2.hitSweepFrames = &subzeroHitSweepFrames;
+	//Sonya
+	fighterSonya.idleFrames = &sonyaIdleFrames;
+	fighterSonya.walkFrames = &sonyaWalkFrames;
+	fighterSonya.jumpFrames = &sonyaJumpFrames;
+	fighterSonya.duckFrames = &sonyaDuckFrames;
+	fighterSonya.blockFrames = &sonyaBlockFrames;
+	fighterSonya.blockHitFrames = &sonyaBlockHitFrames;
+	fighterSonya.blockDuckFrames = &sonyaBlockDuckFrames;
+	fighterSonya.blockDuckHitFrames = &sonyaBlockDuckHitFrames;
+	fighterSonya.punchLowFrames = &sonyaPunchLowFrames;
+	fighterSonya.punchHighFrames = &sonyaPunchHighFrames;
+	fighterSonya.kickLowFrames = &sonyaKickLowFrames;
+	fighterSonya.kickHighFrames = &sonyaKickHighFrames;
+	fighterSonya.jumpPunchFrames = &sonyaJumpPunchFrames;
+	fighterSonya.jumpKickFrames = &sonyaJumpKickFrames;
+	fighterSonya.uppercutFrames = &sonyaUppercutFrames;
+	fighterSonya.kipUpFrames = &sonyaKipUpFrames;
+	fighterSonya.sweepFrames = &sonyaSweepFrames;
+	fighterSonya.hitLowFrames = &sonyaHitLowFrames;
+	fighterSonya.hitHighFrames = &sonyaHitHighFrames;
+	fighterSonya.hitBackFrames = &sonyaHitBackFrames;
+	fighterSonya.hitFallFrames = &sonyaHitFallFrames;
+	fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
+	fighterSonya2.idleFrames = &sonyaIdleFrames;
+	fighterSonya2.walkFrames = &sonyaWalkFrames;
+	fighterSonya2.jumpFrames = &sonyaJumpFrames;
+	fighterSonya2.duckFrames = &sonyaDuckFrames;
+	fighterSonya2.blockFrames = &sonyaBlockFrames;
+	fighterSonya2.blockHitFrames = &sonyaBlockHitFrames;
+	fighterSonya2.blockDuckFrames = &sonyaBlockDuckFrames;
+	fighterSonya2.blockDuckHitFrames = &sonyaBlockDuckHitFrames;
+	fighterSonya2.punchLowFrames = &sonyaPunchLowFrames;
+	fighterSonya2.punchHighFrames = &sonyaPunchHighFrames;
+	fighterSonya2.kickLowFrames = &sonyaKickLowFrames;
+	fighterSonya2.kickHighFrames = &sonyaKickHighFrames;
+	fighterSonya2.jumpPunchFrames = &sonyaJumpPunchFrames;
+	fighterSonya2.jumpKickFrames = &sonyaJumpKickFrames;
+	fighterSonya2.uppercutFrames = &sonyaUppercutFrames;
+	fighterSonya2.kipUpFrames = &sonyaKipUpFrames;
+	fighterSonya2.sweepFrames = &sonyaSweepFrames;
+	fighterSonya2.hitLowFrames = &sonyaHitLowFrames;
+	fighterSonya2.hitHighFrames = &sonyaHitHighFrames;
+	fighterSonya2.hitBackFrames = &sonyaHitBackFrames;
+	fighterSonya2.hitFallFrames = &sonyaHitFallFrames;
+	fighterSonya2.hitSweepFrames = &sonyaHitSweepFrames;
+
 	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 	rapDebugSetXY(5,20);
@@ -2047,7 +2367,7 @@ void basicmain()
 		{
 			if (rapTicks > myTicks + 240)
 			{
-				for (int i = 0; i < 60; i++)
+				for (int i = 0; i < 80; i++)
 				{
 					rapFadeClut(0,256,BLACKPAL);
 					jsfVsync(0);
@@ -2060,6 +2380,168 @@ void basicmain()
 				switchScreenFight(p1Cursor, p2Cursor);
 			}
 		}
+		else if (onScreenFight)
+		{
+			/////////////////////////////////////////
+			// Fight!
+			/////////////////////////////////////////
+			pad1=jsfGetPad(LEFT_PAD);
+			pad2=jsfGetPad(RIGHT_PAD);
+
+			// if (roundFightSequenceComplete == false)
+			// {
+			// 	if (rapTicks >= myTicks + ticksPerSec)
+			// 	{
+			// 		sprite[ROUND1].active = R_is_inactive;
+			// 		sprite[FIGHT].active = R_is_active;
+
+			// 		if (fightScale <= 32)
+			// 		{
+			// 			sprite[FIGHT].scale_x = fightScale;
+			// 			sprite[FIGHT].scale_y = fightScale;
+			// 			sprite[FIGHT].x_ -= 4;
+			// 			sprite[FIGHT].y_ -= 2;
+
+			// 			fightScale += 2;
+			// 		}
+			// 		else
+			// 		{
+			// 			sfxFight(&soundHandler);
+			// 			roundFightSequenceComplete = true;
+			// 			myTicks = rapTicks;
+			// 			fightScale = 32;
+			// 		}
+			// 	}
+			// }
+
+			// if (sprite[FIGHT].active == R_is_active && roundFightSequenceComplete)
+			// {
+			// 	updateSpriteAnimator(&fightAnimator, fightFlashFrames, 2, true, true);
+
+			// 	if (rapTicks >= myTicks + ticksPerSec)
+			// 	{
+			// 		fightAnimator.currentFrame = 0;
+
+			// 		updateSpriteAnimator(&fightAnimator, fightIdleFrames, 1, true, true);
+
+			// 		if (fightScale > 0)
+			// 		{
+			// 			sprite[FIGHT].scale_x = fightScale;
+			// 			sprite[FIGHT].scale_y = fightScale;
+			// 			sprite[FIGHT].x_ += 4;
+			// 			sprite[FIGHT].y_ += 2;
+			// 			fightScale -= 2;
+			// 		}
+			// 		else
+			// 		{
+			// 			sprite[FIGHT].active = R_is_inactive;
+			// 		}
+			// 	}
+			// }
+
+			//////////////////////////////////////
+			// Player 1 fighter
+			/////////////////////////////////////
+			switch (p1Cursor)
+			{
+				case 0:
+					//Johnny Cage
+					fighterUpdate(delta, &fighterCage, &cageAnimator, false);
+					break;
+				case 1:
+					//Kano
+					fighterUpdate(delta, &fighterKano, &kanoAnimator, false);
+					break;
+				case 2:
+					//Sub-Zero
+					fighterUpdate(delta, &fighterSubzero, &subzeroAnimator, false);
+					break;
+				case 3:
+					//Sonya
+					fighterUpdate(delta, &fighterSonya, &sonyaAnimator, false);
+					break;
+				case 4:
+					//Raiden
+					//sprite[LIGHTNING].x_ = sprite[RAIDEN].x_;
+					fighterUpdate(delta, &fighterRaiden, &raidenAnimator, false);
+					//updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+					break;
+				case 5:
+					//Liu Kang
+					fighterUpdate(delta, &fighterKang, &kangAnimator, false);
+					break;
+				case 6:
+					//Scorpion
+					fighterUpdate(delta, &fighterScorpion, &scorpionAnimator, false);
+					break;
+			}
+			
+			//////////////////////////////////////
+			// Player 2 fighter
+			/////////////////////////////////////
+			switch (p2Cursor)
+			{
+				case 0:
+					//Johnny Cage
+					fighterUpdate(delta, &fighterCage2, &cageAnimator2, true);
+					break;
+				case 1:
+					//Kano
+					fighterUpdate(delta, &fighterKano2, &kanoAnimator2, true);
+					break;
+				case 2:
+					//Sub-Zero
+					fighterUpdate(delta, &fighterSubzero2, &subzeroAnimator2, true);
+					break;
+				case 3:
+					//Sonya
+					fighterUpdate(delta, &fighterSonya2, &sonyaAnimator2, true);
+					break;
+				case 4:
+					//Raiden
+					//sprite[LIGHTNING2].x_ = sprite[RAIDEN2].x_;
+					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2, true);
+					//updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+					break;
+				case 5:
+					//Liu Kang
+					fighterUpdate(delta, &fighterKang2, &kangAnimator2, true);
+					break;
+				case 6:
+					//Scorpion
+					fighterUpdate(delta, &fighterScorpion2, &scorpionAnimator2, true);
+					break;
+			}
+
+			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
+			//bgUpdate(fighter1Ptr, fighter2Ptr);
+			//bloodUpdate(&soundHandler);
+			//spriteDelayUpdate();
+		}
+
+		pad1=jsfGetPadPressed(LEFT_PAD);
+		
+		if(pad1 & JAGPAD_STAR)
+		{
+			setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+			setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+			setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+			setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+			setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+			setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+			//rapDebugSetVisible(DEBUG_SHOW);
+		}
+		else if (pad1 & JAGPAD_HASH)
+		{
+			setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, 0);
+			setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, 0);
+			setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, 0);
+			setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, 0);
+			setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+			setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+			//rapDebugSetVisible(DEBUG_HIDE);
+		}
+
 		jsfVsync(0);
 	}
 }
@@ -2217,115 +2699,141 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
+	rapUnpack(BMP_PIT_MOON,(int)(int*)imageBuffer320x240);
+	sprite[STAGE_PIT_MOON].gfxbase=(int)imageBuffer320x240;
+	sprite[STAGE_PIT_MOON].active=R_is_active;
+
 	rapUnpack(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
 	sprite[STAGE_PIT_BACKGROUND].gfxbase=(int)imageBuffer;
 	sprite[STAGE_PIT_BACKGROUND].active=R_is_active;
 
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,48);
-
-	// jsfLoadClut((unsigned short *)(void *)(BMP_PG_0_clut),0,112);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_FLAME_clut),7,16);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_CLOUD1_clut),8,16);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_TEMPLE_clut),9,16);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_MOUNTAINS_clut),10,16);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_BUSH_clut),11,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),3,16);
 	// jsfLoadClut((unsigned short *)(void *)(BMP_ROUND1_clut),12,16);
 	// //jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	// jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);
 
-	// switch (p1Cursor)
-	// {
-	// 	case 0:
-	// 		//Johnny Cage
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),14,16);
-	// 		fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
-	// 		fighterShow(&fighterCage);
-	// 		break;
-	// 	case 1:
-	// 		//Kano
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
-	// 		fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
-	// 		fighterShow(&fighterKano);
-	// 		break;
-	// 	case 2:
-	// 		//Sub-Zero
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),14,16);
-	// 		fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
-	// 		fighterShow(&fighterSubzero);
-	// 		break;
-	// 	case 3:
-	// 		//Sonya
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),14,16);
-	// 		fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
-	// 		fighterShow(&fighterSonya);
-	// 		break;
-	// 	case 4:
-	// 		//Raiden
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
-	// 		fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
-	// 		fighterShow(&fighterRaiden);
-	// 		sprite[LIGHTNING].active = R_is_active;
-	// 		break;
-	// 	case 5:
-	// 		//Liu Kang
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),14,16);
-	// 		fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
-	// 		fighterShow(&fighterKang);
-	// 		break;
-	// 	case 6:
-	// 		//Scorpion
-	// 		jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),14,16);
-	// 		fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
-	// 		fighterShow(&fighterScorpion);
-	// 		break;
-	// }
+	switch (p1Cursor)
+	{
+		case 0:
+			//Johnny Cage
+			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),14,16);
+			fighterCage.spriteIndex = P1_FIGHTER_PIT;
+			cageAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
+			fighterShow(&fighterCage);			
+			break;
+		case 1:
+			//Kano
+			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
+			fighterKano.spriteIndex = P1_FIGHTER_PIT;
+			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
+			fighterShow(&fighterKano);
+			break;
+		case 2:
+			//Sub-Zero
+			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),14,16);
+			fighterSubzero.spriteIndex = P1_FIGHTER_PIT;
+			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterShow(&fighterSubzero);
+			break;
+		case 3:
+			//Sonya
+			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),14,16);
+			fighterSonya.spriteIndex = P1_FIGHTER_PIT;
+			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
+			fighterShow(&fighterSonya);
+			break;
+		case 4:
+			//Raiden
+			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
+			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
+			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
+			fighterShow(&fighterRaiden);
+			sprite[LIGHTNING].active = R_is_active;
+			break;
+		case 5:
+			//Liu Kang
+			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),14,16);
+			fighterKang.spriteIndex = P1_FIGHTER_PIT;
+			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
+			fighterShow(&fighterKang);
+			break;
+		case 6:
+			//Scorpion
+			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),14,16);
+			fighterScorpion.spriteIndex = P1_FIGHTER_PIT;
+			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterShow(&fighterScorpion);
+			break;
+	}
 
-	// switch (p2Cursor)
-	// {
-	// 	case 0:
-	// 		//Johnny Cage
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
-	// 		fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
-	// 		fighterShow(&fighterCage2);
-	// 		break;
-	// 	case 1:
-	// 		//Kano
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
-	// 		fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
-	// 		fighterShow(&fighterKano2);
-	// 		break;
-	// 	case 2:
-	// 		//Sub-Zero
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
-	// 		fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
-	// 		fighterShow(&fighterSubzero2);
-	// 		break;
-	// 	case 3:
-	// 		//Sonya
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
-	// 		fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
-	// 		fighterShow(&fighterSonya2);
-	// 		break;
-	// 	case 4:
-	// 		//Raiden
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
-	// 		fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
-	// 		fighterShow(&fighterRaiden2);
-	// 		sprite[LIGHTNING2].active = R_is_active;
-	// 		break;
-	// 	case 5:
-	// 		//Liu Kang
-	// 		jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
-	// 		fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
-	// 		fighterShow(&fighterKang2);
-	// 		break;
-	// 	case 6:
-	// 		//Scorpion
-	// 		jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
-	// 		fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
-	// 		fighterShow(&fighterScorpion2);
-	// 		break;
-	// }
+	switch (p2Cursor)
+	{
+		case 0:
+			//Johnny Cage
+			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
+			fighterCage2.spriteIndex = P2_FIGHTER_PIT;
+			cageAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
+			fighterShow(&fighterCage2);
+			break;
+		case 1:
+			//Kano
+			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
+			fighterKano2.spriteIndex = P2_FIGHTER_PIT;
+			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
+			fighterShow(&fighterKano2);
+			break;
+		case 2:
+			//Sub-Zero
+			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
+			fighterSubzero2.spriteIndex = P2_FIGHTER_PIT;
+			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterShow(&fighterSubzero2);
+			break;
+		case 3:
+			//Sonya
+			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
+			fighterSonya2.spriteIndex = P2_FIGHTER_PIT;
+			sonyaAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
+			fighterShow(&fighterSonya2);
+			break;
+		case 4:
+			//Raiden
+			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
+			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
+			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
+			fighterShow(&fighterRaiden2);
+			sprite[LIGHTNING2].active = R_is_active;
+			break;
+		case 5:
+			//Liu Kang
+			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
+			fighterKang2.spriteIndex = P2_FIGHTER_PIT;
+			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
+			fighterShow(&fighterKang2);
+			break;
+		case 6:
+			//Scorpion
+			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
+			fighterScorpion2.spriteIndex = P2_FIGHTER_PIT;
+			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterShow(&fighterScorpion2);
+			break;
+	}
 
 	//sprite[CHOOSE_FIGHTER_SCREEN].active = R_is_inactive;
 	// sprite[BG1_BACKDROP].active = R_is_active;

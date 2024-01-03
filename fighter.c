@@ -138,6 +138,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_DUCK = P1_HB_DUCK;
         fighter->PAD = LEFT_PAD;
         sprite[fighter->spriteIndex].x_ = 50;
+        sprite[fighter->spriteIndex].flip = R_is_normal;
         fighter->direction = 1;
     }
     else
@@ -152,7 +153,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         {
             sprite[fighter->spriteIndex].x_ -= 16;
         }
-
+        sprite[fighter->spriteIndex].flip = R_is_flipped;
         fighter->direction = -1;
     }
 
@@ -904,6 +905,8 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
+    return;
+    
     collision = rapCollide(P1_HB_BODY-1,P2_HB_ATTACK-1,P1_HB_BODY-1,P2_HB_ATTACK-1);
 
     if (collision > -1)

@@ -10,13 +10,6 @@
 #define LIGHTNING 5
 #define LIGHTNING2 6
 
-#define P1_HB_BODY 49
-#define P1_HB_DUCK P1_HB_BODY + 1
-#define P1_HB_ATTACK P1_HB_DUCK + 1
-#define P2_HB_BODY P1_HB_ATTACK + 1
-#define P2_HB_DUCK P2_HB_BODY + 1
-#define P2_HB_ATTACK P2_HB_DUCK + 1
-
 #define BATTLE_SCREEN 8
 #define P1_PT_CAGE BATTLE_SCREEN + 1
 #define P1_PT_KANO P1_PT_CAGE + 1
@@ -33,7 +26,16 @@
 #define P2_PT_KANG P2_PT_RAIDEN + 1
 #define P2_PT_SCORPION P2_PT_KANG + 1
 
-#define STAGE_PIT_BACKGROUND P2_PT_SCORPION + 1
+#define STAGE_PIT_MOON P2_PT_SCORPION + 1
+#define STAGE_PIT_BACKGROUND STAGE_PIT_MOON + 1
+#define P1_FIGHTER_PIT STAGE_PIT_BACKGROUND + 1
+#define P2_FIGHTER_PIT P1_FIGHTER_PIT + 1
+#define P1_HB_BODY P2_FIGHTER_PIT + 1
+#define P1_HB_DUCK P1_HB_BODY + 1
+#define P1_HB_ATTACK P1_HB_DUCK + 1
+#define P2_HB_BODY P1_HB_ATTACK + 1
+#define P2_HB_DUCK P2_HB_BODY + 1
+#define P2_HB_ATTACK P2_HB_DUCK + 1
 
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1

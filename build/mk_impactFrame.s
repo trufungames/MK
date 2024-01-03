@@ -10,19 +10,19 @@ __Z16impactFrameResetP7Fighter:
 	jne .L5
 	move.w 196(%a0),%d0
 	add.w #30,%d0
-	move.w %d0,10376(%a1)
+	move.w %d0,6152(%a1)
 	move.w 200(%a0),%a0
 	lea (200,%a0),%a0
-	move.w %a0,10380(%a1)
+	move.w %a0,6156(%a1)
 	unlk %fp
 	rts
 .L5:
 	move.w 196(%a0),%d0
 	add.w #30,%d0
-	move.w %d0,9800(%a1)
+	move.w %d0,5576(%a1)
 	move.w 200(%a0),%a0
 	lea (200,%a0),%a0
-	move.w %a0,9804(%a1)
+	move.w %a0,5580(%a1)
 	unlk %fp
 	rts
 	.even
@@ -42,10 +42,10 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 	jne .L14
 	move.w 196(%a0),%d0
 	add.w #30,%d0
-	move.w %d0,10376(%a1)
+	move.w %d0,6152(%a1)
 	move.w 200(%a0),%a0
 	lea (200,%a0),%a0
-	move.w %a0,10380(%a1)
+	move.w %a0,6156(%a1)
 	move.l (%sp)+,%a2
 	move.l (%sp)+,%a3
 	unlk %fp
@@ -63,10 +63,10 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 	move.w 208(%a0),%d0
 	muls.w 6(%a1),%d0
 	add.w 8(%a3),%d0
-	move.w %d0,9800(%a2)
+	move.w %d0,5576(%a2)
 	move.w 12(%a3),%a3
 	add.w 10(%a1),%a3
-	move.w %a3,9804(%a2)
+	move.w %a3,5580(%a2)
 	move.l (%sp)+,%a2
 	move.l (%sp)+,%a3
 	unlk %fp
@@ -84,10 +84,10 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 	add.l 4(%a1),%d0
 	muls.w 208(%a0),%d0
 	add.w %d0,%d1
-	move.w %d1,10376(%a2)
+	move.w %d1,6152(%a2)
 	move.w 12(%a3),%a3
 	add.w 10(%a1),%a3
-	move.w %a3,10380(%a2)
+	move.w %a3,6156(%a2)
 	move.l (%sp)+,%a2
 	move.l (%sp)+,%a3
 	unlk %fp
@@ -95,10 +95,10 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 .L14:
 	move.w 196(%a0),%d0
 	add.w #30,%d0
-	move.w %d0,9800(%a1)
+	move.w %d0,5576(%a1)
 	move.w 200(%a0),%a0
 	lea (200,%a0),%a0
-	move.w %a0,9804(%a1)
+	move.w %a0,5580(%a1)
 	move.l (%sp)+,%a2
 	move.l (%sp)+,%a3
 	unlk %fp

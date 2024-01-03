@@ -51,6 +51,10 @@
 #define BMP_PIT_CLOUDS2_clut 0xBEB700
 #define BMP_PIT_CLOUDS3 0xBEB720
 #define BMP_PIT_CLOUDS3_clut 0xBEBD10
+#define BMP_HITBOX 0xBEBD30
+#define BMP_HITBOX_ATTACK 0xBEC330
+#define BMP_HITBOX_OFF 0xBEC4B0
+#define BMP_HITBOX_ATTACK_OFF 0xBECAB0
 extern void *fight_sam asm("fight_sam");
 extern void *fight_sam_end asm("fight_sam_end");
 extern void *johnnycage_sam asm("johnnycage_sam");

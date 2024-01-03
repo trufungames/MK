@@ -58,6 +58,10 @@ ROM,BMP_PIT_MOON,gfx_clut_pack,assets\gfx\stage_pit_moon.bmp
 ROM,BMP_PIT_CLOUDS1,gfx_clut_pack,assets\gfx\stage_pit_clouds1.bmp
 ROM,BMP_PIT_CLOUDS2,gfx_clut_pack,assets\gfx\stage_pit_clouds2.bmp
 ROM,BMP_PIT_CLOUDS3,gfx_clut_pack,assets\gfx\stage_pit_clouds3.bmp
+ROM,BMP_HITBOX,gfx_clut16,ASSETS\GFX\hitbox_on.BMP
+ROM,BMP_HITBOX_ATTACK,gfx_clut16,ASSETS\GFX\hitbox_attack_on.BMP
+ROM,BMP_HITBOX_OFF,gfx_clut16,ASSETS\GFX\hitbox_off.BMP
+ROM,BMP_HITBOX_ATTACK_OFF,gfx_clut16,ASSETS\GFX\hitbox_attack_off.BMP
 
 ABS,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
 ABS,johnnycage_sam,sfx_raw8000,ASSETS\SFX\johnnycage.wav

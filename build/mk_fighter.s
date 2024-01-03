@@ -248,11 +248,11 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.l %d0,4(%a1)
 	tst.b %d1
 	jne .L31
-	moveq #54,%d1
+	moveq #32,%d1
 	move.l %d1,150(%a0)
-	moveq #52,%d0
+	moveq #30,%d0
 	move.l %d0,142(%a0)
-	move.b #53,%d1
+	move.b #31,%d1
 	move.l %d1,146(%a0)
 	move.b #2,%d0
 	move.l %d0,158(%a0)
@@ -262,6 +262,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	cmp.l (%a0),%d1
 	jeq .L32
 	moveq #-1,%d1
+	move.l %d1,24(%a1)
 	move.l %d1,206(%a0)
 .L27:
 	move.l %d0,194(%a0)
@@ -271,15 +272,16 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	unlk %fp
 	jra __Z16impactFrameResetP7Fighter
 .L31:
-	moveq #51,%d1
+	moveq #29,%d1
 	move.l %d1,150(%a0)
-	move.b #49,%d0
+	move.b #27,%d0
 	move.l %d0,142(%a0)
-	move.b #50,%d1
+	move.b #28,%d1
 	move.l %d1,146(%a0)
 	move.b #1,%d0
 	move.l %d0,158(%a0)
 	move.w #50,8(%a1)
+	move.l %d0,24(%a1)
 	move.l %d0,206(%a0)
 	move.b #50,%d0
 	move.l %d0,194(%a0)
@@ -292,6 +294,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.w #194,8(%a1)
 	move.b #-62,%d0
 	moveq #-1,%d1
+	move.l %d1,24(%a1)
 	move.l %d1,206(%a0)
 	jra .L27
 	.even
@@ -2904,245 +2907,8 @@ __Z27fighterPlayUppercutReactionP12SoundHandler:
 	.globl	__Z18fighterImpactCheckP7FighterS0_
 __Z18fighterImpactCheckP7FighterS0_:
 	link.w %fp,#0
-	movem.l #14396,-(%sp)
-	move.l 8(%fp),%a2
-	move.l 12(%fp),%a3
-	pea 53.w
-	pea 48.w
-	pea 53.w
-	pea 48.w
-	jsr rapCollide
-	move.l %d0,_collision
-	lea (16,%sp),%sp
-	jlt .L288
-	move.l sprite,%a5
-	move.w raptor_ticks,%d3
-	ext.l %d3
-	move.l colliders,%a0
-.L321:
-	move.l 4(%a0),%a4
-	move.l (%a0),%a1
-	cmp.w #0,%a4
-	jlt .L290
-	move.l 188(%a4),%d0
-	move.l 188(%a1),%d1
-	move.l %d0,%d2
-	add.l %d0,%d2
-	add.l %d0,%d2
-	lsl.l #6,%d2
-	moveq #-1,%d4
-	move.l %d4,112(%a5,%d2.l)
-	move.l %d1,%d2
-	add.l %d1,%d2
-	add.l %d1,%d2
-	lsl.l #6,%d2
-	move.l %d4,112(%a5,%d2.l)
-	moveq #51,%d2
-	cmp.l %d0,%d2
-	jeq .L330
-	moveq #50,%d2
-	cmp.l %d0,%d2
-	jeq .L331
-	moveq #54,%d2
-	cmp.l %d0,%d2
-	jne .L306
-	moveq #49,%d4
-	cmp.l %d1,%d4
-	jeq .L332
-	moveq #50,%d2
-	cmp.l %d1,%d2
-	jeq .L333
-.L290:
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-.L288:
-	movem.l -28(%fp),#15388
 	unlk %fp
 	rts
-.L331:
-	moveq #53,%d4
-	cmp.l %d1,%d4
-	jne .L290
-	tst.b 104(%a2)
-	jeq .L290
-	move.b #1,130(%a2)
-	move.b #1,131(%a3)
-	move.l %d3,182(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L330:
-	moveq #52,%d4
-	cmp.l %d1,%d4
-	jeq .L334
-	moveq #53,%d0
-	cmp.l %d1,%d0
-	jne .L290
-	tst.b 129(%a3)
-	jne .L290
-	tst.b 107(%a3)
-	jne .L335
-.L304:
-	tst.b 116(%a2)
-	jeq .L290
-	move.b #1,124(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L306:
-	moveq #53,%d2
-	cmp.l %d0,%d2
-	jne .L290
-	moveq #50,%d4
-	cmp.l %d1,%d4
-	jne .L290
-	tst.b 104(%a3)
-	jeq .L290
-	move.b #1,130(%a3)
-	move.b #1,131(%a2)
-	move.l %d3,182(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L333:
-	tst.b 129(%a2)
-	jne .L290
-	tst.b 107(%a2)
-	jne .L336
-.L319:
-	tst.b 116(%a3)
-	jeq .L290
-	move.b #1,124(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L334:
-	tst.b 129(%a3)
-	jne .L290
-	tst.b 107(%a3)
-	jne .L305
-	tst.b 109(%a2)
-	jne .L325
-	tst.b 110(%a2)
-	jne .L337
-	tst.b 111(%a2)
-	jne .L325
-	tst.b 112(%a2)
-	jeq .L298
-	move.b #1,121(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L335:
-	tst.b 106(%a3)
-	jeq .L304
-.L305:
-	move.b #1,108(%a3)
-	move.b #1,132(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L332:
-	tst.b 129(%a2)
-	jne .L290
-	tst.b 107(%a2)
-	jne .L320
-	tst.b 109(%a3)
-	jne .L327
-	tst.b 110(%a3)
-	jne .L338
-	tst.b 111(%a3)
-	jne .L327
-	tst.b 112(%a3)
-	jeq .L314
-	move.b #1,121(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L336:
-	tst.b 106(%a2)
-	jeq .L319
-.L320:
-	move.b #1,108(%a2)
-	move.b #1,132(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L327:
-	move.b #1,119(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L325:
-	move.b #1,119(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L337:
-	move.b #1,120(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L338:
-	move.b #1,120(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L298:
-	tst.b 113(%a2)
-	jne .L326
-	tst.b 114(%a2)
-	jne .L326
-	tst.b 115(%a2)
-	jeq .L290
-	move.b #1,123(%a3)
-	clr.b 133(%a2)
-	move.b #1,134(%a2)
-	move.l %d3,186(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L314:
-	tst.b 113(%a3)
-	jne .L328
-	tst.b 114(%a3)
-	jne .L328
-	tst.b 115(%a3)
-	jeq .L290
-	move.b #1,123(%a2)
-	clr.b 133(%a3)
-	move.b #1,134(%a3)
-	move.l %d3,186(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L326:
-	move.b #1,122(%a3)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
-.L328:
-	move.b #1,122(%a2)
-	addq.l #8,%a0
-	cmp.w #0,%a1
-	jge .L321
-	jra .L288
 	.globl	_collision
 	.bss
 	.even
