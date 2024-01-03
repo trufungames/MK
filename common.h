@@ -33,6 +33,8 @@
 #define P2_PT_KANG P2_PT_RAIDEN + 1
 #define P2_PT_SCORPION P2_PT_KANG + 1
 
+#define STAGE_PIT_BACKGROUND P2_PT_SCORPION + 1
+
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1
 #define KANO 2
