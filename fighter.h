@@ -26,6 +26,7 @@ struct Fighter {
     unsigned int HIT_FALL_FRAME_COUNT;
     unsigned int HIT_SWEEP_FRAME_COUNT;
 
+    unsigned int lightningSpriteIndex;
     bool IsWalking;
     bool IsJumping;
     bool IsDucking;

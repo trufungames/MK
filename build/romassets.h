@@ -46,15 +46,23 @@
 #define BMP_PIT_MOON 0xBE8B00
 #define BMP_PIT_MOON_clut 0xBE9DA0
 #define BMP_PIT_CLOUDS1 0xBE9DC0
-#define BMP_PIT_CLOUDS1_clut 0xBEADF0
-#define BMP_PIT_CLOUDS2 0xBEAE10
-#define BMP_PIT_CLOUDS2_clut 0xBEB700
-#define BMP_PIT_CLOUDS3 0xBEB720
-#define BMP_PIT_CLOUDS3_clut 0xBEBD10
-#define BMP_HITBOX 0xBEBD30
-#define BMP_HITBOX_ATTACK 0xBEC330
-#define BMP_HITBOX_OFF 0xBEC4B0
-#define BMP_HITBOX_ATTACK_OFF 0xBECAB0
+#define BMP_PIT_CLOUDS1_clut 0xBED060
+#define BMP_PIT_CLOUDS2 0xBED080
+#define BMP_PIT_CLOUDS2_clut 0xBF0200
+#define BMP_PIT_CLOUDS3 0xBF0220
+#define BMP_PIT_CLOUDS3_clut 0xBF13B0
+#define BMP_HITBOX 0xBF13D0
+#define BMP_HITBOX_ATTACK 0xBF19D0
+#define BMP_HITBOX_OFF 0xBF1B50
+#define BMP_HITBOX_ATTACK_OFF 0xBF2150
+#define BMP_ROUND1 0xBF22D0
+#define BMP_ROUND1_clut 0xBF2690
+#define BMP_FIGHT 0xBF26B0
+#define BMP_FIGHT_clut 0xBF44B0
+#define BMP_BLOOD 0xBF44D0
+#define BMP_BLOOD_clut 0xBFECD0
+#define BMP_HUD 0xBFECF0
+#define BMP_HUD_clut 0xC000F0
 extern void *fight_sam asm("fight_sam");
 extern void *fight_sam_end asm("fight_sam_end");
 extern void *johnnycage_sam asm("johnnycage_sam");

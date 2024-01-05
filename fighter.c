@@ -25,6 +25,7 @@ void fighterShow(struct Fighter *fighter)
             break;
         case RAIDEN:
             sprite[fighter->spriteIndex].gfxbase = BMPRAIDEN;
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
             break;
         case KANG:
             sprite[fighter->spriteIndex].gfxbase = BMPKANG;
@@ -136,16 +137,18 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_ATTACK = P1_HB_ATTACK;
         fighter->HB_BODY = P1_HB_BODY;
         fighter->HB_DUCK = P1_HB_DUCK;
+        fighter->lightningSpriteIndex = P1_LIGHTNING_PIT;
         fighter->PAD = LEFT_PAD;
         sprite[fighter->spriteIndex].x_ = 50;
         sprite[fighter->spriteIndex].flip = R_is_normal;
-        fighter->direction = 1;
+        fighter->direction = 1;        
     }
     else
     {
         fighter->HB_ATTACK = P2_HB_ATTACK;
         fighter->HB_BODY = P2_HB_BODY;
         fighter->HB_DUCK = P2_HB_DUCK;
+        fighter->lightningSpriteIndex = P2_LIGHTNING_PIT;
         fighter->PAD = RIGHT_PAD;
         sprite[fighter->spriteIndex].x_ = 210;
 
@@ -174,6 +177,11 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->DoBlockSequence = false;
         animator->currentFrame = 0;
         sfxBlock(fighter->soundHandler, fighter->isPlayer1);
+    }
+
+    if (fighter->fighterIndex == RAIDEN)
+    {
+        sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_;		
     }
 
     if (fighter->IsBeingPushed)
@@ -905,12 +913,10 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    return;
-    
-    collision = rapCollide(P1_HB_BODY-1,P2_HB_ATTACK-1,P1_HB_BODY-1,P2_HB_ATTACK-1);
+    collision = rapCollide(20, 25, 20, 25);
 
     if (collision > -1)
-    {
+    { 
         int i = 0;
         int collisionSprAddr = 0;
         int collisionSprAddr2 = 0;
@@ -920,10 +926,11 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
             collisionSprAddr = colliders[i].objectSourceHitAddr;
             collisionSprAddr2 = colliders[i].objectHitAddr;
 
-            if (collisionSprAddr > -1)
+            if (collisionSprAddr > -1 && collisionSprAddr2 >= 0)
             {
                 int collisionSprIndex = jsfGetSpriteIndex(collisionSprAddr);
                 int collisionSprIndex2 = jsfGetSpriteIndex(collisionSprAddr2);
+
                 sprite[collisionSprIndex].was_hit = -1;
                 sprite[collisionSprIndex2].was_hit = -1;
 

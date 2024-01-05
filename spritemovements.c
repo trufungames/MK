@@ -28,47 +28,31 @@ void moveDown (void)
 
 void bgScrollRight (float delta)
 {
-	// if (sprite[BG1_BACKDROP].x_ >= -692.0f)
-	// {
-	// 	sprite[BG1_TEMPLE_LEFT].x_ -= 1.0f * delta;
-	// 	sprite[BG1_TEMPLE_RIGHT].x_ -= 1.0f * delta;
-	// 	sprite[BG1_BUSH_1].x_ -= 1.5f * delta;
-	// 	sprite[BG1_BUSH_2].x_ -= 1.5f * delta;
-	// 	sprite[BG1_BUSH_3].x_ -= 1.5f * delta;
-	// 	sprite[BG1_BUSH_4].x_ -= 1.5f * delta;
-	// 	sprite[BG1_BACKDROP].x_ -= 2.0f * delta;
-	// 	sprite[BG1_FLAME1].x_ -= 2.0f * delta;
-	// 	sprite[BG1_FLAME2].x_ -= 2.0f * delta;
+	if (sprite[STAGE_PIT_BACKGROUND].x_ >= -692.0f)
+	{	
+		sprite[STAGE_PIT_BACKGROUND].x_ -= 2.0f * delta;
 
-	// 	for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
-	// 	{
-	// 		sprite[BLOOD_DROP+i].x_ -= 2.0f * delta;
-	// 		sprite[BLOOD_POOL+i].x_ -= 2.0f * delta;
-	// 	}
-	// }
+		for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+		{
+			sprite[BLOOD_DROP+i].x_ -= 2.0f * delta;
+			sprite[BLOOD_POOL+i].x_ -= 2.0f * delta;
+		}
+	}
 }
 
 
 void bgScrollLeft (float delta)
 {
-	// if (sprite[BG1_BACKDROP].x_ <= -2.0f)
-	// {
-	// 	sprite[BG1_TEMPLE_LEFT].x_ += 1.0f * delta;
-	// 	sprite[BG1_TEMPLE_RIGHT].x_ += 1.0f * delta;
-	// 	sprite[BG1_BUSH_1].x_ += 1.5f * delta;
-	// 	sprite[BG1_BUSH_2].x_ += 1.5f * delta;
-	// 	sprite[BG1_BUSH_3].x_ += 1.5f * delta;
-	// 	sprite[BG1_BUSH_4].x_ += 1.5f * delta;
-	// 	sprite[BG1_BACKDROP].x_ += 2.0f * delta;
-	// 	sprite[BG1_FLAME1].x_ += 2.0f * delta;
-	// 	sprite[BG1_FLAME2].x_ += 2.0f * delta;
+	if (sprite[STAGE_PIT_BACKGROUND].x_ <= -2.0f)
+	{
+		sprite[STAGE_PIT_BACKGROUND].x_ += 2.0f * delta;
 
-	// 	for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
-	// 	{
-	// 		sprite[BLOOD_DROP+i].x_ += 2.0f * delta;
-	// 		sprite[BLOOD_POOL+i].x_ += 2.0f * delta;
-	// 	}
-	// }
+		for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+		{
+			sprite[BLOOD_DROP+i].x_ += 2.0f * delta;
+			sprite[BLOOD_POOL+i].x_ += 2.0f * delta;
+		}
+	}
 }
 
 void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
@@ -125,18 +109,10 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
 		if (IsScrollingUp || IsScrollingDown || IsShaking)
 		{
-			// sprite[BG1_BACKDROP].y_ += bgYInc;
-			// sprite[BG1_TEMPLE_LEFT].y_ += bgYInc;
-			// sprite[BG1_TEMPLE_RIGHT].y_ += bgYInc;
-			// sprite[BG1_BUSH_1].y_ += bgYInc;
-			// sprite[BG1_BUSH_2].y_ += bgYInc;
-			// sprite[BG1_BUSH_3].y_ += bgYInc;
-			// sprite[BG1_BUSH_4].y_ += bgYInc;
-			// sprite[BG1_FLAME1].y_ += bgYInc;
-			// sprite[BG1_FLAME2].y_ += bgYInc;
-			// sprite[BG1_MOUNTAIN].y_ += bgYInc;
-			// fighter1->positionY += bgYInc;
-			// fighter2->positionY += bgYInc;
+			sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
+			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
+			fighter1->positionY += bgYInc;
+			fighter2->positionY += bgYInc;
 		}
 		
 		LastTicks = rapTicks;

@@ -1334,6 +1334,19 @@ static AnimationFrame lightningFrames[] = {
 	{ 80, 144, 720, 288, 0, 0, 4 }
 };
 
+static SpriteAnimator fightAnimator = {
+	FIGHT, 0.5f, BMP_FIGHT, 0, 0
+};
+
+static AnimationFrame fightIdleFrames[] = {
+	{ 160, 48, 0, 0, 0, 0, 3 }
+};
+
+static AnimationFrame fightFlashFrames[] = {
+	{ 160, 48, 0, 0, 0, 0, 3 },
+	{ 160, 48, 0, 48, 0, 0, 3 }
+};
+
 // *************************************************
 //               User Prototypes
 // *************************************************
@@ -1741,7 +1754,7 @@ void basicmain()
 	struct Fighter* fighter1Ptr;
 	struct Fighter* fighter2Ptr; 
 
-fighterCage.idleFrames = &cageIdleFrames;
+	fighterCage.idleFrames = &cageIdleFrames;
 	fighterCage.walkFrames = &cageWalkFrames;
 	fighterCage.jumpFrames = &cageJumpFrames;
 	fighterCage.jumpRollFrames = &cageJumpRollFrames;
@@ -2375,8 +2388,8 @@ fighterCage.idleFrames = &cageIdleFrames;
 
 				roundFightSequenceComplete = false;
 				myTicks = rapTicks;
-				//bloodInit();
-				//spriteDelayInit();
+				bloodInit();
+				spriteDelayInit();
 				switchScreenFight(p1Cursor, p2Cursor);
 			}
 		}
@@ -2388,56 +2401,56 @@ fighterCage.idleFrames = &cageIdleFrames;
 			pad1=jsfGetPad(LEFT_PAD);
 			pad2=jsfGetPad(RIGHT_PAD);
 
-			// if (roundFightSequenceComplete == false)
-			// {
-			// 	if (rapTicks >= myTicks + ticksPerSec)
-			// 	{
-			// 		sprite[ROUND1].active = R_is_inactive;
-			// 		sprite[FIGHT].active = R_is_active;
+			if (roundFightSequenceComplete == false)
+			{
+				if (rapTicks >= myTicks + ticksPerSec)
+				{
+					sprite[ROUND1].active = R_is_inactive;
+					sprite[FIGHT].active = R_is_active;
 
-			// 		if (fightScale <= 32)
-			// 		{
-			// 			sprite[FIGHT].scale_x = fightScale;
-			// 			sprite[FIGHT].scale_y = fightScale;
-			// 			sprite[FIGHT].x_ -= 4;
-			// 			sprite[FIGHT].y_ -= 2;
+					if (fightScale <= 32)
+					{
+						sprite[FIGHT].scale_x = fightScale;
+						sprite[FIGHT].scale_y = fightScale;
+						sprite[FIGHT].x_ -= 4;
+						sprite[FIGHT].y_ -= 2;
 
-			// 			fightScale += 2;
-			// 		}
-			// 		else
-			// 		{
-			// 			sfxFight(&soundHandler);
-			// 			roundFightSequenceComplete = true;
-			// 			myTicks = rapTicks;
-			// 			fightScale = 32;
-			// 		}
-			// 	}
-			// }
+						fightScale += 2;
+					}
+					else
+					{
+						sfxFight(&soundHandler);
+						roundFightSequenceComplete = true;
+						myTicks = rapTicks;
+						fightScale = 32;
+					}
+				}
+			}
 
-			// if (sprite[FIGHT].active == R_is_active && roundFightSequenceComplete)
-			// {
-			// 	updateSpriteAnimator(&fightAnimator, fightFlashFrames, 2, true, true);
+			if (sprite[FIGHT].active == R_is_active && roundFightSequenceComplete)
+			{
+				updateSpriteAnimator(&fightAnimator, fightFlashFrames, 2, true, true);
 
-			// 	if (rapTicks >= myTicks + ticksPerSec)
-			// 	{
-			// 		fightAnimator.currentFrame = 0;
+				if (rapTicks >= myTicks + ticksPerSec)
+				{
+					fightAnimator.currentFrame = 0;
 
-			// 		updateSpriteAnimator(&fightAnimator, fightIdleFrames, 1, true, true);
+					updateSpriteAnimator(&fightAnimator, fightIdleFrames, 1, true, true);
 
-			// 		if (fightScale > 0)
-			// 		{
-			// 			sprite[FIGHT].scale_x = fightScale;
-			// 			sprite[FIGHT].scale_y = fightScale;
-			// 			sprite[FIGHT].x_ += 4;
-			// 			sprite[FIGHT].y_ += 2;
-			// 			fightScale -= 2;
-			// 		}
-			// 		else
-			// 		{
-			// 			sprite[FIGHT].active = R_is_inactive;
-			// 		}
-			// 	}
-			// }
+					if (fightScale > 0)
+					{
+						sprite[FIGHT].scale_x = fightScale;
+						sprite[FIGHT].scale_y = fightScale;
+						sprite[FIGHT].x_ += 4;
+						sprite[FIGHT].y_ += 2;
+						fightScale -= 2;
+					}
+					else
+					{
+						sprite[FIGHT].active = R_is_inactive;
+					}
+				}
+			}
 
 			//////////////////////////////////////
 			// Player 1 fighter
@@ -2462,9 +2475,8 @@ fighterCage.idleFrames = &cageIdleFrames;
 					break;
 				case 4:
 					//Raiden
-					//sprite[LIGHTNING].x_ = sprite[RAIDEN].x_;
 					fighterUpdate(delta, &fighterRaiden, &raidenAnimator, false);
-					//updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+					updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -2499,9 +2511,8 @@ fighterCage.idleFrames = &cageIdleFrames;
 					break;
 				case 4:
 					//Raiden
-					//sprite[LIGHTNING2].x_ = sprite[RAIDEN2].x_;
 					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2, true);
-					//updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+					updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -2514,34 +2525,31 @@ fighterCage.idleFrames = &cageIdleFrames;
 			}
 
 			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
-			//bgUpdate(fighter1Ptr, fighter2Ptr);
-			//bloodUpdate(&soundHandler);
-			//spriteDelayUpdate();
-		}
+			bgUpdate(fighter1Ptr, fighter2Ptr);
+			bloodUpdate(&soundHandler);
+			spriteDelayUpdate();
 
-		pad1=jsfGetPadPressed(LEFT_PAD);
-		
-		if(pad1 & JAGPAD_STAR)
-		{
-			setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-			setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-			setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-			setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-			setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
-			setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
-			//rapDebugSetVisible(DEBUG_SHOW);
+			if(pad1 & JAGPAD_STAR)
+			{
+				setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+				//rapDebugSetVisible(DEBUG_SHOW);
+			}
+			else if (pad1 & JAGPAD_HASH)
+			{
+				setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+				//rapDebugSetVisible(DEBUG_HIDE);
+			}
 		}
-		else if (pad1 & JAGPAD_HASH)
-		{
-			setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, 0);
-			setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, 0);
-			setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, 0);
-			setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, 0);
-			setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
-			setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
-			//rapDebugSetVisible(DEBUG_HIDE);
-		}
-
 		jsfVsync(0);
 	}
 }
@@ -2688,6 +2696,18 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 			sprite[P2_PT_SCORPION].active = R_is_active;
 			break;
 	}
+
+	rapUse16x16fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(1);	
+	rapLocate(100,190);
+	js_r_textbuffer=(char *)"KOMBAT ZONE:";
+	rapPrint();
+
+	jsfSetFontIndx(0);	
+	rapLocate(116,206);
+	js_r_textbuffer=(char *)"THE PIT";
+	rapPrint();
 	
 	onScreenChooseFighter = false;
 	onScreenVsBattle = true;
@@ -2709,9 +2729,10 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,48);
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),3,16);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_ROUND1_clut),12,16);
-	// //jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
-	// jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),4,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_HUD_clut),12,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);
 
 	switch (p1Cursor)
 	{
@@ -2752,6 +2773,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
+			lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
 			fighterShow(&fighterRaiden);
 			sprite[LIGHTNING].active = R_is_active;
@@ -2813,6 +2835,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
@@ -2835,23 +2858,10 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			break;
 	}
 
-	//sprite[CHOOSE_FIGHTER_SCREEN].active = R_is_inactive;
-	// sprite[BG1_BACKDROP].active = R_is_active;
-	// sprite[BG1_MOUNTAIN].active = R_is_active;
-	// sprite[BG1_CLOUD1].active = R_is_active;
-	// sprite[BG1_CLOUD2].active = R_is_active;
-	// sprite[BG1_CLOUD3].active = R_is_active;
-	// sprite[BG1_TEMPLE_LEFT].active = R_is_active;
-	// sprite[BG1_TEMPLE_RIGHT].active = R_is_active;
-	// sprite[BG1_BUSH_1].active = R_is_active;
-	// sprite[BG1_BUSH_2].active = R_is_active;
-	// sprite[BG1_BUSH_3].active = R_is_active;
-	// sprite[BG1_BUSH_4].active = R_is_active;
-	// sprite[BG1_FLAME1].active = R_is_active;
-	// sprite[BG1_FLAME2].active = R_is_active;
-	// sprite[ROUND1].active = R_is_active;
-	// sprite[FIGHT].active = R_is_active;
-	// sprite[HUD].active = R_is_active;
+	sprite[STAGE_PIT_CLOUDS1].active = R_is_active;
+	sprite[ROUND1].active = R_is_active;
+	sprite[FIGHT].active = R_is_active;
+	sprite[HUD].active = R_is_active;
 	// sprite[HEALTHBAR_P1].active = R_is_active;
 	// sprite[HEALTHBAR_P2].active = R_is_active;
 	// sprite[NAME_SCORPION_P1].active = R_is_active;
