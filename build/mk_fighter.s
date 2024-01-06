@@ -263,13 +263,13 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.l %d0,4(%a1)
 	tst.b %d1
 	jne .L31
-	moveq #49,%d0
+	moveq #51,%d0
 	move.l %d0,154(%a0)
-	moveq #47,%d1
+	moveq #49,%d1
 	move.l %d1,146(%a0)
-	move.b #48,%d0
+	move.b #50,%d0
 	move.l %d0,150(%a0)
-	move.b #43,%d1
+	move.b #45,%d1
 	move.l %d1,104(%a0)
 	move.b #2,%d0
 	move.l %d0,162(%a0)
@@ -289,13 +289,13 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	unlk %fp
 	jra __Z16impactFrameResetP7Fighter
 .L31:
-	moveq #46,%d1
+	moveq #48,%d1
 	move.l %d1,154(%a0)
-	move.b #44,%d0
+	move.b #46,%d0
 	move.l %d0,146(%a0)
-	move.b #45,%d1
+	move.b #47,%d1
 	move.l %d1,150(%a0)
-	move.b #42,%d0
+	move.b #44,%d0
 	move.l %d0,104(%a0)
 	move.b #1,%d1
 	move.l %d1,162(%a0)
@@ -2969,10 +2969,10 @@ __Z18fighterImpactCheckP7FighterS0_:
 	movem.l #14396,-(%sp)
 	move.l 8(%fp),%a2
 	move.l 12(%fp),%a3
-	pea 25.w
-	pea 20.w
-	pea 25.w
-	pea 20.w
+	pea 27.w
+	pea 22.w
+	pea 27.w
+	pea 22.w
 	jsr rapCollide
 	move.l %d0,_collision
 	lea (16,%sp),%sp
@@ -3003,19 +3003,19 @@ __Z18fighterImpactCheckP7FighterS0_:
 	add.l %a0,%d2
 	lsl.l #6,%d2
 	move.l %d4,112(%a4,%d2.l)
-	moveq #46,%d2
+	moveq #48,%d2
 	cmp.l %d0,%d2
 	jeq .L334
-	moveq #45,%d2
+	moveq #47,%d2
 	cmp.l %d0,%d2
 	jeq .L335
-	moveq #49,%d2
+	moveq #51,%d2
 	cmp.l %d0,%d2
 	jne .L310
-	moveq #44,%d4
+	moveq #46,%d4
 	cmp.l %a0,%d4
 	jeq .L336
-	moveq #45,%d2
+	moveq #47,%d2
 	cmp.l %a0,%d2
 	jeq .L337
 .L326:
@@ -3035,7 +3035,7 @@ __Z18fighterImpactCheckP7FighterS0_:
 	unlk %fp
 	rts
 .L335:
-	moveq #48,%d4
+	moveq #50,%d4
 	cmp.l %a0,%d4
 	jne .L326
 	tst.b 108(%a2)
@@ -3046,10 +3046,10 @@ __Z18fighterImpactCheckP7FighterS0_:
 	addq.l #8,%d1
 	jra .L339
 .L334:
-	moveq #47,%d4
+	moveq #49,%d4
 	cmp.l %a0,%d4
 	jeq .L340
-	moveq #48,%d0
+	moveq #50,%d0
 	cmp.l %a0,%d0
 	jne .L326
 	tst.b 133(%a3)
@@ -3065,10 +3065,10 @@ __Z18fighterImpactCheckP7FighterS0_:
 	addq.l #8,%d1
 	jra .L339
 .L310:
-	moveq #48,%d2
+	moveq #50,%d2
 	cmp.l %d0,%d2
 	jne .L326
-	moveq #45,%d4
+	moveq #47,%d4
 	cmp.l %a0,%d4
 	jne .L326
 	tst.b 108(%a3)

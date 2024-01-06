@@ -913,7 +913,7 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    collision = rapCollide(20, 25, 20, 25);
+    collision = rapCollide(22, 27, 22, 27);
 
     if (collision > -1)
     { 

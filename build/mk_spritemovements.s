@@ -20,7 +20,7 @@ __Z13bgScrollRightf:
 	move.l 8(%fp),%d2
 	move.l sprite,%a2
 	lea ___floatsisf,%a3
-	move.w 5576(%a2),%a0
+	move.w 5960(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a3)
 	move.l %d0,%a4
@@ -43,46 +43,6 @@ __Z13bgScrollRightf:
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
 	jsr (%a4)
-	move.w %d0,5576(%a2)
-	move.w 10184(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,10184(%a2)
-	move.w 5768(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,5768(%a2)
-	move.w 10376(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,10376(%a2)
-	move.w 5960(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
 	move.w %d0,5960(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
@@ -243,8 +203,48 @@ __Z13bgScrollRightf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	addq.l #4,%sp
 	move.w %d0,7496(%a2)
+	move.w 12104(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,12104(%a2)
+	move.w 7688(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,7688(%a2)
+	move.w 12296(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,12296(%a2)
+	move.w 7880(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.w %d0,7880(%a2)
 .L3:
 	movem.l -20(%fp),#15364
 	unlk %fp
@@ -257,7 +257,7 @@ __Z12bgScrollLeftf:
 	move.l 8(%fp),%d2
 	move.l sprite,%a2
 	lea ___floatsisf,%a3
-	move.w 5576(%a2),%a0
+	move.w 5960(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a3)
 	move.l %d0,%a5
@@ -280,46 +280,6 @@ __Z12bgScrollLeftf:
 	lea ___fixsfsi,%a5
 	move.l %d0,-(%sp)
 	jsr (%a5)
-	move.w %d0,5576(%a2)
-	move.w 10184(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,10184(%a2)
-	move.w 5768(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,5768(%a2)
-	move.w 10376(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,10376(%a2)
-	move.w 5960(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
 	move.w %d0,5960(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
@@ -480,8 +440,48 @@ __Z12bgScrollLeftf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	addq.l #4,%sp
 	move.w %d0,7496(%a2)
+	move.w 12104(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,12104(%a2)
+	move.w 7688(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,7688(%a2)
+	move.w 12296(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,12296(%a2)
+	move.w 7880(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.w %d0,7880(%a2)
 .L9:
 	movem.l -20(%fp),#15364
 	unlk %fp
@@ -518,7 +518,7 @@ __Z8bgUpdateP7FighterS0_:
 .L22:
 	move.l sprite,%a3
 	move.l _bgYInc,%d0
-	add.w %d0,5580(%a3)
+	add.w %d0,5964(%a3)
 	add.l %d0,202(%a2)
 	add.l %d0,202(%a1)
 .L23:
@@ -571,7 +571,7 @@ __Z8bgUpdateP7FighterS0_:
 	clr.b _IsScrollingDown
 	move.l sprite,%a3
 	move.l _bgYInc,%d0
-	add.w %d0,5580(%a3)
+	add.w %d0,5964(%a3)
 	add.l %d0,202(%a2)
 	add.l %d0,202(%a1)
 	jra .L23
