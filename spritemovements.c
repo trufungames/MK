@@ -25,6 +25,12 @@ void moveDown (void)
 	//sprite[sprBugIndex].y_ += 2;
 }
 
+void bgInit()
+{
+	IsScrollingUp = false;
+	IsScrollingDown = false;
+	IsShaking = false;
+}
 
 void bgScrollRight (float delta)
 {

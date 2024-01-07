@@ -66,14 +66,6 @@ SpriteAnimator bloodDrop8Animator = {
 	BLOOD_DROP+7, 0.5f, BMP_BLOOD, 0, 0
 };
 
-SpriteAnimator bloodDrop9Animator = {
-	BLOOD_DROP+8, 0.5f, BMP_BLOOD, 0, 0
-};
-
-SpriteAnimator bloodDrop10Animator = {
-	BLOOD_DROP+9, 0.5f, BMP_BLOOD, 0, 0
-};
-
 AnimationFrame bloodDropFrames[] = {
 	{ 48, 48, 288, 128, 0, 0, 1 },
 	{ 48, 48, 336, 128, 0, 0, 1 },
@@ -117,14 +109,6 @@ SpriteAnimator bloodPool8Animator = {
 	BLOOD_POOL+7, 0.5f, BMP_BLOOD, 0, 0
 };
 
-SpriteAnimator bloodPool9Animator = {
-	BLOOD_POOL+8, 0.5f, BMP_BLOOD, 0, 0
-};
-
-SpriteAnimator bloodPool10Animator = {
-	BLOOD_POOL+9, 0.5f, BMP_BLOOD, 0, 0
-};
-
 AnimationFrame bloodPoolFrames[] = {
 	{ 48, 48, 144, 128, 0, 0, 6 },
 	{ 48, 48, 192, 128, 0, 0, 4 },
@@ -139,9 +123,7 @@ BloodDrop bloodDrops[] = {
     { BLOOD_DROP+4, &bloodDrop5Animator, false, 0, 0, 0 },
     { BLOOD_DROP+5, &bloodDrop6Animator, false, 0, 0, 0 },
     { BLOOD_DROP+6, &bloodDrop7Animator, false, 0, 0, 0 },
-    { BLOOD_DROP+7, &bloodDrop8Animator, false, 0, 0, 0 },
-    { BLOOD_DROP+8, &bloodDrop9Animator, false, 0, 0, 0 },
-    { BLOOD_DROP+9, &bloodDrop10Animator, false, 0, 0, 0 }
+    { BLOOD_DROP+7, &bloodDrop8Animator, false, 0, 0, 0 }
 };
 
 BloodPool bloodPools[] = {
@@ -152,9 +134,7 @@ BloodPool bloodPools[] = {
     { BLOOD_POOL+4, &bloodPool5Animator, false },
     { BLOOD_POOL+5, &bloodPool6Animator, false },
     { BLOOD_POOL+6, &bloodPool7Animator, false },
-    { BLOOD_POOL+7, &bloodPool8Animator, false },
-    { BLOOD_POOL+8, &bloodPool9Animator, false },
-    { BLOOD_POOL+9, &bloodPool10Animator, false }
+    { BLOOD_POOL+7, &bloodPool8Animator, false }
 };
 
 AnimationFrame bloodSquirtFrames[] = {
@@ -183,21 +163,11 @@ SpriteAnimator bloodSquirt4Animator = {
 	BLOOD_SQUIRT+3, 0.5f, BMP_BLOOD, 0, 0
 };
 
-SpriteAnimator bloodSquirt5Animator = {
-	BLOOD_SQUIRT+4, 0.5f, BMP_BLOOD, 0, 0
-};
-
-SpriteAnimator bloodSquirt6Animator = {
-	BLOOD_SQUIRT+5, 0.5f, BMP_BLOOD, 0, 0
-};
-
 BloodSquirt bloodSquirts[] = {
     { BLOOD_SQUIRT, &bloodSquirt1Animator, false },
     { BLOOD_SQUIRT+1, &bloodSquirt2Animator, false },
     { BLOOD_SQUIRT+2, &bloodSquirt3Animator, false },
-    { BLOOD_SQUIRT+3, &bloodSquirt4Animator, false },
-    { BLOOD_SQUIRT+4, &bloodSquirt5Animator, false },
-    { BLOOD_SQUIRT+5, &bloodSquirt6Animator, false },
+    { BLOOD_SQUIRT+3, &bloodSquirt4Animator, false }
 };
 
 bool bloodSpray1InUse = false;

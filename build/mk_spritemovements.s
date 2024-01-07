@@ -13,6 +13,15 @@ __Z8moveDownv:
 	unlk %fp
 	rts
 	.even
+	.globl	__Z6bgInitv
+__Z6bgInitv:
+	link.w %fp,#0
+	clr.b _IsScrollingUp
+	clr.b _IsScrollingDown
+	clr.b _IsShaking
+	unlk %fp
+	rts
+	.even
 	.globl	__Z13bgScrollRightf
 __Z13bgScrollRightf:
 	link.w %fp,#0
@@ -20,7 +29,7 @@ __Z13bgScrollRightf:
 	move.l 8(%fp),%d2
 	move.l sprite,%a2
 	lea ___floatsisf,%a3
-	move.w 5960(%a2),%a0
+	move.w 5000(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a3)
 	move.l %d0,%a4
@@ -29,7 +38,7 @@ __Z13bgScrollRightf:
 	jsr ___gesf2
 	addq.l #8,%sp
 	tst.l %d0
-	jlt .L3
+	jlt .L4
 	move.l %d2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr ___addsf3
@@ -43,8 +52,8 @@ __Z13bgScrollRightf:
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
 	jsr (%a4)
-	move.w %d0,5960(%a2)
-	move.w 10568(%a2),%a0
+	move.w %d0,5000(%a2)
+	move.w 8840(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d2,(%sp)
@@ -53,7 +62,107 @@ __Z13bgScrollRightf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	move.w %d0,10568(%a2)
+	move.w %d0,8840(%a2)
+	move.w 5192(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,5192(%a2)
+	move.w 9032(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,9032(%a2)
+	move.w 5384(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,5384(%a2)
+	move.w 9224(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,9224(%a2)
+	move.w 5576(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,5576(%a2)
+	move.w 9416(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,9416(%a2)
+	move.w 5768(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,5768(%a2)
+	move.w 9608(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,9608(%a2)
+	move.w 5960(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,5960(%a2)
+	move.w 9800(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d2,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	move.w %d0,9800(%a2)
 	move.w 6152(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -64,7 +173,7 @@ __Z13bgScrollRightf:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,6152(%a2)
-	move.w 10760(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d2,(%sp)
@@ -73,7 +182,7 @@ __Z13bgScrollRightf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	move.w %d0,10760(%a2)
+	move.w %d0,9992(%a2)
 	move.w 6344(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -84,7 +193,7 @@ __Z13bgScrollRightf:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,6344(%a2)
-	move.w 10952(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d2,(%sp)
@@ -93,7 +202,7 @@ __Z13bgScrollRightf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	move.w %d0,10952(%a2)
+	move.w %d0,10184(%a2)
 	move.w 6536(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -103,149 +212,9 @@ __Z13bgScrollRightf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
+	addq.l #4,%sp
 	move.w %d0,6536(%a2)
-	move.w 11144(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,11144(%a2)
-	move.w 6728(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,6728(%a2)
-	move.w 11336(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,11336(%a2)
-	move.w 6920(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,6920(%a2)
-	move.w 11528(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,11528(%a2)
-	move.w 7112(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,7112(%a2)
-	move.w 11720(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,11720(%a2)
-	move.w 7304(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,7304(%a2)
-	move.w 11912(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,11912(%a2)
-	move.w 7496(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,7496(%a2)
-	move.w 12104(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,12104(%a2)
-	move.w 7688(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,7688(%a2)
-	move.w 12296(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	move.w %d0,12296(%a2)
-	move.w 7880(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d2,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.w %d0,7880(%a2)
-.L3:
+.L4:
 	movem.l -20(%fp),#15364
 	unlk %fp
 	rts
@@ -257,7 +226,7 @@ __Z12bgScrollLeftf:
 	move.l 8(%fp),%d2
 	move.l sprite,%a2
 	lea ___floatsisf,%a3
-	move.w 5960(%a2),%a0
+	move.w 5000(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a3)
 	move.l %d0,%a5
@@ -266,7 +235,7 @@ __Z12bgScrollLeftf:
 	jsr ___lesf2
 	addq.l #8,%sp
 	tst.l %d0
-	jgt .L9
+	jgt .L10
 	lea ___addsf3,%a4
 	move.l %d2,-(%sp)
 	move.l %d2,-(%sp)
@@ -280,8 +249,8 @@ __Z12bgScrollLeftf:
 	lea ___fixsfsi,%a5
 	move.l %d0,-(%sp)
 	jsr (%a5)
-	move.w %d0,5960(%a2)
-	move.w 10568(%a2),%a0
+	move.w %d0,5000(%a2)
+	move.w 8840(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d0,(%sp)
@@ -290,7 +259,107 @@ __Z12bgScrollLeftf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10568(%a2)
+	move.w %d0,8840(%a2)
+	move.w 5192(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,5192(%a2)
+	move.w 9032(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,9032(%a2)
+	move.w 5384(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,5384(%a2)
+	move.w 9224(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,9224(%a2)
+	move.w 5576(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,5576(%a2)
+	move.w 9416(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,9416(%a2)
+	move.w 5768(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,5768(%a2)
+	move.w 9608(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,9608(%a2)
+	move.w 5960(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,5960(%a2)
+	move.w 9800(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a3)
+	move.l %d0,(%sp)
+	move.l %d2,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,9800(%a2)
 	move.w 6152(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -301,7 +370,7 @@ __Z12bgScrollLeftf:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,6152(%a2)
-	move.w 10760(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d0,(%sp)
@@ -310,7 +379,7 @@ __Z12bgScrollLeftf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10760(%a2)
+	move.w %d0,9992(%a2)
 	move.w 6344(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -321,7 +390,7 @@ __Z12bgScrollLeftf:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,6344(%a2)
-	move.w 10952(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
 	move.l %d0,(%sp)
@@ -330,7 +399,7 @@ __Z12bgScrollLeftf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10952(%a2)
+	move.w %d0,10184(%a2)
 	move.w 6536(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a3)
@@ -340,149 +409,9 @@ __Z12bgScrollLeftf:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
+	addq.l #4,%sp
 	move.w %d0,6536(%a2)
-	move.w 11144(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,11144(%a2)
-	move.w 6728(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,6728(%a2)
-	move.w 11336(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,11336(%a2)
-	move.w 6920(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,6920(%a2)
-	move.w 11528(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,11528(%a2)
-	move.w 7112(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7112(%a2)
-	move.w 11720(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,11720(%a2)
-	move.w 7304(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7304(%a2)
-	move.w 11912(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,11912(%a2)
-	move.w 7496(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7496(%a2)
-	move.w 12104(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,12104(%a2)
-	move.w 7688(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7688(%a2)
-	move.w 12296(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,12296(%a2)
-	move.w 7880(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.w %d0,7880(%a2)
-.L9:
+.L10:
 	movem.l -20(%fp),#15364
 	unlk %fp
 	rts
@@ -496,9 +425,9 @@ __Z8bgUpdateP7FighterS0_:
 	move.l 12(%fp),%a1
 	move.w raptor_ticks,%a0
 	cmp.l _LastTicks.l,%a0
-	jle .L15
+	jle .L16
 	tst.b _IsScrollingUp
-	jeq .L17
+	jeq .L18
 	move.l _bgYOffset,%d0
 	addq.l #2,%d0
 	move.l %d0,_bgYOffset
@@ -506,31 +435,31 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d1,_bgYInc
 	move.b #15,%d1
 	cmp.l %d0,%d1
-	jge .L22
+	jge .L23
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
-.L19:
+.L20:
 	tst.b _IsScrollingDown
-	jne .L22
+	jne .L23
 	tst.b _IsShaking
-	jeq .L23
-.L22:
+	jeq .L24
+.L23:
 	move.l sprite,%a3
 	move.l _bgYInc,%d0
-	add.w %d0,5964(%a3)
-	add.l %d0,202(%a2)
-	add.l %d0,202(%a1)
-.L23:
+	add.w %d0,5004(%a3)
+	add.l %d0,198(%a2)
+	add.l %d0,198(%a1)
+.L24:
 	move.l %a0,_LastTicks
-.L15:
+.L16:
 	move.l (%sp)+,%a2
 	move.l (%sp)+,%a3
 	unlk %fp
 	rts
-.L17:
+.L18:
 	tst.b _IsScrollingDown
-	jeq .L20
+	jeq .L21
 	move.l _bgYOffset,%d0
 	subq.l #2,%d0
 	move.l %d0,_bgYOffset
@@ -538,7 +467,7 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d1,_bgYInc
 	move.b #-15,%d1
 	cmp.l %d0,%d1
-	jle .L19
+	jle .L20
 	clr.l _bgYInc
 	clr.l _bgYOffset
 	clr.b _IsScrollingDown
@@ -546,10 +475,10 @@ __Z8bgUpdateP7FighterS0_:
 	clr.l _shakeCount
 	moveq #1,%d0
 	move.l %d0,_shakeDirection
-	jra .L19
-.L20:
+	jra .L20
+.L21:
 	tst.b _IsShaking
-	jeq .L19
+	jeq .L20
 	move.l _shakeDirection,%d0
 	move.l %d0,%d1
 	lsl.l #3,%d1
@@ -561,33 +490,33 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d0,_shakeCount
 	moveq #6,%d1
 	cmp.l %d0,%d1
-	jge .L19
+	jge .L20
 	clr.b _IsShaking
 	tst.b _scrollUpAfterShake
-	jeq .L19
+	jeq .L20
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.l sprite,%a3
 	move.l _bgYInc,%d0
-	add.w %d0,5964(%a3)
-	add.l %d0,202(%a2)
-	add.l %d0,202(%a1)
-	jra .L23
+	add.w %d0,5004(%a3)
+	add.l %d0,198(%a2)
+	add.l %d0,198(%a1)
+	jra .L24
 	.even
 	.globl	__Z10bgScrollUpv
 __Z10bgScrollUpv:
 	link.w %fp,#0
 	tst.b _IsScrollingUp
-	jne .L26
+	jne .L27
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L26:
+.L27:
 	unlk %fp
 	rts
 	.even
@@ -595,14 +524,14 @@ __Z10bgScrollUpv:
 __Z12bgScrollDownv:
 	link.w %fp,#0
 	tst.b _IsScrollingDown
-	jne .L30
+	jne .L31
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
 	move.b #1,_IsScrollingDown
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L30:
+.L31:
 	unlk %fp
 	rts
 	.even
@@ -611,7 +540,7 @@ __Z7bgShakeb:
 	link.w %fp,#0
 	move.l 8(%fp),%d0
 	tst.b _IsShaking
-	jne .L34
+	jne .L35
 	move.b %d0,_scrollUpAfterShake
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
@@ -622,7 +551,7 @@ __Z7bgShakeb:
 	move.l %d0,_shakeDirection
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L34:
+.L35:
 	unlk %fp
 	rts
 	.globl	_scrollUpAfterShake

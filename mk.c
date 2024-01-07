@@ -1114,7 +1114,7 @@ struct ImpactFrame kanoImpactFrameUppercut = {
 	3, 50, 30
 };
 struct ImpactFrame kanoImpactFrameSweep = {
-	4, 96, 50
+	4, 96, 45
 };
 struct ImpactFrame kanoImpactFrameJumpPunch = {
 	1, 46, 60
@@ -2388,6 +2388,7 @@ void basicmain()
 
 				roundFightSequenceComplete = false;
 				myTicks = rapTicks;
+				bgInit();
 				bloodInit();
 				spriteDelayInit();
 				switchScreenFight(p1Cursor, p2Cursor);
@@ -2405,17 +2406,16 @@ void basicmain()
 			{
 				if (rapTicks >= myTicks + ticksPerSec)
 				{
-					sprite[ROUND1].active = R_is_inactive;
 					sprite[FIGHT].active = R_is_active;
 
 					if (fightScale <= 32)
 					{
 						sprite[FIGHT].scale_x = fightScale;
 						sprite[FIGHT].scale_y = fightScale;
-						sprite[FIGHT].x_ -= 4;
-						sprite[FIGHT].y_ -= 2;
+						sprite[FIGHT].x_ -= 8;
+						sprite[FIGHT].y_ -= 4;
 
-						fightScale += 2;
+						fightScale += 4;
 					}
 					else
 					{
@@ -2441,9 +2441,9 @@ void basicmain()
 					{
 						sprite[FIGHT].scale_x = fightScale;
 						sprite[FIGHT].scale_y = fightScale;
-						sprite[FIGHT].x_ += 4;
-						sprite[FIGHT].y_ += 2;
-						fightScale -= 2;
+						sprite[FIGHT].x_ += 8;
+						sprite[FIGHT].y_ += 4;
+						fightScale -= 4;
 					}
 					else
 					{
@@ -2531,20 +2531,16 @@ void basicmain()
 
 			if(pad1 & JAGPAD_STAR)
 			{
-				setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-				setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-				setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
-				setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
+				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
 				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
 				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
 				//rapDebugSetVisible(DEBUG_SHOW);
 			}
 			else if (pad1 & JAGPAD_HASH)
 			{
-				setFrame(P1_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
-				setFrame(P1_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
-				setFrame(P2_HB_BODY, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
-				setFrame(P2_HB_DUCK, 48, 64, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
+				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
 				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
 				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
 				//rapDebugSetVisible(DEBUG_HIDE);
@@ -2859,7 +2855,6 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 	}
 
 	sprite[STAGE_PIT_CLOUDS1].active = R_is_active;
-	sprite[ROUND1].active = R_is_active;
 	sprite[FIGHT].active = R_is_active;
 	sprite[HUD].active = R_is_active;
 	// sprite[HEALTHBAR_P1].active = R_is_active;

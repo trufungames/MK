@@ -61,7 +61,6 @@ struct Fighter {
     int CooldownTicksUppercut;
     bool JumpLanded;
     unsigned int HB_BODY;
-    unsigned int HB_DUCK;
     unsigned int HB_ATTACK;
     int pad;
     unsigned int PAD;

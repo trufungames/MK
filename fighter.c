@@ -136,7 +136,6 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     {
         fighter->HB_ATTACK = P1_HB_ATTACK;
         fighter->HB_BODY = P1_HB_BODY;
-        fighter->HB_DUCK = P1_HB_DUCK;
         fighter->lightningSpriteIndex = P1_LIGHTNING_PIT;
         fighter->PAD = LEFT_PAD;
         sprite[fighter->spriteIndex].x_ = 50;
@@ -147,7 +146,6 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     {
         fighter->HB_ATTACK = P2_HB_ATTACK;
         fighter->HB_BODY = P2_HB_BODY;
-        fighter->HB_DUCK = P2_HB_DUCK;
         fighter->lightningSpriteIndex = P2_LIGHTNING_PIT;
         fighter->PAD = RIGHT_PAD;
         sprite[fighter->spriteIndex].x_ = 210;
@@ -188,7 +186,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     {
         sprite[fighter->spriteIndex].x_ += fighter->playerPushSpeed * delta * -fighter->direction;
         sprite[fighter->HB_BODY].x_ += fighter->playerPushSpeed * delta * -fighter->direction;
-        sprite[fighter->HB_DUCK].x_ += fighter->playerPushSpeed * delta * -fighter->direction;
         sprite[fighter->HB_ATTACK].x_ += fighter->playerPushSpeed * delta * -fighter->direction;
 
         fighter->positionX = sprite[fighter->spriteIndex].x_;
@@ -198,7 +195,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         {
             fighter->IsBeingPushed = false;
             sprite[fighter->HB_BODY].was_hit = -1;
-            sprite[fighter->HB_DUCK].was_hit = -1;
         }
     }
 
@@ -288,7 +284,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         {
             //sprite[fighter->spriteIndex].x_ += fighter->playerKnockbackSpeed * -fighter->direction;
             sprite[fighter->HB_BODY].x_ += fighter->playerKnockbackSpeed * -fighter->direction;
-            sprite[fighter->HB_DUCK].x_ += fighter->playerKnockbackSpeed * -fighter->direction;
             sprite[fighter->HB_ATTACK].x_ += fighter->playerKnockbackSpeed * -fighter->direction;
             fighter->positionX += fighter->playerKnockbackSpeed * -fighter->direction;
             fighter->lastTicks = rapTicks;
@@ -334,7 +329,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         else if (rapTicks >= fighter->lastTicks + 1)
         {
             sprite[fighter->HB_BODY].x_ += fighter->playerUppercutXSpeed * -fighter->direction;
-            sprite[fighter->HB_DUCK].x_ += fighter->playerUppercutXSpeed * -fighter->direction;
             sprite[fighter->HB_ATTACK].x_ += fighter->playerUppercutXSpeed * -fighter->direction;
             fighter->positionX += fighter->playerUppercutXSpeed * -fighter->direction;
 
@@ -611,14 +605,12 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 {
                     sprite[fighter->spriteIndex].x_ -= fighter->playerMoveBackwardSpeed * delta;
                     sprite[fighter->HB_BODY].x_ -= fighter->playerMoveBackwardSpeed * delta;
-                    sprite[fighter->HB_DUCK].x_ -= fighter->playerMoveBackwardSpeed * delta;
                     sprite[fighter->HB_ATTACK].x_ -= fighter->playerMoveBackwardSpeed * delta;
                 }
                 else
                 {
                     sprite[fighter->spriteIndex].x_ -= fighter->playerPushSpeed * delta;
                     sprite[fighter->HB_BODY].x_ -= fighter->playerPushSpeed * delta;
-                    sprite[fighter->HB_DUCK].x_ -= fighter->playerPushSpeed * delta;
                     sprite[fighter->HB_ATTACK].x_ -= fighter->playerPushSpeed * delta;
                 }
             }
@@ -657,14 +649,12 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 {
                     sprite[fighter->spriteIndex].x_ += fighter->playerMoveForwardSpeed * delta;
                     sprite[fighter->HB_BODY].x_ += fighter->playerMoveForwardSpeed * delta;
-                    sprite[fighter->HB_DUCK].x_ += fighter->playerMoveForwardSpeed * delta;
                     sprite[fighter->HB_ATTACK].x_ += fighter->playerMoveForwardSpeed * delta;
                 }
                 else
                 {
                     sprite[fighter->spriteIndex].x_ += fighter->playerPushSpeed * delta;
                     sprite[fighter->HB_BODY].x_ += fighter->playerPushSpeed * delta;
-                    sprite[fighter->HB_DUCK].x_ += fighter->playerPushSpeed * delta;
                     sprite[fighter->HB_ATTACK].x_ += fighter->playerPushSpeed * delta;
                 }
             }
@@ -913,7 +903,7 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    collision = rapCollide(22, 27, 22, 27);
+    collision = rapCollide(15, 18, 15, 18);
 
     if (collision > -1)
     { 
@@ -977,7 +967,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
 
-                if (collisionSprIndex == P1_HB_DUCK && collisionSprIndex2 == P2_HB_DUCK)
+                if (collisionSprIndex == P1_HB_BODY && collisionSprIndex2 == P2_HB_BODY)
                 {
                     if (fighter1->IsWalking)
                     {
@@ -987,12 +977,12 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
                 
-                if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_HB_DUCK && collisionSprIndex2 == P2_HB_DUCK))
+                if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_HB_BODY && collisionSprIndex2 == P2_HB_BODY))
                 {
                     fighter2->IsBeingPushed = false;
                 }
 
-                if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_HB_DUCK)
+                if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_HB_BODY)
                 {
                     if (!fighter2->IsBeingDamaged && !(fighter2->IsBlocking && fighter2->IsDucking))
                     {
@@ -1051,7 +1041,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
 
-                if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_HB_DUCK)
+                if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_HB_BODY)
                 {
                     if (!fighter1->IsBeingDamaged && !(fighter1->IsBlocking && fighter1->IsDucking))
                     {
@@ -1067,7 +1057,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
 
-                if (collisionSprIndex == P2_HB_DUCK && collisionSprIndex2 == P1_HB_DUCK)
+                if (collisionSprIndex == P2_HB_BODY && collisionSprIndex2 == P1_HB_BODY)
                 {
                     if (fighter2->IsWalking)
                     {
@@ -1077,7 +1067,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
                 
-                if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_HB_DUCK && collisionSprIndex2 == P1_HB_DUCK))
+                if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_HB_BODY && collisionSprIndex2 == P1_HB_BODY))
                 {
                     fighter1->IsBeingPushed = false;
                 }
