@@ -239,6 +239,12 @@ jump_ninja_sam_end:
 .extern jump_ninja_sam
 .extern jump_ninja_sam_end
 .dphrase
+jump_roll_sam: incbin "build/jump_roll.wav.raw"
+.dc.b 0,0,0
+jump_roll_sam_end:
+.extern jump_roll_sam
+.extern jump_roll_sam_end
+.dphrase
 thud_sam: incbin "build/thud.wav.raw"
 .dc.b 0,0,0
 thud_sam_end:

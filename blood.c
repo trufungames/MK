@@ -188,8 +188,8 @@ void bloodInit()
     bloodStayDelay = 180;
     updateTicks = 3;
     bloodSpeed = 6.0f;
-    gravity = 3.0f;
-    bloodDropMomentumStart = -20.0f;
+    gravity = 2.0f;
+    bloodDropMomentumStart = -17.0f;
     bloodSpray1InUse = false;
     bloodSpray2InUse = false;
     bloodGlobInUse = false;

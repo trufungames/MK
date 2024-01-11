@@ -6,13 +6,14 @@
 #include "impactFrame.h"
 #include "blood.h"
 #include "spritedelay.h"
+#include "sleep.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
 // -----------------------------------------------------------------------
 static int pad1;
 static int pad2;
-static int imageBuffer[1136*896/4];
+static int imageBuffer[336*176/4];
 static int imageBuffer320x240[320*240/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
@@ -215,6 +216,11 @@ static AnimationFrame cageJumpKickFrames[] = {
 	{ 96, 112, 672, 720, 0, 0, 4 },
 	{ 112, 112, 768, 720, 10, 14, 24 },
 	{ 112, 112, 768, 720, 10, 14, 4 }
+};
+static AnimationFrame cageJumpRollKickFrames[] = {
+	{ 96, 96, 464, 736, 0, 0, 4 },
+	{ 112, 96, 560, 736, 0, 0, 24 },
+	{ 112, 96, 560, 736, 0, 0, 4 }
 };
 static AnimationFrame cageUppercutFrames[] = {
 	{ 96, 80, 448, 944, 6, 64, 4 },
@@ -1751,6 +1757,8 @@ void basicmain()
 	bool chooseFighterDone = false;
 	bool roundFightSequenceComplete = false;
 	int fightScale = 0;
+	int barScale = 0;
+	int barDirection = 1;
 	struct Fighter* fighter1Ptr;
 	struct Fighter* fighter2Ptr; 
 
@@ -1769,6 +1777,7 @@ void basicmain()
 	fighterCage.kickHighFrames = &cageKickHighFrames;
 	fighterCage.jumpPunchFrames = &cageJumpPunchFrames;
 	fighterCage.jumpKickFrames = &cageJumpKickFrames;
+	fighterCage.jumpRollKickFrames = &cageJumpRollKickFrames;
 	fighterCage.uppercutFrames = &cageUppercutFrames;
 	fighterCage.hitLowFrames = &cageHitLowFrames;
 	fighterCage.hitHighFrames = &cageHitHighFrames;
@@ -1779,8 +1788,8 @@ void basicmain()
 	fighterCage.sweepFrames = &cageSweepFrames;
 	fighterCage2.idleFrames = &cageIdleFrames;
 	fighterCage2.walkFrames = &cageWalkFrames;
-	fighterCage.jumpFrames = &cageJumpFrames;
-	fighterCage.jumpRollFrames = &cageJumpRollFrames;
+	fighterCage2.jumpFrames = &cageJumpFrames;
+	fighterCage2.jumpRollFrames = &cageJumpRollFrames;
 	fighterCage2.duckFrames = &cageDuckFrames;
 	fighterCage2.blockFrames = &cageBlockFrames;
 	fighterCage2.blockHitFrames = &cageBlockHitFrames;
@@ -1790,8 +1799,9 @@ void basicmain()
 	fighterCage2.punchHighFrames = &cagePunchHighFrames;
 	fighterCage2.kickLowFrames = &cageKickLowFrames;
 	fighterCage2.kickHighFrames = &cageKickHighFrames;
-	fighterCage.jumpPunchFrames = &cageJumpPunchFrames;
-	fighterCage.jumpKickFrames = &cageJumpKickFrames;
+	fighterCage2.jumpPunchFrames = &cageJumpPunchFrames;
+	fighterCage2.jumpKickFrames = &cageJumpKickFrames;
+	fighterCage2.jumpRollKickFrames = &cageJumpRollKickFrames;
 	fighterCage2.uppercutFrames = &cageUppercutFrames;
 	fighterCage2.hitLowFrames = &cageHitLowFrames;
 	fighterCage2.hitHighFrames = &cageHitHighFrames;
@@ -2391,11 +2401,13 @@ void basicmain()
 				bgInit();
 				bloodInit();
 				spriteDelayInit();
+				sleepInit();
 				switchScreenFight(p1Cursor, p2Cursor);
 			}
 		}
 		else if (onScreenFight)
 		{
+
 			/////////////////////////////////////////
 			// Fight!
 			/////////////////////////////////////////
@@ -2452,6 +2464,35 @@ void basicmain()
 				}
 			}
 
+			// if (roundFightSequenceComplete && sprite[FIGHT].active == R_is_inactive)
+			// {
+			// 	if (rapTicks >= myTicks + 10)
+			// 	{
+			// 		sprite[P1_HEALTHBAR].scale_x = barScale;
+			// 		sprite[P2_HEALTHBAR].scale_x = barScale;
+			// 		sprite[P2_HEALTHBAR].x_ = 180 + ((33 - barScale) * 4);
+
+			// 		barScale += 1 * barDirection;
+
+			// 		if (barDirection == 1 && barScale > 33)
+			// 		{
+			// 			barDirection = -1;
+			// 		}
+			// 		else if (barDirection == -1 && barScale <= 0)
+			// 		{
+			// 			barDirection = 1;
+			// 		}
+
+			// 		myTicks = rapTicks;
+			// 	}
+			// }
+
+			if (sleepCheck())
+			{
+				//we're sleeping, so just loop again.
+				continue;
+			}
+
 			//////////////////////////////////////
 			// Player 1 fighter
 			/////////////////////////////////////
@@ -2476,7 +2517,7 @@ void basicmain()
 				case 4:
 					//Raiden
 					fighterUpdate(delta, &fighterRaiden, &raidenAnimator, false);
-					updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+					//updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -2512,7 +2553,7 @@ void basicmain()
 				case 4:
 					//Raiden
 					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2, true);
-					updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+					//updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -2528,21 +2569,21 @@ void basicmain()
 			bgUpdate(fighter1Ptr, fighter2Ptr);
 			bloodUpdate(&soundHandler);
 			spriteDelayUpdate();
-
+			
 			if(pad1 & JAGPAD_STAR)
 			{
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
 				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
-				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
-				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+				setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
+				setFrame(P2_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
 				//rapDebugSetVisible(DEBUG_SHOW);
 			}
 			else if (pad1 & JAGPAD_HASH)
 			{
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
 				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
-				setFrame(P1_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
-				setFrame(P2_HB_ATTACK, 48, 32, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+				setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
+				setFrame(P2_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
 				//rapDebugSetVisible(DEBUG_HIDE);
 			}
 		}
@@ -2557,8 +2598,8 @@ void initTitleScreen()
 		BLACKPAL[i] = 0;
 	}
 
-	rapUnpack(BMP_TITLESCREEN,(int)(int*)imageBuffer);
-	sprite[BACKGROUND].gfxbase=(int)imageBuffer;
+	rapUnpack(BMP_TITLESCREEN,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active=R_is_active;
 
 	jsfLoadClut((unsigned short *)(void *)(BLACKPAL),0,256);
@@ -2582,8 +2623,8 @@ void initGameAssets()
 
 void switchScreenChooseFighter()
 {
-	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer);
-	sprite[BACKGROUND].gfxbase = (int)imageBuffer;
+	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 
 	sprite[P1_CURSOR].active = R_is_active;
@@ -2607,57 +2648,41 @@ void switchScreenChooseFighter()
 
 void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 {
-	rapUnpack(BMP_BATTLESCREEN,(int)(int*)imageBuffer);
-	sprite[BATTLE_SCREEN].gfxbase=(int)imageBuffer;
+	rapUnpack(BMP_BATTLESCREEN,(int)(int*)imageBuffer320x240);
+	sprite[BATTLE_SCREEN].gfxbase=(int)imageBuffer320x240;
 	sprite[BATTLE_SCREEN].active=R_is_active;
 
 	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLESCREEN_clut),0,16);
-
-	//hide all of the portraits
-	sprite[P1_PT_CAGE].active = R_is_inactive;
-	sprite[P1_PT_KANO].active = R_is_inactive;
-	sprite[P1_PT_KANG].active = R_is_inactive;
-	sprite[P1_PT_SONYA].active = R_is_inactive;
-	sprite[P1_PT_SUBZERO].active = R_is_inactive;
-	sprite[P1_PT_SCORPION].active = R_is_inactive;
-	sprite[P1_PT_RAIDEN].active = R_is_inactive;
-	sprite[P2_PT_CAGE].active = R_is_inactive;
-	sprite[P2_PT_KANO].active = R_is_inactive;
-	sprite[P2_PT_KANG].active = R_is_inactive;
-	sprite[P2_PT_SONYA].active = R_is_inactive;
-	sprite[P2_PT_SUBZERO].active = R_is_inactive;
-	sprite[P2_PT_SCORPION].active = R_is_inactive;
-	sprite[P2_PT_RAIDEN].active = R_is_inactive;
 
 	switch (p1Cursor)
 	{
 		case 0:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),4,16);
-			sprite[P1_PT_CAGE].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
 			break;
 		case 1:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),4,16);
-			sprite[P1_PT_KANO].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
 			break;
 		case 2:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),4,16);
-			sprite[P1_PT_SUBZERO].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
 			break;
 		case 3:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),4,16);
-			sprite[P1_PT_SONYA].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
 			break;
 		case 4:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),4,16);
-			sprite[P1_PT_RAIDEN].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
 			break;
 		case 5:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),4,16);
-			sprite[P1_PT_KANG].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
 			break;
 		case 6:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),4,16);
-			sprite[P1_PT_SCORPION].active = R_is_active;
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
 			break;
 	}
 
@@ -2665,45 +2690,48 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 	{
 		case 0:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),5,16);
-			sprite[P2_PT_CAGE].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
 			break;
 		case 1:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),5,16);
-			sprite[P2_PT_KANO].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
 			break;
 		case 2:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),5,16);
-			sprite[P2_PT_SUBZERO].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
 			break;
 		case 3:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),5,16);
-			sprite[P2_PT_SONYA].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
 			break;
 		case 4:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),5,16);
-			sprite[P2_PT_RAIDEN].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
 			break;
 		case 5:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),5,16);
-			sprite[P2_PT_KANG].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
 			break;
 		case 6:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),5,16);
-			sprite[P2_PT_SCORPION].active = R_is_active;
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
 			break;
 	}
 
-	rapUse16x16fontPalette(15);
-	jsfSetFontSize(0);
-	jsfSetFontIndx(1);	
-	rapLocate(100,190);
-	js_r_textbuffer=(char *)"KOMBAT ZONE:";
-	rapPrint();
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_THEPIT_clut),1,16);
+	sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_THEPIT;
 
-	jsfSetFontIndx(0);	
-	rapLocate(116,206);
-	js_r_textbuffer=(char *)"THE PIT";
-	rapPrint();
+	// rapUse16x16fontPalette(15);
+	// jsfSetFontSize(0);
+	// jsfSetFontIndx(1);	
+	// rapLocate(100,190);
+	// js_r_textbuffer=(char *)"KOMBAT ZONE:";
+	// rapPrint();
+
+	// jsfSetFontIndx(0);	
+	// rapLocate(116,206);
+	// js_r_textbuffer=(char *)"THE PIT";
+	// rapPrint();
 	
 	onScreenChooseFighter = false;
 	onScreenVsBattle = true;
@@ -2738,7 +2766,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			fighterCage.spriteIndex = P1_FIGHTER_PIT;
 			cageAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
-			fighterShow(&fighterCage);			
+			fighterShow(&fighterCage);		
+			sprite[P1_NAME].gfxbase = BMP_NAME_CAGE;
 			break;
 		case 1:
 			//Kano
@@ -2747,6 +2776,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
 			fighterShow(&fighterKano);
+			sprite[P1_NAME].gfxbase = BMP_NAME_KANO;
 			break;
 		case 2:
 			//Sub-Zero
@@ -2755,6 +2785,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterSubzero);
+			sprite[P1_NAME].gfxbase = BMP_NAME_SUBZERO;
 			break;
 		case 3:
 			//Sonya
@@ -2763,16 +2794,18 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
 			fighterShow(&fighterSonya);
+			sprite[P1_NAME].gfxbase = BMP_NAME_SONYA;
 			break;
 		case 4:
 			//Raiden
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
-			lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
+			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
 			fighterShow(&fighterRaiden);
 			sprite[LIGHTNING].active = R_is_active;
+			sprite[P1_NAME].gfxbase = BMP_NAME_RAIDEN;
 			break;
 		case 5:
 			//Liu Kang
@@ -2781,6 +2814,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
 			fighterShow(&fighterKang);
+			sprite[P1_NAME].gfxbase = BMP_NAME_LIUKANG;
 			break;
 		case 6:
 			//Scorpion
@@ -2789,6 +2823,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterScorpion);
+			sprite[P1_NAME].gfxbase = BMP_NAME_SCORPION;
 			break;
 	}
 
@@ -2801,6 +2836,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			cageAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
 			fighterShow(&fighterCage2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_CAGE;
 			break;
 		case 1:
 			//Kano
@@ -2809,6 +2845,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
 			fighterShow(&fighterKano2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_KANO;
 			break;
 		case 2:
 			//Sub-Zero
@@ -2817,6 +2854,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterSubzero2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_SUBZERO;
 			break;
 		case 3:
 			//Sonya
@@ -2825,16 +2863,18 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			sonyaAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
 			fighterShow(&fighterSonya2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_SONYA;
 			break;
 		case 4:
 			//Raiden
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
+			//lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
+			sprite[P2_NAME].gfxbase = BMP_NAME_RAIDEN;
 			break;
 		case 5:
 			//Liu Kang
@@ -2843,6 +2883,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
 			fighterShow(&fighterKang2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_LIUKANG;
 			break;
 		case 6:
 			//Scorpion
@@ -2851,12 +2892,17 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterScorpion2);
+			sprite[P2_NAME].gfxbase = BMP_NAME_SCORPION;
 			break;
 	}
 
+	sprite[P1_HEALTHBAR].scale_x = MAX_HEALTH;
+	sprite[P2_HEALTHBAR].scale_x = MAX_HEALTH;
+	sprite[P2_HEALTHBAR].x_ = 176;
+
 	sprite[STAGE_PIT_CLOUDS1].active = R_is_active;
-	sprite[FIGHT].active = R_is_active;
-	sprite[HUD].active = R_is_active;
+	//sprite[FIGHT].active = R_is_active;
+	//sprite[HUD].active = R_is_active;
 	// sprite[HEALTHBAR_P1].active = R_is_active;
 	// sprite[HEALTHBAR_P2].active = R_is_active;
 	// sprite[NAME_SCORPION_P1].active = R_is_active;

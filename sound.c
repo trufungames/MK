@@ -320,6 +320,14 @@ void sfxJumpNinja(struct SoundHandler* soundHandler, bool isPlayer1)
 	zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_ninja_sam),(STRPTR(jump_ninja_sam_end)-STRPTR(jump_ninja_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
 }
 
+void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_roll_sam),(STRPTR(jump_roll_sam_end)-STRPTR(jump_roll_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+}
+
 void sfxCrowdAww(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

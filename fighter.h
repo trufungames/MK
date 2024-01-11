@@ -29,6 +29,8 @@ struct Fighter {
     unsigned int lightningSpriteIndex;
     bool IsWalking;
     bool IsJumping;
+    bool IsJumpingRollForward;
+    bool IsJumpingRollBackward;
     bool IsDucking;
     bool IsBlocking;
     bool IsBlockingHit;
@@ -38,6 +40,7 @@ struct Fighter {
     bool IsHighKicking;
     bool IsJumpPunching;
     bool IsJumpKicking;
+    bool IsJumpDropKicking;
     bool IsUppercutting;
     bool IsSweeping;
     bool DPadReleased;
@@ -48,6 +51,7 @@ struct Fighter {
     bool IsHitBackHigh;
     bool IsHitFall;
     bool IsHitSweep;
+    bool IsHitDropKick;
     bool IsMidAir;
     bool IsFalling;
     bool IsLayingDown;
@@ -56,10 +60,15 @@ struct Fighter {
     bool IsPushing;
     bool IsBeingPushed;
     bool DoBlockSequence;
+    bool DoUppercutSequence;
     bool AcceptingInput;
     bool MadeContactUppercut;
+    bool MadeContact;
     int CooldownTicksUppercut;
+    int CooldownTicksImpact;
     bool JumpLanded;
+    bool PlayedJumpRoll;
+    int JumpRollTicks;
     unsigned int HB_BODY;
     unsigned int HB_ATTACK;
     int pad;
@@ -68,12 +77,19 @@ struct Fighter {
     int playerMoveBackwardSpeed;
     float playerKnockbackSpeed;
     float playerUppercutXSpeed;
+    float playerDropKickXSpeed;
+    float playerJumpXSpeed;
+    float playerXTraveled;
     float playerPushSpeed;
+    bool airAttackPerformed;
     int touchTicks;
     int lastTicks;
     int damageTicks;
+    int dropKickTicks;
     int positionX;
     int positionY;
+    int hitPoints;
+    int pendingDamage;
     struct SoundHandler* soundHandler;
     int direction;
     bool isPlayer1;
@@ -81,6 +97,7 @@ struct Fighter {
     float momentumY;
     float jumpMomentumYStart;
     float uppercutMomentumYStart;
+    float dropKickMomentemYStart;
     float floorLocationY;
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
@@ -105,6 +122,7 @@ struct Fighter {
     struct AnimationFrame (*kickHighFrames)[7];
     struct AnimationFrame (*jumpPunchFrames)[3];
     struct AnimationFrame (*jumpKickFrames)[3];
+    struct AnimationFrame (*jumpRollKickFrames)[3];
     struct AnimationFrame (*uppercutFrames)[6];
     struct AnimationFrame (*hitLowFrames)[6];
     struct AnimationFrame (*hitHighFrames)[6];
@@ -127,6 +145,10 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
 
 void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
 
+void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
+
+void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
+
 void fighterPlayHiya(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayGroan(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
@@ -138,3 +160,11 @@ void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlay
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterAddPendingDamage(struct Fighter* fighter, int damage);
+
+void fighterTakeDamage(struct Fighter* fighter, int damage);

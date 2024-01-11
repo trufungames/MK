@@ -30,6 +30,7 @@ void sfxYellKang(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxJumpMale(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxJumpFemale(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxJumpNinja(struct SoundHandler* soundHandler, bool isPlayer1);
+void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxHit(struct SoundHandler* soundHandler);
 void sfxImpact(struct SoundHandler* soundHandler);
 void sfxBlood(struct SoundHandler* soundHandler);

@@ -27,6 +27,7 @@ void moveDown (void)
 
 void bgInit()
 {
+	LastTicks = rapTicks;
 	IsScrollingUp = false;
 	IsScrollingDown = false;
 	IsShaking = false;
@@ -34,37 +35,40 @@ void bgInit()
 
 void bgScrollRight (float delta)
 {
-	if (sprite[STAGE_PIT_BACKGROUND].x_ >= -692.0f)
-	{	
-		sprite[STAGE_PIT_BACKGROUND].x_ -= 2.0f * delta;
+	// if (sprite[STAGE_PIT_BACKGROUND].x_ >= -692.0f)
+	// {	
+	// 	sprite[STAGE_PIT_BACKGROUND].x_ -= 2.0f * delta;
 
-		for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
-		{
-			sprite[BLOOD_DROP+i].x_ -= 2.0f * delta;
-			sprite[BLOOD_POOL+i].x_ -= 2.0f * delta;
-		}
-	}
+	// 	for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+	// 	{
+	// 		sprite[BLOOD_DROP+i].x_ -= 2.0f * delta;
+	// 		sprite[BLOOD_POOL+i].x_ -= 2.0f * delta;
+	// 	}
+	// }
 }
 
 
 void bgScrollLeft (float delta)
 {
-	if (sprite[STAGE_PIT_BACKGROUND].x_ <= -2.0f)
-	{
-		sprite[STAGE_PIT_BACKGROUND].x_ += 2.0f * delta;
+	// if (sprite[STAGE_PIT_BACKGROUND].x_ <= -2.0f)
+	// {
+	// 	sprite[STAGE_PIT_BACKGROUND].x_ += 2.0f * delta;
 
-		for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
-		{
-			sprite[BLOOD_DROP+i].x_ += 2.0f * delta;
-			sprite[BLOOD_POOL+i].x_ += 2.0f * delta;
-		}
-	}
+	// 	for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+	// 	{
+	// 		sprite[BLOOD_DROP+i].x_ += 2.0f * delta;
+	// 		sprite[BLOOD_POOL+i].x_ += 2.0f * delta;
+	// 	}
+	// }
 }
 
 void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
 	if (rapTicks >= LastTicks + 1)
 	{
+		sprite[STAGE_PIT_CLOUDS1].x_ += 2.0f;
+		sprite[STAGE_PIT_CLOUDS1+1].x_ += 2.0f;
+
 		if (IsScrollingUp)
 		{
 			bgYOffset += 2;
@@ -113,13 +117,13 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 			}
 		}
 
-		if (IsScrollingUp || IsScrollingDown || IsShaking)
-		{
-			sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
-			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
-			fighter1->positionY += bgYInc;
-			fighter2->positionY += bgYInc;
-		}
+		// if (IsScrollingUp || IsScrollingDown || IsShaking)
+		// {
+		// 	sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
+		// 	//sprite[STAGE_PIT_MOON].y_ += bgYInc;
+		// 	fighter1->positionY += bgYInc;
+		// 	fighter2->positionY += bgYInc;
+		// }
 		
 		LastTicks = rapTicks;
 	}

@@ -1062,15 +1062,44 @@ __Z12sfxJumpNinjaP12SoundHandlerb:
 	unlk %fp
 	rts
 	.even
+	.globl	__Z11sfxJumpRollP12SoundHandlerb
+__Z11sfxJumpRollP12SoundHandlerb:
+	link.w %fp,#0
+	move.l %d2,-(%sp)
+	move.b 15(%fp),%d0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jeq .L225
+	tst.b %d0
+	seq %d0
+	ext.w %d0
+	clr.l -(%sp)
+	pea 6.w
+	move.l #jump_roll_sam_end,%d1
+	sub.l #jump_roll_sam-3,%d1
+	moveq #-4,%d2
+	and.l %d1,%d2
+	move.l %d2,-(%sp)
+	pea jump_roll_sam
+	move.w #1,%a0
+	sub.w %d0,%a0
+	move.l %a0,-(%sp)
+	jsr zeroPlaySample
+	lea (20,%sp),%sp
+.L225:
+	move.l -4(%fp),%d2
+	unlk %fp
+	rts
+	.even
 	.globl	__Z11sfxCrowdAwwP12SoundHandler
 __Z11sfxCrowdAwwP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L228
+	jne .L234
 	unlk %fp
 	rts
-.L228:
+.L234:
 	clr.l -(%sp)
 	pea 6.w
 	move.l #crowd_aww_sam_end,%d0
@@ -1090,10 +1119,10 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L233
+	jne .L239
 	unlk %fp
 	rts
-.L233:
+.L239:
 	clr.l -(%sp)
 	pea 6.w
 	move.l #announcer_excellent_sam_end,%d0
@@ -1113,10 +1142,10 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L238
+	jne .L244
 	unlk %fp
 	rts
-.L238:
+.L244:
 	clr.l -(%sp)
 	pea 6.w
 	move.l #announcer_laugh_sam_end,%d0

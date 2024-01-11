@@ -36,6 +36,7 @@ ROM,BMP_CHOOSEFIGHTER,gfx_clut_pack,assets\gfx\choose_your_fighter.bmp
 ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
+ROM,BMP_BATTLE_THEPIT,gfx_clut,ASSETS\GFX\battle_thepit.BMP
 ROM,BMPCAGE,gfx_clut,ASSETS\GFX\cage.BMP
 ROM,BMPKANG,gfx_clut,ASSETS\GFX\liukang.BMP
 ROM,BMPRAIDEN,gfx_clut,ASSETS\GFX\raiden.BMP
@@ -58,14 +59,26 @@ ROM,BMP_PIT_MOON,gfx_clut_pack,assets\gfx\stage_pit_moon.bmp
 ROM,BMP_PIT_CLOUDS1,gfx_clut,assets\gfx\stage_pit_clouds1.bmp
 ROM,BMP_PIT_CLOUDS2,gfx_clut,assets\gfx\stage_pit_clouds2.bmp
 ROM,BMP_PIT_CLOUDS3,gfx_clut,assets\gfx\stage_pit_clouds3.bmp
-ROM,BMP_HITBOX,gfx_clut16,ASSETS\GFX\hitbox_on.BMP
-ROM,BMP_HITBOX_ATTACK,gfx_clut16,ASSETS\GFX\hitbox_attack_on.BMP
-ROM,BMP_HITBOX_OFF,gfx_clut16,ASSETS\GFX\hitbox_off.BMP
-ROM,BMP_HITBOX_ATTACK_OFF,gfx_clut16,ASSETS\GFX\hitbox_attack_off.BMP
+ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
+ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
+ROM,BMP_HITBOX_OFF,gfx_clut,ASSETS\GFX\hitbox_off.BMP
+ROM,BMP_HITBOX_ATTACK_OFF,gfx_clut,ASSETS\GFX\hitbox_attack_off.BMP
 ROM,BMP_ROUND1,gfx_clut,ASSETS\GFX\round1.BMP
 ROM,BMP_FIGHT,gfx_clut,ASSETS\GFX\fight.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
 ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
+ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
+ROM,BMP_NAME_SHANGTSUNG,gfx_clut,ASSETS\GFX\name_shangtsung.BMP
+ROM,BMP_NAME_GORO,gfx_clut,ASSETS\GFX\name_goro.BMP
+ROM,BMP_NAME_SONYA,gfx_clut,ASSETS\GFX\name_sonya.BMP
+ROM,BMP_NAME_SUBZERO,gfx_clut,ASSETS\GFX\name_subzero.BMP
+ROM,BMP_NAME_SCORPION,gfx_clut,ASSETS\GFX\name_scorpion.BMP
+ROM,BMP_NAME_LIUKANG,gfx_clut,ASSETS\GFX\name_liukang.BMP
+ROM,BMP_NAME_RAIDEN,gfx_clut,ASSETS\GFX\name_raiden.BMP
+ROM,BMP_NAME_KANO,gfx_clut,ASSETS\GFX\name_kano.BMP
+ROM,BMP_NAME_CAGE,gfx_clut,ASSETS\GFX\name_cage.BMP
+ROM,BMP_NAME_REPTILE,gfx_clut,ASSETS\GFX\name_reptile.BMP
+ROM,BMP_NAME_KASUMI,gfx_clut,ASSETS\GFX\name_kasumi.BMP
 
 ABS,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
 ABS,johnnycage_sam,sfx_raw8000,ASSETS\SFX\johnnycage.wav
@@ -107,6 +120,7 @@ ABS,yell_kang_sam,sfx_raw8000,ASSETS\SFX\yell_kang.wav
 ABS,jump_male_sam,sfx_raw8000,ASSETS\SFX\jump_male.wav
 ABS,jump_female_sam,sfx_raw8000,ASSETS\SFX\jump_female.wav
 ABS,jump_ninja_sam,sfx_raw8000,ASSETS\SFX\jump_ninja.wav
+ABS,jump_roll_sam,sfx_raw8000,ASSETS\SFX\jump_roll.wav
 ABS,thud_sam,sfx_raw8000,ASSETS\SFX\thud.wav
 ABS,crowd_aww_sam,sfx_raw8000,ASSETS\SFX\crowd_aww.wav
 ABS,announcer_excellent_sam,sfx_raw8000,ASSETS\SFX\announcer_excellent.wav
