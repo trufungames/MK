@@ -710,7 +710,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
         }
         else if (((fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_RIGHT && fighter->direction == 1) ||
                 (fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_LEFT && fighter->direction == -1))
-                && fighter->DPadReleased || fighter->IsJumpingRollForward)
+                && fighter->DPadReleased && fighter->AcceptingInput || fighter->IsJumpingRollForward)
         {
             if (!fighter->IsJumpingRollForward && fighter->DPadReleased)
             {
@@ -769,12 +769,12 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
 
                 if (!fighter->MadeContact)
                 {
-                    updateSpriteAnimator(animator, *fighter->jumpRollKickFrames, fighter->JUMP_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+                    updateSpriteAnimator(animator, *fighter->jumpDropKickFrames, fighter->JUMP_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
                 }
 
                 if (fighter->MadeContact && rapTicks < fighter->lastTicks + fighter->CooldownTicksImpact)
                 {
-                    animateFrame(fighter->spriteIndex, 2, *fighter->jumpRollKickFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 2, *fighter->jumpDropKickFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                 }
                 else if (fighter->MadeContact && rapTicks >= fighter->lastTicks + fighter->CooldownTicksImpact)
                 {
@@ -849,7 +849,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
         }
         else if (((fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_LEFT && fighter->direction == 1) ||
                 (fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_RIGHT && fighter->direction == -1))
-                && fighter->DPadReleased || fighter->IsJumpingRollBackward)
+                && fighter->DPadReleased && fighter->AcceptingInput || fighter->IsJumpingRollBackward)
         {
             if (!fighter->IsJumpingRollBackward && fighter->DPadReleased)
             {
@@ -908,12 +908,12 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
 
                 if (!fighter->MadeContact)
                 {
-                    updateSpriteAnimator(animator, *fighter->jumpRollKickFrames, fighter->JUMP_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+                    updateSpriteAnimator(animator, *fighter->jumpDropKickFrames, fighter->JUMP_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
                 }
 
                 if (fighter->MadeContact && rapTicks < fighter->lastTicks + fighter->CooldownTicksImpact)
                 {
-                    animateFrame(fighter->spriteIndex, 2, *fighter->jumpRollKickFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 2, *fighter->jumpDropKickFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                 }
                 else if (fighter->MadeContact && rapTicks >= fighter->lastTicks + fighter->CooldownTicksImpact)
                 {

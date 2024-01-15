@@ -122,7 +122,7 @@ struct Fighter {
     struct AnimationFrame (*kickHighFrames)[7];
     struct AnimationFrame (*jumpPunchFrames)[3];
     struct AnimationFrame (*jumpKickFrames)[3];
-    struct AnimationFrame (*jumpRollKickFrames)[3];
+    struct AnimationFrame (*jumpDropKickFrames)[3];
     struct AnimationFrame (*uppercutFrames)[6];
     struct AnimationFrame (*hitLowFrames)[6];
     struct AnimationFrame (*hitHighFrames)[6];

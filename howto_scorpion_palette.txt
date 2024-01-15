@@ -1,0 +1,8 @@
+HOW TO TRANSLATE SCORPION PALETTE TO SUBZERO
+--------------------------------------------
+
+1. In PSP, get both subzero and scorpion reduced to 16 colors
+2. 1 by 1, replace the colors on scorpion's palette from subzero's palette.  SORT BY LUMINANCE, then go darkest to lightest
+3. Back in Paint.Net combine the images and copy/paste back into PSP, save as BMP
+4. In PSP, change subzero's palette to make it look like Scorpion, then save the Palette in PSP.
+5. create a 4x4 image and load in the palette from step 4.  Sort the colors by LUMINANCE and put each color onto the image, save pal BMP.
