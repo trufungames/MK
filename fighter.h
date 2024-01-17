@@ -4,6 +4,7 @@ struct Fighter {
     unsigned int spriteBase;
     unsigned int IDLE_FRAME_COUNT;
     unsigned int WALK_FRAME_COUNT;
+    unsigned int TURN_FRAME_COUNT;
     unsigned int JUMP_FRAME_COUNT;
     unsigned int JUMP_ROLL_FRAME_COUNT;
     unsigned int DUCK_FRAME_COUNT;
@@ -58,6 +59,7 @@ struct Fighter {
     bool IsGettingUp;
     bool IsBeingDamaged;
     bool IsPushing;
+    bool IsTurning;
     bool IsBeingPushed;
     bool DoBlockSequence;
     bool DoUppercutSequence;
@@ -92,6 +94,8 @@ struct Fighter {
     int pendingDamage;
     struct SoundHandler* soundHandler;
     int direction;
+    bool justTurned;
+    bool changedDirection;
     bool isPlayer1;
     float gravity;
     float momentumY;
@@ -109,6 +113,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameSweep;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*walkFrames)[9];
+    struct AnimationFrame (*turnFrames)[2];
     struct AnimationFrame (*jumpFrames)[4];
     struct AnimationFrame (*jumpRollFrames)[7];
     struct AnimationFrame (*duckFrames)[3];
@@ -143,7 +148,7 @@ void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHand
 
 void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame idleFrames[]);
 
-void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
+void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
 
@@ -162,6 +167,8 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2);
 

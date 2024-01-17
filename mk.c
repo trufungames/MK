@@ -130,6 +130,10 @@ static AnimationFrame cageWalkFrames[] = {
 	{ 96, 144, 384, 144, 0, 0, 6 },
 	{ 96, 144, 480, 144, 0, 0, 6 }
 };
+static AnimationFrame cageTurnFrames[] = {
+	{ 80, 144, 864, 576, 7, -1, 4 },
+	{ 80, 144, 944, 576, 7, -1, 4 }
+};
 static AnimationFrame cageJumpFrames[] = {
 	{ 96, 128, 576, 160, 0, 16, 3 },
 	{ 48, 112, 272, 720, 0, 0, 3 },
@@ -348,6 +352,10 @@ static AnimationFrame kangWalkFrames[] = {
 	{ 80, 144, 240, 144, 0, 0, 6 },
 	{ 80, 144, 320, 144, 0, 0, 6 }
 };
+static AnimationFrame kangTurnFrames[] = {
+	{ 80, 144, 928, 720, 2, -3, 4 },
+	{ 80, 144, 80, 816, 0, -4, 4 }
+};
 static AnimationFrame kangJumpFrames[] = {
 	{ 80, 144, 224, 704, 0, 0, 3 },
 	{ 80, 96, 144, 720, 0, 0, 3 },
@@ -563,6 +571,10 @@ static AnimationFrame raidenWalkFrames[] = {
 	{ 80, 144, 320, 144, 0, 0, 6 },
 	{ 80, 144, 400, 144, 0, 0, 6 },
 	{ 80, 144, 480, 144, 0, 0, 6 }
+};
+static AnimationFrame raidenTurnFrames[] = {
+	{ 80, 144, 0, 1024, 6, -2, 4 },
+	{ 80, 144, 80, 1024, 6, -2, 4 }
 };
 static AnimationFrame raidenJumpFrames[] = {
 	{ 80, 144, 656, 720, 0, 0, 3 },
@@ -821,6 +833,10 @@ static AnimationFrame subzeroWalkFrames[] = {
 	{ 80, 144, 320, 144, 0, 0, 6 },
 	{ 80, 144, 400, 144, 0, 0, 6 }
 };
+static AnimationFrame subzeroTurnFrames[] = {
+	{ 64, 144, 256, 768, 6, -2, 3 },
+	{ 64, 144, 320, 768, 6, -2, 3 }
+};
 static AnimationFrame subzeroJumpFrames[] = {
 	{ 80, 144, 0, 704, 0, 0, 3 },
 	{ 64, 96, 80, 704, 0, 0, 3 },
@@ -1038,6 +1054,10 @@ static AnimationFrame sonyaWalkFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame sonyaTurnFrames[] = {
+	{ 48, 144, 848, 672, 15, -2, 3 },
+	{ 48, 144, 896, 672, 15, -2, 3 }
+};
 static AnimationFrame sonyaJumpFrames[] = {
 	{ 64, 128, 800, 896, 0, 0, 3 },
 	{ 64, 112, 864, 896, 0, 0, 3 },
@@ -1140,15 +1160,15 @@ static AnimationFrame scorpionIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 static AnimationFrame scorpionWalkFrames[] = {
-	{ 80, 144, 560, 1024, 0, 0, 6 },
-	{ 80, 144, 640, 1024, 0, 0, 6 },
-	{ 80, 144, 720, 1024, 0, 0, 6 },
-	{ 80, 144, 800, 1024, 0, 0, 6 },
-	{ 80, 144, 880, 1024, 0, 0, 6 },
-	{ 80, 144, 0, 1168, 0, 0, 6 },
-	{ 80, 144, 80, 1168, 0, 0, 6 },
-	{ 80, 144, 160, 1168, 0, 0, 6 },
-	{ 80, 144, 240, 1168, 0, 0, 6 }
+	{ 96, 144, 560, 1024, 0, 0, 6 },
+	{ 96, 144, 656, 1024, 0, 0, 6 },
+	{ 96, 144, 752, 1024, 0, 0, 6 },
+	{ 96, 144, 848, 1024, 0, 0, 6 },
+	{ 96, 144, 0, 1168, 0, 0, 6 },
+	{ 96, 144, 96, 1168, 0, 0, 6 },
+	{ 96, 144, 192, 1168, 0, 0, 6 },
+	{ 96, 144, 288, 1168, 0, 0, 6 },
+	{ 96, 144, 384, 1168, 0, 0, 6 }
 };
 
 //Kano animation frames
@@ -1249,6 +1269,10 @@ static AnimationFrame kanoWalkFrames[] = {
 	{ 80, 144, 80, 144, 0, 0, 6 },
 	{ 80, 144, 160, 144, 0, 0, 6 },
 	{ 80, 144, 240, 144, 0, 0, 6 }
+};
+static AnimationFrame kanoTurnFrames[] = {
+	{ 64, 144, 832, 720, 8, -2, 4 },
+	{ 64, 144, 896, 720, 8, -2, 4 }
 };
 static AnimationFrame kanoJumpFrames[] = {
 	{ 80, 144, 0, 288, 0, 0, 3 },
@@ -1440,6 +1464,7 @@ static Fighter fighterScorpion = {
 	SCORPION, P1_FIGHTER, BMPSUBZERO,
 	SCORPION_IDLE_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
 	SUBZERO_DUCK_FRAME_COUNT,
@@ -1467,6 +1492,7 @@ static Fighter fighterKano = {
 	KANO, P1_FIGHTER, BMPKANO,
 	KANO_IDLE_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
+	KANO_TURN_FRAME_COUNT,
 	KANO_JUMP_FRAME_COUNT,
 	KANO_JUMP_ROLL_FRAME_COUNT,
 	KANO_DUCK_FRAME_COUNT,
@@ -1494,6 +1520,7 @@ static Fighter fighterCage = {
 	CAGE, P1_FIGHTER, BMPCAGE,
 	CAGE_IDLE_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
+	CAGE_TURN_FRAME_COUNT,
 	CAGE_JUMP_FRAME_COUNT,
 	CAGE_JUMP_ROLL_FRAME_COUNT,
 	CAGE_DUCK_FRAME_COUNT,
@@ -1521,6 +1548,7 @@ static Fighter fighterKang = {
 	KANG, P1_FIGHTER, BMPKANG,
 	KANG_IDLE_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
+	KANG_TURN_FRAME_COUNT,
 	KANG_JUMP_FRAME_COUNT,
 	KANG_JUMP_ROLL_FRAME_COUNT,
 	KANG_DUCK_FRAME_COUNT,
@@ -1548,6 +1576,7 @@ static Fighter fighterRaiden = {
 	RAIDEN, P1_FIGHTER, BMPRAIDEN,
 	RAIDEN_IDLE_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
+	RAIDEN_TURN_FRAME_COUNT,
 	RAIDEN_JUMP_FRAME_COUNT,
 	RAIDEN_JUMP_ROLL_FRAME_COUNT,
 	RAIDEN_DUCK_FRAME_COUNT,
@@ -1575,6 +1604,7 @@ static Fighter fighterSubzero = {
 	SUBZERO, P1_FIGHTER, BMPSUBZERO,
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
 	SUBZERO_DUCK_FRAME_COUNT,
@@ -1602,6 +1632,7 @@ static Fighter fighterSonya = {
 	SONYA, P1_FIGHTER, BMPSONYA,
 	SONYA_IDLE_FRAME_COUNT,
 	SONYA_WALK_FRAME_COUNT,
+	SONYA_TURN_FRAME_COUNT,
 	SONYA_JUMP_FRAME_COUNT,
 	SONYA_JUMP_ROLL_FRAME_COUNT,
 	SONYA_DUCK_FRAME_COUNT,
@@ -1632,6 +1663,7 @@ static Fighter fighterScorpion2 = {
 	SCORPION, P2_FIGHTER, BMPSUBZERO,
 	SCORPION_IDLE_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
 	SUBZERO_DUCK_FRAME_COUNT,
@@ -1659,6 +1691,7 @@ static Fighter fighterKano2 = {
 	KANO, P2_FIGHTER, BMPKANO,
 	KANO_IDLE_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
+	KANO_TURN_FRAME_COUNT,
 	KANO_JUMP_FRAME_COUNT,
 	KANO_JUMP_ROLL_FRAME_COUNT,
 	KANO_DUCK_FRAME_COUNT,
@@ -1686,6 +1719,7 @@ static Fighter fighterCage2 = {
 	CAGE, P2_FIGHTER, BMPCAGE,
 	CAGE_IDLE_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
+	CAGE_TURN_FRAME_COUNT,
 	CAGE_JUMP_FRAME_COUNT,
 	CAGE_JUMP_ROLL_FRAME_COUNT,
 	CAGE_DUCK_FRAME_COUNT,
@@ -1713,6 +1747,7 @@ static Fighter fighterKang2 = {
 	KANG, P2_FIGHTER, BMPKANG,
 	KANG_IDLE_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
+	KANG_TURN_FRAME_COUNT,
 	KANG_JUMP_FRAME_COUNT,
 	KANG_JUMP_ROLL_FRAME_COUNT,
 	KANG_DUCK_FRAME_COUNT,
@@ -1740,6 +1775,7 @@ static Fighter fighterRaiden2 = {
 	RAIDEN, P2_FIGHTER, BMPRAIDEN,
 	RAIDEN_IDLE_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
+	RAIDEN_TURN_FRAME_COUNT,
 	RAIDEN_JUMP_FRAME_COUNT,
 	RAIDEN_JUMP_ROLL_FRAME_COUNT,
 	RAIDEN_DUCK_FRAME_COUNT,
@@ -1767,6 +1803,7 @@ static Fighter fighterSubzero2 = {
 	SUBZERO, P2_FIGHTER, BMPSUBZERO,
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
 	SUBZERO_DUCK_FRAME_COUNT,
@@ -1794,6 +1831,7 @@ static Fighter fighterSonya2 = {
 	SONYA, P2_FIGHTER, BMPSONYA,
 	SONYA_IDLE_FRAME_COUNT,
 	SONYA_WALK_FRAME_COUNT,
+	SONYA_TURN_FRAME_COUNT,
 	SONYA_JUMP_FRAME_COUNT,
 	SONYA_JUMP_ROLL_FRAME_COUNT,
 	SONYA_DUCK_FRAME_COUNT,
@@ -1834,6 +1872,7 @@ void basicmain()
 
 	fighterCage.idleFrames = &cageIdleFrames;
 	fighterCage.walkFrames = &cageWalkFrames;
+	fighterCage.turnFrames = &cageTurnFrames;
 	fighterCage.jumpFrames = &cageJumpFrames;
 	fighterCage.jumpRollFrames = &cageJumpRollFrames;
 	fighterCage.duckFrames = &cageDuckFrames;
@@ -1858,6 +1897,7 @@ void basicmain()
 	fighterCage.sweepFrames = &cageSweepFrames;
 	fighterCage2.idleFrames = &cageIdleFrames;
 	fighterCage2.walkFrames = &cageWalkFrames;
+	fighterCage2.turnFrames = &cageTurnFrames;
 	fighterCage2.jumpFrames = &cageJumpFrames;
 	fighterCage2.jumpRollFrames = &cageJumpRollFrames;
 	fighterCage2.duckFrames = &cageDuckFrames;
@@ -1883,6 +1923,7 @@ void basicmain()
 	//Kano
 	fighterKano.idleFrames = &kanoIdleFrames;
 	fighterKano.walkFrames = &kanoWalkFrames;
+	fighterKano.turnFrames = &kanoTurnFrames;
 	fighterKano.jumpFrames = &kanoJumpFrames;
 	fighterKano.jumpRollFrames = &kanoJumpRollFrames;
 	fighterKano.duckFrames = &kanoDuckFrames;
@@ -1907,6 +1948,7 @@ void basicmain()
 	fighterKano.kipUpFrames = &kanoKipUpFrames;
 	fighterKano2.idleFrames = &kanoIdleFrames;
 	fighterKano2.walkFrames = &kanoWalkFrames;
+	fighterKano2.turnFrames = &kanoTurnFrames;
 	fighterKano2.jumpFrames = &kanoJumpFrames;
 	fighterKano2.jumpRollFrames = &kanoJumpRollFrames;
 	fighterKano2.duckFrames = &kanoDuckFrames;
@@ -1932,6 +1974,7 @@ void basicmain()
 	//Raiden
 	fighterRaiden.idleFrames = &raidenIdleFrames;
 	fighterRaiden.walkFrames = &raidenWalkFrames;
+	fighterRaiden.turnFrames = &raidenTurnFrames;
 	fighterRaiden.jumpFrames = &raidenJumpFrames;
 	fighterRaiden.jumpRollFrames = &raidenJumpRollFrames;
 	fighterRaiden.duckFrames = &raidenDuckFrames;
@@ -1956,6 +1999,7 @@ void basicmain()
 	fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
 	fighterRaiden2.idleFrames = &raidenIdleFrames;
 	fighterRaiden2.walkFrames = &raidenWalkFrames;
+	fighterRaiden2.turnFrames = &raidenTurnFrames;
 	fighterRaiden2.jumpFrames = &raidenJumpFrames;
 	fighterRaiden2.jumpRollFrames = &raidenJumpRollFrames;
 	fighterRaiden2.duckFrames = &raidenDuckFrames;
@@ -1981,6 +2025,7 @@ void basicmain()
 	//Liu Kang
 	fighterKang.idleFrames = &kangIdleFrames;
 	fighterKang.walkFrames = &kangWalkFrames;
+	fighterKang.turnFrames - &kangTurnFrames;
 	fighterKang.jumpFrames = &kangJumpFrames;
 	fighterKang.jumpRollFrames = &kangJumpRollFrames;
 	fighterKang.duckFrames = &kangDuckFrames;
@@ -2005,6 +2050,7 @@ void basicmain()
 	fighterKang.hitSweepFrames = &kangHitSweepFrames;
 	fighterKang2.idleFrames = &kangIdleFrames;
 	fighterKang2.walkFrames = &kangWalkFrames;
+	fighterKang2.turnFrames - &kangTurnFrames;
 	fighterKang2.jumpFrames = &kangJumpFrames;
 	fighterKang2.jumpRollFrames = &kangJumpRollFrames;
 	fighterKang2.duckFrames = &kangDuckFrames;
@@ -2030,6 +2076,7 @@ void basicmain()
 	//Scorpion
 	fighterScorpion.idleFrames = &scorpionIdleFrames;
 	fighterScorpion.walkFrames = &scorpionWalkFrames;
+	fighterScorpion.turnFrames = &subzeroTurnFrames;
 	fighterScorpion.jumpFrames = &subzeroJumpFrames;
 	fighterScorpion.jumpRollFrames = &subzeroJumpRollFrames;
 	fighterScorpion.duckFrames = &subzeroDuckFrames;
@@ -2054,6 +2101,7 @@ void basicmain()
 	fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
 	fighterScorpion2.idleFrames = &scorpionIdleFrames;
 	fighterScorpion2.walkFrames = &scorpionWalkFrames;
+	fighterScorpion2.turnFrames = &subzeroTurnFrames;
 	fighterScorpion2.jumpFrames = &subzeroJumpFrames;
 	fighterScorpion2.jumpRollFrames = &subzeroJumpRollFrames;
 	fighterScorpion2.duckFrames = &subzeroDuckFrames;
@@ -2079,6 +2127,7 @@ void basicmain()
 	//Sub-Zero
 	fighterSubzero.idleFrames = &subzeroIdleFrames;
 	fighterSubzero.walkFrames = &subzeroWalkFrames;
+	fighterSubzero.turnFrames = &subzeroTurnFrames;
 	fighterSubzero.jumpFrames = &subzeroJumpFrames;
 	fighterSubzero.jumpRollFrames = &subzeroJumpRollFrames;
 	fighterSubzero.duckFrames = &subzeroDuckFrames;
@@ -2102,6 +2151,7 @@ void basicmain()
 	fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
 	fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
 	fighterSubzero2.idleFrames = &subzeroIdleFrames;
+	fighterSubzero2.turnFrames = &subzeroTurnFrames;
 	fighterSubzero2.walkFrames = &subzeroWalkFrames;
 	fighterSubzero2.jumpFrames = &subzeroJumpFrames;
 	fighterSubzero2.jumpRollFrames = &subzeroJumpRollFrames;
@@ -2128,6 +2178,7 @@ void basicmain()
 	//Sonya
 	fighterSonya.idleFrames = &sonyaIdleFrames;
 	fighterSonya.walkFrames = &sonyaWalkFrames;
+	fighterSonya.turnFrames = &sonyaTurnFrames;
 	fighterSonya.jumpFrames = &sonyaJumpFrames;
 	fighterSonya.jumpRollFrames = &sonyaJumpRollFrames;
 	fighterSonya.duckFrames = &sonyaDuckFrames;
@@ -2152,6 +2203,7 @@ void basicmain()
 	fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
 	fighterSonya2.idleFrames = &sonyaIdleFrames;
 	fighterSonya2.walkFrames = &sonyaWalkFrames;
+	fighterSonya2.turnFrames = &sonyaTurnFrames;
 	fighterSonya2.jumpFrames = &sonyaJumpFrames;
 	fighterSonya2.jumpRollFrames = &sonyaJumpRollFrames;
 	fighterSonya2.duckFrames = &sonyaDuckFrames;
@@ -2594,32 +2646,32 @@ void basicmain()
 			{
 				case 0:
 					//Johnny Cage
-					fighterUpdate(delta, &fighterCage, &cageAnimator, false);
+					fighterUpdate(delta, &fighterCage, &cageAnimator);
 					break;
 				case 1:
 					//Kano
-					fighterUpdate(delta, &fighterKano, &kanoAnimator, false);
+					fighterUpdate(delta, &fighterKano, &kanoAnimator);
 					break;
 				case 2:
 					//Sub-Zero
-					fighterUpdate(delta, &fighterSubzero, &subzeroAnimator, false);
+					fighterUpdate(delta, &fighterSubzero, &subzeroAnimator);
 					break;
 				case 3:
 					//Sonya
-					fighterUpdate(delta, &fighterSonya, &sonyaAnimator, false);
+					fighterUpdate(delta, &fighterSonya, &sonyaAnimator);
 					break;
 				case 4:
 					//Raiden
-					fighterUpdate(delta, &fighterRaiden, &raidenAnimator, false);
+					fighterUpdate(delta, &fighterRaiden, &raidenAnimator);
 					//updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
-					fighterUpdate(delta, &fighterKang, &kangAnimator, false);
+					fighterUpdate(delta, &fighterKang, &kangAnimator);
 					break;
 				case 6:
 					//Scorpion
-					fighterUpdate(delta, &fighterScorpion, &scorpionAnimator, false);
+					fighterUpdate(delta, &fighterScorpion, &scorpionAnimator);
 					break;
 			}
 			
@@ -2630,35 +2682,36 @@ void basicmain()
 			{
 				case 0:
 					//Johnny Cage
-					fighterUpdate(delta, &fighterCage2, &cageAnimator2, true);
+					fighterUpdate(delta, &fighterCage2, &cageAnimator2);
 					break;
 				case 1:
 					//Kano
-					fighterUpdate(delta, &fighterKano2, &kanoAnimator2, true);
+					fighterUpdate(delta, &fighterKano2, &kanoAnimator2);
 					break;
 				case 2:
 					//Sub-Zero
-					fighterUpdate(delta, &fighterSubzero2, &subzeroAnimator2, true);
+					fighterUpdate(delta, &fighterSubzero2, &subzeroAnimator2);
 					break;
 				case 3:
 					//Sonya
-					fighterUpdate(delta, &fighterSonya2, &sonyaAnimator2, true);
+					fighterUpdate(delta, &fighterSonya2, &sonyaAnimator2);
 					break;
 				case 4:
 					//Raiden
-					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2, true);
+					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2);
 					//updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
-					fighterUpdate(delta, &fighterKang2, &kangAnimator2, true);
+					fighterUpdate(delta, &fighterKang2, &kangAnimator2);
 					break;
 				case 6:
 					//Scorpion
-					fighterUpdate(delta, &fighterScorpion2, &scorpionAnimator2, true);
+					fighterUpdate(delta, &fighterScorpion2, &scorpionAnimator2);
 					break;
 			}
 
+			fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
 			bgUpdate(fighter1Ptr, fighter2Ptr);
 			bloodUpdate(&soundHandler);

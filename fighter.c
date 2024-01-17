@@ -8,6 +8,8 @@
 #include "sleep.h"
 
 int collision = 0;
+int turnOffset = 32;
+bool walkForward = false;
 
 void fighterHide(struct Fighter *fighter)
 {
@@ -105,6 +107,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->dropKickTicks = 0;
     fighter->touchTicks = 0;
     fighter->IsWalking = false;
+    fighter->IsTurning = false;
     fighter->IsJumping = false;
     fighter->IsJumpingRollForward = false;
     fighter->IsJumpingRollBackward = false;
@@ -146,6 +149,8 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->isPlayer1 = isPlayer1;
     fighter->hitPoints = 33;
     fighter->pendingDamage = 0;
+    fighter->justTurned = false;
+    fighter->changedDirection = false;
     sprite[fighter->spriteIndex].active = R_is_active;    
 
     if (isPlayer1)
@@ -184,14 +189,57 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
     updateSpriteAnimator(animator, idleFrames, fighter->IDLE_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
-void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, bool walkForward)
+void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
+    walkForward = fighter->direction == -1;
+
     if (fighter->DoBlockSequence)
     {
         fighter->DoBlockSequence = false;
         animator->currentFrame = 0;
         sfxBlock(fighter->soundHandler, fighter->isPlayer1);
         fighterTakeDamage(fighter, DMG_BLOCKED);
+    }
+    else if (fighter->IsTurning && !fighter->IsJumping && !fighter->IsJumpingRollBackward && !fighter->IsJumpingRollForward)
+    {
+        if (fighter->justTurned)
+        {
+            //we just turned, so reset the animation
+            fighter->justTurned = false;
+            animator->currentFrame = 0;
+        }
+
+        if (!fighter->changedDirection)
+        {
+            if (animationIsComplete(animator, fighter->TURN_FRAME_COUNT))
+            {
+                fighter->changedDirection = true;
+                fighter->direction *= -1;
+                
+                if (fighter->direction == 1)
+                {
+                    sprite[fighter->spriteIndex].flip = R_is_normal;
+                }
+                else
+                {
+                    sprite[fighter->spriteIndex].flip = R_is_flipped;
+                }
+                
+                impactFrameReset(fighter);
+            }
+
+            updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        }
+        else
+        {
+            if (animator->currentFrame <= 0)
+            {
+                fighter->IsTurning = false;
+            }
+
+            updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+        }
+        return;
     }
 
     // if (fighter->fighterIndex == RAIDEN)
@@ -1239,7 +1287,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 }
 
                 updateSpriteAnimator(animator, *fighter->idleFrames, fighter->IDLE_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-
+            
             //fighter->positionX = sprite[fighter->spriteIndex].x_;
             //fighter->positionY = sprite[fighter->spriteIndex].y_;
             }
@@ -1493,6 +1541,45 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
     {
         fighter2->IsBlockingHit = true;
         fighter2->DoBlockSequence = true;
+    }
+}
+
+void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (fighter1->direction == 1
+        && fighter1->positionX > fighter2->positionX + turnOffset
+        && !fighter1->IsTurning)
+    {
+        fighter1->changedDirection = false;
+        fighter1->IsTurning = true;
+        fighter1->justTurned = true;
+    }
+
+    if (fighter1->direction == -1
+        && fighter1->positionX + turnOffset < fighter2->positionX
+        && !fighter1->IsTurning)
+    {
+        fighter1->changedDirection = false;
+        fighter1->IsTurning = true;
+        fighter1->justTurned = true;
+    }
+
+    if (fighter2->direction == 1
+        && fighter2->positionX > fighter1->positionX + turnOffset
+        && !fighter2->IsTurning)
+    {
+        fighter2->changedDirection = false;
+        fighter2->IsTurning = true;
+        fighter2->justTurned = true;
+    }
+
+    if (fighter2->direction == -1
+        && fighter2->positionX + turnOffset < fighter1->positionX
+        && !fighter2->IsTurning)
+    {
+        fighter2->changedDirection = false;
+        fighter2->IsTurning = true;
+        fighter2->justTurned = true;
     }
 }
 

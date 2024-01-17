@@ -21,15 +21,15 @@ void impactFrameUpdate(struct SpriteAnimator* animator, struct Fighter* fighter,
 {
     if (animator->currentFrame == impactFrame->Frame)
     {
-        if (fighter->isPlayer1)
+        if (fighter->direction == 1)
         {
-            sprite[P1_HB_ATTACK].x_ = sprite[fighter->spriteIndex].x_ + (impactFrame->RelativePositionX * fighter->direction);
-            sprite[P1_HB_ATTACK].y_ = sprite[fighter->spriteIndex].y_ + (impactFrame->RelativePositionY);
+            sprite[fighter->HB_ATTACK].x_ = sprite[fighter->spriteIndex].x_ + (impactFrame->RelativePositionX * fighter->direction);
+            sprite[fighter->HB_ATTACK].y_ = sprite[fighter->spriteIndex].y_ + (impactFrame->RelativePositionY);
         }
         else
         {
-            sprite[P2_HB_ATTACK].x_ = sprite[fighter->spriteIndex].x_ + sprite[fighter->spriteIndex].width + ((48 + impactFrame->RelativePositionX) * fighter->direction);
-            sprite[P2_HB_ATTACK].y_ = sprite[fighter->spriteIndex].y_ + impactFrame->RelativePositionY;
+            sprite[fighter->HB_ATTACK].x_ = sprite[fighter->spriteIndex].x_ + sprite[fighter->spriteIndex].width + ((48 + impactFrame->RelativePositionX) * fighter->direction);
+            sprite[fighter->HB_ATTACK].y_ = sprite[fighter->spriteIndex].y_ + impactFrame->RelativePositionY;
         }
     }
     else
