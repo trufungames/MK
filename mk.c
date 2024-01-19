@@ -13,7 +13,7 @@
 // -----------------------------------------------------------------------
 static int pad1;
 static int pad2;
-static int imageBuffer[336*176/4];
+static int imageBuffer[1072*896/4];
 static int imageBuffer320x240[320*240/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
@@ -1857,6 +1857,9 @@ static Fighter fighterSonya2 = {
 
 void basicmain()
 {
+	int testingBackgroundX = 0;
+	int testingBackgroundDirection = 1;
+
 	pad1 = 0;
 	pad2 = 0;
 	int myTicks = 0;
@@ -1867,6 +1870,8 @@ void basicmain()
 	int fightScale = 0;
 	int barScale = 0;
 	int barDirection = 1;
+	int p1FlashCount = 0;
+	int p2FlashCount = 0;
 	struct Fighter* fighter1Ptr;
 	struct Fighter* fighter2Ptr; 
 
@@ -2025,7 +2030,7 @@ void basicmain()
 	//Liu Kang
 	fighterKang.idleFrames = &kangIdleFrames;
 	fighterKang.walkFrames = &kangWalkFrames;
-	fighterKang.turnFrames - &kangTurnFrames;
+	fighterKang.turnFrames = &kangTurnFrames;
 	fighterKang.jumpFrames = &kangJumpFrames;
 	fighterKang.jumpRollFrames = &kangJumpRollFrames;
 	fighterKang.duckFrames = &kangDuckFrames;
@@ -2050,7 +2055,7 @@ void basicmain()
 	fighterKang.hitSweepFrames = &kangHitSweepFrames;
 	fighterKang2.idleFrames = &kangIdleFrames;
 	fighterKang2.walkFrames = &kangWalkFrames;
-	fighterKang2.turnFrames - &kangTurnFrames;
+	fighterKang2.turnFrames = &kangTurnFrames;
 	fighterKang2.jumpFrames = &kangJumpFrames;
 	fighterKang2.jumpRollFrames = &kangJumpRollFrames;
 	fighterKang2.duckFrames = &kangDuckFrames;
@@ -2252,6 +2257,8 @@ void basicmain()
 					rapFadeClut(0,256,(int *)(int)(void *)(BMP_TITLESCREEN_clut));
 					jsfVsync(0); 
 				}
+				
+				//sfxIntro(&soundHandler);
 			}
 
 			if (fadedIn && !fadedOut)
@@ -2266,6 +2273,9 @@ void basicmain()
 
 					fadedOut = true;		
 					switchScreenChooseFighter();
+					//sfxGong(&soundHandler);
+					u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
+					u235ModuleVol(15);
 					//initGameAssets();
 				}
 			}
@@ -2437,10 +2447,12 @@ void basicmain()
 					break;
 			}
 
-			if (pad1 & JAGPAD_C || pad1 & JAGPAD_B || pad1 & JAGPAD_A)
+			if ((pad1 & JAGPAD_C || pad1 & JAGPAD_B || pad1 & JAGPAD_A) && p1Selected == -1)
 			{
 				p1Selected = p1Cursor;
 				sprite[P1_CURSOR].active = R_is_inactive;
+				myTicks = rapTicks;
+				sfxSelected(&soundHandler);
 
 				switch (p1Cursor)
 				{
@@ -2475,10 +2487,12 @@ void basicmain()
 				}
 			}
 
-			if (pad2 & JAGPAD_C || pad2 & JAGPAD_B || pad2 & JAGPAD_A)
+			if ((pad2 & JAGPAD_C || pad2 & JAGPAD_B || pad2 & JAGPAD_A) && p2Selected == -1)
 			{
 				p2Selected = p2Cursor;
 				sprite[P2_CURSOR].active = R_is_inactive;
+				myTicks = rapTicks;
+				sfxSelected(&soundHandler);
 
 				switch (p2Cursor)
 				{
@@ -2513,6 +2527,42 @@ void basicmain()
 				}
 			}
 
+			if (p1Selected != -1 && p1FlashCount <= 7)
+			{
+				if (rapTicks >= myTicks + 2)
+				{
+					if (sprite[P1_FLASH].active == R_is_active)
+					{
+						sprite[P1_FLASH].active = R_is_inactive;
+					}
+					else
+					{
+						sprite[P1_FLASH].active = R_is_active;
+					}
+
+					myTicks = rapTicks;
+					p1FlashCount++;
+				}
+			}
+
+			if (p2Selected != -1 && p2FlashCount <= 7)
+			{
+				if (rapTicks >= myTicks + 2)
+				{
+					if (sprite[P2_FLASH].active == R_is_active)
+					{
+						sprite[P2_FLASH].active = R_is_inactive;
+					}
+					else
+					{
+						sprite[P2_FLASH].active = R_is_active;
+					}
+
+					myTicks = rapTicks;
+					p2FlashCount++;
+				}
+			}
+
 			if (!chooseFighterDone && p1Selected > -1 && p2Selected > -1)
 			{
 				chooseFighterDone = true;
@@ -2526,7 +2576,7 @@ void basicmain()
 					rapFadeClut(0,256,BLACKPAL);
 					jsfVsync(0);
 				}
-
+				
 				switchScreenVsBattle(p1Cursor, p2Cursor);
 				sfxIntro(&soundHandler);
 				myTicks = rapTicks;
@@ -2549,6 +2599,10 @@ void basicmain()
 				spriteDelayInit();
 				sleepInit();
 				switchScreenFight(p1Cursor, p2Cursor);
+				u235StopModule();
+				u235Silence();
+				u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
+				u235ModuleVol(15);
 			}
 		}
 		else if (onScreenFight)
@@ -2717,6 +2771,23 @@ void basicmain()
 			bloodUpdate(&soundHandler);
 			spriteDelayUpdate();
 			
+			if (rapTicks >= myTicks + 1)
+			{
+				testingBackgroundX += 1 * testingBackgroundDirection;
+
+				if (testingBackgroundDirection == 1 && testingBackgroundX > 300)
+				{
+					testingBackgroundDirection = -1;
+				}
+				else if (testingBackgroundDirection == -1 && testingBackgroundX <= 0)
+				{
+					testingBackgroundDirection = 1;
+				}
+				myTicks = rapTicks;
+			}
+
+			setFrame(BACKGROUND, 336, 172, testingBackgroundX, 0, 0.5f, (int)imageBuffer);
+
 			if(pad1 & JAGPAD_STAR)
 			{
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
@@ -2779,7 +2850,8 @@ void switchScreenChooseFighter()
 
 	onTitleScreen = false;
 	onScreenChooseFighter = true;
-	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,256);
+	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
+	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
 	fighterMakeSelectable(&fighterKano, true);
@@ -2898,9 +2970,9 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 	sprite[STAGE_PIT_BACKGROUND].gfxbase=(int)imageBuffer;
 	sprite[STAGE_PIT_BACKGROUND].active=R_is_active;
 
-	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,48);
-	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),3,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),4,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,64);
+	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),4,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),5,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_HUD_clut),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);
@@ -3074,6 +3146,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterCage);
 			sprite[P1_CURSOR].x_ = 7;
 			sprite[P1_CURSOR].y_ = 42;
+			sprite[P1_FLASH].x_ = 7;
+			sprite[P1_FLASH].y_ = 46;
 			break;
 		case 1:
 			//Kano
@@ -3082,6 +3156,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterKano);
 			sprite[P1_CURSOR].x_ = 68;
 			sprite[P1_CURSOR].y_ = 42;
+			sprite[P1_FLASH].x_ = 68;
+			sprite[P1_FLASH].y_ = 46;
 			break;
 		case 2:
 			//Sub-Zero
@@ -3090,6 +3166,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterSubzero);
 			sprite[P1_CURSOR].x_ = 189;
 			sprite[P1_CURSOR].y_ = 42;
+			sprite[P1_FLASH].x_ = 189;
+			sprite[P1_FLASH].y_ = 46;
 			break;
 		case 3:
 			//Sonya
@@ -3098,6 +3176,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterSonya);
 			sprite[P1_CURSOR].x_ = 250;
 			sprite[P1_CURSOR].y_ = 42;
+			sprite[P1_FLASH].x_ = 250;
+			sprite[P1_FLASH].y_ = 46;
 			break;
 		case 4:
 			//Raiden
@@ -3106,6 +3186,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterRaiden);
 			sprite[P1_CURSOR].x_ = 68;
 			sprite[P1_CURSOR].y_ = 116;
+			sprite[P1_FLASH].x_ = 68;
+			sprite[P1_FLASH].y_ = 120;
 			sprite[LIGHTNING].active = R_is_active;
 			break;
 		case 5:
@@ -3115,6 +3197,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterKang);
 			sprite[P1_CURSOR].x_ = 129;
 			sprite[P1_CURSOR].y_ = 116;
+			sprite[P1_FLASH].x_ = 129;
+			sprite[P1_FLASH].y_ = 120;
 			break;
 		case 6:
 			//Scorpion
@@ -3123,6 +3207,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterScorpion);
 			sprite[P1_CURSOR].x_ = 189;
 			sprite[P1_CURSOR].y_ = 116;
+			sprite[P1_FLASH].x_ = 189;
+			sprite[P1_FLASH].y_ = 120;
 			break;
 	}
 
@@ -3135,6 +3221,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterCage2);
 			sprite[P2_CURSOR].x_ = 7;
 			sprite[P2_CURSOR].y_ = 42;
+			sprite[P2_FLASH].x_ = 7;
+			sprite[P2_FLASH].y_ = 46;
 			break;
 		case 1:
 			//Kano
@@ -3143,6 +3231,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterKano2);
 			sprite[P2_CURSOR].x_ = 68;
 			sprite[P2_CURSOR].y_ = 42;
+			sprite[P2_FLASH].x_ = 68;
+			sprite[P2_FLASH].y_ = 46;
 			break;
 		case 2:
 			//Sub-Zero
@@ -3151,6 +3241,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterSubzero2);
 			sprite[P2_CURSOR].x_ = 189;
 			sprite[P2_CURSOR].y_ = 42;
+			sprite[P2_FLASH].x_ = 189;
+			sprite[P2_FLASH].y_ = 46;
 			break;
 		case 3:
 			//Sonya
@@ -3159,6 +3251,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterSonya2);
 			sprite[P2_CURSOR].x_ = 250;
 			sprite[P2_CURSOR].y_ = 42;
+			sprite[P2_FLASH].x_ = 250;
+			sprite[P2_FLASH].y_ = 46;
 			break;
 		case 4:
 			//Raiden
@@ -3168,6 +3262,8 @@ void SetPlayerPalettes()
 			sprite[LIGHTNING2].active = R_is_active;
 			sprite[P2_CURSOR].x_ = 68;
 			sprite[P2_CURSOR].y_ = 116;
+			sprite[P2_FLASH].x_ = 68;
+			sprite[P2_FLASH].y_ = 120;
 			break;
 		case 5:
 			//Liu Kang
@@ -3176,6 +3272,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterKang2);
 			sprite[P2_CURSOR].x_ = 129;
 			sprite[P2_CURSOR].y_ = 116;
+			sprite[P2_FLASH].x_ = 129;
+			sprite[P2_FLASH].y_ = 120;
 			break;
 		case 6:
 			//Scorpion
@@ -3184,6 +3282,8 @@ void SetPlayerPalettes()
 			fighterShow(&fighterScorpion2);
 			sprite[P2_CURSOR].x_ = 189;
 			sprite[P2_CURSOR].y_ = 116;
+			sprite[P2_FLASH].x_ = 189;
+			sprite[P2_FLASH].y_ = 120;
 			break;
 	}
 

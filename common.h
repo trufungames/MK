@@ -3,14 +3,16 @@
 #include "romassets.h"
 
 #define BACKGROUND 0
-#define P2_CURSOR 1
-#define P1_CURSOR 2
-#define P1_FIGHTER 3
-#define P2_FIGHTER 4
-#define LIGHTNING 5
-#define LIGHTNING2 6
+#define P2_FLASH 1
+#define P2_CURSOR 2
+#define P1_FLASH 3
+#define P1_CURSOR 4
+#define P1_FIGHTER 5
+#define P2_FIGHTER 6
+#define LIGHTNING 7
+#define LIGHTNING2 8
 
-#define BATTLE_SCREEN 8
+#define BATTLE_SCREEN 10
 #define TEXT_PARTICLES BATTLE_SCREEN + 1
 #define P1_PT_PORTRAIT TEXT_PARTICLES + 1
 #define P2_PT_PORTRAIT P1_PT_PORTRAIT + 1
@@ -37,6 +39,54 @@
 #define P1_NAME P2_HEALTHBAR + 1
 #define P2_NAME P1_NAME + 1
 //-----------------------------------------------------------------------------------------------------
+#define SOUND_P1CURSOR 0
+#define SOUND_P2CURSOR 1
+#define SOUND_SELECTED 2
+#define SOUND_CAGE 3
+#define SOUND_KANO 4
+#define SOUND_RAIDEN 5
+#define SOUND_KANG 6
+#define SOUND_SCORPION 7
+#define SOUND_SUBZERO 8
+#define SOUND_SONYA 9
+#define SOUND_FIGHT 10
+#define SOUND_GONG 11
+#define SOUND_INTRO 12
+#define SOUND_HIYA_FEMALE1 13
+#define SOUND_HIYA_FEMALE2 14
+#define SOUND_HIYA_MALE1 15
+#define SOUND_HIYA_MALE2 16
+#define SOUND_HIYA_KANG1 17
+#define SOUND_HIYA_KANG2 18
+#define SOUND_HIYA_NINJA1 19
+#define SOUND_HIYA_NINJA2 20
+#define SOUND_BLOCK01 21
+#define SOUND_BLOCK02 22
+#define SOUND_GROAN_MALE01 23
+#define SOUND_GROAN_MALE02 24
+#define SOUND_GROAN_FEMALE01 25
+#define SOUND_GROAN_FEMALE02 26
+#define SOUND_HIT_01 27
+#define SOUND_HIT_02 28
+#define SOUND_HIT_IMPACT 29
+#define SOUND_SWING_01 30
+#define SOUND_SWING_02 31
+#define SOUND_BLOOD01 32
+#define SOUND_BLOOD02 33
+#define SOUND_YELL_MALE01 34
+#define SOUND_YELL_MALE02 35
+#define SOUND_YELL_FEMALE 36
+#define SOUND_YELL_KANG 37
+#define SOUND_JUMP_MALE 38
+#define SOUND_JUMP_FEMALE 39
+#define SOUND_JUMP_NINJA 40
+#define SOUND_JUMP_ROLL 41
+#define SOUND_THUD 42
+#define SOUND_CROWD_AWW 43
+#define SOUND_ANNOUNCER_EXCELLENT 44
+#define SOUND_ANNOUNCER_LAUGH 45
+
+//-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
 #define DMG_LP 2
 #define DMG_HP 2
@@ -61,10 +111,10 @@
 #define KASUMI 9
 
 //-----------------------------------------------------------------------------------------------------
-#define SOUND_CHANNEL_PLAYER1 1
-#define SOUND_CHANNEL_PLAYER2 2
-#define SOUND_CHANNEL_ANNOUNCER 3
-#define SOUND_CHANNEL_MISC 4
+#define SOUND_CHANNEL_PLAYER1 4
+#define SOUND_CHANNEL_PLAYER2 5
+#define SOUND_CHANNEL_ANNOUNCER 6
+#define SOUND_CHANNEL_MISC 7
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

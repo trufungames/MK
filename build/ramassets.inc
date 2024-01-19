@@ -1,9 +1,21 @@
 .dphrase
-fight_sam: incbin "build/fight_16.wav.raw"
+p1cursor_sam: incbin "build/p1cursor.wav.raw"
 .dc.b 0,0,0
-fight_sam_end:
-.extern fight_sam
-.extern fight_sam_end
+p1cursor_sam_end:
+.extern p1cursor_sam
+.extern p1cursor_sam_end
+.dphrase
+p2cursor_sam: incbin "build/p2cursor.wav.raw"
+.dc.b 0,0,0
+p2cursor_sam_end:
+.extern p2cursor_sam
+.extern p2cursor_sam_end
+.dphrase
+p2selected_sam: incbin "build/p2selected.wav.raw"
+.dc.b 0,0,0
+p2selected_sam_end:
+.extern p2selected_sam
+.extern p2selected_sam_end
 .dphrase
 johnnycage_sam: incbin "build/johnnycage.wav.raw"
 .dc.b 0,0,0
@@ -47,17 +59,11 @@ sonya_sam_end:
 .extern sonya_sam
 .extern sonya_sam_end
 .dphrase
-p1cursor_sam: incbin "build/p1cursor.wav.raw"
+fight_sam: incbin "build/fight_16.wav.raw"
 .dc.b 0,0,0
-p1cursor_sam_end:
-.extern p1cursor_sam
-.extern p1cursor_sam_end
-.dphrase
-p2cursor_sam: incbin "build/p2cursor.wav.raw"
-.dc.b 0,0,0
-p2cursor_sam_end:
-.extern p2cursor_sam
-.extern p2cursor_sam_end
+fight_sam_end:
+.extern fight_sam
+.extern fight_sam_end
 .dphrase
 gong_sam: incbin "build/gong.wav.raw"
 .dc.b 0,0,0
@@ -268,4 +274,14 @@ announcer_laugh_sam: incbin "build/announcer_laugh.wav.raw"
 announcer_laugh_sam_end:
 .extern announcer_laugh_sam
 .extern announcer_laugh_sam_end
+.dphrase
+MOD_TITLE: incbin "ASSETS/Music/mk_title.mod"
+MOD_TITLE_end:
+.extern MOD_TITLE
+.extern MOD_TITLE_end
+.dphrase
+MOD_STAGE: incbin "ASSETS/Music/mk_stage.mod"
+MOD_STAGE_end:
+.extern MOD_STAGE
+.extern MOD_STAGE_end
 .dphrase

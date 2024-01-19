@@ -6,10 +6,19 @@
 ;;			use Notepad++ for maximum readability. 
 ;;
 
-; THE NEXT LINE CONTROLS WHICH PLAYER WILL BE USED
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-player equ 0      ;0=Zerosquare's player, 1=U-235 player
+; CHOOSE WHICH SOUND PLAYER WILL BE USED.
+; 0=Zerosquare's player
+; 1=U-235 player ( selecting U235 may cause issues in Virtual Jaguar 2.1.2 but works on hardware )
+; 2=LSP player
 
+player equ 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; THE NEXT LINE CONTROLS IF YOUR PROJECT USES THE RETRO HQ GAMEDRIVE
+useGD equ 0		;0=Not using GD.  1=Use GD functions.
 ;; DO NOT MODIFY THE FOLLOWING LINES
 			include				"externs.inc"
 
@@ -17,9 +26,15 @@ player equ 0      ;0=Zerosquare's player, 1=U-235 player
 			include				"JAGUAR.INC"								; Include JAGUAR system labels
 			include				"RAPTOR.INC"								; Include RAPTOR library labels
 			include				"RAPTOR235.INC"								; Include RAPTOR library labels
-			include				"U235SE.INC"									; Include U235SE library labels
-
-
+if useGD=1			
+			include				"RAPTORGD.INC"								; Include RAPTOR library labels
+endif
+if player=1		
+			include				"U235SE.INC"								; Include U235SE library labels
+endif
+if player=2			
+			include				"RAPTORLSP.INC"								; Include RAPTOR library labels
+endif
 			.text							
 
 ;; YOUR APPLICATION GOES HERE
@@ -98,21 +113,28 @@ LIST_display					equ				0										; the first display list
 			move.l	#0,raptor_mapbmptiles					; <<<<---- THIS WILL NEED TO BE CHANGED IF USING THE TILEMAP MODULE <<<<----
 			jsr		RAPTOR_HWinit				; Setup Jaguar hardware / install RAPTOR library
 
-;; we're using Joystick input, so we now need U235 Sound Engine running
-                if player=1
+if useGD=1
+			jsr		RAPTOR_GD_Init														; Call GD Init (MUST be before DSP setup)
+endif
+if player=0
+			bsr		Audio_Init															; init Zero Sound Engine
+else
+	.extern Audio_Play
+	.extern Input_Read
+	Audio_Play:
+	Input_Read:
+endif	
+		
+if player=1
 			move.l	#U235SE_16KHZ,d0
 			move.l	#U235SE_16KHZ_PERIOD,d1
 			jsr		RAPTOR_U235init														; init the U235 Sound Engine
-.extern Audio_Play
-.extern Input_Read
-Audio_Play:
-Input_Read:
-                        
-                else
-			bsr             Audio_Init
-                endif
+endif
 
-						
+if player=2
+			move.l	#16000,d0
+			jsr 	RAPTOR_LSP_Init														; init the LSP Sound Engine
+endif
 ;; get something on the screen
 	
 			jsr		RAPTOR_start_video													; start video processing
@@ -169,6 +191,7 @@ if player=0
 else
 	include "jagstudio_pad_u235.inc"
 endif	
+
 	
 ;;
 ;; Graphics

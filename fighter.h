@@ -174,4 +174,4 @@ void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void fighterAddPendingDamage(struct Fighter* fighter, int damage);
 
-void fighterTakeDamage(struct Fighter* fighter, int damage);
+void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks);

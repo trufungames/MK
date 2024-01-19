@@ -193,12 +193,12 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
 {
     walkForward = fighter->direction == -1;
 
-    if (fighter->DoBlockSequence)
+    if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
     {
         fighter->DoBlockSequence = false;
         animator->currentFrame = 0;
         sfxBlock(fighter->soundHandler, fighter->isPlayer1);
-        fighterTakeDamage(fighter, DMG_BLOCKED);
+        fighterTakeDamage(fighter, DMG_BLOCKED, 8);
     }
     else if (fighter->IsTurning && !fighter->IsJumping && !fighter->IsJumpingRollBackward && !fighter->IsJumpingRollForward)
     {
@@ -283,7 +283,16 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
     {
         if (fighter->IsHitLow || fighter->IsHitHigh || fighter->IsHitBack || fighter->IsHitFall || fighter->IsHitSweep || fighter->IsHitBackHigh || fighter->IsHitDropKick)
         {
-            fighterTakeDamage(fighter, fighter->pendingDamage);
+            if (fighter->IsHitFall)
+            {
+                fighterTakeDamage(fighter, fighter->pendingDamage, 0);    //no impact sleep for uppercut
+            }
+            else
+            {
+                fighterTakeDamage(fighter, fighter->pendingDamage, 8);
+            }
+
+            
             fighter->pendingDamage = 0;
             fighter->playerXTraveled = 0.0f;
             fighter->IsBeingDamaged = true;
@@ -1527,6 +1536,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
     {
         fighter2->IsBlockingHit = true;
         fighter2->DoBlockSequence = true;
+        fighter2->lastTicks = rapTicks;
     }
 
     if (!fighter2->IsBeingDamaged && !(fighter2->IsBlocking && fighter2->IsDucking))
@@ -1541,6 +1551,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
     {
         fighter2->IsBlockingHit = true;
         fighter2->DoBlockSequence = true;
+        fighter2->lastTicks = rapTicks;
     }
 }
 
@@ -1595,7 +1606,7 @@ void fighterAddPendingDamage(struct Fighter* fighter, int damage)
     fighter->pendingDamage = damage;
 }
 
-void fighterTakeDamage(struct Fighter* fighter, int damage)
+void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
 {
     fighter->hitPoints -= damage;
 
@@ -1614,5 +1625,5 @@ void fighterTakeDamage(struct Fighter* fighter, int damage)
         sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter->hitPoints) * 4);
     }
 
-    sleepAdd(6);
+    sleepAdd(sleepTicks);
 }

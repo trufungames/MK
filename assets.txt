@@ -36,6 +36,7 @@ ROM,BMP_CHOOSEFIGHTER,gfx_clut_pack,assets\gfx\choose_your_fighter.bmp
 ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
+ROM,BMP_P2_SELECTOR_FLASH,gfx_clut,ASSETS\GFX\p2_selector_flash.BMP
 ROM,BMP_BATTLE_THEPIT,gfx_clut,ASSETS\GFX\battle_thepit.BMP
 ROM,BMPCAGE,gfx_clut,ASSETS\GFX\cage.BMP
 ROM,BMPKANG,gfx_clut,ASSETS\GFX\liukang.BMP
@@ -80,7 +81,9 @@ ROM,BMP_NAME_CAGE,gfx_clut,ASSETS\GFX\name_cage.BMP
 ROM,BMP_NAME_REPTILE,gfx_clut,ASSETS\GFX\name_reptile.BMP
 ROM,BMP_NAME_KASUMI,gfx_clut,ASSETS\GFX\name_kasumi.BMP
 
-ABS,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
+ABS,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
+ABS,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
+ABS,p2selected_sam,sfx_raw8000,ASSETS\SFX\p2selected.wav
 ABS,johnnycage_sam,sfx_raw8000,ASSETS\SFX\johnnycage.wav
 ABS,kano_sam,sfx_raw8000,ASSETS\SFX\kano.wav
 ABS,raiden_sam,sfx_raw8000,ASSETS\SFX\raiden.wav
@@ -88,8 +91,7 @@ ABS,liukang_sam,sfx_raw8000,ASSETS\SFX\liukang.wav
 ABS,scorpion_sam,sfx_raw8000,ASSETS\SFX\scorpion.wav
 ABS,subzero_sam,sfx_raw8000,ASSETS\SFX\subzero.wav
 ABS,sonya_sam,sfx_raw8000,ASSETS\SFX\sonya.wav
-ABS,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
-ABS,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
+ABS,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
 ABS,gong_sam,sfx_raw8000,ASSETS\SFX\gong.wav
 ABS,intro_sam,sfx_raw8000,ASSETS\SFX\intro.wav
 ABS,hiya_female1_sam,sfx_raw8000,ASSETS\SFX\hiya_female1.wav
@@ -125,5 +127,8 @@ ABS,thud_sam,sfx_raw8000,ASSETS\SFX\thud.wav
 ABS,crowd_aww_sam,sfx_raw8000,ASSETS\SFX\crowd_aww.wav
 ABS,announcer_excellent_sam,sfx_raw8000,ASSETS\SFX\announcer_excellent.wav
 ABS,announcer_laugh_sam,sfx_raw8000,ASSETS\SFX\announcer_laugh.wav
+
+ABS,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
+ABS,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod
 ' End of file.
 

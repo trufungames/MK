@@ -15,6 +15,7 @@ void sfxSubzero(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxSonya(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxP1Cursor(struct SoundHandler* soundHandler);
 void sfxP2Cursor(struct SoundHandler* soundHandler);
+void sfxSelected(struct SoundHandler* soundHandler);
 void sfxGong(struct SoundHandler* soundHandler);
 void sfxIntro(struct SoundHandler* soundHandler);
 void sfxHiyaMale(struct SoundHandler* soundHandler, bool isPlayer1);
