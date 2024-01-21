@@ -117,13 +117,13 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 			}
 		}
 
-		// if (IsScrollingUp || IsScrollingDown || IsShaking)
-		// {
-		// 	sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
-		// 	//sprite[STAGE_PIT_MOON].y_ += bgYInc;
-		// 	fighter1->positionY += bgYInc;
-		// 	fighter2->positionY += bgYInc;
-		// }
+		if (IsScrollingUp || IsScrollingDown || IsShaking)
+		{
+			sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
+			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
+			fighter1->positionY += bgYInc;
+			fighter2->positionY += bgYInc;
+		}
 		
 		LastTicks = rapTicks;
 	}

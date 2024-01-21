@@ -40,3 +40,5 @@ void sfxThud(struct SoundHandler* soundHandler);
 void sfxCrowdAww(struct SoundHandler* soundHandler);
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler);
 void sfxAnnouncerLaugh(struct SoundHandler* soundHandler);
+void musicTitle(struct SoundHandler* soundHandler);
+void musicStage(struct SoundHandler* soundHandler);

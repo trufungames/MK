@@ -18,7 +18,7 @@ sample0:	dc.l	p1cursor_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s0_vol:		dc.b	63				; volume
+s0_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
 sample1:	dc.l	p2cursor_sam		; start of sample
@@ -27,7 +27,7 @@ sample1:	dc.l	p2cursor_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s1_vol:		dc.b	63				; volume
+s1_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
 sample2:	dc.l	p2selected_sam		; start of sample
@@ -36,7 +36,7 @@ sample2:	dc.l	p2selected_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s2_vol:		dc.b	63				; volume
+s2_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
 sample3:	dc.l	johnnycage_sam		; start of sample
@@ -45,7 +45,7 @@ sample3:	dc.l	johnnycage_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s3_vol:		dc.b	63				; volume
+s3_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 			
 sample4:	dc.l	kano_sam		; start of sample
@@ -54,7 +54,7 @@ sample4:	dc.l	kano_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s4_vol:		dc.b	63				; volume
+s4_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample5:	dc.l	raiden_sam		; start of sample
@@ -63,7 +63,7 @@ sample5:	dc.l	raiden_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine t5une
-s5_vol:		dc.b	63				; volume
+s5_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample6:	dc.l	liukang_sam		; start of sample
@@ -72,7 +72,7 @@ sample6:	dc.l	liukang_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s6_vol:		dc.b	63				; volume
+s6_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample7:	dc.l	scorpion_sam		; start of sample
@@ -81,7 +81,7 @@ sample7:	dc.l	scorpion_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s7_vol:		dc.b	63				; volume
+s7_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample8:	dc.l	subzero_sam		; start of sample
@@ -90,7 +90,7 @@ sample8:	dc.l	subzero_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s8_vol:		dc.b	63				; volume
+s8_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample9:	dc.l	sonya_sam		; start of sample
@@ -99,7 +99,7 @@ sample9:	dc.l	sonya_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s9_vol:		dc.b	63				; volume
+s9_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate				
 
 sample10:	dc.l	fight_sam		; start of sample
@@ -108,7 +108,7 @@ sample10:	dc.l	fight_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s10_vol:		dc.b	63				; volume
+s10_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample11:	dc.l	gong_sam		; start of sample
@@ -117,7 +117,7 @@ sample11:	dc.l	gong_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s11_vol:		dc.b	63				; volume
+s11_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample12:	dc.l	intro_sam		; start of sample
@@ -126,7 +126,7 @@ sample12:	dc.l	intro_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s12_vol:		dc.b	63				; volume
+s12_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate				
 
 sample13:	dc.l	hiya_female1_sam		; start of sample
@@ -135,7 +135,7 @@ sample13:	dc.l	hiya_female1_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s13_vol:		dc.b	63				; volume
+s13_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 	
 sample14:	dc.l	hiya_female2_sam		; start of sample
@@ -144,7 +144,7 @@ sample14:	dc.l	hiya_female2_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s14_vol:		dc.b	63				; volume
+s14_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
 sample15:	dc.l	hiya_male1_sam		; start of sample
@@ -153,7 +153,7 @@ sample15:	dc.l	hiya_male1_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s15_vol:		dc.b	63				; volume
+s15_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 	
 sample16:	dc.l	hiya_male2_sam		; start of sample
@@ -162,7 +162,7 @@ sample16:	dc.l	hiya_male2_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s16_vol:		dc.b	63				; volume
+s16_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample17:	dc.l	hiya_kang1_sam		; start of sample
@@ -171,7 +171,7 @@ sample17:	dc.l	hiya_kang1_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s17_vol:		dc.b	63				; volume
+s17_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 	
 sample18:	dc.l	hiya_kang2_sam		; start of sample
@@ -180,7 +180,7 @@ sample18:	dc.l	hiya_kang2_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s18_vol:		dc.b	63				; volume
+s18_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample19:	dc.l	hiya_ninja1_sam		; start of sample
@@ -189,7 +189,7 @@ sample19:	dc.l	hiya_ninja1_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s19_vol:		dc.b	63				; volume
+s19_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 	
 sample20:	dc.l	hiya_ninja2_sam		; start of sample
@@ -198,7 +198,7 @@ sample20:	dc.l	hiya_ninja2_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s20_vol:		dc.b	63				; volume
+s20_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample21:	dc.l	block01_sam		; start of sample
@@ -207,7 +207,7 @@ sample21:	dc.l	block01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s21_vol:		dc.b	63				; volume
+s21_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample22:	dc.l	block02_sam		; start of sample
@@ -216,7 +216,7 @@ sample22:	dc.l	block02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s22_vol:		dc.b	63				; volume
+s22_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample23:	dc.l	groan_male01_sam		; start of sample
@@ -225,7 +225,7 @@ sample23:	dc.l	groan_male01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s23_vol:		dc.b	63				; volume
+s23_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample24:	dc.l	groan_male02_sam		; start of sample
@@ -234,7 +234,7 @@ sample24:	dc.l	groan_male02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s24_vol:		dc.b	63				; volume
+s24_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample25:	dc.l	groan_female01_sam		; start of sample
@@ -243,7 +243,7 @@ sample25:	dc.l	groan_female01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s25_vol:		dc.b	63				; volume
+s25_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample26:	dc.l	groan_female02_sam		; start of sample
@@ -252,7 +252,7 @@ sample26:	dc.l	groan_female02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s26_vol:		dc.b	63				; volume
+s26_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample27:	dc.l	hit_01_sam		; start of sample
@@ -261,7 +261,7 @@ sample27:	dc.l	hit_01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s27_vol:		dc.b	63				; volume
+s27_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample28:	dc.l	hit_02_sam		; start of sample
@@ -270,7 +270,7 @@ sample28:	dc.l	hit_02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s28_vol:		dc.b	63				; volume
+s28_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample29:	dc.l	hit_impact_sam		; start of sample
@@ -279,7 +279,7 @@ sample29:	dc.l	hit_impact_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s29_vol:		dc.b	63				; volume
+s29_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample30:	dc.l	swing_01_sam		; start of sample
@@ -288,7 +288,7 @@ sample30:	dc.l	swing_01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s30_vol:		dc.b	63				; volume
+s30_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample31:	dc.l	swing_02_sam		; start of sample
@@ -297,7 +297,7 @@ sample31:	dc.l	swing_02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s31_vol:		dc.b	63				; volume
+s31_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample32:	dc.l	blood01_sam		; start of sample
@@ -306,7 +306,7 @@ sample32:	dc.l	blood01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s32_vol:		dc.b	63				; volume
+s32_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample33:	dc.l	blood02_sam		; start of sample
@@ -315,7 +315,7 @@ sample33:	dc.l	blood02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s33_vol:		dc.b	63				; volume
+s33_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample34:	dc.l	yell_male01_sam		; start of sample
@@ -324,7 +324,7 @@ sample34:	dc.l	yell_male01_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s34_vol:		dc.b	63				; volume
+s34_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample35:	dc.l	yell_male02_sam		; start of sample
@@ -333,7 +333,7 @@ sample35:	dc.l	yell_male02_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s35_vol:		dc.b	63				; volume
+s35_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample36:	dc.l	yell_female_sam		; start of sample
@@ -342,7 +342,7 @@ sample36:	dc.l	yell_female_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s36_vol:		dc.b	63				; volume
+s36_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample37:	dc.l	yell_kang_sam		; start of sample
@@ -351,7 +351,7 @@ sample37:	dc.l	yell_kang_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s37_vol:		dc.b	63				; volume
+s37_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample38:	dc.l	jump_male_sam		; start of sample
@@ -360,7 +360,7 @@ sample38:	dc.l	jump_male_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s38_vol:		dc.b	63				; volume
+s38_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample39:	dc.l	jump_female_sam		; start of sample
@@ -369,7 +369,7 @@ sample39:	dc.l	jump_female_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s39_vol:		dc.b	63				; volume
+s39_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample40:	dc.l	jump_ninja_sam		; start of sample
@@ -378,7 +378,7 @@ sample40:	dc.l	jump_ninja_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s40_vol:		dc.b	63				; volume
+s40_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample41:	dc.l	jump_roll_sam		; start of sample
@@ -387,7 +387,7 @@ sample41:	dc.l	jump_roll_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s41_vol:		dc.b	63				; volume
+s41_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample42:	dc.l	thud_sam		; start of sample
@@ -396,7 +396,7 @@ sample42:	dc.l	thud_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s42_vol:		dc.b	63				; volume
+s42_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample43:	dc.l	crowd_aww_sam		; start of sample
@@ -405,7 +405,7 @@ sample43:	dc.l	crowd_aww_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s43_vol:		dc.b	63				; volume
+s43_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample44:	dc.l	announcer_excellent_sam		; start of sample
@@ -414,7 +414,7 @@ sample44:	dc.l	announcer_excellent_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s44_vol:		dc.b	63				; volume
+s44_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 sample45:	dc.l	announcer_laugh_sam		; start of sample
@@ -423,7 +423,7 @@ sample45:	dc.l	announcer_laugh_sam		; start of sample
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
 			dc.b	0				; fine tune
-s45_vol:		dc.b	63				; volume
+s45_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
 
 ; END OF FILE.

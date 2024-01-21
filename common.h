@@ -98,8 +98,12 @@
 #define DMG_JUMPKICK 4
 #define DMG_DROPKICK 6
 #define DMG_BLOCKED 1
-
 //-----------------------------------------------------------------------------------------------------
+#define CAMERA_BOUND_LEFT 1
+#define CAMERA_BOUND_RIGHT 319
+#define FIGHTER_WIDTH 80
+#define FLOOR_LOCATION_Y 188
+//---j--------------------------------------------------------------------------------------------------
 #define CAGE 1
 #define KANO 2
 #define RAIDEN 3

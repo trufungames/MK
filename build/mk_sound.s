@@ -880,6 +880,50 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
+	.even
+	.globl	__Z10musicTitleP12SoundHandler
+__Z10musicTitleP12SoundHandler:
+	link.w %fp,#0
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a2
+	tst.b 1(%a2)
+	jne .L254
+	move.l -4(%fp),%a2
+	unlk %fp
+	rts
+.L254:
+	jsr __Z14u235StopModulev
+	jsr __Z11u235Silencev
+	pea 1.w
+	pea MOD_TITLE
+	jsr __Z14u235PlayModuleis
+	addq.l #8,%sp
+	move.l 6(%a2),8(%fp)
+	move.l -4(%fp),%a2
+	unlk %fp
+	jra _u235ModuleVol
+	.even
+	.globl	__Z10musicStageP12SoundHandler
+__Z10musicStageP12SoundHandler:
+	link.w %fp,#0
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a2
+	tst.b 1(%a2)
+	jne .L259
+	move.l -4(%fp),%a2
+	unlk %fp
+	rts
+.L259:
+	jsr __Z14u235StopModulev
+	jsr __Z11u235Silencev
+	pea 1.w
+	pea MOD_STAGE
+	jsr __Z14u235PlayModuleis
+	addq.l #8,%sp
+	move.l 6(%a2),8(%fp)
+	move.l -4(%fp),%a2
+	unlk %fp
+	jra _u235ModuleVol
 	.globl	colliders
 	.data
 	.even

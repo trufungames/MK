@@ -405,3 +405,25 @@ void sfxAnnouncerLaugh(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_ANNOUNCER_LAUGH, 8000);
 	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(announcer_laugh_sam),(STRPTR(announcer_laugh_sam_end)-STRPTR(announcer_laugh_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
 }
+
+void musicTitle(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+	
+	u235StopModule();
+	u235Silence();
+	u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);
+}
+
+void musicStage(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);	
+}

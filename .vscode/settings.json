@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "sound.h": "c"
+        "sound.h": "c",
+        "spriteanimator.h": "c"
     }
 }

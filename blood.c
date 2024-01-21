@@ -179,12 +179,10 @@ float bloodSpeed = 0.0f;
 float gravity = 0.0f;
 float bloodDropMomentumStart = 0.0f;
 int bloodStayDelay = 0;
-int poolYLocation = 0;
 int bloodSpeedRnd = 0;
 
 void bloodInit()
 {
-    poolYLocation = 188;
     bloodStayDelay = 180;
     updateTicks = 3;
     bloodSpeed = 6.0f;
@@ -250,9 +248,9 @@ void bloodUpdate(struct SoundHandler* soundHandler)
                 sprite[bloodDrops[i].SpriteIndex].x_ -= bloodSpeedRnd * bloodDrops[i].Direction;
                 sprite[bloodDrops[i].SpriteIndex].y_ += bloodDrops[i].Momentum;
 
-                if (sprite[bloodDrops[i].SpriteIndex].y_ > poolYLocation)
+                if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y)
                 {
-                    bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, poolYLocation + (rapRND() & 8));
+                    bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, FLOOR_LOCATION_Y + (rapRND() & 8));
                     sfxBlood(soundHandler);
                     sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
                     bloodDrops[i].InUse  = false;

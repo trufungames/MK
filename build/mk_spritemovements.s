@@ -39,35 +39,41 @@ __Z12bgScrollLeftf:
 	.globl	__Z8bgUpdateP7FighterS0_
 __Z8bgUpdateP7FighterS0_:
 	link.w %fp,#0
-	movem.l #8252,-(%sp)
+	movem.l #14396,-(%sp)
+	move.l 8(%fp),%a5
+	move.l 12(%fp),%a4
 	move.w raptor_ticks,%a3
 	cmp.l _LastTicks.l,%a3
 	jle .L6
 	move.l sprite,%a2
-	move.l #___floatsisf,%d2
+	move.l #___floatsisf,%d4
 	move.w 3080(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l %d2,%a0
+	move.l %d4,%a0
 	jsr (%a0)
-	lea ___addsf3,%a5
+	move.l #___addsf3,%d3
 	move.l #0x40000000,(%sp)
 	move.l %d0,-(%sp)
-	jsr (%a5)
+	move.l %d3,%a0
+	jsr (%a0)
 	addq.l #8,%sp
-	lea ___fixsfsi,%a4
+	move.l #___fixsfsi,%d2
 	move.l %d0,-(%sp)
-	jsr (%a4)
+	move.l %d2,%a0
+	jsr (%a0)
 	move.w %d0,3080(%a2)
 	move.w 3272(%a2),%a0
 	move.l %a0,(%sp)
-	move.l %d2,%a0
+	move.l %d4,%a0
 	jsr (%a0)
 	move.l #0x40000000,(%sp)
 	move.l %d0,-(%sp)
-	jsr (%a5)
+	move.l %d3,%a0
+	jsr (%a0)
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	jsr (%a4)
+	move.l %d2,%a0
+	jsr (%a0)
 	addq.l #4,%sp
 	move.w %d0,3272(%a2)
 	tst.b _IsScrollingUp
@@ -79,19 +85,29 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d1,_bgYInc
 	move.b #15,%d1
 	cmp.l %d0,%d1
-	jge .L9
+	jge .L13
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
-.L9:
+.L10:
+	tst.b _IsScrollingDown
+	jne .L13
+	tst.b _IsShaking
+	jeq .L14
+.L13:
+	move.l _bgYInc,%d0
+	add.w %d0,3468(%a2)
+	add.l %d0,236(%a5)
+	add.l %d0,236(%a4)
+.L14:
 	move.l %a3,_LastTicks
 .L6:
-	movem.l -20(%fp),#15364
+	movem.l -28(%fp),#15388
 	unlk %fp
 	rts
 .L8:
 	tst.b _IsScrollingDown
-	jeq .L10
+	jeq .L11
 	move.l _bgYOffset,%d0
 	subq.l #2,%d0
 	move.l %d0,_bgYOffset
@@ -99,7 +115,7 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d1,_bgYInc
 	move.b #-15,%d1
 	cmp.l %d0,%d1
-	jle .L9
+	jle .L10
 	clr.l _bgYInc
 	clr.l _bgYOffset
 	clr.b _IsScrollingDown
@@ -107,11 +123,10 @@ __Z8bgUpdateP7FighterS0_:
 	clr.l _shakeCount
 	moveq #1,%d0
 	move.l %d0,_shakeDirection
-	move.l %a3,_LastTicks
-	jra .L6
-.L10:
+	jra .L10
+.L11:
 	tst.b _IsShaking
-	jeq .L9
+	jeq .L10
 	move.l _shakeDirection,%d0
 	move.l %d0,%d1
 	lsl.l #3,%d1
@@ -123,29 +138,32 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d0,_shakeCount
 	moveq #6,%d1
 	cmp.l %d0,%d1
-	jge .L9
+	jge .L10
 	clr.b _IsShaking
 	tst.b _scrollUpAfterShake
-	jeq .L9
+	jeq .L10
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
-	move.l %a3,_LastTicks
-	jra .L6
+	move.l _bgYInc,%d0
+	add.w %d0,3468(%a2)
+	add.l %d0,236(%a5)
+	add.l %d0,236(%a4)
+	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv
 __Z10bgScrollUpv:
 	link.w %fp,#0
 	tst.b _IsScrollingUp
-	jne .L13
+	jne .L17
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L13:
+.L17:
 	unlk %fp
 	rts
 	.even
@@ -153,14 +171,14 @@ __Z10bgScrollUpv:
 __Z12bgScrollDownv:
 	link.w %fp,#0
 	tst.b _IsScrollingDown
-	jne .L17
+	jne .L21
 	clr.l _bgYOffset
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
 	move.b #1,_IsScrollingDown
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L17:
+.L21:
 	unlk %fp
 	rts
 	.even
@@ -169,7 +187,7 @@ __Z7bgShakeb:
 	link.w %fp,#0
 	move.l 8(%fp),%d0
 	tst.b _IsShaking
-	jne .L21
+	jne .L25
 	move.b %d0,_scrollUpAfterShake
 	clr.l _bgYInc
 	clr.b _IsScrollingUp
@@ -180,7 +198,7 @@ __Z7bgShakeb:
 	move.l %d0,_shakeDirection
 	move.w raptor_ticks,%a0
 	move.l %a0,_LastTicks
-.L21:
+.L25:
 	unlk %fp
 	rts
 	.globl	_scrollUpAfterShake

@@ -2,6 +2,7 @@
 #include "spritemovements.h"
 #include "spriteanimator.h"
 #include "fighter.h"
+#include "camera.h"
 #include "sound.h"
 #include "impactFrame.h"
 #include "blood.h"
@@ -29,9 +30,9 @@ int ticksPerSec = 60;
 int lastTicks = 0;
 static SoundHandler soundHandler = {
 	true,  //sound on/off
-	false,  //music on/off
-	1,  //sound volume
-	1   //music volume
+	true,  //music on/off
+	163,  //sound volume
+	20   //music volume
 };
 static SpriteAnimator cageAnimator = {
 	P1_FIGHTER, 0.5f, BMPCAGE, 0, 0, 96
@@ -1857,9 +1858,6 @@ static Fighter fighterSonya2 = {
 
 void basicmain()
 {
-	int testingBackgroundX = 0;
-	int testingBackgroundDirection = 1;
-
 	pad1 = 0;
 	pad2 = 0;
 	int myTicks = 0;
@@ -2274,8 +2272,7 @@ void basicmain()
 					fadedOut = true;		
 					switchScreenChooseFighter();
 					//sfxGong(&soundHandler);
-					u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
-					u235ModuleVol(15);
+					musicTitle(&soundHandler);
 					//initGameAssets();
 				}
 			}
@@ -2599,10 +2596,6 @@ void basicmain()
 				spriteDelayInit();
 				sleepInit();
 				switchScreenFight(p1Cursor, p2Cursor);
-				u235StopModule();
-				u235Silence();
-				u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
-				u235ModuleVol(15);
 			}
 		}
 		else if (onScreenFight)
@@ -2768,26 +2761,15 @@ void basicmain()
 			fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
 			bgUpdate(fighter1Ptr, fighter2Ptr);
+
+			if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
+			{
+				cameraUpdate(fighter1Ptr, fighter2Ptr);
+			}
+			
 			bloodUpdate(&soundHandler);
 			spriteDelayUpdate();
 			
-			if (rapTicks >= myTicks + 1)
-			{
-				testingBackgroundX += 1 * testingBackgroundDirection;
-
-				if (testingBackgroundDirection == 1 && testingBackgroundX > 300)
-				{
-					testingBackgroundDirection = -1;
-				}
-				else if (testingBackgroundDirection == -1 && testingBackgroundX <= 0)
-				{
-					testingBackgroundDirection = 1;
-				}
-				myTicks = rapTicks;
-			}
-
-			setFrame(BACKGROUND, 336, 172, testingBackgroundX, 0, 0.5f, (int)imageBuffer);
-
 			if(pad1 & JAGPAD_STAR)
 			{
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
@@ -3128,6 +3110,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 	// sprite[NAME_KANO_P2].active = R_is_active;
 
 	rapSetActiveList(2);
+	musicStage(&soundHandler);
+	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 400, (int)imageBuffer);
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }

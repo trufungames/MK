@@ -28,6 +28,7 @@ struct Fighter {
     unsigned int HIT_SWEEP_FRAME_COUNT;
 
     unsigned int lightningSpriteIndex;
+    bool IsIdle;
     bool IsWalking;
     bool IsJumping;
     bool IsJumpingRollForward;
@@ -75,8 +76,8 @@ struct Fighter {
     unsigned int HB_ATTACK;
     int pad;
     unsigned int PAD;
-    int playerMoveForwardSpeed;
-    int playerMoveBackwardSpeed;
+    float playerMoveForwardSpeed;
+    float playerMoveBackwardSpeed;
     float playerKnockbackSpeed;
     float playerUppercutXSpeed;
     float playerDropKickXSpeed;
@@ -102,7 +103,6 @@ struct Fighter {
     float jumpMomentumYStart;
     float uppercutMomentumYStart;
     float dropKickMomentemYStart;
-    float floorLocationY;
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -175,3 +175,9 @@ void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2)
 void fighterAddPendingDamage(struct Fighter* fighter, int damage);
 
 void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks);
+
+void fighterShiftRight(struct Fighter* fighter);
+
+void fighterShiftLeft(struct Fighter* fighter);
+
+void fighterLockBoundaries(struct Fighter* fighter);
