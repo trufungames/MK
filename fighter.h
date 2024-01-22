@@ -30,6 +30,7 @@ struct Fighter {
     unsigned int lightningSpriteIndex;
     bool IsIdle;
     bool IsWalking;
+    bool IsAttacking;
     bool IsJumping;
     bool IsJumpingRollForward;
     bool IsJumpingRollBackward;
@@ -181,3 +182,5 @@ void fighterShiftRight(struct Fighter* fighter);
 void fighterShiftLeft(struct Fighter* fighter);
 
 void fighterLockBoundaries(struct Fighter* fighter);
+
+void fighterAlignSpriteAndHitbox(struct Fighter* fighter);

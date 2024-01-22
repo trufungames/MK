@@ -3111,7 +3111,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 
 	rapSetActiveList(2);
 	musicStage(&soundHandler);
-	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 400, (int)imageBuffer);
+	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 370, (int)imageBuffer);
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }

@@ -510,7 +510,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -571,7 +571,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -790,7 +790,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -839,7 +839,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -888,7 +888,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -937,7 +937,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -986,7 +986,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w
@@ -1037,7 +1037,7 @@ __Z17switchScreenFightii:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z10musicStageP12SoundHandler
 	move.l #__ZL11imageBuffer,(%sp)
-	pea 400.w
+	pea 370.w
 	clr.l -(%sp)
 	pea 130.w
 	pea 18.w

@@ -43,7 +43,8 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void cameraCheckBoundsLeft(struct Fighter* fighterLeft, struct Fighter* fighterRight)
 {
-    if (!fighterLeft->IsIdle && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT && fighterRight->positionX + FIGHTER_WIDTH < CAMERA_BOUND_RIGHT)
+    if ((fighterLeft->IsWalking && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT && fighterRight->positionX + FIGHTER_WIDTH < CAMERA_BOUND_RIGHT)
+        || (fighterRight->IsPushing && fighterLeft->IsBeingPushed && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT))
     {
         cameraX -= 1;
         fighterShiftRight(fighterRight);
@@ -63,7 +64,8 @@ void cameraCheckBoundsLeft(struct Fighter* fighterLeft, struct Fighter* fighterR
 
 void cameraCheckBoundsRight(struct Fighter* fighterLeft, struct Fighter* fighterRight)
 {
-    if (!fighterRight->IsIdle && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT && fighterLeft->positionX > CAMERA_BOUND_LEFT)
+    if ((fighterRight->IsWalking && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT && fighterLeft->positionX > CAMERA_BOUND_LEFT)
+        || (fighterLeft->IsPushing && fighterRight->IsBeingPushed && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT))
     {
         cameraX += 1;
         fighterShiftLeft(fighterLeft);
@@ -79,4 +81,9 @@ void cameraCheckBoundsRight(struct Fighter* fighterLeft, struct Fighter* fighter
     //     fighterShiftLeft(fighterLeft);
     //     fighterShiftLeft(fighterRight);
     // }
+}
+
+bool cameraCanMove()
+{
+    return cameraX > CAMERA_BOUND_LEFT && cameraX < cameraXMax;
 }

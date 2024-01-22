@@ -100,9 +100,11 @@
 #define DMG_BLOCKED 1
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 1
-#define CAMERA_BOUND_RIGHT 319
+#define CAMERA_BOUND_RIGHT 329
 #define FIGHTER_WIDTH 80
 #define FLOOR_LOCATION_Y 188
+#define HITBOX_WIDTH 48
+
 //---j--------------------------------------------------------------------------------------------------
 #define CAGE 1
 #define KANO 2
