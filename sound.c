@@ -413,7 +413,8 @@ void musicTitle(struct SoundHandler* soundHandler)
 	
 	u235StopModule();
 	u235Silence();
-	u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
+	//u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
+	u235PlayModule(MOD_TITLE,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic);
 }
 
@@ -424,6 +425,7 @@ void musicStage(struct SoundHandler* soundHandler)
 
 	u235StopModule();
 	u235Silence();
-	u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
+	//u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
+	u235PlayModule(MOD_STAGE,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic);	
 }

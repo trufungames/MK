@@ -128,6 +128,8 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->DPadReleased = true;
     fighter->AcceptingInput = true;
     fighter->airAttackPerformed = false;
+    fighter->IsSweeping = false;
+    fighter->IsRoundhousing = false;
     fighter->IsHitLow = false;
     fighter->IsHitHigh = false;
     fighter->IsHitBack = false;

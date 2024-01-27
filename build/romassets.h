@@ -12,182 +12,182 @@
 #define BMP_BATTLE_THEPIT 0x81E570
 #define BMP_BATTLE_THEPIT_clut 0x81EB10
 #define BMPCAGE 0x81EB30
-#define BMPCAGE_clut 0x89EB30
-#define BMPKANG 0x89EB50
-#define BMPKANG_clut 0x91EB50
-#define BMPRAIDEN 0x91EB70
-#define BMPRAIDEN_clut 0xA1EB70
-#define BMPSUBZERO 0xA1EB90
-#define BMPSUBZERO_clut 0xAC2B90
-#define BMPSONYA 0xAC2BB0
-#define BMPSONYA_clut 0xB42BB0
-#define BMPKANO 0xB42BD0
-#define BMPKANO_clut 0xBC2BD0
-#define PAL_SCORPION 0xBC2BF0
-#define PAL_SCORPION_clut 0xBC2C00
-#define PAL_REPTILE 0xBC2C20
-#define PAL_REPTILE_clut 0xBC2C30
-#define BMP_LIGHTNING 0xBC2C50
-#define BMP_LIGHTNING_clut 0xBECF50
-#define BMP_PT_CAGE 0xBECF70
-#define BMP_PT_CAGE_clut 0xBED970
-#define BMP_PT_KANO 0xBED990
-#define BMP_PT_KANO_clut 0xBEE390
-#define BMP_PT_KANG 0xBEE3B0
-#define BMP_PT_KANG_clut 0xBEEDB0
-#define BMP_PT_RAIDEN 0xBEEDD0
-#define BMP_PT_RAIDEN_clut 0xBEF7D0
-#define BMP_PT_SCORPION 0xBEF7F0
-#define BMP_PT_SCORPION_clut 0xBF01F0
-#define BMP_PT_SONYA 0xBF0210
-#define BMP_PT_SONYA_clut 0xBF0C10
-#define BMP_PT_SUBZERO 0xBF0C30
-#define BMP_PT_SUBZERO_clut 0xBF1630
-#define BMP_PIT_BACKGROUND 0xBF1650
-#define BMP_PIT_BACKGROUND_clut 0xC0C690
-#define BMP_PIT_SPIKES 0xC0C890
-#define BMP_PIT_SPIKES_clut 0xC0D000
-#define BMP_PIT_MOON 0xC0D020
-#define BMP_PIT_MOON_clut 0xC0E2C0
-#define BMP_PIT_CLOUDS1 0xC0E2E0
-#define BMP_PIT_CLOUDS1_clut 0xC0F8E0
-#define BMP_PIT_CLOUDS2 0xC0F900
-#define BMP_PIT_CLOUDS2_clut 0xC10800
-#define BMP_PIT_CLOUDS3 0xC10820
-#define BMP_PIT_CLOUDS3_clut 0xC112A0
-#define BMP_HITBOX 0xC112C0
-#define BMP_HITBOX_clut 0xC11EC0
-#define BMP_HITBOX_ATTACK 0xC11EE0
-#define BMP_HITBOX_ATTACK_clut 0xC12060
-#define BMP_HITBOX_OFF 0xC12080
-#define BMP_HITBOX_OFF_clut 0xC12C80
-#define BMP_HITBOX_ATTACK_OFF 0xC12CA0
-#define BMP_HITBOX_ATTACK_OFF_clut 0xC12E20
-#define BMP_ROUND1 0xC12E40
-#define BMP_ROUND1_clut 0xC13200
-#define BMP_FIGHT 0xC13220
-#define BMP_FIGHT_clut 0xC15020
-#define BMP_BLOOD 0xC15040
-#define BMP_BLOOD_clut 0xC1F840
-#define BMP_HUD 0xC1F860
-#define BMP_HUD_clut 0xC20C60
-#define BMP_HEALTHBAR 0xC20C80
-#define BMP_HEALTHBAR_clut 0xC21080
-#define BMP_NAME_SHANGTSUNG 0xC210A0
-#define BMP_NAME_SHANGTSUNG_clut 0xC21420
-#define BMP_NAME_GORO 0xC21440
-#define BMP_NAME_GORO_clut 0xC216C0
-#define BMP_NAME_SONYA 0xC216E0
-#define BMP_NAME_SONYA_clut 0xC21960
-#define BMP_NAME_SUBZERO 0xC21980
-#define BMP_NAME_SUBZERO_clut 0xC21C00
-#define BMP_NAME_SCORPION 0xC21C20
-#define BMP_NAME_SCORPION_clut 0xC21EA0
-#define BMP_NAME_LIUKANG 0xC21EC0
-#define BMP_NAME_LIUKANG_clut 0xC22140
-#define BMP_NAME_RAIDEN 0xC22160
-#define BMP_NAME_RAIDEN_clut 0xC223E0
-#define BMP_NAME_KANO 0xC22400
-#define BMP_NAME_KANO_clut 0xC22680
-#define BMP_NAME_CAGE 0xC226A0
-#define BMP_NAME_CAGE_clut 0xC22920
-#define BMP_NAME_REPTILE 0xC22940
-#define BMP_NAME_REPTILE_clut 0xC22BC0
-#define BMP_NAME_KASUMI 0xC22BE0
-#define BMP_NAME_KASUMI_clut 0xC22E60
-extern void *p1cursor_sam asm("p1cursor_sam");
-extern void *p1cursor_sam_end asm("p1cursor_sam_end");
-extern void *p2cursor_sam asm("p2cursor_sam");
-extern void *p2cursor_sam_end asm("p2cursor_sam_end");
-extern void *p2selected_sam asm("p2selected_sam");
-extern void *p2selected_sam_end asm("p2selected_sam_end");
-extern void *johnnycage_sam asm("johnnycage_sam");
-extern void *johnnycage_sam_end asm("johnnycage_sam_end");
-extern void *kano_sam asm("kano_sam");
-extern void *kano_sam_end asm("kano_sam_end");
-extern void *raiden_sam asm("raiden_sam");
-extern void *raiden_sam_end asm("raiden_sam_end");
-extern void *liukang_sam asm("liukang_sam");
-extern void *liukang_sam_end asm("liukang_sam_end");
-extern void *scorpion_sam asm("scorpion_sam");
-extern void *scorpion_sam_end asm("scorpion_sam_end");
-extern void *subzero_sam asm("subzero_sam");
-extern void *subzero_sam_end asm("subzero_sam_end");
-extern void *sonya_sam asm("sonya_sam");
-extern void *sonya_sam_end asm("sonya_sam_end");
-extern void *fight_sam asm("fight_sam");
-extern void *fight_sam_end asm("fight_sam_end");
-extern void *gong_sam asm("gong_sam");
-extern void *gong_sam_end asm("gong_sam_end");
-extern void *intro_sam asm("intro_sam");
-extern void *intro_sam_end asm("intro_sam_end");
-extern void *hiya_female1_sam asm("hiya_female1_sam");
-extern void *hiya_female1_sam_end asm("hiya_female1_sam_end");
-extern void *hiya_female2_sam asm("hiya_female2_sam");
-extern void *hiya_female2_sam_end asm("hiya_female2_sam_end");
-extern void *hiya_male1_sam asm("hiya_male1_sam");
-extern void *hiya_male1_sam_end asm("hiya_male1_sam_end");
-extern void *hiya_male2_sam asm("hiya_male2_sam");
-extern void *hiya_male2_sam_end asm("hiya_male2_sam_end");
-extern void *hiya_kang1_sam asm("hiya_kang1_sam");
-extern void *hiya_kang1_sam_end asm("hiya_kang1_sam_end");
-extern void *hiya_kang2_sam asm("hiya_kang2_sam");
-extern void *hiya_kang2_sam_end asm("hiya_kang2_sam_end");
-extern void *hiya_ninja1_sam asm("hiya_ninja1_sam");
-extern void *hiya_ninja1_sam_end asm("hiya_ninja1_sam_end");
-extern void *hiya_ninja2_sam asm("hiya_ninja2_sam");
-extern void *hiya_ninja2_sam_end asm("hiya_ninja2_sam_end");
-extern void *block01_sam asm("block01_sam");
-extern void *block01_sam_end asm("block01_sam_end");
-extern void *block02_sam asm("block02_sam");
-extern void *block02_sam_end asm("block02_sam_end");
-extern void *groan_male01_sam asm("groan_male01_sam");
-extern void *groan_male01_sam_end asm("groan_male01_sam_end");
-extern void *groan_male02_sam asm("groan_male02_sam");
-extern void *groan_male02_sam_end asm("groan_male02_sam_end");
-extern void *groan_female01_sam asm("groan_female01_sam");
-extern void *groan_female01_sam_end asm("groan_female01_sam_end");
-extern void *groan_female02_sam asm("groan_female02_sam");
-extern void *groan_female02_sam_end asm("groan_female02_sam_end");
-extern void *hit_01_sam asm("hit_01_sam");
-extern void *hit_01_sam_end asm("hit_01_sam_end");
-extern void *hit_02_sam asm("hit_02_sam");
-extern void *hit_02_sam_end asm("hit_02_sam_end");
-extern void *hit_impact_sam asm("hit_impact_sam");
-extern void *hit_impact_sam_end asm("hit_impact_sam_end");
-extern void *swing_01_sam asm("swing_01_sam");
-extern void *swing_01_sam_end asm("swing_01_sam_end");
-extern void *swing_02_sam asm("swing_02_sam");
-extern void *swing_02_sam_end asm("swing_02_sam_end");
-extern void *blood01_sam asm("blood01_sam");
-extern void *blood01_sam_end asm("blood01_sam_end");
-extern void *blood02_sam asm("blood02_sam");
-extern void *blood02_sam_end asm("blood02_sam_end");
-extern void *yell_male01_sam asm("yell_male01_sam");
-extern void *yell_male01_sam_end asm("yell_male01_sam_end");
-extern void *yell_male02_sam asm("yell_male02_sam");
-extern void *yell_male02_sam_end asm("yell_male02_sam_end");
-extern void *yell_female_sam asm("yell_female_sam");
-extern void *yell_female_sam_end asm("yell_female_sam_end");
-extern void *yell_kang_sam asm("yell_kang_sam");
-extern void *yell_kang_sam_end asm("yell_kang_sam_end");
-extern void *jump_male_sam asm("jump_male_sam");
-extern void *jump_male_sam_end asm("jump_male_sam_end");
-extern void *jump_female_sam asm("jump_female_sam");
-extern void *jump_female_sam_end asm("jump_female_sam_end");
-extern void *jump_ninja_sam asm("jump_ninja_sam");
-extern void *jump_ninja_sam_end asm("jump_ninja_sam_end");
-extern void *jump_roll_sam asm("jump_roll_sam");
-extern void *jump_roll_sam_end asm("jump_roll_sam_end");
-extern void *thud_sam asm("thud_sam");
-extern void *thud_sam_end asm("thud_sam_end");
-extern void *crowd_aww_sam asm("crowd_aww_sam");
-extern void *crowd_aww_sam_end asm("crowd_aww_sam_end");
-extern void *announcer_excellent_sam asm("announcer_excellent_sam");
-extern void *announcer_excellent_sam_end asm("announcer_excellent_sam_end");
-extern void *announcer_laugh_sam asm("announcer_laugh_sam");
-extern void *announcer_laugh_sam_end asm("announcer_laugh_sam_end");
-extern void *MOD_TITLE asm("MOD_TITLE");
-extern void *MOD_TITLE_end asm("MOD_TITLE_end");
-extern void *MOD_STAGE asm("MOD_STAGE");
-extern void *MOD_STAGE_end asm("MOD_STAGE_end");
+#define BMPCAGE_clut 0x8D4B30
+#define BMPKANG 0x8D4B50
+#define BMPKANG_clut 0x98AB50
+#define BMPRAIDEN 0x98AB70
+#define BMPRAIDEN_clut 0xA40B70
+#define BMPSUBZERO 0xA40B90
+#define BMPSUBZERO_clut 0xAF6B90
+#define BMPSONYA 0xAF6BB0
+#define BMPSONYA_clut 0xBACBB0
+#define BMPKANO 0xBACBD0
+#define BMPKANO_clut 0xC62BD0
+#define PAL_SCORPION 0xC62BF0
+#define PAL_SCORPION_clut 0xC62C00
+#define PAL_REPTILE 0xC62E00
+#define PAL_REPTILE_clut 0xC62E10
+#define BMP_LIGHTNING 0xC62E30
+#define BMP_LIGHTNING_clut 0xC8D130
+#define BMP_PT_CAGE 0xC8D150
+#define BMP_PT_CAGE_clut 0xC8DB50
+#define BMP_PT_KANO 0xC8DB70
+#define BMP_PT_KANO_clut 0xC8E570
+#define BMP_PT_KANG 0xC8E590
+#define BMP_PT_KANG_clut 0xC8EF90
+#define BMP_PT_RAIDEN 0xC8EFB0
+#define BMP_PT_RAIDEN_clut 0xC8F9B0
+#define BMP_PT_SCORPION 0xC8F9D0
+#define BMP_PT_SCORPION_clut 0xC903D0
+#define BMP_PT_SONYA 0xC903F0
+#define BMP_PT_SONYA_clut 0xC90DF0
+#define BMP_PT_SUBZERO 0xC90E10
+#define BMP_PT_SUBZERO_clut 0xC91810
+#define BMP_PIT_BACKGROUND 0xC91830
+#define BMP_PIT_BACKGROUND_clut 0xCAC870
+#define BMP_PIT_SPIKES 0xCACA70
+#define BMP_PIT_SPIKES_clut 0xCAD1E0
+#define BMP_PIT_MOON 0xCAD200
+#define BMP_PIT_MOON_clut 0xCAE4A0
+#define BMP_PIT_CLOUDS1 0xCAE4C0
+#define BMP_PIT_CLOUDS1_clut 0xCAFAC0
+#define BMP_PIT_CLOUDS2 0xCAFAE0
+#define BMP_PIT_CLOUDS2_clut 0xCB09E0
+#define BMP_PIT_CLOUDS3 0xCB0A00
+#define BMP_PIT_CLOUDS3_clut 0xCB1480
+#define BMP_HITBOX 0xCB14A0
+#define BMP_HITBOX_clut 0xCB20A0
+#define BMP_HITBOX_ATTACK 0xCB20C0
+#define BMP_HITBOX_ATTACK_clut 0xCB2240
+#define BMP_HITBOX_OFF 0xCB2260
+#define BMP_HITBOX_OFF_clut 0xCB2E60
+#define BMP_HITBOX_ATTACK_OFF 0xCB2E80
+#define BMP_HITBOX_ATTACK_OFF_clut 0xCB3000
+#define BMP_ROUND1 0xCB3020
+#define BMP_ROUND1_clut 0xCB33E0
+#define BMP_FIGHT 0xCB3400
+#define BMP_FIGHT_clut 0xCB5200
+#define BMP_BLOOD 0xCB5220
+#define BMP_BLOOD_clut 0xCBFA20
+#define BMP_HUD 0xCBFA40
+#define BMP_HUD_clut 0xCC0E40
+#define BMP_HEALTHBAR 0xCC0E60
+#define BMP_HEALTHBAR_clut 0xCC1260
+#define BMP_NAME_SHANGTSUNG 0xCC1280
+#define BMP_NAME_SHANGTSUNG_clut 0xCC1600
+#define BMP_NAME_GORO 0xCC1620
+#define BMP_NAME_GORO_clut 0xCC18A0
+#define BMP_NAME_SONYA 0xCC18C0
+#define BMP_NAME_SONYA_clut 0xCC1B40
+#define BMP_NAME_SUBZERO 0xCC1B60
+#define BMP_NAME_SUBZERO_clut 0xCC1DE0
+#define BMP_NAME_SCORPION 0xCC1E00
+#define BMP_NAME_SCORPION_clut 0xCC2080
+#define BMP_NAME_LIUKANG 0xCC20A0
+#define BMP_NAME_LIUKANG_clut 0xCC2320
+#define BMP_NAME_RAIDEN 0xCC2340
+#define BMP_NAME_RAIDEN_clut 0xCC25C0
+#define BMP_NAME_KANO 0xCC25E0
+#define BMP_NAME_KANO_clut 0xCC2860
+#define BMP_NAME_CAGE 0xCC2880
+#define BMP_NAME_CAGE_clut 0xCC2B00
+#define BMP_NAME_REPTILE 0xCC2B20
+#define BMP_NAME_REPTILE_clut 0xCC2DA0
+#define BMP_NAME_KASUMI 0xCC2DC0
+#define BMP_NAME_KASUMI_clut 0xCC3040
+#define p1cursor_sam 0xCC3060
+#define p1cursor_sam_end 0xCC4057
+#define p2cursor_sam 0xCC4060
+#define p2cursor_sam_end 0xCC5057
+#define p2selected_sam 0xCC5060
+#define p2selected_sam_end 0xCC5540
+#define johnnycage_sam 0xCC5540
+#define johnnycage_sam_end 0xCC7448
+#define kano_sam 0xCC7450
+#define kano_sam_end 0xCC8819
+#define raiden_sam 0xCC8820
+#define raiden_sam_end 0xCC9D45
+#define liukang_sam 0xCC9D50
+#define liukang_sam_end 0xCCBAE5
+#define scorpion_sam 0xCCBAF0
+#define scorpion_sam_end 0xCCDC54
+#define subzero_sam 0xCCDC60
+#define subzero_sam_end 0xCD0236
+#define sonya_sam 0xCD0240
+#define sonya_sam_end 0xCD1C4B
+#define fight_sam 0xCD1C50
+#define fight_sam_end 0xCD32F3
+#define gong_sam 0xCD3300
+#define gong_sam_end 0xCD9B8B
+#define intro_sam 0xCD9B90
+#define intro_sam_end 0xCDF99B
+#define hiya_female1_sam 0xCDF9A0
+#define hiya_female1_sam_end 0xCE0333
+#define hiya_female2_sam 0xCE0340
+#define hiya_female2_sam_end 0xCE10B4
+#define hiya_male1_sam 0xCE10C0
+#define hiya_male1_sam_end 0xCE19F9
+#define hiya_male2_sam 0xCE1A00
+#define hiya_male2_sam_end 0xCE26A7
+#define hiya_kang1_sam 0xCE26B0
+#define hiya_kang1_sam_end 0xCE2F74
+#define hiya_kang2_sam 0xCE2F80
+#define hiya_kang2_sam_end 0xCE3AA8
+#define hiya_ninja1_sam 0xCE3AB0
+#define hiya_ninja1_sam_end 0xCE4822
+#define hiya_ninja2_sam 0xCE4830
+#define hiya_ninja2_sam_end 0xCE5942
+#define block01_sam 0xCE5950
+#define block01_sam_end 0xCE6263
+#define block02_sam 0xCE6270
+#define block02_sam_end 0xCE6A93
+#define groan_male01_sam 0xCE6AA0
+#define groan_male01_sam_end 0xCE747E
+#define groan_male02_sam 0xCE7480
+#define groan_male02_sam_end 0xCE82E8
+#define groan_female01_sam 0xCE82F0
+#define groan_female01_sam_end 0xCE8E5D
+#define groan_female02_sam 0xCE8E60
+#define groan_female02_sam_end 0xCE9878
+#define hit_01_sam 0xCE9880
+#define hit_01_sam_end 0xCE9EDA
+#define hit_02_sam 0xCE9EE0
+#define hit_02_sam_end 0xCEA478
+#define hit_impact_sam 0xCEA480
+#define hit_impact_sam_end 0xCEACC0
+#define swing_01_sam 0xCEACC0
+#define swing_01_sam_end 0xCEAF4A
+#define swing_02_sam 0xCEAF50
+#define swing_02_sam_end 0xCEB35E
+#define blood01_sam 0xCEB360
+#define blood01_sam_end 0xCEC1F0
+#define blood02_sam 0xCEC1F0
+#define blood02_sam_end 0xCEC8CA
+#define yell_male01_sam 0xCEC8D0
+#define yell_male01_sam_end 0xCEE00C
+#define yell_male02_sam 0xCEE010
+#define yell_male02_sam_end 0xCEF3D7
+#define yell_female_sam 0xCEF3E0
+#define yell_female_sam_end 0xCF0C21
+#define yell_kang_sam 0xCF0C30
+#define yell_kang_sam_end 0xCF31D7
+#define jump_male_sam 0xCF31E0
+#define jump_male_sam_end 0xCF3B83
+#define jump_female_sam 0xCF3B90
+#define jump_female_sam_end 0xCF460F
+#define jump_ninja_sam 0xCF4610
+#define jump_ninja_sam_end 0xCF4EC8
+#define jump_roll_sam 0xCF4ED0
+#define jump_roll_sam_end 0xCF5D29
+#define thud_sam 0xCF5D30
+#define thud_sam_end 0xCF6CB1
+#define crowd_aww_sam 0xCF6CC0
+#define crowd_aww_sam_end 0xCF9578
+#define announcer_excellent_sam 0xCF9580
+#define announcer_excellent_sam_end 0xCFAF25
+#define announcer_laugh_sam 0xCFAF30
+#define announcer_laugh_sam_end 0xCFDCED
+#define MOD_TITLE 0xCFDCF0
+#define MOD_TITLE_end 0xD13C38
+#define MOD_STAGE 0xD13C40
+#define MOD_STAGE_end 0xD221B4

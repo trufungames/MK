@@ -21,6 +21,7 @@ struct Fighter {
     unsigned int UPPERCUT_FRAME_COUNT;
     unsigned int KIPUP_FRAME_COUNT;
     unsigned int SWEEP_FRAME_COUNT;
+    unsigned int ROUNDHOUSE_FRAME_COUNT;
     unsigned int HIT_LOW_FRAME_COUNT;
     unsigned int HIT_HIGH_FRAME_COUNT;
     unsigned int HIT_BACK_FRAME_COUNT;
@@ -46,6 +47,7 @@ struct Fighter {
     bool IsJumpDropKicking;
     bool IsUppercutting;
     bool IsSweeping;
+    bool IsRoundhousing;
     bool DPadReleased;
     bool ButtonReleased;
     bool IsHitLow;
@@ -137,6 +139,7 @@ struct Fighter {
     struct AnimationFrame (*hitSweepFrames)[6];
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];
+    struct AnimationFrame (*roundhouseFrames)[6];
 };
 
 void fighterHide(struct Fighter* fighter);

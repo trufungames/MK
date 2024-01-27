@@ -16,6 +16,8 @@ static int pad1;
 static int pad2;
 static int imageBuffer[1072*896/4];
 static int imageBuffer320x240[320*240/4];
+static int imageBufferFighter1[1024*1456/4];
+//static int imageBufferFighter2[1024*1456/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
 int p2Cursor = 2;
@@ -29,8 +31,8 @@ int gameStartTicks = rapTicks;
 int ticksPerSec = 60;
 int lastTicks = 0;
 static SoundHandler soundHandler = {
-	true,  //sound on/off
-	true,  //music on/off
+	false,  //sound on/off
+	false,  //music on/off
 	163,  //sound volume
 	20   //music volume
 };
@@ -252,6 +254,14 @@ static AnimationFrame cageSweepFrames[] = {
 	{ 96, 96, 256, 864, -12, 48, 5 },
 	{ 80, 144, 128, 576, 9, 0, 5 },
 	{ 80, 144, 128, 576, 9, 0, 5 }
+};
+static AnimationFrame cageRoundhouseFrames[] = {
+	{ 64, 144, 0, 1024, 0, 0, 5 },
+	{ 80, 144, 64, 1024, -4, 0, 5 },
+	{ 96, 144, 144, 1024, 15, 0, 10 },
+	{ 48, 144, 240, 1024, 25, 0, 5 },
+	{ 48, 144, 304, 1024, 25, 0, 5 },
+	{ 48, 144, 352, 1024, 20, 0, 5 }
 };
 
 //Liu Kang animation frames
@@ -2968,6 +2978,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			cageAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
 			fighterShow(&fighterCage);		
+			sprite[P1_FIGHTER_PIT].gfxbase = BMPCAGE;
 			sprite[P1_NAME].gfxbase = BMP_NAME_CAGE;
 			break;
 		case 1:
@@ -2977,6 +2988,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
 			fighterShow(&fighterKano);
+			//rapUnpack(BMPCAGE,(int)(int*)imageBufferFighter1);
+			//sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
 			sprite[P1_NAME].gfxbase = BMP_NAME_KANO;
 			break;
 		case 2:
@@ -2986,6 +2999,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterSubzero);
+			//rapUnpack(BMPSUBZERO,(int)(int*)imageBufferFighter1);
+			//sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
 			sprite[P1_NAME].gfxbase = BMP_NAME_SUBZERO;
 			break;
 		case 3:
@@ -2995,6 +3010,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
 			fighterShow(&fighterSonya);
+			// rapUnpack(BMPSONYA,(int)(int*)imageBufferFighter1);
+			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
 			sprite[P1_NAME].gfxbase = BMP_NAME_SONYA;
 			break;
 		case 4:
@@ -3005,7 +3022,9 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
 			fighterShow(&fighterRaiden);
-			sprite[LIGHTNING].active = R_is_active;
+			//rapUnpack(BMPRAIDEN,(int)(int*)imageBufferFighter1);
+			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
+			// sprite[LIGHTNING].active = R_is_active;
 			sprite[P1_NAME].gfxbase = BMP_NAME_RAIDEN;
 			break;
 		case 5:
@@ -3015,6 +3034,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
 			fighterShow(&fighterKang);
+			// rapUnpack(BMPKANG,(int)(int*)imageBufferFighter1);
+			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
 			sprite[P1_NAME].gfxbase = BMP_NAME_LIUKANG;
 			break;
 		case 6:
@@ -3024,6 +3045,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
 			fighterShow(&fighterScorpion);
+			// rapUnpack(BMPSUBZERO,(int)(int*)imageBufferFighter1);
+			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
 			sprite[P1_NAME].gfxbase = BMP_NAME_SCORPION;
 			break;
 	}

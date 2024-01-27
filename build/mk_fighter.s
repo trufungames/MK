@@ -57,7 +57,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #10611600,44(%a0)
+	move.l #10750864,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -83,7 +83,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #11807696,44(%a0)
+	move.l #12241872,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -96,7 +96,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #9562992,44(%a0)
+	move.l #10005360,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -109,7 +109,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #9038672,44(%a0)
+	move.l #9259856,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -122,7 +122,7 @@ __Z11fighterShowP7Fighter:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	add.l %d0,%a0
-	move.l #11283376,44(%a0)
+	move.l #11496368,44(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	unlk %fp
@@ -2931,7 +2931,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l %d5,%a0
 	move.w 8(%a0),%a4
 	lea (32,%sp),%sp
-	move.w #238,%d1
+	move.w #248,%d1
 	cmp.w %a4,%d1
 	jlt .L306
 	tst.b 144(%a2)
@@ -4125,12 +4125,12 @@ __Z18fighterImpactCheckP7FighterS0_:
 	moveq #1,%d1
 	cmp.l %d0,%d1
 	jge .L454
-	cmp.l #318,%d0
+	cmp.l #328,%d0
 	jgt .L454
 	move.l 232(%a3),%d0
 	cmp.l %d0,%d1
 	jge .L454
-	cmp.l #318,%d0
+	cmp.l #328,%d0
 	jgt .L454
 	move.b #1,144(%a2)
 	move.b #1,146(%a3)
@@ -4385,14 +4385,14 @@ __Z21fighterLockBoundariesP7Fighter:
 	lea (%a2,%d0.l),%a1
 	move.w 8(%a1),%d1
 	jle .L501
-	cmp.w #239,%d1
+	cmp.w #249,%d1
 	jle .L495
 	tst.b 116(%a0)
 	jne .L495
-	move.w #239,8(%a1)
-	move.w #267,%a1
-	move.w #251,%d1
-	moveq #16,%d0
+	move.w #249,8(%a1)
+	move.w #277,%a1
+	move.w #261,%d1
+	moveq #6,%d0
 	not.b %d0
 	move.l %d0,232(%a0)
 	move.l 166(%a0),%d0
