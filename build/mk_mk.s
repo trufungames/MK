@@ -476,7 +476,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL15fighterScorpion+4
 	move.l %d0,__ZL16scorpionAnimator
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_subzeroImpactFrameRoundhouse,(%sp)
 	pea _subzeroImpactFrameJumpKick
 	pea _subzeroImpactFrameJumpPunch
 	pea _subzeroImpactFrameSweep
@@ -543,7 +543,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL12fighterKang2+4
 	move.l %d0,__ZL13kangAnimator2
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_kangImpactFrameRoundhouse,(%sp)
 	pea _kangImpactFrameJumpKick
 	pea _kangImpactFrameJumpPunch
 	pea _kangImpactFrameSweep
@@ -652,7 +652,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL14fighterSubzero+4
 	move.l %d0,__ZL15subzeroAnimator
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_subzeroImpactFrameRoundhouse,(%sp)
 	pea _subzeroImpactFrameJumpKick
 	pea _subzeroImpactFrameJumpPunch
 	pea _subzeroImpactFrameSweep
@@ -681,7 +681,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL12fighterSonya+4
 	move.l %d0,__ZL13sonyaAnimator
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_sonyaImpactFrameRoundhouse,(%sp)
 	pea _sonyaImpactFrameJumpKick
 	pea _sonyaImpactFrameJumpPunch
 	pea _sonyaImpactFrameSweep
@@ -739,7 +739,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL11fighterKang+4
 	move.l %d0,__ZL12kangAnimator
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_kangImpactFrameRoundhouse,(%sp)
 	pea _kangImpactFrameJumpKick
 	pea _kangImpactFrameJumpPunch
 	pea _kangImpactFrameSweep
@@ -768,7 +768,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL16fighterScorpion2+4
 	move.l %d0,__ZL17scorpionAnimator2
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_subzeroImpactFrameRoundhouse,(%sp)
 	pea _subzeroImpactFrameJumpKick
 	pea _subzeroImpactFrameJumpPunch
 	pea _subzeroImpactFrameSweep
@@ -918,7 +918,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL15fighterSubzero2+4
 	move.l %d0,__ZL16subzeroAnimator2
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_subzeroImpactFrameRoundhouse,(%sp)
 	pea _subzeroImpactFrameJumpKick
 	pea _subzeroImpactFrameJumpPunch
 	pea _subzeroImpactFrameSweep
@@ -968,7 +968,7 @@ __Z17switchScreenFightii:
 	move.l %d0,__ZL13fighterSonya2+4
 	move.l %d0,__ZL14sonyaAnimator2
 	addq.l #8,%sp
-	move.l #_cageImpactFrameRoundhouse,(%sp)
+	move.l #_sonyaImpactFrameRoundhouse,(%sp)
 	pea _sonyaImpactFrameJumpKick
 	pea _sonyaImpactFrameJumpPunch
 	pea _sonyaImpactFrameSweep
@@ -1606,6 +1606,7 @@ __Z9basicmainv:
 	move.l #__ZL18kangUppercutFrames,__ZL11fighterKang+392
 	move.l #__ZL15kangKipUpFrames,__ZL11fighterKang+416
 	move.l #__ZL15kangSweepFrames,__ZL11fighterKang+420
+	move.l #__ZL20kangRoundhouseFrames,__ZL11fighterKang+424
 	move.l #__ZL16kangHitLowFrames,__ZL11fighterKang+396
 	move.l #__ZL17kangHitHighFrames,__ZL11fighterKang+400
 	move.l #__ZL17kangHitBackFrames,__ZL11fighterKang+404
@@ -1630,6 +1631,7 @@ __Z9basicmainv:
 	move.l #__ZL18kangUppercutFrames,__ZL12fighterKang2+392
 	move.l #__ZL15kangKipUpFrames,__ZL12fighterKang2+416
 	move.l #__ZL15kangSweepFrames,__ZL12fighterKang2+420
+	move.l #__ZL20kangRoundhouseFrames,__ZL12fighterKang2+424
 	move.l #__ZL16kangHitLowFrames,__ZL12fighterKang2+396
 	move.l #__ZL17kangHitHighFrames,__ZL12fighterKang2+400
 	move.l #__ZL17kangHitBackFrames,__ZL12fighterKang2+404
@@ -1655,6 +1657,7 @@ __Z9basicmainv:
 	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterScorpion+392
 	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterScorpion+416
 	move.l #__ZL18subzeroSweepFrames,__ZL15fighterScorpion+420
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterScorpion+424
 	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterScorpion+396
 	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterScorpion+400
 	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterScorpion+404
@@ -1680,6 +1683,7 @@ __Z9basicmainv:
 	move.l #__ZL21subzeroUppercutFrames,__ZL16fighterScorpion2+392
 	move.l #__ZL18subzeroKipUpFrames,__ZL16fighterScorpion2+416
 	move.l #__ZL18subzeroSweepFrames,__ZL16fighterScorpion2+420
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL16fighterScorpion2+424
 	move.l #__ZL19subzeroHitLowFrames,__ZL16fighterScorpion2+396
 	move.l #__ZL20subzeroHitHighFrames,__ZL16fighterScorpion2+400
 	move.l #__ZL20subzeroHitBackFrames,__ZL16fighterScorpion2+404
@@ -1705,6 +1709,7 @@ __Z9basicmainv:
 	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterSubzero+392
 	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterSubzero+416
 	move.l #__ZL18subzeroSweepFrames,__ZL14fighterSubzero+420
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterSubzero+424
 	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterSubzero+396
 	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterSubzero+400
 	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterSubzero+404
@@ -1730,6 +1735,7 @@ __Z9basicmainv:
 	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterSubzero2+392
 	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterSubzero2+416
 	move.l #__ZL18subzeroSweepFrames,__ZL15fighterSubzero2+420
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterSubzero2+424
 	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterSubzero2+396
 	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterSubzero2+400
 	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterSubzero2+404
@@ -1755,6 +1761,7 @@ __Z9basicmainv:
 	move.l #__ZL19sonyaUppercutFrames,__ZL12fighterSonya+392
 	move.l #__ZL16sonyaKipUpFrames,__ZL12fighterSonya+416
 	move.l #__ZL16sonyaSweepFrames,__ZL12fighterSonya+420
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL12fighterSonya+424
 	move.l #__ZL17sonyaHitLowFrames,__ZL12fighterSonya+396
 	move.l #__ZL18sonyaHitHighFrames,__ZL12fighterSonya+400
 	move.l #__ZL18sonyaHitBackFrames,__ZL12fighterSonya+404
@@ -1780,6 +1787,7 @@ __Z9basicmainv:
 	move.l #__ZL19sonyaUppercutFrames,__ZL13fighterSonya2+392
 	move.l #__ZL16sonyaKipUpFrames,__ZL13fighterSonya2+416
 	move.l #__ZL16sonyaSweepFrames,__ZL13fighterSonya2+420
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL13fighterSonya2+424
 	move.l #__ZL17sonyaHitLowFrames,__ZL13fighterSonya2+396
 	move.l #__ZL18sonyaHitHighFrames,__ZL13fighterSonya2+400
 	move.l #__ZL18sonyaHitBackFrames,__ZL13fighterSonya2+404
@@ -3070,6 +3078,12 @@ _sonyaImpactFrameJumpPunch:
 	.long	1
 	.long	80
 	.long	60
+	.globl	_sonyaImpactFrameRoundhouse
+	.even
+_sonyaImpactFrameRoundhouse:
+	.long	2
+	.long	60
+	.long	10
 	.globl	_sonyaImpactFrameSweep
 	.even
 _sonyaImpactFrameSweep:
@@ -3118,6 +3132,12 @@ _subzeroImpactFrameJumpPunch:
 	.long	1
 	.long	85
 	.long	60
+	.globl	_subzeroImpactFrameRoundhouse
+	.even
+_subzeroImpactFrameRoundhouse:
+	.long	2
+	.long	62
+	.long	10
 	.globl	_subzeroImpactFrameSweep
 	.even
 _subzeroImpactFrameSweep:
@@ -3220,6 +3240,12 @@ _kangImpactFrameJumpPunch:
 	.long	1
 	.long	80
 	.long	60
+	.globl	_kangImpactFrameRoundhouse
+	.even
+_kangImpactFrameRoundhouse:
+	.long	3
+	.long	48
+	.long	10
 	.globl	_kangImpactFrameSweep
 	.even
 _kangImpactFrameSweep:
@@ -7528,6 +7554,50 @@ __ZL15kangSweepFrames:
 	.long	0
 	.long	5
 	.even
+__ZL20kangRoundhouseFrames:
+	.long	96
+	.long	144
+	.long	0
+	.long	1024
+	.long	-12
+	.long	0
+	.long	5
+	.long	80
+	.long	144
+	.long	96
+	.long	1024
+	.long	-10
+	.long	0
+	.long	5
+	.long	64
+	.long	144
+	.long	160
+	.long	816
+	.long	14
+	.long	0
+	.long	5
+	.long	96
+	.long	144
+	.long	176
+	.long	1024
+	.long	20
+	.long	0
+	.long	10
+	.long	64
+	.long	144
+	.long	272
+	.long	1024
+	.long	8
+	.long	0
+	.long	5
+	.long	64
+	.long	144
+	.long	336
+	.long	1024
+	.long	5
+	.long	0
+	.long	5
+	.even
 __ZL16kangHitLowFrames:
 	.long	80
 	.long	144
@@ -8596,6 +8666,50 @@ __ZL18subzeroSweepFrames:
 	.long	160
 	.long	0
 	.long	16
+	.long	5
+	.even
+__ZL23subzeroRoundhouseFrames:
+	.long	80
+	.long	144
+	.long	0
+	.long	1312
+	.long	0
+	.long	0
+	.long	5
+	.long	80
+	.long	144
+	.long	80
+	.long	1312
+	.long	8
+	.long	0
+	.long	5
+	.long	128
+	.long	144
+	.long	160
+	.long	1312
+	.long	1
+	.long	0
+	.long	10
+	.long	80
+	.long	144
+	.long	288
+	.long	1312
+	.long	6
+	.long	0
+	.long	5
+	.long	64
+	.long	144
+	.long	368
+	.long	1312
+	.long	0
+	.long	0
+	.long	5
+	.long	64
+	.long	144
+	.long	432
+	.long	1312
+	.long	-3
+	.long	0
 	.long	5
 	.even
 __ZL19subzeroHitLowFrames:
@@ -9881,6 +9995,50 @@ __ZL16sonyaSweepFrames:
 	.long	0
 	.long	0
 	.long	0
+	.even
+__ZL21sonyaRoundhouseFrames:
+	.long	80
+	.long	144
+	.long	0
+	.long	1024
+	.long	-3
+	.long	0
+	.long	5
+	.long	80
+	.long	144
+	.long	80
+	.long	1024
+	.long	7
+	.long	0
+	.long	5
+	.long	112
+	.long	144
+	.long	160
+	.long	1024
+	.long	14
+	.long	0
+	.long	10
+	.long	96
+	.long	144
+	.long	272
+	.long	1024
+	.long	21
+	.long	0
+	.long	5
+	.long	64
+	.long	144
+	.long	368
+	.long	1024
+	.long	20
+	.long	0
+	.long	5
+	.long	64
+	.long	160
+	.long	432
+	.long	1024
+	.long	15
+	.long	-16
+	.long	5
 	.even
 __ZL17sonyaHitLowFrames:
 	.long	64
