@@ -94,6 +94,7 @@
 #define DMG_HK 5
 #define DMG_SWEEP 4
 #define DMG_UPPERCUT 8
+#define DMG_ROUNDHOUSE 6
 #define DMG_JUMPPUNCH 5
 #define DMG_JUMPKICK 4
 #define DMG_DROPKICK 6

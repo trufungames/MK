@@ -96,6 +96,7 @@ struct Fighter {
     int positionY;
     int hitPoints;
     int pendingDamage;
+    bool shakeScreen;
     struct SoundHandler* soundHandler;
     int direction;
     bool justTurned;
@@ -114,6 +115,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameJumpKick;
     struct ImpactFrame* impactFrameUppercut;
     struct ImpactFrame* impactFrameSweep;
+    struct ImpactFrame* impactFrameRoundhouse;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*walkFrames)[9];
     struct AnimationFrame (*turnFrames)[2];
@@ -148,7 +150,7 @@ void fighterShow(struct Fighter* fighter);
 
 void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1);
 
-void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick);
+void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse);
 
 void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame idleFrames[]);
 
@@ -176,7 +178,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2);
 
-void fighterAddPendingDamage(struct Fighter* fighter, int damage);
+void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen);
 
 void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks);
 

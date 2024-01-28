@@ -62,6 +62,9 @@ struct ImpactFrame cageImpactFrameUppercut = {
 struct ImpactFrame cageImpactFrameSweep = {
 	4, 96, 60
 };
+struct ImpactFrame cageImpactFrameRoundhouse = {
+	2, 58, 20
+};
 struct ImpactFrame cageImpactFrameJumpPunch = {
 	1, 46, 60
 };
@@ -504,6 +507,9 @@ struct ImpactFrame raidenImpactFrameUppercut = {
 struct ImpactFrame raidenImpactFrameSweep = {
 	4, 96, 40
 };
+struct ImpactFrame raidenImpactFrameRoundhouse = {
+	2, 62, 30
+};
 struct ImpactFrame raidenImpactFrameJumpPunch = {
 	1, 46, 50
 };
@@ -704,6 +710,14 @@ static AnimationFrame raidenSweepFrames[] = {
 	{ 96, 96, 240, 736, -2, 48, 5 },
 	{ 80, 144, 864, 432, 0, 0, 5 },
 	{ 80, 144, 864, 432, 0, 0, 5 }
+};
+static AnimationFrame raidenRoundhouseFrames[] = {
+	{ 64, 144, 160, 1024, 6, 0, 5 },
+	{ 80, 144, 224, 1024, 13, 0, 5 },
+	{ 112, 144, 304, 1024, 9, 0, 10 },
+	{ 80, 144, 416, 1024, 12, 0, 5 },
+	{ 64, 96, 496, 1024, 23, 0, 5 },
+	{ 64, 144, 560, 1024, 9, 0, 5 }
 };
 //Subzero animation frames
 struct ImpactFrame subzeroImpactFrameLowPunch = {
@@ -1209,6 +1223,9 @@ struct ImpactFrame kanoImpactFrameUppercut = {
 struct ImpactFrame kanoImpactFrameSweep = {
 	4, 96, 45
 };
+struct ImpactFrame kanoImpactFrameRoundhouse = {
+	2, 62, 10
+};
 struct ImpactFrame kanoImpactFrameJumpPunch = {
 	1, 46, 60
 };
@@ -1404,6 +1421,15 @@ static AnimationFrame kanoSweepFrames[] = {
 	{ 80, 144, 160, 288, 0, 0, 5 },
 };
 
+static AnimationFrame kanoRoundhouseFrames[] = {
+	{ 64, 144, 0, 1024, 5, 0, 5 },
+	{ 80, 144, 64, 1024, -5, 0, 5 },
+	{ 112, 144, 144, 1024, 8, 0, 10 },
+	{ 80, 144, 256, 1024, 21, 0, 5 },
+	{ 64, 144, 336, 1024, 19, 0, 5 },
+	{ 64, 144, 400, 1024, 1, 0, 5 }
+};
+
 static SpriteAnimator lightningAnimator = {
 	LIGHTNING, 0.5f, BMP_LIGHTNING, 0, 0
 };
@@ -1520,6 +1546,7 @@ static Fighter fighterKano = {
 	KANO_UPPERCUT_FRAME_COUNT,
 	KANO_KIPUP_FRAME_COUNT,
 	KANO_SWEEP_FRAME_COUNT,
+	KANO_ROUNDHOUSE_FRAME_COUNT,
 	KANO_HIT_LOW_FRAME_COUNT,
 	KANO_HIT_HIGH_FRAME_COUNT,
 	KANO_HIT_BACK_FRAME_COUNT,
@@ -1548,6 +1575,7 @@ static Fighter fighterCage = {
 	CAGE_UPPERCUT_FRAME_COUNT,
 	CAGE_KIPUP_FRAME_COUNT,
 	CAGE_SWEEP_FRAME_COUNT,
+	CAGE_ROUNDHOUSE_FRAME_COUNT,
 	CAGE_HIT_LOW_FRAME_COUNT,
 	CAGE_HIT_HIGH_FRAME_COUNT,
 	CAGE_HIT_BACK_FRAME_COUNT,
@@ -1576,6 +1604,7 @@ static Fighter fighterKang = {
 	KANG_UPPERCUT_FRAME_COUNT,
 	KANG_KIPUP_FRAME_COUNT,
 	KANG_SWEEP_FRAME_COUNT,
+	KANG_ROUNDHOUSE_FRAME_COUNT,
 	KANG_HIT_LOW_FRAME_COUNT,
 	KANG_HIT_HIGH_FRAME_COUNT,
 	KANG_HIT_BACK_FRAME_COUNT,
@@ -1604,6 +1633,7 @@ static Fighter fighterRaiden = {
 	RAIDEN_UPPERCUT_FRAME_COUNT,
 	RAIDEN_KIPUP_FRAME_COUNT,
 	RAIDEN_SWEEP_FRAME_COUNT,
+	RAIDEN_ROUNDHOUSE_FRAME_COUNT,
 	RAIDEN_HIT_LOW_FRAME_COUNT,
 	RAIDEN_HIT_HIGH_FRAME_COUNT,
 	RAIDEN_HIT_BACK_FRAME_COUNT,
@@ -1632,6 +1662,7 @@ static Fighter fighterSubzero = {
 	SUBZERO_UPPERCUT_FRAME_COUNT,
 	SUBZERO_KIPUP_FRAME_COUNT,
 	SUBZERO_SWEEP_FRAME_COUNT,
+	SUBZERO_ROUNDHOUSE_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -1660,6 +1691,7 @@ static Fighter fighterSonya = {
 	SONYA_UPPERCUT_FRAME_COUNT,
 	SONYA_KIPUP_FRAME_COUNT,
 	SONYA_SWEEP_FRAME_COUNT,
+	SONYA_ROUNDHOUSE_FRAME_COUNT,
 	SONYA_HIT_LOW_FRAME_COUNT,
 	SONYA_HIT_HIGH_FRAME_COUNT,
 	SONYA_HIT_BACK_FRAME_COUNT,
@@ -1691,6 +1723,7 @@ static Fighter fighterScorpion2 = {
 	SUBZERO_UPPERCUT_FRAME_COUNT,
 	SUBZERO_KIPUP_FRAME_COUNT,
 	SUBZERO_SWEEP_FRAME_COUNT,
+	SUBZERO_ROUNDHOUSE_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -1719,6 +1752,7 @@ static Fighter fighterKano2 = {
 	KANO_UPPERCUT_FRAME_COUNT,
 	KANO_KIPUP_FRAME_COUNT,
 	KANO_SWEEP_FRAME_COUNT,
+	KANO_ROUNDHOUSE_FRAME_COUNT,
 	KANO_HIT_LOW_FRAME_COUNT,
 	KANO_HIT_HIGH_FRAME_COUNT,
 	KANO_HIT_BACK_FRAME_COUNT,
@@ -1747,6 +1781,7 @@ static Fighter fighterCage2 = {
 	CAGE_UPPERCUT_FRAME_COUNT,
 	CAGE_KIPUP_FRAME_COUNT,
 	CAGE_SWEEP_FRAME_COUNT,
+	CAGE_ROUNDHOUSE_FRAME_COUNT,
 	CAGE_HIT_LOW_FRAME_COUNT,
 	CAGE_HIT_HIGH_FRAME_COUNT,
 	CAGE_HIT_BACK_FRAME_COUNT,
@@ -1775,6 +1810,7 @@ static Fighter fighterKang2 = {
 	KANG_UPPERCUT_FRAME_COUNT,
 	KANG_KIPUP_FRAME_COUNT,
 	KANG_SWEEP_FRAME_COUNT,
+	KANG_ROUNDHOUSE_FRAME_COUNT,
 	KANG_HIT_LOW_FRAME_COUNT,
 	KANG_HIT_HIGH_FRAME_COUNT,
 	KANG_HIT_BACK_FRAME_COUNT,
@@ -1803,6 +1839,7 @@ static Fighter fighterRaiden2 = {
 	RAIDEN_UPPERCUT_FRAME_COUNT,
 	RAIDEN_KIPUP_FRAME_COUNT,
 	RAIDEN_SWEEP_FRAME_COUNT,
+	RAIDEN_ROUNDHOUSE_FRAME_COUNT,
 	RAIDEN_HIT_LOW_FRAME_COUNT,
 	RAIDEN_HIT_HIGH_FRAME_COUNT,
 	RAIDEN_HIT_BACK_FRAME_COUNT,
@@ -1831,6 +1868,7 @@ static Fighter fighterSubzero2 = {
 	SUBZERO_UPPERCUT_FRAME_COUNT,
 	SUBZERO_KIPUP_FRAME_COUNT,
 	SUBZERO_SWEEP_FRAME_COUNT,
+	SUBZERO_ROUNDHOUSE_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -1859,6 +1897,7 @@ static Fighter fighterSonya2 = {
 	SONYA_UPPERCUT_FRAME_COUNT,
 	SONYA_KIPUP_FRAME_COUNT,
 	SONYA_SWEEP_FRAME_COUNT,
+	SONYA_ROUNDHOUSE_FRAME_COUNT,
 	SONYA_HIT_LOW_FRAME_COUNT,
 	SONYA_HIT_HIGH_FRAME_COUNT,
 	SONYA_HIT_BACK_FRAME_COUNT,
@@ -1908,6 +1947,7 @@ void basicmain()
 	fighterCage.hitSweepFrames = &cageHitSweepFrames;
 	fighterCage.kipUpFrames = &cageKipUpFrames;
 	fighterCage.sweepFrames = &cageSweepFrames;
+	fighterCage.roundhouseFrames = &cageRoundhouseFrames;
 	fighterCage2.idleFrames = &cageIdleFrames;
 	fighterCage2.walkFrames = &cageWalkFrames;
 	fighterCage2.turnFrames = &cageTurnFrames;
@@ -1933,6 +1973,7 @@ void basicmain()
 	fighterCage2.hitSweepFrames = &cageHitSweepFrames;
 	fighterCage2.kipUpFrames = &cageKipUpFrames;
 	fighterCage2.sweepFrames = &cageSweepFrames;
+	fighterCage2.roundhouseFrames = &cageRoundhouseFrames;
 	//Kano
 	fighterKano.idleFrames = &kanoIdleFrames;
 	fighterKano.walkFrames = &kanoWalkFrames;
@@ -1953,6 +1994,7 @@ void basicmain()
 	fighterKano.jumpDropKickFrames = &kanoJumpDropKickFrames;
 	fighterKano.uppercutFrames = &kanoUppercutFrames;
 	fighterKano.sweepFrames = &kanoSweepFrames;
+	fighterKano.roundhouseFrames = &kanoRoundhouseFrames;
 	fighterKano.hitLowFrames = &kanoHitLowFrames;
 	fighterKano.hitHighFrames = &kanoHitHighFrames;
 	fighterKano.hitBackFrames = &kanoHitBackFrames;
@@ -1978,6 +2020,7 @@ void basicmain()
 	fighterKano2.jumpDropKickFrames = &kanoJumpDropKickFrames;
 	fighterKano2.uppercutFrames = &kanoUppercutFrames;
 	fighterKano2.sweepFrames = &kanoSweepFrames;
+	fighterKano2.roundhouseFrames = &kanoRoundhouseFrames;
 	fighterKano2.hitLowFrames = &kanoHitLowFrames;
 	fighterKano2.hitHighFrames = &kanoHitHighFrames;
 	fighterKano2.hitBackFrames = &kanoHitBackFrames;
@@ -2004,6 +2047,7 @@ void basicmain()
 	fighterRaiden.jumpDropKickFrames = &raidenJumpDropKickFrames;
 	fighterRaiden.uppercutFrames = &raidenUppercutFrames;
 	fighterRaiden.sweepFrames = &raidenSweepFrames;
+	fighterRaiden.roundhouseFrames = &raidenRoundhouseFrames;
 	fighterRaiden.kipUpFrames = &raidenKipUpFrames;
 	fighterRaiden.hitLowFrames = &raidenHitLowFrames;
 	fighterRaiden.hitHighFrames = &raidenHitHighFrames;
@@ -2029,6 +2073,7 @@ void basicmain()
 	fighterRaiden2.jumpDropKickFrames = &raidenJumpDropKickFrames;
 	fighterRaiden2.uppercutFrames = &raidenUppercutFrames;
 	fighterRaiden2.sweepFrames = &raidenSweepFrames;
+	fighterRaiden2.roundhouseFrames = &raidenRoundhouseFrames;
 	fighterRaiden2.kipUpFrames = &raidenKipUpFrames;
 	fighterRaiden2.hitLowFrames = &raidenHitLowFrames;
 	fighterRaiden2.hitHighFrames = &raidenHitHighFrames;
@@ -2976,7 +3021,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),14,16);
 			fighterCage.spriteIndex = P1_FIGHTER_PIT;
 			cageAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
+			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterCage);		
 			sprite[P1_FIGHTER_PIT].gfxbase = BMPCAGE;
 			sprite[P1_NAME].gfxbase = BMP_NAME_CAGE;
@@ -2986,7 +3031,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
 			fighterKano.spriteIndex = P1_FIGHTER_PIT;
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
+			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse);
 			fighterShow(&fighterKano);
 			//rapUnpack(BMPCAGE,(int)(int*)imageBufferFighter1);
 			//sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -2997,7 +3042,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),14,16);
 			fighterSubzero.spriteIndex = P1_FIGHTER_PIT;
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterSubzero);
 			//rapUnpack(BMPSUBZERO,(int)(int*)imageBufferFighter1);
 			//sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -3008,7 +3053,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),14,16);
 			fighterSonya.spriteIndex = P1_FIGHTER_PIT;
 			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
+			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterSonya);
 			// rapUnpack(BMPSONYA,(int)(int*)imageBufferFighter1);
 			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -3020,7 +3065,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
 			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
-			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
+			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse);
 			fighterShow(&fighterRaiden);
 			//rapUnpack(BMPRAIDEN,(int)(int*)imageBufferFighter1);
 			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -3032,7 +3077,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),14,16);
 			fighterKang.spriteIndex = P1_FIGHTER_PIT;
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
+			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterKang);
 			// rapUnpack(BMPKANG,(int)(int*)imageBufferFighter1);
 			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -3043,7 +3088,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),14,16);
 			fighterScorpion.spriteIndex = P1_FIGHTER_PIT;
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterScorpion);
 			// rapUnpack(BMPSUBZERO,(int)(int*)imageBufferFighter1);
 			// sprite[P1_FIGHTER_PIT].gfxbase=(int)imageBufferFighter1;
@@ -3058,7 +3103,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
 			fighterCage2.spriteIndex = P2_FIGHTER_PIT;
 			cageAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick);
+			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterCage2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_CAGE;
 			break;
@@ -3067,7 +3112,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
 			fighterKano2.spriteIndex = P2_FIGHTER_PIT;
 			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick);
+			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse);
 			fighterShow(&fighterKano2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_KANO;
 			break;
@@ -3076,7 +3121,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
 			fighterSubzero2.spriteIndex = P2_FIGHTER_PIT;
 			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterSubzero2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_SUBZERO;
 			break;
@@ -3085,7 +3130,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
 			fighterSonya2.spriteIndex = P2_FIGHTER_PIT;
 			sonyaAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick);
+			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterSonya2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_SONYA;
 			break;
@@ -3095,7 +3140,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			//lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
-			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick);
+			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
 			sprite[P2_NAME].gfxbase = BMP_NAME_RAIDEN;
@@ -3105,7 +3150,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
 			fighterKang2.spriteIndex = P2_FIGHTER_PIT;
 			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick);
+			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterKang2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_LIUKANG;
 			break;
@@ -3114,7 +3159,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
 			fighterScorpion2.spriteIndex = P2_FIGHTER_PIT;
 			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick);
+			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterScorpion2);
 			sprite[P2_NAME].gfxbase = BMP_NAME_SCORPION;
 			break;
