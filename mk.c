@@ -2,6 +2,7 @@
 #include "spritemovements.h"
 #include "spriteanimator.h"
 #include "fighter.h"
+#include "match.h"
 #include "camera.h"
 #include "sound.h"
 #include "impactFrame.h"
@@ -16,7 +17,7 @@ static int pad1;
 static int pad2;
 static int imageBuffer[1072*896/4];
 static int imageBuffer320x240[320*240/4];
-static int imageBufferFighter1[1024*1456/4];
+//static int imageBufferFighter1[1024*1456/4];
 //static int imageBufferFighter2[1024*1456/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
@@ -31,8 +32,8 @@ int gameStartTicks = rapTicks;
 int ticksPerSec = 60;
 int lastTicks = 0;
 static SoundHandler soundHandler = {
-	false,  //sound on/off
-	false,  //music on/off
+	true,  //sound on/off
+	true,  //music on/off
 	163,  //sound volume
 	20   //music volume
 };
@@ -1504,19 +1505,6 @@ static AnimationFrame lightningFrames[] = {
 	{ 80, 144, 720, 288, 0, 0, 4 }
 };
 
-static SpriteAnimator fightAnimator = {
-	FIGHT, 0.5f, BMP_FIGHT, 0, 0
-};
-
-static AnimationFrame fightIdleFrames[] = {
-	{ 160, 48, 0, 0, 0, 0, 3 }
-};
-
-static AnimationFrame fightFlashFrames[] = {
-	{ 160, 48, 0, 0, 0, 0, 3 },
-	{ 160, 48, 0, 48, 0, 0, 3 }
-};
-
 // *************************************************
 //               User Prototypes
 // *************************************************
@@ -2691,90 +2679,20 @@ void basicmain()
 				bloodInit();
 				spriteDelayInit();
 				sleepInit();
+				matchInit();
 				switchScreenFight(p1Cursor, p2Cursor);
 			}
 		}
 		else if (onScreenFight)
 		{
-
 			/////////////////////////////////////////
 			// Fight!
 			/////////////////////////////////////////
 			pad1=jsfGetPad(LEFT_PAD);
 			pad2=jsfGetPad(RIGHT_PAD);
 
-			if (roundFightSequenceComplete == false)
-			{
-				if (rapTicks >= myTicks + ticksPerSec)
-				{
-					sprite[FIGHT].active = R_is_active;
-
-					if (fightScale <= 32)
-					{
-						sprite[FIGHT].scale_x = fightScale;
-						sprite[FIGHT].scale_y = fightScale;
-						sprite[FIGHT].x_ -= 8;
-						sprite[FIGHT].y_ -= 4;
-
-						fightScale += 4;
-					}
-					else
-					{
-						sfxFight(&soundHandler);
-						roundFightSequenceComplete = true;
-						myTicks = rapTicks;
-						fightScale = 32;
-					}
-				}
-			}
-
-			if (sprite[FIGHT].active == R_is_active && roundFightSequenceComplete)
-			{
-				updateSpriteAnimator(&fightAnimator, fightFlashFrames, 2, true, true);
-
-				if (rapTicks >= myTicks + ticksPerSec)
-				{
-					fightAnimator.currentFrame = 0;
-
-					updateSpriteAnimator(&fightAnimator, fightIdleFrames, 1, true, true);
-
-					if (fightScale > 0)
-					{
-						sprite[FIGHT].scale_x = fightScale;
-						sprite[FIGHT].scale_y = fightScale;
-						sprite[FIGHT].x_ += 8;
-						sprite[FIGHT].y_ += 4;
-						fightScale -= 4;
-					}
-					else
-					{
-						sprite[FIGHT].active = R_is_inactive;
-					}
-				}
-			}
-
-			// if (roundFightSequenceComplete && sprite[FIGHT].active == R_is_inactive)
-			// {
-			// 	if (rapTicks >= myTicks + 10)
-			// 	{
-			// 		sprite[P1_HEALTHBAR].scale_x = barScale;
-			// 		sprite[P2_HEALTHBAR].scale_x = barScale;
-			// 		sprite[P2_HEALTHBAR].x_ = 180 + ((33 - barScale) * 4);
-
-			// 		barScale += 1 * barDirection;
-
-			// 		if (barDirection == 1 && barScale > 33)
-			// 		{
-			// 			barDirection = -1;
-			// 		}
-			// 		else if (barDirection == -1 && barScale <= 0)
-			// 		{
-			// 			barDirection = 1;
-			// 		}
-
-			// 		myTicks = rapTicks;
-			// 	}
-			// }
+			//match progression
+			matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr);
 
 			if (sleepCheck())
 			{
@@ -3051,6 +2969,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor)
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,64);
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),4,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),5,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_MATCH_clut),11,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_HUD_clut),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);

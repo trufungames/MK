@@ -64,9 +64,14 @@ struct Fighter {
     bool IsBeingDamaged;
     bool IsPushing;
     bool IsTurning;
+    bool IsActive;
+    bool IsDizzy;
+    bool IsDefeated;
     bool IsBeingPushed;
     bool DoBlockSequence;
     bool DoUppercutSequence;
+    bool DoDefeatedSequence;
+    bool DoWinSequence;
     bool AcceptingInput;
     bool MadeContactUppercut;
     bool MadeContact;

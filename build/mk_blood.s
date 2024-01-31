@@ -1691,7 +1691,7 @@ _bloodSquirts:
 _bloodSquirt4Animator:
 	.long	47
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1700,7 +1700,7 @@ _bloodSquirt4Animator:
 _bloodSquirt3Animator:
 	.long	46
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1709,7 +1709,7 @@ _bloodSquirt3Animator:
 _bloodSquirt2Animator:
 	.long	45
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1718,7 +1718,7 @@ _bloodSquirt2Animator:
 _bloodSquirt1Animator:
 	.long	44
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1897,7 +1897,7 @@ _bloodPoolFrames:
 _bloodPool8Animator:
 	.long	26
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1906,7 +1906,7 @@ _bloodPool8Animator:
 _bloodPool7Animator:
 	.long	25
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1915,7 +1915,7 @@ _bloodPool7Animator:
 _bloodPool6Animator:
 	.long	24
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1924,7 +1924,7 @@ _bloodPool6Animator:
 _bloodPool5Animator:
 	.long	23
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1933,7 +1933,7 @@ _bloodPool5Animator:
 _bloodPool4Animator:
 	.long	22
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1942,7 +1942,7 @@ _bloodPool4Animator:
 _bloodPool3Animator:
 	.long	21
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1951,7 +1951,7 @@ _bloodPool3Animator:
 _bloodPool2Animator:
 	.long	20
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -1960,7 +1960,7 @@ _bloodPool2Animator:
 _bloodPool1Animator:
 	.long	19
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2028,7 +2028,7 @@ _bloodDropFrames:
 _bloodDrop8Animator:
 	.long	43
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2037,7 +2037,7 @@ _bloodDrop8Animator:
 _bloodDrop7Animator:
 	.long	42
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2046,7 +2046,7 @@ _bloodDrop7Animator:
 _bloodDrop6Animator:
 	.long	41
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2055,7 +2055,7 @@ _bloodDrop6Animator:
 _bloodDrop5Animator:
 	.long	40
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2064,7 +2064,7 @@ _bloodDrop5Animator:
 _bloodDrop4Animator:
 	.long	39
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2073,7 +2073,7 @@ _bloodDrop4Animator:
 _bloodDrop3Animator:
 	.long	38
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2082,7 +2082,7 @@ _bloodDrop3Animator:
 _bloodDrop2Animator:
 	.long	37
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2091,7 +2091,7 @@ _bloodDrop2Animator:
 _bloodDrop1Animator:
 	.long	36
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2145,7 +2145,7 @@ _bloodGlobFrames:
 _bloodGlobAnimator:
 	.long	35
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2192,7 +2192,7 @@ _bloodSprayFrames:
 _bloodSpray2Animator:
 	.long	34
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4
@@ -2201,7 +2201,7 @@ _bloodSpray2Animator:
 _bloodSpray1Animator:
 	.long	33
 	.long	1056964608
-	.long	13324832
+	.long	13437248
 	.long	0
 	.long	0
 	.skip 4

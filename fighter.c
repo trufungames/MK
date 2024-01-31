@@ -107,6 +107,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->damageTicks = 1;
     fighter->dropKickTicks = 0;
     fighter->touchTicks = 0;
+    fighter->IsActive = true;
     fighter->IsIdle = true;
     fighter->IsWalking = false;
     fighter->IsAttacking = false;
@@ -142,8 +143,11 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsGettingUp = false;
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
+    fighter->IsDizzy = false;
+    fighter->IsFainting = false;
     fighter->IsBeingPushed = false;
     fighter->DoBlockSequence = false;
+    fighter->DoWinSequence = false;
     fighter->MadeContactUppercut = false;
     fighter->MadeContact = false;
     fighter->JumpLanded = false;
@@ -197,7 +201,30 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
 
 void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
+    if (!fighter->IsActive)
+        return;
+
     walkForward = fighter->direction == -1;
+
+    if (fighter->DoDefeatedSequence)
+    {
+        fighter->DoDefeatedSequence = false;
+        animator->currentFrame = 0;
+        fighter->IsDefeated = true;
+    }
+
+    if (fighter->IsDefeated)
+    {
+        if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
+        {
+            bgShake(false);
+            sfxThud(fighter->soundHandler);
+            fighter->IsActive = false;
+        }
+
+        updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        return;
+    }
 
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
     {
@@ -1685,9 +1712,10 @@ void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
 
     fighter->hitPoints -= damage;
 
-    if (fighter->hitPoints < 0)
+    if (fighter->hitPoints <= 0)
     {
         fighter->hitPoints = 0;
+        fighter->DoDefeatedSequence = true;
     }
 
     if (fighter->isPlayer1)

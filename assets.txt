@@ -64,8 +64,7 @@ ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
 ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
 ROM,BMP_HITBOX_OFF,gfx_clut,ASSETS\GFX\hitbox_off.BMP
 ROM,BMP_HITBOX_ATTACK_OFF,gfx_clut,ASSETS\GFX\hitbox_attack_off.BMP
-ROM,BMP_ROUND1,gfx_clut,ASSETS\GFX\round1.BMP
-ROM,BMP_FIGHT,gfx_clut,ASSETS\GFX\fight.BMP
+ROM,BMP_MATCH,gfx_clut,ASSETS\GFX\match.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
 ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
 ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
