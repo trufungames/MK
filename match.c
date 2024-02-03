@@ -1,5 +1,6 @@
 #include "common.h"
 #include "fighter.h"
+#include "match.h"
 #include "sound.h"
 #include "spriteanimator.h"
 #include "spritemovements.h"
@@ -9,6 +10,11 @@ int matchState = 0;  //0 = Round #, FIGHT!, 1 = {fighting}, 2 = {fighter} WINS /
 int matchTicks = 0;
 bool fightZoomed = false;
 int fightScale = 0;
+int winner = 0;
+int loser = 0;
+bool matchComplete = 0;
+int fighter1Wins = 0;
+int fighter2Wins = 0;
 
 static SpriteAnimator fightAnimator = {
 	FIGHT, 0.5f, BMP_MATCH, 0, 0
@@ -23,13 +29,88 @@ static AnimationFrame fightFlashFrames[] = {
 	{ 160, 48, 0, 240, 0, 0, 3 }
 };
 
-void matchInit()
+static AnimationFrame finishHimFrames[] = {
+	{ 304, 48, 0, 0, 0, 0, 3 },
+	{ 304, 48, 0, 48, 0, 0, 3 }
+};
+
+static AnimationFrame finishHerFrames[] = {
+	{ 304, 48, 0, 96, 0, 0, 3 },
+	{ 304, 48, 0, 144, 0, 0, 3 }
+};
+
+static AnimationFrame cageWinsFrames[] = {
+	{ 192, 32, 304, 0, 0, 0, 3 },
+	{ 192, 32, 496, 0, 0, 0, 3 }
+};
+
+static AnimationFrame kanoWinsFrames[] = {
+	{ 192, 32, 304, 32, 0, 0, 3 },
+	{ 192, 32, 496, 32, 0, 0, 3 }
+};
+
+static AnimationFrame raidenWinsFrames[] = {
+	{ 192, 32, 304, 64, 0, 0, 3 },
+	{ 192, 32, 496, 64, 0, 0, 3 }
+};
+
+static AnimationFrame kangWinsFrames[] = {
+	{ 192, 32, 304, 96, 0, 0, 3 },
+	{ 192, 32, 496, 96, 0, 0, 3 }
+};
+
+static AnimationFrame scorpionWinsFrames[] = {
+	{ 192, 32, 304, 128, 0, 0, 3 },
+	{ 192, 32, 496, 128, 0, 0, 3 }
+};
+
+static AnimationFrame subzeroWinsFrames[] = {
+	{ 192, 32, 304, 160, 0, 0, 3 },
+	{ 192, 32, 496, 160, 0, 0, 3 }
+};
+
+static AnimationFrame sonyaWinsFrames[] = {
+	{ 192, 32, 304, 192, 0, 0, 3 },
+	{ 192, 32, 496, 192, 0, 0, 3 }
+};
+
+static AnimationFrame reptileWinsFrames[] = {
+	{ 192, 32, 304, 224, 0, 0, 3 },
+	{ 192, 32, 496, 224, 0, 0, 3 }
+};
+
+static AnimationFrame kasumiWinsFrames[] = {
+	{ 192, 32, 304, 256, 0, 0, 3 },
+	{ 192, 32, 496, 256, 0, 0, 3 }
+};
+
+static AnimationFrame goroWinsFrames[] = {
+	{ 192, 32, 304, 288, 0, 0, 3 },
+	{ 192, 32, 496, 288, 0, 0, 3 }
+};
+
+static AnimationFrame shangWinsFrames[] = {
+	{ 192, 32, 304, 304, 0, 0, 3 },
+	{ 192, 32, 496, 304, 0, 0, 3 }
+};
+
+void matchReset()
 {
-    round = 0;
-    matchState = 0;
+	matchState = 0;
     matchTicks = 0;
     fightZoomed = false;
 	fightScale = 0;
+	winner = 0;
+	loser = 0;
+	matchComplete = false;
+}
+
+void matchInit()
+{
+    round = 0;
+	fighter1Wins = 0;
+	fighter2Wins = 0;
+    matchReset();
 }
 
 void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
@@ -115,24 +196,148 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
         }
     }
 	else if (matchState == 2)
-	{
-		int winner = 0;
-		
+	{		
 		if (fighter1->IsDefeated)
 		{
 			winner = fighter2->fighterIndex;
-			fighter2->DoWinSequence = true;
+			loser = fighter1->fighterIndex;
+			
+			fighter2Wins++;
+
+			if (fighter2Wins < 2)
+			{
+				fighter2->DoWinSequence = true;
+			}
 		}
 		else if (fighter2->IsDefeated)
 		{
 			winner = fighter1->fighterIndex;
-			fighter1->DoWinSequence = true;
+			loser = fighter2->fighterIndex;
+			
+			fighter1Wins++;
+
+			if (fighter1Wins < 2)
+			{
+				fighter1->DoWinSequence = true;
+			}
 		}
 
 		if (winner != 0)
 		{
-			matchState = 3;
-			//TODO show "Fighter Wins" n stuff...
+			if (fighter1Wins > 1 || fighter2Wins > 1)
+			{
+				matchState = 4;  //FINISH HIM/HER!
+				sprite[FIGHT].x_ = 8;
+				sprite[FIGHT].y_ = 64;
+				sprite[FIGHT].scaled = R_spr_unscale;
+				matchTicks = rapTicks;
+
+				if (loser == SONYA)
+				{
+					sfxFinishHer(soundHandler);
+				}
+				else
+				{
+					sfxFinishHim(soundHandler);
+				}
+			}
+			else
+			{
+				matchState = 3;  //XXXXX WINS!
+				sprite[FIGHT].x_ = 64;
+				sprite[FIGHT].y_ = 48;
+				sprite[FIGHT].scaled = R_spr_unscale;
+				matchTicks = rapTicks;
+			}
 		}
 	}
+	else if (matchState == 3)
+	{
+		if (rapTicks > matchTicks + 120)
+		{
+			switch (winner)
+			{
+				case CAGE:
+					updateSpriteAnimator(&fightAnimator, cageWinsFrames, 2, true, true);
+					break;
+				case KANO:
+					updateSpriteAnimator(&fightAnimator, kanoWinsFrames, 2, true, true);
+					break;
+				case RAIDEN:
+					updateSpriteAnimator(&fightAnimator, raidenWinsFrames, 2, true, true);
+					break;
+				case KANG:
+					updateSpriteAnimator(&fightAnimator, kangWinsFrames, 2, true, true);
+					break;
+				case SCORPION:
+					updateSpriteAnimator(&fightAnimator, scorpionWinsFrames, 2, true, true);
+					break;
+				case SUBZERO:
+					updateSpriteAnimator(&fightAnimator, subzeroWinsFrames, 2, true, true);
+					break;
+				case SONYA:
+					updateSpriteAnimator(&fightAnimator, sonyaWinsFrames, 2, true, true);
+					break;
+				case REPTILE:
+					updateSpriteAnimator(&fightAnimator, reptileWinsFrames, 2, true, true);
+					break;
+				case KASUMI:
+					updateSpriteAnimator(&fightAnimator, kasumiWinsFrames, 2, true, true);
+					break;
+				case GORO:
+					updateSpriteAnimator(&fightAnimator, goroWinsFrames, 2, true, true);
+					break;
+				case SHANG:
+					updateSpriteAnimator(&fightAnimator, shangWinsFrames, 2, true, true);
+					break;
+				default:
+					break;
+			}
+
+			sprite[FIGHT].active = R_is_active;
+
+			if (rapTicks > matchTicks + MATCH_TIME_WINS)
+			{
+				if (!matchComplete)
+				{
+					matchComplete = true;
+					
+					if (round < 3)
+					{
+						round++;
+					}
+				}				
+			}
+		}
+	}
+	else if (matchState == 4)
+	{
+		if (loser == SONYA)
+		{
+			//FINISH HER!
+			updateSpriteAnimator(&fightAnimator, finishHerFrames, 2, true, true);
+		}
+		else
+		{
+			//FINISH HIM!
+			updateSpriteAnimator(&fightAnimator, finishHimFrames, 2, true, true);
+		}
+
+		sprite[FIGHT].active = R_is_active;
+
+		if (rapTicks >= matchTicks + MATCH_TIME_FINISH)
+		{
+			matchState = 5;
+			sprite[FIGHT].active = R_is_inactive;
+		}
+	}
+	else if (matchState == 5)
+	{
+
+	}
+}
+
+bool matchIsComplete()
+{
+	return matchComplete;
 }

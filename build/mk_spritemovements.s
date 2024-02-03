@@ -97,8 +97,8 @@ __Z8bgUpdateP7FighterS0_:
 .L13:
 	move.l _bgYInc,%d0
 	add.w %d0,3468(%a2)
-	add.l %d0,242(%a5)
-	add.l %d0,242(%a4)
+	add.l %d0,252(%a5)
+	add.l %d0,252(%a4)
 .L14:
 	move.l %a3,_LastTicks
 .L6:
@@ -148,8 +148,8 @@ __Z8bgUpdateP7FighterS0_:
 	clr.b _IsScrollingDown
 	move.l _bgYInc,%d0
 	add.w %d0,3468(%a2)
-	add.l %d0,242(%a5)
-	add.l %d0,242(%a4)
+	add.l %d0,252(%a5)
+	add.l %d0,252(%a4)
 	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv

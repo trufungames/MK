@@ -406,6 +406,46 @@ void sfxAnnouncerLaugh(struct SoundHandler* soundHandler)
 	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(announcer_laugh_sam),(STRPTR(announcer_laugh_sam_end)-STRPTR(announcer_laugh_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
 }
 
+void sfxFinishHer(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FINISH_HER, 8000);
+}
+
+void sfxFinishHim(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FINISH_HIM, 8000);
+}
+
+void sfxWins(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_WINS, 8000);
+}
+
+void sfxFlawless(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FLAWLESS, 8000);
+}
+
+void sfxFatality(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FATALITY, 8000);
+}
+
 void musicTitle(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableMusic)

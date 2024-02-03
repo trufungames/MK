@@ -425,5 +425,50 @@ sample45:	dc.l	announcer_laugh_sam		; start of sample
 			dc.b	0				; fine tune
 s45_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate	
+		
+sample46:	dc.l	finish_her_sam		; start of sample
+			dc.l	finish_her_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s46_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate	
+
+sample47:	dc.l	finish_him_sam		; start of sample
+			dc.l	finish_him_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s47_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample48:	dc.l	wins_sam		; start of sample
+			dc.l	wins_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s48_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample49:	dc.l	flawless_sam		; start of sample
+			dc.l	flawless_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s49_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample50:	dc.l	fatality_sam		; start of sample
+			dc.l	fatality_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s50_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
 
 ; END OF FILE.

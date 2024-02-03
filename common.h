@@ -85,6 +85,11 @@
 #define SOUND_CROWD_AWW 43
 #define SOUND_ANNOUNCER_EXCELLENT 44
 #define SOUND_ANNOUNCER_LAUGH 45
+#define SOUND_FINISH_HER 46
+#define SOUND_FINISH_HIM 47
+#define SOUND_WINS 48
+#define SOUND_FLAWLESS 49
+#define SOUND_FATALITY 50
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
@@ -106,7 +111,7 @@
 #define FLOOR_LOCATION_Y 188
 #define HITBOX_WIDTH 48
 
-//---j--------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 #define CAGE 1
 #define KANO 2
 #define RAIDEN 3
@@ -116,6 +121,13 @@
 #define SONYA 7
 #define REPTILE 8
 #define KASUMI 9
+#define GORO 10
+#define SHANG 11
+
+//-----------------------------------------------------------------------------------------------------
+#define MATCH_TIME_TOTAL 99*60
+#define MATCH_TIME_WINS 6*60
+#define MATCH_TIME_FINISH 3*60
 
 //-----------------------------------------------------------------------------------------------------
 #define SOUND_CHANNEL_PLAYER1 4
@@ -128,6 +140,7 @@
 #define SCORPION_WALK_FRAME_COUNT 9
 
 #define KANO_IDLE_FRAME_COUNT 7
+#define KANO_WINS_FRAME_COUNT 5
 #define KANO_WALK_FRAME_COUNT 9
 #define KANO_TURN_FRAME_COUNT 2
 #define KANO_JUMP_FRAME_COUNT 4
@@ -155,6 +168,7 @@
 #define KANO_HIT_SWEEP_FRAME_COUNT 6
 
 #define CAGE_IDLE_FRAME_COUNT 7
+#define CAGE_WINS_FRAME_COUNT 11
 #define CAGE_WALK_FRAME_COUNT 9
 #define CAGE_TURN_FRAME_COUNT 2
 #define CAGE_JUMP_FRAME_COUNT 4
@@ -182,6 +196,7 @@
 #define CAGE_HIT_SWEEP_FRAME_COUNT 6
 
 #define KANG_IDLE_FRAME_COUNT 7
+#define KANG_WINS_FRAME_COUNT 15
 #define KANG_WALK_FRAME_COUNT 9
 #define KANG_TURN_FRAME_COUNT 2
 #define KANG_JUMP_FRAME_COUNT 4
@@ -209,6 +224,7 @@
 #define KANG_HIT_SWEEP_FRAME_COUNT 6
 
 #define RAIDEN_IDLE_FRAME_COUNT 10
+#define RAIDEN_WINS_FRAME_COUNT 5
 #define RAIDEN_WALK_FRAME_COUNT 9
 #define RAIDEN_TURN_FRAME_COUNT 2
 #define RAIDEN_JUMP_FRAME_COUNT 4
@@ -236,6 +252,7 @@
 #define RAIDEN_HIT_SWEEP_FRAME_COUNT 6
 
 #define SUBZERO_IDLE_FRAME_COUNT 12
+#define SUBZERO_WINS_FRAME_COUNT 3
 #define SUBZERO_WALK_FRAME_COUNT 9
 #define SUBZERO_TURN_FRAME_COUNT 2
 #define SUBZERO_JUMP_FRAME_COUNT 4
@@ -263,6 +280,7 @@
 #define SUBZERO_HIT_SWEEP_FRAME_COUNT 6
 
 #define SONYA_IDLE_FRAME_COUNT 7
+#define SONYA_WINS_FRAME_COUNT 7
 #define SONYA_WALK_FRAME_COUNT 7
 #define SONYA_TURN_FRAME_COUNT 2
 #define SONYA_JUMP_FRAME_COUNT 4

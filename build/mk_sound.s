@@ -881,21 +881,106 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 	unlk %fp
 	rts
 	.even
+	.globl	__Z12sfxFinishHerP12SoundHandler
+__Z12sfxFinishHerP12SoundHandler:
+	link.w %fp,#0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L254
+	unlk %fp
+	rts
+.L254:
+	pea 8000.w
+	pea 46.w
+	pea 6.w
+	jsr u235PlaySampleFreq
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+	.even
+	.globl	__Z12sfxFinishHimP12SoundHandler
+__Z12sfxFinishHimP12SoundHandler:
+	link.w %fp,#0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L259
+	unlk %fp
+	rts
+.L259:
+	pea 8000.w
+	pea 47.w
+	pea 6.w
+	jsr u235PlaySampleFreq
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+	.even
+	.globl	__Z7sfxWinsP12SoundHandler
+__Z7sfxWinsP12SoundHandler:
+	link.w %fp,#0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L264
+	unlk %fp
+	rts
+.L264:
+	pea 8000.w
+	pea 48.w
+	pea 6.w
+	jsr u235PlaySampleFreq
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+	.even
+	.globl	__Z11sfxFlawlessP12SoundHandler
+__Z11sfxFlawlessP12SoundHandler:
+	link.w %fp,#0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L269
+	unlk %fp
+	rts
+.L269:
+	pea 8000.w
+	pea 49.w
+	pea 6.w
+	jsr u235PlaySampleFreq
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+	.even
+	.globl	__Z11sfxFatalityP12SoundHandler
+__Z11sfxFatalityP12SoundHandler:
+	link.w %fp,#0
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L274
+	unlk %fp
+	rts
+.L274:
+	pea 8000.w
+	pea 50.w
+	pea 6.w
+	jsr u235PlaySampleFreq
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+	.even
 	.globl	__Z10musicTitleP12SoundHandler
 __Z10musicTitleP12SoundHandler:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L254
+	jne .L279
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L254:
+.L279:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13734928,-(%sp)
+	move.l #13775376,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)
@@ -909,15 +994,15 @@ __Z10musicStageP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L259
+	jne .L284
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L259:
+.L284:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13824864,-(%sp)
+	move.l #13865312,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)

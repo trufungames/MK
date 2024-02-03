@@ -126,6 +126,11 @@ ROM,thud_sam,sfx_raw8000,ASSETS\SFX\thud.wav
 ROM,crowd_aww_sam,sfx_raw8000,ASSETS\SFX\crowd_aww.wav
 ROM,announcer_excellent_sam,sfx_raw8000,ASSETS\SFX\announcer_excellent.wav
 ROM,announcer_laugh_sam,sfx_raw8000,ASSETS\SFX\announcer_laugh.wav
+ROM,finish_her_sam,sfx_raw8000,ASSETS\SFX\finish_her.wav
+ROM,finish_him_sam,sfx_raw8000,ASSETS\SFX\finish_him.wav
+ROM,wins_sam,sfx_raw8000,ASSETS\SFX\wins.wav
+ROM,flawless_sam,sfx_raw8000,ASSETS\SFX\flawless.wav
+ROM,fatality_sam,sfx_raw8000,ASSETS\SFX\fatality.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod

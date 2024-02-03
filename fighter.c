@@ -109,6 +109,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->touchTicks = 0;
     fighter->IsActive = true;
     fighter->IsIdle = true;
+    fighter->IsWinner = false;
     fighter->IsWalking = false;
     fighter->IsAttacking = false;
     fighter->IsTurning = false;
@@ -144,7 +145,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
-    fighter->IsFainting = false;
+    fighter->IsDefeated = false;
     fighter->IsBeingPushed = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
@@ -189,6 +190,16 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->direction = -1;
     }
 
+    sprite[fighter->spriteIndex].y_ = 90;
+
+    sprite[fighter->HB_BODY].x_ = sprite[fighter->spriteIndex].x_ + 12;
+    sprite[fighter->HB_BODY].y_ = sprite[fighter->spriteIndex].y_ + 10;
+
+    if (fighter->fighterIndex == CAGE)
+    {
+        sprite[fighter->HB_BODY].x_ = sprite[fighter->spriteIndex].x_ + 16;
+    }
+
     fighter->positionX = sprite[fighter->spriteIndex].x_;
     fighter->positionY = sprite[fighter->spriteIndex].y_;
     impactFrameReset(fighter);
@@ -213,6 +224,13 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->IsDefeated = true;
     }
 
+    if (fighter->DoWinSequence)
+    {
+        fighter->DoWinSequence = false;
+        animator->currentFrame = 0;
+        fighter->IsWinner = true;
+    }
+
     if (fighter->IsDefeated)
     {
         if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
@@ -224,6 +242,12 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
 
         updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
         return;
+    }
+
+    if (fighter->IsWinner)
+    {
+        updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        return; 
     }
 
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
