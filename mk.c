@@ -1624,7 +1624,7 @@ static AnimationFrame lightningFrames[] = {
 // *************************************************
 void initTitleScreen();
 void initGameAssets();
-void switchScreenChooseFighter(bool unpackBackground);
+void switchScreenChooseFighter();
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
 void SetPlayerPalettes();
@@ -2513,7 +2513,7 @@ void basicmain()
 					}
 
 					fadedOut = true;		
-					switchScreenChooseFighter(true);
+					switchScreenChooseFighter();
 					//sfxGong(&soundHandler);
 					musicTitle(&soundHandler);
 					//initGameAssets();
@@ -2859,11 +2859,9 @@ void basicmain()
 					jsfVsync(0);
 				}
 
-				sprite[BACKGROUND].active = R_is_active;
-				sprite[STAGE_PIT_MOON].active=R_is_inactive;
-				sprite[STAGE_PIT_BACKGROUND].active=R_is_inactive;
 				musicTitle(&soundHandler);
-				switchScreenChooseFighter(false);
+				switchScreenChooseFighter();
+				continue;
 			}
 
 			if (matchIsComplete())
@@ -3018,26 +3016,34 @@ void initGameAssets()
 	jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
 }
 
-void switchScreenChooseFighter(bool unpackBackground)
+void switchScreenChooseFighter()
 {
 	p1Cursor = 1;
 	p2Cursor = 2;
 	p1Selected = -1;
 	p2Selected = -1;
 	chooseFighterDone = false;
-	if (unpackBackground)
-	{
-		rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);
-	}
-	
+	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);	
 	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 
+	sprite[P1_CURSOR].x_ = 68;
+	sprite[P1_CURSOR].y_ = 42;
+	sprite[P1_FLASH].x_ = 68;
+	sprite[P1_FLASH].y_ = 46;
+	sprite[P2_CURSOR].x_ = 189;
+	sprite[P2_CURSOR].y_ = 42;
+	sprite[P2_FLASH].x_ = 189;
+	sprite[P2_FLASH].y_ = 46;
 	sprite[P1_CURSOR].active = R_is_active;
 	sprite[P2_CURSOR].active = R_is_active;
 
 	onTitleScreen = false;
 	onScreenChooseFighter = true;
+	onScreenVsBattle = false;
+	onScreenFight = false;
+	
+	rapSetActiveList(0);
 	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
 	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
@@ -3048,6 +3054,7 @@ void switchScreenChooseFighter(bool unpackBackground)
 	jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
 	fighterMakeSelectable(&fighterSubzero2, false);
 	fighterShow(&fighterSubzero2);
+	SetPlayerPalettes();
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
