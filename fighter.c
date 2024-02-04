@@ -1,6 +1,7 @@
 #include "common.h"
 #include "camera.h"
 #include "fighter.h"
+#include "match.h"
 #include "sound.h"
 #include "spriteanimator.h"
 #include "spritemovements.h"
@@ -221,7 +222,16 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     {
         fighter->DoDefeatedSequence = false;
         animator->currentFrame = 0;
-        fighter->IsDefeated = true;
+
+        if (matchIsFinalRound() && !fighter->IsDizzy)
+        {
+            fighter->IsDizzy = true;
+        }
+        else
+        {
+            fighter->IsDefeated = true;
+            fighter->IsDizzy = false;
+        }
     }
 
     if (fighter->DoWinSequence)
@@ -229,6 +239,15 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->DoWinSequence = false;
         animator->currentFrame = 0;
         fighter->IsWinner = true;
+    }
+
+    if (fighter->IsDizzy)
+    {
+        fighter->positionY = FLOOR_LOCATION_Y - 98;
+        sprite[fighter->spriteIndex].y_ = fighter->positionY;
+        sprite[fighter->HB_BODY].y_ = fighter->positionY + 10;
+        updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+        return;
     }
 
     if (fighter->IsDefeated)

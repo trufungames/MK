@@ -3,6 +3,7 @@ struct Fighter {
     unsigned int spriteIndex;
     unsigned int spriteBase;
     unsigned int IDLE_FRAME_COUNT;
+    unsigned int DIZZY_FRAME_COUNT;
     unsigned int WINS_FRAME_COUNT;
     unsigned int WALK_FRAME_COUNT;
     unsigned int TURN_FRAME_COUNT;
@@ -124,6 +125,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameSweep;
     struct ImpactFrame* impactFrameRoundhouse;
     struct AnimationFrame (*idleFrames)[12];
+    struct AnimationFrame (*dizzyFrames)[7];
     struct AnimationFrame (*winsFrames)[15];
     struct AnimationFrame (*walkFrames)[9];
     struct AnimationFrame (*turnFrames)[2];

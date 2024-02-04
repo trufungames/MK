@@ -113,7 +113,7 @@ void matchInit()
     matchReset();
 }
 
-void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
+bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
 {
     if (matchState == 0)
     {
@@ -204,7 +204,7 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			
 			fighter2Wins++;
 
-			if (fighter2Wins < 2)
+			if (fighter2Wins <= 2)
 			{
 				fighter2->DoWinSequence = true;
 			}
@@ -216,7 +216,7 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			
 			fighter1Wins++;
 
-			if (fighter1Wins < 2)
+			if (fighter1Wins <= 2)
 			{
 				fighter1->DoWinSequence = true;
 			}
@@ -224,36 +224,33 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 
 		if (winner != 0)
 		{
-			if (fighter1Wins > 1 || fighter2Wins > 1)
-			{
-				matchState = 4;  //FINISH HIM/HER!
-				sprite[FIGHT].x_ = 8;
-				sprite[FIGHT].y_ = 64;
-				sprite[FIGHT].scaled = R_spr_unscale;
-				matchTicks = rapTicks;
+			matchState = 3;  //XXXXX WINS!
+			sprite[FIGHT].x_ = 64;
+			sprite[FIGHT].y_ = 48;
+			sprite[FIGHT].scaled = R_spr_unscale;
+			matchTicks = rapTicks;
+		}
+		else if (fighter1->IsDizzy || fighter2->IsDizzy)
+		{
+			matchState = 4;  //FINISH HIM/HER!
+			sprite[FIGHT].x_ = 8;
+			sprite[FIGHT].y_ = 64;
+			sprite[FIGHT].scaled = R_spr_unscale;
+			matchTicks = rapTicks;
 
-				if (loser == SONYA)
-				{
-					sfxFinishHer(soundHandler);
-				}
-				else
-				{
-					sfxFinishHim(soundHandler);
-				}
+			if (loser == SONYA)
+			{
+				sfxFinishHer(soundHandler);
 			}
 			else
 			{
-				matchState = 3;  //XXXXX WINS!
-				sprite[FIGHT].x_ = 64;
-				sprite[FIGHT].y_ = 48;
-				sprite[FIGHT].scaled = R_spr_unscale;
-				matchTicks = rapTicks;
+				sfxFinishHim(soundHandler);
 			}
 		}
 	}
 	else if (matchState == 3)
 	{
-		if (rapTicks > matchTicks + 120)
+		if (rapTicks > matchTicks + 60)
 		{
 			switch (winner)
 			{
@@ -302,9 +299,14 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 				{
 					matchComplete = true;
 					
-					if (round < 3)
+					if (round < 3 && fighter1Wins <= 1 && fighter2Wins <= 1)
 					{
 						round++;
+					}
+					else
+					{
+						//switch back to Choose Your Fighter
+						return false;
 					}
 				}				
 			}
@@ -325,19 +327,39 @@ void matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 
 		sprite[FIGHT].active = R_is_active;
 
-		if (rapTicks >= matchTicks + MATCH_TIME_FINISH)
+		if (rapTicks >= matchTicks + 60)
 		{
 			matchState = 5;
 			sprite[FIGHT].active = R_is_inactive;
+			matchTicks = rapTicks;
 		}
 	}
 	else if (matchState == 5)
 	{
-
+		if (rapTicks >= matchTicks + MATCH_TIME_FINISH)
+		{
+			if (fighter1->IsDizzy)
+			{
+				fighter1->DoDefeatedSequence = true;
+				matchState = 2;
+			}
+			else if (fighter2->IsDizzy)
+			{
+				fighter2->DoDefeatedSequence = true;
+				matchState = 2;
+			}
+		}
 	}
+
+	return true;
 }
 
 bool matchIsComplete()
 {
 	return matchComplete;
+}
+
+bool matchIsFinalRound()
+{
+	return fighter1Wins >= 1 || fighter2Wins >= 1;
 }

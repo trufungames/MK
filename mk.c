@@ -22,6 +22,9 @@ static int imageBuffer320x240[320*240/4];
 static int BLACKPAL[128];
 int p1Cursor = 1;
 int p2Cursor = 2;
+int p1Selected = -1;
+int p2Selected = -1;
+bool chooseFighterDone = false;
 bool onTitleScreen = true;
 bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
@@ -125,6 +128,15 @@ static AnimationFrame cageIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0},
 	{ 0, 0, 0, 0, 0, 0, 0},
 	{ 0, 0, 0, 0, 0, 0, 0}
+};
+static AnimationFrame cageDizzyFrames[] = {
+	{ 80, 144, 400, 1024, 0, 0, 6 },
+	{ 80, 144, 480,  1024, 0, 0, 6 },
+	{ 80, 144, 560, 1024, 0, 0, 6 },
+	{ 80, 144, 640, 1024, 0, 0, 6 },
+	{ 80, 144, 720, 1024, 0, 0, 6 },
+	{ 80, 144, 800, 1024, 0, 0, 6 },
+	{ 80, 144, 880, 1024, 0, 0, 6 }
 };
 static AnimationFrame cageWinsFrames[] = {
 	{ 80, 144, 0, 1168, 0, 0, 6 },
@@ -1612,7 +1624,7 @@ static AnimationFrame lightningFrames[] = {
 // *************************************************
 void initTitleScreen();
 void initGameAssets();
-void switchScreenChooseFighter();
+void switchScreenChooseFighter(bool unpackBackground);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
 void SetPlayerPalettes();
@@ -1623,6 +1635,7 @@ void SetPlayerPalettes();
 static Fighter fighterScorpion = {
 	SCORPION, P1_FIGHTER, BMPSUBZERO,
 	SCORPION_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
@@ -1653,6 +1666,7 @@ static Fighter fighterScorpion = {
 static Fighter fighterKano = {
 	KANO, P1_FIGHTER, BMPKANO,
 	KANO_IDLE_FRAME_COUNT,
+	KANO_DIZZY_FRAME_COUNT,
 	KANO_WINS_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
 	KANO_TURN_FRAME_COUNT,
@@ -1683,6 +1697,7 @@ static Fighter fighterKano = {
 static Fighter fighterCage = {
 	CAGE, P1_FIGHTER, BMPCAGE,
 	CAGE_IDLE_FRAME_COUNT,
+	CAGE_DIZZY_FRAME_COUNT,
 	CAGE_WINS_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
 	CAGE_TURN_FRAME_COUNT,
@@ -1713,6 +1728,7 @@ static Fighter fighterCage = {
 static Fighter fighterKang = {
 	KANG, P1_FIGHTER, BMPKANG,
 	KANG_IDLE_FRAME_COUNT,
+	KANG_DIZZY_FRAME_COUNT,
 	KANG_WINS_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
 	KANG_TURN_FRAME_COUNT,
@@ -1743,6 +1759,7 @@ static Fighter fighterKang = {
 static Fighter fighterRaiden = {
 	RAIDEN, P1_FIGHTER, BMPRAIDEN,
 	RAIDEN_IDLE_FRAME_COUNT,
+	RAIDEN_DIZZY_FRAME_COUNT,
 	RAIDEN_WINS_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
 	RAIDEN_TURN_FRAME_COUNT,
@@ -1773,6 +1790,7 @@ static Fighter fighterRaiden = {
 static Fighter fighterSubzero = {
 	SUBZERO, P1_FIGHTER, BMPSUBZERO,
 	SUBZERO_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
@@ -1803,6 +1821,7 @@ static Fighter fighterSubzero = {
 static Fighter fighterSonya = {
 	SONYA, P1_FIGHTER, BMPSONYA,
 	SONYA_IDLE_FRAME_COUNT,
+	SONYA_DIZZY_FRAME_COUNT,
 	SONYA_WINS_FRAME_COUNT,
 	SONYA_WALK_FRAME_COUNT,
 	SONYA_TURN_FRAME_COUNT,
@@ -1836,6 +1855,7 @@ static Fighter fighterSonya = {
 static Fighter fighterScorpion2 = {
 	SCORPION, P2_FIGHTER, BMPSUBZERO,
 	SCORPION_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
@@ -1866,6 +1886,7 @@ static Fighter fighterScorpion2 = {
 static Fighter fighterKano2 = {
 	KANO, P2_FIGHTER, BMPKANO,
 	KANO_IDLE_FRAME_COUNT,
+	KANO_DIZZY_FRAME_COUNT,
 	KANO_WINS_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
 	KANO_TURN_FRAME_COUNT,
@@ -1896,6 +1917,7 @@ static Fighter fighterKano2 = {
 static Fighter fighterCage2 = {
 	CAGE, P2_FIGHTER, BMPCAGE,
 	CAGE_IDLE_FRAME_COUNT,
+	CAGE_DIZZY_FRAME_COUNT,
 	CAGE_WINS_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
 	CAGE_TURN_FRAME_COUNT,
@@ -1926,6 +1948,7 @@ static Fighter fighterCage2 = {
 static Fighter fighterKang2 = {
 	KANG, P2_FIGHTER, BMPKANG,
 	KANG_IDLE_FRAME_COUNT,
+	KANG_DIZZY_FRAME_COUNT,
 	KANG_WINS_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
 	KANG_TURN_FRAME_COUNT,
@@ -1956,6 +1979,7 @@ static Fighter fighterKang2 = {
 static Fighter fighterRaiden2 = {
 	RAIDEN, P2_FIGHTER, BMPRAIDEN,
 	RAIDEN_IDLE_FRAME_COUNT,
+	RAIDEN_DIZZY_FRAME_COUNT,
 	RAIDEN_WINS_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
 	RAIDEN_TURN_FRAME_COUNT,
@@ -1986,6 +2010,7 @@ static Fighter fighterRaiden2 = {
 static Fighter fighterSubzero2 = {
 	SUBZERO, P2_FIGHTER, BMPSUBZERO,
 	SUBZERO_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
@@ -2016,6 +2041,7 @@ static Fighter fighterSubzero2 = {
 static Fighter fighterSonya2 = {
 	SONYA, P2_FIGHTER, BMPSONYA,
 	SONYA_IDLE_FRAME_COUNT,
+	SONYA_DIZZY_FRAME_COUNT,
 	SONYA_WINS_FRAME_COUNT,
 	SONYA_WALK_FRAME_COUNT,
 	SONYA_TURN_FRAME_COUNT,
@@ -2048,9 +2074,9 @@ void basicmain()
 	pad1 = 0;
 	pad2 = 0;
 	int myTicks = 0;
-	int p1Selected = -1;
-	int p2Selected = -1;
-	bool chooseFighterDone = false;
+	p1Selected = -1;
+	p2Selected = -1;
+	chooseFighterDone = false;
 	bool roundFightSequenceComplete = false;
 	int fightScale = 0;
 	int barScale = 0;
@@ -2061,6 +2087,7 @@ void basicmain()
 	struct Fighter* fighter2Ptr; 
 
 	fighterCage.idleFrames = &cageIdleFrames;
+	fighterCage.dizzyFrames = &cageDizzyFrames;
 	fighterCage.winsFrames = &cageWinsFrames;
 	fighterCage.walkFrames = &cageWalkFrames;
 	fighterCage.turnFrames = &cageTurnFrames;
@@ -2088,6 +2115,7 @@ void basicmain()
 	fighterCage.sweepFrames = &cageSweepFrames;
 	fighterCage.roundhouseFrames = &cageRoundhouseFrames;
 	fighterCage2.idleFrames = &cageIdleFrames;
+	fighterCage2.dizzyFrames = &cageDizzyFrames;
 	fighterCage2.winsFrames = &cageWinsFrames;
 	fighterCage2.walkFrames = &cageWalkFrames;
 	fighterCage2.turnFrames = &cageTurnFrames;
@@ -2485,7 +2513,7 @@ void basicmain()
 					}
 
 					fadedOut = true;		
-					switchScreenChooseFighter();
+					switchScreenChooseFighter(true);
 					//sfxGong(&soundHandler);
 					musicTitle(&soundHandler);
 					//initGameAssets();
@@ -2823,7 +2851,20 @@ void basicmain()
 			pad2=jsfGetPad(RIGHT_PAD);
 
 			//match progression
-			matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr);
+			if (!matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr))
+			{
+				for (int i = 0; i < 90; i++)
+				{
+					rapFadeClut(0,256,BLACKPAL);
+					jsfVsync(0);
+				}
+
+				sprite[BACKGROUND].active = R_is_active;
+				sprite[STAGE_PIT_MOON].active=R_is_inactive;
+				sprite[STAGE_PIT_BACKGROUND].active=R_is_inactive;
+				musicTitle(&soundHandler);
+				switchScreenChooseFighter(false);
+			}
 
 			if (matchIsComplete())
 			{
@@ -2977,9 +3018,18 @@ void initGameAssets()
 	jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
 }
 
-void switchScreenChooseFighter()
+void switchScreenChooseFighter(bool unpackBackground)
 {
-	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);
+	p1Cursor = 1;
+	p2Cursor = 2;
+	p1Selected = -1;
+	p2Selected = -1;
+	chooseFighterDone = false;
+	if (unpackBackground)
+	{
+		rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);
+	}
+	
 	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 
