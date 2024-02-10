@@ -379,6 +379,22 @@ void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1)
 	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_roll_sam),(STRPTR(jump_roll_sam_end)-STRPTR(jump_roll_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
 }
 
+void sfxCageYeah(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_CAGE_YEAH, 8000);
+}
+
+void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO_YELL, 8000);
+}
+
 void sfxCrowdAww(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)
@@ -468,4 +484,10 @@ void musicStage(struct SoundHandler* soundHandler)
 	//u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
 	u235PlayModule(MOD_STAGE,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic);	
+}
+
+void musicStop()
+{
+	u235StopModule();
+	u235Silence();
 }

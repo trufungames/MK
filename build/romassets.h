@@ -195,7 +195,11 @@
 #define flawless_sam_end 0xD21094
 #define fatality_sam 0xD210A0
 #define fatality_sam_end 0xD23206
-#define MOD_TITLE 0xD23210
-#define MOD_TITLE_end 0xD39158
-#define MOD_STAGE 0xD39160
-#define MOD_STAGE_end 0xD476D4
+#define cage_yeah_sam 0xD23210
+#define cage_yeah_sam_end 0xD2431F
+#define kano_yell_sam 0xD24320
+#define kano_yell_sam_end 0xD2599C
+#define MOD_TITLE 0xD259A0
+#define MOD_TITLE_end 0xD3B8E8
+#define MOD_STAGE 0xD3B8F0
+#define MOD_STAGE_end 0xD49E64

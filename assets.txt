@@ -131,6 +131,8 @@ ROM,finish_him_sam,sfx_raw8000,ASSETS\SFX\finish_him.wav
 ROM,wins_sam,sfx_raw8000,ASSETS\SFX\wins.wav
 ROM,flawless_sam,sfx_raw8000,ASSETS\SFX\flawless.wav
 ROM,fatality_sam,sfx_raw8000,ASSETS\SFX\fatality.wav
+ROM,cage_yeah_sam,sfx_raw8000,ASSETS\SFX\cage_yeah.wav
+ROM,kano_yell_sam,sfx_raw8000,ASSETS\SFX\kano_yell.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod

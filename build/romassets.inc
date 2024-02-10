@@ -195,7 +195,11 @@ flawless_sam EQU $D1E570
 flawless_sam_end EQU $D21094
 fatality_sam EQU $D210A0
 fatality_sam_end EQU $D23206
-MOD_TITLE EQU $D23210
-MOD_TITLE_end EQU $D39158
-MOD_STAGE EQU $D39160
-MOD_STAGE_end EQU $D476D4
+cage_yeah_sam EQU $D23210
+cage_yeah_sam_end EQU $D2431F
+kano_yell_sam EQU $D24320
+kano_yell_sam_end EQU $D2599C
+MOD_TITLE EQU $D259A0
+MOD_TITLE_end EQU $D3B8E8
+MOD_STAGE EQU $D3B8F0
+MOD_STAGE_end EQU $D49E64

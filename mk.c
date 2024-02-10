@@ -130,13 +130,13 @@ static AnimationFrame cageIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0}
 };
 static AnimationFrame cageDizzyFrames[] = {
-	{ 80, 144, 400, 1024, 0, 0, 6 },
-	{ 80, 144, 480,  1024, 0, 0, 6 },
-	{ 80, 144, 560, 1024, 0, 0, 6 },
-	{ 80, 144, 640, 1024, 0, 0, 6 },
-	{ 80, 144, 720, 1024, 0, 0, 6 },
-	{ 80, 144, 800, 1024, 0, 0, 6 },
-	{ 80, 144, 880, 1024, 0, 0, 6 }
+	{ 80, 144, 400, 1024, 0, 0, 12 },
+	{ 80, 144, 480, 1024, 0, 0, 12 },
+	{ 80, 144, 560, 1024, 0, 0, 12 },
+	{ 80, 144, 640, 1024, 0, 0, 12 },
+	{ 80, 144, 720, 1024, 0, 0, 12 },
+	{ 80, 144, 800, 1024, 0, 0, 12 },
+	{ 80, 144, 880, 1024, 0, 0, 12 }
 };
 static AnimationFrame cageWinsFrames[] = {
 	{ 80, 144, 0, 1168, 0, 0, 6 },
@@ -388,7 +388,16 @@ static AnimationFrame kangIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
-static AnimationFrame kangWinsFrames[] = {  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+static AnimationFrame kangDizzyFrames[] = {
+	{ 80, 144, 400, 1024, 0, 0, 12 },
+	{ 80, 144, 480,  1024, 0, 0, 12 },
+	{ 80, 144, 560, 1024, 0, 0, 12 },
+	{ 80, 144, 640, 1024, 0, 0, 12 },
+	{ 80, 144, 720, 1024, 0, 0, 12 },
+	{ 80, 144, 800, 1024, 0, 0, 12 },
+	{ 80, 144, 880, 1024, 0, 0, 12 }
+};
+static AnimationFrame kangWinsFrames[] = {
 	{ 64, 144, 960, 1024, 0, 0, 8 },
 	{ 112, 144, 0, 1168, -29, 0, 8 },
 	{ 80, 144, 112, 1168, -5, 0, 8 },
@@ -634,6 +643,15 @@ static AnimationFrame raidenIdleFrames[] = {
 	{ 80, 144, 640, 0, 0, 0, 6 },
 	{ 80, 144, 720, 0, 0, 0, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+static AnimationFrame raidenDizzyFrames[] = {
+	{ 64, 144, 624, 1024, -15, 0, 12 },
+	{ 64, 144, 688, 1024, -15, 0, 12 },
+	{ 64, 144, 752, 1024, 0, 0, 12 },
+	{ 64, 144, 816, 1024, 0, 0, 12 },
+	{ 64, 144, 880, 1024, 0, 0, 12 },
+	{ 64, 144, 944, 1024, 0, 0, 12 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 static AnimationFrame raidenWinsFrames[] = {
@@ -933,6 +951,15 @@ static AnimationFrame subzeroIdleFrames[] = {
 	{ 80, 144, 800, 0, 0, 0, 6 },
 	{ 80, 144, 880, 0, 0, 0, 6 }
 };
+static AnimationFrame subzeroDizzyFrames[] = {
+	{ 80, 144, 496, 1312, -12, 0, 12 },
+	{ 80, 144, 576, 1312, -12, 0, 12 },
+	{ 80, 144, 656, 1312, 0, 0, 12 },
+	{ 80, 144, 736, 1312, 0, 0, 12 },
+	{ 80, 144, 816, 1312, 0, 0, 12 },
+	{ 80, 144, 896, 1312, 0, 0, 12 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame subzeroWinsFrames[] = {
 	{ 80, 144, 560, 1168, 0, 0, 6 },
 	{ 64, 144, 640, 1168, 0, 0, 6 },
@@ -1182,6 +1209,15 @@ static AnimationFrame sonyaIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame sonyaDizzyFrames[] = {
+	{ 64, 144, 512, 1024, -8, 0, 12 },
+	{ 64, 144, 576, 1024, 0, 0, 12 },
+	{ 64, 144, 640, 1024, 0, 0, 12 },
+	{ 64, 144, 704, 1024, 0, 0, 12 },
+	{ 64, 144, 768, 1024, -4, 0, 12 },
+	{ 64, 144, 832, 1024, -7, 0, 12 },
+	{ 64, 144, 896, 1024, -11, 0, 12 }
+};
 static AnimationFrame sonyaWinsFrames[] = {
 	{ 64, 144, 0, 1168, 0, 0, 6 },
 	{ 80, 144, 80, 1168, -1, 0, 6 },
@@ -1418,6 +1454,15 @@ static AnimationFrame kanoIdleFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame kanoDizzyFrames[] = {
+	{ 80, 144, 464, 1024, 0, 0, 6 },
+	{ 80, 144, 544,  1024, 0, 0, 6 },
+	{ 80, 144, 624, 1024, 0, 0, 6 },
+	{ 80, 144, 704, 1024, 0, 0, 6 },
+	{ 80, 144, 784, 1024, 0, 0, 6 },
+	{ 80, 144, 864, 1024, 0, 0, 6 },
+	{ 80, 144, 944, 1024, 0, 0, 6 }
+};
 static AnimationFrame kanoWinsFrames[] = {
 	{ 64, 160, 0, 1168, 0, -16, 6 },
 	{ 80, 160, 64, 1168, -2, -16, 6 },
@@ -1628,6 +1673,7 @@ void switchScreenChooseFighter();
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
 void SetPlayerPalettes();
+void setFighterAlternatePalette(int fighter1Index, int fighter2Index);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -2071,9 +2117,12 @@ static Fighter fighterSonya2 = {
 
 void basicmain()
 {
+	bool debugMode = false;
 	pad1 = 0;
 	pad2 = 0;
 	int myTicks = 0;
+	p1Cursor = 1;
+	p2Cursor = 2;
 	p1Selected = -1;
 	p2Selected = -1;
 	chooseFighterDone = false;
@@ -2144,6 +2193,7 @@ void basicmain()
 	fighterCage2.roundhouseFrames = &cageRoundhouseFrames;
 	//Kano
 	fighterKano.idleFrames = &kanoIdleFrames;
+	fighterKano.dizzyFrames = &kanoDizzyFrames;
 	fighterKano.winsFrames = &kanoWinsFrames;
 	fighterKano.walkFrames = &kanoWalkFrames;
 	fighterKano.turnFrames = &kanoTurnFrames;
@@ -2171,6 +2221,7 @@ void basicmain()
 	fighterKano.hitSweepFrames = &kanoHitSweepFrames;
 	fighterKano.kipUpFrames = &kanoKipUpFrames;
 	fighterKano2.idleFrames = &kanoIdleFrames;
+	fighterKano2.dizzyFrames = &kanoDizzyFrames;
 	fighterKano2.winsFrames = &kanoWinsFrames;
 	fighterKano2.walkFrames = &kanoWalkFrames;
 	fighterKano2.turnFrames = &kanoTurnFrames;
@@ -2199,6 +2250,7 @@ void basicmain()
 	fighterKano2.kipUpFrames = &kanoKipUpFrames;
 	//Raiden
 	fighterRaiden.idleFrames = &raidenIdleFrames;
+	fighterRaiden.dizzyFrames = &raidenDizzyFrames;
 	fighterRaiden.winsFrames = &raidenWinsFrames;
 	fighterRaiden.walkFrames = &raidenWalkFrames;
 	fighterRaiden.turnFrames = &raidenTurnFrames;
@@ -2226,6 +2278,7 @@ void basicmain()
 	fighterRaiden.hitFallFrames = &raidenHitFallFrames;
 	fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
 	fighterRaiden2.idleFrames = &raidenIdleFrames;
+	fighterRaiden2.dizzyFrames = &raidenDizzyFrames;
 	fighterRaiden2.winsFrames = &raidenWinsFrames;
 	fighterRaiden2.walkFrames = &raidenWalkFrames;
 	fighterRaiden2.turnFrames = &raidenTurnFrames;
@@ -2254,6 +2307,7 @@ void basicmain()
 	fighterRaiden2.hitSweepFrames = &raidenHitSweepFrames;
 	//Liu Kang
 	fighterKang.idleFrames = &kangIdleFrames;
+	fighterKang.dizzyFrames = &kangDizzyFrames;
 	fighterKang.winsFrames = &kangWinsFrames;
 	fighterKang.walkFrames = &kangWalkFrames;
 	fighterKang.turnFrames = &kangTurnFrames;
@@ -2281,6 +2335,7 @@ void basicmain()
 	fighterKang.hitFallFrames = &kangHitFallFrames;
 	fighterKang.hitSweepFrames = &kangHitSweepFrames;
 	fighterKang2.idleFrames = &kangIdleFrames;
+	fighterKang2.dizzyFrames = &kangDizzyFrames;
 	fighterKang2.winsFrames = &kangWinsFrames;
 	fighterKang2.walkFrames = &kangWalkFrames;
 	fighterKang2.turnFrames = &kangTurnFrames;
@@ -2309,6 +2364,7 @@ void basicmain()
 	fighterKang2.hitSweepFrames = &kangHitSweepFrames;
 	//Scorpion
 	fighterScorpion.idleFrames = &scorpionIdleFrames;
+	fighterScorpion.dizzyFrames = &subzeroDizzyFrames;
 	fighterScorpion.winsFrames = &subzeroWinsFrames;
 	fighterScorpion.walkFrames = &scorpionWalkFrames;
 	fighterScorpion.turnFrames = &subzeroTurnFrames;
@@ -2336,6 +2392,7 @@ void basicmain()
 	fighterScorpion.hitFallFrames = &subzeroHitFallFrames;
 	fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
 	fighterScorpion2.idleFrames = &scorpionIdleFrames;
+	fighterScorpion2.dizzyFrames = &subzeroDizzyFrames;
 	fighterScorpion2.winsFrames = &subzeroWinsFrames;
 	fighterScorpion2.walkFrames = &scorpionWalkFrames;
 	fighterScorpion2.turnFrames = &subzeroTurnFrames;
@@ -2364,6 +2421,7 @@ void basicmain()
 	fighterScorpion2.hitSweepFrames = &subzeroHitSweepFrames;
 	//Sub-Zero
 	fighterSubzero.idleFrames = &subzeroIdleFrames;
+	fighterSubzero.dizzyFrames = &subzeroDizzyFrames;
 	fighterSubzero.winsFrames = &subzeroWinsFrames;
 	fighterSubzero.walkFrames = &subzeroWalkFrames;
 	fighterSubzero.turnFrames = &subzeroTurnFrames;
@@ -2391,6 +2449,7 @@ void basicmain()
 	fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
 	fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
 	fighterSubzero2.idleFrames = &subzeroIdleFrames;
+	fighterSubzero2.dizzyFrames = &subzeroDizzyFrames;
 	fighterSubzero2.winsFrames = &subzeroWinsFrames;
 	fighterSubzero2.turnFrames = &subzeroTurnFrames;
 	fighterSubzero2.walkFrames = &subzeroWalkFrames;
@@ -2419,6 +2478,7 @@ void basicmain()
 	fighterSubzero2.hitSweepFrames = &subzeroHitSweepFrames;
 	//Sonya
 	fighterSonya.idleFrames = &sonyaIdleFrames;
+	fighterSonya.dizzyFrames = &sonyaDizzyFrames;
 	fighterSonya.winsFrames = &sonyaWinsFrames;
 	fighterSonya.walkFrames = &sonyaWalkFrames;
 	fighterSonya.turnFrames = &sonyaTurnFrames;
@@ -2446,6 +2506,7 @@ void basicmain()
 	fighterSonya.hitFallFrames = &sonyaHitFallFrames;
 	fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
 	fighterSonya2.idleFrames = &sonyaIdleFrames;
+	fighterSonya2.dizzyFrames = &sonyaDizzyFrames;
 	fighterSonya2.winsFrames = &sonyaWinsFrames;
 	fighterSonya2.walkFrames = &sonyaWalkFrames;
 	fighterSonya2.turnFrames = &sonyaTurnFrames;
@@ -2817,7 +2878,8 @@ void basicmain()
 					jsfVsync(0);
 				}
 				
-				switchScreenVsBattle(p1Cursor, p2Cursor);
+				musicStop();
+				switchScreenVsBattle(p1Cursor, p2Cursor);				
 				sfxIntro(&soundHandler);
 				myTicks = rapTicks;
 			}
@@ -2850,6 +2912,60 @@ void basicmain()
 			pad1=jsfGetPad(LEFT_PAD);
 			pad2=jsfGetPad(RIGHT_PAD);
 
+			rapUse16x16fontPalette(10);
+			jsfSetFontSize(2);
+			jsfSetFontIndx(0);
+
+			switch(matchGetFighter1Wins())
+			{
+				case 1:
+					rapLocate(8,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					break;
+				case 2:
+					rapLocate(8,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					rapLocate(22,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					break;
+				default:
+					rapLocate(8,42);
+					js_r_textbuffer=(char *)" ";
+					rapPrint();
+					rapLocate(22,42);
+					js_r_textbuffer=(char *)" ";
+					rapPrint();
+					break;
+			}
+
+			switch(matchGetFighter2Wins())
+			{
+				case 1:
+					rapLocate(306,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					break;
+				case 2:
+					rapLocate(292,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					rapLocate(306,42);
+					js_r_textbuffer=(char *)"*";
+					rapPrint();
+					break;
+				default:
+					rapLocate(292,42);
+					js_r_textbuffer=(char *)" ";
+					rapPrint();
+					rapLocate(306,42);
+					js_r_textbuffer=(char *)" ";
+					rapPrint();
+					break;
+			}			
+
 			//match progression
 			if (!matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr))
 			{
@@ -2858,6 +2974,10 @@ void basicmain()
 					rapFadeClut(0,256,BLACKPAL);
 					jsfVsync(0);
 				}
+				
+				//point the fighter's back to the choose your fighter sprite
+				fighter1Ptr->spriteIndex = P1_FIGHTER;
+				fighter2Ptr->spriteIndex = P2_FIGHTER;
 
 				musicTitle(&soundHandler);
 				switchScreenChooseFighter();
@@ -2957,16 +3077,17 @@ void basicmain()
 			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
 			bgUpdate(fighter1Ptr, fighter2Ptr);
 
-			if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
-			{
+			//if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
+			//{
 				cameraUpdate(fighter1Ptr, fighter2Ptr);
-			}
+			//}
 			
 			bloodUpdate(&soundHandler);
 			spriteDelayUpdate();
 			
 			if(pad1 & JAGPAD_STAR)
 			{
+				debugMode = true;
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
 				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX);
 				setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
@@ -2975,11 +3096,43 @@ void basicmain()
 			}
 			else if (pad1 & JAGPAD_HASH)
 			{
+				debugMode = false;
 				setFrame(P1_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
 				setFrame(P2_HB_BODY, 48, 128, 0, 0, 0.5f, BMP_HITBOX_OFF);
 				setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
 				setFrame(P2_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
 				//rapDebugSetVisible(DEBUG_HIDE);
+			}
+
+			if (debugMode)
+			{
+				jsfSetFontIndx(0);
+				jsfSetFontSize(0);
+				rapLocate(10, 60);
+				js_r_textbuffer = ee_printf("%d",fighter1Ptr->positionX);
+				rapPrint();
+				rapLocate(10, 70);
+				js_r_textbuffer = ee_printf("%d",fighter1Ptr->positionY);
+				rapPrint();
+				rapLocate(10, 80);
+				js_r_textbuffer = ee_printf("%d",sprite[fighter1Ptr->spriteIndex].x_);
+				rapPrint();
+				rapLocate(10, 90);
+				js_r_textbuffer = ee_printf("%d",sprite[fighter1Ptr->spriteIndex].y_);
+				rapPrint();
+
+				rapLocate(290, 60);
+				js_r_textbuffer = ee_printf("%d",fighter2Ptr->positionX);
+				rapPrint();
+				rapLocate(290, 70);
+				js_r_textbuffer = ee_printf("%d",fighter2Ptr->positionY);
+				rapPrint();
+				rapLocate(290, 80);
+				js_r_textbuffer = ee_printf("%d",sprite[fighter2Ptr->spriteIndex].x_);
+				rapPrint();
+				rapLocate(290, 90);
+				js_r_textbuffer = ee_printf("%d",sprite[fighter2Ptr->spriteIndex].y_);
+				rapPrint();
 			}
 		}
 		jsfVsync(0);
@@ -3018,6 +3171,21 @@ void initGameAssets()
 
 void switchScreenChooseFighter()
 {
+	fighterResetSpriteIndex(&fighterCage, &cageAnimator, true);
+	fighterResetSpriteIndex(&fighterKano, &kanoAnimator, true);
+	fighterResetSpriteIndex(&fighterRaiden, &raidenAnimator, true);
+	fighterResetSpriteIndex(&fighterKang, &kangAnimator, true);
+	fighterResetSpriteIndex(&fighterScorpion, &scorpionAnimator, true);
+	fighterResetSpriteIndex(&fighterSubzero, &subzeroAnimator, true);
+	fighterResetSpriteIndex(&fighterSonya, &sonyaAnimator, true);
+	fighterResetSpriteIndex(&fighterCage2, &cageAnimator2, false);
+	fighterResetSpriteIndex(&fighterKano2, &kanoAnimator2, false);
+	fighterResetSpriteIndex(&fighterRaiden2, &raidenAnimator2, false);
+	fighterResetSpriteIndex(&fighterKang2, &kangAnimator2, false);
+	fighterResetSpriteIndex(&fighterScorpion2, &scorpionAnimator2, false);
+	fighterResetSpriteIndex(&fighterSubzero2, &subzeroAnimator2, false);
+	fighterResetSpriteIndex(&fighterSonya2, &sonyaAnimator2, false);
+
 	p1Cursor = 1;
 	p2Cursor = 2;
 	p1Selected = -1;
@@ -3027,14 +3195,6 @@ void switchScreenChooseFighter()
 	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 
-	sprite[P1_CURSOR].x_ = 68;
-	sprite[P1_CURSOR].y_ = 42;
-	sprite[P1_FLASH].x_ = 68;
-	sprite[P1_FLASH].y_ = 46;
-	sprite[P2_CURSOR].x_ = 189;
-	sprite[P2_CURSOR].y_ = 42;
-	sprite[P2_FLASH].x_ = 189;
-	sprite[P2_FLASH].y_ = 46;
 	sprite[P1_CURSOR].active = R_is_active;
 	sprite[P2_CURSOR].active = R_is_active;
 
@@ -3314,6 +3474,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			break;
 	}
 
+	setFighterAlternatePalette(p1Cursor, p2Cursor);
 	sprite[P1_HEALTHBAR].scale_x = MAX_HEALTH;
 	sprite[P2_HEALTHBAR].scale_x = MAX_HEALTH;
 	sprite[P2_HEALTHBAR].x_ = 176;
@@ -3328,7 +3489,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
 	rapSetActiveList(2);
 	musicStage(&soundHandler);
-	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 370, (int)imageBuffer);
+	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 360, (int)imageBuffer);
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }
@@ -3488,9 +3649,16 @@ void SetPlayerPalettes()
 			break;
 	}
 
-	if (p1Cursor == p2Cursor)
-	{
-		for (int j = 0; j < 24; j++)
-			rapFadeClut(15,16,BLACKPAL);
-	}
+	setFighterAlternatePalette(p1Cursor, p2Cursor);
+}
+
+void setFighterAlternatePalette(int fighter1Index, int fighter2Index)
+{
+    if (fighter1Index == fighter2Index)
+    {
+        //darken palette for player 2 if they are the same fighter
+        //TODO show alternate palette for SONYA (red instead of dark green)
+        for (int j = 0; j < 24; j++)
+            rapFadeClut(15,16,BLACKPAL);
+    }
 }

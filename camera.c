@@ -82,11 +82,14 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
 bool cameraCheckBoundsLeft(struct Fighter* fighterLeft, struct Fighter* fighterRight)
 {
-    if ((fighterLeft->IsWalking && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT && fighterRight->positionX + FIGHTER_WIDTH < CAMERA_BOUND_RIGHT)
-        || (fighterRight->IsPushing && fighterLeft->IsBeingPushed && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT))
+    //if ((fighterLeft->IsWalking && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT && fighterRight->positionX + FIGHTER_WIDTH < CAMERA_BOUND_RIGHT)
+    //    || (fighterRight->IsPushing && fighterLeft->IsBeingPushed && cameraX > CAMERA_BOUND_LEFT && fighterLeft->positionX <= CAMERA_BOUND_LEFT))
+    if (!cameraIsAtLeftWall() && fighterLeft->positionX <= CAMERA_BOUND_LEFT
+        && fighterRight->positionX + FIGHTER_WIDTH + 2 < CAMERA_BOUND_RIGHT)
     {
         //cameraX -= 1;
         fighterShiftRight(fighterRight);
+        fighterShiftRight(fighterLeft);
         for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
         {
             sprite[BLOOD_DROP+i].x_ += 2.0f;
@@ -100,11 +103,14 @@ bool cameraCheckBoundsLeft(struct Fighter* fighterLeft, struct Fighter* fighterR
 
 bool cameraCheckBoundsRight(struct Fighter* fighterLeft, struct Fighter* fighterRight)
 {
-    if ((fighterRight->IsWalking && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT && fighterLeft->positionX > CAMERA_BOUND_LEFT)
-        || (fighterLeft->IsPushing && fighterRight->IsBeingPushed && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT))
+    // if ((fighterRight->IsWalking && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT && fighterLeft->positionX > CAMERA_BOUND_LEFT)
+    //     || (fighterLeft->IsPushing && fighterRight->IsBeingPushed && cameraX < cameraXMax && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT))
+    if (!cameraIsAtRightWall() && fighterRight->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT
+        && fighterLeft->positionX > CAMERA_BOUND_LEFT)
     {
         //cameraX += 1;
         fighterShiftLeft(fighterLeft);
+        fighterShiftLeft(fighterRight);
         for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
         {
             sprite[BLOOD_DROP+i].x_ -= 2.0f;
@@ -120,4 +126,14 @@ bool cameraCheckBoundsRight(struct Fighter* fighterLeft, struct Fighter* fighter
 bool cameraCanMove()
 {
     return cameraX > CAMERA_BOUND_LEFT && cameraX < cameraXMax;
+}
+
+bool cameraIsAtLeftWall()
+{
+    return cameraX <= CAMERA_BOUND_LEFT;
+}
+
+bool cameraIsAtRightWall()
+{
+    return cameraX >= cameraXMax;
 }

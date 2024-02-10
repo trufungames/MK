@@ -115,6 +115,7 @@ struct Fighter {
     float jumpMomentumYStart;
     float uppercutMomentumYStart;
     float dropKickMomentemYStart;
+    int roundsLost;
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -162,6 +163,8 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1);
 
 void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse);
 
+void fighterRestartMatch(struct Fighter* fighter);
+
 void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame idleFrames[]);
 
 void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -199,3 +202,7 @@ void fighterShiftLeft(struct Fighter* fighter);
 void fighterLockBoundaries(struct Fighter* fighter);
 
 void fighterAlignSpriteAndHitbox(struct Fighter* fighter);
+
+void fighterResetSpriteIndex(struct Fighter* fighter, struct SpriteAnimator* animator, bool isPlayer1);
+
+void fighterSetOnFloor(struct Fighter* fighter);

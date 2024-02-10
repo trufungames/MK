@@ -90,6 +90,8 @@
 #define SOUND_WINS 48
 #define SOUND_FLAWLESS 49
 #define SOUND_FATALITY 50
+#define SOUND_CAGE_YEAH 51
+#define SOUND_KANO_YELL 52
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
@@ -227,7 +229,7 @@
 #define KANG_HIT_SWEEP_FRAME_COUNT 6
 
 #define RAIDEN_IDLE_FRAME_COUNT 10
-#define RAIDEN_DIZZY_FRAME_COUNT 7
+#define RAIDEN_DIZZY_FRAME_COUNT 6
 #define RAIDEN_WINS_FRAME_COUNT 5
 #define RAIDEN_WALK_FRAME_COUNT 9
 #define RAIDEN_TURN_FRAME_COUNT 2
@@ -256,7 +258,7 @@
 #define RAIDEN_HIT_SWEEP_FRAME_COUNT 6
 
 #define SUBZERO_IDLE_FRAME_COUNT 12
-#define SUBZERO_DIZZY_FRAME_COUNT 7
+#define SUBZERO_DIZZY_FRAME_COUNT 6
 #define SUBZERO_WINS_FRAME_COUNT 3
 #define SUBZERO_WALK_FRAME_COUNT 9
 #define SUBZERO_TURN_FRAME_COUNT 2

@@ -471,4 +471,22 @@ sample50:	dc.l	fatality_sam		; start of sample
 s50_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
+sample51:	dc.l	cage_yeah_sam		; start of sample
+			dc.l	cage_yeah_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s51_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample52:	dc.l	kano_yell_sam		; start of sample
+			dc.l	kano_yell_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s52_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

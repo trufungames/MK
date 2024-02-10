@@ -12,9 +12,12 @@ bool fightZoomed = false;
 int fightScale = 0;
 int winner = 0;
 int loser = 0;
-bool matchComplete = 0;
+bool matchComplete = false;
 int fighter1Wins = 0;
 int fighter2Wins = 0;
+int winsTicks = 0;
+bool playedName = false;
+bool playedWins = false;
 
 static SpriteAnimator fightAnimator = {
 	FIGHT, 0.5f, BMP_MATCH, 0, 0
@@ -103,6 +106,9 @@ void matchReset()
 	winner = 0;
 	loser = 0;
 	matchComplete = false;
+	winsTicks = 0;
+	playedName = false;
+	playedWins = false;
 }
 
 void matchInit()
@@ -229,6 +235,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			sprite[FIGHT].y_ = 48;
 			sprite[FIGHT].scaled = R_spr_unscale;
 			matchTicks = rapTicks;
+			winsTicks = rapTicks;
 		}
 		else if (fighter1->IsDizzy || fighter2->IsDizzy)
 		{
@@ -252,6 +259,43 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 	{
 		if (rapTicks > matchTicks + 60)
 		{
+			if (!playedName)
+			{
+				playedName = true;
+				winsTicks = rapTicks;
+				switch (winner)
+				{
+					case CAGE:
+						sfxJohnnyCage(soundHandler, true);
+						break;
+					case KANO:
+						sfxKano(soundHandler, true);
+						break;
+					case RAIDEN:
+						sfxRaiden(soundHandler, true);
+						break;
+					case KANG:
+						sfxLiuKang(soundHandler, true);
+						break;
+					case SCORPION:
+						sfxScorpion(soundHandler, true);
+						break;
+					case SUBZERO:
+						sfxSubzero(soundHandler, true);
+						break;
+					case SONYA:
+						sfxSonya(soundHandler, true);
+						break;
+					default:
+						break;
+				}
+			}
+			else if (!playedWins && rapTicks > winsTicks + 70)
+			{
+				playedWins = true;
+				sfxWins(soundHandler);
+			}
+
 			switch (winner)
 			{
 				case CAGE:
@@ -349,6 +393,13 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 				matchState = 2;
 			}
 		}
+		else
+		{
+			if ((fighter1->IsDizzy && !fighter1->IsActive) || (fighter2->IsDizzy && !fighter2->IsActive))
+			{
+				matchState = 2;
+			}
+		}
 	}
 
 	return true;
@@ -359,7 +410,12 @@ bool matchIsComplete()
 	return matchComplete;
 }
 
-bool matchIsFinalRound()
+int matchGetFighter1Wins()
 {
-	return fighter1Wins >= 1 || fighter2Wins >= 1;
+	return fighter1Wins;
+}
+
+int matchGetFighter2Wins()
+{
+	return fighter2Wins;
 }
