@@ -68,17 +68,6 @@ ROM,BMP_MATCH,gfx_clut,ASSETS\GFX\match.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
 ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
 ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
-ROM,BMP_NAME_SHANGTSUNG,gfx_clut,ASSETS\GFX\name_shangtsung.BMP
-ROM,BMP_NAME_GORO,gfx_clut,ASSETS\GFX\name_goro.BMP
-ROM,BMP_NAME_SONYA,gfx_clut,ASSETS\GFX\name_sonya.BMP
-ROM,BMP_NAME_SUBZERO,gfx_clut,ASSETS\GFX\name_subzero.BMP
-ROM,BMP_NAME_SCORPION,gfx_clut,ASSETS\GFX\name_scorpion.BMP
-ROM,BMP_NAME_LIUKANG,gfx_clut,ASSETS\GFX\name_liukang.BMP
-ROM,BMP_NAME_RAIDEN,gfx_clut,ASSETS\GFX\name_raiden.BMP
-ROM,BMP_NAME_KANO,gfx_clut,ASSETS\GFX\name_kano.BMP
-ROM,BMP_NAME_CAGE,gfx_clut,ASSETS\GFX\name_cage.BMP
-ROM,BMP_NAME_REPTILE,gfx_clut,ASSETS\GFX\name_reptile.BMP
-ROM,BMP_NAME_KASUMI,gfx_clut,ASSETS\GFX\name_kasumi.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav

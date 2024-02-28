@@ -90,37 +90,37 @@ Checking if assets.txt is newer than any of the build folder files....
     Reading assets.txt line
         Processing ASSETS\GFX\cage.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 1152 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\liukang.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 1104 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\raiden.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 1120 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\subzero.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 1264 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\sonya.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 960 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\kano.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 1024 pixels wide, 1456 pixels high and is 4 bits/pixel
+        File is 1024 pixels wide, 1168 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\pal_scorpion.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 4 pixels wide, 4 pixels high and is 8 bits/pixel
+        File is 4 pixels wide, 4 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\pal_reptile.BMP
@@ -130,7 +130,7 @@ Checking if assets.txt is newer than any of the build folder files....
     Reading assets.txt line
         Processing ASSETS\GFX\lightning.BMP
         Converting BMP internally into gfxdata/clut...
-        File is 800 pixels wide, 432 pixels high and is 4 bits/pixel
+        File is 640 pixels wide, 336 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing ASSETS\GFX\pt_cage.BMP
@@ -170,7 +170,7 @@ Checking if assets.txt is newer than any of the build folder files....
     Reading assets.txt line
         Processing assets\gfx\stage_pit_background.bmp
         Converting BMP internally into gfxdata/clut...
-        File is 1072 pixels wide, 896 pixels high and is 8 bits/pixel
+        File is 768 pixels wide, 608 pixels high and is 8 bits/pixel
         Will attempt to pack C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_background.bmp.gfxdata
         Command run: pack2e.exe "C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_background.bmp.gfxdata" "C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_background.bmp.gfxdata.pack"
         Adding to the linkfile as ROM...
@@ -184,14 +184,14 @@ Checking if assets.txt is newer than any of the build folder files....
     Reading assets.txt line
         Processing assets\gfx\stage_pit_moon.bmp
         Converting BMP internally into gfxdata/clut...
-        File is 256 pixels wide, 240 pixels high and is 4 bits/pixel
+        File is 48 pixels wide, 48 pixels high and is 4 bits/pixel
         Will attempt to pack C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_moon.bmp.gfxdata
         Command run: pack2e.exe "C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_moon.bmp.gfxdata" "C:\gamedev\JAGSTU~1\projects\c\mk\build\stage_pit_moon.bmp.gfxdata.pack"
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing assets\gfx\stage_pit_clouds1.bmp
         Converting BMP internally into gfxdata/clut...
-        File is 176 pixels wide, 64 pixels high and is 4 bits/pixel
+        File is 128 pixels wide, 48 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
         Processing assets\gfx\stage_pit_clouds2.bmp
@@ -242,61 +242,6 @@ Checking if assets.txt is newer than any of the build folder files....
         Processing ASSETS\GFX\healthbar.BMP
         Converting BMP internally into gfxdata/clut...
         File is 128 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_shangtsung.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 112 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_goro.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_sonya.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_subzero.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_scorpion.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_liukang.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_raiden.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_kano.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_cage.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_reptile.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
-        Adding to the linkfile as ROM...
-    Reading assets.txt line
-        Processing ASSETS\GFX\name_kasumi.BMP
-        Converting BMP internally into gfxdata/clut...
-        File is 80 pixels wide, 16 pixels high and is 4 bits/pixel
         Adding to the linkfile as ROM...
     Reading assets.txt line
     Reading assets.txt line
@@ -589,7 +534,7 @@ NON-RELOCATABLE SYMBOLS
 
 TEXT-SEGMENT RELOCATABLE SYMBOLS
 
-_TEXT_E  G  0003A860   Audio_Play G  00004164   Input_Read G  00004164   
+_TEXT_E  G  0003AF00   Audio_Play G  00004164   Input_Read G  00004164   
 jsfVsyncFlag G  000041B8   RAPTOR_PRE_Object_List G  000041BC   RAPTOR_POST_Object_List G  000041BE   
 AUDIOPLAYER G  00005C58   JAGPAD_UP G  00005C5A   JAGPAD_DOWN G  00005C5E   
 JAGPAD_LEFT G  00005C62   JAGPAD_RIGHT G  00005C66   JAGPAD_HASH G  00005C6A   
@@ -612,9 +557,9 @@ raptor_8x16_addr G  0001F858   raptor_16x16_addr G  0001F85C   raptor_MTwork G  
 raptor_mtapp G  0001F878   raptor_mtfn G  0001F87C   raptor_vidmode G  0001F7F8   
 raptor_videnable G  0001F7FC   raptor_varmod G  0001F800   raptor_top_of_bss G  0001F840   
 raptor_trashram G  0001F844   raptor_uvbi_jmp G  0001F848   raptor_poobjl G  0001F84C   
-raptor_probjl G  0001F850   raptor_inittab G  0001F880   RAPTOR_U235init G  000313DA   
-raptor_samplebank_ptr G  000316D0   __Z9basicmainv G  0002777A   RAPTOR_U235playqueue G  000314D0   
-RAPTOR_U235resetqueue G  000314FC   RAPTOR_Version G  000130E0   RAPTOR_random G  000130FA   
+raptor_probjl G  0001F850   raptor_inittab G  0001F880   RAPTOR_U235init G  00031A7A   
+raptor_samplebank_ptr G  00031D70   __Z9basicmainv G  00027E6E   RAPTOR_U235playqueue G  00031B70   
+RAPTOR_U235resetqueue G  00031B9C   RAPTOR_Version G  000130E0   RAPTOR_random G  000130FA   
 RAPTOR_Install G  0001310C   RAPTOR_usepartipal G  000131AE   RAPTOR_use8x8fontpal G  000131BC   
 RAPTOR_use8x16fontpal G  000131CA   RAPTOR_use16x16fontpal G  000131D8   raptor_font8x8_pal G  00013318   
 raptor_font8x16_pal G  00013338   raptor_font16x16_pal G  00013358   RAPTOR_ERROR G  00013832   
@@ -657,192 +602,195 @@ RAPTOR_flashcheck G  000187A4   raptor_console_x G  000187AA   raptor_console_y 
 raptor_console_visible G  000187BA   raptor_console_monitors G  0001880A   RAPTOR_console_inverse G  0001E660   
 RAPTOR_console_update_registers G  0001E688   RAPTOR_console_update_usermonitors G  0001E6EC   RAPTOR_console_update_textline G  0001E762   
 raptor_mapindex G  0001F824   raptor_ang_search G  0001F884   raptor_col_user G  0001F888   
-__Z9bloodInitv G  0001F8A0   __Z11bloodUpdateP12SoundHandler G  0001F8F4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0002AC14   
-___addsf3 G  000368CE   ___fixsfsi G  0003753A   ___floatsisf G  000372FE   
-__Z8sfxBloodP12SoundHandler G  0002A2F0   __Z19animationIsCompleteP14SpriteAnimatori G  0002ABFA   __Z22spriteDelaySetInactiveiiPb G  0002AE26   
+__Z9bloodInitv G  0001F8A0   __Z11bloodUpdateP12SoundHandler G  0001F8F4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0002B2B4   
+___addsf3 G  00036F6E   ___fixsfsi G  00037BDA   ___floatsisf G  0003799E   
+__Z8sfxBloodP12SoundHandler G  0002A990   __Z19animationIsCompleteP14SpriteAnimatori G  0002B29A   __Z22spriteDelaySetInactiveiiPb G  0002B4C6   
 __Z10bloodSprayiii G  00020400   __Z9bloodGlobiii G  00020450   __Z9bloodDropiii G  000204A0   
 __Z9bloodPoolii G  00020902   __Z11bloodSquirtii G  00020D20   __Z10cameraInitjiiij G  00020EA0   
-__Z8setFramejiiiifj G  0002AA20   __Z12cameraUpdateP7FighterS0_ G  00020EF8   __Z16fighterShiftLeftP7Fighter G  00025508   
-___subsf3 G  000368C8   __Z17fighterShiftRightP7Fighter G  000254F8   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00021906   
-__Z22cameraCheckBoundsRightP7FighterS0_ G  00021B30   __Z13cameraCanMovev G  00021D66   __Z18cameraIsAtLeftWallv G  00021D8A   
-__Z19cameraIsAtRightWallv G  00021D9E   __Z11fighterHideP7Fighter G  00021DC0   __Z11fighterShowP7Fighter G  00021DE4   
-__Z21fighterMakeSelectableP7Fighterb G  00021F10   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_ G  00021F96   __Z16impactFrameResetP7Fighter G  000255C0   
-__Z19fighterRestartMatchP7Fighter G  0002222C   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  0002223C   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  0002ACB8   
-__Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00022272   __Z8sleepAddi G  00029CD4   __Z9sfxImpactP12SoundHandler G  0002A2C6   
-__Z11sfxYellMaleP12SoundHandlerb G  0002A3BA   ___mulsf3 G  00036B5E   ___lesf2 G  000370C0   
-___ltsf2 G  000370A0   ___gesf2 G  00037080   __Z12animateFramejjP14AnimationFramefjiiii G  0002A8D6   
-__Z7bgShakeb G  0002B144   __Z7sfxThudP12SoundHandler G  0002A390   __Z12sfxGroanMaleP12SoundHandlerb G  0002A196   
-__Z14sfxGroanFemaleP12SoundHandlerb G  0002A206   __Z17sfxAnnouncerLaughP12SoundHandler G  0002A61E   __Z13sfxYellFemaleP12SoundHandlerb G  0002A42A   
-__Z11sfxYellKangP12SoundHandlerb G  0002A45E   __Z11sfxCrowdAwwP12SoundHandler G  0002A5CA   __Z21sfxAnnouncerExcellentP12SoundHandler G  0002A5F4   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00022C70   __Z11sfxHiyaMaleP12SoundHandlerb G  00029F66   __Z11sfxHiyaKangP12SoundHandlerb G  0002A046   
-__Z13sfxHiyaFemaleP12SoundHandlerb G  00029FD6   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002A0B6   __Z16fighterPlayGroaniP12SoundHandlerb G  00022D02   
-__Z15fighterPlayYelliP12SoundHandlerb G  00022D42   __Z15fighterPlayJumpiP12SoundHandlerb G  00022DA4   __Z11sfxJumpMaleP12SoundHandlerb G  0002A492   
-__Z12sfxJumpNinjaP12SoundHandlerb G  0002A4FA   __Z13sfxJumpFemaleP12SoundHandlerb G  0002A4C6   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  00022E1C   
-jsfGetPad G  000375C4   __Z8sfxSwingP12SoundHandler G  0002A340   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002560C   
-___gtsf2 G  00037060   __Z22getAnimationFrameWidthP14AnimationFramei G  0002ABDC   __Z11sfxJumpRollP12SoundHandlerb G  0002A52E   
-__Z13fighterUpdatefP7FighterP14SpriteAnimator G  00024A90   __Z8sfxBlockP12SoundHandlerb G  0002A126   __Z11sfxKanoYellP12SoundHandlerb G  0002A596   
-__Z11sfxCageYeahP12SoundHandlerb G  0002A562   __Z27fighterPlayUppercutReactionP12SoundHandler G  00024F3A   __Z19fighterHandleImpactP7FighterS0_ G  00024F94   
-__Z18fighterImpactCheckP7FighterS0_ G  000251AA   rapCollide G  00038250   __Z16fighterTurnCheckP7FighterS0_ G  00025364   
-__Z23fighterUpdateHealthbarsP7FighterS0_ G  0002541C   __Z23fighterAddPendingDamageP7Fighterib G  0002544E   __Z17fighterTakeDamageP7Fighterii G  00025466   
-__Z21fighterLockBoundariesP7Fighter G  00025518   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00025520   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00025584   
-__Z17fighterSetOnFloorP7Fighter G  000255AE   __Z10matchResetv G  00025720   __Z9matchInitv G  00025764   
-__Z11matchUpdateP12SoundHandlerP7FighterS2_ G  000257BA   __Z12sfxFinishHimP12SoundHandler G  0002A672   __Z8sfxFightP12SoundHandler G  00029D00   
-__Z13sfxJohnnyCageP12SoundHandlerb G  00029D2A   __Z10sfxSubzeroP12SoundHandlerb G  00029E2E   __Z11sfxScorpionP12SoundHandlerb G  00029DFA   
-__Z10sfxLiuKangP12SoundHandlerb G  00029DC6   __Z9sfxRaidenP12SoundHandlerb G  00029D92   __Z7sfxKanoP12SoundHandlerb G  00029D5E   
-__Z8sfxSonyaP12SoundHandlerb G  00029E62   __Z7sfxWinsP12SoundHandler G  0002A69C   __Z12sfxFinishHerP12SoundHandler G  0002A648   
-__Z15matchIsCompletev G  00026008   __Z20matchGetFighter1Winsv G  00026016   __Z20matchGetFighter2Winsv G  00026024   
-__Z15initTitleScreenv G  00026040   rapUnpack G  000377BA   jsfLoadClut G  00037DFE   
-__Z14initGameAssetsv G  000260B6   __Z20switchScreenVsBattleii G  00026110   rapSetActiveList G  00038236   
-__Z17switchScreenFightiib G  0002656C   __Z10musicStageP12SoundHandler G  0002A762   rapFadeClut G  00038214   
-__Z17SetPlayerPalettesv G  00026F48   __Z25switchScreenChooseFighterv G  00027526   rapDebugSetXY G  000380EE   
-_jsfVsync G  00037A86   jsfGetPadPressed G  0003778E   rapLocate G  00038344   
-_rapPrint G  000382E8   __Z6bgInitv G  0002AEF0   __Z15spriteDelayInitv G  0002AD80   
-__Z9sleepInitv G  00029C80   __Z10musicTitleP12SoundHandler G  0002A71A   rapUse16x16fontPalette G  000386BE   
-__Z11sfxP1CursorP12SoundHandler G  00029E96   __Z9musicStopv G  0002A7AA   __Z8sfxIntroP12SoundHandler G  00029F3C   
-__Z11sfxSelectedP12SoundHandler G  00029EE8   __Z10sleepCheckv G  00029C9A   __Z8bgUpdateP7FighterS0_ G  0002AF26   
-__Z17spriteDelayUpdatev G  0002ADCC   ee_printf G  0003A5EC   __Z26setFighterAlternatePaletteii G  00029C0A   
-u235PlaySampleFreq G  00038726   __Z11sfxP2CursorP12SoundHandler G  00029EBE   __Z7sfxGongP12SoundHandler G  00029F12   
-__Z6sfxHitP12SoundHandler G  0002A276   __Z11sfxFlawlessP12SoundHandler G  0002A6C6   __Z11sfxFatalityP12SoundHandler G  0002A6F0   
-__Z14u235StopModulev G  00038926   __Z11u235Silencev G  00038948   __Z14u235PlayModuleis G  000388BC   
-_u235ModuleVol G  000389B0   ___floatunsisf G  000372EA   ___mulsi3 G  00036720   
-___fixunssfsi G  000370E0   __Z12animateFramejjP14AnimationFramefji G  0002A8CC   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  0002AAF6   
-__Z6moveUpv G  0002AEE0   __Z8moveDownv G  0002AEE8   __Z13bgScrollRightf G  0002AF16   
-__Z12bgScrollLeftf G  0002AF1E   __Z10bgScrollUpv G  0002B0D8   __Z12bgScrollDownv G  0002B10E   
-RAPTOR_mt_init G  0002B1A0   RAPTOR_mt_load G  0002B1EC   RAPTOR_mt_save G  0002B2E8   
-raptor_mt_present G  0002D0F4   RAPTOR_MTtrash G  0002D310   RAPTOR_U235SilenceChannels G  00031320   
-RAPTOR_U235ChangeReplayFrq G  00031384   RAPTOR_U235setpad1 G  00031392   RAPTOR_U235setpad2 G  0003139E   
-RAPTOR_U235setrot1 G  000313AA   RAPTOR_U235setrot2 G  000313C2   RAPTOR_U235stopDSP G  00031456   
-RAPTOR_U235playsample G  0003147C   RAPTOR_U235queuesample G  000314B2   RAPTOR_U235setmodule G  0003152C   
-RAPTOR_U235gomodule_mono G  0003153C   RAPTOR_U235gomodule_stereo G  0003155A   RAPTOR_U235stopmodule G  00031578   
-modinit  G  00033E68   U235SE_initNTSC G  00033E24   U235SE_initPAL G  00033E36   
-RAPTOR_LSP_onoff G  00032368   RAPTOR_LSP_stopmusic G  00032370   RAPTOR_LSP_startmusic G  00032386   
-RAPTOR_LSP_playmodule G  0003239C   RAPTOR_LSP_Sample G  000323D2   RAPTOR_LSP_Init G  00032474   
-RAPTOR_LSP_StartDSP G  00032488   silence  G  000325F0   fin_silence G  000325F4   
-RAPTOR_GD_Init G  0003268E   RAPTOR_GD_BIOSVersion G  00032764   RAPTOR_GD_ROMWriteEnable G  0003278C   
-RAPTOR_GD_GetCartSerial G  000327B4   RAPTOR_GD_GetCardSerial G  00032850   RAPTOR_GD_CardIn G  0003287E   
-RAPTOR_GD_Reset G  000328B2   RAPTOR_GD_DebugString G  000328D2   RAPTOR_GD_SetLED G  000328FA   
-RAPTOR_GD_DirOpen G  00032934   RAPTOR_GD_DirRead G  0003295C   RAPTOR_GD_DirClose G  00032996   
-RAPTOR_GD_FileOpen G  000329CA   RAPTOR_GD_FileRead G  000329F8   RAPTOR_GD_FileWrite G  00032A26   
-RAPTOR_GD_FileClose G  00032A54   RAPTOR_GD_FileSeek G  00032A82   RAPTOR_GD_FileTell G  00032AB0   
-RAPTOR_GD_FileSize G  00032ADE   RAPTOR_GD_FileInfo G  00032B0C   RAPTOR_ftime_to_ascii G  00032B3A   
-RAPTOR_fdate_to_ascii G  00032B96   RAPTOR_GD_LoadFile G  00032BF6   RAPTOR_GD_SaveFile G  00032C40   
-raptor_GD_detect G  00032C90   raptor_GD_SERIAL G  00032C92   raptor_GD_ASERIAL G  00032CA2   
-raptor_SD_SERIAL G  00032CBE   raptor_GD_LEDstate G  00032CCE   raptor_GD_cardstat G  00032CD0   
-raptor_fileinfo G  00032CD2   raptor_fsize G  00032CD2   raptor_fdate G  00032CD6   
-raptor_ftime G  00032CD8   raptor_fattr G  00032CDA   raptor_fshort G  00032CDB   
-raptor_flong G  00032CE8   U235SE_modinit G  00033E68   modinitpos G  00033E6A   
-U235SE_modinitpos G  00033E6A   dspcode  G  00034710   ___udivsi3 G  00036760   
-___divsi3 G  000367C0   ___umodsi3 G  00036800   ___modsi3 G  00036840   
-$_exception_handler G  00036FCE   ___divsf3 G  00036C8A   ___negsf2 G  00036E50   
-___cmpsf2 G  00036F3E   ___cmpsf2_internal G  00036EA2   ___clear_sticky_bit G  00036FC0   
-___eqsf2 G  00037040   ___unordsf2 G  00037140   ___unorddf2 G  00037184   
-___floatunsidf G  000371F6   ___floatsidf G  0003725A   ___truncdfsf2 G  0003738A   
-___extendsfdf2 G  00037312   ___fixdfsi G  000374C0   _jsfDebugMessage G  00037560   
-_jsfDebugMessageHalt G  00037590   __Z17jsfGetPadPressed1v G  0003767A   __Z17jsfGetPadPressed2v G  00037704   
-jsfUnpack68k G  000377E6   jsfSprlistFieldSetvalOffset G  000378A2   jsfSprlistFieldModOffset G  000378EA   
-jsfSprlistFieldSetOffset G  00037934   jsfSprlistFieldSetval G  0003797C   jsfSprlistFieldMod G  000379BA   
-jsfSprlistFieldSet G  000379FA   _cls     G  00037A38   _jsfPlot G  00037A44   
-jsfDelay G  00037AF2   jsfEEPROMFullRead G  00037B3C   eeReadBank G  0003A6FE   
-jsfEEPROMWordRead G  00037B5A   eeReadWord G  0003A642   jsfEEPROMBoardRead G  00037B74   
-eeReadSingleBank G  0003A686   jsfEEPROMFullWrite G  00037C28   eeWriteBank G  0003A6AE   
-jsfEEPROMWordWrite G  00037C46   eeWriteWord G  0003A620   jsfEEPROMBoardWrite G  00037C64   
-eeWriteSingleBank G  0003A648   jsfEEPROMUserDataRead G  00037D18   jsfEEPROMUserDataWrite G  00037D46   
-jsfEEPROM G  00037D74   jsfEEPROMWord G  00037DA0   jsfEEPROMBoard G  00037DCE   
-jsfClearBuffer G  00037EA0   jsfSort  G  00037EC0   rapInitCalcAngle G  00038032   
-rapCalcAngle G  0003804C   rapAngleVector G  00038072   rapDebugSetMonitor G  0003809C   
-_rapDebugPrint G  000380BE   rapDebugUpdate G  000380DA   rapDebugSetVisible G  00038106   
-rapHiscoreSort G  00038128   rapBlitlist G  00038146   rapNumToStr G  00038176   
-rapHexToStr G  00038196   RBRA     G  000381BC   rapHiscoreCheck G  000381D8   
-rapFadeSingle G  000381FA   rapParticleInject G  0003829A   rapSetMapLoc G  000382C2   
-_rapPrintCont G  0003831C   rapUpdateOffscreenList G  0003835C   rapSpriteShift G  00038376   
-rapSetClock G  000383AE   rapAddClock G  000383C4   rapSubClock G  000383DE   
-rapSortSprites G  000383F8   rapFlashCheck G  00038430   rapGDGetCartSerial G  0003843E   
-rapGDCardInserted G  0003844C   rapGDSetLEDOn G  0003846A   rapGDSetLEDOff G  00038482   
-rapGDReset G  0003849A   rapGDGetCardSerial G  000384B4   rapGDDebugPrint G  000384C2   
-rapGDLoadFile G  000384DE   rapGDSaveFile G  000384FC   rapGDBIOSVersion G  0003851E   
-rapGDROMWriteEnable G  0003852C   rapGDDirOpen G  0003853E   rapGDDirRead G  00038558   
-rapGDDirClose G  0003856A   rapGDFileOpen G  0003857C   rapGDFileRead G  0003859A   
-rapGDFileWrite G  000385C0   rapGDFileClose G  000385E2   rapGDFileSeek G  000385F4   
-rapGDFileTell G  00038616   rapGDFileSize G  00038628   rapGDFileInfo G  0003863A   
-rapGDFTimeToASCII G  0003865C   rapGDFDateToASCII G  00038672   rapUseParticlePalette G  00038688   
-rapUse8x8fontPalette G  0003869A   rapUse8x16fontPalette G  000386AC   u235PlaySample G  000386D0   
-u235ChannelFreq G  00038790   u235KillChannel G  000387EA   u235ChannelVol G  00038830   
-_u235GetPad G  00038886   u235ChangeReplayFrq G  0003896A   _u235SampleVol G  000389C0   
-u235StopDSP G  000389D0   u235Init G  000389F6   u235Restart G  00038A3C   
-zeroGetPad G  00038B1E   zeroPlaySample G  00038B7E   zeroPlay G  00038BDE   
-zeroClearChannel G  00038C4E   LSPGetPad G  00038CA6   LSPPlayModule G  00038CDC   
-LSPStartMusic G  00038D0A   LSPStopMusic G  00038D28   LSPMusicToggle G  00038D46   
-LSPStartDSP G  00038D64   LSPPlaySampleLoop G  00038D82   LSPPlaySample G  00038DC6   
-rapCheckTTExists G  00038E0E   rapGetTTState G  00038E5E   rapGetTTPad G  00038EDE   
-__Z10ee_sprintfPcPKcz G  0003A5D0   eeUpdateChecksum G  0003A73A   eeValidateChecksum G  0003A764   
-
+__Z8setFramejiiiifj G  0002B0C0   __Z12cameraUpdateP7FighterS0_ G  00020EF8   __Z17fighterShiftRightP7Fighter G  000234F0   
+__Z16fighterShiftLeftP7Fighter G  00023514   ___subsf3 G  00036F68   __Z21cameraCheckBoundsLeftP7FighterS0_ G  0002190E   
+__Z22cameraCheckBoundsRightP7FighterS0_ G  00021B3E   __Z13cameraCanMovev G  00021D74   __Z18cameraIsAtLeftWallv G  00021D98   
+__Z19cameraIsAtRightWallv G  00021DAC   __Z14fighterStartUpv G  00021DE0   __Z11fighterHideP7Fighter G  00021DF4   
+__Z11fighterShowP7Fighter G  00021E2A   __Z21fighterMakeSelectableP7Fighterb G  00021F56   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_ G  00022018   
+__Z16impactFrameResetP7Fighter G  00025820   __Z19fighterRestartMatchP7Fighter G  000222B4   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  000222C4   
+__Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  0002B358   __Z15fighterPlayHiyaiP12SoundHandlerb G  000222FA   __Z11sfxHiyaMaleP12SoundHandlerb G  0002A606   
+__Z11sfxHiyaKangP12SoundHandlerb G  0002A6E6   __Z13sfxHiyaFemaleP12SoundHandlerb G  0002A676   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002A756   
+__Z16fighterPlayGroaniP12SoundHandlerb G  0002238C   __Z12sfxGroanMaleP12SoundHandlerb G  0002A836   __Z14sfxGroanFemaleP12SoundHandlerb G  0002A8A6   
+__Z15fighterPlayYelliP12SoundHandlerb G  000223CC   __Z11sfxYellMaleP12SoundHandlerb G  0002AA5A   __Z11sfxYellKangP12SoundHandlerb G  0002AAFE   
+__Z13sfxYellFemaleP12SoundHandlerb G  0002AACA   __Z15fighterPlayJumpiP12SoundHandlerb G  0002242E   __Z11sfxJumpMaleP12SoundHandlerb G  0002AB32   
+__Z12sfxJumpNinjaP12SoundHandlerb G  0002AB9A   __Z13sfxJumpFemaleP12SoundHandlerb G  0002AB66   __Z27fighterPlayUppercutReactionP12SoundHandler G  000224A6   
+__Z17sfxAnnouncerLaughP12SoundHandler G  0002ACBE   __Z21sfxAnnouncerExcellentP12SoundHandler G  0002AC94   __Z11sfxCrowdAwwP12SoundHandler G  0002AC6A   
+__Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00022500   __Z8sleepAddi G  0002A374   __Z9sfxImpactP12SoundHandler G  0002A966   
+___mulsf3 G  000371FE   ___lesf2 G  00037760   ___ltsf2 G  00037740   
+__Z7bgShakeb G  0002B7E4   __Z7sfxThudP12SoundHandler G  0002AA30   __Z12animateFramejjP14AnimationFramefjiiii G  0002AF76   
+__Z19fighterHandleImpactP7FighterS0_ G  00022F80   __Z18fighterImpactCheckP7FighterS0_ G  00023196   rapCollide G  000388F0   
+__Z16fighterTurnCheckP7FighterS0_ G  00023350   __Z23fighterUpdateHealthbarsP7FighterS0_ G  00023408   __Z23fighterAddPendingDamageP7Fighterib G  0002343A   
+__Z17fighterTakeDamageP7Fighterii G  00023452   __Z21fighterLockBoundariesP7Fighter G  00023538   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00023540   
+__Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000235A4   __Z17fighterSetOnFloorP7Fighter G  000235CE   __Z20fighterHasRoomToMoveP7FighterS0_ G  000235E0   
+__Z19fighterPositionXAddP7Fighteri G  00023674   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000236B6   jsfGetPad G  00037C64   
+__Z8sfxSwingP12SoundHandler G  0002A9E0   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002586C   __Z22getAnimationFrameWidthP14AnimationFramei G  0002B27C   
+___gtsf2 G  00037700   __Z11sfxJumpRollP12SoundHandlerb G  0002ABCE   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  000252B6   
+__Z8sfxBlockP12SoundHandlerb G  0002A7C6   __Z11sfxKanoYellP12SoundHandlerb G  0002AC36   __Z11sfxCageYeahP12SoundHandlerb G  0002AC02   
+__Z17fighterCastShadowP7Fighter G  00025812   __Z10matchResetv G  00025980   __Z9matchInitv G  000259C4   
+__Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00025A1A   __Z12sfxFinishHimP12SoundHandler G  0002AD12   __Z8sfxFightP12SoundHandler G  0002A3A0   
+__Z13sfxJohnnyCageP12SoundHandlerb G  0002A3CA   __Z10sfxSubzeroP12SoundHandlerb G  0002A4CE   __Z11sfxScorpionP12SoundHandlerb G  0002A49A   
+__Z10sfxLiuKangP12SoundHandlerb G  0002A466   __Z9sfxRaidenP12SoundHandlerb G  0002A432   __Z7sfxKanoP12SoundHandlerb G  0002A3FE   
+__Z8sfxSonyaP12SoundHandlerb G  0002A502   __Z7sfxWinsP12SoundHandler G  0002AD3C   __Z12sfxFinishHerP12SoundHandler G  0002ACE8   
+__Z15matchIsCompletev G  00026268   __Z20matchGetFighter1Winsv G  00026276   __Z20matchGetFighter2Winsv G  00026284   
+__Z15initTitleScreenv G  000262A0   rapUnpack G  00037E5A   jsfLoadClut G  0003849E   
+__Z14initGameAssetsv G  00026346   __Z20switchScreenVsBattleii G  000263A0   rapSetActiveList G  000388D6   
+__Z17switchScreenFightiib G  0002682E   rapUse8x16fontPalette G  00038D4C   rapLocate G  000389E4   
+_rapPrint G  00038988   __Z10musicStageP12SoundHandler G  0002AE02   rapFadeClut G  000388B4   
+__Z17SetPlayerPalettesv G  00027446   __Z25switchScreenChooseFighterv G  00027A24   __Z26setFighterAlternatePaletteii G  00027C24   
+__Z14setPlayer1NamePc G  00027C7C   __Z14setPlayer2NamePc G  00027CC0   __Z19displayWinnerMedalsv G  00027D08   
+rapDebugSetXY G  0003878E   _jsfVsync G  00038126   jsfGetPadPressed G  00037E2E   
+__Z6bgInitv G  0002B590   __Z15spriteDelayInitv G  0002B420   __Z9sleepInitv G  0002A320   
+__Z10musicTitleP12SoundHandler G  0002ADBA   __Z11sfxP1CursorP12SoundHandler G  0002A536   __Z9musicStopv G  0002AE4A   
+__Z8sfxIntroP12SoundHandler G  0002A5DC   __Z11sfxSelectedP12SoundHandler G  0002A588   __Z10sleepCheckv G  0002A33A   
+__Z8bgUpdateP7FighterS0_ G  0002B5C6   __Z17spriteDelayUpdatev G  0002B46C   ee_printf G  0003AC8C   
+u235PlaySampleFreq G  00038DC6   __Z11sfxP2CursorP12SoundHandler G  0002A55E   __Z7sfxGongP12SoundHandler G  0002A5B2   
+__Z6sfxHitP12SoundHandler G  0002A916   __Z11sfxFlawlessP12SoundHandler G  0002AD66   __Z11sfxFatalityP12SoundHandler G  0002AD90   
+__Z14u235StopModulev G  00038FC6   __Z11u235Silencev G  00038FE8   __Z14u235PlayModuleis G  00038F5C   
+_u235ModuleVol G  00039050   ___floatunsisf G  0003798A   ___mulsi3 G  00036DC0   
+___fixunssfsi G  00037780   __Z12animateFramejjP14AnimationFramefji G  0002AF6C   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  0002B196   
+__Z6moveUpv G  0002B580   __Z8moveDownv G  0002B588   __Z13bgScrollRightf G  0002B5B6   
+__Z12bgScrollLeftf G  0002B5BE   __Z10bgScrollUpv G  0002B778   __Z12bgScrollDownv G  0002B7AE   
+RAPTOR_mt_init G  0002B840   RAPTOR_mt_load G  0002B88C   RAPTOR_mt_save G  0002B988   
+raptor_mt_present G  0002D794   RAPTOR_MTtrash G  0002D9B0   RAPTOR_U235SilenceChannels G  000319C0   
+RAPTOR_U235ChangeReplayFrq G  00031A24   RAPTOR_U235setpad1 G  00031A32   RAPTOR_U235setpad2 G  00031A3E   
+RAPTOR_U235setrot1 G  00031A4A   RAPTOR_U235setrot2 G  00031A62   RAPTOR_U235stopDSP G  00031AF6   
+RAPTOR_U235playsample G  00031B1C   RAPTOR_U235queuesample G  00031B52   RAPTOR_U235setmodule G  00031BCC   
+RAPTOR_U235gomodule_mono G  00031BDC   RAPTOR_U235gomodule_stereo G  00031BFA   RAPTOR_U235stopmodule G  00031C18   
+modinit  G  00034508   U235SE_initNTSC G  000344C4   U235SE_initPAL G  000344D6   
+RAPTOR_LSP_onoff G  00032A08   RAPTOR_LSP_stopmusic G  00032A10   RAPTOR_LSP_startmusic G  00032A26   
+RAPTOR_LSP_playmodule G  00032A3C   RAPTOR_LSP_Sample G  00032A72   RAPTOR_LSP_Init G  00032B14   
+RAPTOR_LSP_StartDSP G  00032B28   silence  G  00032C90   fin_silence G  00032C94   
+RAPTOR_GD_Init G  00032D2E   RAPTOR_GD_BIOSVersion G  00032E04   RAPTOR_GD_ROMWriteEnable G  00032E2C   
+RAPTOR_GD_GetCartSerial G  00032E54   RAPTOR_GD_GetCardSerial G  00032EF0   RAPTOR_GD_CardIn G  00032F1E   
+RAPTOR_GD_Reset G  00032F52   RAPTOR_GD_DebugString G  00032F72   RAPTOR_GD_SetLED G  00032F9A   
+RAPTOR_GD_DirOpen G  00032FD4   RAPTOR_GD_DirRead G  00032FFC   RAPTOR_GD_DirClose G  00033036   
+RAPTOR_GD_FileOpen G  0003306A   RAPTOR_GD_FileRead G  00033098   RAPTOR_GD_FileWrite G  000330C6   
+RAPTOR_GD_FileClose G  000330F4   RAPTOR_GD_FileSeek G  00033122   RAPTOR_GD_FileTell G  00033150   
+RAPTOR_GD_FileSize G  0003317E   RAPTOR_GD_FileInfo G  000331AC   RAPTOR_ftime_to_ascii G  000331DA   
+RAPTOR_fdate_to_ascii G  00033236   RAPTOR_GD_LoadFile G  00033296   RAPTOR_GD_SaveFile G  000332E0   
+raptor_GD_detect G  00033330   raptor_GD_SERIAL G  00033332   raptor_GD_ASERIAL G  00033342   
+raptor_SD_SERIAL G  0003335E   raptor_GD_LEDstate G  0003336E   raptor_GD_cardstat G  00033370   
+raptor_fileinfo G  00033372   raptor_fsize G  00033372   raptor_fdate G  00033376   
+raptor_ftime G  00033378   raptor_fattr G  0003337A   raptor_fshort G  0003337B   
+raptor_flong G  00033388   U235SE_modinit G  00034508   modinitpos G  0003450A   
+U235SE_modinitpos G  0003450A   dspcode  G  00034DB0   ___udivsi3 G  00036E00   
+___divsi3 G  00036E60   ___umodsi3 G  00036EA0   ___modsi3 G  00036EE0   
+$_exception_handler G  0003766E   ___divsf3 G  0003732A   ___negsf2 G  000374F0   
+___cmpsf2 G  000375DE   ___cmpsf2_internal G  00037542   ___clear_sticky_bit G  00037660   
+___eqsf2 G  000376E0   ___gesf2 G  00037720   ___unordsf2 G  000377E0   
+___unorddf2 G  00037824   ___floatunsidf G  00037896   ___floatsidf G  000378FA   
+___truncdfsf2 G  00037A2A   ___extendsfdf2 G  000379B2   ___fixdfsi G  00037B60   
+_jsfDebugMessage G  00037C00   _jsfDebugMessageHalt G  00037C30   __Z17jsfGetPadPressed1v G  00037D1A   
+__Z17jsfGetPadPressed2v G  00037DA4   jsfUnpack68k G  00037E86   jsfSprlistFieldSetvalOffset G  00037F42   
+jsfSprlistFieldModOffset G  00037F8A   jsfSprlistFieldSetOffset G  00037FD4   jsfSprlistFieldSetval G  0003801C   
+jsfSprlistFieldMod G  0003805A   jsfSprlistFieldSet G  0003809A   _cls     G  000380D8   
+_jsfPlot G  000380E4   jsfDelay G  00038192   jsfEEPROMFullRead G  000381DC   
+eeReadBank G  0003AD9E   jsfEEPROMWordRead G  000381FA   eeReadWord G  0003ACE2   
+jsfEEPROMBoardRead G  00038214   eeReadSingleBank G  0003AD26   jsfEEPROMFullWrite G  000382C8   
+eeWriteBank G  0003AD4E   jsfEEPROMWordWrite G  000382E6   eeWriteWord G  0003ACC0   
+jsfEEPROMBoardWrite G  00038304   eeWriteSingleBank G  0003ACE8   jsfEEPROMUserDataRead G  000383B8   
+jsfEEPROMUserDataWrite G  000383E6   jsfEEPROM G  00038414   jsfEEPROMWord G  00038440   
+jsfEEPROMBoard G  0003846E   jsfClearBuffer G  00038540   jsfSort  G  00038560   
+rapInitCalcAngle G  000386D2   rapCalcAngle G  000386EC   rapAngleVector G  00038712   
+rapDebugSetMonitor G  0003873C   _rapDebugPrint G  0003875E   rapDebugUpdate G  0003877A   
+rapDebugSetVisible G  000387A6   rapHiscoreSort G  000387C8   rapBlitlist G  000387E6   
+rapNumToStr G  00038816   rapHexToStr G  00038836   RBRA     G  0003885C   
+rapHiscoreCheck G  00038878   rapFadeSingle G  0003889A   rapParticleInject G  0003893A   
+rapSetMapLoc G  00038962   _rapPrintCont G  000389BC   rapUpdateOffscreenList G  000389FC   
+rapSpriteShift G  00038A16   rapSetClock G  00038A4E   rapAddClock G  00038A64   
+rapSubClock G  00038A7E   rapSortSprites G  00038A98   rapFlashCheck G  00038AD0   
+rapGDGetCartSerial G  00038ADE   rapGDCardInserted G  00038AEC   rapGDSetLEDOn G  00038B0A   
+rapGDSetLEDOff G  00038B22   rapGDReset G  00038B3A   rapGDGetCardSerial G  00038B54   
+rapGDDebugPrint G  00038B62   rapGDLoadFile G  00038B7E   rapGDSaveFile G  00038B9C   
+rapGDBIOSVersion G  00038BBE   rapGDROMWriteEnable G  00038BCC   rapGDDirOpen G  00038BDE   
+rapGDDirRead G  00038BF8   rapGDDirClose G  00038C0A   rapGDFileOpen G  00038C1C   
+rapGDFileRead G  00038C3A   rapGDFileWrite G  00038C60   rapGDFileClose G  00038C82   
+rapGDFileSeek G  00038C94   rapGDFileTell G  00038CB6   rapGDFileSize G  00038CC8   
+rapGDFileInfo G  00038CDA   rapGDFTimeToASCII G  00038CFC   rapGDFDateToASCII G  00038D12   
+rapUseParticlePalette G  00038D28   rapUse8x8fontPalette G  00038D3A   rapUse16x16fontPalette G  00038D5E   
+u235PlaySample G  00038D70   u235ChannelFreq G  00038E30   u235KillChannel G  00038E8A   
+u235ChannelVol G  00038ED0   _u235GetPad G  00038F26   u235ChangeReplayFrq G  0003900A   
+_u235SampleVol G  00039060   u235StopDSP G  00039070   u235Init G  00039096   
+u235Restart G  000390DC   zeroGetPad G  000391BE   zeroPlaySample G  0003921E   
+zeroPlay G  0003927E   zeroClearChannel G  000392EE   LSPGetPad G  00039346   
+LSPPlayModule G  0003937C   LSPStartMusic G  000393AA   LSPStopMusic G  000393C8   
+LSPMusicToggle G  000393E6   LSPStartDSP G  00039404   LSPPlaySampleLoop G  00039422   
+LSPPlaySample G  00039466   rapCheckTTExists G  000394AE   rapGetTTState G  000394FE   
+rapGetTTPad G  0003957E   __Z10ee_sprintfPcPKcz G  0003AC70   eeUpdateChecksum G  0003ADDA   
+eeValidateChecksum G  0003AE04   
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000442A0   _bloodDirection G  0003A860   _bloodDrops G  0003AA00   
-_bloodPools G  0003A9B0   _bloodSquirts G  0003A864   _bloodDropFrames G  0003ABC4   
-sprite   G  0003AEE4   _bloodGlobFrames G  0003AD64   _bloodGlobAnimator G  0003AE0C   
-_bloodSprayFrames G  0003AE24   _bloodSpray2Animator G  0003AEB0   _bloodSpray1Animator G  0003AEC8   
-_bloodSquirtFrames G  0003A8EC   _bloodPoolFrames G  0003AAB0   _bloodSquirt1Animator G  0003A8D4   
-_bloodSquirt2Animator G  0003A8BC   _bloodSquirt3Animator G  0003A8A4   _bloodSquirt4Animator G  0003A88C   
-_bloodPool1Animator G  0003ABAC   _bloodPool2Animator G  0003AB94   _bloodPool3Animator G  0003AB7C   
-_bloodPool4Animator G  0003AB64   _bloodPool5Animator G  0003AB4C   _bloodPool6Animator G  0003AB34   
-_bloodPool7Animator G  0003AB1C   _bloodPool8Animator G  0003AB04   _bloodDrop1Animator G  0003AD4C   
-_bloodDrop2Animator G  0003AD34   _bloodDrop3Animator G  0003AD1C   _bloodDrop4Animator G  0003AD04   
-_bloodDrop5Animator G  0003ACEC   _bloodDrop6Animator G  0003ACD4   _bloodDrop7Animator G  0003ACBC   
-_bloodDrop8Animator G  0003ACA4   colliders G  0003AEE0   _cameraXMax G  0003AF00   
-_turnOffset G  0003AF20   _onTitleScreen G  0003B54C   _subzeroImpactFrameRoundhouse G  0003B3B0   
-_subzeroImpactFrameJumpKick G  0003B398   _subzeroImpactFrameJumpPunch G  0003B3A4   _subzeroImpactFrameSweep G  0003B3BC   
-_subzeroImpactFrameUppercut G  0003B3C8   _subzeroImpactFrameHighKick G  0003B3D4   _subzeroImpactFrameLowKick G  0003B3E0   
-_subzeroImpactFrameHighPunch G  0003B3EC   _subzeroImpactFrameLowPunch G  0003B3F8   _cageImpactFrameRoundhouse G  0003B4F4   
-_cageImpactFrameJumpKick G  0003B4DC   _cageImpactFrameJumpPunch G  0003B4E8   _cageImpactFrameSweep G  0003B500   
-_cageImpactFrameUppercut G  0003B50C   _cageImpactFrameHighKick G  0003B518   _cageImpactFrameLowKick G  0003B524   
-_cageImpactFrameHighPunch G  0003B530   _cageImpactFrameLowPunch G  0003B53C   _kanoImpactFrameRoundhouse G  0003B2D8   
-_kanoImpactFrameJumpKick G  0003B2C0   _kanoImpactFrameJumpPunch G  0003B2CC   _kanoImpactFrameSweep G  0003B2E4   
-_kanoImpactFrameUppercut G  0003B2F0   _kanoImpactFrameHighKick G  0003B2FC   _kanoImpactFrameLowKick G  0003B308   
-_kanoImpactFrameHighPunch G  0003B314   _kanoImpactFrameLowPunch G  0003B320   _sonyaImpactFrameRoundhouse G  0003B344   
-_sonyaImpactFrameJumpKick G  0003B32C   _sonyaImpactFrameJumpPunch G  0003B338   _sonyaImpactFrameSweep G  0003B350   
-_sonyaImpactFrameUppercut G  0003B35C   _sonyaImpactFrameHighKick G  0003B368   _sonyaImpactFrameLowKick G  0003B374   
-_sonyaImpactFrameHighPunch G  0003B380   _sonyaImpactFrameLowPunch G  0003B38C   _raidenImpactFrameRoundhouse G  0003B41C   
-_raidenImpactFrameJumpKick G  0003B404   _raidenImpactFrameJumpPunch G  0003B410   _raidenImpactFrameSweep G  0003B428   
-_raidenImpactFrameUppercut G  0003B434   _raidenImpactFrameHighKick G  0003B440   _raidenImpactFrameLowKick G  0003B44C   
-_raidenImpactFrameHighPunch G  0003B458   _raidenImpactFrameLowPunch G  0003B464   _kangImpactFrameRoundhouse G  0003B488   
-_kangImpactFrameJumpKick G  0003B470   _kangImpactFrameJumpPunch G  0003B47C   _kangImpactFrameSweep G  0003B494   
-_kangImpactFrameUppercut G  0003B4A0   _kangImpactFrameHighKick G  0003B4AC   _kangImpactFrameLowKick G  0003B4B8   
-_kangImpactFrameHighPunch G  0003B4C4   _kangImpactFrameLowPunch G  0003B4D0   _p1Cursor G  0003B55A   
-_p2Cursor G  0003B556   _p1Selected G  0003B552   _p2Selected G  0003B54E   
-_ticksPerSec G  0003B548   _shakeDirection G  00044220   _ShakeTicks G  00044224   
-__fpCCR  G  00044240   _xcpt    G  00044260   
+_DATA_E  G  00044960   _bloodDirection G  0003AF00   _bloodDrops G  0003B0A0   
+_bloodPools G  0003B050   _bloodSquirts G  0003AF04   _bloodDropFrames G  0003B264   
+sprite   G  0003B584   _bloodGlobFrames G  0003B404   _bloodGlobAnimator G  0003B4AC   
+_bloodSprayFrames G  0003B4C4   _bloodSpray2Animator G  0003B550   _bloodSpray1Animator G  0003B568   
+_bloodSquirtFrames G  0003AF8C   _bloodPoolFrames G  0003B150   _bloodSquirt1Animator G  0003AF74   
+_bloodSquirt2Animator G  0003AF5C   _bloodSquirt3Animator G  0003AF44   _bloodSquirt4Animator G  0003AF2C   
+_bloodPool1Animator G  0003B24C   _bloodPool2Animator G  0003B234   _bloodPool3Animator G  0003B21C   
+_bloodPool4Animator G  0003B204   _bloodPool5Animator G  0003B1EC   _bloodPool6Animator G  0003B1D4   
+_bloodPool7Animator G  0003B1BC   _bloodPool8Animator G  0003B1A4   _bloodDrop1Animator G  0003B3EC   
+_bloodDrop2Animator G  0003B3D4   _bloodDrop3Animator G  0003B3BC   _bloodDrop4Animator G  0003B3A4   
+_bloodDrop5Animator G  0003B38C   _bloodDrop6Animator G  0003B374   _bloodDrop7Animator G  0003B35C   
+_bloodDrop8Animator G  0003B344   colliders G  0003B580   _cameraXMax G  0003B5A0   
+_turnOffset G  0003B5C0   _onTitleScreen G  0003BBEC   _subzeroImpactFrameRoundhouse G  0003BA50   
+_subzeroImpactFrameJumpKick G  0003BA38   _subzeroImpactFrameJumpPunch G  0003BA44   _subzeroImpactFrameSweep G  0003BA5C   
+_subzeroImpactFrameUppercut G  0003BA68   _subzeroImpactFrameHighKick G  0003BA74   _subzeroImpactFrameLowKick G  0003BA80   
+_subzeroImpactFrameHighPunch G  0003BA8C   _subzeroImpactFrameLowPunch G  0003BA98   _cageImpactFrameRoundhouse G  0003BB94   
+_cageImpactFrameJumpKick G  0003BB7C   _cageImpactFrameJumpPunch G  0003BB88   _cageImpactFrameSweep G  0003BBA0   
+_cageImpactFrameUppercut G  0003BBAC   _cageImpactFrameHighKick G  0003BBB8   _cageImpactFrameLowKick G  0003BBC4   
+_cageImpactFrameHighPunch G  0003BBD0   _cageImpactFrameLowPunch G  0003BBDC   _kanoImpactFrameRoundhouse G  0003B978   
+_kanoImpactFrameJumpKick G  0003B960   _kanoImpactFrameJumpPunch G  0003B96C   _kanoImpactFrameSweep G  0003B984   
+_kanoImpactFrameUppercut G  0003B990   _kanoImpactFrameHighKick G  0003B99C   _kanoImpactFrameLowKick G  0003B9A8   
+_kanoImpactFrameHighPunch G  0003B9B4   _kanoImpactFrameLowPunch G  0003B9C0   _sonyaImpactFrameRoundhouse G  0003B9E4   
+_sonyaImpactFrameJumpKick G  0003B9CC   _sonyaImpactFrameJumpPunch G  0003B9D8   _sonyaImpactFrameSweep G  0003B9F0   
+_sonyaImpactFrameUppercut G  0003B9FC   _sonyaImpactFrameHighKick G  0003BA08   _sonyaImpactFrameLowKick G  0003BA14   
+_sonyaImpactFrameHighPunch G  0003BA20   _sonyaImpactFrameLowPunch G  0003BA2C   _raidenImpactFrameRoundhouse G  0003BABC   
+_raidenImpactFrameJumpKick G  0003BAA4   _raidenImpactFrameJumpPunch G  0003BAB0   _raidenImpactFrameSweep G  0003BAC8   
+_raidenImpactFrameUppercut G  0003BAD4   _raidenImpactFrameHighKick G  0003BAE0   _raidenImpactFrameLowKick G  0003BAEC   
+_raidenImpactFrameHighPunch G  0003BAF8   _raidenImpactFrameLowPunch G  0003BB04   _kangImpactFrameRoundhouse G  0003BB28   
+_kangImpactFrameJumpKick G  0003BB10   _kangImpactFrameJumpPunch G  0003BB1C   _kangImpactFrameSweep G  0003BB34   
+_kangImpactFrameUppercut G  0003BB40   _kangImpactFrameHighKick G  0003BB4C   _kangImpactFrameLowKick G  0003BB58   
+_kangImpactFrameHighPunch G  0003BB64   _kangImpactFrameLowPunch G  0003BB70   _p1Cursor G  0003BBFA   
+_p2Cursor G  0003BBF6   _p1Selected G  0003BBF2   _p2Selected G  0003BBEE   
+_ticksPerSec G  0003BBE8   _shakeDirection G  000448E0   _ShakeTicks G  000448E4   
+__fpCCR  G  00044900   _xcpt    G  00044920   
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00167A40   RAPTOR_particle_gfx G  000482A0   RAPTOR_sprite_table G  000518A0   
-_trashram G  0006A140   _bloodStayDelay G  0006A144   _updateTicks G  0006A154   
-_bloodSpeed G  0006A150   _gravity G  0006A14C   _bloodDropMomentumStart G  0006A148   
-_bloodSpray1InUse G  0006A15A   _bloodSpray2InUse G  0006A159   _bloodGlobInUse G  0006A158   
-_bloodSpeedRnd G  0006A140   _backgroundSpriteIndex G  0006A164   _cameraX G  0006A172   
-_cameraY G  0006A16E   _backgroundGfxBase G  0006A160   _cameraTicks G  0006A176   
-_backgroundChangedLeft G  0006A16D   _backgroundChangedRight G  0006A16C   _xOffset G  0006A168   
-_walkForward G  0006A180   _collision G  0006A182   _matchState G  0006A1C2   
-_matchTicks G  0006A1BE   _fightZoomed G  0006A1BC   _fightScale G  0006A1B8   
-_winner  G  0006A1B4   _loser   G  0006A1B0   _matchComplete G  0006A1AE   
-_winsTicks G  0006A1A2   _playedName G  0006A1A1   _playedWins G  0006A1A0   
-_round   G  0006A1C6   _fighter1Wins G  0006A1AA   _fighter2Wins G  0006A1A6   
-_fadedIn G  0006A1E9   _fadedOut G  0006A1E8   _gameStartTicks G  0006A1E4   
-_onScreenChooseFighter G  0006A1EC   _onScreenVsBattle G  0006A1EB   _onScreenFight G  0006A1EA   
-_chooseFighterDone G  0006A1ED   _lastTicks G  0006A1E0   _jsfFontSize G  00167932   
-_jsfFontIndx G  0016792E   _js_r_textbuffer G  00167900   _isSleeping G  00167808   
-_lastTick G  00167804   _totalSleepTicks G  00167800   _spriteCount G  00167820   
-_sprites G  00167824   _LastTicks G  001678D2   _IsScrollingUp G  001678D8   
-_IsScrollingDown G  001678D7   _IsShaking G  001678D6   _bgYOffset G  001678CE   
-_bgYInc  G  001678C6   _shakeCount G  001678C2   _scrollUpAfterShake G  001678C0   
-_bgYStart G  001678CA   zero_left_pad G  00167918   zero_right_pad G  0016791C   
-_pad1    G  001678FC   _pad1Last G  001678F4   _pad1Prev G  001678EC   
-_pad2    G  001678F8   _pad2Last G  001678F0   _pad2Prev G  001678E8   
-_plot_colour G  0016792C   rapAngle_xAdd G  001678E4   rapAngle_yAdd G  001678E0   
-_js_r_xpos G  0016793A   _js_r_ypos G  00167936   _yt2     G  00167904   
-_y       G  0016790C   _errno   G  00167914   zero_mousex_delta G  00167920   
-zero_mousey_delta G  00167924   zero_rotary_delta G  00167928   
+_BSS_E   G  000EF920   RAPTOR_particle_gfx G  00048960   RAPTOR_sprite_table G  00051F60   
+_trashram G  0006A800   _bloodStayDelay G  0006A804   _updateTicks G  0006A814   
+_bloodSpeed G  0006A810   _gravity G  0006A80C   _bloodDropMomentumStart G  0006A808   
+_bloodSpray1InUse G  0006A81A   _bloodSpray2InUse G  0006A819   _bloodGlobInUse G  0006A818   
+_bloodSpeedRnd G  0006A800   _backgroundSpriteIndex G  0006A824   _cameraX G  0006A832   
+_cameraY G  0006A82E   _backgroundGfxBase G  0006A820   _cameraTicks G  0006A836   
+_backgroundChangedLeft G  0006A82D   _backgroundChangedRight G  0006A82C   _xOffset G  0006A828   
+_shadowTicks G  0006A840   _collision G  0006A846   _walkForward G  0006A844   
+_matchState G  0006A882   _matchTicks G  0006A87E   _fightZoomed G  0006A87C   
+_fightScale G  0006A878   _winner  G  0006A874   _loser   G  0006A870   
+_matchComplete G  0006A86E   _winsTicks G  0006A862   _playedName G  0006A861   
+_playedWins G  0006A860   _round   G  0006A886   _fighter1Wins G  0006A86A   
+_fighter2Wins G  0006A866   _fadedIn G  0006A8A9   _fadedOut G  0006A8A8   
+_gameStartTicks G  0006A8A4   _onScreenChooseFighter G  0006A8AC   _onScreenVsBattle G  0006A8AB   
+_jsfFontSize G  000EF812   _jsfFontIndx G  000EF80E   _js_r_textbuffer G  000EF7E0   
+_onScreenFight G  0006A8AA   _chooseFighterDone G  0006A8AD   _lastTicks G  0006A8A0   
+_isSleeping G  000EF6E8   _lastTick G  000EF6E4   _totalSleepTicks G  000EF6E0   
+_spriteCount G  000EF700   _sprites G  000EF704   _LastTicks G  000EF7B2   
+_IsScrollingUp G  000EF7B8   _IsScrollingDown G  000EF7B7   _IsShaking G  000EF7B6   
+_bgYOffset G  000EF7AE   _bgYInc  G  000EF7A6   _shakeCount G  000EF7A2   
+_scrollUpAfterShake G  000EF7A0   _bgYStart G  000EF7AA   zero_left_pad G  000EF7F8   
+zero_right_pad G  000EF7FC   _pad1    G  000EF7DC   _pad1Last G  000EF7D4   
+_pad1Prev G  000EF7CC   _pad2    G  000EF7D8   _pad2Last G  000EF7D0   
+_pad2Prev G  000EF7C8   _plot_colour G  000EF80C   rapAngle_xAdd G  000EF7C4   
+rapAngle_yAdd G  000EF7C0   _js_r_xpos G  000EF81A   _js_r_ypos G  000EF816   
+_yt2     G  000EF7E4   _y       G  000EF7EC   _errno   G  000EF7F4   
+zero_mousex_delta G  000EF800   zero_mousey_delta G  000EF804   zero_rotary_delta G  000EF808   
+
 
 LOAD MAP
 
@@ -852,7 +800,7 @@ NON-RELOCATABLE SYMBOLS
 
 TEXT-SEGMENT RELOCATABLE SYMBOLS
 
-_TEXT_E  G  0003A860   Audio_Play G  00004164   Input_Read G  00004164   
+_TEXT_E  G  0003AF00   Audio_Play G  00004164   Input_Read G  00004164   
 jsfVsyncFlag G  000041B8   RAPTOR_PRE_Object_List G  000041BC   RAPTOR_POST_Object_List G  000041BE   
 AUDIOPLAYER G  00005C58   JAGPAD_UP G  00005C5A   JAGPAD_DOWN G  00005C5E   
 JAGPAD_LEFT G  00005C62   JAGPAD_RIGHT G  00005C66   JAGPAD_HASH G  00005C6A   
@@ -875,9 +823,9 @@ raptor_8x16_addr G  0001F858   raptor_16x16_addr G  0001F85C   raptor_MTwork G  
 raptor_mtapp G  0001F878   raptor_mtfn G  0001F87C   raptor_vidmode G  0001F7F8   
 raptor_videnable G  0001F7FC   raptor_varmod G  0001F800   raptor_top_of_bss G  0001F840   
 raptor_trashram G  0001F844   raptor_uvbi_jmp G  0001F848   raptor_poobjl G  0001F84C   
-raptor_probjl G  0001F850   raptor_inittab G  0001F880   RAPTOR_U235init G  000313DA   
-raptor_samplebank_ptr G  000316D0   __Z9basicmainv G  0002777A   RAPTOR_U235playqueue G  000314D0   
-RAPTOR_U235resetqueue G  000314FC   RAPTOR_Version G  000130E0   RAPTOR_random G  000130FA   
+raptor_probjl G  0001F850   raptor_inittab G  0001F880   RAPTOR_U235init G  00031A7A   
+raptor_samplebank_ptr G  00031D70   __Z9basicmainv G  00027E6E   RAPTOR_U235playqueue G  00031B70   
+RAPTOR_U235resetqueue G  00031B9C   RAPTOR_Version G  000130E0   RAPTOR_random G  000130FA   
 RAPTOR_Install G  0001310C   RAPTOR_usepartipal G  000131AE   RAPTOR_use8x8fontpal G  000131BC   
 RAPTOR_use8x16fontpal G  000131CA   RAPTOR_use16x16fontpal G  000131D8   raptor_font8x8_pal G  00013318   
 raptor_font8x16_pal G  00013338   raptor_font16x16_pal G  00013358   RAPTOR_ERROR G  00013832   
@@ -920,192 +868,195 @@ RAPTOR_flashcheck G  000187A4   raptor_console_x G  000187AA   raptor_console_y 
 raptor_console_visible G  000187BA   raptor_console_monitors G  0001880A   RAPTOR_console_inverse G  0001E660   
 RAPTOR_console_update_registers G  0001E688   RAPTOR_console_update_usermonitors G  0001E6EC   RAPTOR_console_update_textline G  0001E762   
 raptor_mapindex G  0001F824   raptor_ang_search G  0001F884   raptor_col_user G  0001F888   
-__Z9bloodInitv G  0001F8A0   __Z11bloodUpdateP12SoundHandler G  0001F8F4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0002AC14   
-___addsf3 G  000368CE   ___fixsfsi G  0003753A   ___floatsisf G  000372FE   
-__Z8sfxBloodP12SoundHandler G  0002A2F0   __Z19animationIsCompleteP14SpriteAnimatori G  0002ABFA   __Z22spriteDelaySetInactiveiiPb G  0002AE26   
+__Z9bloodInitv G  0001F8A0   __Z11bloodUpdateP12SoundHandler G  0001F8F4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0002B2B4   
+___addsf3 G  00036F6E   ___fixsfsi G  00037BDA   ___floatsisf G  0003799E   
+__Z8sfxBloodP12SoundHandler G  0002A990   __Z19animationIsCompleteP14SpriteAnimatori G  0002B29A   __Z22spriteDelaySetInactiveiiPb G  0002B4C6   
 __Z10bloodSprayiii G  00020400   __Z9bloodGlobiii G  00020450   __Z9bloodDropiii G  000204A0   
 __Z9bloodPoolii G  00020902   __Z11bloodSquirtii G  00020D20   __Z10cameraInitjiiij G  00020EA0   
-__Z8setFramejiiiifj G  0002AA20   __Z12cameraUpdateP7FighterS0_ G  00020EF8   __Z16fighterShiftLeftP7Fighter G  00025508   
-___subsf3 G  000368C8   __Z17fighterShiftRightP7Fighter G  000254F8   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00021906   
-__Z22cameraCheckBoundsRightP7FighterS0_ G  00021B30   __Z13cameraCanMovev G  00021D66   __Z18cameraIsAtLeftWallv G  00021D8A   
-__Z19cameraIsAtRightWallv G  00021D9E   __Z11fighterHideP7Fighter G  00021DC0   __Z11fighterShowP7Fighter G  00021DE4   
-__Z21fighterMakeSelectableP7Fighterb G  00021F10   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_ G  00021F96   __Z16impactFrameResetP7Fighter G  000255C0   
-__Z19fighterRestartMatchP7Fighter G  0002222C   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  0002223C   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  0002ACB8   
-__Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00022272   __Z8sleepAddi G  00029CD4   __Z9sfxImpactP12SoundHandler G  0002A2C6   
-__Z11sfxYellMaleP12SoundHandlerb G  0002A3BA   ___mulsf3 G  00036B5E   ___lesf2 G  000370C0   
-___ltsf2 G  000370A0   ___gesf2 G  00037080   __Z12animateFramejjP14AnimationFramefjiiii G  0002A8D6   
-__Z7bgShakeb G  0002B144   __Z7sfxThudP12SoundHandler G  0002A390   __Z12sfxGroanMaleP12SoundHandlerb G  0002A196   
-__Z14sfxGroanFemaleP12SoundHandlerb G  0002A206   __Z17sfxAnnouncerLaughP12SoundHandler G  0002A61E   __Z13sfxYellFemaleP12SoundHandlerb G  0002A42A   
-__Z11sfxYellKangP12SoundHandlerb G  0002A45E   __Z11sfxCrowdAwwP12SoundHandler G  0002A5CA   __Z21sfxAnnouncerExcellentP12SoundHandler G  0002A5F4   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00022C70   __Z11sfxHiyaMaleP12SoundHandlerb G  00029F66   __Z11sfxHiyaKangP12SoundHandlerb G  0002A046   
-__Z13sfxHiyaFemaleP12SoundHandlerb G  00029FD6   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002A0B6   __Z16fighterPlayGroaniP12SoundHandlerb G  00022D02   
-__Z15fighterPlayYelliP12SoundHandlerb G  00022D42   __Z15fighterPlayJumpiP12SoundHandlerb G  00022DA4   __Z11sfxJumpMaleP12SoundHandlerb G  0002A492   
-__Z12sfxJumpNinjaP12SoundHandlerb G  0002A4FA   __Z13sfxJumpFemaleP12SoundHandlerb G  0002A4C6   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  00022E1C   
-jsfGetPad G  000375C4   __Z8sfxSwingP12SoundHandler G  0002A340   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002560C   
-___gtsf2 G  00037060   __Z22getAnimationFrameWidthP14AnimationFramei G  0002ABDC   __Z11sfxJumpRollP12SoundHandlerb G  0002A52E   
-__Z13fighterUpdatefP7FighterP14SpriteAnimator G  00024A90   __Z8sfxBlockP12SoundHandlerb G  0002A126   __Z11sfxKanoYellP12SoundHandlerb G  0002A596   
-__Z11sfxCageYeahP12SoundHandlerb G  0002A562   __Z27fighterPlayUppercutReactionP12SoundHandler G  00024F3A   __Z19fighterHandleImpactP7FighterS0_ G  00024F94   
-__Z18fighterImpactCheckP7FighterS0_ G  000251AA   rapCollide G  00038250   __Z16fighterTurnCheckP7FighterS0_ G  00025364   
-__Z23fighterUpdateHealthbarsP7FighterS0_ G  0002541C   __Z23fighterAddPendingDamageP7Fighterib G  0002544E   __Z17fighterTakeDamageP7Fighterii G  00025466   
-__Z21fighterLockBoundariesP7Fighter G  00025518   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00025520   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00025584   
-__Z17fighterSetOnFloorP7Fighter G  000255AE   __Z10matchResetv G  00025720   __Z9matchInitv G  00025764   
-__Z11matchUpdateP12SoundHandlerP7FighterS2_ G  000257BA   __Z12sfxFinishHimP12SoundHandler G  0002A672   __Z8sfxFightP12SoundHandler G  00029D00   
-__Z13sfxJohnnyCageP12SoundHandlerb G  00029D2A   __Z10sfxSubzeroP12SoundHandlerb G  00029E2E   __Z11sfxScorpionP12SoundHandlerb G  00029DFA   
-__Z10sfxLiuKangP12SoundHandlerb G  00029DC6   __Z9sfxRaidenP12SoundHandlerb G  00029D92   __Z7sfxKanoP12SoundHandlerb G  00029D5E   
-__Z8sfxSonyaP12SoundHandlerb G  00029E62   __Z7sfxWinsP12SoundHandler G  0002A69C   __Z12sfxFinishHerP12SoundHandler G  0002A648   
-__Z15matchIsCompletev G  00026008   __Z20matchGetFighter1Winsv G  00026016   __Z20matchGetFighter2Winsv G  00026024   
-__Z15initTitleScreenv G  00026040   rapUnpack G  000377BA   jsfLoadClut G  00037DFE   
-__Z14initGameAssetsv G  000260B6   __Z20switchScreenVsBattleii G  00026110   rapSetActiveList G  00038236   
-__Z17switchScreenFightiib G  0002656C   __Z10musicStageP12SoundHandler G  0002A762   rapFadeClut G  00038214   
-__Z17SetPlayerPalettesv G  00026F48   __Z25switchScreenChooseFighterv G  00027526   rapDebugSetXY G  000380EE   
-_jsfVsync G  00037A86   jsfGetPadPressed G  0003778E   rapLocate G  00038344   
-_rapPrint G  000382E8   __Z6bgInitv G  0002AEF0   __Z15spriteDelayInitv G  0002AD80   
-__Z9sleepInitv G  00029C80   __Z10musicTitleP12SoundHandler G  0002A71A   rapUse16x16fontPalette G  000386BE   
-__Z11sfxP1CursorP12SoundHandler G  00029E96   __Z9musicStopv G  0002A7AA   __Z8sfxIntroP12SoundHandler G  00029F3C   
-__Z11sfxSelectedP12SoundHandler G  00029EE8   __Z10sleepCheckv G  00029C9A   __Z8bgUpdateP7FighterS0_ G  0002AF26   
-__Z17spriteDelayUpdatev G  0002ADCC   ee_printf G  0003A5EC   __Z26setFighterAlternatePaletteii G  00029C0A   
-u235PlaySampleFreq G  00038726   __Z11sfxP2CursorP12SoundHandler G  00029EBE   __Z7sfxGongP12SoundHandler G  00029F12   
-__Z6sfxHitP12SoundHandler G  0002A276   __Z11sfxFlawlessP12SoundHandler G  0002A6C6   __Z11sfxFatalityP12SoundHandler G  0002A6F0   
-__Z14u235StopModulev G  00038926   __Z11u235Silencev G  00038948   __Z14u235PlayModuleis G  000388BC   
-_u235ModuleVol G  000389B0   ___floatunsisf G  000372EA   ___mulsi3 G  00036720   
-___fixunssfsi G  000370E0   __Z12animateFramejjP14AnimationFramefji G  0002A8CC   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  0002AAF6   
-__Z6moveUpv G  0002AEE0   __Z8moveDownv G  0002AEE8   __Z13bgScrollRightf G  0002AF16   
-__Z12bgScrollLeftf G  0002AF1E   __Z10bgScrollUpv G  0002B0D8   __Z12bgScrollDownv G  0002B10E   
-RAPTOR_mt_init G  0002B1A0   RAPTOR_mt_load G  0002B1EC   RAPTOR_mt_save G  0002B2E8   
-raptor_mt_present G  0002D0F4   RAPTOR_MTtrash G  0002D310   RAPTOR_U235SilenceChannels G  00031320   
-RAPTOR_U235ChangeReplayFrq G  00031384   RAPTOR_U235setpad1 G  00031392   RAPTOR_U235setpad2 G  0003139E   
-RAPTOR_U235setrot1 G  000313AA   RAPTOR_U235setrot2 G  000313C2   RAPTOR_U235stopDSP G  00031456   
-RAPTOR_U235playsample G  0003147C   RAPTOR_U235queuesample G  000314B2   RAPTOR_U235setmodule G  0003152C   
-RAPTOR_U235gomodule_mono G  0003153C   RAPTOR_U235gomodule_stereo G  0003155A   RAPTOR_U235stopmodule G  00031578   
-modinit  G  00033E68   U235SE_initNTSC G  00033E24   U235SE_initPAL G  00033E36   
-RAPTOR_LSP_onoff G  00032368   RAPTOR_LSP_stopmusic G  00032370   RAPTOR_LSP_startmusic G  00032386   
-RAPTOR_LSP_playmodule G  0003239C   RAPTOR_LSP_Sample G  000323D2   RAPTOR_LSP_Init G  00032474   
-RAPTOR_LSP_StartDSP G  00032488   silence  G  000325F0   fin_silence G  000325F4   
-RAPTOR_GD_Init G  0003268E   RAPTOR_GD_BIOSVersion G  00032764   RAPTOR_GD_ROMWriteEnable G  0003278C   
-RAPTOR_GD_GetCartSerial G  000327B4   RAPTOR_GD_GetCardSerial G  00032850   RAPTOR_GD_CardIn G  0003287E   
-RAPTOR_GD_Reset G  000328B2   RAPTOR_GD_DebugString G  000328D2   RAPTOR_GD_SetLED G  000328FA   
-RAPTOR_GD_DirOpen G  00032934   RAPTOR_GD_DirRead G  0003295C   RAPTOR_GD_DirClose G  00032996   
-RAPTOR_GD_FileOpen G  000329CA   RAPTOR_GD_FileRead G  000329F8   RAPTOR_GD_FileWrite G  00032A26   
-RAPTOR_GD_FileClose G  00032A54   RAPTOR_GD_FileSeek G  00032A82   RAPTOR_GD_FileTell G  00032AB0   
-RAPTOR_GD_FileSize G  00032ADE   RAPTOR_GD_FileInfo G  00032B0C   RAPTOR_ftime_to_ascii G  00032B3A   
-RAPTOR_fdate_to_ascii G  00032B96   RAPTOR_GD_LoadFile G  00032BF6   RAPTOR_GD_SaveFile G  00032C40   
-raptor_GD_detect G  00032C90   raptor_GD_SERIAL G  00032C92   raptor_GD_ASERIAL G  00032CA2   
-raptor_SD_SERIAL G  00032CBE   raptor_GD_LEDstate G  00032CCE   raptor_GD_cardstat G  00032CD0   
-raptor_fileinfo G  00032CD2   raptor_fsize G  00032CD2   raptor_fdate G  00032CD6   
-raptor_ftime G  00032CD8   raptor_fattr G  00032CDA   raptor_fshort G  00032CDB   
-raptor_flong G  00032CE8   U235SE_modinit G  00033E68   modinitpos G  00033E6A   
-U235SE_modinitpos G  00033E6A   dspcode  G  00034710   ___udivsi3 G  00036760   
-___divsi3 G  000367C0   ___umodsi3 G  00036800   ___modsi3 G  00036840   
-$_exception_handler G  00036FCE   ___divsf3 G  00036C8A   ___negsf2 G  00036E50   
-___cmpsf2 G  00036F3E   ___cmpsf2_internal G  00036EA2   ___clear_sticky_bit G  00036FC0   
-___eqsf2 G  00037040   ___unordsf2 G  00037140   ___unorddf2 G  00037184   
-___floatunsidf G  000371F6   ___floatsidf G  0003725A   ___truncdfsf2 G  0003738A   
-___extendsfdf2 G  00037312   ___fixdfsi G  000374C0   _jsfDebugMessage G  00037560   
-_jsfDebugMessageHalt G  00037590   __Z17jsfGetPadPressed1v G  0003767A   __Z17jsfGetPadPressed2v G  00037704   
-jsfUnpack68k G  000377E6   jsfSprlistFieldSetvalOffset G  000378A2   jsfSprlistFieldModOffset G  000378EA   
-jsfSprlistFieldSetOffset G  00037934   jsfSprlistFieldSetval G  0003797C   jsfSprlistFieldMod G  000379BA   
-jsfSprlistFieldSet G  000379FA   _cls     G  00037A38   _jsfPlot G  00037A44   
-jsfDelay G  00037AF2   jsfEEPROMFullRead G  00037B3C   eeReadBank G  0003A6FE   
-jsfEEPROMWordRead G  00037B5A   eeReadWord G  0003A642   jsfEEPROMBoardRead G  00037B74   
-eeReadSingleBank G  0003A686   jsfEEPROMFullWrite G  00037C28   eeWriteBank G  0003A6AE   
-jsfEEPROMWordWrite G  00037C46   eeWriteWord G  0003A620   jsfEEPROMBoardWrite G  00037C64   
-eeWriteSingleBank G  0003A648   jsfEEPROMUserDataRead G  00037D18   jsfEEPROMUserDataWrite G  00037D46   
-jsfEEPROM G  00037D74   jsfEEPROMWord G  00037DA0   jsfEEPROMBoard G  00037DCE   
-jsfClearBuffer G  00037EA0   jsfSort  G  00037EC0   rapInitCalcAngle G  00038032   
-rapCalcAngle G  0003804C   rapAngleVector G  00038072   rapDebugSetMonitor G  0003809C   
-_rapDebugPrint G  000380BE   rapDebugUpdate G  000380DA   rapDebugSetVisible G  00038106   
-rapHiscoreSort G  00038128   rapBlitlist G  00038146   rapNumToStr G  00038176   
-rapHexToStr G  00038196   RBRA     G  000381BC   rapHiscoreCheck G  000381D8   
-rapFadeSingle G  000381FA   rapParticleInject G  0003829A   rapSetMapLoc G  000382C2   
-_rapPrintCont G  0003831C   rapUpdateOffscreenList G  0003835C   rapSpriteShift G  00038376   
-rapSetClock G  000383AE   rapAddClock G  000383C4   rapSubClock G  000383DE   
-rapSortSprites G  000383F8   rapFlashCheck G  00038430   rapGDGetCartSerial G  0003843E   
-rapGDCardInserted G  0003844C   rapGDSetLEDOn G  0003846A   rapGDSetLEDOff G  00038482   
-rapGDReset G  0003849A   rapGDGetCardSerial G  000384B4   rapGDDebugPrint G  000384C2   
-rapGDLoadFile G  000384DE   rapGDSaveFile G  000384FC   rapGDBIOSVersion G  0003851E   
-rapGDROMWriteEnable G  0003852C   rapGDDirOpen G  0003853E   rapGDDirRead G  00038558   
-rapGDDirClose G  0003856A   rapGDFileOpen G  0003857C   rapGDFileRead G  0003859A   
-rapGDFileWrite G  000385C0   rapGDFileClose G  000385E2   rapGDFileSeek G  000385F4   
-rapGDFileTell G  00038616   rapGDFileSize G  00038628   rapGDFileInfo G  0003863A   
-rapGDFTimeToASCII G  0003865C   rapGDFDateToASCII G  00038672   rapUseParticlePalette G  00038688   
-rapUse8x8fontPalette G  0003869A   rapUse8x16fontPalette G  000386AC   u235PlaySample G  000386D0   
-u235ChannelFreq G  00038790   u235KillChannel G  000387EA   u235ChannelVol G  00038830   
-_u235GetPad G  00038886   u235ChangeReplayFrq G  0003896A   _u235SampleVol G  000389C0   
-u235StopDSP G  000389D0   u235Init G  000389F6   u235Restart G  00038A3C   
-zeroGetPad G  00038B1E   zeroPlaySample G  00038B7E   zeroPlay G  00038BDE   
-zeroClearChannel G  00038C4E   LSPGetPad G  00038CA6   LSPPlayModule G  00038CDC   
-LSPStartMusic G  00038D0A   LSPStopMusic G  00038D28   LSPMusicToggle G  00038D46   
-LSPStartDSP G  00038D64   LSPPlaySampleLoop G  00038D82   LSPPlaySample G  00038DC6   
-rapCheckTTExists G  00038E0E   rapGetTTState G  00038E5E   rapGetTTPad G  00038EDE   
-__Z10ee_sprintfPcPKcz G  0003A5D0   eeUpdateChecksum G  0003A73A   eeValidateChecksum G  0003A764   
-
+__Z8setFramejiiiifj G  0002B0C0   __Z12cameraUpdateP7FighterS0_ G  00020EF8   __Z17fighterShiftRightP7Fighter G  000234F0   
+__Z16fighterShiftLeftP7Fighter G  00023514   ___subsf3 G  00036F68   __Z21cameraCheckBoundsLeftP7FighterS0_ G  0002190E   
+__Z22cameraCheckBoundsRightP7FighterS0_ G  00021B3E   __Z13cameraCanMovev G  00021D74   __Z18cameraIsAtLeftWallv G  00021D98   
+__Z19cameraIsAtRightWallv G  00021DAC   __Z14fighterStartUpv G  00021DE0   __Z11fighterHideP7Fighter G  00021DF4   
+__Z11fighterShowP7Fighter G  00021E2A   __Z21fighterMakeSelectableP7Fighterb G  00021F56   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_ G  00022018   
+__Z16impactFrameResetP7Fighter G  00025820   __Z19fighterRestartMatchP7Fighter G  000222B4   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  000222C4   
+__Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  0002B358   __Z15fighterPlayHiyaiP12SoundHandlerb G  000222FA   __Z11sfxHiyaMaleP12SoundHandlerb G  0002A606   
+__Z11sfxHiyaKangP12SoundHandlerb G  0002A6E6   __Z13sfxHiyaFemaleP12SoundHandlerb G  0002A676   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002A756   
+__Z16fighterPlayGroaniP12SoundHandlerb G  0002238C   __Z12sfxGroanMaleP12SoundHandlerb G  0002A836   __Z14sfxGroanFemaleP12SoundHandlerb G  0002A8A6   
+__Z15fighterPlayYelliP12SoundHandlerb G  000223CC   __Z11sfxYellMaleP12SoundHandlerb G  0002AA5A   __Z11sfxYellKangP12SoundHandlerb G  0002AAFE   
+__Z13sfxYellFemaleP12SoundHandlerb G  0002AACA   __Z15fighterPlayJumpiP12SoundHandlerb G  0002242E   __Z11sfxJumpMaleP12SoundHandlerb G  0002AB32   
+__Z12sfxJumpNinjaP12SoundHandlerb G  0002AB9A   __Z13sfxJumpFemaleP12SoundHandlerb G  0002AB66   __Z27fighterPlayUppercutReactionP12SoundHandler G  000224A6   
+__Z17sfxAnnouncerLaughP12SoundHandler G  0002ACBE   __Z21sfxAnnouncerExcellentP12SoundHandler G  0002AC94   __Z11sfxCrowdAwwP12SoundHandler G  0002AC6A   
+__Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00022500   __Z8sleepAddi G  0002A374   __Z9sfxImpactP12SoundHandler G  0002A966   
+___mulsf3 G  000371FE   ___lesf2 G  00037760   ___ltsf2 G  00037740   
+__Z7bgShakeb G  0002B7E4   __Z7sfxThudP12SoundHandler G  0002AA30   __Z12animateFramejjP14AnimationFramefjiiii G  0002AF76   
+__Z19fighterHandleImpactP7FighterS0_ G  00022F80   __Z18fighterImpactCheckP7FighterS0_ G  00023196   rapCollide G  000388F0   
+__Z16fighterTurnCheckP7FighterS0_ G  00023350   __Z23fighterUpdateHealthbarsP7FighterS0_ G  00023408   __Z23fighterAddPendingDamageP7Fighterib G  0002343A   
+__Z17fighterTakeDamageP7Fighterii G  00023452   __Z21fighterLockBoundariesP7Fighter G  00023538   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00023540   
+__Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000235A4   __Z17fighterSetOnFloorP7Fighter G  000235CE   __Z20fighterHasRoomToMoveP7FighterS0_ G  000235E0   
+__Z19fighterPositionXAddP7Fighteri G  00023674   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000236B6   jsfGetPad G  00037C64   
+__Z8sfxSwingP12SoundHandler G  0002A9E0   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002586C   __Z22getAnimationFrameWidthP14AnimationFramei G  0002B27C   
+___gtsf2 G  00037700   __Z11sfxJumpRollP12SoundHandlerb G  0002ABCE   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  000252B6   
+__Z8sfxBlockP12SoundHandlerb G  0002A7C6   __Z11sfxKanoYellP12SoundHandlerb G  0002AC36   __Z11sfxCageYeahP12SoundHandlerb G  0002AC02   
+__Z17fighterCastShadowP7Fighter G  00025812   __Z10matchResetv G  00025980   __Z9matchInitv G  000259C4   
+__Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00025A1A   __Z12sfxFinishHimP12SoundHandler G  0002AD12   __Z8sfxFightP12SoundHandler G  0002A3A0   
+__Z13sfxJohnnyCageP12SoundHandlerb G  0002A3CA   __Z10sfxSubzeroP12SoundHandlerb G  0002A4CE   __Z11sfxScorpionP12SoundHandlerb G  0002A49A   
+__Z10sfxLiuKangP12SoundHandlerb G  0002A466   __Z9sfxRaidenP12SoundHandlerb G  0002A432   __Z7sfxKanoP12SoundHandlerb G  0002A3FE   
+__Z8sfxSonyaP12SoundHandlerb G  0002A502   __Z7sfxWinsP12SoundHandler G  0002AD3C   __Z12sfxFinishHerP12SoundHandler G  0002ACE8   
+__Z15matchIsCompletev G  00026268   __Z20matchGetFighter1Winsv G  00026276   __Z20matchGetFighter2Winsv G  00026284   
+__Z15initTitleScreenv G  000262A0   rapUnpack G  00037E5A   jsfLoadClut G  0003849E   
+__Z14initGameAssetsv G  00026346   __Z20switchScreenVsBattleii G  000263A0   rapSetActiveList G  000388D6   
+__Z17switchScreenFightiib G  0002682E   rapUse8x16fontPalette G  00038D4C   rapLocate G  000389E4   
+_rapPrint G  00038988   __Z10musicStageP12SoundHandler G  0002AE02   rapFadeClut G  000388B4   
+__Z17SetPlayerPalettesv G  00027446   __Z25switchScreenChooseFighterv G  00027A24   __Z26setFighterAlternatePaletteii G  00027C24   
+__Z14setPlayer1NamePc G  00027C7C   __Z14setPlayer2NamePc G  00027CC0   __Z19displayWinnerMedalsv G  00027D08   
+rapDebugSetXY G  0003878E   _jsfVsync G  00038126   jsfGetPadPressed G  00037E2E   
+__Z6bgInitv G  0002B590   __Z15spriteDelayInitv G  0002B420   __Z9sleepInitv G  0002A320   
+__Z10musicTitleP12SoundHandler G  0002ADBA   __Z11sfxP1CursorP12SoundHandler G  0002A536   __Z9musicStopv G  0002AE4A   
+__Z8sfxIntroP12SoundHandler G  0002A5DC   __Z11sfxSelectedP12SoundHandler G  0002A588   __Z10sleepCheckv G  0002A33A   
+__Z8bgUpdateP7FighterS0_ G  0002B5C6   __Z17spriteDelayUpdatev G  0002B46C   ee_printf G  0003AC8C   
+u235PlaySampleFreq G  00038DC6   __Z11sfxP2CursorP12SoundHandler G  0002A55E   __Z7sfxGongP12SoundHandler G  0002A5B2   
+__Z6sfxHitP12SoundHandler G  0002A916   __Z11sfxFlawlessP12SoundHandler G  0002AD66   __Z11sfxFatalityP12SoundHandler G  0002AD90   
+__Z14u235StopModulev G  00038FC6   __Z11u235Silencev G  00038FE8   __Z14u235PlayModuleis G  00038F5C   
+_u235ModuleVol G  00039050   ___floatunsisf G  0003798A   ___mulsi3 G  00036DC0   
+___fixunssfsi G  00037780   __Z12animateFramejjP14AnimationFramefji G  0002AF6C   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  0002B196   
+__Z6moveUpv G  0002B580   __Z8moveDownv G  0002B588   __Z13bgScrollRightf G  0002B5B6   
+__Z12bgScrollLeftf G  0002B5BE   __Z10bgScrollUpv G  0002B778   __Z12bgScrollDownv G  0002B7AE   
+RAPTOR_mt_init G  0002B840   RAPTOR_mt_load G  0002B88C   RAPTOR_mt_save G  0002B988   
+raptor_mt_present G  0002D794   RAPTOR_MTtrash G  0002D9B0   RAPTOR_U235SilenceChannels G  000319C0   
+RAPTOR_U235ChangeReplayFrq G  00031A24   RAPTOR_U235setpad1 G  00031A32   RAPTOR_U235setpad2 G  00031A3E   
+RAPTOR_U235setrot1 G  00031A4A   RAPTOR_U235setrot2 G  00031A62   RAPTOR_U235stopDSP G  00031AF6   
+RAPTOR_U235playsample G  00031B1C   RAPTOR_U235queuesample G  00031B52   RAPTOR_U235setmodule G  00031BCC   
+RAPTOR_U235gomodule_mono G  00031BDC   RAPTOR_U235gomodule_stereo G  00031BFA   RAPTOR_U235stopmodule G  00031C18   
+modinit  G  00034508   U235SE_initNTSC G  000344C4   U235SE_initPAL G  000344D6   
+RAPTOR_LSP_onoff G  00032A08   RAPTOR_LSP_stopmusic G  00032A10   RAPTOR_LSP_startmusic G  00032A26   
+RAPTOR_LSP_playmodule G  00032A3C   RAPTOR_LSP_Sample G  00032A72   RAPTOR_LSP_Init G  00032B14   
+RAPTOR_LSP_StartDSP G  00032B28   silence  G  00032C90   fin_silence G  00032C94   
+RAPTOR_GD_Init G  00032D2E   RAPTOR_GD_BIOSVersion G  00032E04   RAPTOR_GD_ROMWriteEnable G  00032E2C   
+RAPTOR_GD_GetCartSerial G  00032E54   RAPTOR_GD_GetCardSerial G  00032EF0   RAPTOR_GD_CardIn G  00032F1E   
+RAPTOR_GD_Reset G  00032F52   RAPTOR_GD_DebugString G  00032F72   RAPTOR_GD_SetLED G  00032F9A   
+RAPTOR_GD_DirOpen G  00032FD4   RAPTOR_GD_DirRead G  00032FFC   RAPTOR_GD_DirClose G  00033036   
+RAPTOR_GD_FileOpen G  0003306A   RAPTOR_GD_FileRead G  00033098   RAPTOR_GD_FileWrite G  000330C6   
+RAPTOR_GD_FileClose G  000330F4   RAPTOR_GD_FileSeek G  00033122   RAPTOR_GD_FileTell G  00033150   
+RAPTOR_GD_FileSize G  0003317E   RAPTOR_GD_FileInfo G  000331AC   RAPTOR_ftime_to_ascii G  000331DA   
+RAPTOR_fdate_to_ascii G  00033236   RAPTOR_GD_LoadFile G  00033296   RAPTOR_GD_SaveFile G  000332E0   
+raptor_GD_detect G  00033330   raptor_GD_SERIAL G  00033332   raptor_GD_ASERIAL G  00033342   
+raptor_SD_SERIAL G  0003335E   raptor_GD_LEDstate G  0003336E   raptor_GD_cardstat G  00033370   
+raptor_fileinfo G  00033372   raptor_fsize G  00033372   raptor_fdate G  00033376   
+raptor_ftime G  00033378   raptor_fattr G  0003337A   raptor_fshort G  0003337B   
+raptor_flong G  00033388   U235SE_modinit G  00034508   modinitpos G  0003450A   
+U235SE_modinitpos G  0003450A   dspcode  G  00034DB0   ___udivsi3 G  00036E00   
+___divsi3 G  00036E60   ___umodsi3 G  00036EA0   ___modsi3 G  00036EE0   
+$_exception_handler G  0003766E   ___divsf3 G  0003732A   ___negsf2 G  000374F0   
+___cmpsf2 G  000375DE   ___cmpsf2_internal G  00037542   ___clear_sticky_bit G  00037660   
+___eqsf2 G  000376E0   ___gesf2 G  00037720   ___unordsf2 G  000377E0   
+___unorddf2 G  00037824   ___floatunsidf G  00037896   ___floatsidf G  000378FA   
+___truncdfsf2 G  00037A2A   ___extendsfdf2 G  000379B2   ___fixdfsi G  00037B60   
+_jsfDebugMessage G  00037C00   _jsfDebugMessageHalt G  00037C30   __Z17jsfGetPadPressed1v G  00037D1A   
+__Z17jsfGetPadPressed2v G  00037DA4   jsfUnpack68k G  00037E86   jsfSprlistFieldSetvalOffset G  00037F42   
+jsfSprlistFieldModOffset G  00037F8A   jsfSprlistFieldSetOffset G  00037FD4   jsfSprlistFieldSetval G  0003801C   
+jsfSprlistFieldMod G  0003805A   jsfSprlistFieldSet G  0003809A   _cls     G  000380D8   
+_jsfPlot G  000380E4   jsfDelay G  00038192   jsfEEPROMFullRead G  000381DC   
+eeReadBank G  0003AD9E   jsfEEPROMWordRead G  000381FA   eeReadWord G  0003ACE2   
+jsfEEPROMBoardRead G  00038214   eeReadSingleBank G  0003AD26   jsfEEPROMFullWrite G  000382C8   
+eeWriteBank G  0003AD4E   jsfEEPROMWordWrite G  000382E6   eeWriteWord G  0003ACC0   
+jsfEEPROMBoardWrite G  00038304   eeWriteSingleBank G  0003ACE8   jsfEEPROMUserDataRead G  000383B8   
+jsfEEPROMUserDataWrite G  000383E6   jsfEEPROM G  00038414   jsfEEPROMWord G  00038440   
+jsfEEPROMBoard G  0003846E   jsfClearBuffer G  00038540   jsfSort  G  00038560   
+rapInitCalcAngle G  000386D2   rapCalcAngle G  000386EC   rapAngleVector G  00038712   
+rapDebugSetMonitor G  0003873C   _rapDebugPrint G  0003875E   rapDebugUpdate G  0003877A   
+rapDebugSetVisible G  000387A6   rapHiscoreSort G  000387C8   rapBlitlist G  000387E6   
+rapNumToStr G  00038816   rapHexToStr G  00038836   RBRA     G  0003885C   
+rapHiscoreCheck G  00038878   rapFadeSingle G  0003889A   rapParticleInject G  0003893A   
+rapSetMapLoc G  00038962   _rapPrintCont G  000389BC   rapUpdateOffscreenList G  000389FC   
+rapSpriteShift G  00038A16   rapSetClock G  00038A4E   rapAddClock G  00038A64   
+rapSubClock G  00038A7E   rapSortSprites G  00038A98   rapFlashCheck G  00038AD0   
+rapGDGetCartSerial G  00038ADE   rapGDCardInserted G  00038AEC   rapGDSetLEDOn G  00038B0A   
+rapGDSetLEDOff G  00038B22   rapGDReset G  00038B3A   rapGDGetCardSerial G  00038B54   
+rapGDDebugPrint G  00038B62   rapGDLoadFile G  00038B7E   rapGDSaveFile G  00038B9C   
+rapGDBIOSVersion G  00038BBE   rapGDROMWriteEnable G  00038BCC   rapGDDirOpen G  00038BDE   
+rapGDDirRead G  00038BF8   rapGDDirClose G  00038C0A   rapGDFileOpen G  00038C1C   
+rapGDFileRead G  00038C3A   rapGDFileWrite G  00038C60   rapGDFileClose G  00038C82   
+rapGDFileSeek G  00038C94   rapGDFileTell G  00038CB6   rapGDFileSize G  00038CC8   
+rapGDFileInfo G  00038CDA   rapGDFTimeToASCII G  00038CFC   rapGDFDateToASCII G  00038D12   
+rapUseParticlePalette G  00038D28   rapUse8x8fontPalette G  00038D3A   rapUse16x16fontPalette G  00038D5E   
+u235PlaySample G  00038D70   u235ChannelFreq G  00038E30   u235KillChannel G  00038E8A   
+u235ChannelVol G  00038ED0   _u235GetPad G  00038F26   u235ChangeReplayFrq G  0003900A   
+_u235SampleVol G  00039060   u235StopDSP G  00039070   u235Init G  00039096   
+u235Restart G  000390DC   zeroGetPad G  000391BE   zeroPlaySample G  0003921E   
+zeroPlay G  0003927E   zeroClearChannel G  000392EE   LSPGetPad G  00039346   
+LSPPlayModule G  0003937C   LSPStartMusic G  000393AA   LSPStopMusic G  000393C8   
+LSPMusicToggle G  000393E6   LSPStartDSP G  00039404   LSPPlaySampleLoop G  00039422   
+LSPPlaySample G  00039466   rapCheckTTExists G  000394AE   rapGetTTState G  000394FE   
+rapGetTTPad G  0003957E   __Z10ee_sprintfPcPKcz G  0003AC70   eeUpdateChecksum G  0003ADDA   
+eeValidateChecksum G  0003AE04   
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000442A0   _bloodDirection G  0003A860   _bloodDrops G  0003AA00   
-_bloodPools G  0003A9B0   _bloodSquirts G  0003A864   _bloodDropFrames G  0003ABC4   
-sprite   G  0003AEE4   _bloodGlobFrames G  0003AD64   _bloodGlobAnimator G  0003AE0C   
-_bloodSprayFrames G  0003AE24   _bloodSpray2Animator G  0003AEB0   _bloodSpray1Animator G  0003AEC8   
-_bloodSquirtFrames G  0003A8EC   _bloodPoolFrames G  0003AAB0   _bloodSquirt1Animator G  0003A8D4   
-_bloodSquirt2Animator G  0003A8BC   _bloodSquirt3Animator G  0003A8A4   _bloodSquirt4Animator G  0003A88C   
-_bloodPool1Animator G  0003ABAC   _bloodPool2Animator G  0003AB94   _bloodPool3Animator G  0003AB7C   
-_bloodPool4Animator G  0003AB64   _bloodPool5Animator G  0003AB4C   _bloodPool6Animator G  0003AB34   
-_bloodPool7Animator G  0003AB1C   _bloodPool8Animator G  0003AB04   _bloodDrop1Animator G  0003AD4C   
-_bloodDrop2Animator G  0003AD34   _bloodDrop3Animator G  0003AD1C   _bloodDrop4Animator G  0003AD04   
-_bloodDrop5Animator G  0003ACEC   _bloodDrop6Animator G  0003ACD4   _bloodDrop7Animator G  0003ACBC   
-_bloodDrop8Animator G  0003ACA4   colliders G  0003AEE0   _cameraXMax G  0003AF00   
-_turnOffset G  0003AF20   _onTitleScreen G  0003B54C   _subzeroImpactFrameRoundhouse G  0003B3B0   
-_subzeroImpactFrameJumpKick G  0003B398   _subzeroImpactFrameJumpPunch G  0003B3A4   _subzeroImpactFrameSweep G  0003B3BC   
-_subzeroImpactFrameUppercut G  0003B3C8   _subzeroImpactFrameHighKick G  0003B3D4   _subzeroImpactFrameLowKick G  0003B3E0   
-_subzeroImpactFrameHighPunch G  0003B3EC   _subzeroImpactFrameLowPunch G  0003B3F8   _cageImpactFrameRoundhouse G  0003B4F4   
-_cageImpactFrameJumpKick G  0003B4DC   _cageImpactFrameJumpPunch G  0003B4E8   _cageImpactFrameSweep G  0003B500   
-_cageImpactFrameUppercut G  0003B50C   _cageImpactFrameHighKick G  0003B518   _cageImpactFrameLowKick G  0003B524   
-_cageImpactFrameHighPunch G  0003B530   _cageImpactFrameLowPunch G  0003B53C   _kanoImpactFrameRoundhouse G  0003B2D8   
-_kanoImpactFrameJumpKick G  0003B2C0   _kanoImpactFrameJumpPunch G  0003B2CC   _kanoImpactFrameSweep G  0003B2E4   
-_kanoImpactFrameUppercut G  0003B2F0   _kanoImpactFrameHighKick G  0003B2FC   _kanoImpactFrameLowKick G  0003B308   
-_kanoImpactFrameHighPunch G  0003B314   _kanoImpactFrameLowPunch G  0003B320   _sonyaImpactFrameRoundhouse G  0003B344   
-_sonyaImpactFrameJumpKick G  0003B32C   _sonyaImpactFrameJumpPunch G  0003B338   _sonyaImpactFrameSweep G  0003B350   
-_sonyaImpactFrameUppercut G  0003B35C   _sonyaImpactFrameHighKick G  0003B368   _sonyaImpactFrameLowKick G  0003B374   
-_sonyaImpactFrameHighPunch G  0003B380   _sonyaImpactFrameLowPunch G  0003B38C   _raidenImpactFrameRoundhouse G  0003B41C   
-_raidenImpactFrameJumpKick G  0003B404   _raidenImpactFrameJumpPunch G  0003B410   _raidenImpactFrameSweep G  0003B428   
-_raidenImpactFrameUppercut G  0003B434   _raidenImpactFrameHighKick G  0003B440   _raidenImpactFrameLowKick G  0003B44C   
-_raidenImpactFrameHighPunch G  0003B458   _raidenImpactFrameLowPunch G  0003B464   _kangImpactFrameRoundhouse G  0003B488   
-_kangImpactFrameJumpKick G  0003B470   _kangImpactFrameJumpPunch G  0003B47C   _kangImpactFrameSweep G  0003B494   
-_kangImpactFrameUppercut G  0003B4A0   _kangImpactFrameHighKick G  0003B4AC   _kangImpactFrameLowKick G  0003B4B8   
-_kangImpactFrameHighPunch G  0003B4C4   _kangImpactFrameLowPunch G  0003B4D0   _p1Cursor G  0003B55A   
-_p2Cursor G  0003B556   _p1Selected G  0003B552   _p2Selected G  0003B54E   
-_ticksPerSec G  0003B548   _shakeDirection G  00044220   _ShakeTicks G  00044224   
-__fpCCR  G  00044240   _xcpt    G  00044260   
+_DATA_E  G  00044960   _bloodDirection G  0003AF00   _bloodDrops G  0003B0A0   
+_bloodPools G  0003B050   _bloodSquirts G  0003AF04   _bloodDropFrames G  0003B264   
+sprite   G  0003B584   _bloodGlobFrames G  0003B404   _bloodGlobAnimator G  0003B4AC   
+_bloodSprayFrames G  0003B4C4   _bloodSpray2Animator G  0003B550   _bloodSpray1Animator G  0003B568   
+_bloodSquirtFrames G  0003AF8C   _bloodPoolFrames G  0003B150   _bloodSquirt1Animator G  0003AF74   
+_bloodSquirt2Animator G  0003AF5C   _bloodSquirt3Animator G  0003AF44   _bloodSquirt4Animator G  0003AF2C   
+_bloodPool1Animator G  0003B24C   _bloodPool2Animator G  0003B234   _bloodPool3Animator G  0003B21C   
+_bloodPool4Animator G  0003B204   _bloodPool5Animator G  0003B1EC   _bloodPool6Animator G  0003B1D4   
+_bloodPool7Animator G  0003B1BC   _bloodPool8Animator G  0003B1A4   _bloodDrop1Animator G  0003B3EC   
+_bloodDrop2Animator G  0003B3D4   _bloodDrop3Animator G  0003B3BC   _bloodDrop4Animator G  0003B3A4   
+_bloodDrop5Animator G  0003B38C   _bloodDrop6Animator G  0003B374   _bloodDrop7Animator G  0003B35C   
+_bloodDrop8Animator G  0003B344   colliders G  0003B580   _cameraXMax G  0003B5A0   
+_turnOffset G  0003B5C0   _onTitleScreen G  0003BBEC   _subzeroImpactFrameRoundhouse G  0003BA50   
+_subzeroImpactFrameJumpKick G  0003BA38   _subzeroImpactFrameJumpPunch G  0003BA44   _subzeroImpactFrameSweep G  0003BA5C   
+_subzeroImpactFrameUppercut G  0003BA68   _subzeroImpactFrameHighKick G  0003BA74   _subzeroImpactFrameLowKick G  0003BA80   
+_subzeroImpactFrameHighPunch G  0003BA8C   _subzeroImpactFrameLowPunch G  0003BA98   _cageImpactFrameRoundhouse G  0003BB94   
+_cageImpactFrameJumpKick G  0003BB7C   _cageImpactFrameJumpPunch G  0003BB88   _cageImpactFrameSweep G  0003BBA0   
+_cageImpactFrameUppercut G  0003BBAC   _cageImpactFrameHighKick G  0003BBB8   _cageImpactFrameLowKick G  0003BBC4   
+_cageImpactFrameHighPunch G  0003BBD0   _cageImpactFrameLowPunch G  0003BBDC   _kanoImpactFrameRoundhouse G  0003B978   
+_kanoImpactFrameJumpKick G  0003B960   _kanoImpactFrameJumpPunch G  0003B96C   _kanoImpactFrameSweep G  0003B984   
+_kanoImpactFrameUppercut G  0003B990   _kanoImpactFrameHighKick G  0003B99C   _kanoImpactFrameLowKick G  0003B9A8   
+_kanoImpactFrameHighPunch G  0003B9B4   _kanoImpactFrameLowPunch G  0003B9C0   _sonyaImpactFrameRoundhouse G  0003B9E4   
+_sonyaImpactFrameJumpKick G  0003B9CC   _sonyaImpactFrameJumpPunch G  0003B9D8   _sonyaImpactFrameSweep G  0003B9F0   
+_sonyaImpactFrameUppercut G  0003B9FC   _sonyaImpactFrameHighKick G  0003BA08   _sonyaImpactFrameLowKick G  0003BA14   
+_sonyaImpactFrameHighPunch G  0003BA20   _sonyaImpactFrameLowPunch G  0003BA2C   _raidenImpactFrameRoundhouse G  0003BABC   
+_raidenImpactFrameJumpKick G  0003BAA4   _raidenImpactFrameJumpPunch G  0003BAB0   _raidenImpactFrameSweep G  0003BAC8   
+_raidenImpactFrameUppercut G  0003BAD4   _raidenImpactFrameHighKick G  0003BAE0   _raidenImpactFrameLowKick G  0003BAEC   
+_raidenImpactFrameHighPunch G  0003BAF8   _raidenImpactFrameLowPunch G  0003BB04   _kangImpactFrameRoundhouse G  0003BB28   
+_kangImpactFrameJumpKick G  0003BB10   _kangImpactFrameJumpPunch G  0003BB1C   _kangImpactFrameSweep G  0003BB34   
+_kangImpactFrameUppercut G  0003BB40   _kangImpactFrameHighKick G  0003BB4C   _kangImpactFrameLowKick G  0003BB58   
+_kangImpactFrameHighPunch G  0003BB64   _kangImpactFrameLowPunch G  0003BB70   _p1Cursor G  0003BBFA   
+_p2Cursor G  0003BBF6   _p1Selected G  0003BBF2   _p2Selected G  0003BBEE   
+_ticksPerSec G  0003BBE8   _shakeDirection G  000448E0   _ShakeTicks G  000448E4   
+__fpCCR  G  00044900   _xcpt    G  00044920   
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00167A40   RAPTOR_particle_gfx G  000482A0   RAPTOR_sprite_table G  000518A0   
-_trashram G  0006A140   _bloodStayDelay G  0006A144   _updateTicks G  0006A154   
-_bloodSpeed G  0006A150   _gravity G  0006A14C   _bloodDropMomentumStart G  0006A148   
-_bloodSpray1InUse G  0006A15A   _bloodSpray2InUse G  0006A159   _bloodGlobInUse G  0006A158   
-_bloodSpeedRnd G  0006A140   _backgroundSpriteIndex G  0006A164   _cameraX G  0006A172   
-_cameraY G  0006A16E   _backgroundGfxBase G  0006A160   _cameraTicks G  0006A176   
-_backgroundChangedLeft G  0006A16D   _backgroundChangedRight G  0006A16C   _xOffset G  0006A168   
-_walkForward G  0006A180   _collision G  0006A182   _matchState G  0006A1C2   
-_matchTicks G  0006A1BE   _fightZoomed G  0006A1BC   _fightScale G  0006A1B8   
-_winner  G  0006A1B4   _loser   G  0006A1B0   _matchComplete G  0006A1AE   
-_winsTicks G  0006A1A2   _playedName G  0006A1A1   _playedWins G  0006A1A0   
-_round   G  0006A1C6   _fighter1Wins G  0006A1AA   _fighter2Wins G  0006A1A6   
-_fadedIn G  0006A1E9   _fadedOut G  0006A1E8   _gameStartTicks G  0006A1E4   
-_onScreenChooseFighter G  0006A1EC   _onScreenVsBattle G  0006A1EB   _onScreenFight G  0006A1EA   
-_chooseFighterDone G  0006A1ED   _lastTicks G  0006A1E0   _jsfFontSize G  00167932   
-_jsfFontIndx G  0016792E   _js_r_textbuffer G  00167900   _isSleeping G  00167808   
-_lastTick G  00167804   _totalSleepTicks G  00167800   _spriteCount G  00167820   
-_sprites G  00167824   _LastTicks G  001678D2   _IsScrollingUp G  001678D8   
-_IsScrollingDown G  001678D7   _IsShaking G  001678D6   _bgYOffset G  001678CE   
-_bgYInc  G  001678C6   _shakeCount G  001678C2   _scrollUpAfterShake G  001678C0   
-_bgYStart G  001678CA   zero_left_pad G  00167918   zero_right_pad G  0016791C   
-_pad1    G  001678FC   _pad1Last G  001678F4   _pad1Prev G  001678EC   
-_pad2    G  001678F8   _pad2Last G  001678F0   _pad2Prev G  001678E8   
-_plot_colour G  0016792C   rapAngle_xAdd G  001678E4   rapAngle_yAdd G  001678E0   
-_js_r_xpos G  0016793A   _js_r_ypos G  00167936   _yt2     G  00167904   
-_y       G  0016790C   _errno   G  00167914   zero_mousex_delta G  00167920   
-zero_mousey_delta G  00167924   zero_rotary_delta G  00167928   
+_BSS_E   G  000EF920   RAPTOR_particle_gfx G  00048960   RAPTOR_sprite_table G  00051F60   
+_trashram G  0006A800   _bloodStayDelay G  0006A804   _updateTicks G  0006A814   
+_bloodSpeed G  0006A810   _gravity G  0006A80C   _bloodDropMomentumStart G  0006A808   
+_bloodSpray1InUse G  0006A81A   _bloodSpray2InUse G  0006A819   _bloodGlobInUse G  0006A818   
+_bloodSpeedRnd G  0006A800   _backgroundSpriteIndex G  0006A824   _cameraX G  0006A832   
+_cameraY G  0006A82E   _backgroundGfxBase G  0006A820   _cameraTicks G  0006A836   
+_backgroundChangedLeft G  0006A82D   _backgroundChangedRight G  0006A82C   _xOffset G  0006A828   
+_shadowTicks G  0006A840   _collision G  0006A846   _walkForward G  0006A844   
+_matchState G  0006A882   _matchTicks G  0006A87E   _fightZoomed G  0006A87C   
+_fightScale G  0006A878   _winner  G  0006A874   _loser   G  0006A870   
+_matchComplete G  0006A86E   _winsTicks G  0006A862   _playedName G  0006A861   
+_playedWins G  0006A860   _round   G  0006A886   _fighter1Wins G  0006A86A   
+_fighter2Wins G  0006A866   _fadedIn G  0006A8A9   _fadedOut G  0006A8A8   
+_gameStartTicks G  0006A8A4   _onScreenChooseFighter G  0006A8AC   _onScreenVsBattle G  0006A8AB   
+_jsfFontSize G  000EF812   _jsfFontIndx G  000EF80E   _js_r_textbuffer G  000EF7E0   
+_onScreenFight G  0006A8AA   _chooseFighterDone G  0006A8AD   _lastTicks G  0006A8A0   
+_isSleeping G  000EF6E8   _lastTick G  000EF6E4   _totalSleepTicks G  000EF6E0   
+_spriteCount G  000EF700   _sprites G  000EF704   _LastTicks G  000EF7B2   
+_IsScrollingUp G  000EF7B8   _IsScrollingDown G  000EF7B7   _IsShaking G  000EF7B6   
+_bgYOffset G  000EF7AE   _bgYInc  G  000EF7A6   _shakeCount G  000EF7A2   
+_scrollUpAfterShake G  000EF7A0   _bgYStart G  000EF7AA   zero_left_pad G  000EF7F8   
+zero_right_pad G  000EF7FC   _pad1    G  000EF7DC   _pad1Last G  000EF7D4   
+_pad1Prev G  000EF7CC   _pad2    G  000EF7D8   _pad2Last G  000EF7D0   
+_pad2Prev G  000EF7C8   _plot_colour G  000EF80C   rapAngle_xAdd G  000EF7C4   
+rapAngle_yAdd G  000EF7C0   _js_r_xpos G  000EF81A   _js_r_ypos G  000EF816   
+_yt2     G  000EF7E4   _y       G  000EF7EC   _errno   G  000EF7F4   
+zero_mousex_delta G  000EF800   zero_mousey_delta G  000EF804   zero_rotary_delta G  000EF808   
+
 
  
 Making packed ROM... 

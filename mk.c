@@ -15,10 +15,11 @@
 // -----------------------------------------------------------------------
 static int pad1;
 static int pad2;
-static int imageBuffer[1072*896/4];
+static int imageBuffer[768*608/4];
 static int imageBuffer320x240[320*240/4];
 //static int imageBufferFighter1[1024*1456/4];
 //static int imageBufferFighter2[1024*1456/4];
+static int BLACKPALx16[8];
 static int BLACKPAL[128];
 int p1Cursor = 1;
 int p2Cursor = 2;
@@ -35,8 +36,8 @@ int gameStartTicks = rapTicks;
 int ticksPerSec = 60;
 int lastTicks = 0;
 static SoundHandler soundHandler = {
-	true,  //sound on/off
-	true,  //music on/off
+	false,  //sound on/off
+	false,  //music on/off
 	163,  //sound volume
 	20   //music volume
 };
@@ -116,13 +117,13 @@ static AnimationFrame cageHitSweepFrames[] = {
 	{ 96, 144, 768, 576, 0, 0, 5 }
 };
 static AnimationFrame cageIdleFrames[] = {
-	{ 96, 144, 0, 0, 0, 0, 6 },
-	{ 96, 144, 96, 0, 0, 0, 6 },
-	{ 96, 144, 192, 0, 0, 0, 6 },
-	{ 96, 144, 288, 0, 0, 0, 6 },
-	{ 96, 144, 384, 0, 0, 0, 6 },
-	{ 96, 144, 480, 0, 0, 0, 6 },
-	{ 96, 144, 576, 0, 0, 0, 6 },
+	{ 80, 112, 0, 0, 0, 0, 6 },
+	{ 80, 112, 80, 0, 0, 1, 6 },
+	{ 80, 112, 160, 0, 0, 1, 6 },
+	{ 80, 112, 240, 0, 0, 0, 6 },
+	{ 80, 112, 320, 0, 0, 0, 6 },
+	{ 80, 112, 400, 0, 0, 0, 6 },
+	{ 80, 112, 480, 0, 0, 0, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0},
 	{ 0, 0, 0, 0, 0, 0, 0},
 	{ 0, 0, 0, 0, 0, 0, 0},
@@ -375,14 +376,14 @@ static AnimationFrame kangHitSweepFrames[] = {
 	{ 96, 48, 912, 640, -10, 110, 5 }
 };
 static AnimationFrame kangIdleFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 7 },
-	{ 80, 144, 80, 0, 0, 0, 7 },
-	{ 80, 144, 160, 0, 0, 0, 7 },
-	{ 80, 144, 240, 0, 0, 0, 7 },
-	{ 80, 144, 320, 0, 0, 0, 7 },
-	{ 80, 144, 400, 0, 0, 0, 7 },
-	{ 80, 144, 480, 0, 0, 0, 7 },
-	{ 80, 144, 560, 0, 0, 0, 7 },
+	{ 64, 112, 0, 0, 0, 0, 7 },
+	{ 64, 112, 64, 0, 0, 0, 7 },
+	{ 64, 112, 128, 0, 0, 0, 7 },
+	{ 64, 112, 192, 0, 0, 0, 7 },
+	{ 64, 112, 256, 0, 0, 0, 7 },
+	{ 64, 112, 192, 0, 0, 0, 7 },
+	{ 64, 112, 128, 0, 0, 0, 7 },
+	{ 64, 112, 64, 0, 0, 0, 7 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -632,16 +633,16 @@ static AnimationFrame raidenHitSweepFrames[] = {
 	{ 112, 64, 496, 576, -15, 100, 5 }
 };
 static AnimationFrame raidenIdleFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 6 },
-	{ 80, 144, 80, 0, 0, 0, 6 },
-	{ 80, 144, 160, 0, 0, 0, 6 },
-	{ 80, 144, 240, 0, 0, 0, 6 },
-	{ 80, 144, 320, 0, 0, 0, 6 },
-	{ 80, 144, 400, 0, 0, 0, 6 },
-	{ 80, 144, 480, 0, 0, 0, 6 },
-	{ 80, 144, 560, 0, 0, 0, 6 },
-	{ 80, 144, 640, 0, 0, 0, 6 },
-	{ 80, 144, 720, 0, 0, 0, 6 },
+	{ 64, 112, 0, 0, 0, 0, 6 },
+	{ 64, 112, 64, 0, 0, -1, 6 },
+	{ 64, 112, 128, 0, 0, -1, 6 },
+	{ 64, 112, 192, 0, 0, 0, 6 },
+	{ 64, 112, 256, 0, 0, 0, 6 },
+	{ 64, 112, 320, 0, 0, 0, 6 },
+	{ 64, 112, 256, 0, 0, 0, 6 },
+	{ 64, 112, 192, 0, 0, 0, 6 },
+	{ 64, 112, 128, 0, 0, -1, 6 },
+	{ 64, 112, 64, 0, 0, -1, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
@@ -938,18 +939,18 @@ static AnimationFrame subzeroRoundhouseFrames[] = {
 	{ 64, 144, 432, 1312, -3, 0, 5 }
 };
 static AnimationFrame subzeroIdleFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 6 },
-	{ 80, 144, 80, 0, 0, 0, 6 },
-	{ 80, 144, 160, 0, 0, 0, 6 },
-	{ 80, 144, 240, 0, 0, 0, 6 },
-	{ 80, 144, 320, 0, 0, 0, 6 },
-	{ 80, 144, 400, 0, 0, 0, 6 },
-	{ 80, 144, 480, 0, 0, 0, 6 },
-	{ 80, 144, 560, 0, 0, 0, 6 },
-	{ 80, 144, 640, 0, 0, 0, 6 },
-	{ 80, 144, 720, 0, 0, 0, 6 },
-	{ 80, 144, 800, 0, 0, 0, 6 },
-	{ 80, 144, 880, 0, 0, 0, 6 }
+	{ 48, 112, 448, 0, 1, 0, 6 },
+	{ 48, 112, 496, 0, 2, 0, 6 },
+	{ 48, 112, 544, 0, 2, 0, 6 },
+	{ 48, 112, 592, 0, 2, -1, 6 },
+	{ 48, 112, 640, 0, 2, -1, 6 },
+	{ 48, 112, 688, 0, 2, -1, 6 },
+	{ 48, 112, 736, 0, 3, 0, 6 },
+	{ 48, 112, 688, 0, 2, -1, 6 },
+	{ 48, 112, 640, 0, 2, -1, 6 },
+	{ 48, 112, 592, 0, 2, -1, 6 },
+	{ 48, 112, 544, 0, 2, 0, 6 },
+	{ 48, 112, 496, 0, 2, 0, 6 }
 };
 static AnimationFrame subzeroDizzyFrames[] = {
 	{ 80, 144, 496, 1312, -12, 0, 12 },
@@ -1196,13 +1197,13 @@ static AnimationFrame sonyaRoundhouseFrames[] = {
 	{ 64, 160, 432, 1024, 15, -16, 5 }
 };
 static AnimationFrame sonyaIdleFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 6 },
-	{ 80, 144, 80, 0, 0, 0, 6 },
-	{ 80, 144, 160, 0, 0, 0, 6 },
-	{ 80, 144, 240, 0, 0, 0, 6 },
-	{ 80, 144, 320, 0, 0, 0, 6 },
-	{ 80, 144, 400, 0, 0, 0, 6 },
-	{ 80, 144, 480, 0, 0, 0, 6 },
+	{ 48, 112, 0, 0, 0, 0, 6 },
+	{ 48, 112, 48, 0, 0, 0, 6 },
+	{ 48, 112, 96, 0, 0, 0, 6 },
+	{ 48, 112, 144, 0, 0, 0, 6 },
+	{ 48, 112, 192, 0, 0, 0, 6 },
+	{ 48, 112, 240, 0, 0, 0, 6 },
+	{ 48, 112, 288, 0, 0, 0, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -1338,13 +1339,13 @@ static SpriteAnimator scorpionAnimator2 = {
 };
 
 static AnimationFrame scorpionIdleFrames[] = {
-	{ 80, 144, 0, 1024, 0, 0, 6 },
-	{ 80, 144, 80, 1024, 0, 0, 6 },
-	{ 80, 144, 160, 1024, 0, 0, 6 },
-	{ 80, 144, 240, 1024, 0, 0, 6 },
-	{ 80, 144, 320, 1024, 0, 0, 6 },
-	{ 80, 144, 400, 1024, 0, 0, 6 },
-	{ 80, 144, 480, 1024, 0, 0, 6 },
+	{ 64, 112, 0, 0, 0, 0, 6 },
+	{ 64, 112, 64, 0, 0, 0, 6 },
+	{ 64, 112, 128, 0, 0, 0, 6 },
+	{ 64, 112, 192, 0, 0, 0, 6 },
+	{ 64, 112, 256, 0, 0, 0, 6 },
+	{ 64, 112, 320, 0, 0, 0, 6 },
+	{ 64, 112, 384, 0, 0, 0, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -1441,13 +1442,13 @@ static AnimationFrame kanoHitSweepFrames[] = {
 	{ 96, 32, 464, 576, -3, 112, 5 }
 };
 static AnimationFrame kanoIdleFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 5 },
-	{ 80, 144, 80, 0, 0, 0, 5 },
-	{ 80, 144, 160, 0, 0, 0, 5 },
-	{ 80, 144, 240, 0, 0, 0, 5 },
-	{ 80, 144, 320, 0, 0, 0, 5 },
-	{ 80, 144, 400, 0, 0, 0, 5 },
-	{ 80, 144, 480, 0, 0, 0, 5 },
+	{ 64, 112, 0, 0, 0, -1, 5 },
+	{ 64, 112, 64, 0, 0, 0, 5 },
+	{ 64, 112, 128, 0, 0, 1, 5 },
+	{ 64, 112, 192, 0, 0, 0, 5 },
+	{ 64, 112, 256, 0, 0, 0, 5 },
+	{ 64, 112, 320, 0, 0, 0, 5 },
+	{ 64, 112, 384, 0, 0, 0, 5 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -1632,36 +1633,36 @@ static SpriteAnimator lightning2Animator = {
 };
 
 static AnimationFrame lightningFrames[] = {
-	{ 80, 144, 0, 0, 0, 0, 4 },
-	{ 80, 144, 80, 0, 0, 0, 4 },
-	{ 80, 144, 160, 0, 0, 0, 4 },
-	{ 80, 144, 240, 0, 0, 0, 4 },
-	{ 80, 144, 320, 0, 0, 0, 4 },
-	{ 80, 144, 400, 0, 0, 0, 4 },
-	{ 80, 144, 480, 0, 0, 0, 4 },
-	{ 80, 144, 560, 0, 0, 0, 4 },
-	{ 80, 144, 640, 0, 0, 0, 4 },
-	{ 80, 144, 720, 0, 0, 0, 4 },
-	{ 80, 144, 0, 144, 0, 0, 4 },
-	{ 80, 144, 80, 144, 0, 0, 4 },
-	{ 80, 144, 160, 144, 0, 0, 4 },
-	{ 80, 144, 240, 144, 0, 0, 4 },
-	{ 80, 144, 320, 144, 0, 0, 4 },
-	{ 80, 144, 400, 144, 0, 0, 4 },
-	{ 80, 144, 480, 144, 0, 0, 4 },
-	{ 80, 144, 560, 144, 0, 0, 4 },
-	{ 80, 144, 640, 144, 0, 0, 4 },
-	{ 80, 144, 720, 144, 0, 0, 4 },
-	{ 80, 144, 0, 288, 0, 0, 4 },
-	{ 80, 144, 80, 288, 0, 0, 4 },
-	{ 80, 144, 160, 288, 0, 0, 4 },
-	{ 80, 144, 240, 288, 0, 0, 4 },
-	{ 80, 144, 320, 288, 0, 0, 4 },
-	{ 80, 144, 400, 288, 0, 0, 4 },
-	{ 80, 144, 480, 288, 0, 0, 4 },
-	{ 80, 144, 560, 288, 0, 0, 4 },
-	{ 80, 144, 640, 288, 0, 0, 4 },
-	{ 80, 144, 720, 288, 0, 0, 4 }
+	{ 64, 112, 0, 0, 0, 0, 4 },
+	{ 64, 112, 64, 0, 0, 0, 4 },
+	{ 64, 112, 128, 0, 0, 0, 4 },
+	{ 64, 112, 192, 0, 0, 0, 4 },
+	{ 64, 112, 256, 0, 0, 0, 4 },
+	{ 64, 112, 320, 0, 0, 0, 4 },
+	{ 64, 112, 384, 0, 0, 0, 4 },
+	{ 64, 112, 448, 0, 0, 0, 4 },
+	{ 64, 112, 512, 0, 0, 0, 4 },
+	{ 64, 112, 576, 0, 0, 0, 4 },
+	{ 64, 112, 0, 112, 0, 0, 4 },
+	{ 64, 112, 64, 112, 0, 0, 4 },
+	{ 64, 112, 128, 112, 0, 0, 4 },
+	{ 64, 112, 192, 112, 0, 0, 4 },
+	{ 64, 112, 256, 112, 0, 0, 4 },
+	{ 64, 112, 320, 112, 0, 0, 4 },
+	{ 64, 112, 384, 112, 0, 0, 4 },
+	{ 64, 112, 448, 112, 0, 0, 4 },
+	{ 64, 112, 512, 112, 0, 0, 4 },
+	{ 64, 112, 576, 112, 0, 0, 4 },
+	{ 64, 112, 0, 224, 0, 0, 4 },
+	{ 64, 112, 64, 224, 0, 0, 4 },
+	{ 64, 112, 128, 224, 0, 0, 4 },
+	{ 64, 112, 192, 224, 0, 0, 4 },
+	{ 64, 112, 256, 224, 0, 0, 4 },
+	{ 64, 112, 320, 224, 0, 0, 4 },
+	{ 64, 112, 384, 224, 0, 0, 4 },
+	{ 64, 112, 448, 224, 0, 0, 4 },
+	{ 64, 112, 512, 224, 0, 0, 4 },
+	{ 64, 112, 576, 224, 0, 0, 4 }
 };
 
 // *************************************************
@@ -1674,6 +1675,9 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
 void SetPlayerPalettes();
 void setFighterAlternatePalette(int fighter1Index, int fighter2Index);
+void setPlayer1Name(char* name);
+void setPlayer2Name(char* name);
+void displayWinnerMedals();
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -2574,7 +2578,8 @@ void basicmain()
 					}
 
 					fadedOut = true;		
-					switchScreenChooseFighter();
+					//fighterStartUp();
+					switchScreenChooseFighter();					
 					//sfxGong(&soundHandler);
 					musicTitle(&soundHandler);
 					//initGameAssets();
@@ -2643,6 +2648,7 @@ void basicmain()
 				case 1:
 					//Kano
 					fighterUpdateIdle(delta, &fighterKano, &kanoAnimator, kanoIdleFrames);
+					rapPrint();
 					break;
 				case 2:
 					//Sub-Zero
@@ -2902,6 +2908,7 @@ void basicmain()
 				sleepInit();
 				matchInit();
 				switchScreenFight(p1Cursor, p2Cursor, true);
+				displayWinnerMedals();
 			}
 		}
 		else if (onScreenFight)
@@ -2912,59 +2919,7 @@ void basicmain()
 			pad1=jsfGetPad(LEFT_PAD);
 			pad2=jsfGetPad(RIGHT_PAD);
 
-			rapUse16x16fontPalette(10);
-			jsfSetFontSize(2);
-			jsfSetFontIndx(0);
-
-			switch(matchGetFighter1Wins())
-			{
-				case 1:
-					rapLocate(8,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					break;
-				case 2:
-					rapLocate(8,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					rapLocate(22,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					break;
-				default:
-					rapLocate(8,42);
-					js_r_textbuffer=(char *)" ";
-					rapPrint();
-					rapLocate(22,42);
-					js_r_textbuffer=(char *)" ";
-					rapPrint();
-					break;
-			}
-
-			switch(matchGetFighter2Wins())
-			{
-				case 1:
-					rapLocate(306,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					break;
-				case 2:
-					rapLocate(292,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					rapLocate(306,42);
-					js_r_textbuffer=(char *)"*";
-					rapPrint();
-					break;
-				default:
-					rapLocate(292,42);
-					js_r_textbuffer=(char *)" ";
-					rapPrint();
-					rapLocate(306,42);
-					js_r_textbuffer=(char *)" ";
-					rapPrint();
-					break;
-			}			
+			displayWinnerMedals();		
 
 			//match progression
 			if (!matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr))
@@ -3073,6 +3028,8 @@ void basicmain()
 					break;
 			}
 
+			fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
+			fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
 			fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
 			bgUpdate(fighter1Ptr, fighter2Ptr);
@@ -3120,6 +3077,9 @@ void basicmain()
 				rapLocate(10, 90);
 				js_r_textbuffer = ee_printf("%d",sprite[fighter1Ptr->spriteIndex].y_);
 				rapPrint();
+				rapLocate(10, 100);
+				js_r_textbuffer = ee_printf("%d",fighter1Ptr->hasRoomToMove);
+				rapPrint();
 
 				rapLocate(290, 60);
 				js_r_textbuffer = ee_printf("%d",fighter2Ptr->positionX);
@@ -3133,6 +3093,9 @@ void basicmain()
 				rapLocate(290, 90);
 				js_r_textbuffer = ee_printf("%d",sprite[fighter2Ptr->spriteIndex].y_);
 				rapPrint();
+				rapLocate(290, 100);
+				js_r_textbuffer = ee_printf("%d", fighter2Ptr->hasRoomToMove);
+				rapPrint();
 			}
 		}
 		jsfVsync(0);
@@ -3141,6 +3104,11 @@ void basicmain()
 
 void initTitleScreen()
 {
+	for (int i = 0; i < 8; i++)
+	{
+		BLACKPALx16[i] = 0;
+	}
+
 	for (int i = 0; i < 128; i++)
 	{
 		BLACKPAL[i] = 0;
@@ -3205,15 +3173,9 @@ void switchScreenChooseFighter()
 	
 	rapSetActiveList(0);
 	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
-	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),7,16);
+	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
-	jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
-	fighterMakeSelectable(&fighterKano, true);
-	fighterShow(&fighterKano);
-
-	jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
-	fighterMakeSelectable(&fighterSubzero2, false);
-	fighterShow(&fighterSubzero2);
 	SetPlayerPalettes();
 	fadedIn = false;
 	fadedOut = false;
@@ -3346,7 +3308,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterCage);		
 			sprite[P1_FIGHTER_PIT].gfxbase = BMPCAGE;
-			sprite[P1_NAME].gfxbase = BMP_NAME_CAGE;
+			setPlayer1Name((char*)"CAGE");
 			break;
 		case 1:
 			//Kano
@@ -3355,7 +3317,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse);
 			fighterShow(&fighterKano);
-			sprite[P1_NAME].gfxbase = BMP_NAME_KANO;
+			setPlayer1Name((char*)"KANO");
 			break;
 		case 2:
 			//Sub-Zero
@@ -3364,7 +3326,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse);
 			fighterShow(&fighterSubzero);
-			sprite[P1_NAME].gfxbase = BMP_NAME_SUBZERO;
+			setPlayer1Name((char*)"SUB-ZERO");
 			break;
 		case 3:
 			//Sonya
@@ -3373,7 +3335,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &sonyaImpactFrameRoundhouse);
 			fighterShow(&fighterSonya);
-			sprite[P1_NAME].gfxbase = BMP_NAME_SONYA;
+			setPlayer1Name((char*)"SONYA");
 			break;
 		case 4:
 			//Raiden
@@ -3383,7 +3345,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
 			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse);
 			fighterShow(&fighterRaiden);
-			sprite[P1_NAME].gfxbase = BMP_NAME_RAIDEN;
+			setPlayer1Name((char*)"RAIDEN");
 			break;
 		case 5:
 			//Liu Kang
@@ -3392,7 +3354,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse);
 			fighterShow(&fighterKang);
-			sprite[P1_NAME].gfxbase = BMP_NAME_LIUKANG;
+			setPlayer1Name((char*)"LIU KANG");
 			break;
 		case 6:
 			//Scorpion
@@ -3401,7 +3363,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse);
 			fighterShow(&fighterScorpion);
-			sprite[P1_NAME].gfxbase = BMP_NAME_SCORPION;
+			setPlayer1Name((char*)"SCORPION");
 			break;
 	}
 
@@ -3414,7 +3376,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			cageAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse);
 			fighterShow(&fighterCage2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_CAGE;
+			setPlayer2Name((char*)"CAGE");
 			break;
 		case 1:
 			//Kano
@@ -3423,7 +3385,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse);
 			fighterShow(&fighterKano2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_KANO;
+			setPlayer2Name((char*)"KANO");
 			break;
 		case 2:
 			//Sub-Zero
@@ -3432,7 +3394,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse);
 			fighterShow(&fighterSubzero2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_SUBZERO;
+			setPlayer2Name((char*)"SUB-ZERO");
 			break;
 		case 3:
 			//Sonya
@@ -3441,7 +3403,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sonyaAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &sonyaImpactFrameRoundhouse);
 			fighterShow(&fighterSonya2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_SONYA;
+			setPlayer2Name((char*)"SONYA");
 			break;
 		case 4:
 			//Raiden
@@ -3452,7 +3414,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
-			sprite[P2_NAME].gfxbase = BMP_NAME_RAIDEN;
+			setPlayer2Name((char*)"RAIDEN");
 			break;
 		case 5:
 			//Liu Kang
@@ -3461,7 +3423,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse);
 			fighterShow(&fighterKang2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_LIUKANG;
+			setPlayer2Name((char*)"LIU KANG");
 			break;
 		case 6:
 			//Scorpion
@@ -3470,7 +3432,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse);
 			fighterShow(&fighterScorpion2);
-			sprite[P2_NAME].gfxbase = BMP_NAME_SCORPION;
+			setPlayer2Name((char*)"SCORPION");
 			break;
 	}
 
@@ -3661,4 +3623,81 @@ void setFighterAlternatePalette(int fighter1Index, int fighter2Index)
         for (int j = 0; j < 24; j++)
             rapFadeClut(15,16,BLACKPAL);
     }
+}
+
+void setPlayer1Name(char* name)
+{
+	rapUse8x16fontPalette(10);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(20,27);
+	js_r_textbuffer=name;
+	rapPrint();
+}
+
+void setPlayer2Name(char* name)
+{
+	rapUse8x16fontPalette(10);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(230,27);
+	js_r_textbuffer=name;
+	rapPrint();
+}
+
+void displayWinnerMedals()
+{
+	//rapUse16x16fontPalette(10);
+	jsfSetFontSize(2);
+	jsfSetFontIndx(0);
+
+	switch(matchGetFighter1Wins())
+	{
+		case 1:
+			rapLocate(8,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			break;
+		case 2:
+			rapLocate(8,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			rapLocate(22,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			break;
+		default:
+			rapLocate(8,42);
+			js_r_textbuffer=(char *)" ";
+			rapPrint();
+			rapLocate(22,42);
+			js_r_textbuffer=(char *)" ";
+			rapPrint();
+			break;
+	}
+
+	switch(matchGetFighter2Wins())
+	{
+		case 1:
+			rapLocate(306,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			break;
+		case 2:
+			rapLocate(292,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			rapLocate(306,42);
+			js_r_textbuffer=(char *)"*";
+			rapPrint();
+			break;
+		default:
+			rapLocate(292,42);
+			js_r_textbuffer=(char *)" ";
+			rapPrint();
+			rapLocate(306,42);
+			js_r_textbuffer=(char *)" ";
+			rapPrint();
+			break;
+	}
 }

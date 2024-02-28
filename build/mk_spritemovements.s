@@ -47,7 +47,7 @@ __Z8bgUpdateP7FighterS0_:
 	jle .L6
 	move.l sprite,%a2
 	move.l #___floatsisf,%d4
-	move.w 3080(%a2),%a0
+	move.w 3464(%a2),%a0
 	move.l %a0,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
@@ -61,8 +61,8 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
-	move.w %d0,3080(%a2)
-	move.w 3272(%a2),%a0
+	move.w %d0,3464(%a2)
+	move.w 3656(%a2),%a0
 	move.l %a0,(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
@@ -75,7 +75,7 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d2,%a0
 	jsr (%a0)
 	addq.l #4,%sp
-	move.w %d0,3272(%a2)
+	move.w %d0,3656(%a2)
 	tst.b _IsScrollingUp
 	jeq .L8
 	move.l _bgYOffset,%d0
@@ -96,7 +96,7 @@ __Z8bgUpdateP7FighterS0_:
 	jeq .L14
 .L13:
 	move.l _bgYInc,%d0
-	add.w %d0,3468(%a2)
+	add.w %d0,3852(%a2)
 	add.l %d0,256(%a5)
 	add.l %d0,256(%a4)
 .L14:
@@ -147,7 +147,7 @@ __Z8bgUpdateP7FighterS0_:
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.l _bgYInc,%d0
-	add.w %d0,3468(%a2)
+	add.w %d0,3852(%a2)
 	add.l %d0,256(%a5)
 	add.l %d0,256(%a4)
 	jra .L14
