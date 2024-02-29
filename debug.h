@@ -1,0 +1,1 @@
+void showMessage(char* message);

@@ -16,13 +16,12 @@ int shadowTicks = 0;
 
 void fighterStartUp()
 {
-    shadowTicks = rapTicks;
+   // shadowTicks = rapTicks;
 }
 
 void fighterHide(struct Fighter *fighter)
 {
     sprite[fighter->spriteIndex].active = R_is_inactive;
-    sprite[fighter->spriteIndex - 1].active = R_is_inactive;
 }
 
 void fighterShow(struct Fighter *fighter)
@@ -64,23 +63,18 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
     {
         sprite[fighter->spriteIndex].x_ = 14;
         sprite[fighter->spriteIndex].flip = R_is_normal;
-        sprite[fighter->spriteIndex-1].x_ = 14;
-        sprite[fighter->spriteIndex-1].flip = R_is_normal;
         fighter->direction = 1;
     }
     else
     {
         sprite[fighter->spriteIndex].x_ = 224;
-        sprite[fighter->spriteIndex-1].x_ = 224;
 
         if (fighter->fighterIndex == CAGE)
         {
             sprite[fighter->spriteIndex].x_ -= 16;
-            sprite[fighter->spriteIndex-1].x_ -= 16;
         }
 
         sprite[fighter->spriteIndex].flip = R_is_flipped;
-        sprite[fighter->spriteIndex-1].flip = R_is_flipped;
         fighter->direction = -1;
     }
 
@@ -1876,6 +1870,7 @@ void fighterPositionXAdd(struct Fighter* fighter, int xAdd)
 void fighterCastShadow(struct Fighter* fighter)
 {
     return;
+    
     if (rapTicks >= shadowTicks + 60)
     {
         sprite[fighter->spriteIndex - 1].x_ = sprite[fighter->spriteIndex].x_;

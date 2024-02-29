@@ -43,11 +43,11 @@ __Z14initGameAssetsv:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l sprite,%a0
-	move.l #11381712,1196(%a0)
-	move.l #10242960,1580(%a0)
+	move.l #11381712,1004(%a0)
+	move.l #10242960,1196(%a0)
 	moveq #1,%d0
+	move.l %d0,964(%a0)
 	move.l %d0,1156(%a0)
-	move.l %d0,1540(%a0)
 	pea 16.w
 	pea 14.w
 	move.l #11979728,-(%sp)
@@ -74,9 +74,9 @@ __Z20switchScreenVsBattleii:
 	move.l #8462336,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
-	move.l #__ZL18imageBuffer320x240,2348(%a0)
+	move.l #__ZL18imageBuffer320x240,1964(%a0)
 	moveq #1,%d0
-	move.l %d0,2308(%a0)
+	move.l %d0,1924(%a0)
 	addq.l #8,%sp
 	pea 16.w
 	clr.l -(%sp)
@@ -104,7 +104,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12100336,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12097776,2732(%a0)
+	move.l #12097776,2348(%a0)
 	lea (12,%sp),%sp
 .L8:
 	moveq #6,%d0
@@ -127,7 +127,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12100336,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12097776,2924(%a0)
+	move.l #12097776,2540(%a0)
 	lea (12,%sp),%sp
 .L17:
 	pea 16.w
@@ -135,7 +135,7 @@ __Z20switchScreenVsBattleii:
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -150,14 +150,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12095152,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12092592,2924(%a0)
+	move.l #12092592,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -172,7 +172,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12089968,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12087408,2732(%a0)
+	move.l #12087408,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L10:
@@ -181,7 +181,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12092560,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12090000,2732(%a0)
+	move.l #12090000,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L11:
@@ -190,7 +190,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12105520,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12102960,2732(%a0)
+	move.l #12102960,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L12:
@@ -199,7 +199,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12102928,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12100368,2732(%a0)
+	move.l #12100368,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L13:
@@ -208,7 +208,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12097744,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12095184,2732(%a0)
+	move.l #12095184,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L14:
@@ -217,7 +217,7 @@ __Z20switchScreenVsBattleii:
 	move.l #12095152,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12092592,2732(%a0)
+	move.l #12092592,2348(%a0)
 	lea (12,%sp),%sp
 	jra .L8
 .L18:
@@ -226,14 +226,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12089968,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12087408,2924(%a0)
+	move.l #12087408,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -248,14 +248,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12092560,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12090000,2924(%a0)
+	move.l #12090000,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -270,14 +270,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12105520,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12102960,2924(%a0)
+	move.l #12102960,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -292,14 +292,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12102928,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12100368,2924(%a0)
+	move.l #12100368,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -314,14 +314,14 @@ __Z20switchScreenVsBattleii:
 	move.l #12097744,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #12095184,2924(%a0)
+	move.l #12095184,2540(%a0)
 	lea (12,%sp),%sp
 	pea 16.w
 	pea 1.w
 	move.l #8514320,-(%sp)
 	jsr (%a2)
 	move.l sprite,%a0
-	move.l #8512880,3116(%a0)
+	move.l #8512880,2732(%a0)
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
 	lea (12,%sp),%sp
@@ -356,11 +356,11 @@ __Z17switchScreenFightiib:
 	jne .L53
 .L29:
 	move.l sprite,%a0
-	move.l #__ZL18imageBuffer320x240,3308(%a0)
+	move.l #__ZL18imageBuffer320x240,2924(%a0)
 	moveq #1,%d0
-	move.l %d0,3268(%a0)
-	move.l #__ZL11imageBuffer,3884(%a0)
-	move.l %d0,3844(%a0)
+	move.l %d0,2884(%a0)
+	move.l #__ZL11imageBuffer,3500(%a0)
+	move.l %d0,3460(%a0)
 	pea 64.w
 	clr.l -(%sp)
 	move.l #12242112,-(%sp)
@@ -423,7 +423,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #11979776,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL15fighterScorpion+4
 	move.l %d0,__ZL16scorpionAnimator
 	addq.l #8,%sp
@@ -477,7 +477,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #11979776,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL16fighterScorpion2+4
 	move.l %d0,__ZL17scorpionAnimator2
 	addq.l #8,%sp
@@ -516,11 +516,11 @@ __Z17switchScreenFightiib:
 .L48:
 	move.l sprite,%a0
 	moveq #34,%d0
-	move.l %d0,10072(%a0)
-	move.l %d0,10264(%a0)
-	move.w #176,10184(%a0)
+	move.l %d0,9688(%a0)
+	move.l %d0,9880(%a0)
+	move.w #176,9800(%a0)
 	move.b #1,%d0
-	move.l %d0,3460(%a0)
+	move.l %d0,3076(%a0)
 	pea 2.w
 	jsr rapSetActiveList
 	move.l #__ZL12soundHandler,(%sp)
@@ -529,7 +529,7 @@ __Z17switchScreenFightiib:
 	pea 360.w
 	clr.l -(%sp)
 	pea 130.w
-	pea 20.w
+	pea 18.w
 	jsr __Z10cameraInitjiiij
 	clr.b _onScreenVsBattle
 	move.b #1,_onScreenFight
@@ -572,7 +572,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #9104176,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL11fighterCage+4
 	move.l %d0,__ZL12cageAnimator
 	addq.l #8,%sp
@@ -593,7 +593,7 @@ __Z17switchScreenFightiib:
 	move.l #__ZL11fighterCage,(%sp)
 	jsr __Z11fighterShowP7Fighter
 	move.l sprite,%a0
-	move.l #8514352,5612(%a0)
+	move.l #8514352,5228(%a0)
 	moveq #10,%d1
 	move.l %d1,(%sp)
 	jsr rapUse8x16fontPalette
@@ -613,7 +613,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #11979728,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL11fighterKano+4
 	move.l %d0,__ZL12kanoAnimator
 	addq.l #8,%sp
@@ -652,7 +652,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #10890128,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL14fighterSubzero+4
 	move.l %d0,__ZL15subzeroAnimator
 	addq.l #8,%sp
@@ -691,7 +691,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #11381680,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL12fighterSonya+4
 	move.l %d0,__ZL13sonyaAnimator
 	addq.l #8,%sp
@@ -730,7 +730,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #10242928,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL13fighterRaiden+4
 	move.l %d0,__ZL14raidenAnimator
 	addq.l #8,%sp
@@ -769,7 +769,7 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #9669456,-(%sp)
 	jsr (%a2)
-	moveq #29,%d0
+	moveq #27,%d0
 	move.l %d0,__ZL11fighterKang+4
 	move.l %d0,__ZL12kangAnimator
 	addq.l #8,%sp
@@ -808,7 +808,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #9104176,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL12fighterCage2+4
 	move.l %d0,__ZL13cageAnimator2
 	addq.l #8,%sp
@@ -849,7 +849,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #11979728,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL12fighterKano2+4
 	move.l %d0,__ZL13kanoAnimator2
 	addq.l #8,%sp
@@ -890,7 +890,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #10890128,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL15fighterSubzero2+4
 	move.l %d0,__ZL16subzeroAnimator2
 	addq.l #8,%sp
@@ -931,7 +931,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #11381680,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL13fighterSonya2+4
 	move.l %d0,__ZL14sonyaAnimator2
 	addq.l #8,%sp
@@ -972,7 +972,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #10242928,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL14fighterRaiden2+4
 	move.l %d0,__ZL15raidenAnimator2
 	addq.l #8,%sp
@@ -994,7 +994,7 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	move.l sprite,%a0
 	moveq #1,%d0
-	move.l %d0,1924(%a0)
+	move.l %d0,1540(%a0)
 	moveq #10,%d1
 	move.l %d1,(%sp)
 	jsr rapUse8x16fontPalette
@@ -1016,7 +1016,7 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #9669456,-(%sp)
 	jsr (%a2)
-	moveq #30,%d0
+	moveq #28,%d0
 	move.l %d0,__ZL12fighterKang2+4
 	move.l %d0,__ZL13kangAnimator2
 	addq.l #8,%sp
@@ -1060,8 +1060,8 @@ __Z17SetPlayerPalettesv:
 	move.l %d2,-(%sp)
 	move.l sprite,%a0
 	moveq #-1,%d0
-	move.l %d0,1732(%a0)
-	move.l %d0,1924(%a0)
+	move.l %d0,1348(%a0)
+	move.l %d0,1540(%a0)
 	moveq #6,%d1
 	cmp.l _p1Cursor.l,%d1
 	jcs .L57
@@ -1257,7 +1257,7 @@ __Z17SetPlayerPalettesv:
 	move.w #68,584(%a0)
 	move.w #120,588(%a0)
 	moveq #1,%d0
-	move.l %d0,1732(%a0)
+	move.l %d0,1348(%a0)
 	addq.l #4,%sp
 	jra .L57
 .L63:
@@ -1382,7 +1382,7 @@ __Z17SetPlayerPalettesv:
 	jsr __Z11fighterShowP7Fighter
 	move.l sprite,%a0
 	moveq #1,%d0
-	move.l %d0,1924(%a0)
+	move.l %d0,1540(%a0)
 	move.w #68,392(%a0)
 	move.w #116,396(%a0)
 	move.w #68,200(%a0)
@@ -1529,7 +1529,7 @@ __Z25switchScreenChooseFighterv:
 	addq.l #8,%sp
 	moveq #16,%d1
 	move.l %d1,(%sp)
-	pea 7.w
+	pea 6.w
 	move.l #8512848,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
@@ -2281,10 +2281,10 @@ __Z9basicmainv:
 	subq.l #1,%d2
 	addq.l #4,%sp
 	jne .L186
-	moveq #6,%d0
+	moveq #5,%d0
 	move.l %d3,%a0
 	move.l %d0,4(%a0)
-	move.b #8,%d0
+	move.b #6,%d0
 	move.l %d4,%a0
 	move.l %d0,4(%a0)
 	pea __ZL12soundHandler
@@ -2682,7 +2682,6 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	jsr _rapPrint
 	moveq #-1,%d1
 	cmp.l _p2Selected.l,%d1
 	jne .L135
@@ -3263,7 +3262,7 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	pea 128.w
 	pea 48.w
-	pea 31.w
+	pea 29.w
 	jsr __Z8setFramejiiiifj
 	lea (24,%sp),%sp
 	move.l #12258704,(%sp)
@@ -3272,7 +3271,16 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	pea 128.w
 	pea 48.w
-	pea 33.w
+	pea 31.w
+	jsr __Z8setFramejiiiifj
+	lea (24,%sp),%sp
+	move.l #12261808,(%sp)
+	move.l #0x3f000000,-(%sp)
+	clr.l -(%sp)
+	clr.l -(%sp)
+	pea 16.w
+	pea 48.w
+	pea 30.w
 	jsr __Z8setFramejiiiifj
 	lea (24,%sp),%sp
 	move.l #12261808,(%sp)
@@ -3282,15 +3290,6 @@ __Z9basicmainv:
 	pea 16.w
 	pea 48.w
 	pea 32.w
-	jsr __Z8setFramejiiiifj
-	lea (24,%sp),%sp
-	move.l #12261808,(%sp)
-	move.l #0x3f000000,-(%sp)
-	clr.l -(%sp)
-	clr.l -(%sp)
-	pea 16.w
-	pea 48.w
-	pea 34.w
 	jsr __Z8setFramejiiiifj
 	lea (28,%sp),%sp
 	clr.b -9(%fp)
@@ -3305,7 +3304,7 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	pea 128.w
 	pea 48.w
-	pea 31.w
+	pea 29.w
 	jsr __Z8setFramejiiiifj
 	lea (24,%sp),%sp
 	move.l #12255184,(%sp)
@@ -3314,7 +3313,16 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	pea 128.w
 	pea 48.w
-	pea 33.w
+	pea 31.w
+	jsr __Z8setFramejiiiifj
+	lea (24,%sp),%sp
+	move.l #12258288,(%sp)
+	move.l #0x3f000000,-(%sp)
+	clr.l -(%sp)
+	clr.l -(%sp)
+	pea 16.w
+	pea 48.w
+	pea 30.w
 	jsr __Z8setFramejiiiifj
 	lea (24,%sp),%sp
 	move.l #12258288,(%sp)
@@ -3324,15 +3332,6 @@ __Z9basicmainv:
 	pea 16.w
 	pea 48.w
 	pea 32.w
-	jsr __Z8setFramejiiiifj
-	lea (24,%sp),%sp
-	move.l #12258288,(%sp)
-	move.l #0x3f000000,-(%sp)
-	clr.l -(%sp)
-	clr.l -(%sp)
-	pea 16.w
-	pea 48.w
-	pea 34.w
 	jsr __Z8setFramejiiiifj
 	lea (28,%sp),%sp
 	move.b #1,-9(%fp)
@@ -4034,7 +4033,7 @@ sprite:
 	.even
 __ZL11fighterCage:
 	.long	1
-	.long	6
+	.long	5
 	.long	8514352
 	.long	7
 	.long	7
@@ -4310,66 +4309,66 @@ __ZL14cageWinsFrames:
 	.long	0
 	.even
 __ZL14cageWalkFrames:
-	.long	96
-	.long	144
-	.long	672
+	.long	80
+	.long	112
+	.long	720
+	.long	960
+	.long	-16
 	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	800
+	.long	960
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
-	.long	768
-	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
+	.long	64
+	.long	112
 	.long	864
-	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	0
-	.long	144
+	.long	944
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
-	.long	96
-	.long	144
+	.long	64
+	.long	112
+	.long	928
+	.long	944
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
+	.long	64
+	.long	112
+	.long	0
+	.long	1024
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	64
+	.long	1024
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	128
+	.long	1024
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
 	.long	192
-	.long	144
+	.long	1024
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
-	.long	288
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	384
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	480
-	.long	144
+	.long	64
+	.long	112
+	.long	256
+	.long	1024
 	.long	0
 	.long	0
 	.long	6
@@ -5278,7 +5277,7 @@ __ZL20cageRoundhouseFrames:
 	.even
 __ZL12fighterCage2:
 	.long	1
-	.long	8
+	.long	6
 	.long	8514352
 	.long	7
 	.long	7
@@ -5311,7 +5310,7 @@ __ZL12fighterCage2:
 	.even
 __ZL11fighterKano:
 	.long	2
-	.long	6
+	.long	5
 	.long	11381712
 	.long	7
 	.long	7
@@ -5587,66 +5586,66 @@ __ZL14kanoWinsFrames:
 	.long	0
 	.even
 __ZL14kanoWalkFrames:
-	.long	80
-	.long	144
-	.long	560
+	.long	64
+	.long	112
+	.long	448
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	64
+	.long	112
+	.long	512
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	576
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
 	.long	640
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	720
+	.long	64
+	.long	112
+	.long	704
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	800
+	.long	64
+	.long	112
+	.long	768
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	880
+	.long	64
+	.long	112
+	.long	832
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	64
+	.long	112
+	.long	896
 	.long	0
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	144
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	160
-	.long	144
+	.long	64
+	.long	112
+	.long	960
 	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	144
 	.long	0
 	.long	0
 	.long	6
@@ -6555,7 +6554,7 @@ __ZL15kanoKipUpFrames:
 	.even
 __ZL12fighterKano2:
 	.long	2
-	.long	8
+	.long	6
 	.long	11381712
 	.long	7
 	.long	7
@@ -6588,7 +6587,7 @@ __ZL12fighterKano2:
 	.even
 __ZL13fighterRaiden:
 	.long	3
-	.long	6
+	.long	5
 	.long	9669488
 	.long	10
 	.long	6
@@ -6864,67 +6863,67 @@ __ZL16raidenWinsFrames:
 	.long	0
 	.even
 __ZL16raidenWalkFrames:
-	.long	80
-	.long	144
-	.long	800
-	.long	0
+	.long	64
+	.long	112
+	.long	496
+	.long	464
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	48
+	.long	112
+	.long	560
+	.long	464
+	.long	8
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	608
+	.long	464
+	.long	6
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	656
+	.long	432
+	.long	6
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	704
+	.long	497
+	.long	3
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	768
+	.long	497
+	.long	0
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	832
+	.long	496
+	.long	8
+	.long	0
+	.long	6
+	.long	48
+	.long	112
 	.long	880
-	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	0
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	160
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	320
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	400
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
 	.long	480
-	.long	144
+	.long	8
 	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	928
+	.long	480
+	.long	6
 	.long	0
 	.long	6
 	.even
@@ -7832,7 +7831,7 @@ __ZL20raidenHitSweepFrames:
 	.even
 __ZL14fighterRaiden2:
 	.long	3
-	.long	8
+	.long	6
 	.long	9669488
 	.long	10
 	.long	6
@@ -7865,7 +7864,7 @@ __ZL14fighterRaiden2:
 	.even
 __ZL11fighterKang:
 	.long	4
-	.long	6
+	.long	5
 	.long	9104208
 	.long	7
 	.long	7
@@ -8141,66 +8140,66 @@ __ZL14kangWinsFrames:
 	.long	8
 	.even
 __ZL14kangWalkFrames:
-	.long	80
-	.long	144
-	.long	640
+	.long	64
+	.long	112
+	.long	448
+	.long	0
+	.long	-16
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	512
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	720
+	.long	48
+	.long	112
+	.long	560
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	48
+	.long	112
+	.long	608
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	656
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	704
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	752
+	.long	0
+	.long	0
+	.long	0
+	.long	6
+	.long	48
+	.long	112
 	.long	800
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	880
+	.long	48
+	.long	112
+	.long	848
 	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	0
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	160
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	320
-	.long	144
 	.long	0
 	.long	0
 	.long	6
@@ -9109,7 +9108,7 @@ __ZL18kangHitSweepFrames:
 	.even
 __ZL12fighterKang2:
 	.long	4
-	.long	8
+	.long	6
 	.long	9104208
 	.long	7
 	.long	7
@@ -9142,7 +9141,7 @@ __ZL12fighterKang2:
 	.even
 __ZL15fighterScorpion:
 	.long	5
-	.long	6
+	.long	5
 	.long	10242960
 	.long	7
 	.long	6
@@ -9418,66 +9417,66 @@ __ZL17subzeroWinsFrames:
 	.long	0
 	.even
 __ZL18scorpionWalkFrames:
-	.long	96
-	.long	144
-	.long	560
-	.long	1024
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
+	.long	64
+	.long	112
 	.long	656
-	.long	1024
+	.long	800
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
-	.long	752
-	.long	1024
+	.long	64
+	.long	112
+	.long	720
+	.long	800
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
+	.long	64
+	.long	112
+	.long	784
+	.long	768
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
 	.long	848
-	.long	1024
+	.long	800
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
-	.long	0
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	96
-	.long	1168
+	.long	64
+	.long	112
+	.long	912
+	.long	816
 	.long	0
 	.long	0
 	.long	6
-	.long	96
-	.long	144
+	.long	64
+	.long	112
+	.long	0
+	.long	896
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	64
+	.long	912
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	128
+	.long	912
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
 	.long	192
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	288
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	96
-	.long	144
-	.long	384
-	.long	1168
+	.long	912
 	.long	0
 	.long	0
 	.long	6
@@ -10386,7 +10385,7 @@ __ZL21subzeroHitSweepFrames:
 	.even
 __ZL16fighterScorpion2:
 	.long	5
-	.long	8
+	.long	6
 	.long	10242960
 	.long	7
 	.long	6
@@ -10419,7 +10418,7 @@ __ZL16fighterScorpion2:
 	.even
 __ZL14fighterSubzero:
 	.long	6
-	.long	6
+	.long	5
 	.long	10242960
 	.long	12
 	.long	6
@@ -10537,73 +10536,73 @@ __ZL17subzeroIdleFrames:
 	.long	6
 	.even
 __ZL17subzeroWalkFrames:
-	.long	80
-	.long	144
-	.long	768
-	.long	704
+	.long	64
+	.long	112
+	.long	256
+	.long	896
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	848
-	.long	704
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	928
-	.long	704
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	0
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	160
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
+	.long	48
+	.long	112
 	.long	320
-	.long	144
-	.long	0
+	.long	912
+	.long	9
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	400
-	.long	144
+	.long	48
+	.long	112
+	.long	368
+	.long	912
+	.long	10
 	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	416
+	.long	896
+	.long	9
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	464
+	.long	848
+	.long	10
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	512
+	.long	848
+	.long	10
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	560
+	.long	832
+	.long	9
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	608
+	.long	912
+	.long	9
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	672
+	.long	912
+	.long	10
 	.long	0
 	.long	6
 	.even
 __ZL15fighterSubzero2:
 	.long	6
-	.long	8
+	.long	6
 	.long	10242960
 	.long	12
 	.long	6
@@ -10636,7 +10635,7 @@ __ZL15fighterSubzero2:
 	.even
 __ZL12fighterSonya:
 	.long	7
-	.long	6
+	.long	5
 	.long	10890160
 	.long	7
 	.long	7
@@ -10912,69 +10911,69 @@ __ZL15sonyaWinsFrames:
 	.long	0
 	.even
 __ZL15sonyaWalkFrames:
-	.long	80
-	.long	144
-	.long	560
+	.long	64
+	.long	112
+	.long	432
 	.long	0
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	48
+	.long	112
+	.long	496
+	.long	0
+	.long	18
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	544
+	.long	0
+	.long	19
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	592
+	.long	0
+	.long	17
+	.long	0
+	.long	6
+	.long	48
+	.long	112
 	.long	640
 	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	720
-	.long	0
-	.long	0
+	.long	17
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	800
+	.long	48
+	.long	112
+	.long	688
 	.long	0
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	880
-	.long	0
-	.long	0
+	.long	12
 	.long	0
 	.long	6
-	.long	80
-	.long	144
+	.long	48
+	.long	112
+	.long	736
 	.long	0
-	.long	144
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	144
-	.long	0
+	.long	16
 	.long	0
 	.long	6
+	.long	48
+	.long	112
+	.long	784
 	.long	0
+	.long	15
 	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	832
 	.long	0
+	.long	9
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.long	6
 	.even
 __ZL15sonyaTurnFrames:
 	.long	48
@@ -11880,7 +11879,7 @@ __ZL19sonyaHitSweepFrames:
 	.even
 __ZL13fighterSonya2:
 	.long	7
-	.long	8
+	.long	6
 	.long	10890160
 	.long	7
 	.long	7
@@ -11919,7 +11918,7 @@ __ZL12soundHandler:
 	.long	20
 	.even
 __ZL12cageAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	8514352
 	.long	0
@@ -11927,7 +11926,7 @@ __ZL12cageAnimator:
 	.long	96
 	.even
 __ZL12kanoAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	11381712
 	.long	0
@@ -11935,7 +11934,7 @@ __ZL12kanoAnimator:
 	.long	80
 	.even
 __ZL15subzeroAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	10242960
 	.long	0
@@ -11943,7 +11942,7 @@ __ZL15subzeroAnimator:
 	.long	80
 	.even
 __ZL13sonyaAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	10890160
 	.long	0
@@ -11951,7 +11950,7 @@ __ZL13sonyaAnimator:
 	.long	80
 	.even
 __ZL14raidenAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	9669488
 	.long	0
@@ -11959,7 +11958,7 @@ __ZL14raidenAnimator:
 	.long	80
 	.even
 __ZL17lightningAnimator:
-	.long	9
+	.long	7
 	.long	1056964608
 	.long	11979856
 	.long	0
@@ -12179,7 +12178,7 @@ __ZL15lightningFrames:
 	.long	4
 	.even
 __ZL12kangAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	9104208
 	.long	0
@@ -12187,7 +12186,7 @@ __ZL12kangAnimator:
 	.long	80
 	.even
 __ZL16scorpionAnimator:
-	.long	6
+	.long	5
 	.long	1056964608
 	.long	10242960
 	.long	0
@@ -12195,7 +12194,7 @@ __ZL16scorpionAnimator:
 	.long	80
 	.even
 __ZL13cageAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	8514352
 	.long	0
@@ -12203,7 +12202,7 @@ __ZL13cageAnimator2:
 	.long	96
 	.even
 __ZL13kanoAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	11381712
 	.long	0
@@ -12211,7 +12210,7 @@ __ZL13kanoAnimator2:
 	.long	80
 	.even
 __ZL16subzeroAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	10242960
 	.long	0
@@ -12219,7 +12218,7 @@ __ZL16subzeroAnimator2:
 	.long	80
 	.even
 __ZL14sonyaAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	10890160
 	.long	0
@@ -12227,7 +12226,7 @@ __ZL14sonyaAnimator2:
 	.long	80
 	.even
 __ZL15raidenAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	9669488
 	.long	0
@@ -12235,7 +12234,7 @@ __ZL15raidenAnimator2:
 	.long	80
 	.even
 __ZL18lightning2Animator:
-	.long	10
+	.long	8
 	.long	1056964608
 	.long	11979856
 	.long	0
@@ -12243,7 +12242,7 @@ __ZL18lightning2Animator:
 	.skip 4
 	.even
 __ZL13kangAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	9104208
 	.long	0
@@ -12251,7 +12250,7 @@ __ZL13kangAnimator2:
 	.long	80
 	.even
 __ZL17scorpionAnimator2:
-	.long	8
+	.long	6
 	.long	1056964608
 	.long	10242960
 	.long	0
