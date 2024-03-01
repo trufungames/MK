@@ -175,7 +175,6 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     if (isPlayer1)
     {
         fighter->HB_ATTACK = P1_HB_ATTACK;
-        fighter->HB_BODY = P1_HB_BODY;
         //fighter->lightningSpriteIndex = P1_LIGHTNING_PIT;
         fighter->PAD = LEFT_PAD;
         fighter->positionX = 50;
@@ -185,7 +184,6 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     else
     {
         fighter->HB_ATTACK = P2_HB_ATTACK;
-        fighter->HB_BODY = P2_HB_BODY;
         //fighter->lightningSpriteIndex = P2_LIGHTNING_PIT;
         fighter->PAD = RIGHT_PAD;
         fighter->positionX = 210;
@@ -348,7 +346,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         if (rapTicks >= fighter->touchTicks + 4)
         {
             fighter->IsBeingPushed = false;
-            sprite[fighter->HB_BODY].was_hit = -1;
+            sprite[fighter->spriteIndex].was_hit = -1;
         }
     }
 
@@ -662,7 +660,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 fighter->IsUppercutting = true;
                 fighter->IsAttacking = true;
                 fighter->IsDucking = false;
-                sprite[fighter->HB_BODY].active = R_is_active;
+                //sprite[fighter->HB_BODY].active = R_is_active;
                 animator->currentFrame = 0;
                 sfxSwing(fighter->soundHandler);
             }
@@ -839,7 +837,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 if (fighter->IsDucking)
                 {
                     fighter->IsDucking = false;
-                    sprite[fighter->HB_BODY].active = R_is_active;
+                    //sprite[fighter->HB_BODY].active = R_is_active;
                 }
                 
                 if (!fighter->IsBlockingHit)
@@ -1165,12 +1163,12 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 }
             }
 
-            if (fighter->direction == -1)
-            {
-                //player 2, so we have to factor the idleFrameWidth into the offset
-                //fighter->positionX += (*fighter->walkFrames[animator->currentFrame]).width - animator->idleFrameWidth;
-                fighterPositionXAdd(fighter, getAnimationFrameWidth(*fighter->walkFrames, animator->currentFrame) - animator->idleFrameWidth);
-            }
+            // if (fighter->direction == -1)
+            // {
+            //     //player 2, so we have to factor the idleFrameWidth into the offset
+            //     //fighter->positionX += (*fighter->walkFrames[animator->currentFrame]).width - animator->idleFrameWidth;
+            //     fighterPositionXAdd(fighter, getAnimationFrameWidth(*fighter->walkFrames, animator->currentFrame) - animator->idleFrameWidth);
+            // }
         }
         else if(fighter->pad & JAGPAD_RIGHT && fighter->AcceptingInput && !fighter->IsJumping)
         {
@@ -1355,7 +1353,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 if (animator->currentFrame == 0)
                 {
                     fighter->IsDucking = false;
-                    sprite[fighter->HB_BODY].active = R_is_active;
+                    //sprite[fighter->HB_BODY].active = R_is_active;
                 }
             }
             else if (fighter->IsBlocking)
@@ -1487,17 +1485,17 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    if (fighter1->IsPushing && sprite[fighter2->HB_BODY].was_hit == -1)
+    if (fighter1->IsPushing && sprite[fighter2->spriteIndex].was_hit == -1)
     {
         fighter1->IsPushing = false;
     }
 
-    if (fighter2->IsPushing && sprite[fighter1->HB_BODY].was_hit == -1)
+    if (fighter2->IsPushing && sprite[fighter1->spriteIndex].was_hit == -1)
     {
         fighter2->IsPushing = false;
     }
 
-    collision = rapCollide(13, 18, 13, 18);
+    collision = rapCollide(12, 15, 12, 15);
 
     if (collision > -1)
     { 
@@ -1518,12 +1516,12 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                 sprite[collisionSprIndex].was_hit = -1;
                 sprite[collisionSprIndex2].was_hit = -1;
 
-                if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_HB_BODY)
+                if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
                     fighterHandleImpact(fighter1, fighter2);
                 }
 
-                if (collisionSprIndex == P1_HB_BODY && collisionSprIndex2 == P2_HB_BODY)
+                if (collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
                     if (fighter1->IsWalking && fighter1->positionX > CAMERA_BOUND_LEFT && fighter1->positionX < CAMERA_BOUND_RIGHT && fighter2->positionX > CAMERA_BOUND_LEFT && fighter2->positionX < CAMERA_BOUND_RIGHT)
                     {
@@ -1547,17 +1545,17 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     // }
                 }
                 
-                if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_HB_BODY && collisionSprIndex2 == P2_HB_BODY))
+                if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT))
                 {
                     fighter2->IsBeingPushed = false;
                 }
 
-                if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_HB_BODY)
+                if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     fighterHandleImpact(fighter2, fighter1);
                 }
 
-                if (collisionSprIndex == P2_HB_BODY && collisionSprIndex2 == P1_HB_BODY)
+                if (collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     if (fighter2->IsWalking)
                     {
@@ -1567,7 +1565,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     }
                 }
                 
-                if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_HB_BODY && collisionSprIndex2 == P1_HB_BODY))
+                if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT))
                 {
                     fighter1->IsBeingPushed = false;
                 }
@@ -1785,12 +1783,12 @@ void fighterLockBoundaries(struct Fighter* fighter)
         fighter->positionX = sprite[fighter->spriteIndex].x_;
         //fighter->positionY = sprite[fighter->spriteIndex].y_;
 
-        sprite[fighter->HB_BODY].x_ = fighter->positionX + 12;
+        //sprite[fighter->HB_BODY].x_ = fighter->positionX + 12;
         
-        if (fighter->fighterIndex == CAGE)
-        {
-            sprite[fighter->HB_BODY].x_ += 16;
-        }
+        // if (fighter->fighterIndex == CAGE)
+        // {
+        //     sprite[fighter->HB_BODY].x_ += 16;
+        // }
 
         impactFrameReset(fighter);
     }
@@ -1802,8 +1800,8 @@ void fighterAlignSpriteAndHitbox(struct Fighter* fighter)
     //only positionX and Y will be affected by movement, jumping, attacks, and damage
     // sprite[fighter->spriteIndex].x_ = fighter->positionX;
     // sprite[fighter->spriteIndex].y_ = fighter->positionY;
-    sprite[fighter->HB_BODY].x_ = fighter->positionX + 12;
-    sprite[fighter->HB_BODY].y_ = fighter->positionY + 10;
+    //sprite[fighter->HB_BODY].x_ = fighter->positionX + 4;
+    //sprite[fighter->HB_BODY].y_ = fighter->positionY + 4;
 
     if (fighter->IsIdle)
     {

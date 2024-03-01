@@ -83,7 +83,6 @@ struct Fighter {
     bool JumpLanded;
     bool PlayedJumpRoll;
     int JumpRollTicks;
-    unsigned int HB_BODY;
     unsigned int HB_ATTACK;
     int pad;
     unsigned int PAD;

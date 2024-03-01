@@ -24,10 +24,8 @@
 #define BLOOD_POOL STAGE_PIT_BACKGROUND + 1
 #define P1_FIGHTER_PIT BLOOD_POOL + 8
 #define P2_FIGHTER_PIT P1_FIGHTER_PIT + 1
-#define P1_HB_BODY P2_FIGHTER_PIT + 1
-#define P1_HB_ATTACK P1_HB_BODY + 1
-#define P2_HB_BODY P1_HB_ATTACK + 1
-#define P2_HB_ATTACK P2_HB_BODY + 1
+#define P1_HB_ATTACK P2_FIGHTER_PIT + 1
+#define P2_HB_ATTACK P1_HB_ATTACK + 1
 #define BLOOD_SPRAY P2_HB_ATTACK + 1  //1 of 2
 #define BLOOD_GLOB BLOOD_SPRAY + 2
 #define BLOOD_DROP BLOOD_GLOB + 1  //1 of 8
@@ -107,9 +105,9 @@
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 10
 #define CAMERA_BOUND_RIGHT 329
-#define FIGHTER_WIDTH 80
+#define FIGHTER_WIDTH 48
 #define FLOOR_LOCATION_Y 188
-#define HITBOX_WIDTH 48
+#define HITBOX_WIDTH 32
 
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1
