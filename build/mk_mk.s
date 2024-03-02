@@ -4442,153 +4442,153 @@ __ZL18cageJumpRollFrames:
 	.long	3
 	.even
 __ZL14cageDuckFrames:
+	.long	80
 	.long	96
-	.long	144
-	.long	576
-	.long	144
-	.long	6
+	.long	816
 	.long	0
-	.long	3
-	.long	80
-	.long	144
-	.long	672
-	.long	144
-	.long	6
 	.long	0
+	.long	16
 	.long	3
+	.long	64
 	.long	80
-	.long	144
+	.long	688
+	.long	0
+	.long	0
+	.long	32
+	.long	3
+	.long	64
+	.long	64
 	.long	752
-	.long	144
-	.long	6
 	.long	0
+	.long	0
+	.long	48
 	.long	3
 	.even
 __ZL15cageBlockFrames:
-	.long	80
-	.long	144
-	.long	832
-	.long	144
+	.long	64
+	.long	112
+	.long	0
+	.long	624
 	.long	0
 	.long	0
 	.long	3
-	.long	80
-	.long	144
-	.long	912
-	.long	144
+	.long	64
+	.long	112
+	.long	64
+	.long	640
 	.long	0
 	.long	0
 	.long	3
-	.long	80
-	.long	144
-	.long	0
-	.long	288
+	.long	64
+	.long	112
+	.long	128
+	.long	624
 	.long	0
 	.long	0
 	.long	3
 	.even
 __ZL18cageBlockHitFrames:
-	.long	80
-	.long	144
-	.long	912
-	.long	144
+	.long	64
+	.long	112
+	.long	64
+	.long	640
 	.long	0
 	.long	0
 	.long	1
-	.long	80
-	.long	144
-	.long	0
-	.long	288
-	.long	0
-	.long	0
-	.long	1
-	.long	80
-	.long	144
-	.long	912
-	.long	144
+	.long	64
+	.long	112
+	.long	128
+	.long	624
 	.long	0
 	.long	0
 	.long	1
-	.long	80
-	.long	144
-	.long	0
-	.long	288
-	.long	0
-	.long	0
-	.long	1
-	.long	80
-	.long	144
-	.long	912
-	.long	144
+	.long	64
+	.long	112
+	.long	64
+	.long	640
 	.long	0
 	.long	0
 	.long	1
-	.long	80
-	.long	144
+	.long	64
+	.long	112
+	.long	128
+	.long	624
 	.long	0
-	.long	288
+	.long	0
+	.long	1
+	.long	64
+	.long	112
+	.long	64
+	.long	640
+	.long	0
+	.long	0
+	.long	1
+	.long	64
+	.long	112
+	.long	128
+	.long	624
 	.long	0
 	.long	0
 	.long	1
 	.even
 __ZL19cageBlockDuckFrames:
+	.long	64
 	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	6
+	.long	192
+	.long	576
 	.long	0
+	.long	32
 	.long	3
+	.long	64
 	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	6
+	.long	192
+	.long	656
 	.long	0
+	.long	32
 	.long	3
 	.even
 __ZL22cageBlockDuckHitFrames:
+	.long	64
 	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	6
+	.long	192
+	.long	576
 	.long	0
+	.long	32
 	.long	1
+	.long	64
 	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	6
+	.long	192
+	.long	656
 	.long	0
+	.long	32
 	.long	1
+	.long	64
 	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	6
+	.long	192
+	.long	576
 	.long	0
+	.long	32
 	.long	1
+	.long	64
 	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	6
+	.long	192
+	.long	656
 	.long	0
+	.long	32
 	.long	1
+	.long	64
 	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	6
+	.long	192
+	.long	576
 	.long	0
+	.long	32
 	.long	1
+	.long	64
 	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	6
+	.long	192
+	.long	656
 	.long	0
+	.long	32
 	.long	1
 	.even
 __ZL18cagePunchLowFrames:

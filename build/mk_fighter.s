@@ -147,9 +147,8 @@ __Z21fighterMakeSelectableP7Fighterb:
 	add.l %d0,%a1
 	tst.b 15(%fp)
 	jne .L23
-	move.w #224,8(%a1)
-	moveq #31,%d0
-	not.b %d0
+	move.w #256,8(%a1)
+	move.l #256,%d0
 	moveq #1,%d1
 	cmp.l (%a0),%d1
 	jeq .L24
@@ -174,8 +173,8 @@ __Z21fighterMakeSelectableP7Fighterb:
 	unlk %fp
 	rts
 .L24:
-	move.w #208,8(%a1)
-	move.b #-48,%d0
+	move.w #240,8(%a1)
+	move.w #240,%d0
 	moveq #-1,%d1
 	move.l %d1,24(%a1)
 	move.l %d1,270(%a0)
