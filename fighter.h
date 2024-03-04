@@ -140,15 +140,15 @@ struct Fighter {
     struct AnimationFrame (*punchLowFrames)[5];
     struct AnimationFrame (*punchHighFrames)[5];
     struct AnimationFrame (*kickLowFrames)[7];
-    struct AnimationFrame (*kickHighFrames)[7];
+    struct AnimationFrame (*kickHighFrames)[8];
     struct AnimationFrame (*jumpPunchFrames)[3];
     struct AnimationFrame (*jumpKickFrames)[3];
     struct AnimationFrame (*jumpDropKickFrames)[3];
     struct AnimationFrame (*uppercutFrames)[6];
     struct AnimationFrame (*hitLowFrames)[6];
     struct AnimationFrame (*hitHighFrames)[6];
-    struct AnimationFrame (*hitBackFrames)[6];
-    struct AnimationFrame (*hitFallFrames)[6];
+    struct AnimationFrame (*hitBackFrames)[7];
+    struct AnimationFrame (*hitFallFrames)[7];
     struct AnimationFrame (*hitSweepFrames)[6];
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];

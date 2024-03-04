@@ -611,14 +611,14 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                     fighterSetOnFloor(fighter);
 
                     //show last frame of HitFall animation
-                    animateFrame(fighter->spriteIndex, 5, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 6, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
                     bgShake(false);
                     sfxThud(fighter->soundHandler);
                 }
                 else
                 {
-                    animateFrame(fighter->spriteIndex, 4, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 5, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                 }
             }
 
