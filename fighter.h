@@ -152,7 +152,7 @@ struct Fighter {
     struct AnimationFrame (*hitSweepFrames)[6];
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];
-    struct AnimationFrame (*roundhouseFrames)[6];
+    struct AnimationFrame (*roundhouseFrames)[7];
 };
 
 void fighterHide(struct Fighter* fighter);

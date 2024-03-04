@@ -726,7 +726,7 @@ eeUpdateChecksum G  0003AA3A   eeValidateChecksum G  0003AA64
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000447A0   _bloodDirection G  0003AB60   _bloodDrops G  0003AD00   
+_DATA_E  G  00044860   _bloodDirection G  0003AB60   _bloodDrops G  0003AD00   
 _bloodPools G  0003ACB0   _bloodSquirts G  0003AB64   _bloodDropFrames G  0003AEC4   
 sprite   G  0003B1E4   _bloodGlobFrames G  0003B064   _bloodGlobAnimator G  0003B10C   
 _bloodSprayFrames G  0003B124   _bloodSpray2Animator G  0003B1B0   _bloodSpray1Animator G  0003B1C8   
@@ -758,38 +758,38 @@ _kangImpactFrameJumpKick G  0003B790   _kangImpactFrameJumpPunch G  0003B79C   _
 _kangImpactFrameUppercut G  0003B7C0   _kangImpactFrameHighKick G  0003B7CC   _kangImpactFrameLowKick G  0003B7D8   
 _kangImpactFrameHighPunch G  0003B7E4   _kangImpactFrameLowPunch G  0003B7F0   _p1Cursor G  0003B87A   
 _p2Cursor G  0003B876   _p1Selected G  0003B872   _p2Selected G  0003B86E   
-_ticksPerSec G  0003B868   _shakeDirection G  00044720   _ShakeTicks G  00044724   
-__fpCCR  G  00044740   _xcpt    G  00044760   
+_ticksPerSec G  0003B868   _shakeDirection G  000447E0   _ShakeTicks G  000447E4   
+__fpCCR  G  00044800   _xcpt    G  00044820   
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  000EF760   RAPTOR_particle_gfx G  000487A0   RAPTOR_sprite_table G  00051DA0   
-_trashram G  0006A640   _bloodStayDelay G  0006A644   _updateTicks G  0006A654   
-_bloodSpeed G  0006A650   _gravity G  0006A64C   _bloodDropMomentumStart G  0006A648   
-_bloodSpray1InUse G  0006A65A   _bloodSpray2InUse G  0006A659   _bloodGlobInUse G  0006A658   
-_bloodSpeedRnd G  0006A640   _backgroundSpriteIndex G  0006A664   _cameraX G  0006A672   
-_cameraY G  0006A66E   _backgroundGfxBase G  0006A660   _cameraTicks G  0006A676   
-_backgroundChangedLeft G  0006A66D   _backgroundChangedRight G  0006A66C   _xOffset G  0006A668   
-_js_r_textbuffer G  000EF620   _collision G  0006A686   _walkForward G  0006A684   
-_shadowTicks G  0006A680   _matchState G  0006A6C2   _matchTicks G  0006A6BE   
-_fightZoomed G  0006A6BC   _fightScale G  0006A6B8   _winner  G  0006A6B4   
-_loser   G  0006A6B0   _matchComplete G  0006A6AE   _winsTicks G  0006A6A2   
-_playedName G  0006A6A1   _playedWins G  0006A6A0   _round   G  0006A6C6   
-_fighter1Wins G  0006A6AA   _fighter2Wins G  0006A6A6   _fadedIn G  0006A6E9   
-_fadedOut G  0006A6E8   _gameStartTicks G  0006A6E4   _onScreenChooseFighter G  0006A6EC   
-_onScreenVsBattle G  0006A6EB   _jsfFontSize G  000EF652   _jsfFontIndx G  000EF64E   
-_onScreenFight G  0006A6EA   _chooseFighterDone G  0006A6ED   _lastTicks G  0006A6E0   
-_isSleeping G  000EF528   _lastTick G  000EF524   _totalSleepTicks G  000EF520   
-_spriteCount G  000EF540   _sprites G  000EF544   _LastTicks G  000EF5F2   
-_IsScrollingUp G  000EF5F8   _IsScrollingDown G  000EF5F7   _IsShaking G  000EF5F6   
-_bgYOffset G  000EF5EE   _bgYInc  G  000EF5E6   _shakeCount G  000EF5E2   
-_scrollUpAfterShake G  000EF5E0   _bgYStart G  000EF5EA   zero_left_pad G  000EF638   
-zero_right_pad G  000EF63C   _pad1    G  000EF61C   _pad1Last G  000EF614   
-_pad1Prev G  000EF60C   _pad2    G  000EF618   _pad2Last G  000EF610   
-_pad2Prev G  000EF608   _plot_colour G  000EF64C   rapAngle_xAdd G  000EF604   
-rapAngle_yAdd G  000EF600   _js_r_xpos G  000EF65A   _js_r_ypos G  000EF656   
-_yt2     G  000EF624   _y       G  000EF62C   _errno   G  000EF634   
-zero_mousex_delta G  000EF640   zero_mousey_delta G  000EF644   zero_rotary_delta G  000EF648   
+_BSS_E   G  000EF820   RAPTOR_particle_gfx G  00048860   RAPTOR_sprite_table G  00051E60   
+_trashram G  0006A700   _bloodStayDelay G  0006A704   _updateTicks G  0006A714   
+_bloodSpeed G  0006A710   _gravity G  0006A70C   _bloodDropMomentumStart G  0006A708   
+_bloodSpray1InUse G  0006A71A   _bloodSpray2InUse G  0006A719   _bloodGlobInUse G  0006A718   
+_bloodSpeedRnd G  0006A700   _backgroundSpriteIndex G  0006A724   _cameraX G  0006A732   
+_cameraY G  0006A72E   _backgroundGfxBase G  0006A720   _cameraTicks G  0006A736   
+_backgroundChangedLeft G  0006A72D   _backgroundChangedRight G  0006A72C   _xOffset G  0006A728   
+_js_r_textbuffer G  000EF6E0   _collision G  0006A746   _walkForward G  0006A744   
+_shadowTicks G  0006A740   _matchState G  0006A782   _matchTicks G  0006A77E   
+_fightZoomed G  0006A77C   _fightScale G  0006A778   _winner  G  0006A774   
+_loser   G  0006A770   _matchComplete G  0006A76E   _winsTicks G  0006A762   
+_playedName G  0006A761   _playedWins G  0006A760   _round   G  0006A786   
+_fighter1Wins G  0006A76A   _fighter2Wins G  0006A766   _fadedIn G  0006A7A9   
+_fadedOut G  0006A7A8   _gameStartTicks G  0006A7A4   _onScreenChooseFighter G  0006A7AC   
+_onScreenVsBattle G  0006A7AB   _jsfFontSize G  000EF712   _jsfFontIndx G  000EF70E   
+_onScreenFight G  0006A7AA   _chooseFighterDone G  0006A7AD   _lastTicks G  0006A7A0   
+_isSleeping G  000EF5E8   _lastTick G  000EF5E4   _totalSleepTicks G  000EF5E0   
+_spriteCount G  000EF600   _sprites G  000EF604   _LastTicks G  000EF6B2   
+_IsScrollingUp G  000EF6B8   _IsScrollingDown G  000EF6B7   _IsShaking G  000EF6B6   
+_bgYOffset G  000EF6AE   _bgYInc  G  000EF6A6   _shakeCount G  000EF6A2   
+_scrollUpAfterShake G  000EF6A0   _bgYStart G  000EF6AA   zero_left_pad G  000EF6F8   
+zero_right_pad G  000EF6FC   _pad1    G  000EF6DC   _pad1Last G  000EF6D4   
+_pad1Prev G  000EF6CC   _pad2    G  000EF6D8   _pad2Last G  000EF6D0   
+_pad2Prev G  000EF6C8   _plot_colour G  000EF70C   rapAngle_xAdd G  000EF6C4   
+rapAngle_yAdd G  000EF6C0   _js_r_xpos G  000EF71A   _js_r_ypos G  000EF716   
+_yt2     G  000EF6E4   _y       G  000EF6EC   _errno   G  000EF6F4   
+zero_mousex_delta G  000EF700   zero_mousey_delta G  000EF704   zero_rotary_delta G  000EF708   
 
 
 LOAD MAP
@@ -992,7 +992,7 @@ eeUpdateChecksum G  0003AA3A   eeValidateChecksum G  0003AA64
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000447A0   _bloodDirection G  0003AB60   _bloodDrops G  0003AD00   
+_DATA_E  G  00044860   _bloodDirection G  0003AB60   _bloodDrops G  0003AD00   
 _bloodPools G  0003ACB0   _bloodSquirts G  0003AB64   _bloodDropFrames G  0003AEC4   
 sprite   G  0003B1E4   _bloodGlobFrames G  0003B064   _bloodGlobAnimator G  0003B10C   
 _bloodSprayFrames G  0003B124   _bloodSpray2Animator G  0003B1B0   _bloodSpray1Animator G  0003B1C8   
@@ -1024,38 +1024,38 @@ _kangImpactFrameJumpKick G  0003B790   _kangImpactFrameJumpPunch G  0003B79C   _
 _kangImpactFrameUppercut G  0003B7C0   _kangImpactFrameHighKick G  0003B7CC   _kangImpactFrameLowKick G  0003B7D8   
 _kangImpactFrameHighPunch G  0003B7E4   _kangImpactFrameLowPunch G  0003B7F0   _p1Cursor G  0003B87A   
 _p2Cursor G  0003B876   _p1Selected G  0003B872   _p2Selected G  0003B86E   
-_ticksPerSec G  0003B868   _shakeDirection G  00044720   _ShakeTicks G  00044724   
-__fpCCR  G  00044740   _xcpt    G  00044760   
+_ticksPerSec G  0003B868   _shakeDirection G  000447E0   _ShakeTicks G  000447E4   
+__fpCCR  G  00044800   _xcpt    G  00044820   
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  000EF760   RAPTOR_particle_gfx G  000487A0   RAPTOR_sprite_table G  00051DA0   
-_trashram G  0006A640   _bloodStayDelay G  0006A644   _updateTicks G  0006A654   
-_bloodSpeed G  0006A650   _gravity G  0006A64C   _bloodDropMomentumStart G  0006A648   
-_bloodSpray1InUse G  0006A65A   _bloodSpray2InUse G  0006A659   _bloodGlobInUse G  0006A658   
-_bloodSpeedRnd G  0006A640   _backgroundSpriteIndex G  0006A664   _cameraX G  0006A672   
-_cameraY G  0006A66E   _backgroundGfxBase G  0006A660   _cameraTicks G  0006A676   
-_backgroundChangedLeft G  0006A66D   _backgroundChangedRight G  0006A66C   _xOffset G  0006A668   
-_js_r_textbuffer G  000EF620   _collision G  0006A686   _walkForward G  0006A684   
-_shadowTicks G  0006A680   _matchState G  0006A6C2   _matchTicks G  0006A6BE   
-_fightZoomed G  0006A6BC   _fightScale G  0006A6B8   _winner  G  0006A6B4   
-_loser   G  0006A6B0   _matchComplete G  0006A6AE   _winsTicks G  0006A6A2   
-_playedName G  0006A6A1   _playedWins G  0006A6A0   _round   G  0006A6C6   
-_fighter1Wins G  0006A6AA   _fighter2Wins G  0006A6A6   _fadedIn G  0006A6E9   
-_fadedOut G  0006A6E8   _gameStartTicks G  0006A6E4   _onScreenChooseFighter G  0006A6EC   
-_onScreenVsBattle G  0006A6EB   _jsfFontSize G  000EF652   _jsfFontIndx G  000EF64E   
-_onScreenFight G  0006A6EA   _chooseFighterDone G  0006A6ED   _lastTicks G  0006A6E0   
-_isSleeping G  000EF528   _lastTick G  000EF524   _totalSleepTicks G  000EF520   
-_spriteCount G  000EF540   _sprites G  000EF544   _LastTicks G  000EF5F2   
-_IsScrollingUp G  000EF5F8   _IsScrollingDown G  000EF5F7   _IsShaking G  000EF5F6   
-_bgYOffset G  000EF5EE   _bgYInc  G  000EF5E6   _shakeCount G  000EF5E2   
-_scrollUpAfterShake G  000EF5E0   _bgYStart G  000EF5EA   zero_left_pad G  000EF638   
-zero_right_pad G  000EF63C   _pad1    G  000EF61C   _pad1Last G  000EF614   
-_pad1Prev G  000EF60C   _pad2    G  000EF618   _pad2Last G  000EF610   
-_pad2Prev G  000EF608   _plot_colour G  000EF64C   rapAngle_xAdd G  000EF604   
-rapAngle_yAdd G  000EF600   _js_r_xpos G  000EF65A   _js_r_ypos G  000EF656   
-_yt2     G  000EF624   _y       G  000EF62C   _errno   G  000EF634   
-zero_mousex_delta G  000EF640   zero_mousey_delta G  000EF644   zero_rotary_delta G  000EF648   
+_BSS_E   G  000EF820   RAPTOR_particle_gfx G  00048860   RAPTOR_sprite_table G  00051E60   
+_trashram G  0006A700   _bloodStayDelay G  0006A704   _updateTicks G  0006A714   
+_bloodSpeed G  0006A710   _gravity G  0006A70C   _bloodDropMomentumStart G  0006A708   
+_bloodSpray1InUse G  0006A71A   _bloodSpray2InUse G  0006A719   _bloodGlobInUse G  0006A718   
+_bloodSpeedRnd G  0006A700   _backgroundSpriteIndex G  0006A724   _cameraX G  0006A732   
+_cameraY G  0006A72E   _backgroundGfxBase G  0006A720   _cameraTicks G  0006A736   
+_backgroundChangedLeft G  0006A72D   _backgroundChangedRight G  0006A72C   _xOffset G  0006A728   
+_js_r_textbuffer G  000EF6E0   _collision G  0006A746   _walkForward G  0006A744   
+_shadowTicks G  0006A740   _matchState G  0006A782   _matchTicks G  0006A77E   
+_fightZoomed G  0006A77C   _fightScale G  0006A778   _winner  G  0006A774   
+_loser   G  0006A770   _matchComplete G  0006A76E   _winsTicks G  0006A762   
+_playedName G  0006A761   _playedWins G  0006A760   _round   G  0006A786   
+_fighter1Wins G  0006A76A   _fighter2Wins G  0006A766   _fadedIn G  0006A7A9   
+_fadedOut G  0006A7A8   _gameStartTicks G  0006A7A4   _onScreenChooseFighter G  0006A7AC   
+_onScreenVsBattle G  0006A7AB   _jsfFontSize G  000EF712   _jsfFontIndx G  000EF70E   
+_onScreenFight G  0006A7AA   _chooseFighterDone G  0006A7AD   _lastTicks G  0006A7A0   
+_isSleeping G  000EF5E8   _lastTick G  000EF5E4   _totalSleepTicks G  000EF5E0   
+_spriteCount G  000EF600   _sprites G  000EF604   _LastTicks G  000EF6B2   
+_IsScrollingUp G  000EF6B8   _IsScrollingDown G  000EF6B7   _IsShaking G  000EF6B6   
+_bgYOffset G  000EF6AE   _bgYInc  G  000EF6A6   _shakeCount G  000EF6A2   
+_scrollUpAfterShake G  000EF6A0   _bgYStart G  000EF6AA   zero_left_pad G  000EF6F8   
+zero_right_pad G  000EF6FC   _pad1    G  000EF6DC   _pad1Last G  000EF6D4   
+_pad1Prev G  000EF6CC   _pad2    G  000EF6D8   _pad2Last G  000EF6D0   
+_pad2Prev G  000EF6C8   _plot_colour G  000EF70C   rapAngle_xAdd G  000EF6C4   
+rapAngle_yAdd G  000EF6C0   _js_r_xpos G  000EF71A   _js_r_ypos G  000EF716   
+_yt2     G  000EF6E4   _y       G  000EF6EC   _errno   G  000EF6F4   
+zero_mousex_delta G  000EF700   zero_mousey_delta G  000EF704   zero_rotary_delta G  000EF708   
 
 
  

@@ -4027,7 +4027,7 @@ __ZL11fighterCage:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -4122,131 +4122,131 @@ __ZL14cageIdleFrames:
 	.long	0
 	.even
 __ZL15cageDizzyFrames:
-	.long	80
-	.long	144
-	.long	400
-	.long	1024
+	.long	64
+	.long	112
+	.long	0
+	.long	912
 	.long	0
 	.long	0
 	.long	12
-	.long	80
-	.long	144
-	.long	480
-	.long	1024
+	.long	64
+	.long	112
+	.long	64
+	.long	912
 	.long	0
 	.long	0
 	.long	12
-	.long	80
-	.long	144
-	.long	560
-	.long	1024
+	.long	64
+	.long	112
+	.long	128
+	.long	912
 	.long	0
 	.long	0
 	.long	12
-	.long	80
-	.long	144
-	.long	640
-	.long	1024
+	.long	64
+	.long	112
+	.long	192
+	.long	912
 	.long	0
 	.long	0
 	.long	12
-	.long	80
-	.long	144
-	.long	720
-	.long	1024
+	.long	64
+	.long	112
+	.long	256
+	.long	912
 	.long	0
 	.long	0
 	.long	12
-	.long	80
-	.long	144
-	.long	800
-	.long	1024
+	.long	64
+	.long	112
+	.long	320
+	.long	912
 	.long	0
-	.long	0
+	.long	1
 	.long	12
-	.long	80
-	.long	144
-	.long	880
-	.long	1024
+	.long	64
+	.long	96
+	.long	384
+	.long	976
 	.long	0
-	.long	0
+	.long	16
 	.long	12
 	.even
 __ZL14cageWinsFrames:
-	.long	80
-	.long	144
-	.long	0
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	1168
+	.long	64
+	.long	112
+	.long	384
+	.long	864
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	0
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	160
-	.long	1168
+	.long	64
+	.long	112
+	.long	448
+	.long	848
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	1168
+	.long	64
+	.long	112
+	.long	384
+	.long	864
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	320
-	.long	1168
+	.long	64
+	.long	112
+	.long	512
+	.long	800
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	400
-	.long	1168
+	.long	64
+	.long	112
+	.long	576
+	.long	816
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	480
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	560
-	.long	1168
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
+	.long	64
+	.long	112
 	.long	640
-	.long	1168
+	.long	848
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	720
-	.long	1168
+	.long	64
+	.long	112
+	.long	704
+	.long	848
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	768
+	.long	848
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	832
+	.long	832
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	896
+	.long	832
+	.long	0
+	.long	0
+	.long	6
+	.long	64
+	.long	112
+	.long	960
+	.long	832
 	.long	0
 	.long	0
 	.long	6
@@ -4844,47 +4844,47 @@ __ZL22cageJumpDropKickFrames:
 	.long	4
 	.even
 __ZL18cageUppercutFrames:
-	.long	96
 	.long	80
-	.long	448
+	.long	64
 	.long	944
-	.long	6
-	.long	64
+	.long	288
+	.long	0
+	.long	48
 	.long	4
+	.long	80
 	.long	96
-	.long	112
-	.long	544
-	.long	912
-	.long	2
-	.long	32
-	.long	4
-	.long	80
-	.long	144
-	.long	640
-	.long	880
-	.long	21
-	.long	1
+	.long	96
+	.long	416
+	.long	0
+	.long	16
 	.long	4
 	.long	64
-	.long	160
-	.long	720
-	.long	864
-	.long	28
-	.long	-15
-	.long	12
-	.long	80
-	.long	144
-	.long	784
-	.long	880
-	.long	7
-	.long	1
+	.long	112
+	.long	176
+	.long	368
+	.long	15
+	.long	2
 	.long	4
-	.long	80
-	.long	144
-	.long	784
-	.long	880
-	.long	7
-	.long	1
+	.long	48
+	.long	128
+	.long	240
+	.long	352
+	.long	21
+	.long	-14
+	.long	12
+	.long	64
+	.long	112
+	.long	288
+	.long	368
+	.long	4
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	288
+	.long	368
+	.long	4
+	.long	0
 	.long	4
 	.even
 __ZL16cageHitLowFrames:
@@ -5078,192 +5078,199 @@ __ZL17cageHitFallFrames:
 	.long	6
 	.even
 __ZL18cageHitSweepFrames:
+	.long	80
 	.long	96
-	.long	144
-	.long	384
-	.long	576
-	.long	0
-	.long	0
-	.long	5
-	.long	96
-	.long	144
+	.long	192
 	.long	480
-	.long	576
-	.long	0
-	.long	0
+	.long	-16
+	.long	16
 	.long	5
-	.long	96
-	.long	144
-	.long	576
-	.long	576
-	.long	0
-	.long	0
+	.long	80
+	.long	64
+	.long	272
+	.long	480
+	.long	-16
+	.long	12
 	.long	5
-	.long	96
-	.long	144
-	.long	672
-	.long	576
-	.long	0
-	.long	0
+	.long	80
+	.long	64
+	.long	272
+	.long	544
+	.long	-16
+	.long	26
 	.long	5
-	.long	96
-	.long	144
-	.long	768
-	.long	576
-	.long	0
-	.long	0
+	.long	80
+	.long	64
+	.long	352
+	.long	544
+	.long	-16
+	.long	48
 	.long	5
-	.long	96
-	.long	144
-	.long	768
-	.long	576
-	.long	0
-	.long	0
+	.long	80
+	.long	48
+	.long	432
+	.long	544
+	.long	-16
+	.long	64
+	.long	5
+	.long	80
+	.long	48
+	.long	752
+	.long	1072
+	.long	-16
+	.long	53
 	.long	5
 	.even
 __ZL15cageKipUpFrames:
+	.long	32
+	.long	64
+	.long	768
+	.long	464
+	.long	3
 	.long	48
-	.long	144
+	.long	5
+	.long	48
+	.long	80
+	.long	832
+	.long	528
+	.long	0
+	.long	26
+	.long	5
+	.long	48
+	.long	48
+	.long	880
+	.long	576
+	.long	-2
+	.long	59
+	.long	5
+	.long	80
+	.long	80
 	.long	928
-	.long	432
-	.long	20
-	.long	0
+	.long	576
+	.long	-20
+	.long	30
 	.long	5
-	.long	48
-	.long	144
-	.long	976
-	.long	432
-	.long	19
-	.long	0
-	.long	5
-	.long	48
-	.long	112
-	.long	208
-	.long	720
-	.long	11
-	.long	32
-	.long	5
+	.long	64
 	.long	96
-	.long	112
-	.long	112
-	.long	720
+	.long	896
 	.long	0
-	.long	32
-	.long	5
-	.long	96
-	.long	112
-	.long	112
-	.long	720
 	.long	0
-	.long	32
+	.long	16
 	.long	5
 	.even
 __ZL15cageSweepFrames:
-	.long	48
-	.long	144
-	.long	880
-	.long	288
-	.long	25
+	.long	64
+	.long	112
 	.long	0
-	.long	5
-	.long	80
-	.long	144
-	.long	128
-	.long	576
-	.long	9
+	.long	320
 	.long	0
-	.long	5
-	.long	64
-	.long	80
-	.long	864
-	.long	944
-	.long	9
-	.long	64
-	.long	5
-	.long	64
-	.long	64
 	.long	0
-	.long	896
-	.long	10
-	.long	80
-	.long	5
-	.long	128
-	.long	80
-	.long	64
-	.long	880
-	.long	5
-	.long	64
 	.long	5
 	.long	64
 	.long	96
-	.long	192
-	.long	864
+	.long	384
+	.long	336
+	.long	0
+	.long	16
+	.long	5
+	.long	64
+	.long	64
+	.long	448
+	.long	336
+	.long	2
+	.long	50
+	.long	5
+	.long	64
+	.long	48
+	.long	512
+	.long	336
+	.long	0
+	.long	62
+	.long	5
+	.long	96
+	.long	64
+	.long	576
+	.long	304
 	.long	6
-	.long	48
+	.long	47
 	.long	5
-	.long	96
-	.long	96
-	.long	256
-	.long	864
-	.long	-12
 	.long	48
+	.long	80
+	.long	672
+	.long	304
+	.long	8
+	.long	46
 	.long	5
 	.long	80
-	.long	144
-	.long	128
-	.long	576
-	.long	9
-	.long	0
+	.long	80
+	.long	720
+	.long	288
+	.long	-10
+	.long	32
 	.long	5
 	.long	80
-	.long	144
-	.long	128
-	.long	576
-	.long	9
-	.long	0
+	.long	96
+	.long	800
+	.long	288
+	.long	7
+	.long	16
+	.long	5
+	.long	80
+	.long	96
+	.long	800
+	.long	288
+	.long	7
+	.long	16
 	.long	5
 	.even
 __ZL20cageRoundhouseFrames:
+	.long	48
+	.long	96
+	.long	384
+	.long	608
+	.long	-16
+	.long	16
+	.long	5
 	.long	64
-	.long	144
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.long	96
+	.long	432
+	.long	592
+	.long	-21
+	.long	16
 	.long	5
 	.long	80
-	.long	144
-	.long	64
-	.long	1024
-	.long	-4
-	.long	0
-	.long	5
 	.long	96
-	.long	144
-	.long	144
-	.long	1024
-	.long	15
-	.long	0
+	.long	496
+	.long	608
+	.long	-4
+	.long	16
 	.long	10
 	.long	48
-	.long	144
-	.long	240
-	.long	1024
-	.long	25
+	.long	96
+	.long	576
+	.long	608
+	.long	5
+	.long	16
+	.long	5
+	.long	32
+	.long	112
+	.long	624
+	.long	608
+	.long	11
 	.long	0
 	.long	5
-	.long	48
-	.long	144
-	.long	304
-	.long	1024
-	.long	25
+	.long	32
+	.long	112
+	.long	656
+	.long	608
+	.long	3
 	.long	0
 	.long	5
-	.long	48
-	.long	144
-	.long	352
-	.long	1024
-	.long	20
+	.long	64
+	.long	112
+	.long	688
+	.long	608
+	.long	-3
 	.long	0
 	.long	5
 	.even
@@ -5292,7 +5299,7 @@ __ZL12fighterCage2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -5325,7 +5332,7 @@ __ZL11fighterKano:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -6293,6 +6300,13 @@ __ZL20kanoRoundhouseFrames:
 	.long	1
 	.long	0
 	.long	5
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
 	.even
 __ZL16kanoHitLowFrames:
 	.long	80
@@ -6590,7 +6604,7 @@ __ZL12fighterKano2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -6623,7 +6637,7 @@ __ZL13fighterRaiden:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -7591,6 +7605,13 @@ __ZL22raidenRoundhouseFrames:
 	.long	9
 	.long	0
 	.long	5
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
 	.even
 __ZL17raidenKipUpFrames:
 	.long	80
@@ -7888,7 +7909,7 @@ __ZL14fighterRaiden2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -7921,7 +7942,7 @@ __ZL11fighterKang:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -8926,6 +8947,13 @@ __ZL20kangRoundhouseFrames:
 	.long	5
 	.long	0
 	.long	5
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
 	.even
 __ZL16kangHitLowFrames:
 	.long	80
@@ -9186,7 +9214,7 @@ __ZL12fighterKang2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -9219,7 +9247,7 @@ __ZL15fighterScorpion:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -10224,6 +10252,13 @@ __ZL23subzeroRoundhouseFrames:
 	.long	-3
 	.long	0
 	.long	5
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
 	.even
 __ZL19subzeroHitLowFrames:
 	.long	64
@@ -10484,7 +10519,7 @@ __ZL16fighterScorpion2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -10517,7 +10552,7 @@ __ZL14fighterSubzero:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -10701,7 +10736,7 @@ __ZL15fighterSubzero2:
 	.long	6
 	.long	5
 	.long	9
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -10734,7 +10769,7 @@ __ZL12fighterSonya:
 	.long	6
 	.long	5
 	.long	7
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
@@ -11739,6 +11774,13 @@ __ZL21sonyaRoundhouseFrames:
 	.long	15
 	.long	-16
 	.long	5
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
+	.long	0
 	.even
 __ZL17sonyaHitLowFrames:
 	.long	64
@@ -11999,7 +12041,7 @@ __ZL13fighterSonya2:
 	.long	6
 	.long	5
 	.long	7
-	.long	6
+	.long	7
 	.long	4
 	.long	4
 	.long	7
