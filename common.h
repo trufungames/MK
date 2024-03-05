@@ -106,7 +106,8 @@
 #define CAMERA_BOUND_LEFT 10
 #define CAMERA_BOUND_RIGHT 329
 #define FIGHTER_WIDTH 48
-#define FLOOR_LOCATION_Y 188
+#define FLOOR_LOCATION_Y 166
+#define FLOOR_LOCATION_Y_FIGHTER 90
 #define HITBOX_WIDTH 32
 
 //-----------------------------------------------------------------------------------------------------

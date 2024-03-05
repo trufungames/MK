@@ -138,7 +138,7 @@ __Z11bloodUpdateP12SoundHandler:
 	addq.l #4,%sp
 	move.l -4(%fp),%a0
 	move.w %d0,12(%a0)
-	cmp.w #188,%d0
+	cmp.w #166,%d0
 	jgt .L51
 	move.l _gravity,-(%sp)
 	move.l %d4,-(%sp)
@@ -526,9 +526,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -579,9 +579,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -615,9 +615,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -651,9 +651,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -687,9 +687,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -723,9 +723,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -759,9 +759,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -795,9 +795,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d4
 	add.l %d4,%a0
 	move.w %d1,8(%a0)
-	moveq #8,%d1
+	moveq #4,%d1
 	and.l %d1,%d0
-	add.w #188,%d0
+	add.w #166,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)

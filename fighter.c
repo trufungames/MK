@@ -69,10 +69,10 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
     {
         sprite[fighter->spriteIndex].x_ = 256;
 
-        if (fighter->fighterIndex == CAGE)
-        {
-            sprite[fighter->spriteIndex].x_ -= 16;
-        }
+        // if (fighter->fighterIndex == CAGE)
+        // {
+        //     sprite[fighter->spriteIndex].x_ -= 16;
+        // }
 
         sprite[fighter->spriteIndex].flip = R_is_flipped;
         fighter->direction = -1;
@@ -534,21 +534,21 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
             }
             else
             {
-                if (fighter->positionY > FLOOR_LOCATION_Y - 98)
+                if (fighter->positionY > FLOOR_LOCATION_Y_FIGHTER)
                 {
                     fighter->IsLayingDown = true;
                     fighter->lastTicks = rapTicks;
                     fighterSetOnFloor(fighter);
 
                     //show last frame of HitFall animation
-                    animateFrame(fighter->spriteIndex, 5, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 6, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
                     bgShake(false);
                     sfxThud(fighter->soundHandler);
                 }
                 else
                 {
-                    animateFrame(fighter->spriteIndex, 4, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                    animateFrame(fighter->spriteIndex, 5, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                 }
             }
 
@@ -604,7 +604,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
             }
             else
             {
-                if (fighter->positionY > FLOOR_LOCATION_Y - 98)
+                if (fighter->positionY > FLOOR_LOCATION_Y_FIGHTER)
                 {
                     fighter->IsLayingDown = true;
                     fighter->lastTicks = rapTicks;
@@ -964,7 +964,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                     }
                 }
 
-                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y - 98)
+                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
                 {
                     //landed
                     impactFrameReset(fighter);
@@ -1101,7 +1101,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                     }
                 }
 
-                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y - 98)
+                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
                 {
                     //landed
                     impactFrameReset(fighter);
@@ -1319,7 +1319,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                     }
                 }
 
-                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y - 98)
+                if (fighter->momentumY > 0 && fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
                 {
                     //landed
                     impactFrameReset(fighter);
@@ -1331,8 +1331,6 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 }
                 else if (fighter->JumpLanded)
                 {
-                    updateSpriteAnimator(animator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-                    
                     if (animationIsComplete(animator, fighter->JUMP_FRAME_COUNT))
                     {
                         fighter->AcceptingInput = true;
@@ -1341,6 +1339,8 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                         fighter->IsJumpKicking = false;
                         impactFrameReset(fighter);
                     }
+
+                    updateSpriteAnimator(animator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
                 }
             }
         }
@@ -1827,7 +1827,7 @@ void fighterResetSpriteIndex(struct Fighter* fighter, struct SpriteAnimator* ani
 
 void fighterSetOnFloor(struct Fighter* fighter)
 {
-    fighter->positionY = FLOOR_LOCATION_Y - 98;
+    fighter->positionY = FLOOR_LOCATION_Y_FIGHTER;
 }
 
 bool fighterHasRoomToMove(struct Fighter* fighter, struct Fighter* otherFighter)
