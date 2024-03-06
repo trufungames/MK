@@ -3066,9 +3066,12 @@ __Z9basicmainv:
 	jne .L247
 	tst.b -9(%fp)
 	jeq .L114
+	pea 40.w
+	jsr __Z8sleepAddi
 	clr.l _jsfFontIndx
 	clr.l _jsfFontSize
-	pea 60.w
+	moveq #60,%d2
+	move.l %d2,(%sp)
 	pea 10.w
 	jsr rapLocate
 	addq.l #8,%sp
@@ -3287,7 +3290,9 @@ __Z9basicmainv:
 	addq.l #4,%sp
 	jra .L227
 .L246:
-	move.l #12256752,-(%sp)
+	pea 40.w
+	jsr __Z8sleepAddi
+	move.l #12256752,(%sp)
 	move.l #0x3f000000,-(%sp)
 	clr.l -(%sp)
 	clr.l -(%sp)
@@ -3306,9 +3311,12 @@ __Z9basicmainv:
 	jsr __Z8setFramejiiiifj
 	lea (28,%sp),%sp
 	move.b #1,-9(%fp)
+	pea 40.w
+	jsr __Z8sleepAddi
 	clr.l _jsfFontIndx
 	clr.l _jsfFontSize
-	pea 60.w
+	moveq #60,%d2
+	move.l %d2,(%sp)
 	pea 10.w
 	jsr rapLocate
 	addq.l #8,%sp
@@ -5332,7 +5340,7 @@ __ZL11fighterKano:
 	.long	6
 	.long	5
 	.long	9
-	.long	7
+	.long	8
 	.long	4
 	.long	4
 	.long	7
@@ -6193,120 +6201,120 @@ __ZL18kanoUppercutFrames:
 	.long	4
 	.even
 __ZL15kanoSweepFrames:
-	.long	112
-	.long	128
+	.long	64
+	.long	96
+	.long	144
+	.long	224
+	.long	-6
+	.long	15
+	.long	5
+	.long	80
+	.long	64
 	.long	208
-	.long	720
-	.long	-11
-	.long	12
+	.long	224
+	.long	-5
+	.long	47
 	.long	5
-	.long	80
-	.long	80
-	.long	944
-	.long	640
-	.long	0
 	.long	64
-	.long	5
-	.long	80
-	.long	64
-	.long	944
-	.long	576
-	.long	0
-	.long	80
-	.long	5
-	.long	112
-	.long	64
-	.long	0
-	.long	720
-	.long	0
-	.long	80
-	.long	5
-	.long	112
-	.long	80
-	.long	0
-	.long	784
-	.long	0
-	.long	82
-	.long	5
-	.long	96
-	.long	96
-	.long	112
-	.long	720
-	.long	-23
 	.long	48
+	.long	288
+	.long	224
+	.long	-3
+	.long	63
 	.long	5
-	.long	112
-	.long	128
+	.long	96
+	.long	48
+	.long	560
+	.long	1120
+	.long	-3
+	.long	63
+	.long	5
+	.long	96
+	.long	64
+	.long	448
 	.long	208
-	.long	720
-	.long	-11
-	.long	12
+	.long	-3
+	.long	63
 	.long	5
 	.long	80
-	.long	144
-	.long	160
-	.long	288
+	.long	80
+	.long	544
+	.long	224
+	.long	-18
+	.long	34
+	.long	5
+	.long	96
+	.long	96
+	.long	624
+	.long	224
+	.long	-8
+	.long	14
+	.long	5
+	.long	64
+	.long	112
+	.long	368
+	.long	256
 	.long	0
 	.long	0
 	.long	5
-	.long	80
-	.long	144
-	.long	160
-	.long	288
+	.long	64
+	.long	112
+	.long	368
+	.long	256
 	.long	0
 	.long	0
 	.long	5
 	.even
 __ZL20kanoRoundhouseFrames:
 	.long	64
-	.long	144
-	.long	0
-	.long	1024
-	.long	5
-	.long	0
-	.long	5
-	.long	80
-	.long	144
-	.long	64
-	.long	1024
-	.long	-5
-	.long	0
-	.long	5
 	.long	112
-	.long	144
-	.long	144
-	.long	1024
-	.long	8
+	.long	528
+	.long	896
+	.long	-1
+	.long	-2
+	.long	5
+	.long	64
+	.long	112
+	.long	592
+	.long	896
+	.long	-7
+	.long	-2
+	.long	5
+	.long	96
+	.long	96
+	.long	288
+	.long	928
 	.long	0
+	.long	14
 	.long	10
-	.long	80
-	.long	144
-	.long	256
-	.long	1024
-	.long	21
-	.long	0
+	.long	64
+	.long	96
+	.long	384
+	.long	928
+	.long	12
+	.long	14
+	.long	5
+	.long	48
+	.long	112
+	.long	976
+	.long	864
+	.long	7
+	.long	-2
+	.long	5
+	.long	48
+	.long	96
+	.long	912
+	.long	928
+	.long	-5
+	.long	15
 	.long	5
 	.long	64
-	.long	144
-	.long	336
-	.long	1024
-	.long	19
-	.long	0
+	.long	96
+	.long	960
+	.long	976
+	.long	-7
+	.long	15
 	.long	5
-	.long	64
-	.long	144
-	.long	400
-	.long	1024
-	.long	1
-	.long	0
-	.long	5
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
 	.even
 __ZL16kanoHitLowFrames:
 	.long	64
@@ -6543,39 +6551,39 @@ __ZL18kanoHitSweepFrames:
 	.long	5
 	.even
 __ZL15kanoKipUpFrames:
-	.long	112
 	.long	48
-	.long	256
-	.long	576
+	.long	64
+	.long	640
+	.long	720
 	.long	0
-	.long	96
+	.long	48
+	.long	5
+	.long	32
+	.long	80
+	.long	992
+	.long	224
+	.long	8
+	.long	31
 	.long	5
 	.long	48
-	.long	96
-	.long	752
-	.long	624
-	.long	26
-	.long	42
+	.long	48
+	.long	976
+	.long	336
+	.long	0
+	.long	64
 	.long	5
 	.long	48
-	.long	64
-	.long	688
-	.long	576
-	.long	16
-	.long	77
-	.long	5
-	.long	64
-	.long	112
-	.long	800
-	.long	608
-	.long	13
+	.long	80
+	.long	848
+	.long	1056
+	.long	0
 	.long	33
 	.long	5
-	.long	80
-	.long	144
-	.long	864
-	.long	576
-	.long	13
+	.long	64
+	.long	112
+	.long	960
+	.long	624
+	.long	0
 	.long	0
 	.long	5
 	.even
@@ -6604,7 +6612,7 @@ __ZL12fighterKano2:
 	.long	6
 	.long	5
 	.long	9
-	.long	7
+	.long	8
 	.long	4
 	.long	4
 	.long	7
@@ -7651,32 +7659,32 @@ __ZL17raidenKipUpFrames:
 	.long	5
 	.even
 __ZL18raidenHitLowFrames:
-	.long	80
-	.long	144
-	.long	224
-	.long	432
+	.long	64
+	.long	112
+	.long	720
+	.long	720
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	304
-	.long	432
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	384
-	.long	432
-	.long	0
+	.long	64
+	.long	112
+	.long	784
+	.long	720
+	.long	-3
 	.long	0
 	.long	6
 	.long	80
-	.long	144
-	.long	304
-	.long	432
-	.long	0
+	.long	96
+	.long	848
+	.long	720
+	.long	-11
+	.long	16
+	.long	6
+	.long	64
+	.long	112
+	.long	784
+	.long	720
+	.long	-3
 	.long	0
 	.long	6
 	.long	0
