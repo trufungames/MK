@@ -473,7 +473,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
         }
     }
     else if (fighter->IsHitSweep && fighter->IsBeingDamaged)
-    {
+    {       
         updateSpriteAnimator(animator, *fighter->hitSweepFrames, fighter->HIT_SWEEP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
         if (animationIsComplete(animator, fighter->HIT_SWEEP_FRAME_COUNT))

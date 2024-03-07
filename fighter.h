@@ -131,7 +131,7 @@ struct Fighter {
     struct AnimationFrame (*walkFrames)[9];
     struct AnimationFrame (*turnFrames)[2];
     struct AnimationFrame (*jumpFrames)[4];
-    struct AnimationFrame (*jumpRollFrames)[7];
+    struct AnimationFrame (*jumpRollFrames)[8];
     struct AnimationFrame (*duckFrames)[3];
     struct AnimationFrame (*blockFrames)[3];
     struct AnimationFrame (*blockHitFrames)[6];
