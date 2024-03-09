@@ -7964,7 +7964,7 @@ __ZL11fighterKang:
 	.long	6
 	.long	5
 	.long	5
-	.long	5
+	.long	7
 	.long	8
 	.long	3
 	.long	3
@@ -8543,336 +8543,336 @@ __ZL22kangBlockDuckHitFrames:
 	.long	3
 	.even
 __ZL18kangPunchLowFrames:
-	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	8
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	11
-	.long	0
-	.long	4
+	.long	64
 	.long	112
-	.long	144
-	.long	240
-	.long	288
-	.long	12
-	.long	0
-	.long	8
-	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	8
-	.long	0
-	.long	4
-	.even
-__ZL19kangPunchHighFrames:
-	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	8
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	112
-	.long	144
-	.long	640
-	.long	288
-	.long	12
-	.long	0
-	.long	8
-	.long	80
-	.long	144
-	.long	160
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	80
-	.long	288
-	.long	8
-	.long	0
-	.long	4
-	.even
-__ZL17kangKickLowFrames:
-	.long	80
-	.long	144
-	.long	864
-	.long	288
-	.long	17
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	944
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	112
-	.long	144
-	.long	0
-	.long	432
-	.long	0
-	.long	0
-	.long	8
-	.long	80
-	.long	144
-	.long	944
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	864
-	.long	288
-	.long	17
-	.long	0
-	.long	4
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.even
-__ZL18kangKickHighFrames:
-	.long	80
-	.long	144
-	.long	864
-	.long	288
-	.long	17
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	944
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	112
-	.long	432
-	.long	8
-	.long	0
-	.long	4
-	.long	112
-	.long	144
-	.long	192
-	.long	432
-	.long	2
-	.long	0
-	.long	8
-	.long	80
-	.long	144
-	.long	112
-	.long	432
-	.long	8
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	944
-	.long	288
-	.long	11
-	.long	0
-	.long	4
-	.long	80
-	.long	144
-	.long	864
-	.long	288
-	.long	17
-	.long	0
-	.long	4
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.even
-__ZL19kangJumpPunchFrames:
-	.long	96
-	.long	80
-	.long	304
-	.long	752
-	.long	0
-	.long	0
-	.long	4
-	.long	144
-	.long	80
-	.long	400
-	.long	720
-	.long	5
-	.long	0
-	.long	24
-	.long	144
-	.long	80
-	.long	400
-	.long	720
-	.long	5
-	.long	0
-	.long	4
-	.even
-__ZL18kangJumpKickFrames:
-	.long	96
-	.long	144
-	.long	736
-	.long	720
-	.long	0
-	.long	0
-	.long	4
-	.long	96
-	.long	144
-	.long	832
-	.long	720
-	.long	10
-	.long	0
-	.long	24
-	.long	96
-	.long	144
-	.long	832
-	.long	720
-	.long	10
-	.long	0
-	.long	4
-	.even
-__ZL22kangJumpDropKickFrames:
-	.long	80
-	.long	80
-	.long	544
-	.long	720
-	.long	0
-	.long	0
-	.long	4
-	.long	112
-	.long	80
-	.long	624
-	.long	720
-	.long	0
-	.long	0
-	.long	24
-	.long	112
-	.long	80
-	.long	624
-	.long	720
-	.long	0
-	.long	0
-	.long	4
-	.even
-__ZL18kangUppercutFrames:
-	.long	80
-	.long	112
-	.long	416
-	.long	912
-	.long	0
-	.long	32
-	.long	4
-	.long	80
-	.long	128
-	.long	496
 	.long	896
 	.long	0
-	.long	16
-	.long	4
-	.long	96
-	.long	144
-	.long	592
-	.long	880
 	.long	0
 	.long	0
 	.long	4
 	.long	64
-	.long	144
-	.long	688
-	.long	880
+	.long	112
+	.long	960
 	.long	0
+	.long	2
 	.long	0
-	.long	12
+	.long	4
 	.long	96
-	.long	128
-	.long	752
-	.long	880
+	.long	112
+	.long	400
+	.long	112
+	.long	2
+	.long	-2
+	.long	8
+	.long	64
+	.long	112
+	.long	960
+	.long	0
+	.long	2
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	896
+	.long	0
+	.long	0
+	.long	0
+	.long	4
+	.even
+__ZL19kangPunchHighFrames:
+	.long	64
+	.long	112
+	.long	896
+	.long	0
+	.long	0
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	960
+	.long	0
+	.long	2
+	.long	0
+	.long	4
+	.long	96
+	.long	112
+	.long	0
+	.long	112
+	.long	8
+	.long	0
+	.long	8
+	.long	64
+	.long	112
+	.long	960
+	.long	0
+	.long	2
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	896
+	.long	0
+	.long	0
+	.long	0
+	.long	4
+	.even
+__ZL17kangKickLowFrames:
+	.long	64
+	.long	112
+	.long	368
+	.long	512
+	.long	0
+	.long	0
+	.long	4
+	.long	48
+	.long	112
+	.long	432
+	.long	496
+	.long	16
+	.long	0
+	.long	4
+	.long	48
+	.long	112
+	.long	480
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	96
+	.long	112
+	.long	672
+	.long	528
+	.long	-4
+	.long	0
+	.long	8
+	.long	48
+	.long	112
+	.long	480
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	48
+	.long	112
+	.long	432
+	.long	496
+	.long	16
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	368
+	.long	512
+	.long	0
+	.long	0
+	.long	4
+	.even
+__ZL18kangKickHighFrames:
+	.long	64
+	.long	112
+	.long	368
+	.long	512
+	.long	0
+	.long	0
+	.long	4
+	.long	48
+	.long	112
+	.long	432
+	.long	496
+	.long	16
+	.long	0
+	.long	4
+	.long	48
+	.long	112
+	.long	480
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	64
+	.long	112
+	.long	528
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	80
+	.long	112
+	.long	592
+	.long	528
+	.long	-5
+	.long	-1
+	.long	8
+	.long	64
+	.long	112
+	.long	528
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	48
+	.long	112
+	.long	480
+	.long	448
+	.long	-2
+	.long	-1
+	.long	4
+	.long	48
+	.long	112
+	.long	432
+	.long	496
+	.long	16
+	.long	0
+	.long	4
+	.even
+__ZL19kangJumpPunchFrames:
+	.long	80
+	.long	64
+	.long	64
+	.long	704
+	.long	0
+	.long	0
+	.long	4
+	.long	112
+	.long	64
+	.long	144
+	.long	704
+	.long	-23
+	.long	1
+	.long	24
+	.long	112
+	.long	64
+	.long	144
+	.long	704
+	.long	-23
+	.long	1
+	.long	4
+	.even
+__ZL18kangJumpKickFrames:
+	.long	80
+	.long	112
+	.long	240
+	.long	592
+	.long	0
+	.long	0
+	.long	4
+	.long	80
+	.long	112
+	.long	320
+	.long	624
+	.long	1
+	.long	1
+	.long	24
+	.long	80
+	.long	112
+	.long	320
+	.long	624
+	.long	1
+	.long	1
+	.long	4
+	.even
+__ZL22kangJumpDropKickFrames:
+	.long	80
+	.long	64
+	.long	832
+	.long	592
 	.long	0
 	.long	0
 	.long	4
 	.long	96
+	.long	64
+	.long	912
+	.long	624
+	.long	0
+	.long	-5
+	.long	24
+	.long	96
+	.long	64
+	.long	912
+	.long	624
+	.long	0
+	.long	-5
+	.long	4
+	.even
+__ZL18kangUppercutFrames:
+	.long	64
+	.long	96
+	.long	0
+	.long	224
+	.long	0
+	.long	16
+	.long	4
+	.long	80
+	.long	112
+	.long	64
+	.long	224
+	.long	4
+	.long	0
+	.long	4
+	.long	80
+	.long	112
+	.long	144
+	.long	224
+	.long	8
+	.long	2
+	.long	4
+	.long	48
 	.long	128
-	.long	752
-	.long	880
+	.long	224
+	.long	224
+	.long	18
+	.long	-13
+	.long	12
+	.long	64
+	.long	112
+	.long	272
+	.long	224
+	.long	0
+	.long	0
+	.long	4
+	.long	64
+	.long	112
+	.long	272
+	.long	224
 	.long	0
 	.long	0
 	.long	4
 	.even
 __ZL15kangKipUpFrames:
 	.long	64
-	.long	80
-	.long	80
-	.long	720
-	.long	0
 	.long	64
-	.long	5
-	.long	112
-	.long	96
-	.long	848
-	.long	928
-	.long	0
-	.long	48
-	.long	5
-	.long	96
-	.long	64
+	.long	912
 	.long	304
-	.long	688
-	.long	0
+	.long	-10
+	.long	50
+	.long	5
+	.long	96
+	.long	64
+	.long	928
+	.long	368
+	.long	-10
+	.long	48
+	.long	5
 	.long	80
+	.long	64
+	.long	0
+	.long	416
+	.long	-8
+	.long	44
+	.long	5
+	.long	32
+	.long	80
+	.long	80
+	.long	416
+	.long	28
+	.long	26
 	.long	5
 	.long	48
-	.long	128
-	.long	960
-	.long	896
-	.long	28
-	.long	16
-	.long	5
-	.long	48
-	.long	128
-	.long	960
-	.long	896
-	.long	28
-	.long	16
+	.long	96
+	.long	112
+	.long	416
+	.long	22
+	.long	14
 	.long	5
 	.even
 __ZL15kangSweepFrames:
@@ -9243,7 +9243,7 @@ __ZL12fighterKang2:
 	.long	6
 	.long	5
 	.long	5
-	.long	5
+	.long	7
 	.long	8
 	.long	3
 	.long	3
