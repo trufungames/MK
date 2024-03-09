@@ -8876,120 +8876,120 @@ __ZL15kangKipUpFrames:
 	.long	5
 	.even
 __ZL15kangSweepFrames:
-	.long	80
-	.long	144
-	.long	80
-	.long	288
+	.long	64
+	.long	112
+	.long	368
+	.long	512
 	.long	0
 	.long	0
 	.long	5
-	.long	80
-	.long	80
-	.long	560
-	.long	576
-	.long	0
 	.long	64
+	.long	64
+	.long	592
+	.long	464
+	.long	-8
+	.long	47
 	.long	5
 	.long	64
-	.long	64
-	.long	432
-	.long	656
-	.long	0
-	.long	80
-	.long	5
-	.long	96
-	.long	64
-	.long	496
-	.long	656
-	.long	0
-	.long	80
-	.long	5
-	.long	128
-	.long	64
-	.long	640
-	.long	576
-	.long	0
-	.long	80
-	.long	5
 	.long	48
-	.long	96
 	.long	768
-	.long	576
-	.long	3
-	.long	74
+	.long	480
+	.long	-3
+	.long	61
 	.long	5
-	.long	96
-	.long	96
-	.long	816
-	.long	576
-	.long	-11
+	.long	80
 	.long	48
+	.long	768
+	.long	528
+	.long	0
+	.long	68
+	.long	5
+	.long	96
+	.long	48
+	.long	848
+	.long	544
+	.long	6
+	.long	67
+	.long	5
+	.long	48
+	.long	80
+	.long	960
+	.long	432
+	.long	3
+	.long	57
 	.long	5
 	.long	80
-	.long	144
 	.long	80
-	.long	288
+	.long	944
+	.long	544
+	.long	-1
+	.long	31
+	.long	5
+	.long	64
+	.long	112
+	.long	368
+	.long	512
 	.long	0
 	.long	0
 	.long	5
-	.long	80
-	.long	144
-	.long	80
-	.long	288
+	.long	64
+	.long	112
+	.long	368
+	.long	512
 	.long	0
 	.long	0
 	.long	5
 	.even
 __ZL20kangRoundhouseFrames:
+	.long	80
+	.long	112
+	.long	544
+	.long	800
+	.long	-14
+	.long	-1
+	.long	5
+	.long	64
+	.long	112
+	.long	624
+	.long	800
+	.long	0
+	.long	0
+	.long	5
+	.long	48
 	.long	96
-	.long	144
-	.long	0
-	.long	1024
-	.long	-12
-	.long	0
+	.long	688
+	.long	784
+	.long	19
+	.long	15
 	.long	5
 	.long	80
-	.long	144
-	.long	96
-	.long	1024
-	.long	-10
-	.long	0
-	.long	5
-	.long	64
-	.long	144
-	.long	160
-	.long	816
-	.long	14
-	.long	0
-	.long	5
-	.long	96
-	.long	144
-	.long	176
-	.long	1024
-	.long	20
-	.long	0
+	.long	112
+	.long	736
+	.long	784
+	.long	21
+	.long	-1
 	.long	10
-	.long	64
-	.long	144
-	.long	272
-	.long	1024
-	.long	8
-	.long	0
+	.long	48
+	.long	96
+	.long	816
+	.long	768
+	.long	25
+	.long	15
+	.long	5
+	.long	48
+	.long	80
+	.long	864
+	.long	784
+	.long	14
+	.long	31
 	.long	5
 	.long	64
-	.long	144
-	.long	336
-	.long	1024
+	.long	112
+	.long	912
+	.long	800
+	.long	7
+	.long	-1
 	.long	5
-	.long	0
-	.long	5
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
 	.even
 __ZL16kangHitLowFrames:
 	.long	64
