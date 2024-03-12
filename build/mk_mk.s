@@ -10815,7 +10815,7 @@ __ZL12fighterSonya:
 	.long	7
 	.long	4
 	.long	4
-	.long	7
+	.long	6
 	.long	7
 	.long	6
 	.skip 332
@@ -11567,211 +11567,211 @@ __ZL19sonyaKickHighFrames:
 	.long	0
 	.even
 __ZL20sonyaJumpPunchFrames:
-	.long	96
 	.long	80
-	.long	400
-	.long	672
+	.long	64
+	.long	560
+	.long	288
 	.long	0
 	.long	0
 	.long	4
-	.long	160
-	.long	80
-	.long	496
-	.long	672
-	.long	-32
+	.long	128
+	.long	64
+	.long	640
+	.long	288
+	.long	-22
 	.long	0
 	.long	24
-	.long	160
-	.long	80
-	.long	496
-	.long	672
-	.long	-32
+	.long	128
+	.long	64
+	.long	640
+	.long	288
+	.long	-22
 	.long	0
 	.long	4
 	.even
 __ZL19sonyaJumpKickFrames:
-	.long	64
-	.long	144
-	.long	928
-	.long	880
+	.long	48
+	.long	112
+	.long	448
+	.long	288
 	.long	0
 	.long	0
 	.long	4
+	.long	64
 	.long	80
-	.long	96
-	.long	224
-	.long	720
+	.long	496
+	.long	272
 	.long	0
 	.long	0
 	.long	24
+	.long	64
 	.long	80
-	.long	96
-	.long	224
-	.long	720
+	.long	496
+	.long	272
 	.long	0
 	.long	0
 	.long	4
 	.even
 __ZL23sonyaJumpDropKickFrames:
-	.long	80
-	.long	80
-	.long	656
-	.long	656
+	.long	64
+	.long	64
+	.long	304
+	.long	304
 	.long	0
 	.long	0
 	.long	4
-	.long	112
 	.long	80
-	.long	736
-	.long	656
+	.long	64
+	.long	368
+	.long	304
 	.long	0
-	.long	0
+	.long	-3
 	.long	24
-	.long	112
 	.long	80
-	.long	736
-	.long	656
+	.long	64
+	.long	368
+	.long	304
 	.long	0
-	.long	0
+	.long	-3
 	.long	4
 	.even
 __ZL19sonyaUppercutFrames:
-	.long	64
+	.long	48
 	.long	80
-	.long	432
-	.long	944
-	.long	7
-	.long	62
+	.long	0
+	.long	112
+	.long	0
+	.long	32
 	.long	4
 	.long	80
-	.long	96
-	.long	496
-	.long	928
-	.long	9
-	.long	47
-	.long	4
-	.long	96
-	.long	144
-	.long	576
-	.long	880
-	.long	5
-	.long	-1
-	.long	4
+	.long	80
+	.long	48
+	.long	112
+	.long	0
 	.long	64
-	.long	160
-	.long	672
-	.long	864
-	.long	9
-	.long	-17
+	.long	4
+	.long	80
+	.long	112
+	.long	128
+	.long	112
+	.long	0
+	.long	0
+	.long	4
+	.long	48
+	.long	128
+	.long	208
+	.long	112
+	.long	6
+	.long	-16
 	.long	12
-	.long	64
-	.long	128
-	.long	736
-	.long	896
-	.long	8
-	.long	15
+	.long	48
+	.long	112
+	.long	256
+	.long	112
+	.long	0
+	.long	0
 	.long	4
-	.long	64
-	.long	128
-	.long	736
-	.long	896
-	.long	8
-	.long	15
+	.long	48
+	.long	112
+	.long	256
+	.long	112
+	.long	0
+	.long	0
 	.long	4
 	.even
 __ZL16sonyaKipUpFrames:
 	.long	48
-	.long	80
-	.long	368
-	.long	576
-	.long	14
 	.long	64
+	.long	880
+	.long	672
+	.long	0
+	.long	47
 	.long	5
+	.long	48
+	.long	48
+	.long	0
+	.long	688
+	.long	2
+	.long	63
+	.long	5
+	.long	48
+	.long	48
+	.long	0
+	.long	736
+	.long	-3
+	.long	63
+	.long	5
+	.long	32
 	.long	64
 	.long	48
+	.long	688
+	.long	6
+	.long	48
+	.long	5
+	.long	32
 	.long	80
-	.long	656
-	.long	7
-	.long	96
-	.long	5
-	.long	48
 	.long	80
-	.long	416
-	.long	576
-	.long	14
-	.long	62
+	.long	736
 	.long	5
-	.long	48
-	.long	96
-	.long	464
-	.long	576
-	.long	16
-	.long	46
-	.long	5
-	.long	48
-	.long	96
-	.long	464
-	.long	576
-	.long	16
-	.long	46
+	.long	32
 	.long	5
 	.even
 __ZL16sonyaSweepFrames:
 	.long	64
-	.long	112
-	.long	176
-	.long	176
-	.long	6
-	.long	34
-	.long	5
-	.long	64
-	.long	64
-	.long	240
+	.long	80
 	.long	656
+	.long	480
 	.long	0
-	.long	80
-	.long	5
-	.long	80
-	.long	80
-	.long	752
-	.long	576
-	.long	2
-	.long	64
-	.long	5
-	.long	112
-	.long	80
-	.long	832
-	.long	576
-	.long	2
-	.long	64
-	.long	5
-	.long	128
-	.long	80
-	.long	96
-	.long	704
-	.long	0
-	.long	67
+	.long	32
 	.long	5
 	.long	64
-	.long	96
-	.long	944
-	.long	576
+	.long	64
+	.long	896
+	.long	432
 	.long	0
-	.long	48
+	.long	52
+	.long	5
+	.long	64
+	.long	64
+	.long	416
+	.long	400
+	.long	-6
+	.long	43
 	.long	5
 	.long	96
-	.long	96
-	.long	304
-	.long	672
-	.long	0
-	.long	48
+	.long	64
+	.long	720
+	.long	480
+	.long	6
+	.long	52
 	.long	5
 	.long	96
-	.long	96
-	.long	304
-	.long	672
-	.long	0
+	.long	64
+	.long	816
+	.long	496
+	.long	5
+	.long	71
+	.long	5
 	.long	48
+	.long	80
+	.long	912
+	.long	496
+	.long	7
+	.long	45
+	.long	5
+	.long	80
+	.long	80
+	.long	0
+	.long	528
+	.long	-3
+	.long	32
+	.long	5
+	.long	80
+	.long	80
+	.long	0
+	.long	528
+	.long	-3
+	.long	32
 	.long	5
 	.long	0
 	.long	0
@@ -11833,31 +11833,31 @@ __ZL21sonyaRoundhouseFrames:
 	.long	0
 	.even
 __ZL17sonyaHitLowFrames:
-	.long	64
-	.long	144
-	.long	880
-	.long	288
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	0
-	.long	432
-	.long	-6
+	.long	48
+	.long	112
+	.long	720
+	.long	176
+	.long	-4
 	.long	0
 	.long	6
 	.long	64
-	.long	144
-	.long	880
-	.long	288
-	.long	0
+	.long	112
+	.long	768
+	.long	224
+	.long	-14
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	80
-	.long	432
+	.long	48
+	.long	112
+	.long	720
+	.long	176
+	.long	-4
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	672
+	.long	176
 	.long	0
 	.long	0
 	.long	6
@@ -11877,33 +11877,33 @@ __ZL17sonyaHitLowFrames:
 	.long	0
 	.even
 __ZL18sonyaHitHighFrames:
-	.long	80
-	.long	144
+	.long	48
+	.long	96
+	.long	624
+	.long	176
+	.long	-4
+	.long	16
+	.long	6
+	.long	48
+	.long	112
+	.long	576
+	.long	176
+	.long	-2
+	.long	1
+	.long	6
+	.long	48
+	.long	112
+	.long	528
 	.long	160
-	.long	432
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	432
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	320
-	.long	432
-	.long	0
-	.long	0
-	.long	6
-	.long	80
-	.long	144
-	.long	240
-	.long	432
-	.long	0
-	.long	0
+	.long	48
+	.long	112
+	.long	576
+	.long	176
+	.long	-2
+	.long	1
 	.long	6
 	.long	0
 	.long	0
@@ -11921,48 +11921,48 @@ __ZL18sonyaHitHighFrames:
 	.long	0
 	.even
 __ZL18sonyaHitBackFrames:
-	.long	80
-	.long	144
-	.long	80
-	.long	432
+	.long	48
+	.long	112
+	.long	720
+	.long	176
+	.long	-4
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	832
+	.long	224
+	.long	-13
+	.long	0
+	.long	6
+	.long	48
+	.long	112
+	.long	880
+	.long	224
 	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	400
-	.long	432
-	.long	8
+	.long	64
+	.long	112
+	.long	928
+	.long	224
+	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	480
-	.long	432
-	.long	16
+	.long	64
+	.long	112
+	.long	0
+	.long	304
+	.long	0
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	560
-	.long	432
-	.long	8
+	.long	64
+	.long	112
+	.long	64
+	.long	304
+	.long	-2
 	.long	0
 	.long	6
-	.long	80
-	.long	144
-	.long	640
-	.long	432
-	.long	8
-	.long	0
-	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
 	.long	0
 	.long	0
 	.long	0
@@ -11972,98 +11972,98 @@ __ZL18sonyaHitBackFrames:
 	.long	0
 	.even
 __ZL18sonyaHitFallFrames:
-	.long	80
-	.long	128
-	.long	0
-	.long	576
-	.long	-4
-	.long	12
-	.long	6
-	.long	112
-	.long	80
-	.long	80
-	.long	576
-	.long	-8
-	.long	62
-	.long	6
-	.long	112
-	.long	80
-	.long	192
-	.long	576
-	.long	-12
-	.long	62
-	.long	6
 	.long	64
 	.long	96
-	.long	304
+	.long	432
 	.long	576
-	.long	-14
-	.long	52
+	.long	0
+	.long	16
 	.long	6
 	.long	96
+	.long	64
+	.long	496
+	.long	576
+	.long	0
+	.long	48
+	.long	6
+	.long	96
+	.long	64
+	.long	592
+	.long	576
+	.long	0
+	.long	48
+	.long	6
+	.long	96
+	.long	64
+	.long	592
+	.long	576
+	.long	0
+	.long	48
+	.long	6
+	.long	64
 	.long	80
-	.long	880
-	.long	432
-	.long	-12
-	.long	68
+	.long	688
+	.long	560
+	.long	0
+	.long	36
 	.long	6
-	.long	128
+	.long	64
+	.long	80
+	.long	688
+	.long	560
+	.long	0
+	.long	36
+	.long	6
+	.long	96
 	.long	32
-	.long	880
-	.long	512
-	.long	-16
-	.long	116
+	.long	0
+	.long	928
+	.long	0
+	.long	96
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
 	.even
 __ZL19sonyaHitSweepFrames:
-	.long	96
-	.long	112
-	.long	0
-	.long	704
+	.long	80
+	.long	80
+	.long	576
+	.long	640
+	.long	-14
+	.long	24
+	.long	5
+	.long	64
+	.long	64
+	.long	656
+	.long	640
 	.long	-7
-	.long	32
+	.long	30
 	.long	5
 	.long	64
-	.long	80
-	.long	512
-	.long	576
-	.long	2
 	.long	64
+	.long	720
+	.long	640
+	.long	-11
+	.long	20
+	.long	5
+	.long	64
+	.long	64
+	.long	784
+	.long	624
+	.long	-8
+	.long	38
 	.long	5
 	.long	80
-	.long	80
-	.long	576
-	.long	576
-	.long	0
-	.long	64
-	.long	5
-	.long	96
 	.long	48
-	.long	144
-	.long	656
-	.long	-6
-	.long	96
+	.long	256
+	.long	896
+	.long	-15
+	.long	90
 	.long	5
-	.long	96
-	.long	64
-	.long	656
-	.long	576
-	.long	-10
-	.long	102
-	.long	5
-	.long	96
-	.long	64
-	.long	656
-	.long	576
-	.long	-10
-	.long	102
+	.long	80
+	.long	48
+	.long	256
+	.long	896
+	.long	-15
+	.long	90
 	.long	5
 	.even
 __ZL13fighterSonya2:
@@ -12094,7 +12094,7 @@ __ZL13fighterSonya2:
 	.long	7
 	.long	4
 	.long	4
-	.long	7
+	.long	6
 	.long	7
 	.long	6
 	.skip 332
