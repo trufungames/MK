@@ -10907,53 +10907,53 @@ __ZL15sonyaIdleFrames:
 	.long	0
 	.even
 __ZL16sonyaDizzyFrames:
-	.long	64
-	.long	144
-	.long	512
-	.long	1024
-	.long	-8
-	.long	0
+	.long	48
+	.long	96
+	.long	80
+	.long	528
+	.long	-6
+	.long	16
 	.long	12
-	.long	64
-	.long	144
+	.long	48
+	.long	96
+	.long	128
+	.long	560
+	.long	0
+	.long	16
+	.long	12
+	.long	48
+	.long	96
+	.long	176
+	.long	560
+	.long	0
+	.long	16
+	.long	12
+	.long	48
+	.long	112
+	.long	224
 	.long	576
-	.long	1024
 	.long	0
 	.long	0
 	.long	12
-	.long	64
-	.long	144
-	.long	640
-	.long	1024
-	.long	0
-	.long	0
-	.long	12
-	.long	64
-	.long	144
-	.long	704
-	.long	1024
-	.long	0
+	.long	48
+	.long	112
+	.long	272
+	.long	592
+	.long	-2
 	.long	0
 	.long	12
-	.long	64
-	.long	144
-	.long	768
-	.long	1024
+	.long	48
+	.long	112
+	.long	320
+	.long	592
 	.long	-4
 	.long	0
 	.long	12
-	.long	64
-	.long	144
-	.long	832
-	.long	1024
-	.long	-7
-	.long	0
-	.long	12
-	.long	64
-	.long	144
-	.long	896
-	.long	1024
-	.long	-11
+	.long	48
+	.long	112
+	.long	368
+	.long	592
+	.long	-10
 	.long	0
 	.long	12
 	.even
@@ -11735,42 +11735,42 @@ __ZL16sonyaSweepFrames:
 	.long	64
 	.long	416
 	.long	400
-	.long	-6
-	.long	43
+	.long	-9
+	.long	53
 	.long	5
 	.long	96
 	.long	64
 	.long	720
 	.long	480
-	.long	6
+	.long	2
 	.long	52
 	.long	5
 	.long	96
 	.long	64
 	.long	816
 	.long	496
-	.long	5
-	.long	71
+	.long	1
+	.long	52
 	.long	5
 	.long	48
 	.long	80
 	.long	912
 	.long	496
-	.long	7
-	.long	45
+	.long	2
+	.long	49
 	.long	5
 	.long	80
 	.long	80
 	.long	0
 	.long	528
-	.long	-3
+	.long	-2
 	.long	32
 	.long	5
 	.long	80
 	.long	80
 	.long	0
 	.long	528
-	.long	-3
+	.long	-2
 	.long	32
 	.long	5
 	.long	0
@@ -11782,55 +11782,55 @@ __ZL16sonyaSweepFrames:
 	.long	0
 	.even
 __ZL21sonyaRoundhouseFrames:
-	.long	80
-	.long	144
+	.long	48
+	.long	96
+	.long	256
+	.long	480
 	.long	0
-	.long	1024
-	.long	-3
-	.long	0
+	.long	16
 	.long	5
-	.long	80
-	.long	144
-	.long	80
-	.long	1024
-	.long	7
-	.long	0
-	.long	5
+	.long	64
 	.long	112
-	.long	144
-	.long	160
-	.long	1024
-	.long	14
+	.long	304
+	.long	480
+	.long	-14
+	.long	0
+	.long	5
+	.long	64
+	.long	112
+	.long	368
+	.long	480
+	.long	-5
+	.long	0
+	.long	5
+	.long	80
+	.long	112
+	.long	432
+	.long	464
+	.long	2
 	.long	0
 	.long	10
-	.long	96
-	.long	144
-	.long	272
-	.long	1024
-	.long	21
+	.long	80
+	.long	112
+	.long	512
+	.long	464
+	.long	6
 	.long	0
 	.long	5
 	.long	64
-	.long	144
-	.long	368
-	.long	1024
-	.long	20
+	.long	112
+	.long	592
+	.long	464
+	.long	6
 	.long	0
 	.long	5
 	.long	64
-	.long	160
-	.long	432
-	.long	1024
-	.long	15
+	.long	128
+	.long	704
+	.long	352
+	.long	0
 	.long	-16
 	.long	5
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
 	.even
 __ZL17sonyaHitLowFrames:
 	.long	48
