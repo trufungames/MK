@@ -37,15 +37,15 @@ __Z12cameraUpdateP7FighterS0_:
 	clr.b _backgroundChangedLeft
 	clr.b _backgroundChangedRight
 	moveq #1,%d0
-	cmp.l 270(%a2),%d0
+	cmp.l 288(%a2),%d0
 	jeq .L22
 	move.l _cameraX,%d0
 	moveq #10,%d1
 	cmp.l %d0,%d1
 	jge .L18
-	cmp.l 248(%a4),%d1
+	cmp.l 266(%a4),%d1
 	jlt .L18
-	cmp.l #278,248(%a2)
+	cmp.l #278,266(%a2)
 	jgt .L18
 	move.l %a2,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -255,10 +255,10 @@ __Z12cameraUpdateP7FighterS0_:
 .L7:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.l #280,248(%a2)
+	cmp.l #280,266(%a2)
 	jle .L6
 	moveq #10,%d0
-	cmp.l 248(%a4),%d0
+	cmp.l 266(%a4),%d0
 	jge .L6
 	move.l %a4,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a3
@@ -504,9 +504,9 @@ __Z12cameraUpdateP7FighterS0_:
 	moveq #10,%d1
 	cmp.l %d0,%d1
 	jge .L15
-	cmp.l 248(%a2),%d1
+	cmp.l 266(%a2),%d1
 	jlt .L15
-	cmp.l #278,248(%a4)
+	cmp.l #278,266(%a4)
 	jgt .L15
 	move.l %a4,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -716,10 +716,10 @@ __Z12cameraUpdateP7FighterS0_:
 .L5:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.l #280,248(%a4)
+	cmp.l #280,266(%a4)
 	jle .L6
 	moveq #10,%d0
-	cmp.l 248(%a2),%d0
+	cmp.l 266(%a2),%d0
 	jge .L6
 	move.l %a2,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a2
@@ -907,9 +907,9 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	moveq #10,%d0
 	cmp.l _cameraX.l,%d0
 	jge .L29
-	cmp.l 248(%a2),%d0
+	cmp.l 266(%a2),%d0
 	jlt .L29
-	cmp.l #278,248(%a0)
+	cmp.l #278,266(%a0)
 	jgt .L29
 	move.l %a0,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -1100,10 +1100,10 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l _cameraX,%d0
 	cmp.l _cameraXMax.l,%d0
 	jge .L36
-	cmp.l #280,248(%a2)
+	cmp.l #280,266(%a2)
 	jle .L36
 	moveq #10,%d0
-	cmp.l 248(%a0),%d0
+	cmp.l 266(%a0),%d0
 	jge .L36
 	move.l %a0,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a3

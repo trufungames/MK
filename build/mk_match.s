@@ -77,11 +77,11 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
 	jle .L48
-	tst.b 161(%a2)
+	tst.b 180(%a2)
 	jne .L75
-	tst.b 161(%a3)
+	tst.b 180(%a3)
 	jeq .L66
-	move.b #1,166(%a3)
+	move.b #1,185(%a3)
 	moveq #2,%d0
 	move.l %d0,_matchState
 	moveq #1,%d0
@@ -89,14 +89,14 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L48:
-	tst.b 161(%a2)
+	tst.b 180(%a2)
 	jeq .L50
-	tst.b 160(%a2)
+	tst.b 179(%a2)
 	jeq .L51
 .L50:
-	tst.b 161(%a3)
+	tst.b 180(%a3)
 	jeq .L66
-	tst.b 160(%a3)
+	tst.b 179(%a3)
 	jeq .L51
 .L66:
 	moveq #1,%d0
@@ -130,8 +130,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L70:
-	clr.b 168(%a2)
-	clr.b 168(%a3)
+	clr.b 187(%a2)
+	clr.b 187(%a3)
 	move.l #12259152,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
@@ -185,7 +185,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	.word .L27-.L29
 	.word .L28-.L29
 .L72:
-	tst.b 162(%a2)
+	tst.b 181(%a2)
 	jeq .L13
 	move.l (%a3),%d0
 	move.l %d0,_winner
@@ -199,7 +199,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L14:
 	tst.l %d0
 	jne .L78
-	tst.b 161(%a2)
+	tst.b 180(%a2)
 	jeq .L79
 .L17:
 	moveq #4,%d2
@@ -251,7 +251,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L13:
-	tst.b 162(%a3)
+	tst.b 181(%a3)
 	jeq .L82
 	move.l (%a2),%d0
 	move.l %d0,_winner
@@ -262,7 +262,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #2,%d2
 	cmp.l %d1,%d2
 	jlt .L14
-	move.b #1,167(%a2)
+	move.b #1,186(%a2)
 	jra .L14
 .L76:
 	move.l #12259152,-(%sp)
@@ -284,12 +284,12 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (28,%sp),%sp
 	jra .L8
 .L79:
-	tst.b 161(%a3)
+	tst.b 180(%a3)
 	jne .L17
 	moveq #1,%d0
 	jra .L83
 .L77:
-	move.b #1,167(%a3)
+	move.b #1,186(%a3)
 	jra .L14
 .L82:
 	move.l _winner,%d0
@@ -597,7 +597,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L75:
-	move.b #1,166(%a2)
+	move.b #1,185(%a2)
 	moveq #2,%d2
 	move.l %d2,_matchState
 	moveq #1,%d0
@@ -607,8 +607,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L11:
 	moveq #-1,%d1
 	move.l %d1,8836(%a0)
-	move.b #1,168(%a2)
-	move.b #1,168(%a3)
+	move.b #1,187(%a2)
+	move.b #1,187(%a3)
 	moveq #2,%d2
 	move.l %d2,_matchState
 	moveq #1,%d0

@@ -395,6 +395,14 @@ void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1)
 	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO_YELL, 8000);
 }
 
+void sfxKanoHeadbutt(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO_HEADBUTT, 8000);
+}
+
 void sfxCrowdAww(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

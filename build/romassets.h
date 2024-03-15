@@ -177,7 +177,9 @@
 #define cage_yeah_sam_end 0xC2046F
 #define kano_yell_sam 0xC20470
 #define kano_yell_sam_end 0xC21AEC
-#define MOD_TITLE 0xC21AF0
-#define MOD_TITLE_end 0xC37A38
-#define MOD_STAGE 0xC37A40
-#define MOD_STAGE_end 0xC45FB4
+#define kano_headbutt_sam 0xC21AF0
+#define kano_headbutt_sam_end 0xC229F3
+#define MOD_TITLE 0xC22A00
+#define MOD_TITLE_end 0xC38948
+#define MOD_STAGE 0xC38950
+#define MOD_STAGE_end 0xC46EC4

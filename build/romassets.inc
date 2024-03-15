@@ -177,7 +177,9 @@ cage_yeah_sam EQU $C1F360
 cage_yeah_sam_end EQU $C2046F
 kano_yell_sam EQU $C20470
 kano_yell_sam_end EQU $C21AEC
-MOD_TITLE EQU $C21AF0
-MOD_TITLE_end EQU $C37A38
-MOD_STAGE EQU $C37A40
-MOD_STAGE_end EQU $C45FB4
+kano_headbutt_sam EQU $C21AF0
+kano_headbutt_sam_end EQU $C229F3
+MOD_TITLE EQU $C22A00
+MOD_TITLE_end EQU $C38948
+MOD_STAGE EQU $C38950
+MOD_STAGE_end EQU $C46EC4

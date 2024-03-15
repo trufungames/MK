@@ -24,6 +24,9 @@ struct Fighter {
     unsigned int KIPUP_FRAME_COUNT;
     unsigned int SWEEP_FRAME_COUNT;
     unsigned int ROUNDHOUSE_FRAME_COUNT;
+    unsigned int BODY_PUNCH_FRAME_COUNT;
+    unsigned int BODY_KICK_FRAME_COUNT;
+    unsigned int DUCK_KICK_FRAME_COUNT;
     unsigned int HIT_LOW_FRAME_COUNT;
     unsigned int HIT_HIGH_FRAME_COUNT;
     unsigned int HIT_BACK_FRAME_COUNT;
@@ -51,15 +54,22 @@ struct Fighter {
     bool IsUppercutting;
     bool IsSweeping;
     bool IsRoundhousing;
+    bool IsBodyPunching;
+    bool IsBodyKicking;
+    bool IsDuckKicking;
     bool DPadReleased;
     bool ButtonReleased;
     bool IsHitLow;
     bool IsHitHigh;
     bool IsHitBack;
+    bool IsHitBackLow;
     bool IsHitBackHigh;
+    bool IsHitBackLight;
+    bool IsHitBackLightKano;
     bool IsHitFall;
     bool IsHitSweep;
     bool IsHitDropKick;
+    bool IsHitBodyKick;
     bool IsMidAir;
     bool IsFalling;
     bool IsLayingDown;
@@ -125,6 +135,9 @@ struct Fighter {
     struct ImpactFrame* impactFrameUppercut;
     struct ImpactFrame* impactFrameSweep;
     struct ImpactFrame* impactFrameRoundhouse;
+    struct ImpactFrame* impactFrameBodyPunch;
+    struct ImpactFrame* impactFrameBodyKick;
+    struct ImpactFrame* impactFrameDuckKick;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*dizzyFrames)[7];
     struct AnimationFrame (*winsFrames)[15];
@@ -153,6 +166,9 @@ struct Fighter {
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];
     struct AnimationFrame (*roundhouseFrames)[7];
+    struct AnimationFrame (*bodyPunchFrames)[5];
+    struct AnimationFrame (*bodyKickFrames)[5];
+    struct AnimationFrame (*duckKickFrames)[5];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -161,7 +177,7 @@ void fighterShow(struct Fighter* fighter);
 
 void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1);
 
-void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse);
+void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse, struct ImpactFrame* impactFrameBodyPunch, struct ImpactFrame* impactFrameBodyKick, struct ImpactFrame* impactFrameDuckKick);
 
 void fighterRestartMatch(struct Fighter* fighter);
 
