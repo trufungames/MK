@@ -40,42 +40,77 @@ __Z12bgScrollLeftf:
 __Z8bgUpdateP7FighterS0_:
 	link.w %fp,#0
 	movem.l #14396,-(%sp)
-	move.l 8(%fp),%a5
-	move.l 12(%fp),%a4
-	move.w raptor_ticks,%a3
-	cmp.l _LastTicks.l,%a3
+	move.l 8(%fp),%d4
+	move.l 12(%fp),%d3
+	move.w raptor_ticks,%d2
+	ext.l %d2
+	cmp.l _LastTicks.l,%d2
 	jle .L6
 	move.l sprite,%a2
-	move.l #___floatsisf,%d4
+	lea ___floatsisf,%a5
 	move.w 3080(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l #___addsf3,%d3
-	move.l #0x40000000,(%sp)
+	jsr (%a5)
+	lea ___addsf3,%a4
+	move.l #0x3f800000,(%sp)
 	move.l %d0,-(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
+	jsr (%a4)
 	addq.l #8,%sp
-	move.l #___fixsfsi,%d2
+	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
+	jsr (%a3)
 	move.w %d0,3080(%a2)
 	move.w 3272(%a2),%a0
 	move.l %a0,(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l #0x40000000,(%sp)
+	jsr (%a5)
+	move.l #0x3f800000,(%sp)
 	move.l %d0,-(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
+	jsr (%a4)
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
+	jsr (%a3)
 	move.w %d0,3272(%a2)
+	move.w 3464(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,3464(%a2)
+	move.w 3656(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,3656(%a2)
+	move.w 3848(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40400000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,3848(%a2)
+	move.w 4040(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40400000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	addq.l #4,%sp
+	move.w %d0,4040(%a2)
 	tst.b _IsScrollingUp
 	jeq .L8
 	move.l _bgYOffset,%d0
@@ -96,11 +131,13 @@ __Z8bgUpdateP7FighterS0_:
 	jeq .L14
 .L13:
 	move.l _bgYInc,%d0
-	add.w %d0,3468(%a2)
-	add.l %d0,270(%a5)
-	add.l %d0,270(%a4)
+	add.w %d0,4236(%a2)
+	move.l %d4,%a0
+	add.l %d0,270(%a0)
+	move.l %d3,%a0
+	add.l %d0,270(%a0)
 .L14:
-	move.l %a3,_LastTicks
+	move.l %d2,_LastTicks
 .L6:
 	movem.l -28(%fp),#15388
 	unlk %fp
@@ -147,9 +184,11 @@ __Z8bgUpdateP7FighterS0_:
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.l _bgYInc,%d0
-	add.w %d0,3468(%a2)
-	add.l %d0,270(%a5)
-	add.l %d0,270(%a4)
+	add.w %d0,4236(%a2)
+	move.l %d4,%a0
+	add.l %d0,270(%a0)
+	move.l %d3,%a0
+	add.l %d0,270(%a0)
 	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv

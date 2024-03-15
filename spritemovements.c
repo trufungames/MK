@@ -66,8 +66,12 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
 	if (rapTicks >= LastTicks + 1)
 	{
-		sprite[STAGE_PIT_CLOUDS1].x_ += 2.0f;
-		sprite[STAGE_PIT_CLOUDS1+1].x_ += 2.0f;
+		sprite[STAGE_PIT_CLOUDS1].x_ += 1.0f;
+		sprite[STAGE_PIT_CLOUDS1+1].x_ += 1.0f;
+		sprite[STAGE_PIT_CLOUDS1+2].x_ += 2.0f;
+		sprite[STAGE_PIT_CLOUDS1+3].x_ += 2.0f;
+		sprite[STAGE_PIT_CLOUDS1+4].x_ += 3.0f;
+		sprite[STAGE_PIT_CLOUDS1+5].x_ += 3.0f;
 
 		if (IsScrollingUp)
 		{
