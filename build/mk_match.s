@@ -119,10 +119,10 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	cmp.l %d0,%d1
 	jlt .L10
 	move.l sprite,%a0
-	move.l %d0,9688(%a0)
-	move.l %d0,9692(%a0)
-	subq.w #8,9608(%a0)
-	subq.w #4,9612(%a0)
+	move.l %d0,10072(%a0)
+	move.l %d0,10076(%a0)
+	subq.w #8,9992(%a0)
+	subq.w #4,9996(%a0)
 	addq.l #4,%d0
 	move.l %d0,_fightScale
 	moveq #1,%d0
@@ -141,15 +141,15 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 160.w
 	pea 32.w
 	pea 80.w
-	pea 50.w
+	pea 52.w
 	jsr __Z8setFramejiiiifj
 	move.l sprite,%a0
-	move.w #130,9608(%a0)
-	move.w #98,9612(%a0)
+	move.w #130,9992(%a0)
+	move.w #98,9996(%a0)
 	moveq #-1,%d0
-	move.l %d0,9684(%a0)
+	move.l %d0,10068(%a0)
 	moveq #1,%d1
-	move.l %d1,9604(%a0)
+	move.l %d1,9988(%a0)
 	move.w raptor_ticks,%a0
 	move.l %a0,_matchTicks
 	lea (28,%sp),%sp
@@ -205,10 +205,10 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #4,%d2
 	move.l %d2,_matchState
 	move.l sprite,%a0
-	move.w #8,9608(%a0)
-	move.w #64,9612(%a0)
+	move.w #8,9992(%a0)
+	move.w #64,9996(%a0)
 	moveq #-1,%d0
-	move.l %d0,9684(%a0)
+	move.l %d0,10068(%a0)
 	move.w raptor_ticks,%a0
 	move.l %a0,_matchTicks
 	moveq #7,%d0
@@ -235,7 +235,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L47:
 	move.l sprite,%a1
 	moveq #1,%d1
-	move.l %d1,9604(%a1)
+	move.l %d1,9988(%a1)
 	move.w raptor_ticks,%a0
 	moveq #59,%d0
 	add.l _matchTicks,%d0
@@ -244,7 +244,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #5,%d2
 	move.l %d2,_matchState
 	moveq #-1,%d0
-	move.l %d0,9604(%a1)
+	move.l %d0,9988(%a1)
 	move.l %a0,_matchTicks
 	moveq #1,%d0
 	movem.l -16(%fp),#7172
@@ -271,16 +271,16 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	clr.l -(%sp)
 	pea 48.w
 	pea 160.w
-	pea 50.w
+	pea 52.w
 	jsr __Z8setFramejiiiifj
 	move.l sprite,%a0
-	move.w #160,9608(%a0)
-	move.w #98,9612(%a0)
+	move.w #160,9992(%a0)
+	move.w #98,9996(%a0)
 	moveq #1,%d2
-	move.l %d2,9684(%a0)
+	move.l %d2,10068(%a0)
 	move.l _fightScale,%d0
-	move.l %d0,9688(%a0)
-	move.l %d0,9692(%a0)
+	move.l %d0,10072(%a0)
+	move.l %d0,10076(%a0)
 	lea (28,%sp),%sp
 	jra .L8
 .L79:
@@ -360,7 +360,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L32:
 	move.l sprite,%a0
 	moveq #1,%d2
-	move.l %d2,9604(%a0)
+	move.l %d2,9988(%a0)
 	move.w raptor_ticks,%a0
 	move.l _matchTicks,%d0
 	add.l #360,%d0
@@ -546,10 +546,10 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (20,%sp),%sp
 	move.l sprite,%a0
 	jle .L11
-	move.l %d0,9688(%a0)
-	move.l %d0,9692(%a0)
-	addq.w #8,9608(%a0)
-	addq.w #4,9612(%a0)
+	move.l %d0,10072(%a0)
+	move.l %d0,10076(%a0)
+	addq.w #8,9992(%a0)
+	addq.w #4,9996(%a0)
 	subq.l #4,%d0
 	move.l %d0,_fightScale
 	moveq #1,%d0
@@ -560,10 +560,10 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #3,%d0
 	move.l %d0,_matchState
 	move.l sprite,%a0
-	move.w #64,9608(%a0)
-	move.w #48,9612(%a0)
+	move.w #64,9992(%a0)
+	move.w #48,9996(%a0)
 	moveq #-1,%d1
-	move.l %d1,9684(%a0)
+	move.l %d1,10068(%a0)
 	move.w raptor_ticks,%a0
 	move.l %a0,_matchTicks
 	move.l %a0,_winsTicks
@@ -606,7 +606,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	rts
 .L11:
 	moveq #-1,%d1
-	move.l %d1,9604(%a0)
+	move.l %d1,9988(%a0)
 	move.b #1,187(%a2)
 	move.b #1,187(%a3)
 	moveq #2,%d2
@@ -696,7 +696,7 @@ sprite:
 	.long	RAPTOR_sprite_table
 	.even
 __ZL13fightAnimator:
-	.long	50
+	.long	52
 	.long	1056964608
 	.long	12254032
 	.long	0
