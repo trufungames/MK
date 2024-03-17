@@ -138,6 +138,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameBodyPunch;
     struct ImpactFrame* impactFrameBodyKick;
     struct ImpactFrame* impactFrameDuckKick;
+    struct ImpactFrame* impactFrameThrow;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*dizzyFrames)[7];
     struct AnimationFrame (*winsFrames)[15];
@@ -169,6 +170,8 @@ struct Fighter {
     struct AnimationFrame (*bodyPunchFrames)[5];
     struct AnimationFrame (*bodyKickFrames)[5];
     struct AnimationFrame (*duckKickFrames)[5];
+    struct AnimationFrame (*throwFrames)[8];
+    struct AnimationFrame (*beingThrownFrames)[6];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -177,7 +180,7 @@ void fighterShow(struct Fighter* fighter);
 
 void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1);
 
-void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse, struct ImpactFrame* impactFrameBodyPunch, struct ImpactFrame* impactFrameBodyKick, struct ImpactFrame* impactFrameDuckKick);
+void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse, struct ImpactFrame* impactFrameBodyPunch, struct ImpactFrame* impactFrameBodyKick, struct ImpactFrame* impactFrameDuckKick, struct ImpactFrame* impactFrameThrow);
 
 void fighterRestartMatch(struct Fighter* fighter);
 

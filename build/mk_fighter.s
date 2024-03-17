@@ -169,8 +169,8 @@ __Z21fighterMakeSelectableP7Fighterb:
 	unlk %fp
 	rts
 	.even
-	.globl	__Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_
-__Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_:
+	.globl	__Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_
+__Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_:
 	link.w %fp,#0
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%a0
@@ -193,6 +193,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.l 56(%fp),358(%a0)
 	move.l 60(%fp),362(%a0)
 	move.l 64(%fp),366(%a0)
+	move.l 68(%fp),370(%a0)
 	clr.l 208(%a0)
 	move.l #0x40000000,216(%a0)
 	move.l #0x40000000,220(%a0)
@@ -682,7 +683,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 112(%a2),-(%sp)
-	move.l 450(%a2),-(%sp)
+	move.l 454(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -718,7 +719,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 120(%a2),-(%sp)
-	move.l 458(%a2),-(%sp)
+	move.l 462(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -826,7 +827,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 120(%a2),-(%sp)
-	move.l 458(%a2),-(%sp)
+	move.l 462(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -930,7 +931,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 124(%a2),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -958,7 +959,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 112(%a2),-(%sp)
-	move.l 450(%a2),-(%sp)
+	move.l 454(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -980,7 +981,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 116(%a2),-(%sp)
-	move.l 454(%a2),-(%sp)
+	move.l 458(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -1053,7 +1054,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 120(%a2),-(%sp)
-	move.l 458(%a2),-(%sp)
+	move.l 462(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -1138,7 +1139,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 88(%a2),-(%sp)
-	move.l 470(%a2),-(%sp)
+	move.l 474(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -1182,7 +1183,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 128(%a2),-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 470(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -1270,7 +1271,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 120(%a2),-(%sp)
-	move.l 458(%a2),-(%sp)
+	move.l 462(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -1450,7 +1451,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	clr.l -(%sp)
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1545,7 +1546,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	pea 6.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1582,7 +1583,7 @@ __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	pea 5.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -2456,7 +2457,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 64(%a2),-(%sp)
-	move.l 422(%a2),-(%sp)
+	move.l 426(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2468,7 +2469,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 84(%a2),-(%sp)
-	move.l 446(%a2),-(%sp)
+	move.l 450(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2511,7 +2512,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 100(%a2),-(%sp)
-	move.l 482(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2563,7 +2564,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 64(%a2),-(%sp)
-	move.l 422(%a2),-(%sp)
+	move.l 426(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2639,7 +2640,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 60(%a2),-(%sp)
-	move.l 418(%a2),-(%sp)
+	move.l 422(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2668,7 +2669,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 100(%a2),-(%sp)
-	move.l 482(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2718,7 +2719,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 92(%a2),-(%sp)
-	move.l 474(%a2),-(%sp)
+	move.l 478(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2742,7 +2743,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 60(%a2),-(%sp)
-	move.l 418(%a2),-(%sp)
+	move.l 422(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2817,7 +2818,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 104(%a2),-(%sp)
-	move.l 486(%a2),-(%sp)
+	move.l 490(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2842,7 +2843,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 96(%a2),-(%sp)
-	move.l 478(%a2),-(%sp)
+	move.l 482(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2895,7 +2896,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 92(%a2),-(%sp)
-	move.l 474(%a2),-(%sp)
+	move.l 478(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2930,7 +2931,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 96(%a2),-(%sp)
-	move.l 478(%a2),-(%sp)
+	move.l 482(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2955,7 +2956,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 72(%a2),-(%sp)
-	move.l 430(%a2),-(%sp)
+	move.l 434(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -2998,7 +2999,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 72(%a2),-(%sp)
-	move.l 430(%a2),-(%sp)
+	move.l 434(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3010,7 +3011,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 446(%a2),-(%sp)
+	move.l 450(%a2),-(%sp)
 	pea 3.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -3088,7 +3089,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 68(%a2),-(%sp)
-	move.l 426(%a2),-(%sp)
+	move.l 430(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3113,7 +3114,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 104(%a2),-(%sp)
-	move.l 486(%a2),-(%sp)
+	move.l 490(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3152,7 +3153,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 108(%a2),-(%sp)
-	move.l 490(%a2),-(%sp)
+	move.l 494(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3242,7 +3243,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 52(%a2),-(%sp)
-	move.l 410(%a2),-(%sp)
+	move.l 414(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3270,7 +3271,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 108(%a2),-(%sp)
-	move.l 490(%a2),-(%sp)
+	move.l 494(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3294,7 +3295,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 68(%a2),-(%sp)
-	move.l 426(%a2),-(%sp)
+	move.l 430(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3517,7 +3518,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	pea 1.w
 	clr.l -(%sp)
 	move.l 36(%a2),-(%sp)
-	move.l 394(%a2),-(%sp)
+	move.l 398(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3540,7 +3541,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 32(%a2),-(%sp)
-	move.l 390(%a2),-(%sp)
+	move.l 394(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -3769,7 +3770,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 32(%a2),-(%sp)
-	move.l 390(%a2),-(%sp)
+	move.l 394(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -3824,7 +3825,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	and.l #255,%d2
 	move.l %d2,-(%sp)
 	move.l 24(%a2),-(%sp)
-	move.l 382(%a2),-(%sp)
+	move.l 386(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	move.b #1,138(%a2)
@@ -3881,7 +3882,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -3894,7 +3895,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 76(%a2),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3922,7 +3923,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 .L586:
 	move.l 36(%a2),-(%sp)
-	move.l 394(%a2),-(%sp)
+	move.l 398(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3958,7 +3959,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 56(%a2),-(%sp)
-	move.l 414(%a2),-(%sp)
+	move.l 418(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -3984,7 +3985,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 44(%a2),-(%sp)
-	move.l 402(%a2),-(%sp)
+	move.l 406(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -3996,7 +3997,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4009,7 +4010,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 76(%a2),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4023,7 +4024,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 48(%a2),-(%sp)
-	move.l 406(%a2),-(%sp)
+	move.l 410(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (28,%sp),%sp
@@ -4036,7 +4037,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 442(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4049,7 +4050,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 80(%a2),-(%sp)
-	move.l 442(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4070,7 +4071,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	pea 1.w
 	pea 1.w
 	move.l 36(%a2),-(%sp)
-	move.l 394(%a2),-(%sp)
+	move.l 398(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4109,7 +4110,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	and.l #255,%d0
 	move.l %d0,-(%sp)
 	move.l 24(%a2),-(%sp)
-	move.l 382(%a2),-(%sp)
+	move.l 386(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	move.b #1,138(%a2)
@@ -4165,7 +4166,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 40(%a2),-(%sp)
-	move.l 398(%a2),-(%sp)
+	move.l 402(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4343,7 +4344,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 390(%a2),-(%sp)
+	move.l 394(%a2),-(%sp)
 	pea 1.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4381,7 +4382,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 32(%a2),-(%sp)
-	move.l 390(%a2),-(%sp)
+	move.l 394(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4399,7 +4400,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 438(%a2),-(%sp)
+	move.l 442(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4412,7 +4413,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 80(%a2),-(%sp)
-	move.l 438(%a2),-(%sp)
+	move.l 442(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4426,7 +4427,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 442(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4456,7 +4457,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 80(%a2),-(%sp)
-	move.l 442(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4470,7 +4471,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 76(%a2),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4484,7 +4485,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	move.l 20(%a3),-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 434(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4515,7 +4516,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	pea 1.w
 	pea 1.w
 	move.l 12(%a2),-(%sp)
-	move.l 370(%a2),-(%sp)
+	move.l 374(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4527,7 +4528,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	clr.l -(%sp)
 	move.l 44(%a2),-(%sp)
-	move.l 402(%a2),-(%sp)
+	move.l 406(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4542,7 +4543,7 @@ __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb:
 	clr.l -(%sp)
 	clr.l -(%sp)
 	move.l 40(%a2),-(%sp)
-	move.l 398(%a2),-(%sp)
+	move.l 402(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4634,7 +4635,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 .L657:
 	move.l 28(%a2),-(%sp)
-	move.l 386(%a2),-(%sp)
+	move.l 390(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4725,7 +4726,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	pea 1.w
 	pea 1.w
 	move.l 16(%a2),-(%sp)
-	move.l 374(%a2),-(%sp)
+	move.l 378(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4834,7 +4835,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 124(%a2),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4859,7 +4860,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 20(%a2),-(%sp)
-	move.l 378(%a2),-(%sp)
+	move.l 382(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4879,7 +4880,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 124(%a2),-(%sp)
-	move.l 462(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
@@ -4943,7 +4944,7 @@ __Z13fighterUpdatefP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	pea 1.w
 	move.l 28(%a2),-(%sp)
-	move.l 386(%a2),-(%sp)
+	move.l 390(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
 	lea (32,%sp),%sp
