@@ -179,7 +179,13 @@
 #define kano_yell_sam_end 0xC206EC
 #define kano_headbutt_sam 0xC206F0
 #define kano_headbutt_sam_end 0xC215F3
-#define MOD_TITLE 0xC21600
-#define MOD_TITLE_end 0xC37548
-#define MOD_STAGE 0xC37550
-#define MOD_STAGE_end 0xC45AC4
+#define throw_male_sam 0xC21600
+#define throw_male_sam_end 0xC24009
+#define throw_female_sam 0xC24010
+#define throw_female_sam_end 0xC25FD0
+#define throw_ninja_sam 0xC25FD0
+#define throw_ninja_sam_end 0xC2753D
+#define MOD_TITLE 0xC27540
+#define MOD_TITLE_end 0xC3D488
+#define MOD_STAGE 0xC3D490
+#define MOD_STAGE_end 0xC4BA04

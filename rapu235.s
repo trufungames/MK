@@ -498,4 +498,32 @@ sample53:	dc.l	kano_headbutt_sam		; start of sample
 s53_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
+
+sample54:	dc.l	throw_male_sam		; start of sample
+			dc.l	throw_male_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s54_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample55:	dc.l	throw_female_sam		; start of sample
+			dc.l	throw_female_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s55_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample56:	dc.l	throw_ninja_sam		; start of sample
+			dc.l	throw_ninja_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s56_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

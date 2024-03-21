@@ -27,6 +27,8 @@ struct Fighter {
     unsigned int BODY_PUNCH_FRAME_COUNT;
     unsigned int BODY_KICK_FRAME_COUNT;
     unsigned int DUCK_KICK_FRAME_COUNT;
+    unsigned int THROW_FRAME_COUNT;
+    unsigned int BEING_THROWN_FRAME_COUNT;
     unsigned int HIT_LOW_FRAME_COUNT;
     unsigned int HIT_HIGH_FRAME_COUNT;
     unsigned int HIT_BACK_FRAME_COUNT;
@@ -77,6 +79,10 @@ struct Fighter {
     bool IsBeingDamaged;
     bool IsPushing;
     bool IsTurning;
+    bool IsThrowing;
+    bool IsBeingThrown;
+    bool IsBeingThrownInAir;
+    bool IsClose;
     bool IsActive;
     bool IsDizzy;
     bool IsDefeated;
@@ -85,6 +91,9 @@ struct Fighter {
     bool DoUppercutSequence;
     bool DoDefeatedSequence;
     bool DoWinSequence;
+    bool DoThrowSequence;
+    int ThrowX;
+    int ThrowY;
     bool AcceptingInput;
     bool MadeContactUppercut;
     bool MadeContact;
@@ -101,6 +110,7 @@ struct Fighter {
     float playerKnockbackSpeed;
     float playerUppercutXSpeed;
     float playerDropKickXSpeed;
+    float playerThrowXSpeed;
     float playerJumpXSpeed;
     float playerXTraveled;
     float playerPushSpeed;
@@ -124,6 +134,7 @@ struct Fighter {
     float jumpMomentumYStart;
     float uppercutMomentumYStart;
     float dropKickMomentemYStart;
+    float throwMomentemYStart;
     int roundsLost;
     bool hasRoomToMove;
     struct ImpactFrame* impactFrameLowPunch;
@@ -209,6 +220,8 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2);
 void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen);
 

@@ -84,7 +84,7 @@ struct ImpactFrame cageImpactFrameBodyPunch = {
 };
 
 struct ImpactFrame cageImpactFrameBodyKick = {
-	2, 0, 30
+	2, 20, 30
 };
 
 struct ImpactFrame cageImpactFrameDuckKick = {
@@ -92,27 +92,27 @@ struct ImpactFrame cageImpactFrameDuckKick = {
 };
 
 struct ImpactFrame cageImpactFrameThrow = {
-	2, 0, 30
+	1, 20, 30
 };
 
 static AnimationFrame cageThrowFrames[] = {
-	{ 80, 112, 752, 640, 0, 0, 4},
-	{ 80, 80, 832, 624, 0, 32, 4},
-	{ 64, 96, 912, 656, 0, 16, 4},
-	{ 64, 112, 0, 736, 0, 0, 4},
-	{ 96, 96, 64, 752, -28, 16, 4},
-	{ 80, 80, 160, 736, -13, 32, 4},
-	{ 80, 96, 240, 736, -14, 16, 4},
-	{ 80, 96, 240, 736, -14, 16, 4}
+	{ 80, 112, 752, 640, 0, 0, 6},
+	{ 80, 80, 832, 624, 0, 32, 6},
+	{ 64, 96, 912, 656, 0, 16, 6},
+	{ 64, 112, 0, 736, 0, 0, 6},
+	{ 96, 96, 64, 752, -28, 16, 6},
+	{ 80, 80, 160, 736, -13, 32, 6},
+	{ 80, 96, 240, 736, -14, 16, 6},
+	{ 80, 96, 240, 736, -14, 16, 6}
 };
 
 static AnimationFrame cageBeingThrownFrames[] = {
-	{ 64, 80, 320, 672, 0, 0, 8},
-	{ 64, 64, 384, 704, 0, 0, 8},
+	{ 64, 80, 320, 672, -30, 0, 12},
+	{ 64, 64, 384, 704, 10, 0, 12},
 	{ 64, 48, 448, 704, 0, 0, 32},
-	{ 80, 80, 816, 448, 0, 32, 4},
-	{ 96, 48, 656, 1072, 0, 64, 4},
-	{ 96, 48, 656, 1072, 0, 64, 4}
+	{ 80, 80, 816, 448, 0, 32, 6},
+	{ 96, 48, 656, 1072, 0, 64, 6},
+	{ 96, 48, 656, 1072, 0, 64, 6}
 };
 
 static AnimationFrame cageBodyPunchFrames[] = {
@@ -399,7 +399,7 @@ struct ImpactFrame kangImpactFrameBodyPunch = {
 };
 
 struct ImpactFrame kangImpactFrameBodyKick = {
-	2, 0, 30
+	2, 20, 30
 };
 
 struct ImpactFrame kangImpactFrameDuckKick = {
@@ -412,6 +412,30 @@ static SpriteAnimator kangAnimator = {
 
 static SpriteAnimator kangAnimator2 = {
 	P2_FIGHTER, 0.5f, BMPKANG, 0, 0, 48
+};
+
+struct ImpactFrame kangImpactFrameThrow = {
+	1, 20, 30
+};
+
+static AnimationFrame kangThrowFrames[] = {
+	{ 80, 96, 704, 688, 0, 16, 6},
+	{ 80, 80, 784, 688, 0, 32, 6},
+	{ 80, 96, 864, 688, 0, 16, 6},
+	{ 64, 112, 944, 688, 0, 0, 6},
+	{ 64, 128, 0, 752, 0, -16, 6},
+	{ 64, 112, 64, 768, -5, 0, 6},
+	{ 80, 96, 128, 768, -15, 16, 6},
+	{ 80, 96, 128, 768, -15, 16, 6}
+};
+
+static AnimationFrame kangBeingThrownFrames[] = {
+	{ 64, 80, 208, 800, -40, 0, 12},
+	{ 80, 64, 272, 832, -20, 0, 12},
+	{ 64, 80, 352, 848, 0, 0, 32},
+	{ 64, 80, 416, 848, 0, 0, 6},
+	{ 96, 32, 272, 1040, 0, 80, 6},
+	{ 96, 32, 272, 1040, 0, 80, 6}
 };
 
 static AnimationFrame kangBodyPunchFrames[] = {
@@ -690,7 +714,7 @@ struct ImpactFrame raidenImpactFrameBodyPunch = {
 	2, 10, 30
 };
 struct ImpactFrame raidenImpactFrameBodyKick = {
-	2, 10, 30
+	2, 20, 30
 };
 struct ImpactFrame raidenImpactFrameDuckKick = {
 	2, 40, 30
@@ -707,6 +731,30 @@ static SpriteAnimator raidenAnimator = {
 
 static SpriteAnimator raidenAnimator2 = {
 	P2_FIGHTER, 0.5f, BMPRAIDEN, 0, 0, 48
+};
+
+struct ImpactFrame raidenImpactFrameThrow = {
+	1, 20, 30
+};
+
+static AnimationFrame raidenThrowFrames[] = {
+	{ 64, 112, 384, 240, 0, 0, 6},
+	{ 96, 96, 448, 240, 0, 16, 6},
+	{ 96, 112, 544, 240, 0, 0, 6},
+	{ 80, 112, 640, 224, 0, 0, 6},
+	{ 96, 96, 720, 304, -18, 16, 6},
+	{ 112, 80, 816, 304, -29, 32, 6},
+	{ 96, 96, 720, 304, -18, 16, 6},
+	{ 96, 96, 720, 304, -18, 16, 6}
+};
+
+static AnimationFrame raidenBeingThrownFrames[] = {
+	{ 64, 80, 928, 288, -40, 0, 12},
+	{ 80, 80, 928, 368, -20, 0, 12},
+	{ 80, 80, 0, 400, 0, 0, 32},
+	{ 80, 64, 496, 880, 0, 48, 6},
+	{ 96, 32, 832, 1008, 0, 80, 6},
+	{ 96, 32, 832, 1008, 0, 80, 6}
 };
 
 static AnimationFrame raidenBodyPunchFrames[] = {
@@ -985,7 +1033,7 @@ struct ImpactFrame subzeroImpactFrameBodyPunch = {
 	2, 10, 30
 };
 struct ImpactFrame subzeroImpactFrameBodyKick = {
-	2, 10, 30
+	2, 20, 30
 };
 struct ImpactFrame subzeroImpactFrameDuckKick = {
 	2, 40, 30
@@ -1002,6 +1050,30 @@ static SpriteAnimator subzeroAnimator = {
 
 static SpriteAnimator subzeroAnimator2 = {
 	P2_FIGHTER, 0.5f, BMPSUBZERO, 0, 0, 48
+};
+
+struct ImpactFrame subzeroImpactFrameThrow = {
+	1, 20, 30
+};
+
+static AnimationFrame subzeroThrowFrames[] = {
+	{ 64, 112, 240, 688, 0, 0, 6},
+	{ 96, 112, 304, 688, 0, 0, 6},
+	{ 64, 80, 400, 704, 0, 32, 6},
+	{ 64, 48, 656, 672, 0, 64, 6},
+	{ 80, 64, 480, 688, 0, 48, 6},
+	{ 96, 80, 560, 688, 0, 32, 6},
+	{ 96, 80, 560, 688, 0, 32, 6},
+	{ 0, 0, 0, 0, 0, 0, 0}
+};
+
+static AnimationFrame subzeroBeingThrownFrames[] = {
+	{ 64, 80, 208, 800, -40, 0, 12},
+	{ 80, 64, 272, 832, -20, 0, 12},
+	{ 64, 80, 352, 848, 0, 0, 32},
+	{ 64, 80, 416, 848, 0, 0, 6},
+	{ 96, 32, 272, 1040, 0, 80, 6},
+	{ 96, 32, 272, 1040, 0, 80, 6}
 };
 
 static AnimationFrame subzeroBodyPunchFrames[] = {
@@ -1281,7 +1353,7 @@ struct ImpactFrame sonyaImpactFrameBodyPunch = {
 	2, 10, 30
 };
 struct ImpactFrame sonyaImpactFrameBodyKick = {
-	2, 10, 30
+	2, 20, 30
 };
 struct ImpactFrame sonyaImpactFrameDuckKick = {
 	2, 40, 30
@@ -1622,7 +1694,7 @@ struct ImpactFrame kanoImpactFrameBodyPunch = {
 };
 
 struct ImpactFrame kanoImpactFrameBodyKick = {
-	2, 10, 30
+	2, 20, 30
 };
 
 struct ImpactFrame kanoImpactFrameDuckKick = {
@@ -1634,6 +1706,30 @@ struct ImpactFrame kanoImpactFrameJumpPunch = {
 };
 struct ImpactFrame kanoImpactFrameJumpKick = {
 	1, 56, 46
+};
+
+struct ImpactFrame kanoImpactFrameThrow = {
+	1, 20, 30
+};
+
+static AnimationFrame kanoThrowFrames[] = {
+	{ 64, 112, 688, 736, 0, 0, 6},
+	{ 112, 96, 752, 736, 0, 16, 6},
+	{ 80, 112, 864, 704, 0, 0, 6},
+	{ 80, 128, 944, 736, 0, -16, 6},	
+	{ 96, 80, 0, 832, -28, 32, 6},
+	{ 80, 64, 96, 848, -17, 48, 6},
+	{ 80, 64, 96, 848, -17, 48, 6},
+	{ 0, 0, 0, 0, 0, 0, 0}
+};
+
+static AnimationFrame kanoBeingThrownFrames[] = {
+	{ 80, 80, 0, 752, -40, 0, 12},
+	{ 80, 64, 80, 768, -20, 0, 12},
+	{ 48, 80, 160, 768, 0, 0, 32},
+	{ 80, 80, 208, 720, 0, 32, 6},
+	{ 96, 32, 752, 1072, 0, 80, 6},
+	{ 96, 32, 752, 1072, 0, 80, 6}
 };
 
 static AnimationFrame kanoBodyPunchFrames[] = {
@@ -1973,6 +2069,8 @@ static Fighter fighterScorpion = {
 	SUBZERO_BODY_PUNCH_FRAME_COUNT,
 	SUBZERO_BODY_KICK_FRAME_COUNT,
 	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -2007,6 +2105,8 @@ static Fighter fighterKano = {
 	KANO_BODY_PUNCH_FRAME_COUNT,
 	KANO_BODY_KICK_FRAME_COUNT,
 	KANO_DUCK_KICK_FRAME_COUNT,
+	KANO_THROW_FRAME_COUNT,
+	KANO_BEING_THROWN_FRAME_COUNT,
 	KANO_HIT_LOW_FRAME_COUNT,
 	KANO_HIT_HIGH_FRAME_COUNT,
 	KANO_HIT_BACK_FRAME_COUNT,
@@ -2041,6 +2141,8 @@ static Fighter fighterCage = {
 	CAGE_BODY_PUNCH_FRAME_COUNT,
 	CAGE_BODY_KICK_FRAME_COUNT,
 	CAGE_DUCK_KICK_FRAME_COUNT,
+	CAGE_THROW_FRAME_COUNT,
+	CAGE_BEING_THROWN_FRAME_COUNT,
 	CAGE_HIT_LOW_FRAME_COUNT,
 	CAGE_HIT_HIGH_FRAME_COUNT,
 	CAGE_HIT_BACK_FRAME_COUNT,
@@ -2075,6 +2177,8 @@ static Fighter fighterKang = {
 	KANG_BODY_PUNCH_FRAME_COUNT,
 	KANG_BODY_KICK_FRAME_COUNT,
 	KANG_DUCK_KICK_FRAME_COUNT,
+	KANG_THROW_FRAME_COUNT,
+	KANG_BEING_THROWN_FRAME_COUNT,
 	KANG_HIT_LOW_FRAME_COUNT,
 	KANG_HIT_HIGH_FRAME_COUNT,
 	KANG_HIT_BACK_FRAME_COUNT,
@@ -2109,6 +2213,8 @@ static Fighter fighterRaiden = {
 	RAIDEN_BODY_PUNCH_FRAME_COUNT,
 	RAIDEN_BODY_KICK_FRAME_COUNT,
 	RAIDEN_DUCK_KICK_FRAME_COUNT,
+	RAIDEN_THROW_FRAME_COUNT,
+	RAIDEN_BEING_THROWN_FRAME_COUNT,
 	RAIDEN_HIT_LOW_FRAME_COUNT,
 	RAIDEN_HIT_HIGH_FRAME_COUNT,
 	RAIDEN_HIT_BACK_FRAME_COUNT,
@@ -2143,6 +2249,8 @@ static Fighter fighterSubzero = {
 	SUBZERO_BODY_PUNCH_FRAME_COUNT,
 	SUBZERO_BODY_KICK_FRAME_COUNT,
 	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -2177,6 +2285,8 @@ static Fighter fighterSonya = {
 	SONYA_BODY_PUNCH_FRAME_COUNT,
 	SONYA_BODY_KICK_FRAME_COUNT,
 	SONYA_DUCK_KICK_FRAME_COUNT,
+	SONYA_THROW_FRAME_COUNT,
+	SONYA_BEING_THROWN_FRAME_COUNT,
 	SONYA_HIT_LOW_FRAME_COUNT,
 	SONYA_HIT_HIGH_FRAME_COUNT,
 	SONYA_HIT_BACK_FRAME_COUNT,
@@ -2214,6 +2324,8 @@ static Fighter fighterScorpion2 = {
 	SUBZERO_BODY_PUNCH_FRAME_COUNT,
 	SUBZERO_BODY_KICK_FRAME_COUNT,
 	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -2248,6 +2360,8 @@ static Fighter fighterKano2 = {
 	KANO_BODY_PUNCH_FRAME_COUNT,
 	KANO_BODY_KICK_FRAME_COUNT,
 	KANO_DUCK_KICK_FRAME_COUNT,
+	KANO_THROW_FRAME_COUNT,
+	KANO_BEING_THROWN_FRAME_COUNT,
 	KANO_HIT_LOW_FRAME_COUNT,
 	KANO_HIT_HIGH_FRAME_COUNT,
 	KANO_HIT_BACK_FRAME_COUNT,
@@ -2282,6 +2396,8 @@ static Fighter fighterCage2 = {
 	CAGE_BODY_PUNCH_FRAME_COUNT,
 	CAGE_BODY_KICK_FRAME_COUNT,
 	CAGE_DUCK_KICK_FRAME_COUNT,
+	CAGE_THROW_FRAME_COUNT,
+	CAGE_BEING_THROWN_FRAME_COUNT,
 	CAGE_HIT_LOW_FRAME_COUNT,
 	CAGE_HIT_HIGH_FRAME_COUNT,
 	CAGE_HIT_BACK_FRAME_COUNT,
@@ -2316,6 +2432,8 @@ static Fighter fighterKang2 = {
 	KANG_BODY_PUNCH_FRAME_COUNT,
 	KANG_BODY_KICK_FRAME_COUNT,
 	KANG_DUCK_KICK_FRAME_COUNT,
+	KANG_THROW_FRAME_COUNT,
+	KANG_BEING_THROWN_FRAME_COUNT,
 	KANG_HIT_LOW_FRAME_COUNT,
 	KANG_HIT_HIGH_FRAME_COUNT,
 	KANG_HIT_BACK_FRAME_COUNT,
@@ -2350,6 +2468,8 @@ static Fighter fighterRaiden2 = {
 	RAIDEN_BODY_PUNCH_FRAME_COUNT,
 	RAIDEN_BODY_KICK_FRAME_COUNT,
 	RAIDEN_DUCK_KICK_FRAME_COUNT,
+	RAIDEN_THROW_FRAME_COUNT,
+	RAIDEN_BEING_THROWN_FRAME_COUNT,
 	RAIDEN_HIT_LOW_FRAME_COUNT,
 	RAIDEN_HIT_HIGH_FRAME_COUNT,
 	RAIDEN_HIT_BACK_FRAME_COUNT,
@@ -2384,6 +2504,8 @@ static Fighter fighterSubzero2 = {
 	SUBZERO_BODY_PUNCH_FRAME_COUNT,
 	SUBZERO_BODY_KICK_FRAME_COUNT,
 	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
 	SUBZERO_HIT_LOW_FRAME_COUNT,
 	SUBZERO_HIT_HIGH_FRAME_COUNT,
 	SUBZERO_HIT_BACK_FRAME_COUNT,
@@ -2418,6 +2540,8 @@ static Fighter fighterSonya2 = {
 	SONYA_BODY_PUNCH_FRAME_COUNT,
 	SONYA_BODY_KICK_FRAME_COUNT,
 	SONYA_DUCK_KICK_FRAME_COUNT,
+	SONYA_THROW_FRAME_COUNT,
+	SONYA_BEING_THROWN_FRAME_COUNT,
 	SONYA_HIT_LOW_FRAME_COUNT,
 	SONYA_HIT_HIGH_FRAME_COUNT,
 	SONYA_HIT_BACK_FRAME_COUNT,
@@ -2477,6 +2601,7 @@ void basicmain()
 	fighterCage.bodyKickFrames = &cageBodyKickFrames;
 	fighterCage.duckKickFrames = &cageDuckKickFrames;
 	fighterCage.throwFrames = &cageThrowFrames;
+	fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 	fighterCage2.idleFrames = &cageIdleFrames;
 	fighterCage2.dizzyFrames = &cageDizzyFrames;
 	fighterCage2.winsFrames = &cageWinsFrames;
@@ -2509,6 +2634,7 @@ void basicmain()
 	fighterCage2.bodyKickFrames = &cageBodyKickFrames;
 	fighterCage2.duckKickFrames = &cageDuckKickFrames;
 	fighterCage2.throwFrames = &cageThrowFrames;
+	fighterCage2.beingThrownFrames = &cageBeingThrownFrames;
 	//Kano
 	fighterKano.idleFrames = &kanoIdleFrames;
 	fighterKano.dizzyFrames = &kanoDizzyFrames;
@@ -2535,6 +2661,8 @@ void basicmain()
 	fighterKano.bodyPunchFrames = &kanoBodyPunchFrames;
 	fighterKano.bodyKickFrames = &kanoBodyKickFrames;
 	fighterKano.duckKickFrames = &kanoDuckKickFrames;
+	fighterKano.throwFrames = &kanoThrowFrames;
+	fighterKano.beingThrownFrames = &kanoBeingThrownFrames;
 	fighterKano.hitLowFrames = &kanoHitLowFrames;
 	fighterKano.hitHighFrames = &kanoHitHighFrames;
 	fighterKano.hitBackFrames = &kanoHitBackFrames;
@@ -2566,6 +2694,8 @@ void basicmain()
 	fighterKano2.bodyPunchFrames = &kanoBodyPunchFrames;
 	fighterKano2.bodyKickFrames = &kanoBodyKickFrames;
 	fighterKano2.duckKickFrames = &kanoDuckKickFrames;
+	fighterKano2.throwFrames = &kanoThrowFrames;
+	fighterKano2.beingThrownFrames = &kanoBeingThrownFrames;
 	fighterKano2.hitLowFrames = &kanoHitLowFrames;
 	fighterKano2.hitHighFrames = &kanoHitHighFrames;
 	fighterKano2.hitBackFrames = &kanoHitBackFrames;
@@ -2598,6 +2728,8 @@ void basicmain()
 	fighterRaiden.bodyPunchFrames = &raidenBodyPunchFrames;
 	fighterRaiden.bodyKickFrames = &raidenBodyKickFrames;
 	fighterRaiden.duckKickFrames = &raidenDuckKickFrames;
+	fighterRaiden.throwFrames = &raidenThrowFrames;
+	fighterRaiden.beingThrownFrames = &raidenBeingThrownFrames;
 	fighterRaiden.kipUpFrames = &raidenKipUpFrames;
 	fighterRaiden.hitLowFrames = &raidenHitLowFrames;
 	fighterRaiden.hitHighFrames = &raidenHitHighFrames;
@@ -2629,6 +2761,8 @@ void basicmain()
 	fighterRaiden2.bodyPunchFrames = &raidenBodyPunchFrames;
 	fighterRaiden2.bodyKickFrames = &raidenBodyKickFrames;
 	fighterRaiden2.duckKickFrames = &raidenDuckKickFrames;
+	fighterRaiden2.throwFrames = &raidenThrowFrames;
+	fighterRaiden2.beingThrownFrames = &raidenBeingThrownFrames;
 	fighterRaiden2.kipUpFrames = &raidenKipUpFrames;
 	fighterRaiden2.hitLowFrames = &raidenHitLowFrames;
 	fighterRaiden2.hitHighFrames = &raidenHitHighFrames;
@@ -2662,6 +2796,8 @@ void basicmain()
 	fighterKang.bodyPunchFrames = &kangBodyPunchFrames;
 	fighterKang.bodyKickFrames = &kangBodyKickFrames;
 	fighterKang.duckKickFrames = &kangDuckKickFrames;
+	fighterKang.throwFrames = &kangThrowFrames;
+	fighterKang.beingThrownFrames = &kangBeingThrownFrames;
 	fighterKang.hitLowFrames = &kangHitLowFrames;
 	fighterKang.hitHighFrames = &kangHitHighFrames;
 	fighterKang.hitBackFrames = &kangHitBackFrames;
@@ -2693,6 +2829,8 @@ void basicmain()
 	fighterKang2.bodyPunchFrames = &kangBodyPunchFrames;
 	fighterKang2.bodyKickFrames = &kangBodyKickFrames;
 	fighterKang2.duckKickFrames = &kangDuckKickFrames;
+	fighterKang2.throwFrames = &kangThrowFrames;
+	fighterKang2.beingThrownFrames = &kangBeingThrownFrames;
 	fighterKang2.hitLowFrames = &kangHitLowFrames;
 	fighterKang2.hitHighFrames = &kangHitHighFrames;
 	fighterKang2.hitBackFrames = &kangHitBackFrames;
@@ -2725,6 +2863,8 @@ void basicmain()
 	fighterScorpion.bodyPunchFrames = &subzeroBodyPunchFrames;
 	fighterScorpion.bodyKickFrames = &subzeroBodyKickFrames;
 	fighterScorpion.duckKickFrames = &subzeroDuckKickFrames;
+	fighterScorpion.throwFrames = &subzeroThrowFrames;
+	fighterScorpion.beingThrownFrames = &subzeroBeingThrownFrames;
 	fighterScorpion.hitLowFrames = &subzeroHitLowFrames;
 	fighterScorpion.hitHighFrames = &subzeroHitHighFrames;
 	fighterScorpion.hitBackFrames = &subzeroHitBackFrames;
@@ -2756,6 +2896,8 @@ void basicmain()
 	fighterScorpion2.bodyPunchFrames = &subzeroBodyPunchFrames;
 	fighterScorpion2.bodyKickFrames = &subzeroBodyKickFrames;
 	fighterScorpion2.duckKickFrames = &subzeroDuckKickFrames;
+	fighterScorpion2.throwFrames = &subzeroThrowFrames;
+	fighterScorpion2.beingThrownFrames = &subzeroBeingThrownFrames;
 	fighterScorpion2.hitLowFrames = &subzeroHitLowFrames;
 	fighterScorpion2.hitHighFrames = &subzeroHitHighFrames;
 	fighterScorpion2.hitBackFrames = &subzeroHitBackFrames;
@@ -2788,6 +2930,8 @@ void basicmain()
 	fighterSubzero.bodyPunchFrames = &subzeroBodyPunchFrames;
 	fighterSubzero.bodyKickFrames = &subzeroBodyKickFrames;
 	fighterSubzero.duckKickFrames = &subzeroDuckKickFrames;
+	fighterSubzero.throwFrames = &subzeroThrowFrames;
+	fighterSubzero.beingThrownFrames = &subzeroBeingThrownFrames;
 	fighterSubzero.hitLowFrames = &subzeroHitLowFrames;
 	fighterSubzero.hitHighFrames = &subzeroHitHighFrames;
 	fighterSubzero.hitBackFrames = &subzeroHitBackFrames;
@@ -2816,9 +2960,11 @@ void basicmain()
 	fighterSubzero2.kipUpFrames = &subzeroKipUpFrames;
 	fighterSubzero2.sweepFrames = &subzeroSweepFrames;
 	fighterSubzero2.roundhouseFrames = &subzeroRoundhouseFrames;
-	fighterScorpion.bodyPunchFrames = &subzeroBodyPunchFrames;
-	fighterScorpion.bodyKickFrames = &subzeroBodyKickFrames;
-	fighterScorpion.duckKickFrames = &subzeroDuckKickFrames;
+	fighterSubzero2.bodyPunchFrames = &subzeroBodyPunchFrames;
+	fighterSubzero2.bodyKickFrames = &subzeroBodyKickFrames;
+	fighterSubzero2.duckKickFrames = &subzeroDuckKickFrames;
+	fighterSubzero2.throwFrames = &subzeroThrowFrames;
+	fighterSubzero2.beingThrownFrames = &subzeroBeingThrownFrames;
 	fighterSubzero2.hitLowFrames = &subzeroHitLowFrames;
 	fighterSubzero2.hitHighFrames = &subzeroHitHighFrames;
 	fighterSubzero2.hitBackFrames = &subzeroHitBackFrames;
@@ -3379,7 +3525,8 @@ void basicmain()
 			fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
 			fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
 			fighterTurnCheck(fighter1Ptr, fighter2Ptr);
-			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
+			fighterCloseCheck(fighter1Ptr, fighter2Ptr);
+			fighterImpactCheck(fighter1Ptr, fighter2Ptr);			
 			bgUpdate(fighter1Ptr, fighter2Ptr);
 
 			//if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
@@ -3425,7 +3572,7 @@ void basicmain()
 				js_r_textbuffer = ee_printf("%d",sprite[fighter1Ptr->spriteIndex].y_);
 				rapPrint();
 				rapLocate(10, 100);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->hasRoomToMove);
+				js_r_textbuffer = ee_printf("%d",fighter1Ptr->IsClose);
 				rapPrint();
 
 				rapLocate(290, 60);
@@ -3441,7 +3588,7 @@ void basicmain()
 				js_r_textbuffer = ee_printf("%d",sprite[fighter2Ptr->spriteIndex].y_);
 				rapPrint();
 				rapLocate(290, 100);
-				js_r_textbuffer = ee_printf("%d", fighter2Ptr->hasRoomToMove);
+				js_r_textbuffer = ee_printf("%d", fighter2Ptr->IsClose);
 				rapPrint();
 			}
 		}
@@ -3662,7 +3809,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
 			fighterKano.spriteIndex = P1_FIGHTER_PIT;
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &kanoImpactFrameThrow);
 			fighterShow(&fighterKano);
 			setPlayer1Name((char*)"KANO");
 			break;
@@ -3671,7 +3818,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),14,16);
 			fighterSubzero.spriteIndex = P1_FIGHTER_PIT;
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
 			fighterShow(&fighterSubzero);
 			setPlayer1Name((char*)"SUB-ZERO");
 			break;
@@ -3690,7 +3837,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
 			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
-			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &raidenImpactFrameThrow);
 			fighterShow(&fighterRaiden);
 			setPlayer1Name((char*)"RAIDEN");
 			break;
@@ -3699,7 +3846,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),14,16);
 			fighterKang.spriteIndex = P1_FIGHTER_PIT;
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &kangImpactFrameThrow);
 			fighterShow(&fighterKang);
 			setPlayer1Name((char*)"LIU KANG");
 			break;
@@ -3708,7 +3855,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),14,16);
 			fighterScorpion.spriteIndex = P1_FIGHTER_PIT;
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
-			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
 			fighterShow(&fighterScorpion);
 			setPlayer1Name((char*)"SCORPION");
 			break;
@@ -3730,7 +3877,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
 			fighterKano2.spriteIndex = P2_FIGHTER_PIT;
 			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &kanoImpactFrameThrow);
 			fighterShow(&fighterKano2);
 			setPlayer2Name((char*)"KANO", 4);
 			break;
@@ -3739,7 +3886,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
 			fighterSubzero2.spriteIndex = P2_FIGHTER_PIT;
 			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
 			fighterShow(&fighterSubzero2);
 			setPlayer2Name((char*)"SUB-ZERO", 8);
 			break;
@@ -3758,7 +3905,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			//lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
-			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &raidenImpactFrameThrow);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
 			setPlayer2Name((char*)"RAIDEN", 6);
@@ -3768,7 +3915,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
 			fighterKang2.spriteIndex = P2_FIGHTER_PIT;
 			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &kangImpactFrameThrow);
 			fighterShow(&fighterKang2);
 			setPlayer2Name((char*)"LIU KANG", 8);
 			break;
@@ -3777,7 +3924,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
 			fighterScorpion2.spriteIndex = P2_FIGHTER_PIT;
 			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &cageImpactFrameThrow);
+			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
 			fighterShow(&fighterScorpion2);
 			setPlayer2Name((char*)"SCORPION", 8);
 			break;

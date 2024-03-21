@@ -123,6 +123,9 @@ ROM,fatality_sam,sfx_raw8000,ASSETS\SFX\fatality.wav
 ROM,cage_yeah_sam,sfx_raw8000,ASSETS\SFX\cage_yeah.wav
 ROM,kano_yell_sam,sfx_raw8000,ASSETS\SFX\kano_yell.wav
 ROM,kano_headbutt_sam,sfx_raw8000,ASSETS\SFX\kano_headbutt.wav
+ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav
+ROM,throw_female_sam,sfx_raw8000,ASSETS\SFX\throw_female.wav
+ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod

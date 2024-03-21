@@ -179,7 +179,13 @@ kano_yell_sam EQU $C1F070
 kano_yell_sam_end EQU $C206EC
 kano_headbutt_sam EQU $C206F0
 kano_headbutt_sam_end EQU $C215F3
-MOD_TITLE EQU $C21600
-MOD_TITLE_end EQU $C37548
-MOD_STAGE EQU $C37550
-MOD_STAGE_end EQU $C45AC4
+throw_male_sam EQU $C21600
+throw_male_sam_end EQU $C24009
+throw_female_sam EQU $C24010
+throw_female_sam_end EQU $C25FD0
+throw_ninja_sam EQU $C25FD0
+throw_ninja_sam_end EQU $C2753D
+MOD_TITLE EQU $C27540
+MOD_TITLE_end EQU $C3D488
+MOD_STAGE EQU $C3D490
+MOD_STAGE_end EQU $C4BA04

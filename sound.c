@@ -370,6 +370,33 @@ void sfxJumpNinja(struct SoundHandler* soundHandler, bool isPlayer1)
 	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_ninja_sam),(STRPTR(jump_ninja_sam_end)-STRPTR(jump_ninja_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
 }
 
+void sfxThrowMale(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_MALE, 8000);
+	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+}
+
+void sfxThrowFemale(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_FEMALE, 8000);
+	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+}
+
+void sfxThrowNinja(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_NINJA, 8000);
+	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+}
+
 void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)
