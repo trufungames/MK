@@ -1098,18 +1098,28 @@ __Z10musicTitleP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L315
+	jne .L316
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L315:
+.L316:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #12744000,-(%sp)
+	move.l #12738224,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
-	move.l 6(%a2),8(%fp)
+	move.l 6(%a2),%d0
+	jlt .L317
+	asr.l #2,%d0
+	move.l %d0,8(%fp)
+	move.l -4(%fp),%a2
+	unlk %fp
+	jra _u235ModuleVol
+.L317:
+	addq.l #3,%d0
+	asr.l #2,%d0
+	move.l %d0,8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra _u235ModuleVol
@@ -1120,15 +1130,15 @@ __Z10musicStageP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L320
+	jne .L322
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L320:
+.L322:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #12833936,-(%sp)
+	move.l #12828160,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)

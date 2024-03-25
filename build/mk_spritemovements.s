@@ -207,8 +207,8 @@ __Z8bgUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.l _bgYInc,%d0
 	add.w %d0,4620(%a0)
-	add.l %d0,296(%a5)
-	add.l %d0,296(%a4)
+	add.l %d0,298(%a5)
+	add.l %d0,298(%a4)
 .L17:
 	move.l %a2,_LastTicks
 .L6:
@@ -259,8 +259,8 @@ __Z8bgUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.l _bgYInc,%d0
 	add.w %d0,4620(%a0)
-	add.l %d0,296(%a5)
-	add.l %d0,296(%a4)
+	add.l %d0,298(%a5)
+	add.l %d0,298(%a4)
 	jra .L17
 	.even
 	.globl	__Z10bgScrollUpv

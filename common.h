@@ -132,6 +132,7 @@
 #define SHANG 11
 
 //-----------------------------------------------------------------------------------------------------
+#define CHOOSE_FIGHTER_TIME_TOTAL 30*60
 #define MATCH_TIME_TOTAL 99*60
 #define MATCH_TIME_WINS 6*60
 #define MATCH_TIME_FINISH 3*60
@@ -341,7 +342,7 @@
 #define SONYA_BODY_PUNCH_FRAME_COUNT 5
 #define SONYA_BODY_KICK_FRAME_COUNT 5
 #define SONYA_DUCK_KICK_FRAME_COUNT 5
-#define SONYA_THROW_FRAME_COUNT 8
+#define SONYA_THROW_FRAME_COUNT 7
 #define SONYA_BEING_THROWN_FRAME_COUNT 6
 
 #define SONYA_HIT_LOW_FRAME_COUNT 4

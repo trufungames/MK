@@ -128,6 +128,7 @@ ROM,throw_female_sam,sfx_raw8000,ASSETS\SFX\throw_female.wav
 ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
-ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod
+'ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod
+ROM,MOD_STAGE,modfile1,ASSETS\Music\mk21.mod
 ' End of file.
 

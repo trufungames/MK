@@ -82,6 +82,7 @@ struct Fighter {
     bool IsThrowing;
     bool IsBeingThrown;
     bool IsBeingThrownInAir;
+    bool IsBeingThrownLow;
     bool IsClose;
     bool IsActive;
     bool IsDizzy;
@@ -183,6 +184,7 @@ struct Fighter {
     struct AnimationFrame (*duckKickFrames)[5];
     struct AnimationFrame (*throwFrames)[8];
     struct AnimationFrame (*beingThrownFrames)[6];
+    struct AnimationFrame (*beingThrownLowFrames)[6];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -246,3 +248,9 @@ void fighterPositionXAdd(struct Fighter* fighter, int xAdd);
 void fighterCastShadow(struct Fighter* fighter);
 
 void fighterStartUp();
+
+void fighterMakeDizzy(struct Fighter* fighter);
+
+void fighterResetFlags(struct Fighter* fighter);
+
+void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2);

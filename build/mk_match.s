@@ -46,11 +46,11 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	jne .L4
 	move.l _matchTicks,%a0
 	cmp.w #0,%a0
-	jeq .L70
+	jeq .L72
 	lea (119,%a0),%a0
 	move.w raptor_ticks,%a1
 	cmp.l %a0,%a1
-	jle .L66
+	jle .L68
 	moveq #1,%d0
 	move.l %d0,_matchState
 	movem.l -16(%fp),#7172
@@ -59,54 +59,72 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L4:
 	moveq #1,%d1
 	cmp.l %d0,%d1
-	jeq .L71
+	jeq .L73
 	moveq #2,%d1
 	cmp.l %d0,%d1
-	jeq .L72
-	moveq #3,%d1
-	cmp.l %d0,%d1
-	jeq .L73
-	moveq #4,%d2
-	cmp.l %d0,%d2
 	jeq .L74
+	moveq #3,%d2
+	cmp.l %d0,%d2
+	jeq .L75
+	moveq #4,%d1
+	cmp.l %d0,%d1
+	jeq .L76
 	moveq #5,%d1
 	cmp.l %d0,%d1
-	jne .L66
+	jne .L68
 	move.l _matchTicks,%d0
 	add.l #179,%d0
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
-	jle .L48
-	tst.b 192(%a2)
-	jne .L75
+	jle .L51
+	tst.b 193(%a2)
+	jeq .L52
+	move.b #1,198(%a2)
+	moveq #2,%d2
+	move.l %d2,_matchState
+.L51:
+	tst.b 194(%a2)
+	jne .L77
+.L53:
+	tst.b 194(%a3)
+	jeq .L68
 	tst.b 192(%a3)
-	jeq .L66
-	move.b #1,197(%a3)
-	moveq #2,%d0
-	move.l %d0,_matchState
-	moveq #1,%d0
-	movem.l -16(%fp),#7172
-	unlk %fp
-	rts
-.L48:
-	tst.b 192(%a2)
-	jeq .L50
-	tst.b 191(%a2)
-	jeq .L51
-.L50:
-	tst.b 192(%a3)
-	jeq .L66
-	tst.b 191(%a3)
-	jeq .L51
-.L66:
+	jne .L68
+	moveq #2,%d1
+	move.l %d1,_matchState
 	moveq #1,%d0
 .L83:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L71:
+.L13:
+	tst.b 194(%a3)
+	jeq .L78
+	move.l (%a2),%d0
+	move.l %d0,_winner
+	move.l (%a3),_loser
+	move.l _fighter1Wins,%d1
+	addq.l #1,%d1
+	move.l %d1,_fighter1Wins
+	moveq #2,%d2
+	cmp.l %d1,%d2
+	jlt .L14
+	move.b #1,199(%a2)
+.L14:
+	tst.l %d0
+	jne .L79
+	tst.b 193(%a2)
+	jne .L17
+	tst.b 193(%a3)
+	jne .L17
+.L68:
+	moveq #1,%d0
+	movem.l -16(%fp),#7172
+	unlk %fp
+	rts
+.L73:
 	move.l _fightScale,%d0
-	jeq .L76
+	jeq .L80
 .L8:
 	tst.b _fightZoomed
 	jne .L9
@@ -114,7 +132,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	add.l _matchTicks,%d1
 	move.w raptor_ticks,%a0
 	cmp.l %d1,%a0
-	jle .L66
+	jle .L68
 	moveq #32,%d1
 	cmp.l %d0,%d1
 	jlt .L10
@@ -129,9 +147,9 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L70:
-	clr.b 208(%a2)
-	clr.b 208(%a3)
+.L72:
+	clr.b 210(%a2)
+	clr.b 210(%a3)
 	move.l #12254032,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
@@ -157,35 +175,35 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L73:
+.L75:
 	move.w raptor_ticks,%a0
 	moveq #60,%d0
 	add.l _matchTicks,%d0
 	cmp.l %a0,%d0
-	jge .L66
+	jge .L68
 	tst.b _playedName
-	jne .L20
+	jne .L23
 	move.b #1,_playedName
 	move.l %a0,_winsTicks
 	move.l _winner,%d0
-	moveq #7,%d2
-	cmp.l %d0,%d2
-	jcs .L21
+	moveq #7,%d1
+	cmp.l %d0,%d1
+	jcs .L24
 	move.l %d0,%d1
 	add.l %d0,%d1
-	move.w .L29(%pc,%d1.l),%d1
+	move.w .L32(%pc,%d1.l),%d1
 	jmp %pc@(2,%d1:w)
-.L29:
-	.word .L21-.L29
-	.word .L22-.L29
-	.word .L23-.L29
-	.word .L24-.L29
-	.word .L25-.L29
-	.word .L26-.L29
-	.word .L27-.L29
-	.word .L28-.L29
-.L72:
-	tst.b 193(%a2)
+.L32:
+	.word .L24-.L32
+	.word .L25-.L32
+	.word .L26-.L32
+	.word .L27-.L32
+	.word .L28-.L32
+	.word .L29-.L32
+	.word .L30-.L32
+	.word .L31-.L32
+.L74:
+	tst.b 194(%a2)
 	jeq .L13
 	move.l (%a3),%d0
 	move.l %d0,_winner
@@ -195,35 +213,12 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.l %d1,_fighter2Wins
 	moveq #2,%d2
 	cmp.l %d1,%d2
-	jge .L77
-.L14:
-	tst.l %d0
-	jne .L78
-	tst.b 192(%a2)
-	jeq .L79
-.L17:
-	moveq #4,%d2
-	move.l %d2,_matchState
-	move.l sprite,%a0
-	move.w #8,9992(%a0)
-	move.w #64,9996(%a0)
-	moveq #-1,%d0
-	move.l %d0,10068(%a0)
-	move.w raptor_ticks,%a0
-	move.l %a0,_matchTicks
-	moveq #7,%d0
-	cmp.l _loser.l,%d0
-	jeq .L80
-	move.l 8(%fp),-(%sp)
-	jsr __Z12sfxFinishHimP12SoundHandler
-	addq.l #4,%sp
-	moveq #1,%d0
-	movem.l -16(%fp),#7172
-	unlk %fp
-	rts
-.L74:
-	moveq #7,%d0
-	cmp.l _loser.l,%d0
+	jlt .L14
+	move.b #1,199(%a3)
+	jra .L14
+.L76:
+	moveq #7,%d2
+	cmp.l _loser.l,%d2
 	jeq .L81
 	pea 1.w
 	pea 1.w
@@ -232,39 +227,25 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-.L47:
+.L50:
 	move.l sprite,%a1
-	moveq #1,%d1
-	move.l %d1,9988(%a1)
+	moveq #1,%d0
+	move.l %d0,9988(%a1)
 	move.w raptor_ticks,%a0
-	moveq #59,%d0
+	move.b #59,%d0
 	add.l _matchTicks,%d0
 	cmp.l %d0,%a0
-	jle .L66
-	moveq #5,%d2
-	move.l %d2,_matchState
-	moveq #-1,%d0
-	move.l %d0,9988(%a1)
+	jle .L68
+	moveq #5,%d1
+	move.l %d1,_matchState
+	moveq #-1,%d2
+	move.l %d2,9988(%a1)
 	move.l %a0,_matchTicks
 	moveq #1,%d0
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L13:
-	tst.b 193(%a3)
-	jeq .L82
-	move.l (%a2),%d0
-	move.l %d0,_winner
-	move.l (%a3),_loser
-	move.l _fighter1Wins,%d1
-	addq.l #1,%d1
-	move.l %d1,_fighter1Wins
-	moveq #2,%d2
-	cmp.l %d1,%d2
-	jlt .L14
-	move.b #1,198(%a2)
-	jra .L14
-.L76:
+.L80:
 	move.l #12254032,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	pea 192.w
@@ -283,15 +264,43 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.l %d0,10076(%a0)
 	lea (28,%sp),%sp
 	jra .L8
-.L79:
-	tst.b 192(%a3)
-	jne .L17
+.L17:
+	move.l %a3,-(%sp)
+	move.l %a2,-(%sp)
+	jsr __Z20fighterResetFlagsAllP7FighterS0_
+	moveq #4,%d2
+	move.l %d2,_matchState
+	addq.l #8,%sp
+	tst.b 193(%a2)
+	jeq .L18
+	move.l (%a2),%d0
+	move.l %d0,_loser
+.L19:
+	move.l sprite,%a0
+	move.w #8,9992(%a0)
+	move.w #64,9996(%a0)
+	moveq #-1,%d1
+	move.l %d1,10068(%a0)
+	move.w raptor_ticks,%a0
+	move.l %a0,_matchTicks
+	moveq #7,%d1
+	cmp.l %d0,%d1
+	jeq .L82
+	move.l 8(%fp),-(%sp)
+	jsr __Z12sfxFinishHimP12SoundHandler
+	addq.l #4,%sp
+	moveq #1,%d0
+	movem.l -16(%fp),#7172
+	unlk %fp
+	rts
+.L77:
+	tst.b 192(%a2)
+	jne .L53
+	moveq #2,%d1
+	move.l %d1,_matchState
 	moveq #1,%d0
 	jra .L83
-.L77:
-	move.b #1,198(%a3)
-	jra .L14
-.L82:
+.L78:
 	move.l _winner,%d0
 	jra .L14
 .L10:
@@ -315,41 +324,34 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L47
-.L51:
-	moveq #2,%d1
-	move.l %d1,_matchState
-	moveq #1,%d0
-	movem.l -16(%fp),#7172
-	unlk %fp
-	rts
-.L22:
+	jra .L50
+.L25:
 	pea 1.w
 	move.l 8(%fp),-(%sp)
 	jsr __Z13sfxJohnnyCageP12SoundHandlerb
 	move.l _winner,%d0
 	addq.l #8,%sp
-.L21:
-	moveq #11,%d1
-	cmp.l %d0,%d1
-	jcs .L32
+.L24:
+	moveq #11,%d2
+	cmp.l %d0,%d2
+	jcs .L35
 	add.l %d0,%d0
-	move.w .L44(%pc,%d0.l),%d0
+	move.w .L47(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L44:
-	.word .L32-.L44
-	.word .L33-.L44
-	.word .L34-.L44
-	.word .L35-.L44
-	.word .L36-.L44
-	.word .L37-.L44
-	.word .L38-.L44
-	.word .L39-.L44
-	.word .L40-.L44
-	.word .L41-.L44
-	.word .L42-.L44
-	.word .L43-.L44
-.L33:
+.L47:
+	.word .L35-.L47
+	.word .L36-.L47
+	.word .L37-.L47
+	.word .L38-.L47
+	.word .L39-.L47
+	.word .L40-.L47
+	.word .L41-.L47
+	.word .L42-.L47
+	.word .L43-.L47
+	.word .L44-.L47
+	.word .L45-.L47
+	.word .L46-.L47
+.L36:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -357,39 +359,40 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-.L32:
+.L35:
 	move.l sprite,%a0
-	moveq #1,%d2
-	move.l %d2,9988(%a0)
+	moveq #1,%d0
+	move.l %d0,9988(%a0)
 	move.w raptor_ticks,%a0
 	move.l _matchTicks,%d0
 	add.l #360,%d0
 	cmp.l %a0,%d0
-	jge .L66
+	jge .L68
 	tst.b _matchComplete
-	jne .L66
+	jne .L68
 	move.b #1,_matchComplete
 	move.l _round,%d0
 	moveq #2,%d1
 	cmp.l %d0,%d1
-	jlt .L61
+	jlt .L64
+	moveq #1,%d2
 	cmp.l _fighter1Wins.l,%d2
 	jge .L84
-.L61:
+.L64:
 	clr.b %d0
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
 .L84:
 	cmp.l _fighter2Wins.l,%d2
-	jlt .L61
+	jlt .L64
 	addq.l #1,%d0
 	move.l %d0,_round
 	moveq #1,%d0
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L43:
+.L46:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -397,8 +400,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L42:
+	jra .L35
+.L45:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -406,8 +409,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L41:
+	jra .L35
+.L44:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -415,8 +418,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L40:
+	jra .L35
+.L43:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -424,8 +427,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L39:
+	jra .L35
+.L42:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -433,8 +436,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L38:
+	jra .L35
+.L41:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -442,8 +445,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L37:
+	jra .L35
+.L40:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -451,8 +454,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L36:
+	jra .L35
+.L39:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -460,8 +463,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L35:
+	jra .L35
+.L38:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -469,8 +472,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L34:
+	jra .L35
+.L37:
 	pea 1.w
 	pea 1.w
 	pea 2.w
@@ -478,49 +481,49 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea __ZL13fightAnimator
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
 	lea (20,%sp),%sp
-	jra .L32
-.L27:
-	pea 1.w
-	move.l 8(%fp),-(%sp)
-	jsr __Z10sfxSubzeroP12SoundHandlerb
-	move.l _winner,%d0
-	addq.l #8,%sp
-	jra .L21
-.L26:
-	pea 1.w
-	move.l 8(%fp),-(%sp)
-	jsr __Z11sfxScorpionP12SoundHandlerb
-	move.l _winner,%d0
-	addq.l #8,%sp
-	jra .L21
-.L25:
-	pea 1.w
-	move.l 8(%fp),-(%sp)
-	jsr __Z10sfxLiuKangP12SoundHandlerb
-	move.l _winner,%d0
-	addq.l #8,%sp
-	jra .L21
-.L24:
-	pea 1.w
-	move.l 8(%fp),-(%sp)
-	jsr __Z9sfxRaidenP12SoundHandlerb
-	move.l _winner,%d0
-	addq.l #8,%sp
-	jra .L21
-.L23:
-	pea 1.w
-	move.l 8(%fp),-(%sp)
-	jsr __Z7sfxKanoP12SoundHandlerb
-	move.l _winner,%d0
-	addq.l #8,%sp
-	jra .L21
-.L28:
+	jra .L35
+.L31:
 	pea 1.w
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxSonyaP12SoundHandlerb
 	move.l _winner,%d0
 	addq.l #8,%sp
-	jra .L21
+	jra .L24
+.L26:
+	pea 1.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z7sfxKanoP12SoundHandlerb
+	move.l _winner,%d0
+	addq.l #8,%sp
+	jra .L24
+.L30:
+	pea 1.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z10sfxSubzeroP12SoundHandlerb
+	move.l _winner,%d0
+	addq.l #8,%sp
+	jra .L24
+.L29:
+	pea 1.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z11sfxScorpionP12SoundHandlerb
+	move.l _winner,%d0
+	addq.l #8,%sp
+	jra .L24
+.L28:
+	pea 1.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z10sfxLiuKangP12SoundHandlerb
+	move.l _winner,%d0
+	addq.l #8,%sp
+	jra .L24
+.L27:
+	pea 1.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z9sfxRaidenP12SoundHandlerb
+	move.l _winner,%d0
+	addq.l #8,%sp
+	jra .L24
 .L9:
 	pea 1.w
 	pea 1.w
@@ -534,7 +537,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.w raptor_ticks,%a0
 	lea (20,%sp),%sp
 	cmp.l %d0,%a0
-	jle .L66
+	jle .L68
 	clr.l __ZL13fightAnimator+16
 	pea 1.w
 	pea 1.w
@@ -556,7 +559,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L78:
+.L79:
 	moveq #3,%d0
 	move.l %d0,_matchState
 	move.l sprite,%a0
@@ -571,24 +574,38 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L20:
+.L18:
+	tst.b 193(%a3)
+	jne .L20
+	move.l _loser,%d0
+	jra .L19
+.L23:
 	tst.b _playedWins
-	jne .L67
+	jne .L69
 	moveq #70,%d0
 	add.l _winsTicks,%d0
 	cmp.l %a0,%d0
-	jlt .L31
-.L67:
+	jlt .L34
+.L69:
 	move.l _winner,%d0
-	jra .L21
-.L31:
+	jra .L24
+.L34:
 	move.b #1,_playedWins
 	move.l 8(%fp),-(%sp)
 	jsr __Z7sfxWinsP12SoundHandler
 	move.l _winner,%d0
 	addq.l #4,%sp
-	jra .L21
-.L80:
+	jra .L24
+.L52:
+	tst.b 193(%a3)
+	jeq .L51
+	move.b #1,198(%a3)
+	moveq #2,%d0
+	move.l %d0,_matchState
+	tst.b 194(%a2)
+	jeq .L53
+	jra .L77
+.L82:
 	move.l 8(%fp),-(%sp)
 	jsr __Z12sfxFinishHerP12SoundHandler
 	addq.l #4,%sp
@@ -596,19 +613,15 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L75:
-	move.b #1,197(%a2)
-	moveq #2,%d2
-	move.l %d2,_matchState
-	moveq #1,%d0
-	movem.l -16(%fp),#7172
-	unlk %fp
-	rts
+.L20:
+	move.l (%a3),%d0
+	move.l %d0,_loser
+	jra .L19
 .L11:
 	moveq #-1,%d1
 	move.l %d1,9988(%a0)
-	move.b #1,208(%a2)
-	move.b #1,208(%a3)
+	move.b #1,210(%a2)
+	move.b #1,210(%a3)
 	moveq #2,%d2
 	move.l %d2,_matchState
 	moveq #1,%d0

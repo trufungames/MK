@@ -4,6 +4,7 @@
 #include "sound.h"
 #include "spriteanimator.h"
 #include "spritemovements.h"
+#include "debug.h"
 
 int round = 0;
 int matchState = 0;  //0 = Round #, FIGHT!, 1 = {fighting}, 2 = {fighter} WINS / FINISH HIM!
@@ -239,7 +240,19 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 		}
 		else if (fighter1->IsDizzy || fighter2->IsDizzy)
 		{
+			fighterResetFlagsAll(fighter1, fighter2);
+
 			matchState = 4;  //FINISH HIM/HER!
+
+			if (fighter1->IsDizzy)
+			{
+				loser = fighter1->fighterIndex;
+			}
+			else if (fighter2->IsDizzy)
+			{
+				loser = fighter2->fighterIndex;
+			}
+
 			sprite[FIGHT].x_ = 8;
 			sprite[FIGHT].y_ = 64;
 			sprite[FIGHT].scaled = R_spr_unscale;
@@ -393,12 +406,10 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 				matchState = 2;
 			}
 		}
-		else
+		
+		if ((fighter1->IsDefeated && !fighter1->IsActive) || (fighter2->IsDefeated && !fighter2->IsActive))
 		{
-			if ((fighter1->IsDizzy && !fighter1->IsActive) || (fighter2->IsDizzy && !fighter2->IsActive))
-			{
-				matchState = 2;
-			}
+			matchState = 2;
 		}
 	}
 
