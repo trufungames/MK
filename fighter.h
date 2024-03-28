@@ -245,7 +245,7 @@ bool fighterHasRoomToMove(struct Fighter* fighter, struct Fighter* otherFighter)
 
 void fighterPositionXAdd(struct Fighter* fighter, int xAdd);
 
-void fighterCastShadow(struct Fighter* fighter);
+void fighterCastShadow(struct Fighter* fighter, bool includeY);
 
 void fighterStartUp();
 
@@ -254,3 +254,5 @@ void fighterMakeDizzy(struct Fighter* fighter);
 void fighterResetFlags(struct Fighter* fighter);
 
 void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2);
+
+int fighterShadowHeightLookup(int height);

@@ -32,6 +32,8 @@
 '
 ROM,BMP_DOTLAST,gfx_clut16,ASSETS\GFX\dotlast.BMP
 ROM,BMP_TITLESCREEN,gfx_clut_pack,assets\gfx\title_screen.bmp
+ROM,BMP_PREALPHA,gfx_clut_pack,assets\gfx\prealpha.bmp
+ROM,BMP_TRUFUN,gfx_clut_pack,assets\gfx\trufun.bmp
 ROM,BMP_CHOOSEFIGHTER,gfx_clut_pack,assets\gfx\choose_your_fighter.bmp
 ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
@@ -126,6 +128,7 @@ ROM,kano_headbutt_sam,sfx_raw8000,ASSETS\SFX\kano_headbutt.wav
 ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav
 ROM,throw_female_sam,sfx_raw8000,ASSETS\SFX\throw_female.wav
 ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
+ROM,trufun_sam,sfx_raw8000,ASSETS\SFX\trufun.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 'ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod

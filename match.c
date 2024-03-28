@@ -358,7 +358,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 					
 					if (round < 3 && fighter1Wins <= 1 && fighter2Wins <= 1)
 					{
-						round++;
+						round++;						
 					}
 					else
 					{

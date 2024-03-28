@@ -525,5 +525,14 @@ sample56:	dc.l	throw_ninja_sam		; start of sample
 			dc.b	0				; fine tune
 s56_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
+	
+sample57:	dc.l	trufun_sam		; start of sample
+			dc.l	trufun_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s57_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
 
 ; END OF FILE.

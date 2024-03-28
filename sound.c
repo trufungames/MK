@@ -8,8 +8,8 @@ void sfxFight(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FIGHT, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(fight_sam),(STRPTR(fight_sam_end)-STRPTR(fight_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_FIGHT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_FIGHT, 8000);
 }
 
 void sfxJohnnyCage(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -17,8 +17,8 @@ void sfxJohnnyCage(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_CAGE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(johnnycage_sam),(STRPTR(johnnycage_sam_end)-STRPTR(johnnycage_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_CAGE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_CAGE, 8000);
 }
 
 void sfxKano(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -26,8 +26,8 @@ void sfxKano(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(kano_sam),(STRPTR(kano_sam_end)-STRPTR(kano_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_KANO, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_KANO, 8000);
 }
 
 void sfxRaiden(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -35,8 +35,8 @@ void sfxRaiden(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_RAIDEN, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(raiden_sam),(STRPTR(raiden_sam_end)-STRPTR(raiden_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_RAIDEN, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_RAIDEN, 8000);
 }
 
 void sfxLiuKang(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -44,8 +44,8 @@ void sfxLiuKang(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANG, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(liukang_sam),(STRPTR(liukang_sam_end)-STRPTR(liukang_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_KANG, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_KANG, 8000);
 }
 
 void sfxScorpion(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -53,8 +53,8 @@ void sfxScorpion(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_SCORPION, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(scorpion_sam),(STRPTR(scorpion_sam_end)-STRPTR(scorpion_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SCORPION, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SCORPION, 8000);
 }
 
 void sfxSubzero(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -62,8 +62,8 @@ void sfxSubzero(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_SUBZERO, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(subzero_sam),(STRPTR(subzero_sam_end)-STRPTR(subzero_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SUBZERO, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SUBZERO, 8000);
 }
 
 void sfxSonya(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -71,8 +71,8 @@ void sfxSonya(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_SONYA, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(sonya_sam),(STRPTR(sonya_sam_end)-STRPTR(sonya_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SONYA, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SONYA, 8000);
 }
 
 void sfxP1Cursor(struct SoundHandler* soundHandler)
@@ -80,8 +80,7 @@ void sfxP1Cursor(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER1,SOUND_P1CURSOR,8000);
-	//zeroPlaySample(SOUND_CHANNEL_PLAYER1,STRPTR(p1cursor_sam),(STRPTR(p1cursor_sam_end)-STRPTR(p1cursor_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L,SOUND_P1CURSOR,8000);
 }
 
 void sfxP2Cursor(struct SoundHandler* soundHandler)
@@ -89,8 +88,7 @@ void sfxP2Cursor(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER2,SOUND_P2CURSOR,8000);
-	//zeroPlaySample(SOUND_CHANNEL_PLAYER2,STRPTR(p2cursor_sam),(STRPTR(p2cursor_sam_end)-STRPTR(p2cursor_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R,SOUND_P2CURSOR,8000);
 }
 
 void sfxSelected(struct SoundHandler* soundHandler)
@@ -98,8 +96,8 @@ void sfxSelected(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_MISC,SOUND_SELECTED,8000);
-	//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(p2selected_sam),(STRPTR(p2selected_sam_end)-STRPTR(p2selected_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L,SOUND_SELECTED,8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R,SOUND_SELECTED,8000);
 }
 
 void sfxGong(struct SoundHandler* soundHandler)
@@ -107,8 +105,8 @@ void sfxGong(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_GONG, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(gong_sam),(STRPTR(gong_sam_end)-STRPTR(gong_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_GONG, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_GONG, 8000);
 }
 
 void sfxIntro(struct SoundHandler* soundHandler)
@@ -116,8 +114,8 @@ void sfxIntro(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_INTRO, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(intro_sam),(STRPTR(intro_sam_end)-STRPTR(intro_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_INTRO, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_INTRO, 8000);
 }
 
 void sfxHiyaMale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -127,13 +125,13 @@ void sfxHiyaMale(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_MALE1, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_male1_sam),(STRPTR(hiya_male1_sam_end)-STRPTR(hiya_male1_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_MALE1, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_MALE1, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_MALE2, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_male2_sam),(STRPTR(hiya_male2_sam_end)-STRPTR(hiya_male2_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_MALE2, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_MALE2, 8000);
 	}
 }
 
@@ -144,13 +142,13 @@ void sfxHiyaFemale(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_FEMALE1, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_female1_sam),(STRPTR(hiya_female1_sam_end)-STRPTR(hiya_female1_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_FEMALE1, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_FEMALE1, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_FEMALE2, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_female2_sam),(STRPTR(hiya_female2_sam_end)-STRPTR(hiya_female2_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_FEMALE2, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_FEMALE2, 8000);
 	}
 }
 
@@ -161,13 +159,13 @@ void sfxHiyaKang(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_KANG1, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_kang1_sam),(STRPTR(hiya_kang1_sam_end)-STRPTR(hiya_kang1_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_KANG1, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_KANG1, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_KANG2, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_kang2_sam),(STRPTR(hiya_kang2_sam_end)-STRPTR(hiya_kang2_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_KANG2, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_KANG2, 8000);
 	}
 }
 
@@ -178,13 +176,13 @@ void sfxHiyaNinja(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_NINJA1, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_ninja1_sam),(STRPTR(hiya_ninja1_sam_end)-STRPTR(hiya_ninja1_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_NINJA1, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_NINJA1, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_HIYA_NINJA2, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(hiya_ninja2_sam),(STRPTR(hiya_ninja2_sam_end)-STRPTR(hiya_ninja2_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_HIYA_NINJA2, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_HIYA_NINJA2, 8000);
 	}
 }
 
@@ -195,13 +193,13 @@ void sfxBlock(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_BLOCK01, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(block01_sam),(STRPTR(block01_sam_end)-STRPTR(block01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_BLOCK01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_BLOCK01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_BLOCK02, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(block02_sam),(STRPTR(block02_sam_end)-STRPTR(block02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_BLOCK02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_BLOCK02, 8000);
 	}
 }
 
@@ -212,13 +210,13 @@ void sfxGroanMale(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_GROAN_MALE01, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(groan_male01_sam),(STRPTR(groan_male01_sam_end)-STRPTR(groan_male01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_GROAN_MALE01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_GROAN_MALE01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_GROAN_MALE02, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(groan_male02_sam),(STRPTR(groan_male02_sam_end)-STRPTR(groan_male02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_GROAN_MALE02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_GROAN_MALE02, 8000);
 	}
 }
 
@@ -229,13 +227,13 @@ void sfxGroanFemale(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_GROAN_FEMALE01, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(groan_female01_sam),(STRPTR(groan_female01_sam_end)-STRPTR(groan_female01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_GROAN_FEMALE01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_GROAN_FEMALE01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_GROAN_FEMALE02, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(groan_female02_sam),(STRPTR(groan_female02_sam_end)-STRPTR(groan_female02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_GROAN_FEMALE02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_GROAN_FEMALE02, 8000);
 	}
 }
 
@@ -246,13 +244,13 @@ void sfxHit(struct SoundHandler* soundHandler)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_HIT_01, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(hit_01_sam),(STRPTR(hit_01_sam_end)-STRPTR(hit_01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_HIT_01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_HIT_01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_HIT_02, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(hit_02_sam),(STRPTR(hit_02_sam_end)-STRPTR(hit_02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_HIT_02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_HIT_02, 8000);
 	}
 }
 
@@ -261,8 +259,8 @@ void sfxImpact(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_HIT_IMPACT, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(hit_impact_sam),(STRPTR(hit_impact_sam_end)-STRPTR(hit_impact_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_HIT_IMPACT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_HIT_IMPACT, 8000);
 }
 
 void sfxBlood(struct SoundHandler* soundHandler)
@@ -272,13 +270,13 @@ void sfxBlood(struct SoundHandler* soundHandler)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_BLOOD01, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(blood01_sam),(STRPTR(blood01_sam_end)-STRPTR(blood01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_BLOOD01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_BLOOD01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_BLOOD02, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(blood02_sam),(STRPTR(blood02_sam_end)-STRPTR(blood02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_BLOOD02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_BLOOD02, 8000);
 	}
 }
 
@@ -289,13 +287,13 @@ void sfxSwing(struct SoundHandler* soundHandler)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_SWING_01, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(swing_01_sam),(STRPTR(swing_01_sam_end)-STRPTR(swing_01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_SWING_01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_SWING_01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_SWING_02, 8000);
-		//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(swing_02_sam),(STRPTR(swing_02_sam_end)-STRPTR(swing_02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_SWING_02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_SWING_02, 8000);
 	}
 }
 
@@ -304,8 +302,17 @@ void sfxThud(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_MISC, SOUND_THUD, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_MISC,STRPTR(thud_sam),(STRPTR(thud_sam_end)-STRPTR(thud_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_THUD, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_THUD, 8000);
+}
+
+void sfxTruFun(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_TRUFUN, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_TRUFUN, 8000);
 }
 
 void sfxYellMale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -315,13 +322,13 @@ void sfxYellMale(struct SoundHandler* soundHandler, bool isPlayer1)
 
 	if (rapRND() & 255 > 100)
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_YELL_MALE01, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(yell_male01_sam),(STRPTR(yell_male01_sam_end)-STRPTR(yell_male01_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_YELL_MALE01, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_YELL_MALE01, 8000);
 	}
 	else
 	{
-		u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_YELL_MALE02, 8000);
-		//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(yell_male02_sam),(STRPTR(yell_male02_sam_end)-STRPTR(yell_male02_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_YELL_MALE02, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_YELL_MALE02, 8000);
 	}
 }
 
@@ -330,8 +337,8 @@ void sfxYellFemale(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_YELL_FEMALE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(yell_female_sam),(STRPTR(yell_female_sam_end)-STRPTR(yell_female_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_YELL_FEMALE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_YELL_FEMALE, 8000);
 }
 
 void sfxYellKang(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -339,8 +346,8 @@ void sfxYellKang(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_YELL_KANG, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(yell_kang_sam),(STRPTR(yell_kang_sam_end)-STRPTR(yell_kang_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_YELL_KANG, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_YELL_KANG, 8000);
 }
 
 void sfxJumpMale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -348,8 +355,8 @@ void sfxJumpMale(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_JUMP_MALE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_JUMP_MALE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_JUMP_MALE, 8000);
 }
 
 void sfxJumpFemale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -357,8 +364,8 @@ void sfxJumpFemale(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_JUMP_FEMALE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_female_sam),(STRPTR(jump_female_sam_end)-STRPTR(jump_female_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_JUMP_FEMALE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_JUMP_FEMALE, 8000);
 }
 
 void sfxJumpNinja(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -366,8 +373,8 @@ void sfxJumpNinja(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_JUMP_NINJA, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_ninja_sam),(STRPTR(jump_ninja_sam_end)-STRPTR(jump_ninja_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_JUMP_NINJA, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_JUMP_NINJA, 8000);
 }
 
 void sfxThrowMale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -375,8 +382,8 @@ void sfxThrowMale(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_MALE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_THROW_MALE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_THROW_MALE, 8000);
 }
 
 void sfxThrowFemale(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -384,8 +391,8 @@ void sfxThrowFemale(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_FEMALE, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_THROW_FEMALE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_THROW_FEMALE, 8000);
 }
 
 void sfxThrowNinja(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -393,8 +400,8 @@ void sfxThrowNinja(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_THROW_NINJA, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_male_sam),(STRPTR(jump_male_sam_end)-STRPTR(jump_male_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_THROW_NINJA, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_THROW_NINJA, 8000);
 }
 
 void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -402,8 +409,8 @@ void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_JUMP_ROLL, 8000);
-	//zeroPlaySample(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2,STRPTR(jump_roll_sam),(STRPTR(jump_roll_sam_end)-STRPTR(jump_roll_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_JUMP_ROLL, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_JUMP_ROLL, 8000);
 }
 
 void sfxCageYeah(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -411,7 +418,8 @@ void sfxCageYeah(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_CAGE_YEAH, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_CAGE_YEAH, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_CAGE_YEAH, 8000);
 }
 
 void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -419,7 +427,8 @@ void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO_YELL, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_KANO_YELL, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_KANO_YELL, 8000);
 }
 
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler, bool isPlayer1)
@@ -427,7 +436,8 @@ void sfxKanoHeadbutt(struct SoundHandler* soundHandler, bool isPlayer1)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(isPlayer1 ? SOUND_CHANNEL_PLAYER1 : SOUND_CHANNEL_PLAYER2, SOUND_KANO_HEADBUTT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_KANO_HEADBUTT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_KANO_HEADBUTT, 8000);
 }
 
 void sfxCrowdAww(struct SoundHandler* soundHandler)
@@ -435,8 +445,8 @@ void sfxCrowdAww(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 	
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_CROWD_AWW, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(crowd_aww_sam),(STRPTR(crowd_aww_sam_end)-STRPTR(crowd_aww_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_CROWD_AWW, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_CROWD_AWW, 8000);
 }
 
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler)
@@ -444,8 +454,8 @@ void sfxAnnouncerExcellent(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 	
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_ANNOUNCER_EXCELLENT, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(announcer_excellent_sam),(STRPTR(announcer_excellent_sam_end)-STRPTR(announcer_excellent_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_ANNOUNCER_EXCELLENT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_ANNOUNCER_EXCELLENT, 8000);
 }
 
 void sfxAnnouncerLaugh(struct SoundHandler* soundHandler)
@@ -453,8 +463,8 @@ void sfxAnnouncerLaugh(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_ANNOUNCER_LAUGH, 8000);
-	//zeroPlaySample(SOUND_CHANNEL_ANNOUNCER,STRPTR(announcer_laugh_sam),(STRPTR(announcer_laugh_sam_end)-STRPTR(announcer_laugh_sam)+3) & 0xfffffffc,(46168/7000),Zero_Audio_8bit_Signed);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_ANNOUNCER_LAUGH, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_ANNOUNCER_LAUGH, 8000);
 }
 
 void sfxFinishHer(struct SoundHandler* soundHandler)
@@ -462,7 +472,8 @@ void sfxFinishHer(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FINISH_HER, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_FINISH_HER, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_FINISH_HER, 8000);
 }
 
 void sfxFinishHim(struct SoundHandler* soundHandler)
@@ -470,7 +481,8 @@ void sfxFinishHim(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FINISH_HIM, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_FINISH_HIM, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_FINISH_HIM, 8000);
 }
 
 void sfxWins(struct SoundHandler* soundHandler)
@@ -478,7 +490,8 @@ void sfxWins(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_WINS, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_WINS, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_WINS, 8000);
 }
 
 void sfxFlawless(struct SoundHandler* soundHandler)
@@ -486,7 +499,8 @@ void sfxFlawless(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FLAWLESS, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_FLAWLESS, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_FLAWLESS, 8000);
 }
 
 void sfxFatality(struct SoundHandler* soundHandler)
@@ -494,7 +508,8 @@ void sfxFatality(struct SoundHandler* soundHandler)
 	if (!soundHandler->EnableSFX)
 		return;
 
-	u235PlaySampleFreq(SOUND_CHANNEL_ANNOUNCER, SOUND_FATALITY, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_FATALITY, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_FATALITY, 8000);
 }
 
 void musicTitle(struct SoundHandler* soundHandler)

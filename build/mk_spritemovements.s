@@ -54,43 +54,6 @@ __Z8bgUpdateP7FighterS0_:
 	jge .L8
 	move.l sprite,%a3
 	move.l #___floatsisf,%d4
-	move.w 3080(%a3),%a0
-	move.l %a0,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l #___addsf3,%d3
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	addq.l #8,%sp
-	move.l #___fixsfsi,%d2
-	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	move.w %d0,3080(%a3)
-	move.w 3272(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.w %d0,3272(%a3)
-	move.l %a2,_cloudTicks1
-.L8:
-	move.l _cloudTicks2,%d0
-	addq.l #3,%d0
-	cmp.l %a2,%d0
-	jge .L9
-	move.l sprite,%a3
-	move.l #___floatsisf,%d4
 	move.w 3464(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d4,%a0
@@ -118,30 +81,17 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
+	addq.l #4,%sp
 	move.w %d0,3656(%a3)
-	move.w 3848(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.w %d0,3848(%a3)
-	move.l %a2,_cloudTicks2
-.L9:
-	move.l _cloudTicks3,%d0
-	addq.l #7,%d0
+	move.l %a2,_cloudTicks1
+.L8:
+	move.l _cloudTicks2,%d0
+	addq.l #3,%d0
 	cmp.l %a2,%d0
-	jge .L10
+	jge .L9
 	move.l sprite,%a3
 	move.l #___floatsisf,%d4
-	move.w 4040(%a3),%a0
+	move.w 3848(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
@@ -153,6 +103,19 @@ __Z8bgUpdateP7FighterS0_:
 	addq.l #8,%sp
 	move.l #___fixsfsi,%d2
 	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.w %d0,3848(%a3)
+	move.w 4040(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d4,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
 	move.w %d0,4040(%a3)
@@ -168,8 +131,45 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
+	addq.l #4,%sp
 	move.w %d0,4232(%a3)
+	move.l %a2,_cloudTicks2
+.L9:
+	move.l _cloudTicks3,%d0
+	addq.l #7,%d0
+	cmp.l %a2,%d0
+	jge .L10
+	move.l sprite,%a3
+	move.l #___floatsisf,%d4
 	move.w 4424(%a3),%a0
+	move.l %a0,-(%sp)
+	move.l %d4,%a0
+	jsr (%a0)
+	move.l #___addsf3,%d3
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	addq.l #8,%sp
+	move.l #___fixsfsi,%d2
+	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.w %d0,4424(%a3)
+	move.w 4616(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d4,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.w %d0,4616(%a3)
+	move.w 4808(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
@@ -182,7 +182,7 @@ __Z8bgUpdateP7FighterS0_:
 	move.l %d2,%a0
 	jsr (%a0)
 	addq.l #4,%sp
-	move.w %d0,4424(%a3)
+	move.w %d0,4808(%a3)
 	move.l %a2,_cloudTicks3
 .L10:
 	tst.b _IsScrollingUp
@@ -206,7 +206,7 @@ __Z8bgUpdateP7FighterS0_:
 .L16:
 	move.l sprite,%a0
 	move.l _bgYInc,%d0
-	add.w %d0,4620(%a0)
+	add.w %d0,5004(%a0)
 	add.l %d0,298(%a5)
 	add.l %d0,298(%a4)
 .L17:
@@ -258,7 +258,7 @@ __Z8bgUpdateP7FighterS0_:
 	clr.b _IsScrollingDown
 	move.l sprite,%a0
 	move.l _bgYInc,%d0
-	add.w %d0,4620(%a0)
+	add.w %d0,5004(%a0)
 	add.l %d0,298(%a5)
 	add.l %d0,298(%a4)
 	jra .L17

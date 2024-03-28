@@ -7,12 +7,14 @@
 #define P2_CURSOR 2
 #define P1_FLASH 3
 #define P1_CURSOR 4
-#define P1_FIGHTER 5
-#define P2_FIGHTER 6
-#define LIGHTNING 7
-#define LIGHTNING2 8
+#define P1_FIGHTER_SHADOW 5
+#define P1_FIGHTER 6
+#define P2_FIGHTER_SHADOW 7
+#define P2_FIGHTER 8
+#define LIGHTNING 9
+#define LIGHTNING2 10
 
-#define BATTLE_SCREEN 10
+#define BATTLE_SCREEN 12
 #define TEXT_PARTICLES BATTLE_SCREEN + 1
 #define P1_PT_PORTRAIT TEXT_PARTICLES + 1
 #define P2_PT_PORTRAIT P1_PT_PORTRAIT + 1
@@ -22,9 +24,13 @@
 #define STAGE_PIT_CLOUDS1 STAGE_PIT_MOON + 1
 #define STAGE_PIT_BACKGROUND STAGE_PIT_CLOUDS1 + 8
 #define BLOOD_POOL STAGE_PIT_BACKGROUND + 1
-#define P1_FIGHTER_PIT BLOOD_POOL + 8
-#define P2_FIGHTER_PIT P1_FIGHTER_PIT + 1
-#define P1_HB_ATTACK P2_FIGHTER_PIT + 1
+#define P1_FIGHTER_SHADOW_PIT BLOOD_POOL + 8
+#define P1_FIGHTER_PIT P1_FIGHTER_SHADOW_PIT + 1
+#define P1_PROJECTILE P1_FIGHTER_PIT + 1
+#define P2_FIGHTER_SHADOW P1_PROJECTILE + 1
+#define P2_FIGHTER_PIT P2_FIGHTER_SHADOW + 1
+#define P2_PROJECTILE P2_FIGHTER_PIT + 1
+#define P1_HB_ATTACK P2_PROJECTILE + 1
 #define P2_HB_ATTACK P1_HB_ATTACK + 1
 #define BLOOD_SPRAY P2_HB_ATTACK + 1  //1 of 2
 #define BLOOD_GLOB BLOOD_SPRAY + 2
@@ -92,6 +98,7 @@
 #define SOUND_THROW_MALE 54
 #define SOUND_THROW_FEMALE 55
 #define SOUND_THROW_NINJA 56
+#define SOUND_TRUFUN 57
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
@@ -138,10 +145,10 @@
 #define MATCH_TIME_FINISH 3*60
 
 //-----------------------------------------------------------------------------------------------------
-#define SOUND_CHANNEL_PLAYER1 4
-#define SOUND_CHANNEL_PLAYER2 5
-#define SOUND_CHANNEL_ANNOUNCER 6
-#define SOUND_CHANNEL_MISC 7
+#define SOUND_CHANNEL_PLAYER_L 4
+#define SOUND_CHANNEL_PLAYER_R 5
+#define SOUND_CHANNEL_MISC_L 6
+#define SOUND_CHANNEL_MISC_R 7
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

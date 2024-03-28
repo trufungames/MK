@@ -27,7 +27,9 @@ int p2Cursor = 2;
 int p1Selected = -1;
 int p2Selected = -1;
 bool chooseFighterDone = false;
-bool onTitleScreen = true;
+bool onAlphaScreen = true;
+bool onTruFunScreen = false;
+bool onTitleScreen = false;
 bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
@@ -41,8 +43,8 @@ int p2FlashCount = 0;
 int chooseTicks = 0;
 
 static SoundHandler soundHandler = {
-	false,  //sound on/off
-	false,  //music on/off
+	true,  //sound on/off
+	true,  //music on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -1463,7 +1465,7 @@ static AnimationFrame sonyaBodyKickFrames[] = {
 static AnimationFrame sonyaDuckKickFrames[] = {
 	{ 64, 48, 464, 112, 0, 64, 5},
 	{ 80, 48, 528, 112, -1, 64, 5},
-	{ 96, 64, 608, 112, 1, 48, 32},
+	{ 96, 64, 608, 112, 1, 48, 10},
 	{ 80, 48, 528, 112, -1, 64, 5},
 	{ 64, 48, 464, 112, 0, 64, 5}
 };
@@ -2109,6 +2111,9 @@ static AnimationFrame lightningFrames[] = {
 // *************************************************
 //               User Prototypes
 // *************************************************
+void initBlackPalettes();
+void initAlphaScreen();
+void initTruFunScreen();
 void initTitleScreen();
 void initGameAssets();
 void switchScreenChooseFighter();
@@ -3136,7 +3141,8 @@ void basicmain()
 	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 	rapDebugSetXY(5,20);
-	initTitleScreen();
+	initBlackPalettes();
+	initAlphaScreen();
 	
 	//Main game loop
 	while(1)
@@ -3144,22 +3150,122 @@ void basicmain()
 		int delta = rapTicks - lastTicks;
 		lastTicks = rapTicks;
 
-		if (onTitleScreen)
+		if (onAlphaScreen)
 		{
-			/////////////////////////////////////////
-			// Attract Mode
-			/////////////////////////////////////////
 			if (!fadedIn)
 			{
 				fadedIn = true;
 
-				for (int i = 0; i < 60; i++)
+				for (int i = 0; i < 80; i++)
+				{
+					rapFadeClut(0,256,(int *)(int)(void *)(BMP_PREALPHA_clut));
+					jsfVsync(0); 
+				}
+
+				sfxAnnouncerExcellent(&soundHandler);
+				rapUse8x16fontPalette(15);
+				jsfSetFontSize(1);
+				jsfSetFontIndx(1);
+				rapLocate(108,8);
+				js_r_textbuffer="MORTAL KOMBAT";
+				rapPrint();
+				jsfSetFontIndx(0);
+				rapLocate(104,24);
+				js_r_textbuffer="PRE-ALPHA V0.1";
+				rapPrint();
+				jsfSetFontIndx(1);
+				rapLocate(88, 110);
+				js_r_textbuffer="BUGS         FEEDBACK";
+				rapPrint();
+				rapUse8x8fontPalette(15);
+				jsfSetFontSize(0);
+				jsfSetFontIndx(0);
+				rapLocate(10, 128);
+				js_r_textbuffer="PATREON SUPPORTERS, THIS PRE-ALPHA";
+				rapPrint();
+				rapLocate(10, 138);
+				js_r_textbuffer="BUILD INCLUDES THE 7 ORIGINAL FIGHTERS";
+				rapPrint();
+				rapLocate(10, 148);
+				js_r_textbuffer="AND A BASIC MOVESET - NO SPECIAL MOVES";
+				rapPrint();
+				rapLocate(10, 158);
+				js_r_textbuffer="OR FATALITIES. YES, THERE ARE BUGS AND";
+				rapPrint();
+				rapLocate(10, 168);
+				js_r_textbuffer="SOME THINGS ARE A LITTLE ROUGH AROUND";
+				rapPrint();
+				rapLocate(10, 178);
+				js_r_textbuffer="THE EDGES. PLEASE USE THE LINKS ABOVE";
+				rapPrint();
+				rapLocate(10, 188);
+				js_r_textbuffer="TO REPORT BUGS AND PROVIDE FEEDBACK.";
+				rapPrint();
+				rapLocate(10, 198);
+				js_r_textbuffer="THANKS FOR PLAYING!!";
+				rapPrint();
+			}
+
+			if (fadedIn && !fadedOut)
+			{
+				if (rapTicks > gameStartTicks + (60*2))
+				{
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
+
+					fadedOut = true;
+					onAlphaScreen = false;		
+					initTruFunScreen();
+				}
+			}
+		}
+		else if (onTruFunScreen)
+		{
+			if (!fadedIn)
+			{
+				fadedIn = true;
+
+				sfxTruFun(&soundHandler);
+
+				for (int i = 0; i < 80; i++)
+				{
+					rapFadeClut(0,256,(int *)(int)(void *)(BMP_TRUFUN_clut));
+					jsfVsync(0); 
+				}
+			}
+
+			if (fadedIn && !fadedOut)
+			{
+				if (rapTicks > gameStartTicks + (60*4))
+				{
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
+
+					fadedOut = true;
+					onTruFunScreen = false;		
+					initTitleScreen();
+				}
+			}
+		}
+		else if (onTitleScreen)
+		{
+			if (!fadedIn)
+			{
+				fadedIn = true;
+
+				for (int i = 0; i < 80; i++)
 				{
 					rapFadeClut(0,256,(int *)(int)(void *)(BMP_TITLESCREEN_clut));
 					jsfVsync(0); 
 				}
 				
-				//sfxIntro(&soundHandler);
+				sfxIntro(&soundHandler);
 			}
 
 			if (fadedIn && !fadedOut)
@@ -3173,7 +3279,7 @@ void basicmain()
 					}
 
 					fadedOut = true;		
-					//fighterStartUp();
+					fighterStartUp();
 					switchScreenChooseFighter();
 					musicTitle(&soundHandler);
 					//initGameAssets();
@@ -3582,7 +3688,7 @@ void basicmain()
 				case 4:
 					//Raiden
 					fighterUpdate(delta, &fighterRaiden, &raidenAnimator);
-					//updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+					updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -3618,7 +3724,7 @@ void basicmain()
 				case 4:
 					//Raiden
 					fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2);
-					//updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+					updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 					break;
 				case 5:
 					//Liu Kang
@@ -3705,7 +3811,7 @@ void basicmain()
 	}
 }
 
-void initTitleScreen()
+void initBlackPalettes()
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -3716,7 +3822,37 @@ void initTitleScreen()
 	{
 		BLACKPAL[i] = 0;
 	}
+}
 
+void initAlphaScreen()
+{
+	rapParticleClear();
+	rapUnpack(BMP_PREALPHA,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active=R_is_active;
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+	onAlphaScreen = true;
+}
+
+void initTruFunScreen()
+{
+	rapParticleClear();
+	rapUnpack(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active=R_is_active;
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+	onTruFunScreen = true;
+}
+
+void initTitleScreen()
+{
+	rapParticleClear();
 	rapUnpack(BMP_TITLESCREEN,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active=R_is_active;
@@ -3780,7 +3916,7 @@ void switchScreenChooseFighter()
 	rapSetActiveList(0);
 	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
 	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
-	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),12,16);
+	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	SetPlayerPalettes();
 	fadedIn = false;
@@ -3901,10 +4037,11 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,64);
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),4,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),5,16);
+	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),10,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_MATCH_clut),11,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_HUD_clut),12,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
-	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),13,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);	
 
 	switch (p1Cursor)
 	{
@@ -3950,7 +4087,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
-			//lightningAnimator.spriteIndex = P1_LIGHTNING_PIT;
+			lightningAnimator.spriteIndex = P1_PROJECTILE;
 			fighterInitialize(&fighterRaiden, true, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &raidenImpactFrameThrow);
 			fighterShow(&fighterRaiden);
 			setPlayer1Name((char*)"RAIDEN");
@@ -4018,7 +4155,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
-			//lightning2Animator.spriteIndex = P2_LIGHTNING_PIT;
+			lightning2Animator.spriteIndex = P2_PROJECTILE;
 			fighterInitialize(&fighterRaiden2, false, &soundHandler, &raidenImpactFrameLowPunch, &raidenImpactFrameHighPunch, &raidenImpactFrameLowKick, &raidenImpactFrameHighKick, &raidenImpactFrameUppercut, &raidenImpactFrameSweep, &raidenImpactFrameJumpPunch, &raidenImpactFrameJumpKick, &raidenImpactFrameRoundhouse, &raidenImpactFrameBodyPunch, &raidenImpactFrameBodyKick, &raidenImpactFrameDuckKick, &raidenImpactFrameThrow);
 			fighterShow(&fighterRaiden2);
 			sprite[LIGHTNING2].active = R_is_active;
@@ -4059,7 +4196,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
 	rapSetActiveList(2);
 	musicStage(&soundHandler);
-	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 300, (int)imageBuffer);
+	cameraInit(STAGE_PIT_BACKGROUND, 130, 0, 214, (int)imageBuffer);
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }

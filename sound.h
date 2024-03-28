@@ -43,6 +43,7 @@ void sfxImpact(struct SoundHandler* soundHandler);
 void sfxBlood(struct SoundHandler* soundHandler);
 void sfxSwing(struct SoundHandler* soundHandler);
 void sfxThud(struct SoundHandler* soundHandler);
+void sfxTruFun(struct SoundHandler* soundHandler);
 void sfxCrowdAww(struct SoundHandler* soundHandler);
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler);
 void sfxAnnouncerLaugh(struct SoundHandler* soundHandler);
