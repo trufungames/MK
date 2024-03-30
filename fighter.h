@@ -138,6 +138,7 @@ struct Fighter {
     float throwMomentemYStart;
     int roundsLost;
     bool hasRoomToMove;
+    bool isMaxDistance;
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -256,3 +257,5 @@ void fighterResetFlags(struct Fighter* fighter);
 void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2);
 
 int fighterShadowHeightLookup(int height);
+
+void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2);

@@ -268,9 +268,15 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
 	jsr __Z20fighterResetFlagsAllP7FighterS0_
+	addq.l #4,%sp
+	move.l %a2,(%sp)
+	lea __Z17fighterSetOnFloorP7Fighter,%a4
+	jsr (%a4)
+	move.l %a3,(%sp)
+	jsr (%a4)
 	moveq #4,%d2
 	move.l %d2,_matchState
-	addq.l #8,%sp
+	addq.l #4,%sp
 	tst.b 193(%a2)
 	jeq .L18
 	move.l (%a2),%d0

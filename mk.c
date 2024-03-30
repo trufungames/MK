@@ -3152,6 +3152,9 @@ void basicmain()
 
 		if (onAlphaScreen)
 		{
+			pad1 = jsfGetPadPressed(LEFT_PAD);
+			pad2 = jsfGetPadPressed(RIGHT_PAD);
+
 			if (!fadedIn)
 			{
 				fadedIn = true;
@@ -3208,7 +3211,8 @@ void basicmain()
 
 			if (fadedIn && !fadedOut)
 			{
-				if (rapTicks > gameStartTicks + (60*2))
+				if (rapTicks > gameStartTicks + (60*4) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
+					|| rapTicks > gameStartTicks + (60*20))
 				{
 					for (int i = 0; i < 90; i++)
 					{
@@ -3239,7 +3243,7 @@ void basicmain()
 
 			if (fadedIn && !fadedOut)
 			{
-				if (rapTicks > gameStartTicks + (60*4))
+				if (rapTicks > gameStartTicks + (60*5))
 				{
 					for (int i = 0; i < 90; i++)
 					{
@@ -3662,7 +3666,8 @@ void basicmain()
 			fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
 			fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 			fighterCloseCheck(fighter1Ptr, fighter2Ptr);
-			fighterImpactCheck(fighter1Ptr, fighter2Ptr);
+			fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
+			fighterImpactCheck(fighter1Ptr, fighter2Ptr);			
 
 			//////////////////////////////////////
 			// Player 1 fighter
@@ -3784,7 +3789,7 @@ void basicmain()
 				js_r_textbuffer = ee_printf("%d",fighter1Ptr->IsDizzy);
 				rapPrint();
 				rapLocate(10, 110);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->IsDefeated);
+				js_r_textbuffer = ee_printf("%d",fighter1Ptr->isMaxDistance);
 				rapPrint();
 
 				rapLocate(290, 60);
@@ -3803,7 +3808,7 @@ void basicmain()
 				js_r_textbuffer = ee_printf("%d",fighter2Ptr->IsDizzy);
 				rapPrint();
 				rapLocate(290, 110);
-				js_r_textbuffer = ee_printf("%d",fighter2Ptr->IsDefeated);
+				js_r_textbuffer = ee_printf("%d",fighter2Ptr->isMaxDistance);
 				rapPrint();
 			}
 		}

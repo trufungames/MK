@@ -318,7 +318,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     if (fighter->IsWinner)
     {
         updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        return; 
+        return;
     }
 
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
@@ -1351,7 +1351,11 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
 
                         if (!fighter->MadeContact)
                         {
-                            fighterPositionXAdd(fighter, -1 * fighter->playerJumpXSpeed * fighter->direction);
+                            if (!fighter->isMaxDistance)
+                            {
+                                fighterPositionXAdd(fighter, -1 * fighter->playerJumpXSpeed * fighter->direction);
+                            }
+                            
                             fighter->positionY += fighter->momentumY;
                             fighter->momentumY += fighter->gravity;
                         }
@@ -1805,6 +1809,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsHitBackLight = false;
     fighter->IsHitBackLightKano = false;
     fighter->IsHitFall = false;
+    fighter->IsHitDropKick = false;
     fighter->IsHitBodyKick = false;
     fighter->IsMidAir = false;
     fighter->IsFalling = false;
@@ -2333,4 +2338,29 @@ int fighterShadowHeightLookup(int height)
         default:
             return 21;
     }
+}
+
+void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (fighter1->direction == 1)
+    {
+        if (fighter2->positionX - fighter1->positionX >= 260)
+        {
+            fighter1->isMaxDistance = true;
+            fighter2->isMaxDistance = true;
+            return;
+        }
+    }
+    else
+    {
+        if (fighter1->positionX - (fighter2->positionX) >= 260)
+        {
+            fighter1->isMaxDistance = true;
+            fighter2->isMaxDistance = true;
+            return;
+        }
+    }
+
+    fighter1->isMaxDistance = false;
+    fighter2->isMaxDistance = false;
 }

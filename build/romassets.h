@@ -190,8 +190,8 @@
 #define throw_ninja_sam 0xC28650
 #define throw_ninja_sam_end 0xC29BBD
 #define trufun_sam 0xC29BC0
-#define trufun_sam_end 0xC3015C
-#define MOD_TITLE 0xC30160
-#define MOD_TITLE_end 0xC460A8
-#define MOD_STAGE 0xC460B0
-#define MOD_STAGE_end 0xC50676
+#define trufun_sam_end 0xC34782
+#define MOD_TITLE 0xC34790
+#define MOD_TITLE_end 0xC4A6D8
+#define MOD_STAGE 0xC4A6E0
+#define MOD_STAGE_end 0xC54CA6

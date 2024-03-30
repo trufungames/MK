@@ -241,7 +241,8 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 		else if (fighter1->IsDizzy || fighter2->IsDizzy)
 		{
 			fighterResetFlagsAll(fighter1, fighter2);
-
+			fighterSetOnFloor(fighter1);
+			fighterSetOnFloor(fighter2);
 			matchState = 4;  //FINISH HIM/HER!
 
 			if (fighter1->IsDizzy)
