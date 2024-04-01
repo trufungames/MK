@@ -248,10 +248,12 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			if (fighter1->IsDizzy)
 			{
 				loser = fighter1->fighterIndex;
+				fighter2->AcceptingInput = true;
 			}
 			else if (fighter2->IsDizzy)
 			{
 				loser = fighter2->fighterIndex;
+				fighter1->AcceptingInput = true;
 			}
 
 			sprite[FIGHT].x_ = 8;

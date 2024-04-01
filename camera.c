@@ -2,6 +2,7 @@
 #include "camera.h"
 #include "fighter.h"
 #include "spriteanimator.h"
+#include "stage.h"
 
 int cameraTicks = 0;
 int cameraX = 0;
@@ -22,7 +23,7 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
     cameraXMax = xMax;
     backgroundGfxBase = gfxBase;
 
-    setFrame(backgroundSpriteIndex, 336, 172, cameraX, cameraY, 2.0f, backgroundGfxBase);
+    setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
 }
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
@@ -47,33 +48,25 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
         if (backgroundChangedLeft || backgroundChangedRight)
         {
             xOffset += backgroundChangedLeft ? 2 : -2;
+            stageMove(backgroundChangedLeft ? 1 : -1);
 
             if (xOffset <= -16)
             {
                 //Camera headed RIGHT
                 cameraX += 4;
-                setFrame(backgroundSpriteIndex, 336, 172, cameraX, cameraY, 2.0f, backgroundGfxBase);
+                setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
                 xOffset = -8;
+                
             }
             else if (xOffset >= 0)
             {
                 //Camera headed LEFT
                 cameraX -= 4;
-                setFrame(backgroundSpriteIndex, 336, 172, cameraX, cameraY, 2.0f, backgroundGfxBase);
+                setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
                 xOffset = -8;
             }
 
-            sprite[STAGE_PIT_BACKGROUND].x_ = xOffset;
-            // if (sprite[STAGE_PIT_BACKGROUND].x_ == 0)
-            // {
-            //     setFrame(backgroundSpriteIndex, 336, 172, cameraX, cameraY, 2.0f, backgroundGfxBase);
-            //     sprite[STAGE_PIT_BACKGROUND].x_ = backgroundChangedLeft ? 1 : -1;
-            // }
-            // else
-            // {
-            //     sprite[STAGE_PIT_BACKGROUND].x_ = 0;
-            // }
-            
+            sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;            
         }
         
         cameraTicks = rapTicks;

@@ -40,6 +40,8 @@ ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
 ROM,BMP_P2_SELECTOR_FLASH,gfx_clut,ASSETS\GFX\p2_selector_flash.BMP
 ROM,BMP_BATTLE_THEPIT,gfx_clut,ASSETS\GFX\battle_thepit.BMP
+ROM,BMP_BATTLE_WARRIOR,gfx_clut,ASSETS\GFX\battle_warrior.BMP
+ROM,BMP_BATTLE_GORO,gfx_clut,ASSETS\GFX\battle_goro.BMP
 ROM,BMPCAGE,gfx_clut,ASSETS\GFX\cage.BMP
 ROM,BMPKANG,gfx_clut,ASSETS\GFX\liukang.BMP
 ROM,BMPRAIDEN,gfx_clut,ASSETS\GFX\raiden.BMP
@@ -62,6 +64,12 @@ ROM,BMP_PIT_MOON,gfx_clut_pack,assets\gfx\stage_pit_moon.bmp
 ROM,BMP_PIT_CLOUDS1,gfx_clut,assets\gfx\stage_pit_clouds1.bmp
 ROM,BMP_PIT_CLOUDS2,gfx_clut,assets\gfx\stage_pit_clouds2.bmp
 ROM,BMP_PIT_CLOUDS3,gfx_clut,assets\gfx\stage_pit_clouds3.bmp
+ROM,BMP_WARRIOR_BACKGROUND,gfx_clut_pack,assets\gfx\stage_warrior_background.bmp
+ROM,BMP_WARRIOR_BUSH,gfx_clut,assets\gfx\stage_warrior_bush.bmp
+ROM,BMP_WARRIOR_PILLAR,gfx_clut,assets\gfx\stage_warrior_pillar.bmp
+ROM,BMP_GORO_BACKGROUND,gfx_clut_pack,assets\gfx\stage_goro_background.bmp
+ROM,BMP_GORO_PARALAX,gfx_clut_pack,assets\gfx\stage_goro_paralax.bmp
+ROM,BMP_GORO_EYES,gfx_clut,assets\gfx\stage_goro_eyes.bmp
 ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
 ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
 ROM,BMP_HITBOX_OFF,gfx_clut,ASSETS\GFX\hitbox_off.BMP
@@ -131,7 +139,8 @@ ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
 ROM,trufun_sam,sfx_raw8000,ASSETS\SFX\trufun.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
-'ROM,MOD_STAGE,modfile1,ASSETS\Music\mk_stage.mod
-ROM,MOD_STAGE,modfile1,ASSETS\Music\mk21.mod
+ROM,MOD_STAGE_PIT,modfile1,ASSETS\Music\stage_pit.mod
+ROM,MOD_STAGE_WARRIOR,modfile1,ASSETS\Music\stage_warrior.mod
+ROM,MOD_STAGE_GORO,modfile1,ASSETS\Music\stage_goro.mod
 ' End of file.
 

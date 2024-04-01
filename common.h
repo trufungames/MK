@@ -22,8 +22,11 @@
 
 #define STAGE_PIT_MOON BATTLE_NAME + 1
 #define STAGE_PIT_CLOUDS1 STAGE_PIT_MOON + 1
-#define STAGE_PIT_BACKGROUND STAGE_PIT_CLOUDS1 + 8
-#define BLOOD_POOL STAGE_PIT_BACKGROUND + 1
+#define STAGE_WARRIOR_BUSH STAGE_PIT_CLOUDS1 + 8
+#define STAGE_SECONDARY_BACKGROUND STAGE_WARRIOR_BUSH + 4
+#define STAGE_GORO_EYES STAGE_SECONDARY_BACKGROUND + 1
+#define STAGE_PRIMARY_BACKGROUND STAGE_GORO_EYES + 2
+#define BLOOD_POOL STAGE_PRIMARY_BACKGROUND + 1
 #define P1_FIGHTER_SHADOW_PIT BLOOD_POOL + 8
 #define P1_FIGHTER_PIT P1_FIGHTER_SHADOW_PIT + 1
 #define P1_PROJECTILE P1_FIGHTER_PIT + 1
@@ -32,7 +35,8 @@
 #define P2_PROJECTILE P2_FIGHTER_PIT + 1
 #define P1_HB_ATTACK P2_PROJECTILE + 1
 #define P2_HB_ATTACK P1_HB_ATTACK + 1
-#define BLOOD_SPRAY P2_HB_ATTACK + 1  //1 of 2
+#define FOREGROUND_PILLAR P2_HB_ATTACK + 1
+#define BLOOD_SPRAY FOREGROUND_PILLAR + 2  //1 of 2
 #define BLOOD_GLOB BLOOD_SPRAY + 2
 #define BLOOD_DROP BLOOD_GLOB + 1  //1 of 8
 #define BLOOD_SQUIRT BLOOD_DROP + 8 //1 of 4
@@ -117,6 +121,11 @@
 #define DMG_BODY_PUNCH 4
 #define DMG_BODY_KICK 4
 #define DMG_THROW 8
+//-----------------------------------------------------------------------------------------------------
+#define STAGE_WARRIOR 0
+#define STAGE_PIT 1
+#define STAGE_GORO 2
+
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 10
 #define CAMERA_BOUND_RIGHT 329

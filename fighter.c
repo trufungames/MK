@@ -8,6 +8,7 @@
 #include "impactFrame.h"
 #include "blood.h"
 #include "sleep.h"
+#include "stage.h"
 #include "debug.h"
 
 int collision = 0;
@@ -246,6 +247,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     if (fighter->DoDefeatedSequence)
     {
         fighter->DoDefeatedSequence = false;
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
         animator->currentFrame = 0;
         
         if (fighter->roundsLost >= 1 && !fighter->IsDizzy)
@@ -263,6 +265,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     if (fighter->DoWinSequence)
     {
         fighter->DoWinSequence = false;
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
         animator->currentFrame = 0;
         fighter->IsWinner = true;
         fighterSetOnFloor(fighter);
@@ -308,7 +311,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 fighter->IsDefeated = true;
                 fighter->IsDizzy = false;
                 fighter->roundsLost++;
-                //showMessage("shit.");  //<<<<<<<<why is this happening?
             }
         }
         
@@ -401,8 +403,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     }
     else
     {
-        sprite[P1_PROJECTILE].active = R_is_inactive;
-        sprite[P2_PROJECTILE].active = R_is_inactive;
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     }
 
     if (fighter->IsBeingPushed)
@@ -1490,7 +1491,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             }
             updateSpriteAnimator(animator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
         }        
-        else if (fighter->pad & JAGPAD_UP && fighter->DPadReleased || fighter->IsJumping)
+        else if (fighter->pad & JAGPAD_UP && fighter->DPadReleased && fighter->AcceptingInput || fighter->IsJumping)
         {
             if (!fighter->IsJumping && fighter->DPadReleased)
             {
@@ -1855,7 +1856,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         fighter2->IsPushing = false;
     }
 
-    collision = rapCollide(18, 25, 18, 25);
+    collision = rapCollide(stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 7, stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 7);
 
     if (collision > -1)
     { 

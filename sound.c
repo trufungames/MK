@@ -524,15 +524,36 @@ void musicTitle(struct SoundHandler* soundHandler)
 	u235ModuleVol(soundHandler->VolumeMusic / 4);
 }
 
-void musicStage(struct SoundHandler* soundHandler)
+void musicStagePit(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableMusic)
 		return;
 
 	u235StopModule();
 	u235Silence();
-	//u235PlayModule((int)STRPTR(MOD_STAGE),MOD_STEREO);
-	u235PlayModule(MOD_STAGE,MOD_STEREO);
+	u235PlayModule(MOD_STAGE_PIT,MOD_STEREO);
+	u235ModuleVol(60);	
+}
+
+void musicStageWarrior(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule(MOD_STAGE_WARRIOR,MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);	
+}
+
+void musicStageGoro(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule(MOD_STAGE_GORO,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic);	
 }
 

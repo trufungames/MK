@@ -53,5 +53,7 @@ void sfxWins(struct SoundHandler* soundHandler);
 void sfxFlawless(struct SoundHandler* soundHandler);
 void sfxFatality(struct SoundHandler* soundHandler);
 void musicTitle(struct SoundHandler* soundHandler);
-void musicStage(struct SoundHandler* soundHandler);
+void musicStagePit(struct SoundHandler* soundHandler);
+void musicStageWarrior(struct SoundHandler* soundHandler);
+void musicStageGoro(struct SoundHandler* soundHandler);
 void musicStop();

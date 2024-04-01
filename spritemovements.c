@@ -72,29 +72,6 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
 	if (rapTicks >= LastTicks + 1)
 	{
-		if (rapTicks >= cloudTicks1 + 2)
-		{
-			sprite[STAGE_PIT_CLOUDS1].x_ += 1.0f;
-			sprite[STAGE_PIT_CLOUDS1+1].x_ += 1.0f;
-			cloudTicks1 = rapTicks;
-		}
-
-		if (rapTicks >= cloudTicks2 + 4)
-		{
-			sprite[STAGE_PIT_CLOUDS1+2].x_ += 1.0f;
-			sprite[STAGE_PIT_CLOUDS1+3].x_ += 1.0f;
-			sprite[STAGE_PIT_CLOUDS1+4].x_ += 1.0f;
-			cloudTicks2 = rapTicks;
-		}
-		
-		if (rapTicks >= cloudTicks3 + 8)
-		{
-			sprite[STAGE_PIT_CLOUDS1+5].x_ += 1.0f;
-			sprite[STAGE_PIT_CLOUDS1+6].x_ += 1.0f;
-			sprite[STAGE_PIT_CLOUDS1+7].x_ += 1.0f;
-			cloudTicks3 = rapTicks;
-		}
-
 		if (IsScrollingUp)
 		{
 			bgYOffset += 2;
@@ -145,7 +122,7 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
 		if (IsScrollingUp || IsScrollingDown || IsShaking)
 		{
-			sprite[STAGE_PIT_BACKGROUND].y_ += bgYInc;
+			sprite[STAGE_PRIMARY_BACKGROUND].y_ += bgYInc;
 			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
 			fighter1->positionY += bgYInc;
 			fighter2->positionY += bgYInc;
