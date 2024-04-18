@@ -17,6 +17,7 @@ unsigned int backgroundGfxBase;
 
 void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsigned int gfxBase)
 {
+    xOffset = 0;
     backgroundSpriteIndex = spriteIndex;
     cameraX = startX;
     cameraY = startY;
@@ -24,6 +25,7 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
     backgroundGfxBase = gfxBase;
 
     setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+    cameraTicks = rapTicks;
 }
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
@@ -129,4 +131,14 @@ bool cameraIsAtLeftWall()
 bool cameraIsAtRightWall()
 {
     return cameraX >= cameraXMax;
+}
+
+int cameraGetX()
+{
+    return cameraX;
+}
+
+void cameraResetTicks()
+{
+    cameraTicks = rapTicks;
 }

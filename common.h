@@ -3,30 +3,38 @@
 #include "romassets.h"
 
 #define BACKGROUND 0
-#define P2_FLASH 1
-#define P2_CURSOR 2
-#define P1_FLASH 3
-#define P1_CURSOR 4
-#define P1_FIGHTER_SHADOW 5
-#define P1_FIGHTER 6
-#define P2_FIGHTER_SHADOW 7
-#define P2_FIGHTER 8
-#define LIGHTNING 9
-#define LIGHTNING2 10
+#define TITLE_RED 1
+#define TITLE_MKLOGO 2
+#define TITLE_STONE 3
+#define TITLE_DEBRIS 4
+#define CHOOSE_BACKGROUND TITLE_DEBRIS + 5
+#define P2_FLASH CHOOSE_BACKGROUND + 1
+#define P2_CURSOR P2_FLASH + 1
+#define P1_FLASH P2_CURSOR + 1
+#define P1_CURSOR P1_FLASH + 1
+#define P1_FIGHTER_SHADOW P1_CURSOR + 1
+#define P1_FIGHTER P1_FIGHTER_SHADOW + 1
+#define P2_FIGHTER_SHADOW P2_FIGHTER_SHADOW + 1
+#define P2_FIGHTER P2_FIGHTER_SHADOW + 1
+#define LIGHTNING P2_FIGHTER + 1
+#define LIGHTNING2 LIGHTNING + 1
 
-#define BATTLE_SCREEN 12
+#define BATTLE_SCREEN 15
 #define TEXT_PARTICLES BATTLE_SCREEN + 1
 #define P1_PT_PORTRAIT TEXT_PARTICLES + 1
 #define P2_PT_PORTRAIT P1_PT_PORTRAIT + 1
 #define BATTLE_NAME P2_PT_PORTRAIT + 1
 
-#define STAGE_PIT_MOON BATTLE_NAME + 1
-#define STAGE_PIT_CLOUDS1 STAGE_PIT_MOON + 1
-#define STAGE_WARRIOR_BUSH STAGE_PIT_CLOUDS1 + 8
+#define STAGE_PIT_MOON BATTLE_NAME + 2
+#define STAGE_GATES_MOUNTAIN STAGE_PIT_MOON + 1
+#define STAGE_PIT_CLOUDS1 STAGE_GATES_MOUNTAIN + 1
+#define STAGE_GATES_TEMPLE STAGE_PIT_CLOUDS1 + 8
+#define STAGE_WARRIOR_BUSH STAGE_GATES_TEMPLE + 1
 #define STAGE_SECONDARY_BACKGROUND STAGE_WARRIOR_BUSH + 4
 #define STAGE_GORO_EYES STAGE_SECONDARY_BACKGROUND + 1
 #define STAGE_PRIMARY_BACKGROUND STAGE_GORO_EYES + 2
-#define BLOOD_POOL STAGE_PRIMARY_BACKGROUND + 1
+#define STAGE_GATES_FLAME STAGE_PRIMARY_BACKGROUND + 1
+#define BLOOD_POOL STAGE_GATES_FLAME + 2
 #define P1_FIGHTER_SHADOW_PIT BLOOD_POOL + 8
 #define P1_FIGHTER_PIT P1_FIGHTER_SHADOW_PIT + 1
 #define P1_PROJECTILE P1_FIGHTER_PIT + 1
@@ -103,6 +111,9 @@
 #define SOUND_THROW_FEMALE 55
 #define SOUND_THROW_NINJA 56
 #define SOUND_TRUFUN 57
+#define SOUND_TITLE_RISE 58
+#define SOUND_TITLE_THUD 59
+#define SOUND_TITLE_START 60
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
@@ -122,9 +133,10 @@
 #define DMG_BODY_KICK 4
 #define DMG_THROW 8
 //-----------------------------------------------------------------------------------------------------
-#define STAGE_WARRIOR 0
-#define STAGE_PIT 1
-#define STAGE_GORO 2
+#define STAGE_GATES 0
+#define STAGE_WARRIOR 1
+#define STAGE_PIT 2
+#define STAGE_GORO 3
 
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 10

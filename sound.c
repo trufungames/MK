@@ -315,6 +315,33 @@ void sfxTruFun(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_TRUFUN, 8000);
 }
 
+void sfxTitleRise(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_TITLE_RISE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_TITLE_RISE, 8000);
+}
+
+void sfxTitleThud(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_TITLE_THUD, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_TITLE_THUD, 8000);
+}
+
+void sfxTitleStart(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_TITLE_START, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_TITLE_START, 8000);
+}
+
 void sfxYellMale(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)
@@ -522,6 +549,17 @@ void musicTitle(struct SoundHandler* soundHandler)
 	//u235PlayModule((int)STRPTR(MOD_TITLE),MOD_STEREO);
 	u235PlayModule(MOD_TITLE,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic / 4);
+}
+
+void musicStageGates(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule(MOD_STAGE_GATES,MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);	
 }
 
 void musicStagePit(struct SoundHandler* soundHandler)

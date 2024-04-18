@@ -1,6 +1,8 @@
 #include "common.h"
 #include "spriteanimator.h"
 
+static int tempY = 0;
+
 void animateFrame(unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth)
 {
     animateFrame(spriteIndex, frame, animationFrames, mulFactor, base, idleFrameWidth, 0, 0, 1);
@@ -24,7 +26,15 @@ void animateFrame(unsigned int spriteIndex, unsigned int frame, struct Animation
     sprite[spriteIndex].framesz = animationFrames[frame].width * animationFrames[frame].height * mulFactor;
     sprite[spriteIndex].gfxbase = base + (animationFrames[frame].x * mulFactor) + (animationFrames[frame].y * sprite[spriteIndex].gwidth);
     sprite[spriteIndex].x_ = positionX + (animationFrames[frame].offsetX * direction);
-    sprite[spriteIndex].y_ = positionY + (animationFrames[frame].offsetY);
+
+    tempY = positionY + (animationFrames[frame].offsetY);
+
+    if (tempY < 0)
+    {
+        tempY = 0;
+    }
+    
+    sprite[spriteIndex].y_ = tempY;
 
     if (direction == -1)
     {

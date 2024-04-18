@@ -32,3 +32,5 @@ void bloodDrop(int x, int y, int direction);
 void bloodPool(int x, int y);
 
 void bloodSquirt(int x, int y);
+
+void bloodResetTicks();

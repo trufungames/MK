@@ -366,3 +366,22 @@ void bloodSquirt(int x, int y)
         }
     }
 }
+
+void bloodResetTicks()
+{
+    for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+    {
+        bloodDrops[i].LastTicks = rapTicks;
+        bloodDrops[i].Animator->lastTick = rapTicks;
+        bloodPools[i].Animator->lastTick = rapTicks;
+    }
+
+    for (int i = 0; i < TOTAL_BLOOD_SQUIRT_COUNT; i++)
+    {
+        bloodSquirts[i].Animator->lastTick = rapTicks;
+    }
+    
+    bloodSpray1Animator.lastTick = rapTicks;
+    bloodSpray2Animator.lastTick = rapTicks;
+    bloodGlobAnimator.lastTick = rapTicks;
+}

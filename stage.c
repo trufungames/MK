@@ -1,4 +1,5 @@
 #include "common.h"
+#include "stage.h"
 
 static int currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
@@ -23,7 +24,7 @@ void stageSetNext()
     
     if (currentStage > STAGE_GORO)
     {
-        currentStage = STAGE_WARRIOR;
+        currentStage = STAGE_GATES;
     }
 }
 
@@ -31,6 +32,10 @@ void stageLoadVsBattle()
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_GATES_clut),1,16);
+            sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_GATES;
+            break;
         case STAGE_WARRIOR:
             jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_WARRIOR_clut),1,16);
             sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_WARRIOR;
@@ -52,7 +57,19 @@ void stageUpdate()
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            stageHideShowSprite(STAGE_GATES_FLAME, 16);
+            stageHideShowSprite(STAGE_GATES_FLAME+1, 16);
+            stageHideShowSprite(FOREGROUND_PILLAR, 32);
+            stageHideShowSprite(FOREGROUND_PILLAR+1, 32);
+            break;
         case STAGE_WARRIOR:
+            stageHideShowSprite(STAGE_WARRIOR_BUSH, 48);
+            stageHideShowSprite(STAGE_WARRIOR_BUSH+1, 48);
+            stageHideShowSprite(STAGE_WARRIOR_BUSH+2, 48);
+            stageHideShowSprite(STAGE_WARRIOR_BUSH+3, 48);
+            stageHideShowSprite(FOREGROUND_PILLAR, 32);
+            stageHideShowSprite(FOREGROUND_PILLAR+1, 32);
             break;
         case STAGE_PIT:
             if (rapTicks >= cloudTicks1 + 2)
@@ -79,6 +96,8 @@ void stageUpdate()
             }
             break;
         case STAGE_GORO:
+            stageHideShowSprite(STAGE_GORO_EYES, 16);
+            stageHideShowSprite(STAGE_GORO_EYES+1, 16);
             break;
         default:
             break;
@@ -89,14 +108,16 @@ int stageGetFighterHitboxIndex()
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            return 30;
         case STAGE_WARRIOR:
-            return 25;
+            return 30;
         case STAGE_PIT:
-            return 25;
+            return 30;
         case STAGE_GORO:
-            return 25;
+            return 30;
         default:
-            return 25;
+            return 30;
     }
 }
 
@@ -104,6 +125,8 @@ int stageGetHeight()
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            return 240;
         case STAGE_WARRIOR:
             return 240;
         case STAGE_PIT:
@@ -119,6 +142,8 @@ int stageGetStartX()
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            return 80;
         case STAGE_WARRIOR:
             return 113;
         case STAGE_PIT:
@@ -134,6 +159,17 @@ void stageMove(int direction)
 {
     switch (currentStage)
     {
+        case STAGE_GATES:
+            // sprite[STAGE_WARRIOR_BUSH].x_ += 1.0f * direction;
+            // sprite[STAGE_WARRIOR_BUSH+1].x_ += 1.0f * direction;
+            // sprite[STAGE_WARRIOR_BUSH+2].x_ += 1.0f * direction;
+            // sprite[STAGE_WARRIOR_BUSH+3].x_ += 1.0f * direction;
+            sprite[STAGE_GATES_TEMPLE].x_ += 1.0f * direction;
+            sprite[FOREGROUND_PILLAR].x_ += 2.0f * direction;
+            //sprite[FOREGROUND_PILLAR+2].x_ += 2.0f * direction;
+            sprite[STAGE_GATES_FLAME].x_ += 2.0f * direction;
+            sprite[STAGE_GATES_FLAME+1].x_ += 2.0f * direction;
+            break;
         case STAGE_WARRIOR:
             sprite[STAGE_WARRIOR_BUSH].x_ += 1.0f * direction;
             sprite[STAGE_WARRIOR_BUSH+1].x_ += 1.0f * direction;
@@ -148,4 +184,23 @@ void stageMove(int direction)
         default:
             break;
     }
+}
+
+void stageHideShowSprite(int spriteIndex, int width)
+{
+    if (sprite[spriteIndex].x_ < (width * -1) || sprite[spriteIndex].x_ >= 320)
+    {
+        sprite[spriteIndex].active = R_is_inactive;
+    }
+    else
+    {
+        sprite[spriteIndex].active = R_is_active;
+    }
+}
+
+void stageResetTicks()
+{
+    cloudTicks1 = rapTicks;
+    cloudTicks2 = rapTicks;
+    cloudTicks3 = rapTicks;
 }

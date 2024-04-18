@@ -39,6 +39,7 @@ ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
 ROM,BMP_P2_SELECTOR_FLASH,gfx_clut,ASSETS\GFX\p2_selector_flash.BMP
+ROM,BMP_BATTLE_GATES,gfx_clut,ASSETS\GFX\battle_gates.BMP
 ROM,BMP_BATTLE_THEPIT,gfx_clut,ASSETS\GFX\battle_thepit.BMP
 ROM,BMP_BATTLE_WARRIOR,gfx_clut,ASSETS\GFX\battle_warrior.BMP
 ROM,BMP_BATTLE_GORO,gfx_clut,ASSETS\GFX\battle_goro.BMP
@@ -70,6 +71,12 @@ ROM,BMP_WARRIOR_PILLAR,gfx_clut,assets\gfx\stage_warrior_pillar.bmp
 ROM,BMP_GORO_BACKGROUND,gfx_clut_pack,assets\gfx\stage_goro_background.bmp
 ROM,BMP_GORO_PARALAX,gfx_clut_pack,assets\gfx\stage_goro_paralax.bmp
 ROM,BMP_GORO_EYES,gfx_clut,assets\gfx\stage_goro_eyes.bmp
+ROM,BMP_GATES_BACKGROUND,gfx_clut_pack,assets\gfx\stage_gates_background.bmp
+ROM,BMP_GATES_MOUNTAIN,gfx_clut_pack,assets\gfx\stage_gates_mountain.bmp
+ROM,BMP_GATES_TEMPLE,gfx_clut,assets\gfx\stage_gates_temple.bmp
+ROM,BMP_GATES_BUSH,gfx_clut,assets\gfx\stage_gates_bush.bmp
+ROM,BMP_GATES_CLOUD,gfx_clut,assets\gfx\stage_gates_cloud.bmp
+ROM,BMP_FLAME,gfx_clut,assets\gfx\flame.bmp
 ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
 ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
 ROM,BMP_HITBOX_OFF,gfx_clut,ASSETS\GFX\hitbox_off.BMP
@@ -78,6 +85,13 @@ ROM,BMP_MATCH,gfx_clut,ASSETS\GFX\match.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
 ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
 ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
+ROM,BMP_TITLE_RED,gfx_clut,ASSETS\GFX\title_background.BMP
+ROM,BMP_TITLE_MKLOGO,gfx_clut,ASSETS\GFX\title_mklogo.BMP
+ROM,BMP_TITLE_MENU0,gfx_clut,ASSETS\GFX\title_menu0.BMP
+ROM,BMP_TITLE_MENU1,gfx_clut,ASSETS\GFX\title_menu1.BMP
+ROM,BMP_TITLE_MENU2,gfx_clut,ASSETS\GFX\title_menu2.BMP
+ROM,BMP_TITLE_MENU3,gfx_clut,ASSETS\GFX\title_menu3.BMP
+ROM,BMP_TESTYOURMIGHT_STONE,gfx_clut,ASSETS\GFX\testyourmight_stone.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
@@ -137,8 +151,12 @@ ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav
 ROM,throw_female_sam,sfx_raw8000,ASSETS\SFX\throw_female.wav
 ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
 ROM,trufun_sam,sfx_raw8000,ASSETS\SFX\trufun.wav
+ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
+ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
+ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
+ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
 ROM,MOD_STAGE_PIT,modfile1,ASSETS\Music\stage_pit.mod
 ROM,MOD_STAGE_WARRIOR,modfile1,ASSETS\Music\stage_warrior.mod
 ROM,MOD_STAGE_GORO,modfile1,ASSETS\Music\stage_goro.mod

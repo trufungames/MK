@@ -81,6 +81,8 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
         fighter->direction = -1;
     }
 
+    sprite[fighter->spriteIndex].y_ = 106;
+
     fighter->positionX = sprite[fighter->spriteIndex].x_;
     fighter->positionY = sprite[fighter->spriteIndex].y_;
 }
@@ -96,6 +98,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->throwMomentemYStart = 5.0f;
 
     //assignments
+    fighter->ResetTicks = false;
     fighter->soundHandler = soundHandler;
     fighter->impactFrameLowPunch = impactFrameLowPunch;
     fighter->impactFrameHighPunch = impactFrameHighPunch;
@@ -202,6 +205,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->lightningSpriteIndex = P1_PROJECTILE;
         fighter->PAD = LEFT_PAD;
         fighter->positionX = 50;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex-1].flip = R_is_normal;
         fighter->direction = 1;        
@@ -212,6 +216,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->lightningSpriteIndex = P2_PROJECTILE;
         fighter->PAD = RIGHT_PAD;
         fighter->positionX = 210;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex-1].flip = R_is_flipped;
         fighter->direction = -1;
@@ -221,6 +226,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighterSetOnFloor(fighter);
     fighterAlignSpriteAndHitbox(fighter);
     impactFrameReset(fighter);
+    fighterResetTicks(fighter);
 }
 
 void fighterRestartMatch(struct Fighter* fighter)
@@ -237,16 +243,45 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
 
 void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
+    if (fighter->ResetTicks)
+    {
+        fighter->ResetTicks = false;
+        fighter->lastTicks = rapTicks;
+        fighter->touchTicks = rapTicks;
+        fighter->dropKickTicks = rapTicks;
+        fighter->JumpRollTicks = rapTicks;
+        animator->lastTick = rapTicks;
+    }
+
     fighterCastShadow(fighter, true);
+
+    if (fighter->fighterIndex == RAIDEN)
+    {
+        sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_ - (4 * fighter->direction);
+
+        if (fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner)
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;						
+        }
+        else
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+        }
+    }
+    else
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    }
     
     if (!fighter->IsActive)
         return;
 
     walkForward = fighter->direction == -1;
 
-    if (fighter->DoDefeatedSequence)
+    if (fighter->DoDefeatedSequence && !fighter->IsHitFall)
     {
         fighter->DoDefeatedSequence = false;
+        fighterSetOnFloor(fighter);
         sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
         animator->currentFrame = 0;
         
@@ -260,6 +295,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
             fighter->IsDizzy = false;
             fighter->roundsLost++;
         }
+        return;
     }
 
     if (fighter->DoWinSequence)
@@ -279,50 +315,9 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 sfxKanoYell(fighter->soundHandler, fighter->isPlayer1);
                 break;
         }        
-    }
-
-    if (fighter->IsDefeated)
-    {
-        if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
-        {
-            bgShake(false);
-            sfxThud(fighter->soundHandler);
-            fighter->IsActive = false;
-        }
-
-        updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        return;
-    }
-
-
-    if (fighter->IsDizzy)
-    {
-        if (!fighter->IsBeingDamaged)
-        {
-            updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-        }
-
-        if ((fighter->pendingDamage > 0 || fighter->IsBeingDamaged))
-        {            
-            fighterHandleDamage(delta, fighter, animator, walkForward);
-            
-            if (!fighter->IsBeingDamaged)
-            {
-                fighter->IsDefeated = true;
-                fighter->IsDizzy = false;
-                fighter->roundsLost++;
-            }
-        }
-        
         return;
     }
     
-    if (fighter->IsWinner)
-    {
-        updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        return;
-    }
-
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
     {
         fighter->DoBlockSequence = false;
@@ -388,22 +383,46 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         return;
     }
 
-    if (fighter->fighterIndex == RAIDEN)
+    if (fighter->IsDefeated)
     {
-        sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_ - (4 * fighter->direction);
+        if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
+        {
+            bgShake(false);
+            sfxThud(fighter->soundHandler);
+            fighter->IsActive = false;
+        }
 
-        if (fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner)
-        {
-            sprite[fighter->lightningSpriteIndex].active = R_is_active;						
-        }
-        else
-        {
-            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-        }
+        updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        return;
     }
-    else
+
+    if (fighter->IsDizzy)
     {
-        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+        if (!fighter->IsBeingDamaged)
+        {
+            updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+        }
+
+        if ((fighter->pendingDamage > 0 || fighter->IsBeingDamaged))
+        {            
+            fighterHandleDamage(delta, fighter, animator, walkForward);
+            
+            if (!fighter->IsBeingDamaged)
+            {
+                fighter->IsDefeated = true;
+                fighter->IsDizzy = false;
+                fighter->roundsLost++;
+            }
+        }
+        
+        return;
+    }
+    
+    if (fighter->IsWinner)
+    {
+        fighterSetOnFloor(fighter);
+        updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        return;
     }
 
     if (fighter->IsBeingPushed)
@@ -623,12 +642,13 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 fighterSetOnFloor(fighter);
             }
         }
-        else if (animator->currentFrame >= 2 && rapTicks >= fighter->lastTicks + 1)
+        else if (animator->currentFrame >= 2 && rapTicks >= fighter->lastTicks + 0)
         {
             if (!fighter->IsBeingThrownInAir)
             {
                 fighter->IsBeingThrownInAir = true;
-                fighter->positionX += (16 * fighter->direction);
+                //fighter->positionX += (16 * fighter->direction);
+                fighterPositionXAdd(fighter, 16 * fighter->direction);
                 fighter->positionY = 48;
             }
             else
@@ -674,7 +694,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 fighterSetOnFloor(fighter);
             }
         }
-        else if (rapTicks >= fighter->lastTicks + 1)
+        else if (rapTicks >= fighter->lastTicks + 0)
         {
             fighterPositionXAdd(fighter, fighter->playerUppercutXSpeed * -fighter->direction);
 
@@ -744,7 +764,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 fighterSetOnFloor(fighter);
             }
         }
-        else if (rapTicks >= fighter->lastTicks + 1)
+        else if (rapTicks >= fighter->lastTicks + 0)
         {
             fighterPositionXAdd(fighter, fighter->playerUppercutXSpeed * -fighter->direction);
 
@@ -968,7 +988,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             impactFrameUpdate(animator, fighter, fighter->impactFrameSweep);
             updateSpriteAnimator(animator, *fighter->sweepFrames, fighter->SWEEP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
         }
-        else if ((fighter->pad & JAGPAD_LEFT && fighter->direction == 1 || fighter->pad & JAGPAD_RIGHT && fighter->direction == -1) && fighter->pad & JAGPAD_A && fighter->ButtonReleased && fighter->AcceptingInput && !fighter->IsJumping || fighter->IsRoundhousing)
+        else if ((fighter->pad & JAGPAD_LEFT && fighter->direction == 1 || fighter->pad & JAGPAD_RIGHT && fighter->direction == -1) && (fighter->pad & JAGPAD_A || fighter->pad & JAGPAD_9) && fighter->ButtonReleased && fighter->AcceptingInput && !fighter->IsJumping || fighter->IsRoundhousing)
         {
             if (!fighter->IsRoundhousing && fighter->ButtonReleased)
             {
@@ -1205,7 +1225,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 1)
+                    if (rapTicks >= fighter->lastTicks + 0)
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
@@ -1342,7 +1362,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 1)
+                    if (rapTicks >= fighter->lastTicks + 0)
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
@@ -1574,7 +1594,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 1 && !fighter->MadeContact)
+                    if (rapTicks >= fighter->lastTicks + 0 && !fighter->MadeContact)
                     {
                         fighter->positionY += fighter->momentumY;
                         fighter->momentumY += fighter->gravity;
@@ -2257,6 +2277,8 @@ void fighterResetSpriteIndex(struct Fighter* fighter, struct SpriteAnimator* ani
         fighter->spriteIndex = P2_FIGHTER;
         animator->spriteIndex = P2_FIGHTER;
     }
+
+    animator->lastTick = rapTicks;
 }
 
 void fighterSetOnFloor(struct Fighter* fighter)
@@ -2293,10 +2315,10 @@ bool fighterHasRoomToMove(struct Fighter* fighter, struct Fighter* otherFighter)
 
 void fighterPositionXAdd(struct Fighter* fighter, int xAdd)
 {
-    if (fighter->direction == 1 && xAdd < 0 && !fighter->hasRoomToMove)
+    if ((fighter->direction == 1 || fighter->direction != 1 && fighter->IsBeingThrown) && xAdd < 0 && !fighter->hasRoomToMove)
         return;
 
-    if (fighter->direction == -1 && xAdd > 0 && !fighter->hasRoomToMove)
+    if ((fighter->direction != 1 || fighter->direction == 1 && fighter->IsBeingThrown) && xAdd > 0 && !fighter->hasRoomToMove)
         return;
     
     fighter->positionX += xAdd;    
@@ -2314,7 +2336,12 @@ void fighterCastShadow(struct Fighter* fighter, bool includeY)
 
     if (includeY)
     {
-        sprite[fighter->spriteIndex - 1].y_ = sprite[fighter->spriteIndex].y_ + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10;
+        sprite[fighter->spriteIndex - 1].y_ = sprite[fighter->spriteIndex].y_ + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10 + FLOOR_LOCATION_Y_FIGHTER - fighter->positionY + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height);
+
+        if (sprite[fighter->spriteIndex - 1].y_ > FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10)
+        {
+            sprite[fighter->spriteIndex - 1].y_ = FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10;
+        }
     }
 }
 
@@ -2364,4 +2391,9 @@ void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2)
 
     fighter1->isMaxDistance = false;
     fighter2->isMaxDistance = false;
+}
+
+void fighterResetTicks(struct Fighter* fighter)
+{
+    fighter->ResetTicks = true;
 }

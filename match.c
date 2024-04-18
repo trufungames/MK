@@ -433,3 +433,8 @@ int matchGetFighter2Wins()
 {
 	return fighter2Wins;
 }
+
+void matchResetTicks()
+{
+	fightAnimator.lastTick = rapTicks;
+}

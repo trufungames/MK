@@ -7,3 +7,5 @@ int stageGetFighterHitboxIndex();
 int stageGetHeight();
 int stageGetStartX();
 void stageMove(int direction);
+void stageHideShowSprite(int spriteIndex, int width);
+void stageResetTicks();

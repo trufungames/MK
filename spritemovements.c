@@ -123,6 +123,13 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 		if (IsScrollingUp || IsScrollingDown || IsShaking)
 		{
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ += bgYInc;
+			sprite[STAGE_SECONDARY_BACKGROUND].y_ += bgYInc;
+			sprite[STAGE_GATES_MOUNTAIN].y_ += bgYInc;
+			sprite[STAGE_GATES_TEMPLE].y_ += bgYInc;
+			sprite[STAGE_GATES_FLAME].y_ += bgYInc;
+			sprite[STAGE_GATES_FLAME+1].y_ += bgYInc;
+			sprite[FOREGROUND_PILLAR].y_ += bgYInc;
+			sprite[FOREGROUND_PILLAR+1].y_ += bgYInc;
 			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
 			fighter1->positionY += bgYInc;
 			fighter2->positionY += bgYInc;
@@ -169,4 +176,9 @@ void bgShake(bool scrollUp)
 		shakeDirection = 1;
 		LastTicks = rapTicks;
 	}
+}
+
+void bgResetTicks()
+{
+	LastTicks = rapTicks;
 }

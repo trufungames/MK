@@ -9,3 +9,4 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2);
 void bgScrollUp();
 void bgScrollDown();
 void bgShake(bool scrollUp);
+void bgResetTicks();

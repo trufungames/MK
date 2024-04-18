@@ -535,4 +535,31 @@ sample57:	dc.l	trufun_sam		; start of sample
 s57_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
+sample58:	dc.l	title_rise_sam		; start of sample
+			dc.l	title_rise_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s58_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+	
+sample59:	dc.l	title_thud_sam		; start of sample
+			dc.l	title_thud_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s59_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample60:	dc.l	title_start_sam		; start of sample
+			dc.l	title_start_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s60_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

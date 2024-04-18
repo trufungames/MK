@@ -5,3 +5,5 @@ bool cameraCheckBoundsRight(struct Fighter* fighterLeft, struct Fighter* fighter
 bool cameraCanMove();
 bool cameraIsAtLeftWall();
 bool cameraIsAtRightWall();
+int cameraGetX();
+void cameraResetTicks();

@@ -93,6 +93,7 @@ struct Fighter {
     bool DoDefeatedSequence;
     bool DoWinSequence;
     bool DoThrowSequence;
+    bool ResetTicks;
     int ThrowX;
     int ThrowY;
     bool AcceptingInput;
@@ -259,3 +260,5 @@ void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2);
 int fighterShadowHeightLookup(int height);
 
 void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterResetTicks(struct Fighter* fighter);

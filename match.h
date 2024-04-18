@@ -4,3 +4,4 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 bool matchIsComplete();
 int matchGetFighter1Wins();
 int matchGetFighter2Wins();
+void matchResetTicks();
