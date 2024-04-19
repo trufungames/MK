@@ -19,6 +19,7 @@ static int pad1;
 static int pad2;
 static int imageBuffer[768*608/4];
 static int imageBuffer320x240[320*224/4];
+static int imageBufferFMV[80*1408/4];
 static int BLACKPALx16[8];
 static int BLACKPAL[128];
 int p1Cursor = 1;
@@ -29,6 +30,7 @@ bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
 bool onTitleScreen = false;
+bool onMenuScreen = false;
 bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
@@ -40,6 +42,10 @@ int lastTicks = 0;
 int p1FlashCount = 0;
 int p2FlashCount = 0;
 int chooseTicks = 0;
+int menuTicks = 0;
+int menuIndex = 0;
+bool menuChanged = false;
+bool menuSelected = false;
 
 static SoundHandler soundHandler = {
 	true,  //sound on/off
@@ -2114,6 +2120,7 @@ void initBlackPalettes();
 void initAlphaScreen();
 void initTruFunScreen();
 void initTitleScreen();
+void initMenuScreen();
 void initGameAssets();
 void switchScreenChooseFighter();
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
@@ -2663,6 +2670,8 @@ void basicmain()
 		p2FlashCount = 0;
 		struct Fighter* fighter1Ptr;
 		struct Fighter* fighter2Ptr; 
+		int fighters1OffsetY = -134;
+		int fighters2OffsetY = 134;
 
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
@@ -3282,22 +3291,127 @@ void basicmain()
 					sfxIntro(&soundHandler);
 				}
 
-				// if (fadedIn && !fadedOut)
-				// {
-				// 	if (rapTicks > gameStartTicks + 240)
-				// 	{
-				// 		for (int i = 0; i < 90; i++)
-				// 		{
-				// 			rapFadeClut(0,256,BLACKPAL);
-				// 			jsfVsync(0);
-				// 		}
+				if (fadedIn && !fadedOut)
+				{
+					if (rapTicks > gameStartTicks + 240)
+					{
+						for (int i = 0; i < 90; i++)
+						{
+							rapFadeClut(0,256,BLACKPAL);
+							jsfVsync(0);
+						}
 
-				// 		fadedOut = true;		
-				// 		fighterStartUp();
-				// 		switchScreenChooseFighter();
-				// 		musicTitle(&soundHandler);
-				// 		//initGameAssets();
+						fadedOut = true;		
+						onTitleScreen = false;
+						initMenuScreen();
+					}
+				}
+			}
+			else if (onMenuScreen)
+			{
+				if (rapTicks >= menuTicks + 1)
+				{
+					menuTicks = rapTicks;
+
+					fighters1OffsetY += 1;
+					fighters2OffsetY += 1;
+
+					if (fighters1OffsetY > 268)
+					{
+						fighters1OffsetY = -268;
+					}
+
+					if (fighters2OffsetY > 268)
+					{
+						fighters2OffsetY = -268;
+					}
+
+					sprite[TITLE_FIGHTERS].y_ = fighters1OffsetY;
+					sprite[TITLE_FIGHTERS+1].y_ = fighters2OffsetY;
+					sprite[TITLE_FIGHTERS+2].y_ = fighters1OffsetY;
+					sprite[TITLE_FIGHTERS+3].y_ = fighters2OffsetY;
+				}
+
+				pad1 = jsfGetPadPressed(LEFT_PAD);
+
+				if (pad1 & JAGPAD_LEFT && !menuChanged && !menuSelected)
+				{
+					menuIndex--;
+
+					if (menuIndex < 0)
+					{
+						menuIndex = 2;
+					}
+
+					menuChanged = true;
+					sfxP2Cursor(&soundHandler);
+				}
+				else if (pad1 & JAGPAD_RIGHT && !menuChanged && !menuSelected)
+				{
+					menuIndex++;
+
+					if (menuIndex > 2)
+					{
+						menuIndex = 0;
+					}
+
+					menuChanged = true;
+					sfxP1Cursor(&soundHandler);
+				}
+				else if (pad1 & (JAGPAD_A | JAGPAD_B | JAGPAD_C) && menuIndex == 0 && !menuSelected)
+				{
+					menuSelected = true;
+					sfxTitleStart(&soundHandler);
+					sprite[TITLE_FIGHTERS].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+1].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+2].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+3].active = R_is_inactive;
+					sprite[TITLE_STONE].active = R_is_inactive;
+
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
+
+					fadedOut = true;					
+					fighterStartUp();
+				 	switchScreenChooseFighter();
+				 	musicTitle(&soundHandler);
+				}
+
+				if (menuChanged)
+				{
+					menuChanged = false;
+					switch(menuIndex)
+					{
+						case 0:
+							sprite[TITLE_STONE].gfxbase = BMP_TS_MENU1;
+							break;
+						case 1:
+							sprite[TITLE_STONE].gfxbase = BMP_TS_MENU2;
+							break;
+						case 2:
+							sprite[TITLE_STONE].gfxbase = BMP_TS_MENU3;
+							break;
+						default:
+							break;
+					}
+				}
+
+				// if (rapTicks > gameStartTicks + 600)
+				// {
+				// 	for (int i = 0; i < 90; i++)
+				// 	{
+				// 		rapFadeClut(0,256,BLACKPAL);
+				// 		jsfVsync(0);
 				// 	}
+
+				// 	fadedOut = true;		
+				// 	fighterStartUp();
+				// 	switchScreenChooseFighter();
+				// 	musicTitle(&soundHandler);
+				// 	//initGameAssets();
 				// }
 			}
 			else if (onScreenChooseFighter)
@@ -3888,6 +4002,31 @@ void initTitleScreen()
 	onTitleScreen = true;
 }
 
+void initMenuScreen()
+{
+	rapParticleClear();
+	rapUnpack(BMP_TS_BACKGROUND,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active = R_is_active;
+	sprite[TITLE_FIGHTERS].active = R_is_active;
+	sprite[TITLE_FIGHTERS+1].active = R_is_active;
+	sprite[TITLE_FIGHTERS+2].active = R_is_active;
+	sprite[TITLE_FIGHTERS+3].active = R_is_active;
+	sprite[TITLE_STONE].active = R_is_active;
+	
+	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,64);
+	jsfLoadClut((unsigned short *)(void *)(BMP_TS_MENU1_clut),4,16);
+
+	menuSelected = false;
+	menuChanged = false;
+	menuIndex = 0;
+	menuTicks = rapTicks;
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+	onMenuScreen = true;
+}
+
 void initGameAssets()
 {
 	//show Kano and Subzero by default on the Choose Your Fighter screen
@@ -3943,6 +4082,7 @@ void switchScreenChooseFighter()
 	sprite[P2_CURSOR].active = R_is_active;
 
 	onTitleScreen = false;
+	onMenuScreen = false;
 	onScreenChooseFighter = true;
 	onScreenVsBattle = false;
 	onScreenFight = false;

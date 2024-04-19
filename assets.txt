@@ -85,13 +85,21 @@ ROM,BMP_MATCH,gfx_clut,ASSETS\GFX\match.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
 ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
 ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
-ROM,BMP_TITLE_RED,gfx_clut,ASSETS\GFX\title_background.BMP
-ROM,BMP_TITLE_MKLOGO,gfx_clut,ASSETS\GFX\title_mklogo.BMP
-ROM,BMP_TITLE_MENU0,gfx_clut,ASSETS\GFX\title_menu0.BMP
-ROM,BMP_TITLE_MENU1,gfx_clut,ASSETS\GFX\title_menu1.BMP
-ROM,BMP_TITLE_MENU2,gfx_clut,ASSETS\GFX\title_menu2.BMP
-ROM,BMP_TITLE_MENU3,gfx_clut,ASSETS\GFX\title_menu3.BMP
 ROM,BMP_TESTYOURMIGHT_STONE,gfx_clut,ASSETS\GFX\testyourmight_stone.BMP
+ROM,BMP_TS_BACKGROUND,gfx_clut_pack,ASSETS\GFX\ts_background.BMP
+ROM,BMP_TS_FIGHTERS1,gfx_noclut,ASSETS\GFX\ts_fighters1.BMP
+ROM,BMP_TS_FIGHTERS2,gfx_noclut,ASSETS\GFX\ts_fighters2.BMP
+ROM,BMP_TS_MENU1,gfx_clut,ASSETS\GFX\ts_menu1.BMP
+ROM,BMP_TS_MENU2,gfx_clut,ASSETS\GFX\ts_menu2.BMP
+ROM,BMP_TS_MENU3,gfx_clut,ASSETS\GFX\ts_menu3.BMP
+ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
+ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
+ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP
+ROM,BMP_FMV_RAIDEN,gfx_clut_pack,ASSETS\GFX\fmv_raiden.BMP
+ROM,BMP_FMV_KANG,gfx_clut_pack,ASSETS\GFX\fmv_kang.BMP
+ROM,BMP_FMV_SCORPION,gfx_clut_pack,ASSETS\GFX\fmv_scorpion.BMP
+ROM,BMP_FMV_SUBZERO,gfx_clut_pack,ASSETS\GFX\fmv_subzero.BMP
+ROM,BMP_FMV_SONYA,gfx_clut_pack,ASSETS\GFX\fmv_sonya.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
