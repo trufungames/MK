@@ -2,8 +2,10 @@
 #include "jstudio.h"
 #include "romassets.h"
 
-#define BACKGROUND 0
-#define TITLE_FIGHTERS BACKGROUND + 1
+#define BACKGROUND 1
+#define BACKGROUND16 BACKGROUND + 1
+#define FMV BACKGROUND16 + 1
+#define TITLE_FIGHTERS FMV + 1
 #define TITLE_STONE TITLE_FIGHTERS + 4
 #define P2_FLASH TITLE_STONE + 1
 #define P2_CURSOR P2_FLASH + 1

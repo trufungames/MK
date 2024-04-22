@@ -31,6 +31,7 @@ bool onAlphaScreen = true;
 bool onTruFunScreen = false;
 bool onTitleScreen = false;
 bool onMenuScreen = false;
+bool inAttractMode = false;
 bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
@@ -42,10 +43,18 @@ int lastTicks = 0;
 int p1FlashCount = 0;
 int p2FlashCount = 0;
 int chooseTicks = 0;
+int attractModeTicks = 0;
 int menuTicks = 0;
 int menuIndex = 0;
 bool menuChanged = false;
 bool menuSelected = false;
+int attractModeIndex = 0;
+//0 = Leaderboard
+//1 = FMV profile
+//2 = GORO LIVES!
+//3 = GORO PROFILE
+//4 = Winners don't use drugs!
+int fmvIndex = 0;
 
 static SoundHandler soundHandler = {
 	true,  //sound on/off
@@ -2113,6 +2122,31 @@ static AnimationFrame lightningFrames[] = {
 	{ 64, 112, 576, 224, 0, 0, 4 }
 };
 
+static SpriteAnimator fmvAnimator = {
+	FMV, 0.5f, (int)imageBufferFMV, 0, 0
+};
+
+static AnimationFrame fmvCageFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 },
+	{ 160, 64, 0, 1024, 0, 0, 8 },
+	{ 160, 64, 0, 1088, 0, 0, 8 }
+};
+
 // *************************************************
 //               User Prototypes
 // *************************************************
@@ -2121,6 +2155,8 @@ void initAlphaScreen();
 void initTruFunScreen();
 void initTitleScreen();
 void initMenuScreen();
+void initAttractMode();
+void switchAttractFMV();
 void initGameAssets();
 void switchScreenChooseFighter();
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
@@ -2672,6 +2708,7 @@ void basicmain()
 		struct Fighter* fighter2Ptr; 
 		int fighters1OffsetY = -134;
 		int fighters2OffsetY = 134;
+		fmvIndex = 0;
 
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
@@ -3156,7 +3193,7 @@ void basicmain()
 		fighterSonya2.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya2.hitSweepFrames = &sonyaHitSweepFrames;
 
-		unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+		unsigned short bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
 		*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 		rapDebugSetXY(5,20);
 		initBlackPalettes();
@@ -3374,7 +3411,7 @@ void basicmain()
 						jsfVsync(0);
 					}
 
-					fadedOut = true;					
+					fadedOut = true;		
 					fighterStartUp();
 				 	switchScreenChooseFighter();
 				 	musicTitle(&soundHandler);
@@ -3382,6 +3419,7 @@ void basicmain()
 
 				if (menuChanged)
 				{
+					attractModeTicks = rapTicks;
 					menuChanged = false;
 					switch(menuIndex)
 					{
@@ -3399,20 +3437,18 @@ void basicmain()
 					}
 				}
 
-				// if (rapTicks > gameStartTicks + 600)
-				// {
-				// 	for (int i = 0; i < 90; i++)
-				// 	{
-				// 		rapFadeClut(0,256,BLACKPAL);
-				// 		jsfVsync(0);
-				// 	}
-
-				// 	fadedOut = true;		
-				// 	fighterStartUp();
-				// 	switchScreenChooseFighter();
-				// 	musicTitle(&soundHandler);
-				// 	//initGameAssets();
-				// }
+				if (rapTicks > attractModeTicks + 600)
+				{
+					onMenuScreen = false;
+					initAttractMode();
+					switchAttractFMV();
+				}
+			}
+			else if (inAttractMode)
+			{
+				// showMessageInt("frames: ", fmvAnimator.currentFrame);
+				
+				updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
 			}
 			else if (onScreenChooseFighter)
 			{
@@ -4025,6 +4061,70 @@ void initMenuScreen()
 	fadedOut = false;
 	gameStartTicks = rapTicks;
 	onMenuScreen = true;
+	attractModeTicks = rapTicks;
+}
+
+void initAttractMode()
+{
+	attractModeIndex = 0;
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+	inAttractMode = true;
+}
+
+void switchAttractFMV()
+{
+	rapParticleClear();
+	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active = R_is_inactive;
+	sprite[BACKGROUND16].active = R_is_active;
+	sprite[BACKGROUND16].CLUT = 8;
+
+	if (fmvIndex == 0)
+	{
+		//Johnny Cage
+		rapUnpack(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
+		jsfLoadClut((unsigned short *)(void *)(BMP_FMV_CAGE_clut),0,128);
+	}
+
+	sprite[FMV].gfxbase=(int)imageBufferFMV;
+	sprite[FMV].active = R_is_active;
+	fmvAnimator.base = (int)imageBufferFMV;
+
+	sprite[TITLE_FIGHTERS].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+1].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+2].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+3].active = R_is_inactive;
+	sprite[TITLE_STONE].active = R_is_inactive;
+		
+	jsfLoadClut((unsigned short *)(void *)(BMP_FMV_BACKGROUND_clut),8,16);
+	
+	char* name = "JOHNNY CAGE";
+
+	rapUse8x8fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(0);
+	rapLocate(16, 128);
+	js_r_textbuffer="A MARTIAL ARTS SUPERSTAR TRAINED BY";
+	rapPrint();
+
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(126,14);
+	js_r_textbuffer=name;
+	rapPrint();
+
+	switch (fmvIndex)
+	{
+		case 0:
+			sfxJohnnyCage(&soundHandler, true);
+			break;
+		default:
+			break;
+	}
 }
 
 void initGameAssets()
