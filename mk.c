@@ -11,6 +11,7 @@
 #include "sleep.h"
 #include "stage.h"
 #include "debug.h"
+#include "leaderboard.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
@@ -2147,6 +2148,30 @@ static AnimationFrame fmvCageFrames[] = {
 	{ 160, 64, 0, 1088, 0, 0, 8 }
 };
 
+static AnimationFrame fmvKanoFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 },
+	{ 160, 64, 0, 1024, 0, 0, 8 },
+	{ 160, 64, 0, 1152, 0, 0, 8 },
+	{ 160, 64, 0, 1216, 0, 0, 8 },
+	{ 160, 64, 0, 1280, 0, 0, 8 },
+	{ 160, 64, 0, 1344, 0, 0, 8 }
+};
+
 // *************************************************
 //               User Prototypes
 // *************************************************
@@ -2157,6 +2182,10 @@ void initTitleScreen();
 void initMenuScreen();
 void initAttractMode();
 void switchAttractFMV();
+void initLeaderboard();
+void initGoroLives();
+void initGoroProfile();
+void initWinners();
 void initGameAssets();
 void switchScreenChooseFighter();
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
@@ -2675,6 +2704,24 @@ static Fighter fighterSonya2 = {
 	SONYA_HIT_BACK_FRAME_COUNT,
 	SONYA_HIT_FALL_FRAME_COUNT,
 	SONYA_HIT_SWEEP_FRAME_COUNT
+};
+
+static LeaderboardEntry leaderboard[] = {
+	{ "TRU", 16, 3356790 },
+	{ "FUN", 10, 2023570 },
+	{ "CRL", 9, 1257480 },
+	{ "STF", 9, 1098740 },
+	{ "DUY", 8, 949840 },
+	{ "BYL", 8, 908470 },
+	{ "BBB", 8, 901480 },
+	{ "FEL", 7, 879800 },
+	{ "SAN", 7, 824870 },
+	{ "HAI", 7, 748490 },
+	{ "SFT", 6, 735840 },
+	{ "BBD", 6, 698070 },
+	{ "WIT", 6, 679870 },
+	{ "HOU", 5, 587800 },
+	{ "RYU", 5, 578890 }
 };
 
 void basicmain()
@@ -3441,14 +3488,66 @@ void basicmain()
 				{
 					onMenuScreen = false;
 					initAttractMode();
-					switchAttractFMV();
+					initLeaderboard();
 				}
 			}
 			else if (inAttractMode)
 			{
-				// showMessageInt("frames: ", fmvAnimator.currentFrame);
+				if (rapTicks > attractModeTicks + 300)
+				{
+					attractModeTicks = rapTicks;
+					attractModeIndex++;
+
+					if (attractModeIndex > 4)
+					{
+						attractModeIndex = 0;
+					}
+					//swap screens
+					//0 = Leaderboard
+					//1 = FMV profile
+					//2 = GORO LIVES!
+					//3 = GORO PROFILE
+					//4 = Winners don't use drugs!
+					switch (attractModeIndex)
+					{
+						case 0:
+							initLeaderboard();
+							break;
+						case 1:
+							switchAttractFMV();
+							break;
+						case 2:
+							initGoroLives();
+							break;
+						case 3:
+							initGoroProfile();
+							break;
+						case 4:
+							initWinners();
+							break;
+						default:
+							break;
+					}
+				}
+
+				switch (attractModeIndex)
+				{
+					case 1:
+						switch (fmvIndex)
+						{
+							case 0:
+								updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
+								break;
+							case 1:
+								updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
+								break;
+						}
+						
+						break;
+					default:
+						break;
+				}
 				
-				updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
 			}
 			else if (onScreenChooseFighter)
 			{
@@ -4053,6 +4152,8 @@ void initMenuScreen()
 	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,64);
 	jsfLoadClut((unsigned short *)(void *)(BMP_TS_MENU1_clut),4,16);
 
+	musicStageGoro(&soundHandler);
+
 	menuSelected = false;
 	menuChanged = false;
 	menuIndex = 0;
@@ -4070,24 +4171,116 @@ void initAttractMode()
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
+	attractModeTicks = rapTicks;
 	inAttractMode = true;
 }
 
 void switchAttractFMV()
 {
 	rapParticleClear();
+	fmvAnimator.currentFrame = 0;
 	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_inactive;
 	sprite[BACKGROUND16].active = R_is_active;
 	sprite[BACKGROUND16].CLUT = 8;
 
-	if (fmvIndex == 0)
+	char* name = "JOHNNY CAGE";
+	int nameOffset = 116;
+	char* line1 = "A MARTIAL ARTS SUPERSTAR TRAINED BY";
+	char* line2 = "GREAT MASTERS FROM AROUND THE WORLD.";
+	char* line3 = "CAGE USES HIS TALENTS ON THE BIG";
+	char* line4 = "SCREEN HE IS THE CURRENT BOX-OFFICE";
+	char* line5 = "CHAMP AND STAR OF SUCH MOVIES AS";
+	char* line6 = "DRAGON FIST AND DRAGON FIST II AS WELL";
+	char* line7 = "AS THE AWARE WINNING SUDDEN VIOLENCE.";
+
+	switch (fmvIndex)
 	{
-		//Johnny Cage
-		rapUnpack(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
-		jsfLoadClut((unsigned short *)(void *)(BMP_FMV_CAGE_clut),0,128);
+		case 0:
+			rapUnpack(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_CAGE_clut),0,128);
+			break;
+		case 1:
+			rapUnpack(BMP_FMV_KANO,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANO_clut),0,128);
+			name = "KANO";
+			nameOffset = 128;
+			line1 = "A MERCENARY, THUG, EXTORTIONIST";
+			line2 = "THIEF - KANO LIVES A LIFE OF CRIME";
+			line3 = "AND INJUSTICE. HE IS A DEVOTED MEMBER";
+			line4 = "OF THE BLACK DRAGON, A DANGEROUS";
+			line5 = "GROUP OF CUT-THROAT MADMEN FEARED";
+			line6 = "AND RESPECTED THROUGHTOUT ALL OF";
+			line7 = "CRIME'S INNER CIRCLES.";
+			break;
+		case 2:
+			rapUnpack(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_RAIDEN_clut),0,128);
+			name = "RAIDEN";
+			nameOffset = 120;
+			line1 = "THE NAME RAIDEN IS ACTUALLY THAT OF";
+			line2 = "A DEITY KNOWN AS THE THUNDER GOD.";
+			line3 = "IT IS RUMORED HE RECEIVED A PERSONAL";
+			line4 = "INVITATION BY SHANG TSUNG HIMSELF";
+			line5 = "AND TOOK THE FORM OF A HUMAN TO";
+			line6 = "COMPETE IN THE TOURNAMENT";
+			line7 = "";
+			break;
+		case 3:
+			rapUnpack(BMP_FMV_KANG,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANG_clut),0,128);
+			name = "LIU KANG";
+			nameOffset = 120;
+			line1 = "ONCE A MEMBER OF THE SUPER SECRET";
+			line2 = "WHITE LOTUS SOCIETY, LIU KANG LEFT";
+			line3 = "THE ORGANIZATION IN ORDER TO";
+			line4 = "REPRESENT SHAOLIN TEMPLES IN THE";
+			line5 = "TOURNAMENT. KANG IS STRONG IN HIS";
+			line6 = "BELIEFS AND DESPISES SHANG TSUNG.";
+			line7 = "";
+			break;
+		case 4:
+			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
+			name = "SCORPION";
+			nameOffset = 118;
+			line1 = "LIKE SUB-ZERO, SCORPION'S TRUE";
+			line2 = "NAME AND ORIGIN ARE NOT KNOWN.";
+			line3 = "HE HAS SHOWN FROM TIME TO TIME";
+			line4 = "DISTRUST AND HATRED TOWARDS";
+			line5 = "SUB-ZERO. BETWEEN NINJAS, THIS";
+			line6 = "IS USUALLY A SIGN OF OPPOSING CLANS.";
+			line7 = "";
+			break;
+		case 5:
+			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
+			name = "SUB-ZERO";
+			nameOffset = 120;
+			line1 = "THE ACTUAL NAME OR IDENTITY OF";
+			line2 = "THIS WARRIOR IS UNKNOWN. HOWEVER";
+			line3 = "BASED ON THE MARKINGS OF HIS";
+			line4 = "UNIFORM, IT IS BELIEVED HE BELONGS";
+			line5 = "TO THE LIN KUEI, A LEGENDARY";
+			line6 = "CLAN OF CHINESE NINJA.";
+			line7 = "";
+			break;
+		case 6:
+			rapUnpack(BMP_FMV_SONYA,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SONYA_clut),0,128);
+			name = "SONYA";
+			nameOffset = 124;
+			line1 = "SONYA IS A MEMBER OF A TOP U.S.";
+			line2 = "SPECIAL FORCES UNIT. HER TEAM WAS";
+			line3 = "HOT ON THE TRAIL OF KANO'S BLACK";
+			line4 = "DRAGON ORGANIZATION. THEY";
+			line5 = "FOLLOWED THEM TO AN UNCHARTED";
+			line6 = "ISLAND WHERE THEY WERE AMBUSHED";
+			line7 = "BY SHANG TSUNG'S PERSONAL ARMY.";
+			break;
 	}
+
 
 	sprite[FMV].gfxbase=(int)imageBufferFMV;
 	sprite[FMV].active = R_is_active;
@@ -4101,19 +4294,35 @@ void switchAttractFMV()
 		
 	jsfLoadClut((unsigned short *)(void *)(BMP_FMV_BACKGROUND_clut),8,16);
 	
-	char* name = "JOHNNY CAGE";
-
 	rapUse8x8fontPalette(15);
 	jsfSetFontSize(0);
 	jsfSetFontIndx(0);
-	rapLocate(16, 128);
-	js_r_textbuffer="A MARTIAL ARTS SUPERSTAR TRAINED BY";
+	rapLocate(8, 128);
+	js_r_textbuffer=line1;
+	rapPrint();
+	rapLocate(8, 140);
+	js_r_textbuffer=line2;
+	rapPrint();
+	rapLocate(8, 152);
+	js_r_textbuffer=line3;
+	rapPrint();
+	rapLocate(8, 164);
+	js_r_textbuffer=line4;
+	rapPrint();
+	rapLocate(8, 176);
+	js_r_textbuffer=line5;
+	rapPrint();
+	rapLocate(8, 188);
+	js_r_textbuffer=line6;
+	rapPrint();
+	rapLocate(8, 200);
+	js_r_textbuffer=line7;
 	rapPrint();
 
 	rapUse8x16fontPalette(15);
 	jsfSetFontSize(1);
 	jsfSetFontIndx(1);
-	rapLocate(126,14);
+	rapLocate(nameOffset,14);
 	js_r_textbuffer=name;
 	rapPrint();
 
@@ -4122,9 +4331,118 @@ void switchAttractFMV()
 		case 0:
 			sfxJohnnyCage(&soundHandler, true);
 			break;
+		case 1:
+			sfxKano(&soundHandler, true);
+			break;
+		case 2:
+			sfxRaiden(&soundHandler, true);
+			break;
+		case 3:
+			sfxLiuKang(&soundHandler, true);
+			break;
+		case 4:
+			sfxScorpion(&soundHandler, true);
+			break;
+		case 5:
+			sfxSubzero(&soundHandler, true);
+			break;
+		case 6:
+			sfxSonya(&soundHandler, true);
+			break;
 		default:
 			break;
 	}
+
+	fmvIndex++;
+
+	if (fmvIndex > 6)
+	{
+		fmvIndex = 0;
+	}
+	attractModeTicks = rapTicks;
+}
+
+void initLeaderboard()
+{
+	rapParticleClear();
+	rapUnpack(BMP_ATTRACT_LEADERBOARD,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active = R_is_inactive;
+	sprite[FMV].active = R_is_inactive;
+	sprite[BACKGROUND16].active = R_is_active;
+	sprite[TITLE_FIGHTERS].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+1].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+2].active = R_is_inactive;
+	sprite[TITLE_FIGHTERS+3].active = R_is_inactive;
+	sprite[TITLE_STONE].active = R_is_inactive;
+	sprite[BACKGROUND16].CLUT = 8;
+	jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_LEADERBOARD_clut),8,16);
+
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(70,14);
+	js_r_textbuffer="LONGEST WINNING STREAKS";
+	rapPrint();
+
+	jsfSetFontIndx(0);
+	int offsetY = 24;
+	for (int i = 0; i < 15; i++)
+	{
+		rapLocate(8,offsetY);
+		js_r_textbuffer = ee_printf("%02d. %s\t\t%d WINS\t\t%08d", leaderboard[i].Name, leaderboard[i].Wins, leaderboard[i].Score);
+		//rapPrint();
+		offsetY += 16;
+	}
+}
+
+void initGoroLives()
+{
+	rapParticleClear();
+	sprite[BACKGROUND].active=R_is_inactive;
+	sprite[BACKGROUND16].active=R_is_inactive;
+	sprite[FMV].active = R_is_inactive;
+
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(0);
+	rapLocate(124,114);
+	js_r_textbuffer="GORO LIVES...";
+	rapPrint();
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+}
+
+void initGoroProfile()
+{
+	rapParticleClear();
+	rapUnpack(BMP_ATTRACT_GORO,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active=R_is_active;
+	sprite[BACKGROUND16].active=R_is_inactive;
+	sprite[FMV].active = R_is_inactive;
+	jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_GORO_clut),0,240);
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
+}
+
+void initWinners()
+{
+	rapParticleClear();
+	rapUnpack(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND16].active=R_is_active;
+	sprite[BACKGROUND].active=R_is_inactive;
+	sprite[BACKGROUND16].CLUT = 8;
+	jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_WINNERS_clut),8,16);
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
 }
 
 void initGameAssets()

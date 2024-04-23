@@ -100,6 +100,9 @@ ROM,BMP_FMV_KANG,gfx_clut_pack,ASSETS\GFX\fmv_kang.BMP
 ROM,BMP_FMV_SCORPION,gfx_clut_pack,ASSETS\GFX\fmv_scorpion.BMP
 ROM,BMP_FMV_SUBZERO,gfx_clut_pack,ASSETS\GFX\fmv_subzero.BMP
 ROM,BMP_FMV_SONYA,gfx_clut_pack,ASSETS\GFX\fmv_sonya.BMP
+ROM,BMP_ATTRACT_LEADERBOARD,gfx_clut_pack,ASSETS\GFX\attract_leaderboard.BMP
+ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
+ROM,BMP_ATTRACT_WINNERS,gfx_clut_pack,ASSETS\GFX\attract_winners.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
