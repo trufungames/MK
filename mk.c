@@ -55,7 +55,7 @@ int attractModeIndex = 0;
 //2 = GORO LIVES!
 //3 = GORO PROFILE
 //4 = Winners don't use drugs!
-int fmvIndex = 0;
+int fmvIndex = 6;
 
 static SoundHandler soundHandler = {
 	true,  //sound on/off
@@ -2172,6 +2172,107 @@ static AnimationFrame fmvKanoFrames[] = {
 	{ 160, 64, 0, 1344, 0, 0, 8 }
 };
 
+static AnimationFrame fmvRaidenFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 },
+	{ 160, 64, 0, 1024, 0, 0, 8 },
+	{ 160, 64, 0, 1152, 0, 0, 8 },
+	{ 160, 64, 0, 1216, 0, 0, 8 },
+	{ 160, 64, 0, 1280, 0, 0, 8 }
+};
+
+static AnimationFrame fmvKangFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 },
+	{ 160, 64, 0, 1024, 0, 0, 8 },
+	{ 160, 64, 0, 1152, 0, 0, 8 }
+};
+
+static AnimationFrame fmvScorpionFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 },
+	{ 160, 64, 0, 1024, 0, 0, 8 },
+	{ 160, 64, 0, 1152, 0, 0, 8 },
+	{ 160, 64, 0, 1216, 0, 0, 8 }
+};
+
+static AnimationFrame fmvSubzeroFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 },
+	{ 160, 64, 0, 832, 0, 0, 8 },
+	{ 160, 64, 0, 896, 0, 0, 8 },
+	{ 160, 64, 0, 960, 0, 0, 8 }
+};
+
+static AnimationFrame fmvSonyaFrames[] = {
+	{ 160, 64, 0, 0, 0, 0, 8 },
+	{ 160, 64, 0, 64, 0, 0, 8 },
+	{ 160, 64, 0, 128, 0, 0, 8 },
+	{ 160, 64, 0, 192, 0, 0, 8 },
+	{ 160, 64, 0, 256, 0, 0, 8 },
+	{ 160, 64, 0, 320, 0, 0, 8 },
+	{ 160, 64, 0, 384, 0, 0, 8 },
+	{ 160, 64, 0, 448, 0, 0, 8 },
+	{ 160, 64, 0, 512, 0, 0, 8 },
+	{ 160, 64, 0, 576, 0, 0, 8 },
+	{ 160, 64, 0, 640, 0, 0, 8 },
+	{ 160, 64, 0, 704, 0, 0, 8 },
+	{ 160, 64, 0, 768, 0, 0, 8 }
+};
+
 // *************************************************
 //               User Prototypes
 // *************************************************
@@ -2755,7 +2856,7 @@ void basicmain()
 		struct Fighter* fighter2Ptr; 
 		int fighters1OffsetY = -134;
 		int fighters2OffsetY = 134;
-		fmvIndex = 0;
+		fmvIndex = 6;
 
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
@@ -3541,6 +3642,21 @@ void basicmain()
 							case 1:
 								updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
 								break;
+							case 2:
+								updateSpriteAnimator(&fmvAnimator, fmvRaidenFrames, 20, true, false, 120, 43, 1);
+								break;
+							case 3:
+								updateSpriteAnimator(&fmvAnimator, fmvKangFrames, 18, true, false, 120, 43, 1);
+								break;
+							case 4:
+								updateSpriteAnimator(&fmvAnimator, fmvScorpionFrames, 19, true, false, 120, 43, 1);
+								break;
+							case 5:
+								updateSpriteAnimator(&fmvAnimator, fmvSubzeroFrames, 16, true, false, 120, 43, 1);
+								break;
+							case 6:
+								updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
+								break;
 						}
 						
 						break;
@@ -4177,6 +4293,12 @@ void initAttractMode()
 
 void switchAttractFMV()
 {
+	fmvIndex++;
+
+	if (fmvIndex > 6)
+	{
+		fmvIndex = 0;
+	}
 	rapParticleClear();
 	fmvAnimator.currentFrame = 0;
 	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
@@ -4254,8 +4376,8 @@ void switchAttractFMV()
 			line7 = "";
 			break;
 		case 5:
-			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
-			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
+			rapUnpack(BMP_FMV_SUBZERO,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SUBZERO_clut),0,128);
 			name = "SUB-ZERO";
 			nameOffset = 120;
 			line1 = "THE ACTUAL NAME OR IDENTITY OF";
@@ -4352,13 +4474,6 @@ void switchAttractFMV()
 		default:
 			break;
 	}
-
-	fmvIndex++;
-
-	if (fmvIndex > 6)
-	{
-		fmvIndex = 0;
-	}
 	attractModeTicks = rapTicks;
 }
 
@@ -4381,17 +4496,17 @@ void initLeaderboard()
 	rapUse8x16fontPalette(15);
 	jsfSetFontSize(1);
 	jsfSetFontIndx(1);
-	rapLocate(70,14);
+	rapLocate(70,42);
 	js_r_textbuffer="LONGEST WINNING STREAKS";
 	rapPrint();
 
 	jsfSetFontIndx(0);
-	int offsetY = 24;
-	for (int i = 0; i < 15; i++)
+	int offsetY = 58;
+	for (int i = 0; i < 10; i++)
 	{
-		rapLocate(8,offsetY);
-		js_r_textbuffer = ee_printf("%02d. %s\t\t%d WINS\t\t%08d", leaderboard[i].Name, leaderboard[i].Wins, leaderboard[i].Score);
-		//rapPrint();
+		rapLocate(24,offsetY);
+		js_r_textbuffer = ee_printf("%02d. %s      %02d WINS      %08d", i+1, leaderboard[i].Name, leaderboard[i].Wins, leaderboard[i].Score);
+		rapPrint();
 		offsetY += 16;
 	}
 }
@@ -4406,7 +4521,7 @@ void initGoroLives()
 	rapUse8x16fontPalette(15);
 	jsfSetFontSize(1);
 	jsfSetFontIndx(0);
-	rapLocate(124,114);
+	rapLocate(112,114);
 	js_r_textbuffer="GORO LIVES...";
 	rapPrint();
 

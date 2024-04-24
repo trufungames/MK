@@ -785,185 +785,185 @@ Buildlink finished - everything went fine!
 Assembling raptor skeleton... 
  
 Compiling C code to O... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2734:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3276:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3280:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3284:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3291:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3294:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3297:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3300:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3303:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3306:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3309:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3312:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2835:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3377:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3381:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3385:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3392:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3395:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3398:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3401:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3404:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3407:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3410:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3413:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4188:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4190:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4191:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4192:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4193:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4194:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4195:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4196:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4207:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4209:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4210:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4211:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4212:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4213:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4214:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4215:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4220:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4222:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4223:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4224:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4225:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4226:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4227:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4228:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4233:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4235:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4236:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4237:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4238:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4239:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4240:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4241:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4246:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4248:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4249:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4250:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4251:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4252:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4253:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4254:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4259:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4261:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4262:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4263:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4264:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4265:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4266:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4267:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4272:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4274:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4275:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4276:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4277:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4278:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4279:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4280:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4310:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4312:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4313:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4314:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4315:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4316:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4317:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4318:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4329:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4331:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4332:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4333:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4334:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4335:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4336:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4337:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4342:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4344:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4345:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4346:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4347:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4348:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4349:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4350:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4355:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4357:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4358:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4359:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4360:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4361:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4362:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4363:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4368:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4370:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4371:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4372:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4373:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4374:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4375:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4376:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4381:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4383:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4384:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4385:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4386:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4387:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4388:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4389:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4394:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4396:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4397:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4398:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4399:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4400:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4401:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4402:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4385:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4500:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4410:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4525:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 Compiling C code to S... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2725:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2826:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2734:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3276:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3280:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3284:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3291:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3294:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3297:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3300:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3303:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3306:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3309:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3312:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:2835:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3377:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3381:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3385:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3392:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3395:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3398:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3401:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3404:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3407:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3410:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3413:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4188:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4190:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4191:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4192:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4193:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4194:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4195:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4196:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4207:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4209:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4210:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4211:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4212:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4213:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4214:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4215:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4220:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4222:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4223:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4224:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4225:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4226:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4227:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4228:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4233:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4235:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4236:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4237:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4238:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4239:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4240:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4241:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4246:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4248:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4249:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4250:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4251:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4252:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4253:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4254:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4259:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4261:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4262:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4263:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4264:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4265:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4266:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4267:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4272:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4274:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4275:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4276:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4277:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4278:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4279:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4280:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4310:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4312:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4313:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4314:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4315:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4316:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4317:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4318:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4329:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4331:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4332:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4333:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4334:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4335:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4336:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4337:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4342:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4344:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4345:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4346:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4347:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4348:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4349:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4350:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4355:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4357:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4358:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4359:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4360:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4361:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4362:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4363:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4368:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4370:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4371:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4372:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4373:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4374:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4375:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4376:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4381:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4383:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4384:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4385:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4386:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4387:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4388:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4389:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4394:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4396:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4397:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4398:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4399:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4400:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4401:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4402:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4385:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4500:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4410:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4525:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  
 Linking things... 
 LOAD MAP
@@ -974,7 +974,7 @@ NON-RELOCATABLE SYMBOLS
 
 TEXT-SEGMENT RELOCATABLE SYMBOLS
 
-_TEXT_E  G  00040A60   Audio_Play G  00004164   Input_Read G  00004164   
+_TEXT_E  G  00040B20   Audio_Play G  00004164   Input_Read G  00004164   
 jsfVsyncFlag G  000041B8   RAPTOR_PRE_Object_List G  000041BC   RAPTOR_POST_Object_List G  000041BE   
 AUDIOPLAYER G  00006E78   JAGPAD_UP G  00006E7A   JAGPAD_DOWN G  00006E7E   
 JAGPAD_LEFT G  00006E82   JAGPAD_RIGHT G  00006E86   JAGPAD_HASH G  00006E8A   
@@ -997,9 +997,9 @@ raptor_8x16_addr G  00020A78   raptor_16x16_addr G  00020A7C   raptor_MTwork G  
 raptor_mtapp G  00020A98   raptor_mtfn G  00020A9C   raptor_vidmode G  00020A18   
 raptor_videnable G  00020A1C   raptor_varmod G  00020A20   raptor_top_of_bss G  00020A60   
 raptor_trashram G  00020A64   raptor_uvbi_jmp G  00020A68   raptor_poobjl G  00020A6C   
-raptor_probjl G  00020A70   raptor_inittab G  00020AA0   RAPTOR_U235init G  000375DA   
-raptor_samplebank_ptr G  000378D0   __Z9basicmainv G  0002C360   RAPTOR_U235playqueue G  000376D0   
-RAPTOR_U235resetqueue G  000376FC   RAPTOR_Version G  00014300   RAPTOR_random G  0001431A   
+raptor_probjl G  00020A70   raptor_inittab G  00020AA0   RAPTOR_U235init G  0003769A   
+raptor_samplebank_ptr G  00037990   __Z9basicmainv G  0002C30E   RAPTOR_U235playqueue G  00037790   
+RAPTOR_U235resetqueue G  000377BC   RAPTOR_Version G  00014300   RAPTOR_random G  0001431A   
 RAPTOR_Install G  0001432C   RAPTOR_usepartipal G  000143CE   RAPTOR_use8x8fontpal G  000143DC   
 RAPTOR_use8x16fontpal G  000143EA   RAPTOR_use16x16fontpal G  000143F8   raptor_font8x8_pal G  00014538   
 raptor_font8x16_pal G  00014558   raptor_font16x16_pal G  00014578   RAPTOR_ERROR G  00014A52   
@@ -1042,224 +1042,225 @@ RAPTOR_flashcheck G  000199C4   raptor_console_x G  000199CA   raptor_console_y 
 raptor_console_visible G  000199DA   raptor_console_monitors G  00019A2A   RAPTOR_console_inverse G  0001F880   
 RAPTOR_console_update_registers G  0001F8A8   RAPTOR_console_update_usermonitors G  0001F90C   RAPTOR_console_update_textline G  0001F982   
 raptor_mapindex G  00020A44   raptor_ang_search G  00020AA4   raptor_col_user G  00020AA8   
-__Z9bloodInitv G  00020AC0   __Z11bloodUpdateP12SoundHandler G  00020B14   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0003074E   
-___addsf3 G  0003CACE   ___fixsfsi G  0003D73A   ___floatsisf G  0003D4FE   
-__Z8sfxBloodP12SoundHandler G  0002F882   __Z19animationIsCompleteP14SpriteAnimatori G  00030734   __Z22spriteDelaySetInactiveiiPb G  00030966   
+__Z9bloodInitv G  00020AC0   __Z11bloodUpdateP12SoundHandler G  00020B14   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0003080E   
+___addsf3 G  0003CB8E   ___fixsfsi G  0003D7FA   ___floatsisf G  0003D5BE   
+__Z8sfxBloodP12SoundHandler G  0002F942   __Z19animationIsCompleteP14SpriteAnimatori G  000307F4   __Z22spriteDelaySetInactiveiiPb G  00030A26   
 __Z10bloodSprayiii G  00021620   __Z9bloodGlobiii G  00021670   __Z9bloodDropiii G  000216C0   
 __Z9bloodPoolii G  00021B22   __Z11bloodSquirtii G  00021F40   __Z15bloodResetTicksv G  000220BA   
-__Z10cameraInitjiiij G  000221E0   __Z14stageGetHeightv G  0003115A   __Z8setFramejiiiifj G  0003055A   
+__Z10cameraInitjiiij G  000221E0   __Z14stageGetHeightv G  0003121A   __Z8setFramejiiiifj G  0003061A   
 __Z12cameraUpdateP7FighterS0_ G  0002225A   __Z17fighterShiftRightP7Fighter G  000251DA   __Z16fighterShiftLeftP7Fighter G  00025206   
-___subsf3 G  0003CAC8   __Z9stageMovei G  0003119E   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00022C96   
+___subsf3 G  0003CB88   __Z9stageMovei G  0003125E   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00022C96   
 __Z22cameraCheckBoundsRightP7FighterS0_ G  00022EC6   __Z13cameraCanMovev G  000230FC   __Z18cameraIsAtLeftWallv G  00023120   
 __Z19cameraIsAtRightWallv G  00023134   __Z10cameraGetXv G  0002314C   __Z16cameraResetTicksv G  0002315A   
-__Z11showMessagePc G  00023180   _jsfDebugMessage G  0003D760   __Z14showMessageIntPci G  0002319C   
-ee_printf G  000407EC   __Z15showMessageBoolPcb G  000231C4   __Z14fighterStartUpv G  00023200   
+__Z11showMessagePc G  00023180   _jsfDebugMessage G  0003D820   __Z14showMessageIntPci G  0002319C   
+ee_printf G  000408AC   __Z15showMessageBoolPcb G  000231C4   __Z14fighterStartUpv G  00023200   
 __Z11fighterHideP7Fighter G  00023218   __Z11fighterShowP7Fighter G  0002323C   __Z21fighterMakeSelectableP7Fighterb G  00023368   
 __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_ G  00023402   __Z16impactFrameResetP7Fighter G  00027DC0   __Z19fighterRestartMatchP7Fighter G  00023732   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00023742   __Z11sfxHiyaMaleP12SoundHandlerb G  0002F40A   __Z11sfxHiyaKangP12SoundHandlerb G  0002F516   
-__Z13sfxHiyaFemaleP12SoundHandlerb G  0002F490   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002F59C   __Z16fighterPlayGroaniP12SoundHandlerb G  000237D4   
-__Z12sfxGroanMaleP12SoundHandlerb G  0002F6A8   __Z14sfxGroanFemaleP12SoundHandlerb G  0002F72E   __Z15fighterPlayYelliP12SoundHandlerb G  00023814   
-__Z11sfxYellMaleP12SoundHandlerb G  0002FAF6   __Z11sfxYellKangP12SoundHandlerb G  0002FBC4   __Z13sfxYellFemaleP12SoundHandlerb G  0002FB7C   
-__Z15fighterPlayJumpiP12SoundHandlerb G  00023876   __Z11sfxJumpMaleP12SoundHandlerb G  0002FC0C   __Z12sfxJumpNinjaP12SoundHandlerb G  0002FC9C   
-__Z13sfxJumpFemaleP12SoundHandlerb G  0002FC54   __Z27fighterPlayUppercutReactionP12SoundHandler G  000238EE   __Z17sfxAnnouncerLaughP12SoundHandler G  0002FF6C   
-__Z21sfxAnnouncerExcellentP12SoundHandler G  0002FF24   __Z11sfxCrowdAwwP12SoundHandler G  0002FEDC   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00023948   
-__Z8sleepAddi G  0002F074   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  000307F2   __Z12animateFramejjP14AnimationFramefjiiii G  000303F4   
-__Z7bgShakeb G  00030C7C   __Z7sfxThudP12SoundHandler G  0002F98E   ___mulsf3 G  0003CD5E   
-__Z9sfxImpactP12SoundHandler G  0002F83A   ___lesf2 G  0003D2C0   ___ltsf2 G  0003D2A0   
-__Z15sfxKanoHeadbuttP12SoundHandlerb G  0002FE94   __Z17fighterResetFlagsP7Fighter G  00024980   __Z20fighterResetFlagsAllP7FighterS0_ G  00024A9C   
+__Z15fighterPlayHiyaiP12SoundHandlerb G  00023742   __Z11sfxHiyaMaleP12SoundHandlerb G  0002F4CA   __Z11sfxHiyaKangP12SoundHandlerb G  0002F5D6   
+__Z13sfxHiyaFemaleP12SoundHandlerb G  0002F550   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002F65C   __Z16fighterPlayGroaniP12SoundHandlerb G  000237D4   
+__Z12sfxGroanMaleP12SoundHandlerb G  0002F768   __Z14sfxGroanFemaleP12SoundHandlerb G  0002F7EE   __Z15fighterPlayYelliP12SoundHandlerb G  00023814   
+__Z11sfxYellMaleP12SoundHandlerb G  0002FBB6   __Z11sfxYellKangP12SoundHandlerb G  0002FC84   __Z13sfxYellFemaleP12SoundHandlerb G  0002FC3C   
+__Z15fighterPlayJumpiP12SoundHandlerb G  00023876   __Z11sfxJumpMaleP12SoundHandlerb G  0002FCCC   __Z12sfxJumpNinjaP12SoundHandlerb G  0002FD5C   
+__Z13sfxJumpFemaleP12SoundHandlerb G  0002FD14   __Z27fighterPlayUppercutReactionP12SoundHandler G  000238EE   __Z17sfxAnnouncerLaughP12SoundHandler G  0003002C   
+__Z21sfxAnnouncerExcellentP12SoundHandler G  0002FFE4   __Z11sfxCrowdAwwP12SoundHandler G  0002FF9C   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00023948   
+__Z8sleepAddi G  0002F134   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  000308B2   __Z12animateFramejjP14AnimationFramefjiiii G  000304B4   
+__Z7bgShakeb G  00030D3C   __Z7sfxThudP12SoundHandler G  0002FA4E   ___mulsf3 G  0003CE1E   
+__Z9sfxImpactP12SoundHandler G  0002F8FA   ___lesf2 G  0003D380   ___ltsf2 G  0003D360   
+__Z15sfxKanoHeadbuttP12SoundHandlerb G  0002FF54   __Z17fighterResetFlagsP7Fighter G  00024980   __Z20fighterResetFlagsAllP7FighterS0_ G  00024A9C   
 __Z16fighterMakeDizzyP7Fighter G  00024AD6   __Z19fighterHandleImpactP7FighterS0_ G  00024B04   __Z18fighterImpactCheckP7FighterS0_ G  00024E02   
-__Z26stageGetFighterHitboxIndexv G  00031150   rapCollide G  0003E450   __Z16fighterTurnCheckP7FighterS0_ G  00024FCE   
+__Z26stageGetFighterHitboxIndexv G  00031210   rapCollide G  0003E510   __Z16fighterTurnCheckP7FighterS0_ G  00024FCE   
 __Z17fighterCloseCheckP7FighterS0_ G  00025086   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000250E0   __Z23fighterAddPendingDamageP7Fighterib G  00025112   
 __Z17fighterTakeDamageP7Fighterii G  0002512A   __Z21fighterLockBoundariesP7Fighter G  0002522A   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00025232   
 __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00025270   __Z17fighterSetOnFloorP7Fighter G  000252AE   __Z20fighterHasRoomToMoveP7FighterS0_ G  000252C0   
-__Z19fighterPositionXAddP7Fighteri G  00025354   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000253AA   jsfGetPad G  0003D7C4   
-__Z8sfxSwingP12SoundHandler G  0002F908   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00027E0C   __Z12sfxThrowMaleP12SoundHandlerb G  0002FCE4   
-__Z14sfxThrowFemaleP12SoundHandlerb G  0002FD2C   __Z13sfxThrowNinjaP12SoundHandlerb G  0002FD74   __Z11sfxJumpRollP12SoundHandlerb G  0002FDBC   
-___gtsf2 G  0003D260   __Z17fighterCastShadowP7Fighterb G  000272B8   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  00027560   
-__Z8sfxBlockP12SoundHandlerb G  0002F622   __Z11sfxCageYeahP12SoundHandlerb G  0002FE04   __Z11sfxKanoYellP12SoundHandlerb G  0002FE4C   
+__Z19fighterPositionXAddP7Fighteri G  00025354   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000253AA   jsfGetPad G  0003D884   
+__Z8sfxSwingP12SoundHandler G  0002F9C8   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00027E0C   __Z12sfxThrowMaleP12SoundHandlerb G  0002FDA4   
+__Z14sfxThrowFemaleP12SoundHandlerb G  0002FDEC   __Z13sfxThrowNinjaP12SoundHandlerb G  0002FE34   __Z11sfxJumpRollP12SoundHandlerb G  0002FE7C   
+___gtsf2 G  0003D320   __Z17fighterCastShadowP7Fighterb G  000272B8   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  00027560   
+__Z8sfxBlockP12SoundHandlerb G  0002F6E2   __Z11sfxCageYeahP12SoundHandlerb G  0002FEC4   __Z11sfxKanoYellP12SoundHandlerb G  0002FF0C   
 __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00027C90   __Z25fighterShadowHeightLookupi G  00027CD6   __Z20fighterIsMaxDistanceP7FighterS0_ G  00027D44   
 __Z17fighterResetTicksP7Fighter G  00027D94   __Z15leaderboardInitv G  00027F20   __Z10matchResetv G  00027F40   
-__Z9matchInitv G  00027F84   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00027FDA   __Z12sfxFinishHimP12SoundHandler G  0002FFFC   
-__Z8sfxFightP12SoundHandler G  0002F0A0   __Z13sfxJohnnyCageP12SoundHandlerb G  0002F0E8   __Z8sfxSonyaP12SoundHandlerb G  0002F298   
-__Z7sfxKanoP12SoundHandlerb G  0002F130   __Z10sfxSubzeroP12SoundHandlerb G  0002F250   __Z11sfxScorpionP12SoundHandlerb G  0002F208   
-__Z10sfxLiuKangP12SoundHandlerb G  0002F1C0   __Z9sfxRaidenP12SoundHandlerb G  0002F178   __Z7sfxWinsP12SoundHandler G  00030044   
-__Z12sfxFinishHerP12SoundHandler G  0002FFB4   __Z15matchIsCompletev G  00028878   __Z20matchGetFighter1Winsv G  00028886   
+__Z9matchInitv G  00027F84   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00027FDA   __Z12sfxFinishHimP12SoundHandler G  000300BC   
+__Z8sfxFightP12SoundHandler G  0002F160   __Z13sfxJohnnyCageP12SoundHandlerb G  0002F1A8   __Z8sfxSonyaP12SoundHandlerb G  0002F358   
+__Z7sfxKanoP12SoundHandlerb G  0002F1F0   __Z10sfxSubzeroP12SoundHandlerb G  0002F310   __Z11sfxScorpionP12SoundHandlerb G  0002F2C8   
+__Z10sfxLiuKangP12SoundHandlerb G  0002F280   __Z9sfxRaidenP12SoundHandlerb G  0002F238   __Z7sfxWinsP12SoundHandler G  00030104   
+__Z12sfxFinishHerP12SoundHandler G  00030074   __Z15matchIsCompletev G  00028878   __Z20matchGetFighter1Winsv G  00028886   
 __Z20matchGetFighter2Winsv G  00028894   __Z15matchResetTicksv G  000288A2   __Z17initBlackPalettesv G  000288C0   
-__Z15initAlphaScreenv G  00028908   rapUnpack G  0003D9BA   __Z16initTruFunScreenv G  0002895E   
-__Z15initTitleScreenv G  000289B4   jsfLoadClut G  0003DFFE   __Z14initMenuScreenv G  00028A20   
-__Z14musicStageGoroP12SoundHandler G  0003024C   __Z15initAttractModev G  00028AE4   __Z16switchAttractFMVv G  0002910C   
-rapUse8x8fontPalette G  0003E89A   rapLocate G  0003E544   _rapPrint G  0003E4E8   
-rapUse8x16fontPalette G  0003E8AC   __Z15initLeaderboardv G  000296FE   __Z13initGoroLivesv G  00029A46   
-__Z15initGoroProfilev G  00029AB8   __Z11initWinnersv G  00029B26   __Z14initGameAssetsv G  00029B98   
-__Z20switchScreenVsBattleii G  00029BF2   __Z17stageLoadVsBattlev G  00030D2A   rapSetActiveList G  0003E436   
-__Z17switchScreenFightiib G  00029FA2   __Z12bgResetTicksv G  00030CCA   __Z15stageResetTicksv G  00031354   
-__Z8stageGetv G  00030CFA   __Z13musicStagePitP12SoundHandler G  000301C6   __Z14stageGetStartXv G  00031174   
-__Z17musicStageWarriorP12SoundHandler G  00030204   rapFadeClut G  0003E414   __Z15musicStageGatesP12SoundHandler G  0003017E   
-__Z17SetPlayerPalettesv G  0002B766   __Z25switchScreenChooseFighterv G  0002BD44   __Z26setFighterAlternatePaletteii G  0002BFB2   
-__Z14setPlayer1NamePc G  0002C00A   __Z14setPlayer2NamePci G  0002C04E   __Z19displayWinnerMedalsv G  0002C0AA   
-rapDebugSetXY G  0003E2EE   jsfGetPadPressed G  0003D98E   _jsfVsync G  0003DC86   
-__Z9sfxTruFunP12SoundHandler G  0002F9D6   __Z8sfxIntroP12SoundHandler G  0002F3C2   __Z11sfxP2CursorP12SoundHandler G  0002F308   
-__Z11sfxP1CursorP12SoundHandler G  0002F2E0   __Z13sfxTitleStartP12SoundHandler G  0002FAAE   __Z10musicTitleP12SoundHandler G  0003011C   
-__Z6bgInitv G  00030A30   __Z15spriteDelayInitv G  000308C0   __Z9sleepInitv G  0002F020   
-__Z9stageInitv G  00030CE0   __Z9musicStopv G  00030294   __Z12stageSetNextv G  00030D08   
-__Z11sfxSelectedP12SoundHandler G  0002F332   __Z10sleepCheckv G  0002F03A   __Z8bgUpdateP7FighterS0_ G  00030A78   
-__Z11stageUpdatev G  00030DFE   __Z17spriteDelayUpdatev G  0003090C   u235PlaySampleFreq G  0003E926   
-__Z7sfxGongP12SoundHandler G  0002F37A   __Z6sfxHitP12SoundHandler G  0002F7B4   __Z12sfxTitleRiseP12SoundHandler G  0002FA1E   
-__Z12sfxTitleThudP12SoundHandler G  0002FA66   __Z11sfxFlawlessP12SoundHandler G  0003008C   __Z11sfxFatalityP12SoundHandler G  000300D4   
-__Z14u235StopModulev G  0003EB26   __Z11u235Silencev G  0003EB48   __Z14u235PlayModuleis G  0003EABC   
-_u235ModuleVol G  0003EBB0   ___floatunsisf G  0003D4EA   ___mulsi3 G  0003C920   
-___fixunssfsi G  0003D2E0   __Z12animateFramejjP14AnimationFramefji G  000303EA   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  00030630   
-__Z22getAnimationFrameWidthP14AnimationFramei G  00030716   __Z6moveUpv G  00030A20   __Z8moveDownv G  00030A28   
-__Z13bgScrollRightf G  00030A68   __Z12bgScrollLeftf G  00030A70   __Z10bgScrollUpv G  00030C10   
-__Z12bgScrollDownv G  00030C46   __Z19stageHideShowSpriteii G  00031312   RAPTOR_mt_init G  000313A0   
-RAPTOR_mt_load G  000313EC   RAPTOR_mt_save G  000314E8   raptor_mt_present G  000332F4   
-RAPTOR_MTtrash G  00033510   RAPTOR_U235SilenceChannels G  00037520   RAPTOR_U235ChangeReplayFrq G  00037584   
-RAPTOR_U235setpad1 G  00037592   RAPTOR_U235setpad2 G  0003759E   RAPTOR_U235setrot1 G  000375AA   
-RAPTOR_U235setrot2 G  000375C2   RAPTOR_U235stopDSP G  00037656   RAPTOR_U235playsample G  0003767C   
-RAPTOR_U235queuesample G  000376B2   RAPTOR_U235setmodule G  0003772C   RAPTOR_U235gomodule_mono G  0003773C   
-RAPTOR_U235gomodule_stereo G  0003775A   RAPTOR_U235stopmodule G  00037778   modinit  G  0003A068   
-U235SE_initNTSC G  0003A024   U235SE_initPAL G  0003A036   RAPTOR_LSP_onoff G  00038568   
-RAPTOR_LSP_stopmusic G  00038570   RAPTOR_LSP_startmusic G  00038586   RAPTOR_LSP_playmodule G  0003859C   
-RAPTOR_LSP_Sample G  000385D2   RAPTOR_LSP_Init G  00038674   RAPTOR_LSP_StartDSP G  00038688   
-silence  G  000387F0   fin_silence G  000387F4   RAPTOR_GD_Init G  0003888E   
-RAPTOR_GD_BIOSVersion G  00038964   RAPTOR_GD_ROMWriteEnable G  0003898C   RAPTOR_GD_GetCartSerial G  000389B4   
-RAPTOR_GD_GetCardSerial G  00038A50   RAPTOR_GD_CardIn G  00038A7E   RAPTOR_GD_Reset G  00038AB2   
-RAPTOR_GD_DebugString G  00038AD2   RAPTOR_GD_SetLED G  00038AFA   RAPTOR_GD_DirOpen G  00038B34   
-RAPTOR_GD_DirRead G  00038B5C   RAPTOR_GD_DirClose G  00038B96   RAPTOR_GD_FileOpen G  00038BCA   
-RAPTOR_GD_FileRead G  00038BF8   RAPTOR_GD_FileWrite G  00038C26   RAPTOR_GD_FileClose G  00038C54   
-RAPTOR_GD_FileSeek G  00038C82   RAPTOR_GD_FileTell G  00038CB0   RAPTOR_GD_FileSize G  00038CDE   
-RAPTOR_GD_FileInfo G  00038D0C   RAPTOR_ftime_to_ascii G  00038D3A   RAPTOR_fdate_to_ascii G  00038D96   
-RAPTOR_GD_LoadFile G  00038DF6   RAPTOR_GD_SaveFile G  00038E40   raptor_GD_detect G  00038E90   
-raptor_GD_SERIAL G  00038E92   raptor_GD_ASERIAL G  00038EA2   raptor_SD_SERIAL G  00038EBE   
-raptor_GD_LEDstate G  00038ECE   raptor_GD_cardstat G  00038ED0   raptor_fileinfo G  00038ED2   
-raptor_fsize G  00038ED2   raptor_fdate G  00038ED6   raptor_ftime G  00038ED8   
-raptor_fattr G  00038EDA   raptor_fshort G  00038EDB   raptor_flong G  00038EE8   
-U235SE_modinit G  0003A068   modinitpos G  0003A06A   U235SE_modinitpos G  0003A06A   
-dspcode  G  0003A910   ___udivsi3 G  0003C960   ___divsi3 G  0003C9C0   
-___umodsi3 G  0003CA00   ___modsi3 G  0003CA40   $_exception_handler G  0003D1CE   
-___divsf3 G  0003CE8A   ___negsf2 G  0003D050   ___cmpsf2 G  0003D13E   
-___cmpsf2_internal G  0003D0A2   ___clear_sticky_bit G  0003D1C0   ___eqsf2 G  0003D240   
-___gesf2 G  0003D280   ___unordsf2 G  0003D340   ___unorddf2 G  0003D384   
-___floatunsidf G  0003D3F6   ___floatsidf G  0003D45A   ___truncdfsf2 G  0003D58A   
-___extendsfdf2 G  0003D512   ___fixdfsi G  0003D6C0   _jsfDebugMessageHalt G  0003D790   
-__Z17jsfGetPadPressed1v G  0003D87A   __Z17jsfGetPadPressed2v G  0003D904   jsfUnpack68k G  0003D9E6   
-jsfSprlistFieldSetvalOffset G  0003DAA2   jsfSprlistFieldModOffset G  0003DAEA   jsfSprlistFieldSetOffset G  0003DB34   
-jsfSprlistFieldSetval G  0003DB7C   jsfSprlistFieldMod G  0003DBBA   jsfSprlistFieldSet G  0003DBFA   
-_cls     G  0003DC38   _jsfPlot G  0003DC44   jsfDelay G  0003DCF2   
-jsfEEPROMFullRead G  0003DD3C   eeReadBank G  000408FE   jsfEEPROMWordRead G  0003DD5A   
-eeReadWord G  00040842   jsfEEPROMBoardRead G  0003DD74   eeReadSingleBank G  00040886   
-jsfEEPROMFullWrite G  0003DE28   eeWriteBank G  000408AE   jsfEEPROMWordWrite G  0003DE46   
-eeWriteWord G  00040820   jsfEEPROMBoardWrite G  0003DE64   eeWriteSingleBank G  00040848   
-jsfEEPROMUserDataRead G  0003DF18   jsfEEPROMUserDataWrite G  0003DF46   jsfEEPROM G  0003DF74   
-jsfEEPROMWord G  0003DFA0   jsfEEPROMBoard G  0003DFCE   jsfClearBuffer G  0003E0A0   
-jsfSort  G  0003E0C0   rapInitCalcAngle G  0003E232   rapCalcAngle G  0003E24C   
-rapAngleVector G  0003E272   rapDebugSetMonitor G  0003E29C   _rapDebugPrint G  0003E2BE   
-rapDebugUpdate G  0003E2DA   rapDebugSetVisible G  0003E306   rapHiscoreSort G  0003E328   
-rapBlitlist G  0003E346   rapNumToStr G  0003E376   rapHexToStr G  0003E396   
-RBRA     G  0003E3BC   rapHiscoreCheck G  0003E3D8   rapFadeSingle G  0003E3FA   
-rapParticleInject G  0003E49A   rapSetMapLoc G  0003E4C2   _rapPrintCont G  0003E51C   
-rapUpdateOffscreenList G  0003E55C   rapSpriteShift G  0003E576   rapSetClock G  0003E5AE   
-rapAddClock G  0003E5C4   rapSubClock G  0003E5DE   rapSortSprites G  0003E5F8   
-rapFlashCheck G  0003E630   rapGDGetCartSerial G  0003E63E   rapGDCardInserted G  0003E64C   
-rapGDSetLEDOn G  0003E66A   rapGDSetLEDOff G  0003E682   rapGDReset G  0003E69A   
-rapGDGetCardSerial G  0003E6B4   rapGDDebugPrint G  0003E6C2   rapGDLoadFile G  0003E6DE   
-rapGDSaveFile G  0003E6FC   rapGDBIOSVersion G  0003E71E   rapGDROMWriteEnable G  0003E72C   
-rapGDDirOpen G  0003E73E   rapGDDirRead G  0003E758   rapGDDirClose G  0003E76A   
-rapGDFileOpen G  0003E77C   rapGDFileRead G  0003E79A   rapGDFileWrite G  0003E7C0   
-rapGDFileClose G  0003E7E2   rapGDFileSeek G  0003E7F4   rapGDFileTell G  0003E816   
-rapGDFileSize G  0003E828   rapGDFileInfo G  0003E83A   rapGDFTimeToASCII G  0003E85C   
-rapGDFDateToASCII G  0003E872   rapUseParticlePalette G  0003E888   rapUse16x16fontPalette G  0003E8BE   
-u235PlaySample G  0003E8D0   u235ChannelFreq G  0003E990   u235KillChannel G  0003E9EA   
-u235ChannelVol G  0003EA30   _u235GetPad G  0003EA86   u235ChangeReplayFrq G  0003EB6A   
-_u235SampleVol G  0003EBC0   u235StopDSP G  0003EBD0   u235Init G  0003EBF6   
-u235Restart G  0003EC3C   zeroGetPad G  0003ED1E   zeroPlaySample G  0003ED7E   
-zeroPlay G  0003EDDE   zeroClearChannel G  0003EE4E   LSPGetPad G  0003EEA6   
-LSPPlayModule G  0003EEDC   LSPStartMusic G  0003EF0A   LSPStopMusic G  0003EF28   
-LSPMusicToggle G  0003EF46   LSPStartDSP G  0003EF64   LSPPlaySampleLoop G  0003EF82   
-LSPPlaySample G  0003EFC6   rapCheckTTExists G  0003F00E   rapGetTTState G  0003F05E   
-rapGetTTPad G  0003F0DE   __Z10ee_sprintfPcPKcz G  000407D0   eeUpdateChecksum G  0004093A   
-eeValidateChecksum G  00040964   
+__Z15initAlphaScreenv G  00028908   rapUnpack G  0003DA7A   __Z16initTruFunScreenv G  0002895E   
+__Z15initTitleScreenv G  000289B4   jsfLoadClut G  0003E0BE   __Z14initMenuScreenv G  00028A20   
+__Z14musicStageGoroP12SoundHandler G  0003030C   __Z15initAttractModev G  00028AE4   __Z16switchAttractFMVv G  0002910C   
+rapUse8x8fontPalette G  0003E95A   rapLocate G  0003E604   _rapPrint G  0003E5A8   
+rapUse8x16fontPalette G  0003E96C   __Z15initLeaderboardv G  00029740   __Z13initGoroLivesv G  000299F4   
+__Z15initGoroProfilev G  00029A66   __Z11initWinnersv G  00029AD4   __Z14initGameAssetsv G  00029B46   
+__Z20switchScreenVsBattleii G  00029BA0   __Z17stageLoadVsBattlev G  00030DEA   rapSetActiveList G  0003E4F6   
+__Z17switchScreenFightiib G  00029F50   __Z12bgResetTicksv G  00030D8A   __Z15stageResetTicksv G  00031414   
+__Z8stageGetv G  00030DBA   __Z13musicStagePitP12SoundHandler G  00030286   __Z14stageGetStartXv G  00031234   
+__Z17musicStageWarriorP12SoundHandler G  000302C4   rapFadeClut G  0003E4D4   __Z15musicStageGatesP12SoundHandler G  0003023E   
+__Z17SetPlayerPalettesv G  0002B714   __Z25switchScreenChooseFighterv G  0002BCF2   __Z26setFighterAlternatePaletteii G  0002BF60   
+__Z14setPlayer1NamePc G  0002BFB8   __Z14setPlayer2NamePci G  0002BFFC   __Z19displayWinnerMedalsv G  0002C058   
+rapDebugSetXY G  0003E3AE   jsfGetPadPressed G  0003DA4E   _jsfVsync G  0003DD46   
+__Z9sfxTruFunP12SoundHandler G  0002FA96   __Z8sfxIntroP12SoundHandler G  0002F482   __Z11sfxP2CursorP12SoundHandler G  0002F3C8   
+__Z11sfxP1CursorP12SoundHandler G  0002F3A0   __Z13sfxTitleStartP12SoundHandler G  0002FB6E   __Z10musicTitleP12SoundHandler G  000301DC   
+__Z6bgInitv G  00030AF0   __Z15spriteDelayInitv G  00030980   __Z9sleepInitv G  0002F0E0   
+__Z9stageInitv G  00030DA0   __Z9musicStopv G  00030354   __Z12stageSetNextv G  00030DC8   
+__Z11sfxSelectedP12SoundHandler G  0002F3F2   __Z10sleepCheckv G  0002F0FA   __Z8bgUpdateP7FighterS0_ G  00030B38   
+__Z11stageUpdatev G  00030EBE   __Z17spriteDelayUpdatev G  000309CC   u235PlaySampleFreq G  0003E9E6   
+__Z7sfxGongP12SoundHandler G  0002F43A   __Z6sfxHitP12SoundHandler G  0002F874   __Z12sfxTitleRiseP12SoundHandler G  0002FADE   
+__Z12sfxTitleThudP12SoundHandler G  0002FB26   __Z11sfxFlawlessP12SoundHandler G  0003014C   __Z11sfxFatalityP12SoundHandler G  00030194   
+__Z14u235StopModulev G  0003EBE6   __Z11u235Silencev G  0003EC08   __Z14u235PlayModuleis G  0003EB7C   
+_u235ModuleVol G  0003EC70   ___floatunsisf G  0003D5AA   ___mulsi3 G  0003C9E0   
+___fixunssfsi G  0003D3A0   __Z12animateFramejjP14AnimationFramefji G  000304AA   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  000306F0   
+__Z22getAnimationFrameWidthP14AnimationFramei G  000307D6   __Z6moveUpv G  00030AE0   __Z8moveDownv G  00030AE8   
+__Z13bgScrollRightf G  00030B28   __Z12bgScrollLeftf G  00030B30   __Z10bgScrollUpv G  00030CD0   
+__Z12bgScrollDownv G  00030D06   __Z19stageHideShowSpriteii G  000313D2   RAPTOR_mt_init G  00031460   
+RAPTOR_mt_load G  000314AC   RAPTOR_mt_save G  000315A8   raptor_mt_present G  000333B4   
+RAPTOR_MTtrash G  000335D0   RAPTOR_U235SilenceChannels G  000375E0   RAPTOR_U235ChangeReplayFrq G  00037644   
+RAPTOR_U235setpad1 G  00037652   RAPTOR_U235setpad2 G  0003765E   RAPTOR_U235setrot1 G  0003766A   
+RAPTOR_U235setrot2 G  00037682   RAPTOR_U235stopDSP G  00037716   RAPTOR_U235playsample G  0003773C   
+RAPTOR_U235queuesample G  00037772   RAPTOR_U235setmodule G  000377EC   RAPTOR_U235gomodule_mono G  000377FC   
+RAPTOR_U235gomodule_stereo G  0003781A   RAPTOR_U235stopmodule G  00037838   modinit  G  0003A128   
+U235SE_initNTSC G  0003A0E4   U235SE_initPAL G  0003A0F6   RAPTOR_LSP_onoff G  00038628   
+RAPTOR_LSP_stopmusic G  00038630   RAPTOR_LSP_startmusic G  00038646   RAPTOR_LSP_playmodule G  0003865C   
+RAPTOR_LSP_Sample G  00038692   RAPTOR_LSP_Init G  00038734   RAPTOR_LSP_StartDSP G  00038748   
+silence  G  000388B0   fin_silence G  000388B4   RAPTOR_GD_Init G  0003894E   
+RAPTOR_GD_BIOSVersion G  00038A24   RAPTOR_GD_ROMWriteEnable G  00038A4C   RAPTOR_GD_GetCartSerial G  00038A74   
+RAPTOR_GD_GetCardSerial G  00038B10   RAPTOR_GD_CardIn G  00038B3E   RAPTOR_GD_Reset G  00038B72   
+RAPTOR_GD_DebugString G  00038B92   RAPTOR_GD_SetLED G  00038BBA   RAPTOR_GD_DirOpen G  00038BF4   
+RAPTOR_GD_DirRead G  00038C1C   RAPTOR_GD_DirClose G  00038C56   RAPTOR_GD_FileOpen G  00038C8A   
+RAPTOR_GD_FileRead G  00038CB8   RAPTOR_GD_FileWrite G  00038CE6   RAPTOR_GD_FileClose G  00038D14   
+RAPTOR_GD_FileSeek G  00038D42   RAPTOR_GD_FileTell G  00038D70   RAPTOR_GD_FileSize G  00038D9E   
+RAPTOR_GD_FileInfo G  00038DCC   RAPTOR_ftime_to_ascii G  00038DFA   RAPTOR_fdate_to_ascii G  00038E56   
+RAPTOR_GD_LoadFile G  00038EB6   RAPTOR_GD_SaveFile G  00038F00   raptor_GD_detect G  00038F50   
+raptor_GD_SERIAL G  00038F52   raptor_GD_ASERIAL G  00038F62   raptor_SD_SERIAL G  00038F7E   
+raptor_GD_LEDstate G  00038F8E   raptor_GD_cardstat G  00038F90   raptor_fileinfo G  00038F92   
+raptor_fsize G  00038F92   raptor_fdate G  00038F96   raptor_ftime G  00038F98   
+raptor_fattr G  00038F9A   raptor_fshort G  00038F9B   raptor_flong G  00038FA8   
+U235SE_modinit G  0003A128   modinitpos G  0003A12A   U235SE_modinitpos G  0003A12A   
+dspcode  G  0003A9D0   ___udivsi3 G  0003CA20   ___divsi3 G  0003CA80   
+___umodsi3 G  0003CAC0   ___modsi3 G  0003CB00   $_exception_handler G  0003D28E   
+___divsf3 G  0003CF4A   ___negsf2 G  0003D110   ___cmpsf2 G  0003D1FE   
+___cmpsf2_internal G  0003D162   ___clear_sticky_bit G  0003D280   ___eqsf2 G  0003D300   
+___gesf2 G  0003D340   ___unordsf2 G  0003D400   ___unorddf2 G  0003D444   
+___floatunsidf G  0003D4B6   ___floatsidf G  0003D51A   ___truncdfsf2 G  0003D64A   
+___extendsfdf2 G  0003D5D2   ___fixdfsi G  0003D780   _jsfDebugMessageHalt G  0003D850   
+__Z17jsfGetPadPressed1v G  0003D93A   __Z17jsfGetPadPressed2v G  0003D9C4   jsfUnpack68k G  0003DAA6   
+jsfSprlistFieldSetvalOffset G  0003DB62   jsfSprlistFieldModOffset G  0003DBAA   jsfSprlistFieldSetOffset G  0003DBF4   
+jsfSprlistFieldSetval G  0003DC3C   jsfSprlistFieldMod G  0003DC7A   jsfSprlistFieldSet G  0003DCBA   
+_cls     G  0003DCF8   _jsfPlot G  0003DD04   jsfDelay G  0003DDB2   
+jsfEEPROMFullRead G  0003DDFC   eeReadBank G  000409BE   jsfEEPROMWordRead G  0003DE1A   
+eeReadWord G  00040902   jsfEEPROMBoardRead G  0003DE34   eeReadSingleBank G  00040946   
+jsfEEPROMFullWrite G  0003DEE8   eeWriteBank G  0004096E   jsfEEPROMWordWrite G  0003DF06   
+eeWriteWord G  000408E0   jsfEEPROMBoardWrite G  0003DF24   eeWriteSingleBank G  00040908   
+jsfEEPROMUserDataRead G  0003DFD8   jsfEEPROMUserDataWrite G  0003E006   jsfEEPROM G  0003E034   
+jsfEEPROMWord G  0003E060   jsfEEPROMBoard G  0003E08E   jsfClearBuffer G  0003E160   
+jsfSort  G  0003E180   rapInitCalcAngle G  0003E2F2   rapCalcAngle G  0003E30C   
+rapAngleVector G  0003E332   rapDebugSetMonitor G  0003E35C   _rapDebugPrint G  0003E37E   
+rapDebugUpdate G  0003E39A   rapDebugSetVisible G  0003E3C6   rapHiscoreSort G  0003E3E8   
+rapBlitlist G  0003E406   rapNumToStr G  0003E436   rapHexToStr G  0003E456   
+RBRA     G  0003E47C   rapHiscoreCheck G  0003E498   rapFadeSingle G  0003E4BA   
+rapParticleInject G  0003E55A   rapSetMapLoc G  0003E582   _rapPrintCont G  0003E5DC   
+rapUpdateOffscreenList G  0003E61C   rapSpriteShift G  0003E636   rapSetClock G  0003E66E   
+rapAddClock G  0003E684   rapSubClock G  0003E69E   rapSortSprites G  0003E6B8   
+rapFlashCheck G  0003E6F0   rapGDGetCartSerial G  0003E6FE   rapGDCardInserted G  0003E70C   
+rapGDSetLEDOn G  0003E72A   rapGDSetLEDOff G  0003E742   rapGDReset G  0003E75A   
+rapGDGetCardSerial G  0003E774   rapGDDebugPrint G  0003E782   rapGDLoadFile G  0003E79E   
+rapGDSaveFile G  0003E7BC   rapGDBIOSVersion G  0003E7DE   rapGDROMWriteEnable G  0003E7EC   
+rapGDDirOpen G  0003E7FE   rapGDDirRead G  0003E818   rapGDDirClose G  0003E82A   
+rapGDFileOpen G  0003E83C   rapGDFileRead G  0003E85A   rapGDFileWrite G  0003E880   
+rapGDFileClose G  0003E8A2   rapGDFileSeek G  0003E8B4   rapGDFileTell G  0003E8D6   
+rapGDFileSize G  0003E8E8   rapGDFileInfo G  0003E8FA   rapGDFTimeToASCII G  0003E91C   
+rapGDFDateToASCII G  0003E932   rapUseParticlePalette G  0003E948   rapUse16x16fontPalette G  0003E97E   
+u235PlaySample G  0003E990   u235ChannelFreq G  0003EA50   u235KillChannel G  0003EAAA   
+u235ChannelVol G  0003EAF0   _u235GetPad G  0003EB46   u235ChangeReplayFrq G  0003EC2A   
+_u235SampleVol G  0003EC80   u235StopDSP G  0003EC90   u235Init G  0003ECB6   
+u235Restart G  0003ECFC   zeroGetPad G  0003EDDE   zeroPlaySample G  0003EE3E   
+zeroPlay G  0003EE9E   zeroClearChannel G  0003EF0E   LSPGetPad G  0003EF66   
+LSPPlayModule G  0003EF9C   LSPStartMusic G  0003EFCA   LSPStopMusic G  0003EFE8   
+LSPMusicToggle G  0003F006   LSPStartDSP G  0003F024   LSPPlaySampleLoop G  0003F042   
+LSPPlaySample G  0003F086   rapCheckTTExists G  0003F0CE   rapGetTTState G  0003F11E   
+rapGetTTPad G  0003F19E   __Z10ee_sprintfPcPKcz G  00040890   eeUpdateChecksum G  000409FA   
+eeValidateChecksum G  00040A24   
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  0004C9A0   _bloodDirection G  00040A60   _bloodDrops G  00040C00   
-_bloodPools G  00040BB0   _bloodSquirts G  00040A64   _bloodDropFrames G  00040DC4   
-sprite   G  000410E4   _bloodGlobFrames G  00040F64   _bloodGlobAnimator G  0004100C   
-_bloodSprayFrames G  00041024   _bloodSpray2Animator G  000410B0   _bloodSpray1Animator G  000410C8   
-_bloodSquirtFrames G  00040AEC   _bloodPoolFrames G  00040CB0   _bloodSquirt1Animator G  00040AD4   
-_bloodSquirt2Animator G  00040ABC   _bloodSquirt3Animator G  00040AA4   _bloodSquirt4Animator G  00040A8C   
-_bloodPool1Animator G  00040DAC   _bloodPool2Animator G  00040D94   _bloodPool3Animator G  00040D7C   
-_bloodPool4Animator G  00040D64   _bloodPool5Animator G  00040D4C   _bloodPool6Animator G  00040D34   
-_bloodPool7Animator G  00040D1C   _bloodPool8Animator G  00040D04   _bloodDrop1Animator G  00040F4C   
-_bloodDrop2Animator G  00040F34   _bloodDrop3Animator G  00040F1C   _bloodDrop4Animator G  00040F04   
-_bloodDrop5Animator G  00040EEC   _bloodDrop6Animator G  00040ED4   _bloodDrop7Animator G  00040EBC   
-_bloodDrop8Animator G  00040EA4   colliders G  000410E0   _cameraXMax G  00041100   
-_turnOffset G  00041140   _onAlphaScreen G  000418AC   _subzeroImpactFrameThrow G  00041638   
-_subzeroImpactFrameDuckKick G  0004165C   _subzeroImpactFrameBodyKick G  00041668   _subzeroImpactFrameBodyPunch G  00041674   
-_subzeroImpactFrameRoundhouse G  00041680   _subzeroImpactFrameJumpKick G  00041644   _subzeroImpactFrameJumpPunch G  00041650   
-_subzeroImpactFrameSweep G  0004168C   _subzeroImpactFrameUppercut G  00041698   _subzeroImpactFrameHighKick G  000416A4   
-_subzeroImpactFrameLowKick G  000416B0   _subzeroImpactFrameHighPunch G  000416BC   _subzeroImpactFrameLowPunch G  000416C8   
-_kangImpactFrameThrow G  00041770   _kangImpactFrameDuckKick G  0004177C   _kangImpactFrameBodyKick G  00041788   
-_kangImpactFrameBodyPunch G  00041794   _kangImpactFrameRoundhouse G  000417B8   _kangImpactFrameJumpKick G  000417A0   
-_kangImpactFrameJumpPunch G  000417AC   _kangImpactFrameSweep G  000417C4   _kangImpactFrameUppercut G  000417D0   
-_kangImpactFrameHighKick G  000417DC   _kangImpactFrameLowKick G  000417E8   _kangImpactFrameHighPunch G  000417F4   
-_kangImpactFrameLowPunch G  00041800   _raidenImpactFrameThrow G  000416D4   _raidenImpactFrameDuckKick G  000416F8   
-_raidenImpactFrameBodyKick G  00041704   _raidenImpactFrameBodyPunch G  00041710   _raidenImpactFrameRoundhouse G  0004171C   
-_raidenImpactFrameJumpKick G  000416E0   _raidenImpactFrameJumpPunch G  000416EC   _raidenImpactFrameSweep G  00041728   
-_raidenImpactFrameUppercut G  00041734   _raidenImpactFrameHighKick G  00041740   _raidenImpactFrameLowKick G  0004174C   
-_raidenImpactFrameHighPunch G  00041758   _raidenImpactFrameLowPunch G  00041764   _sonyaImpactFrameThrow G  0004159C   
-_sonyaImpactFrameDuckKick G  000415C0   _sonyaImpactFrameBodyKick G  000415CC   _sonyaImpactFrameBodyPunch G  000415D8   
-_sonyaImpactFrameRoundhouse G  000415E4   _sonyaImpactFrameJumpKick G  000415A8   _sonyaImpactFrameJumpPunch G  000415B4   
-_sonyaImpactFrameSweep G  000415F0   _sonyaImpactFrameUppercut G  000415FC   _sonyaImpactFrameHighKick G  00041608   
-_sonyaImpactFrameLowKick G  00041614   _sonyaImpactFrameHighPunch G  00041620   _sonyaImpactFrameLowPunch G  0004162C   
-_kanoImpactFrameThrow G  00041500   _kanoImpactFrameDuckKick G  00041524   _kanoImpactFrameBodyKick G  00041530   
-_kanoImpactFrameBodyPunch G  0004153C   _kanoImpactFrameRoundhouse G  00041548   _kanoImpactFrameJumpKick G  0004150C   
-_kanoImpactFrameJumpPunch G  00041518   _kanoImpactFrameSweep G  00041554   _kanoImpactFrameUppercut G  00041560   
-_kanoImpactFrameHighKick G  0004156C   _kanoImpactFrameLowKick G  00041578   _kanoImpactFrameHighPunch G  00041584   
-_kanoImpactFrameLowPunch G  00041590   _cageImpactFrameThrow G  0004180C   _cageImpactFrameDuckKick G  00041818   
-_cageImpactFrameBodyKick G  00041824   _cageImpactFrameBodyPunch G  00041830   _cageImpactFrameRoundhouse G  00041854   
-_cageImpactFrameJumpKick G  0004183C   _cageImpactFrameJumpPunch G  00041848   _cageImpactFrameSweep G  00041860   
-_cageImpactFrameUppercut G  0004186C   _cageImpactFrameHighKick G  00041878   _cageImpactFrameLowKick G  00041884   
-_cageImpactFrameHighPunch G  00041890   _cageImpactFrameLowPunch G  0004189C   _p1Cursor G  000418BA   
-_p2Cursor G  000418B6   _p1Selected G  000418B2   _p2Selected G  000418AE   
-_ticksPerSec G  000418A8   _shakeDirection G  0004C900   _ShakeTicks G  0004C904   
-__fpCCR  G  0004C940   _xcpt    G  0004C960   
+_DATA_E  G  0004D3C0   _bloodDirection G  00040B20   _bloodDrops G  00040CC0   
+_bloodPools G  00040C70   _bloodSquirts G  00040B24   _bloodDropFrames G  00040E84   
+sprite   G  000411A4   _bloodGlobFrames G  00041024   _bloodGlobAnimator G  000410CC   
+_bloodSprayFrames G  000410E4   _bloodSpray2Animator G  00041170   _bloodSpray1Animator G  00041188   
+_bloodSquirtFrames G  00040BAC   _bloodPoolFrames G  00040D70   _bloodSquirt1Animator G  00040B94   
+_bloodSquirt2Animator G  00040B7C   _bloodSquirt3Animator G  00040B64   _bloodSquirt4Animator G  00040B4C   
+_bloodPool1Animator G  00040E6C   _bloodPool2Animator G  00040E54   _bloodPool3Animator G  00040E3C   
+_bloodPool4Animator G  00040E24   _bloodPool5Animator G  00040E0C   _bloodPool6Animator G  00040DF4   
+_bloodPool7Animator G  00040DDC   _bloodPool8Animator G  00040DC4   _bloodDrop1Animator G  0004100C   
+_bloodDrop2Animator G  00040FF4   _bloodDrop3Animator G  00040FDC   _bloodDrop4Animator G  00040FC4   
+_bloodDrop5Animator G  00040FAC   _bloodDrop6Animator G  00040F94   _bloodDrop7Animator G  00040F7C   
+_bloodDrop8Animator G  00040F64   colliders G  000411A0   _cameraXMax G  000411C0   
+_turnOffset G  00041200   _onAlphaScreen G  00041970   _fmvIndex G  00041968   
+_subzeroImpactFrameThrow G  000416F8   _subzeroImpactFrameDuckKick G  0004171C   _subzeroImpactFrameBodyKick G  00041728   
+_subzeroImpactFrameBodyPunch G  00041734   _subzeroImpactFrameRoundhouse G  00041740   _subzeroImpactFrameJumpKick G  00041704   
+_subzeroImpactFrameJumpPunch G  00041710   _subzeroImpactFrameSweep G  0004174C   _subzeroImpactFrameUppercut G  00041758   
+_subzeroImpactFrameHighKick G  00041764   _subzeroImpactFrameLowKick G  00041770   _subzeroImpactFrameHighPunch G  0004177C   
+_subzeroImpactFrameLowPunch G  00041788   _kangImpactFrameThrow G  00041830   _kangImpactFrameDuckKick G  0004183C   
+_kangImpactFrameBodyKick G  00041848   _kangImpactFrameBodyPunch G  00041854   _kangImpactFrameRoundhouse G  00041878   
+_kangImpactFrameJumpKick G  00041860   _kangImpactFrameJumpPunch G  0004186C   _kangImpactFrameSweep G  00041884   
+_kangImpactFrameUppercut G  00041890   _kangImpactFrameHighKick G  0004189C   _kangImpactFrameLowKick G  000418A8   
+_kangImpactFrameHighPunch G  000418B4   _kangImpactFrameLowPunch G  000418C0   _raidenImpactFrameThrow G  00041794   
+_raidenImpactFrameDuckKick G  000417B8   _raidenImpactFrameBodyKick G  000417C4   _raidenImpactFrameBodyPunch G  000417D0   
+_raidenImpactFrameRoundhouse G  000417DC   _raidenImpactFrameJumpKick G  000417A0   _raidenImpactFrameJumpPunch G  000417AC   
+_raidenImpactFrameSweep G  000417E8   _raidenImpactFrameUppercut G  000417F4   _raidenImpactFrameHighKick G  00041800   
+_raidenImpactFrameLowKick G  0004180C   _raidenImpactFrameHighPunch G  00041818   _raidenImpactFrameLowPunch G  00041824   
+_sonyaImpactFrameThrow G  0004165C   _sonyaImpactFrameDuckKick G  00041680   _sonyaImpactFrameBodyKick G  0004168C   
+_sonyaImpactFrameBodyPunch G  00041698   _sonyaImpactFrameRoundhouse G  000416A4   _sonyaImpactFrameJumpKick G  00041668   
+_sonyaImpactFrameJumpPunch G  00041674   _sonyaImpactFrameSweep G  000416B0   _sonyaImpactFrameUppercut G  000416BC   
+_sonyaImpactFrameHighKick G  000416C8   _sonyaImpactFrameLowKick G  000416D4   _sonyaImpactFrameHighPunch G  000416E0   
+_sonyaImpactFrameLowPunch G  000416EC   _kanoImpactFrameThrow G  000415C0   _kanoImpactFrameDuckKick G  000415E4   
+_kanoImpactFrameBodyKick G  000415F0   _kanoImpactFrameBodyPunch G  000415FC   _kanoImpactFrameRoundhouse G  00041608   
+_kanoImpactFrameJumpKick G  000415CC   _kanoImpactFrameJumpPunch G  000415D8   _kanoImpactFrameSweep G  00041614   
+_kanoImpactFrameUppercut G  00041620   _kanoImpactFrameHighKick G  0004162C   _kanoImpactFrameLowKick G  00041638   
+_kanoImpactFrameHighPunch G  00041644   _kanoImpactFrameLowPunch G  00041650   _cageImpactFrameThrow G  000418CC   
+_cageImpactFrameDuckKick G  000418D8   _cageImpactFrameBodyKick G  000418E4   _cageImpactFrameBodyPunch G  000418F0   
+_cageImpactFrameRoundhouse G  00041914   _cageImpactFrameJumpKick G  000418FC   _cageImpactFrameJumpPunch G  00041908   
+_cageImpactFrameSweep G  00041920   _cageImpactFrameUppercut G  0004192C   _cageImpactFrameHighKick G  00041938   
+_cageImpactFrameLowKick G  00041944   _cageImpactFrameHighPunch G  00041950   _cageImpactFrameLowPunch G  0004195C   
+_p1Cursor G  0004197E   _p2Cursor G  0004197A   _p1Selected G  00041976   
+_p2Selected G  00041972   _ticksPerSec G  0004196C   _shakeDirection G  0004D320   
+_ShakeTicks G  0004D324   __fpCCR  G  0004D360   _xcpt    G  0004D380   
+
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00111DE0   RAPTOR_particle_gfx G  000509A0   RAPTOR_sprite_table G  00059FA0   
-_trashram G  00072840   _bloodStayDelay G  00072844   _updateTicks G  00072854   
-_bloodSpeed G  00072850   _gravity G  0007284C   _bloodDropMomentumStart G  00072848   
-_bloodSpray1InUse G  0007285A   _bloodSpray2InUse G  00072859   _bloodGlobInUse G  00072858   
-_bloodSpeedRnd G  00072840   _xOffset G  00072868   _backgroundSpriteIndex G  00072864   
-_cameraX G  00072872   _cameraY G  0007286E   _backgroundGfxBase G  00072860   
-_cameraTicks G  00072876   _backgroundChangedLeft G  0007286D   _backgroundChangedRight G  0007286C   
-_js_r_textbuffer G  00111CA0   _shadowY G  00072880   _collision G  00072886   
-_walkForward G  00072884   _matchState G  000728C2   _matchTicks G  000728BE   
-_fightZoomed G  000728BC   _fightScale G  000728B8   _winner  G  000728B4   
-_loser   G  000728B0   _matchComplete G  000728AE   _winsTicks G  000728A2   
-_playedName G  000728A1   _playedWins G  000728A0   _round   G  000728C6   
-_fighter1Wins G  000728AA   _fighter2Wins G  000728A6   _fadedIn G  0007290B   
-_fadedOut G  0007290A   _gameStartTicks G  00072906   _onTruFunScreen G  00072912   
-_onTitleScreen G  00072911   _menuSelected G  000728E8   _menuChanged G  000728E9   
-_menuIndex G  000728EA   _menuTicks G  000728EE   _onMenuScreen G  00072910   
-_attractModeTicks G  000728F2   _attractModeIndex G  000728E4   _inAttractMode G  0007290F   
-_fmvIndex G  000728E0   _jsfFontSize G  00111CD2   _jsfFontIndx G  00111CCE   
-_chooseTicks G  000728F6   _onScreenChooseFighter G  0007290E   _onScreenVsBattle G  0007290D   
-_lastTicks G  00072902   _onScreenFight G  0007290C   _p1FlashCount G  000728FE   
-_p2FlashCount G  000728FA   _chooseFighterDone G  00072913   _isSleeping G  00111B48   
-_lastTick G  00111B44   _totalSleepTicks G  00111B40   _spriteCount G  00111B80   
-_sprites G  00111B84   _LastTicks G  00111C3E   _IsScrollingUp G  00111C44   
-_IsScrollingDown G  00111C43   _IsShaking G  00111C42   _cloudTicks1 G  00111C28   
-_cloudTicks2 G  00111C24   _cloudTicks3 G  00111C20   _bgYOffset G  00111C3A   
-_bgYInc  G  00111C32   _shakeCount G  00111C2E   _scrollUpAfterShake G  00111C2C   
-_bgYStart G  00111C36   zero_left_pad G  00111CB8   zero_right_pad G  00111CBC   
-_pad1    G  00111C9C   _pad1Last G  00111C94   _pad1Prev G  00111C8C   
-_pad2    G  00111C98   _pad2Last G  00111C90   _pad2Prev G  00111C88   
-_plot_colour G  00111CCC   rapAngle_xAdd G  00111C84   rapAngle_yAdd G  00111C80   
-_js_r_xpos G  00111CDA   _js_r_ypos G  00111CD6   _yt2     G  00111CA4   
-_y       G  00111CAC   _errno   G  00111CB4   zero_mousex_delta G  00111CC0   
-zero_mousey_delta G  00111CC4   zero_rotary_delta G  00111CC8   
+_BSS_E   G  00112800   RAPTOR_particle_gfx G  000513C0   RAPTOR_sprite_table G  0005A9C0   
+_trashram G  00073260   _bloodStayDelay G  00073264   _updateTicks G  00073274   
+_bloodSpeed G  00073270   _gravity G  0007326C   _bloodDropMomentumStart G  00073268   
+_bloodSpray1InUse G  0007327A   _bloodSpray2InUse G  00073279   _bloodGlobInUse G  00073278   
+_bloodSpeedRnd G  00073260   _xOffset G  00073288   _backgroundSpriteIndex G  00073284   
+_cameraX G  00073292   _cameraY G  0007328E   _backgroundGfxBase G  00073280   
+_cameraTicks G  00073296   _backgroundChangedLeft G  0007328D   _backgroundChangedRight G  0007328C   
+_js_r_textbuffer G  001126C0   _shadowY G  000732A0   _collision G  000732A6   
+_walkForward G  000732A4   _matchState G  000732E2   _matchTicks G  000732DE   
+_fightZoomed G  000732DC   _fightScale G  000732D8   _winner  G  000732D4   
+_loser   G  000732D0   _matchComplete G  000732CE   _winsTicks G  000732C2   
+_playedName G  000732C1   _playedWins G  000732C0   _round   G  000732E6   
+_fighter1Wins G  000732CA   _fighter2Wins G  000732C6   _fadedIn G  00073327   
+_fadedOut G  00073326   _gameStartTicks G  00073322   _onTruFunScreen G  0007332E   
+_onTitleScreen G  0007332D   _menuSelected G  00073304   _menuChanged G  00073305   
+_menuIndex G  00073306   _menuTicks G  0007330A   _onMenuScreen G  0007332C   
+_attractModeTicks G  0007330E   _attractModeIndex G  00073300   _inAttractMode G  0007332B   
+_jsfFontSize G  001126F2   _jsfFontIndx G  001126EE   _chooseTicks G  00073312   
+_onScreenChooseFighter G  0007332A   _onScreenVsBattle G  00073329   _lastTicks G  0007331E   
+_onScreenFight G  00073328   _p1FlashCount G  0007331A   _p2FlashCount G  00073316   
+_chooseFighterDone G  0007332F   _isSleeping G  00112568   _lastTick G  00112564   
+_totalSleepTicks G  00112560   _spriteCount G  001125A0   _sprites G  001125A4   
+_LastTicks G  0011265E   _IsScrollingUp G  00112664   _IsScrollingDown G  00112663   
+_IsShaking G  00112662   _cloudTicks1 G  00112648   _cloudTicks2 G  00112644   
+_cloudTicks3 G  00112640   _bgYOffset G  0011265A   _bgYInc  G  00112652   
+_shakeCount G  0011264E   _scrollUpAfterShake G  0011264C   _bgYStart G  00112656   
+zero_left_pad G  001126D8   zero_right_pad G  001126DC   _pad1    G  001126BC   
+_pad1Last G  001126B4   _pad1Prev G  001126AC   _pad2    G  001126B8   
+_pad2Last G  001126B0   _pad2Prev G  001126A8   _plot_colour G  001126EC   
+rapAngle_xAdd G  001126A4   rapAngle_yAdd G  001126A0   _js_r_xpos G  001126FA   
+_js_r_ypos G  001126F6   _yt2     G  001126C4   _y       G  001126CC   
+_errno   G  001126D4   zero_mousex_delta G  001126E0   zero_mousey_delta G  001126E4   
+zero_rotary_delta G  001126E8   
 
 LOAD MAP
 
@@ -1269,7 +1270,7 @@ NON-RELOCATABLE SYMBOLS
 
 TEXT-SEGMENT RELOCATABLE SYMBOLS
 
-_TEXT_E  G  00040A60   Audio_Play G  00004164   Input_Read G  00004164   
+_TEXT_E  G  00040B20   Audio_Play G  00004164   Input_Read G  00004164   
 jsfVsyncFlag G  000041B8   RAPTOR_PRE_Object_List G  000041BC   RAPTOR_POST_Object_List G  000041BE   
 AUDIOPLAYER G  00006E78   JAGPAD_UP G  00006E7A   JAGPAD_DOWN G  00006E7E   
 JAGPAD_LEFT G  00006E82   JAGPAD_RIGHT G  00006E86   JAGPAD_HASH G  00006E8A   
@@ -1292,9 +1293,9 @@ raptor_8x16_addr G  00020A78   raptor_16x16_addr G  00020A7C   raptor_MTwork G  
 raptor_mtapp G  00020A98   raptor_mtfn G  00020A9C   raptor_vidmode G  00020A18   
 raptor_videnable G  00020A1C   raptor_varmod G  00020A20   raptor_top_of_bss G  00020A60   
 raptor_trashram G  00020A64   raptor_uvbi_jmp G  00020A68   raptor_poobjl G  00020A6C   
-raptor_probjl G  00020A70   raptor_inittab G  00020AA0   RAPTOR_U235init G  000375DA   
-raptor_samplebank_ptr G  000378D0   __Z9basicmainv G  0002C360   RAPTOR_U235playqueue G  000376D0   
-RAPTOR_U235resetqueue G  000376FC   RAPTOR_Version G  00014300   RAPTOR_random G  0001431A   
+raptor_probjl G  00020A70   raptor_inittab G  00020AA0   RAPTOR_U235init G  0003769A   
+raptor_samplebank_ptr G  00037990   __Z9basicmainv G  0002C30E   RAPTOR_U235playqueue G  00037790   
+RAPTOR_U235resetqueue G  000377BC   RAPTOR_Version G  00014300   RAPTOR_random G  0001431A   
 RAPTOR_Install G  0001432C   RAPTOR_usepartipal G  000143CE   RAPTOR_use8x8fontpal G  000143DC   
 RAPTOR_use8x16fontpal G  000143EA   RAPTOR_use16x16fontpal G  000143F8   raptor_font8x8_pal G  00014538   
 raptor_font8x16_pal G  00014558   raptor_font16x16_pal G  00014578   RAPTOR_ERROR G  00014A52   
@@ -1337,224 +1338,225 @@ RAPTOR_flashcheck G  000199C4   raptor_console_x G  000199CA   raptor_console_y 
 raptor_console_visible G  000199DA   raptor_console_monitors G  00019A2A   RAPTOR_console_inverse G  0001F880   
 RAPTOR_console_update_registers G  0001F8A8   RAPTOR_console_update_usermonitors G  0001F90C   RAPTOR_console_update_textline G  0001F982   
 raptor_mapindex G  00020A44   raptor_ang_search G  00020AA4   raptor_col_user G  00020AA8   
-__Z9bloodInitv G  00020AC0   __Z11bloodUpdateP12SoundHandler G  00020B14   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0003074E   
-___addsf3 G  0003CACE   ___fixsfsi G  0003D73A   ___floatsisf G  0003D4FE   
-__Z8sfxBloodP12SoundHandler G  0002F882   __Z19animationIsCompleteP14SpriteAnimatori G  00030734   __Z22spriteDelaySetInactiveiiPb G  00030966   
+__Z9bloodInitv G  00020AC0   __Z11bloodUpdateP12SoundHandler G  00020B14   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb G  0003080E   
+___addsf3 G  0003CB8E   ___fixsfsi G  0003D7FA   ___floatsisf G  0003D5BE   
+__Z8sfxBloodP12SoundHandler G  0002F942   __Z19animationIsCompleteP14SpriteAnimatori G  000307F4   __Z22spriteDelaySetInactiveiiPb G  00030A26   
 __Z10bloodSprayiii G  00021620   __Z9bloodGlobiii G  00021670   __Z9bloodDropiii G  000216C0   
 __Z9bloodPoolii G  00021B22   __Z11bloodSquirtii G  00021F40   __Z15bloodResetTicksv G  000220BA   
-__Z10cameraInitjiiij G  000221E0   __Z14stageGetHeightv G  0003115A   __Z8setFramejiiiifj G  0003055A   
+__Z10cameraInitjiiij G  000221E0   __Z14stageGetHeightv G  0003121A   __Z8setFramejiiiifj G  0003061A   
 __Z12cameraUpdateP7FighterS0_ G  0002225A   __Z17fighterShiftRightP7Fighter G  000251DA   __Z16fighterShiftLeftP7Fighter G  00025206   
-___subsf3 G  0003CAC8   __Z9stageMovei G  0003119E   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00022C96   
+___subsf3 G  0003CB88   __Z9stageMovei G  0003125E   __Z21cameraCheckBoundsLeftP7FighterS0_ G  00022C96   
 __Z22cameraCheckBoundsRightP7FighterS0_ G  00022EC6   __Z13cameraCanMovev G  000230FC   __Z18cameraIsAtLeftWallv G  00023120   
 __Z19cameraIsAtRightWallv G  00023134   __Z10cameraGetXv G  0002314C   __Z16cameraResetTicksv G  0002315A   
-__Z11showMessagePc G  00023180   _jsfDebugMessage G  0003D760   __Z14showMessageIntPci G  0002319C   
-ee_printf G  000407EC   __Z15showMessageBoolPcb G  000231C4   __Z14fighterStartUpv G  00023200   
+__Z11showMessagePc G  00023180   _jsfDebugMessage G  0003D820   __Z14showMessageIntPci G  0002319C   
+ee_printf G  000408AC   __Z15showMessageBoolPcb G  000231C4   __Z14fighterStartUpv G  00023200   
 __Z11fighterHideP7Fighter G  00023218   __Z11fighterShowP7Fighter G  0002323C   __Z21fighterMakeSelectableP7Fighterb G  00023368   
 __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_ G  00023402   __Z16impactFrameResetP7Fighter G  00027DC0   __Z19fighterRestartMatchP7Fighter G  00023732   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00023742   __Z11sfxHiyaMaleP12SoundHandlerb G  0002F40A   __Z11sfxHiyaKangP12SoundHandlerb G  0002F516   
-__Z13sfxHiyaFemaleP12SoundHandlerb G  0002F490   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002F59C   __Z16fighterPlayGroaniP12SoundHandlerb G  000237D4   
-__Z12sfxGroanMaleP12SoundHandlerb G  0002F6A8   __Z14sfxGroanFemaleP12SoundHandlerb G  0002F72E   __Z15fighterPlayYelliP12SoundHandlerb G  00023814   
-__Z11sfxYellMaleP12SoundHandlerb G  0002FAF6   __Z11sfxYellKangP12SoundHandlerb G  0002FBC4   __Z13sfxYellFemaleP12SoundHandlerb G  0002FB7C   
-__Z15fighterPlayJumpiP12SoundHandlerb G  00023876   __Z11sfxJumpMaleP12SoundHandlerb G  0002FC0C   __Z12sfxJumpNinjaP12SoundHandlerb G  0002FC9C   
-__Z13sfxJumpFemaleP12SoundHandlerb G  0002FC54   __Z27fighterPlayUppercutReactionP12SoundHandler G  000238EE   __Z17sfxAnnouncerLaughP12SoundHandler G  0002FF6C   
-__Z21sfxAnnouncerExcellentP12SoundHandler G  0002FF24   __Z11sfxCrowdAwwP12SoundHandler G  0002FEDC   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00023948   
-__Z8sleepAddi G  0002F074   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  000307F2   __Z12animateFramejjP14AnimationFramefjiiii G  000303F4   
-__Z7bgShakeb G  00030C7C   __Z7sfxThudP12SoundHandler G  0002F98E   ___mulsf3 G  0003CD5E   
-__Z9sfxImpactP12SoundHandler G  0002F83A   ___lesf2 G  0003D2C0   ___ltsf2 G  0003D2A0   
-__Z15sfxKanoHeadbuttP12SoundHandlerb G  0002FE94   __Z17fighterResetFlagsP7Fighter G  00024980   __Z20fighterResetFlagsAllP7FighterS0_ G  00024A9C   
+__Z15fighterPlayHiyaiP12SoundHandlerb G  00023742   __Z11sfxHiyaMaleP12SoundHandlerb G  0002F4CA   __Z11sfxHiyaKangP12SoundHandlerb G  0002F5D6   
+__Z13sfxHiyaFemaleP12SoundHandlerb G  0002F550   __Z12sfxHiyaNinjaP12SoundHandlerb G  0002F65C   __Z16fighterPlayGroaniP12SoundHandlerb G  000237D4   
+__Z12sfxGroanMaleP12SoundHandlerb G  0002F768   __Z14sfxGroanFemaleP12SoundHandlerb G  0002F7EE   __Z15fighterPlayYelliP12SoundHandlerb G  00023814   
+__Z11sfxYellMaleP12SoundHandlerb G  0002FBB6   __Z11sfxYellKangP12SoundHandlerb G  0002FC84   __Z13sfxYellFemaleP12SoundHandlerb G  0002FC3C   
+__Z15fighterPlayJumpiP12SoundHandlerb G  00023876   __Z11sfxJumpMaleP12SoundHandlerb G  0002FCCC   __Z12sfxJumpNinjaP12SoundHandlerb G  0002FD5C   
+__Z13sfxJumpFemaleP12SoundHandlerb G  0002FD14   __Z27fighterPlayUppercutReactionP12SoundHandler G  000238EE   __Z17sfxAnnouncerLaughP12SoundHandler G  0003002C   
+__Z21sfxAnnouncerExcellentP12SoundHandler G  0002FFE4   __Z11sfxCrowdAwwP12SoundHandler G  0002FF9C   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  00023948   
+__Z8sleepAddi G  0002F134   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii G  000308B2   __Z12animateFramejjP14AnimationFramefjiiii G  000304B4   
+__Z7bgShakeb G  00030D3C   __Z7sfxThudP12SoundHandler G  0002FA4E   ___mulsf3 G  0003CE1E   
+__Z9sfxImpactP12SoundHandler G  0002F8FA   ___lesf2 G  0003D380   ___ltsf2 G  0003D360   
+__Z15sfxKanoHeadbuttP12SoundHandlerb G  0002FF54   __Z17fighterResetFlagsP7Fighter G  00024980   __Z20fighterResetFlagsAllP7FighterS0_ G  00024A9C   
 __Z16fighterMakeDizzyP7Fighter G  00024AD6   __Z19fighterHandleImpactP7FighterS0_ G  00024B04   __Z18fighterImpactCheckP7FighterS0_ G  00024E02   
-__Z26stageGetFighterHitboxIndexv G  00031150   rapCollide G  0003E450   __Z16fighterTurnCheckP7FighterS0_ G  00024FCE   
+__Z26stageGetFighterHitboxIndexv G  00031210   rapCollide G  0003E510   __Z16fighterTurnCheckP7FighterS0_ G  00024FCE   
 __Z17fighterCloseCheckP7FighterS0_ G  00025086   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000250E0   __Z23fighterAddPendingDamageP7Fighterib G  00025112   
 __Z17fighterTakeDamageP7Fighterii G  0002512A   __Z21fighterLockBoundariesP7Fighter G  0002522A   __Z27fighterAlignSpriteAndHitboxP7Fighter G  00025232   
 __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00025270   __Z17fighterSetOnFloorP7Fighter G  000252AE   __Z20fighterHasRoomToMoveP7FighterS0_ G  000252C0   
-__Z19fighterPositionXAddP7Fighteri G  00025354   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000253AA   jsfGetPad G  0003D7C4   
-__Z8sfxSwingP12SoundHandler G  0002F908   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00027E0C   __Z12sfxThrowMaleP12SoundHandlerb G  0002FCE4   
-__Z14sfxThrowFemaleP12SoundHandlerb G  0002FD2C   __Z13sfxThrowNinjaP12SoundHandlerb G  0002FD74   __Z11sfxJumpRollP12SoundHandlerb G  0002FDBC   
-___gtsf2 G  0003D260   __Z17fighterCastShadowP7Fighterb G  000272B8   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  00027560   
-__Z8sfxBlockP12SoundHandlerb G  0002F622   __Z11sfxCageYeahP12SoundHandlerb G  0002FE04   __Z11sfxKanoYellP12SoundHandlerb G  0002FE4C   
+__Z19fighterPositionXAddP7Fighteri G  00025354   __Z18fighterHandleInputfP7FighterP14SpriteAnimatorb G  000253AA   jsfGetPad G  0003D884   
+__Z8sfxSwingP12SoundHandler G  0002F9C8   __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00027E0C   __Z12sfxThrowMaleP12SoundHandlerb G  0002FDA4   
+__Z14sfxThrowFemaleP12SoundHandlerb G  0002FDEC   __Z13sfxThrowNinjaP12SoundHandlerb G  0002FE34   __Z11sfxJumpRollP12SoundHandlerb G  0002FE7C   
+___gtsf2 G  0003D320   __Z17fighterCastShadowP7Fighterb G  000272B8   __Z13fighterUpdatefP7FighterP14SpriteAnimator G  00027560   
+__Z8sfxBlockP12SoundHandlerb G  0002F6E2   __Z11sfxCageYeahP12SoundHandlerb G  0002FEC4   __Z11sfxKanoYellP12SoundHandlerb G  0002FF0C   
 __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00027C90   __Z25fighterShadowHeightLookupi G  00027CD6   __Z20fighterIsMaxDistanceP7FighterS0_ G  00027D44   
 __Z17fighterResetTicksP7Fighter G  00027D94   __Z15leaderboardInitv G  00027F20   __Z10matchResetv G  00027F40   
-__Z9matchInitv G  00027F84   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00027FDA   __Z12sfxFinishHimP12SoundHandler G  0002FFFC   
-__Z8sfxFightP12SoundHandler G  0002F0A0   __Z13sfxJohnnyCageP12SoundHandlerb G  0002F0E8   __Z8sfxSonyaP12SoundHandlerb G  0002F298   
-__Z7sfxKanoP12SoundHandlerb G  0002F130   __Z10sfxSubzeroP12SoundHandlerb G  0002F250   __Z11sfxScorpionP12SoundHandlerb G  0002F208   
-__Z10sfxLiuKangP12SoundHandlerb G  0002F1C0   __Z9sfxRaidenP12SoundHandlerb G  0002F178   __Z7sfxWinsP12SoundHandler G  00030044   
-__Z12sfxFinishHerP12SoundHandler G  0002FFB4   __Z15matchIsCompletev G  00028878   __Z20matchGetFighter1Winsv G  00028886   
+__Z9matchInitv G  00027F84   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00027FDA   __Z12sfxFinishHimP12SoundHandler G  000300BC   
+__Z8sfxFightP12SoundHandler G  0002F160   __Z13sfxJohnnyCageP12SoundHandlerb G  0002F1A8   __Z8sfxSonyaP12SoundHandlerb G  0002F358   
+__Z7sfxKanoP12SoundHandlerb G  0002F1F0   __Z10sfxSubzeroP12SoundHandlerb G  0002F310   __Z11sfxScorpionP12SoundHandlerb G  0002F2C8   
+__Z10sfxLiuKangP12SoundHandlerb G  0002F280   __Z9sfxRaidenP12SoundHandlerb G  0002F238   __Z7sfxWinsP12SoundHandler G  00030104   
+__Z12sfxFinishHerP12SoundHandler G  00030074   __Z15matchIsCompletev G  00028878   __Z20matchGetFighter1Winsv G  00028886   
 __Z20matchGetFighter2Winsv G  00028894   __Z15matchResetTicksv G  000288A2   __Z17initBlackPalettesv G  000288C0   
-__Z15initAlphaScreenv G  00028908   rapUnpack G  0003D9BA   __Z16initTruFunScreenv G  0002895E   
-__Z15initTitleScreenv G  000289B4   jsfLoadClut G  0003DFFE   __Z14initMenuScreenv G  00028A20   
-__Z14musicStageGoroP12SoundHandler G  0003024C   __Z15initAttractModev G  00028AE4   __Z16switchAttractFMVv G  0002910C   
-rapUse8x8fontPalette G  0003E89A   rapLocate G  0003E544   _rapPrint G  0003E4E8   
-rapUse8x16fontPalette G  0003E8AC   __Z15initLeaderboardv G  000296FE   __Z13initGoroLivesv G  00029A46   
-__Z15initGoroProfilev G  00029AB8   __Z11initWinnersv G  00029B26   __Z14initGameAssetsv G  00029B98   
-__Z20switchScreenVsBattleii G  00029BF2   __Z17stageLoadVsBattlev G  00030D2A   rapSetActiveList G  0003E436   
-__Z17switchScreenFightiib G  00029FA2   __Z12bgResetTicksv G  00030CCA   __Z15stageResetTicksv G  00031354   
-__Z8stageGetv G  00030CFA   __Z13musicStagePitP12SoundHandler G  000301C6   __Z14stageGetStartXv G  00031174   
-__Z17musicStageWarriorP12SoundHandler G  00030204   rapFadeClut G  0003E414   __Z15musicStageGatesP12SoundHandler G  0003017E   
-__Z17SetPlayerPalettesv G  0002B766   __Z25switchScreenChooseFighterv G  0002BD44   __Z26setFighterAlternatePaletteii G  0002BFB2   
-__Z14setPlayer1NamePc G  0002C00A   __Z14setPlayer2NamePci G  0002C04E   __Z19displayWinnerMedalsv G  0002C0AA   
-rapDebugSetXY G  0003E2EE   jsfGetPadPressed G  0003D98E   _jsfVsync G  0003DC86   
-__Z9sfxTruFunP12SoundHandler G  0002F9D6   __Z8sfxIntroP12SoundHandler G  0002F3C2   __Z11sfxP2CursorP12SoundHandler G  0002F308   
-__Z11sfxP1CursorP12SoundHandler G  0002F2E0   __Z13sfxTitleStartP12SoundHandler G  0002FAAE   __Z10musicTitleP12SoundHandler G  0003011C   
-__Z6bgInitv G  00030A30   __Z15spriteDelayInitv G  000308C0   __Z9sleepInitv G  0002F020   
-__Z9stageInitv G  00030CE0   __Z9musicStopv G  00030294   __Z12stageSetNextv G  00030D08   
-__Z11sfxSelectedP12SoundHandler G  0002F332   __Z10sleepCheckv G  0002F03A   __Z8bgUpdateP7FighterS0_ G  00030A78   
-__Z11stageUpdatev G  00030DFE   __Z17spriteDelayUpdatev G  0003090C   u235PlaySampleFreq G  0003E926   
-__Z7sfxGongP12SoundHandler G  0002F37A   __Z6sfxHitP12SoundHandler G  0002F7B4   __Z12sfxTitleRiseP12SoundHandler G  0002FA1E   
-__Z12sfxTitleThudP12SoundHandler G  0002FA66   __Z11sfxFlawlessP12SoundHandler G  0003008C   __Z11sfxFatalityP12SoundHandler G  000300D4   
-__Z14u235StopModulev G  0003EB26   __Z11u235Silencev G  0003EB48   __Z14u235PlayModuleis G  0003EABC   
-_u235ModuleVol G  0003EBB0   ___floatunsisf G  0003D4EA   ___mulsi3 G  0003C920   
-___fixunssfsi G  0003D2E0   __Z12animateFramejjP14AnimationFramefji G  000303EA   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  00030630   
-__Z22getAnimationFrameWidthP14AnimationFramei G  00030716   __Z6moveUpv G  00030A20   __Z8moveDownv G  00030A28   
-__Z13bgScrollRightf G  00030A68   __Z12bgScrollLeftf G  00030A70   __Z10bgScrollUpv G  00030C10   
-__Z12bgScrollDownv G  00030C46   __Z19stageHideShowSpriteii G  00031312   RAPTOR_mt_init G  000313A0   
-RAPTOR_mt_load G  000313EC   RAPTOR_mt_save G  000314E8   raptor_mt_present G  000332F4   
-RAPTOR_MTtrash G  00033510   RAPTOR_U235SilenceChannels G  00037520   RAPTOR_U235ChangeReplayFrq G  00037584   
-RAPTOR_U235setpad1 G  00037592   RAPTOR_U235setpad2 G  0003759E   RAPTOR_U235setrot1 G  000375AA   
-RAPTOR_U235setrot2 G  000375C2   RAPTOR_U235stopDSP G  00037656   RAPTOR_U235playsample G  0003767C   
-RAPTOR_U235queuesample G  000376B2   RAPTOR_U235setmodule G  0003772C   RAPTOR_U235gomodule_mono G  0003773C   
-RAPTOR_U235gomodule_stereo G  0003775A   RAPTOR_U235stopmodule G  00037778   modinit  G  0003A068   
-U235SE_initNTSC G  0003A024   U235SE_initPAL G  0003A036   RAPTOR_LSP_onoff G  00038568   
-RAPTOR_LSP_stopmusic G  00038570   RAPTOR_LSP_startmusic G  00038586   RAPTOR_LSP_playmodule G  0003859C   
-RAPTOR_LSP_Sample G  000385D2   RAPTOR_LSP_Init G  00038674   RAPTOR_LSP_StartDSP G  00038688   
-silence  G  000387F0   fin_silence G  000387F4   RAPTOR_GD_Init G  0003888E   
-RAPTOR_GD_BIOSVersion G  00038964   RAPTOR_GD_ROMWriteEnable G  0003898C   RAPTOR_GD_GetCartSerial G  000389B4   
-RAPTOR_GD_GetCardSerial G  00038A50   RAPTOR_GD_CardIn G  00038A7E   RAPTOR_GD_Reset G  00038AB2   
-RAPTOR_GD_DebugString G  00038AD2   RAPTOR_GD_SetLED G  00038AFA   RAPTOR_GD_DirOpen G  00038B34   
-RAPTOR_GD_DirRead G  00038B5C   RAPTOR_GD_DirClose G  00038B96   RAPTOR_GD_FileOpen G  00038BCA   
-RAPTOR_GD_FileRead G  00038BF8   RAPTOR_GD_FileWrite G  00038C26   RAPTOR_GD_FileClose G  00038C54   
-RAPTOR_GD_FileSeek G  00038C82   RAPTOR_GD_FileTell G  00038CB0   RAPTOR_GD_FileSize G  00038CDE   
-RAPTOR_GD_FileInfo G  00038D0C   RAPTOR_ftime_to_ascii G  00038D3A   RAPTOR_fdate_to_ascii G  00038D96   
-RAPTOR_GD_LoadFile G  00038DF6   RAPTOR_GD_SaveFile G  00038E40   raptor_GD_detect G  00038E90   
-raptor_GD_SERIAL G  00038E92   raptor_GD_ASERIAL G  00038EA2   raptor_SD_SERIAL G  00038EBE   
-raptor_GD_LEDstate G  00038ECE   raptor_GD_cardstat G  00038ED0   raptor_fileinfo G  00038ED2   
-raptor_fsize G  00038ED2   raptor_fdate G  00038ED6   raptor_ftime G  00038ED8   
-raptor_fattr G  00038EDA   raptor_fshort G  00038EDB   raptor_flong G  00038EE8   
-U235SE_modinit G  0003A068   modinitpos G  0003A06A   U235SE_modinitpos G  0003A06A   
-dspcode  G  0003A910   ___udivsi3 G  0003C960   ___divsi3 G  0003C9C0   
-___umodsi3 G  0003CA00   ___modsi3 G  0003CA40   $_exception_handler G  0003D1CE   
-___divsf3 G  0003CE8A   ___negsf2 G  0003D050   ___cmpsf2 G  0003D13E   
-___cmpsf2_internal G  0003D0A2   ___clear_sticky_bit G  0003D1C0   ___eqsf2 G  0003D240   
-___gesf2 G  0003D280   ___unordsf2 G  0003D340   ___unorddf2 G  0003D384   
-___floatunsidf G  0003D3F6   ___floatsidf G  0003D45A   ___truncdfsf2 G  0003D58A   
-___extendsfdf2 G  0003D512   ___fixdfsi G  0003D6C0   _jsfDebugMessageHalt G  0003D790   
-__Z17jsfGetPadPressed1v G  0003D87A   __Z17jsfGetPadPressed2v G  0003D904   jsfUnpack68k G  0003D9E6   
-jsfSprlistFieldSetvalOffset G  0003DAA2   jsfSprlistFieldModOffset G  0003DAEA   jsfSprlistFieldSetOffset G  0003DB34   
-jsfSprlistFieldSetval G  0003DB7C   jsfSprlistFieldMod G  0003DBBA   jsfSprlistFieldSet G  0003DBFA   
-_cls     G  0003DC38   _jsfPlot G  0003DC44   jsfDelay G  0003DCF2   
-jsfEEPROMFullRead G  0003DD3C   eeReadBank G  000408FE   jsfEEPROMWordRead G  0003DD5A   
-eeReadWord G  00040842   jsfEEPROMBoardRead G  0003DD74   eeReadSingleBank G  00040886   
-jsfEEPROMFullWrite G  0003DE28   eeWriteBank G  000408AE   jsfEEPROMWordWrite G  0003DE46   
-eeWriteWord G  00040820   jsfEEPROMBoardWrite G  0003DE64   eeWriteSingleBank G  00040848   
-jsfEEPROMUserDataRead G  0003DF18   jsfEEPROMUserDataWrite G  0003DF46   jsfEEPROM G  0003DF74   
-jsfEEPROMWord G  0003DFA0   jsfEEPROMBoard G  0003DFCE   jsfClearBuffer G  0003E0A0   
-jsfSort  G  0003E0C0   rapInitCalcAngle G  0003E232   rapCalcAngle G  0003E24C   
-rapAngleVector G  0003E272   rapDebugSetMonitor G  0003E29C   _rapDebugPrint G  0003E2BE   
-rapDebugUpdate G  0003E2DA   rapDebugSetVisible G  0003E306   rapHiscoreSort G  0003E328   
-rapBlitlist G  0003E346   rapNumToStr G  0003E376   rapHexToStr G  0003E396   
-RBRA     G  0003E3BC   rapHiscoreCheck G  0003E3D8   rapFadeSingle G  0003E3FA   
-rapParticleInject G  0003E49A   rapSetMapLoc G  0003E4C2   _rapPrintCont G  0003E51C   
-rapUpdateOffscreenList G  0003E55C   rapSpriteShift G  0003E576   rapSetClock G  0003E5AE   
-rapAddClock G  0003E5C4   rapSubClock G  0003E5DE   rapSortSprites G  0003E5F8   
-rapFlashCheck G  0003E630   rapGDGetCartSerial G  0003E63E   rapGDCardInserted G  0003E64C   
-rapGDSetLEDOn G  0003E66A   rapGDSetLEDOff G  0003E682   rapGDReset G  0003E69A   
-rapGDGetCardSerial G  0003E6B4   rapGDDebugPrint G  0003E6C2   rapGDLoadFile G  0003E6DE   
-rapGDSaveFile G  0003E6FC   rapGDBIOSVersion G  0003E71E   rapGDROMWriteEnable G  0003E72C   
-rapGDDirOpen G  0003E73E   rapGDDirRead G  0003E758   rapGDDirClose G  0003E76A   
-rapGDFileOpen G  0003E77C   rapGDFileRead G  0003E79A   rapGDFileWrite G  0003E7C0   
-rapGDFileClose G  0003E7E2   rapGDFileSeek G  0003E7F4   rapGDFileTell G  0003E816   
-rapGDFileSize G  0003E828   rapGDFileInfo G  0003E83A   rapGDFTimeToASCII G  0003E85C   
-rapGDFDateToASCII G  0003E872   rapUseParticlePalette G  0003E888   rapUse16x16fontPalette G  0003E8BE   
-u235PlaySample G  0003E8D0   u235ChannelFreq G  0003E990   u235KillChannel G  0003E9EA   
-u235ChannelVol G  0003EA30   _u235GetPad G  0003EA86   u235ChangeReplayFrq G  0003EB6A   
-_u235SampleVol G  0003EBC0   u235StopDSP G  0003EBD0   u235Init G  0003EBF6   
-u235Restart G  0003EC3C   zeroGetPad G  0003ED1E   zeroPlaySample G  0003ED7E   
-zeroPlay G  0003EDDE   zeroClearChannel G  0003EE4E   LSPGetPad G  0003EEA6   
-LSPPlayModule G  0003EEDC   LSPStartMusic G  0003EF0A   LSPStopMusic G  0003EF28   
-LSPMusicToggle G  0003EF46   LSPStartDSP G  0003EF64   LSPPlaySampleLoop G  0003EF82   
-LSPPlaySample G  0003EFC6   rapCheckTTExists G  0003F00E   rapGetTTState G  0003F05E   
-rapGetTTPad G  0003F0DE   __Z10ee_sprintfPcPKcz G  000407D0   eeUpdateChecksum G  0004093A   
-eeValidateChecksum G  00040964   
+__Z15initAlphaScreenv G  00028908   rapUnpack G  0003DA7A   __Z16initTruFunScreenv G  0002895E   
+__Z15initTitleScreenv G  000289B4   jsfLoadClut G  0003E0BE   __Z14initMenuScreenv G  00028A20   
+__Z14musicStageGoroP12SoundHandler G  0003030C   __Z15initAttractModev G  00028AE4   __Z16switchAttractFMVv G  0002910C   
+rapUse8x8fontPalette G  0003E95A   rapLocate G  0003E604   _rapPrint G  0003E5A8   
+rapUse8x16fontPalette G  0003E96C   __Z15initLeaderboardv G  00029740   __Z13initGoroLivesv G  000299F4   
+__Z15initGoroProfilev G  00029A66   __Z11initWinnersv G  00029AD4   __Z14initGameAssetsv G  00029B46   
+__Z20switchScreenVsBattleii G  00029BA0   __Z17stageLoadVsBattlev G  00030DEA   rapSetActiveList G  0003E4F6   
+__Z17switchScreenFightiib G  00029F50   __Z12bgResetTicksv G  00030D8A   __Z15stageResetTicksv G  00031414   
+__Z8stageGetv G  00030DBA   __Z13musicStagePitP12SoundHandler G  00030286   __Z14stageGetStartXv G  00031234   
+__Z17musicStageWarriorP12SoundHandler G  000302C4   rapFadeClut G  0003E4D4   __Z15musicStageGatesP12SoundHandler G  0003023E   
+__Z17SetPlayerPalettesv G  0002B714   __Z25switchScreenChooseFighterv G  0002BCF2   __Z26setFighterAlternatePaletteii G  0002BF60   
+__Z14setPlayer1NamePc G  0002BFB8   __Z14setPlayer2NamePci G  0002BFFC   __Z19displayWinnerMedalsv G  0002C058   
+rapDebugSetXY G  0003E3AE   jsfGetPadPressed G  0003DA4E   _jsfVsync G  0003DD46   
+__Z9sfxTruFunP12SoundHandler G  0002FA96   __Z8sfxIntroP12SoundHandler G  0002F482   __Z11sfxP2CursorP12SoundHandler G  0002F3C8   
+__Z11sfxP1CursorP12SoundHandler G  0002F3A0   __Z13sfxTitleStartP12SoundHandler G  0002FB6E   __Z10musicTitleP12SoundHandler G  000301DC   
+__Z6bgInitv G  00030AF0   __Z15spriteDelayInitv G  00030980   __Z9sleepInitv G  0002F0E0   
+__Z9stageInitv G  00030DA0   __Z9musicStopv G  00030354   __Z12stageSetNextv G  00030DC8   
+__Z11sfxSelectedP12SoundHandler G  0002F3F2   __Z10sleepCheckv G  0002F0FA   __Z8bgUpdateP7FighterS0_ G  00030B38   
+__Z11stageUpdatev G  00030EBE   __Z17spriteDelayUpdatev G  000309CC   u235PlaySampleFreq G  0003E9E6   
+__Z7sfxGongP12SoundHandler G  0002F43A   __Z6sfxHitP12SoundHandler G  0002F874   __Z12sfxTitleRiseP12SoundHandler G  0002FADE   
+__Z12sfxTitleThudP12SoundHandler G  0002FB26   __Z11sfxFlawlessP12SoundHandler G  0003014C   __Z11sfxFatalityP12SoundHandler G  00030194   
+__Z14u235StopModulev G  0003EBE6   __Z11u235Silencev G  0003EC08   __Z14u235PlayModuleis G  0003EB7C   
+_u235ModuleVol G  0003EC70   ___floatunsisf G  0003D5AA   ___mulsi3 G  0003C9E0   
+___fixunssfsi G  0003D3A0   __Z12animateFramejjP14AnimationFramefji G  000304AA   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrame G  000306F0   
+__Z22getAnimationFrameWidthP14AnimationFramei G  000307D6   __Z6moveUpv G  00030AE0   __Z8moveDownv G  00030AE8   
+__Z13bgScrollRightf G  00030B28   __Z12bgScrollLeftf G  00030B30   __Z10bgScrollUpv G  00030CD0   
+__Z12bgScrollDownv G  00030D06   __Z19stageHideShowSpriteii G  000313D2   RAPTOR_mt_init G  00031460   
+RAPTOR_mt_load G  000314AC   RAPTOR_mt_save G  000315A8   raptor_mt_present G  000333B4   
+RAPTOR_MTtrash G  000335D0   RAPTOR_U235SilenceChannels G  000375E0   RAPTOR_U235ChangeReplayFrq G  00037644   
+RAPTOR_U235setpad1 G  00037652   RAPTOR_U235setpad2 G  0003765E   RAPTOR_U235setrot1 G  0003766A   
+RAPTOR_U235setrot2 G  00037682   RAPTOR_U235stopDSP G  00037716   RAPTOR_U235playsample G  0003773C   
+RAPTOR_U235queuesample G  00037772   RAPTOR_U235setmodule G  000377EC   RAPTOR_U235gomodule_mono G  000377FC   
+RAPTOR_U235gomodule_stereo G  0003781A   RAPTOR_U235stopmodule G  00037838   modinit  G  0003A128   
+U235SE_initNTSC G  0003A0E4   U235SE_initPAL G  0003A0F6   RAPTOR_LSP_onoff G  00038628   
+RAPTOR_LSP_stopmusic G  00038630   RAPTOR_LSP_startmusic G  00038646   RAPTOR_LSP_playmodule G  0003865C   
+RAPTOR_LSP_Sample G  00038692   RAPTOR_LSP_Init G  00038734   RAPTOR_LSP_StartDSP G  00038748   
+silence  G  000388B0   fin_silence G  000388B4   RAPTOR_GD_Init G  0003894E   
+RAPTOR_GD_BIOSVersion G  00038A24   RAPTOR_GD_ROMWriteEnable G  00038A4C   RAPTOR_GD_GetCartSerial G  00038A74   
+RAPTOR_GD_GetCardSerial G  00038B10   RAPTOR_GD_CardIn G  00038B3E   RAPTOR_GD_Reset G  00038B72   
+RAPTOR_GD_DebugString G  00038B92   RAPTOR_GD_SetLED G  00038BBA   RAPTOR_GD_DirOpen G  00038BF4   
+RAPTOR_GD_DirRead G  00038C1C   RAPTOR_GD_DirClose G  00038C56   RAPTOR_GD_FileOpen G  00038C8A   
+RAPTOR_GD_FileRead G  00038CB8   RAPTOR_GD_FileWrite G  00038CE6   RAPTOR_GD_FileClose G  00038D14   
+RAPTOR_GD_FileSeek G  00038D42   RAPTOR_GD_FileTell G  00038D70   RAPTOR_GD_FileSize G  00038D9E   
+RAPTOR_GD_FileInfo G  00038DCC   RAPTOR_ftime_to_ascii G  00038DFA   RAPTOR_fdate_to_ascii G  00038E56   
+RAPTOR_GD_LoadFile G  00038EB6   RAPTOR_GD_SaveFile G  00038F00   raptor_GD_detect G  00038F50   
+raptor_GD_SERIAL G  00038F52   raptor_GD_ASERIAL G  00038F62   raptor_SD_SERIAL G  00038F7E   
+raptor_GD_LEDstate G  00038F8E   raptor_GD_cardstat G  00038F90   raptor_fileinfo G  00038F92   
+raptor_fsize G  00038F92   raptor_fdate G  00038F96   raptor_ftime G  00038F98   
+raptor_fattr G  00038F9A   raptor_fshort G  00038F9B   raptor_flong G  00038FA8   
+U235SE_modinit G  0003A128   modinitpos G  0003A12A   U235SE_modinitpos G  0003A12A   
+dspcode  G  0003A9D0   ___udivsi3 G  0003CA20   ___divsi3 G  0003CA80   
+___umodsi3 G  0003CAC0   ___modsi3 G  0003CB00   $_exception_handler G  0003D28E   
+___divsf3 G  0003CF4A   ___negsf2 G  0003D110   ___cmpsf2 G  0003D1FE   
+___cmpsf2_internal G  0003D162   ___clear_sticky_bit G  0003D280   ___eqsf2 G  0003D300   
+___gesf2 G  0003D340   ___unordsf2 G  0003D400   ___unorddf2 G  0003D444   
+___floatunsidf G  0003D4B6   ___floatsidf G  0003D51A   ___truncdfsf2 G  0003D64A   
+___extendsfdf2 G  0003D5D2   ___fixdfsi G  0003D780   _jsfDebugMessageHalt G  0003D850   
+__Z17jsfGetPadPressed1v G  0003D93A   __Z17jsfGetPadPressed2v G  0003D9C4   jsfUnpack68k G  0003DAA6   
+jsfSprlistFieldSetvalOffset G  0003DB62   jsfSprlistFieldModOffset G  0003DBAA   jsfSprlistFieldSetOffset G  0003DBF4   
+jsfSprlistFieldSetval G  0003DC3C   jsfSprlistFieldMod G  0003DC7A   jsfSprlistFieldSet G  0003DCBA   
+_cls     G  0003DCF8   _jsfPlot G  0003DD04   jsfDelay G  0003DDB2   
+jsfEEPROMFullRead G  0003DDFC   eeReadBank G  000409BE   jsfEEPROMWordRead G  0003DE1A   
+eeReadWord G  00040902   jsfEEPROMBoardRead G  0003DE34   eeReadSingleBank G  00040946   
+jsfEEPROMFullWrite G  0003DEE8   eeWriteBank G  0004096E   jsfEEPROMWordWrite G  0003DF06   
+eeWriteWord G  000408E0   jsfEEPROMBoardWrite G  0003DF24   eeWriteSingleBank G  00040908   
+jsfEEPROMUserDataRead G  0003DFD8   jsfEEPROMUserDataWrite G  0003E006   jsfEEPROM G  0003E034   
+jsfEEPROMWord G  0003E060   jsfEEPROMBoard G  0003E08E   jsfClearBuffer G  0003E160   
+jsfSort  G  0003E180   rapInitCalcAngle G  0003E2F2   rapCalcAngle G  0003E30C   
+rapAngleVector G  0003E332   rapDebugSetMonitor G  0003E35C   _rapDebugPrint G  0003E37E   
+rapDebugUpdate G  0003E39A   rapDebugSetVisible G  0003E3C6   rapHiscoreSort G  0003E3E8   
+rapBlitlist G  0003E406   rapNumToStr G  0003E436   rapHexToStr G  0003E456   
+RBRA     G  0003E47C   rapHiscoreCheck G  0003E498   rapFadeSingle G  0003E4BA   
+rapParticleInject G  0003E55A   rapSetMapLoc G  0003E582   _rapPrintCont G  0003E5DC   
+rapUpdateOffscreenList G  0003E61C   rapSpriteShift G  0003E636   rapSetClock G  0003E66E   
+rapAddClock G  0003E684   rapSubClock G  0003E69E   rapSortSprites G  0003E6B8   
+rapFlashCheck G  0003E6F0   rapGDGetCartSerial G  0003E6FE   rapGDCardInserted G  0003E70C   
+rapGDSetLEDOn G  0003E72A   rapGDSetLEDOff G  0003E742   rapGDReset G  0003E75A   
+rapGDGetCardSerial G  0003E774   rapGDDebugPrint G  0003E782   rapGDLoadFile G  0003E79E   
+rapGDSaveFile G  0003E7BC   rapGDBIOSVersion G  0003E7DE   rapGDROMWriteEnable G  0003E7EC   
+rapGDDirOpen G  0003E7FE   rapGDDirRead G  0003E818   rapGDDirClose G  0003E82A   
+rapGDFileOpen G  0003E83C   rapGDFileRead G  0003E85A   rapGDFileWrite G  0003E880   
+rapGDFileClose G  0003E8A2   rapGDFileSeek G  0003E8B4   rapGDFileTell G  0003E8D6   
+rapGDFileSize G  0003E8E8   rapGDFileInfo G  0003E8FA   rapGDFTimeToASCII G  0003E91C   
+rapGDFDateToASCII G  0003E932   rapUseParticlePalette G  0003E948   rapUse16x16fontPalette G  0003E97E   
+u235PlaySample G  0003E990   u235ChannelFreq G  0003EA50   u235KillChannel G  0003EAAA   
+u235ChannelVol G  0003EAF0   _u235GetPad G  0003EB46   u235ChangeReplayFrq G  0003EC2A   
+_u235SampleVol G  0003EC80   u235StopDSP G  0003EC90   u235Init G  0003ECB6   
+u235Restart G  0003ECFC   zeroGetPad G  0003EDDE   zeroPlaySample G  0003EE3E   
+zeroPlay G  0003EE9E   zeroClearChannel G  0003EF0E   LSPGetPad G  0003EF66   
+LSPPlayModule G  0003EF9C   LSPStartMusic G  0003EFCA   LSPStopMusic G  0003EFE8   
+LSPMusicToggle G  0003F006   LSPStartDSP G  0003F024   LSPPlaySampleLoop G  0003F042   
+LSPPlaySample G  0003F086   rapCheckTTExists G  0003F0CE   rapGetTTState G  0003F11E   
+rapGetTTPad G  0003F19E   __Z10ee_sprintfPcPKcz G  00040890   eeUpdateChecksum G  000409FA   
+eeValidateChecksum G  00040A24   
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  0004C9A0   _bloodDirection G  00040A60   _bloodDrops G  00040C00   
-_bloodPools G  00040BB0   _bloodSquirts G  00040A64   _bloodDropFrames G  00040DC4   
-sprite   G  000410E4   _bloodGlobFrames G  00040F64   _bloodGlobAnimator G  0004100C   
-_bloodSprayFrames G  00041024   _bloodSpray2Animator G  000410B0   _bloodSpray1Animator G  000410C8   
-_bloodSquirtFrames G  00040AEC   _bloodPoolFrames G  00040CB0   _bloodSquirt1Animator G  00040AD4   
-_bloodSquirt2Animator G  00040ABC   _bloodSquirt3Animator G  00040AA4   _bloodSquirt4Animator G  00040A8C   
-_bloodPool1Animator G  00040DAC   _bloodPool2Animator G  00040D94   _bloodPool3Animator G  00040D7C   
-_bloodPool4Animator G  00040D64   _bloodPool5Animator G  00040D4C   _bloodPool6Animator G  00040D34   
-_bloodPool7Animator G  00040D1C   _bloodPool8Animator G  00040D04   _bloodDrop1Animator G  00040F4C   
-_bloodDrop2Animator G  00040F34   _bloodDrop3Animator G  00040F1C   _bloodDrop4Animator G  00040F04   
-_bloodDrop5Animator G  00040EEC   _bloodDrop6Animator G  00040ED4   _bloodDrop7Animator G  00040EBC   
-_bloodDrop8Animator G  00040EA4   colliders G  000410E0   _cameraXMax G  00041100   
-_turnOffset G  00041140   _onAlphaScreen G  000418AC   _subzeroImpactFrameThrow G  00041638   
-_subzeroImpactFrameDuckKick G  0004165C   _subzeroImpactFrameBodyKick G  00041668   _subzeroImpactFrameBodyPunch G  00041674   
-_subzeroImpactFrameRoundhouse G  00041680   _subzeroImpactFrameJumpKick G  00041644   _subzeroImpactFrameJumpPunch G  00041650   
-_subzeroImpactFrameSweep G  0004168C   _subzeroImpactFrameUppercut G  00041698   _subzeroImpactFrameHighKick G  000416A4   
-_subzeroImpactFrameLowKick G  000416B0   _subzeroImpactFrameHighPunch G  000416BC   _subzeroImpactFrameLowPunch G  000416C8   
-_kangImpactFrameThrow G  00041770   _kangImpactFrameDuckKick G  0004177C   _kangImpactFrameBodyKick G  00041788   
-_kangImpactFrameBodyPunch G  00041794   _kangImpactFrameRoundhouse G  000417B8   _kangImpactFrameJumpKick G  000417A0   
-_kangImpactFrameJumpPunch G  000417AC   _kangImpactFrameSweep G  000417C4   _kangImpactFrameUppercut G  000417D0   
-_kangImpactFrameHighKick G  000417DC   _kangImpactFrameLowKick G  000417E8   _kangImpactFrameHighPunch G  000417F4   
-_kangImpactFrameLowPunch G  00041800   _raidenImpactFrameThrow G  000416D4   _raidenImpactFrameDuckKick G  000416F8   
-_raidenImpactFrameBodyKick G  00041704   _raidenImpactFrameBodyPunch G  00041710   _raidenImpactFrameRoundhouse G  0004171C   
-_raidenImpactFrameJumpKick G  000416E0   _raidenImpactFrameJumpPunch G  000416EC   _raidenImpactFrameSweep G  00041728   
-_raidenImpactFrameUppercut G  00041734   _raidenImpactFrameHighKick G  00041740   _raidenImpactFrameLowKick G  0004174C   
-_raidenImpactFrameHighPunch G  00041758   _raidenImpactFrameLowPunch G  00041764   _sonyaImpactFrameThrow G  0004159C   
-_sonyaImpactFrameDuckKick G  000415C0   _sonyaImpactFrameBodyKick G  000415CC   _sonyaImpactFrameBodyPunch G  000415D8   
-_sonyaImpactFrameRoundhouse G  000415E4   _sonyaImpactFrameJumpKick G  000415A8   _sonyaImpactFrameJumpPunch G  000415B4   
-_sonyaImpactFrameSweep G  000415F0   _sonyaImpactFrameUppercut G  000415FC   _sonyaImpactFrameHighKick G  00041608   
-_sonyaImpactFrameLowKick G  00041614   _sonyaImpactFrameHighPunch G  00041620   _sonyaImpactFrameLowPunch G  0004162C   
-_kanoImpactFrameThrow G  00041500   _kanoImpactFrameDuckKick G  00041524   _kanoImpactFrameBodyKick G  00041530   
-_kanoImpactFrameBodyPunch G  0004153C   _kanoImpactFrameRoundhouse G  00041548   _kanoImpactFrameJumpKick G  0004150C   
-_kanoImpactFrameJumpPunch G  00041518   _kanoImpactFrameSweep G  00041554   _kanoImpactFrameUppercut G  00041560   
-_kanoImpactFrameHighKick G  0004156C   _kanoImpactFrameLowKick G  00041578   _kanoImpactFrameHighPunch G  00041584   
-_kanoImpactFrameLowPunch G  00041590   _cageImpactFrameThrow G  0004180C   _cageImpactFrameDuckKick G  00041818   
-_cageImpactFrameBodyKick G  00041824   _cageImpactFrameBodyPunch G  00041830   _cageImpactFrameRoundhouse G  00041854   
-_cageImpactFrameJumpKick G  0004183C   _cageImpactFrameJumpPunch G  00041848   _cageImpactFrameSweep G  00041860   
-_cageImpactFrameUppercut G  0004186C   _cageImpactFrameHighKick G  00041878   _cageImpactFrameLowKick G  00041884   
-_cageImpactFrameHighPunch G  00041890   _cageImpactFrameLowPunch G  0004189C   _p1Cursor G  000418BA   
-_p2Cursor G  000418B6   _p1Selected G  000418B2   _p2Selected G  000418AE   
-_ticksPerSec G  000418A8   _shakeDirection G  0004C900   _ShakeTicks G  0004C904   
-__fpCCR  G  0004C940   _xcpt    G  0004C960   
+_DATA_E  G  0004D3C0   _bloodDirection G  00040B20   _bloodDrops G  00040CC0   
+_bloodPools G  00040C70   _bloodSquirts G  00040B24   _bloodDropFrames G  00040E84   
+sprite   G  000411A4   _bloodGlobFrames G  00041024   _bloodGlobAnimator G  000410CC   
+_bloodSprayFrames G  000410E4   _bloodSpray2Animator G  00041170   _bloodSpray1Animator G  00041188   
+_bloodSquirtFrames G  00040BAC   _bloodPoolFrames G  00040D70   _bloodSquirt1Animator G  00040B94   
+_bloodSquirt2Animator G  00040B7C   _bloodSquirt3Animator G  00040B64   _bloodSquirt4Animator G  00040B4C   
+_bloodPool1Animator G  00040E6C   _bloodPool2Animator G  00040E54   _bloodPool3Animator G  00040E3C   
+_bloodPool4Animator G  00040E24   _bloodPool5Animator G  00040E0C   _bloodPool6Animator G  00040DF4   
+_bloodPool7Animator G  00040DDC   _bloodPool8Animator G  00040DC4   _bloodDrop1Animator G  0004100C   
+_bloodDrop2Animator G  00040FF4   _bloodDrop3Animator G  00040FDC   _bloodDrop4Animator G  00040FC4   
+_bloodDrop5Animator G  00040FAC   _bloodDrop6Animator G  00040F94   _bloodDrop7Animator G  00040F7C   
+_bloodDrop8Animator G  00040F64   colliders G  000411A0   _cameraXMax G  000411C0   
+_turnOffset G  00041200   _onAlphaScreen G  00041970   _fmvIndex G  00041968   
+_subzeroImpactFrameThrow G  000416F8   _subzeroImpactFrameDuckKick G  0004171C   _subzeroImpactFrameBodyKick G  00041728   
+_subzeroImpactFrameBodyPunch G  00041734   _subzeroImpactFrameRoundhouse G  00041740   _subzeroImpactFrameJumpKick G  00041704   
+_subzeroImpactFrameJumpPunch G  00041710   _subzeroImpactFrameSweep G  0004174C   _subzeroImpactFrameUppercut G  00041758   
+_subzeroImpactFrameHighKick G  00041764   _subzeroImpactFrameLowKick G  00041770   _subzeroImpactFrameHighPunch G  0004177C   
+_subzeroImpactFrameLowPunch G  00041788   _kangImpactFrameThrow G  00041830   _kangImpactFrameDuckKick G  0004183C   
+_kangImpactFrameBodyKick G  00041848   _kangImpactFrameBodyPunch G  00041854   _kangImpactFrameRoundhouse G  00041878   
+_kangImpactFrameJumpKick G  00041860   _kangImpactFrameJumpPunch G  0004186C   _kangImpactFrameSweep G  00041884   
+_kangImpactFrameUppercut G  00041890   _kangImpactFrameHighKick G  0004189C   _kangImpactFrameLowKick G  000418A8   
+_kangImpactFrameHighPunch G  000418B4   _kangImpactFrameLowPunch G  000418C0   _raidenImpactFrameThrow G  00041794   
+_raidenImpactFrameDuckKick G  000417B8   _raidenImpactFrameBodyKick G  000417C4   _raidenImpactFrameBodyPunch G  000417D0   
+_raidenImpactFrameRoundhouse G  000417DC   _raidenImpactFrameJumpKick G  000417A0   _raidenImpactFrameJumpPunch G  000417AC   
+_raidenImpactFrameSweep G  000417E8   _raidenImpactFrameUppercut G  000417F4   _raidenImpactFrameHighKick G  00041800   
+_raidenImpactFrameLowKick G  0004180C   _raidenImpactFrameHighPunch G  00041818   _raidenImpactFrameLowPunch G  00041824   
+_sonyaImpactFrameThrow G  0004165C   _sonyaImpactFrameDuckKick G  00041680   _sonyaImpactFrameBodyKick G  0004168C   
+_sonyaImpactFrameBodyPunch G  00041698   _sonyaImpactFrameRoundhouse G  000416A4   _sonyaImpactFrameJumpKick G  00041668   
+_sonyaImpactFrameJumpPunch G  00041674   _sonyaImpactFrameSweep G  000416B0   _sonyaImpactFrameUppercut G  000416BC   
+_sonyaImpactFrameHighKick G  000416C8   _sonyaImpactFrameLowKick G  000416D4   _sonyaImpactFrameHighPunch G  000416E0   
+_sonyaImpactFrameLowPunch G  000416EC   _kanoImpactFrameThrow G  000415C0   _kanoImpactFrameDuckKick G  000415E4   
+_kanoImpactFrameBodyKick G  000415F0   _kanoImpactFrameBodyPunch G  000415FC   _kanoImpactFrameRoundhouse G  00041608   
+_kanoImpactFrameJumpKick G  000415CC   _kanoImpactFrameJumpPunch G  000415D8   _kanoImpactFrameSweep G  00041614   
+_kanoImpactFrameUppercut G  00041620   _kanoImpactFrameHighKick G  0004162C   _kanoImpactFrameLowKick G  00041638   
+_kanoImpactFrameHighPunch G  00041644   _kanoImpactFrameLowPunch G  00041650   _cageImpactFrameThrow G  000418CC   
+_cageImpactFrameDuckKick G  000418D8   _cageImpactFrameBodyKick G  000418E4   _cageImpactFrameBodyPunch G  000418F0   
+_cageImpactFrameRoundhouse G  00041914   _cageImpactFrameJumpKick G  000418FC   _cageImpactFrameJumpPunch G  00041908   
+_cageImpactFrameSweep G  00041920   _cageImpactFrameUppercut G  0004192C   _cageImpactFrameHighKick G  00041938   
+_cageImpactFrameLowKick G  00041944   _cageImpactFrameHighPunch G  00041950   _cageImpactFrameLowPunch G  0004195C   
+_p1Cursor G  0004197E   _p2Cursor G  0004197A   _p1Selected G  00041976   
+_p2Selected G  00041972   _ticksPerSec G  0004196C   _shakeDirection G  0004D320   
+_ShakeTicks G  0004D324   __fpCCR  G  0004D360   _xcpt    G  0004D380   
+
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00111DE0   RAPTOR_particle_gfx G  000509A0   RAPTOR_sprite_table G  00059FA0   
-_trashram G  00072840   _bloodStayDelay G  00072844   _updateTicks G  00072854   
-_bloodSpeed G  00072850   _gravity G  0007284C   _bloodDropMomentumStart G  00072848   
-_bloodSpray1InUse G  0007285A   _bloodSpray2InUse G  00072859   _bloodGlobInUse G  00072858   
-_bloodSpeedRnd G  00072840   _xOffset G  00072868   _backgroundSpriteIndex G  00072864   
-_cameraX G  00072872   _cameraY G  0007286E   _backgroundGfxBase G  00072860   
-_cameraTicks G  00072876   _backgroundChangedLeft G  0007286D   _backgroundChangedRight G  0007286C   
-_js_r_textbuffer G  00111CA0   _shadowY G  00072880   _collision G  00072886   
-_walkForward G  00072884   _matchState G  000728C2   _matchTicks G  000728BE   
-_fightZoomed G  000728BC   _fightScale G  000728B8   _winner  G  000728B4   
-_loser   G  000728B0   _matchComplete G  000728AE   _winsTicks G  000728A2   
-_playedName G  000728A1   _playedWins G  000728A0   _round   G  000728C6   
-_fighter1Wins G  000728AA   _fighter2Wins G  000728A6   _fadedIn G  0007290B   
-_fadedOut G  0007290A   _gameStartTicks G  00072906   _onTruFunScreen G  00072912   
-_onTitleScreen G  00072911   _menuSelected G  000728E8   _menuChanged G  000728E9   
-_menuIndex G  000728EA   _menuTicks G  000728EE   _onMenuScreen G  00072910   
-_attractModeTicks G  000728F2   _attractModeIndex G  000728E4   _inAttractMode G  0007290F   
-_fmvIndex G  000728E0   _jsfFontSize G  00111CD2   _jsfFontIndx G  00111CCE   
-_chooseTicks G  000728F6   _onScreenChooseFighter G  0007290E   _onScreenVsBattle G  0007290D   
-_lastTicks G  00072902   _onScreenFight G  0007290C   _p1FlashCount G  000728FE   
-_p2FlashCount G  000728FA   _chooseFighterDone G  00072913   _isSleeping G  00111B48   
-_lastTick G  00111B44   _totalSleepTicks G  00111B40   _spriteCount G  00111B80   
-_sprites G  00111B84   _LastTicks G  00111C3E   _IsScrollingUp G  00111C44   
-_IsScrollingDown G  00111C43   _IsShaking G  00111C42   _cloudTicks1 G  00111C28   
-_cloudTicks2 G  00111C24   _cloudTicks3 G  00111C20   _bgYOffset G  00111C3A   
-_bgYInc  G  00111C32   _shakeCount G  00111C2E   _scrollUpAfterShake G  00111C2C   
-_bgYStart G  00111C36   zero_left_pad G  00111CB8   zero_right_pad G  00111CBC   
-_pad1    G  00111C9C   _pad1Last G  00111C94   _pad1Prev G  00111C8C   
-_pad2    G  00111C98   _pad2Last G  00111C90   _pad2Prev G  00111C88   
-_plot_colour G  00111CCC   rapAngle_xAdd G  00111C84   rapAngle_yAdd G  00111C80   
-_js_r_xpos G  00111CDA   _js_r_ypos G  00111CD6   _yt2     G  00111CA4   
-_y       G  00111CAC   _errno   G  00111CB4   zero_mousex_delta G  00111CC0   
-zero_mousey_delta G  00111CC4   zero_rotary_delta G  00111CC8   
+_BSS_E   G  00112800   RAPTOR_particle_gfx G  000513C0   RAPTOR_sprite_table G  0005A9C0   
+_trashram G  00073260   _bloodStayDelay G  00073264   _updateTicks G  00073274   
+_bloodSpeed G  00073270   _gravity G  0007326C   _bloodDropMomentumStart G  00073268   
+_bloodSpray1InUse G  0007327A   _bloodSpray2InUse G  00073279   _bloodGlobInUse G  00073278   
+_bloodSpeedRnd G  00073260   _xOffset G  00073288   _backgroundSpriteIndex G  00073284   
+_cameraX G  00073292   _cameraY G  0007328E   _backgroundGfxBase G  00073280   
+_cameraTicks G  00073296   _backgroundChangedLeft G  0007328D   _backgroundChangedRight G  0007328C   
+_js_r_textbuffer G  001126C0   _shadowY G  000732A0   _collision G  000732A6   
+_walkForward G  000732A4   _matchState G  000732E2   _matchTicks G  000732DE   
+_fightZoomed G  000732DC   _fightScale G  000732D8   _winner  G  000732D4   
+_loser   G  000732D0   _matchComplete G  000732CE   _winsTicks G  000732C2   
+_playedName G  000732C1   _playedWins G  000732C0   _round   G  000732E6   
+_fighter1Wins G  000732CA   _fighter2Wins G  000732C6   _fadedIn G  00073327   
+_fadedOut G  00073326   _gameStartTicks G  00073322   _onTruFunScreen G  0007332E   
+_onTitleScreen G  0007332D   _menuSelected G  00073304   _menuChanged G  00073305   
+_menuIndex G  00073306   _menuTicks G  0007330A   _onMenuScreen G  0007332C   
+_attractModeTicks G  0007330E   _attractModeIndex G  00073300   _inAttractMode G  0007332B   
+_jsfFontSize G  001126F2   _jsfFontIndx G  001126EE   _chooseTicks G  00073312   
+_onScreenChooseFighter G  0007332A   _onScreenVsBattle G  00073329   _lastTicks G  0007331E   
+_onScreenFight G  00073328   _p1FlashCount G  0007331A   _p2FlashCount G  00073316   
+_chooseFighterDone G  0007332F   _isSleeping G  00112568   _lastTick G  00112564   
+_totalSleepTicks G  00112560   _spriteCount G  001125A0   _sprites G  001125A4   
+_LastTicks G  0011265E   _IsScrollingUp G  00112664   _IsScrollingDown G  00112663   
+_IsShaking G  00112662   _cloudTicks1 G  00112648   _cloudTicks2 G  00112644   
+_cloudTicks3 G  00112640   _bgYOffset G  0011265A   _bgYInc  G  00112652   
+_shakeCount G  0011264E   _scrollUpAfterShake G  0011264C   _bgYStart G  00112656   
+zero_left_pad G  001126D8   zero_right_pad G  001126DC   _pad1    G  001126BC   
+_pad1Last G  001126B4   _pad1Prev G  001126AC   _pad2    G  001126B8   
+_pad2Last G  001126B0   _pad2Prev G  001126A8   _plot_colour G  001126EC   
+rapAngle_xAdd G  001126A4   rapAngle_yAdd G  001126A0   _js_r_xpos G  001126FA   
+_js_r_ypos G  001126F6   _yt2     G  001126C4   _y       G  001126CC   
+_errno   G  001126D4   zero_mousex_delta G  001126E0   zero_mousey_delta G  001126E4   
+zero_rotary_delta G  001126E8   
 
  
 Making packed ROM... 
