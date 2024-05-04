@@ -3,7 +3,7 @@ struct BloodDrop {
     struct SpriteAnimator* Animator;
     bool InUse;
     int LastTicks;
-    int Direction;
+    short Direction;
     float Momentum;
 };
 
@@ -23,14 +23,14 @@ void bloodInit();
 
 void bloodUpdate(struct SoundHandler* soundHandler);
 
-void bloodSpray(int x, int y, int direction);
+void bloodSpray(short x, short y, short direction);
 
-void bloodGlob(int x, int y, int direction);
+void bloodGlob(short x, short y, short direction);
 
-void bloodDrop(int x, int y, int direction);
+void bloodDrop(short x, short y, short direction);
 
-void bloodPool(int x, int y);
+void bloodPool(short x, short y);
 
-void bloodSquirt(int x, int y);
+void bloodSquirt(short x, short y);
 
 void bloodResetTicks();

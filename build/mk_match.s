@@ -77,18 +77,18 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
 	jle .L51
-	tst.b 193(%a2)
+	tst.b 130(%a2)
 	jeq .L52
-	move.b #1,198(%a2)
+	move.b #1,135(%a2)
 	moveq #2,%d2
 	move.l %d2,_matchState
 .L51:
-	tst.b 194(%a2)
+	tst.b 131(%a2)
 	jne .L77
 .L53:
-	tst.b 194(%a3)
+	tst.b 131(%a3)
 	jeq .L68
-	tst.b 192(%a3)
+	tst.b 129(%a3)
 	jne .L68
 	moveq #2,%d1
 	move.l %d1,_matchState
@@ -98,7 +98,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L13:
-	tst.b 194(%a3)
+	tst.b 131(%a3)
 	jeq .L78
 	move.l (%a2),%d0
 	move.l %d0,_winner
@@ -109,13 +109,13 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #2,%d2
 	cmp.l %d1,%d2
 	jlt .L14
-	move.b #1,199(%a2)
+	move.b #1,136(%a2)
 .L14:
 	tst.l %d0
 	jne .L79
-	tst.b 193(%a2)
+	tst.b 130(%a2)
 	jne .L17
-	tst.b 193(%a3)
+	tst.b 130(%a3)
 	jne .L17
 .L68:
 	moveq #1,%d0
@@ -148,19 +148,20 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L72:
-	clr.b 210(%a2)
-	clr.b 210(%a3)
+	clr.b 144(%a2)
+	clr.b 144(%a3)
 	move.l #12387696,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
 	addq.l #6,%d0
-	lsl.l #5,%d0
-	move.l %d0,-(%sp)
+	lsl.w #5,%d0
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	pea 160.w
 	pea 32.w
 	pea 80.w
 	pea 80.w
-	jsr __Z8setFramejiiiifj
+	jsr __Z8setFramejssssfj
 	move.l sprite,%a0
 	move.w #130,15368(%a0)
 	move.w #98,15372(%a0)
@@ -203,7 +204,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	.word .L30-.L32
 	.word .L31-.L32
 .L74:
-	tst.b 194(%a2)
+	tst.b 131(%a2)
 	jeq .L13
 	move.l (%a3),%d0
 	move.l %d0,_winner
@@ -214,7 +215,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #2,%d2
 	cmp.l %d1,%d2
 	jlt .L14
-	move.b #1,199(%a3)
+	move.b #1,136(%a3)
 	jra .L14
 .L76:
 	moveq #7,%d2
@@ -225,7 +226,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL15finishHimFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 .L50:
 	move.l sprite,%a1
@@ -253,7 +254,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 48.w
 	pea 160.w
 	pea 80.w
-	jsr __Z8setFramejiiiifj
+	jsr __Z8setFramejssssfj
 	move.l sprite,%a0
 	move.w #160,15368(%a0)
 	move.w #98,15372(%a0)
@@ -277,11 +278,11 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #4,%d2
 	move.l %d2,_matchState
 	addq.l #4,%sp
-	tst.b 193(%a2)
+	tst.b 130(%a2)
 	jeq .L18
 	move.l (%a2),%d0
 	move.l %d0,_loser
-	move.b #1,210(%a3)
+	move.b #1,144(%a3)
 .L19:
 	move.l sprite,%a0
 	move.w #8,15368(%a0)
@@ -301,7 +302,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L77:
-	tst.b 192(%a2)
+	tst.b 129(%a2)
 	jne .L53
 	moveq #2,%d1
 	move.l %d1,_matchState
@@ -329,7 +330,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL15finishHerFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L50
 .L25:
@@ -364,7 +365,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL14cageWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 .L35:
 	move.l sprite,%a0
@@ -405,7 +406,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL15shangWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L45:
@@ -414,7 +415,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL14goroWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L44:
@@ -423,7 +424,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL16kasumiWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L43:
@@ -432,7 +433,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL17reptileWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L42:
@@ -441,7 +442,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL15sonyaWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L41:
@@ -450,7 +451,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL17subzeroWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L40:
@@ -459,7 +460,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL18scorpionWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L39:
@@ -468,7 +469,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL14kangWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L38:
@@ -477,7 +478,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL16raidenWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L37:
@@ -486,7 +487,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL14kanoWinsFrames
 	pea __ZL13fightAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
 	jra .L35
 .L31:
@@ -537,7 +538,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	pea 2.w
 	pea __ZL16fightFlashFrames
 	pea __ZL13fightAnimator
-	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb,%a4
+	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb,%a4
 	jsr (%a4)
 	moveq #59,%d0
 	add.l _matchTicks,%d0
@@ -545,7 +546,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (20,%sp),%sp
 	cmp.l %d0,%a0
 	jle .L68
-	clr.l __ZL13fightAnimator+16
+	clr.w __ZL13fightAnimator+16
 	pea 1.w
 	pea 1.w
 	pea 1.w
@@ -582,7 +583,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L18:
-	tst.b 193(%a3)
+	tst.b 130(%a3)
 	jne .L20
 	move.l _loser,%d0
 	jra .L19
@@ -604,12 +605,12 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	addq.l #4,%sp
 	jra .L24
 .L52:
-	tst.b 193(%a3)
+	tst.b 130(%a3)
 	jeq .L51
-	move.b #1,198(%a3)
+	move.b #1,135(%a3)
 	moveq #2,%d0
 	move.l %d0,_matchState
-	tst.b 194(%a2)
+	tst.b 131(%a2)
 	jeq .L53
 	jra .L77
 .L82:
@@ -623,13 +624,13 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L20:
 	move.l (%a3),%d0
 	move.l %d0,_loser
-	move.b #1,210(%a2)
+	move.b #1,144(%a2)
 	jra .L19
 .L11:
 	moveq #-1,%d1
 	move.l %d1,15364(%a0)
-	move.b #1,210(%a2)
-	move.b #1,210(%a3)
+	move.b #1,144(%a2)
+	move.b #1,144(%a3)
 	moveq #2,%d2
 	move.l %d2,_matchState
 	moveq #1,%d0
@@ -729,238 +730,238 @@ __ZL13fightAnimator:
 	.long	1056964608
 	.long	12387696
 	.long	0
-	.long	0
-	.skip 4
+	.word	0
+	.skip 2
 	.even
 __ZL16fightFlashFrames:
-	.long	160
-	.long	48
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	48
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	3
-	.long	160
-	.long	48
-	.long	0
-	.long	240
-	.long	0
-	.long	0
+	.word	160
+	.word	48
+	.word	0
+	.word	240
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15fightIdleFrames:
-	.long	160
-	.long	48
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	48
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL14cageWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	0
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	0
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	0
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	0
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL14kanoWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	32
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	32
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	32
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	32
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL16raidenWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	64
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	64
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	64
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	64
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL14kangWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	96
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	96
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	96
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	96
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL18scorpionWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	128
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	128
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	128
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	128
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL17subzeroWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	160
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	160
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	160
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	160
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15sonyaWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	192
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	192
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	192
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	192
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL17reptileWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	224
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	224
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	224
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	224
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL16kasumiWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	256
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	256
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	256
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	256
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL14goroWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	288
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	288
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	288
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	288
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15shangWinsFrames:
-	.long	192
-	.long	32
-	.long	304
-	.long	304
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	304
+	.word	304
+	.word	0
+	.word	0
 	.long	3
-	.long	192
-	.long	32
-	.long	496
-	.long	304
-	.long	0
-	.long	0
+	.word	192
+	.word	32
+	.word	496
+	.word	304
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15finishHerFrames:
-	.long	304
-	.long	48
-	.long	0
-	.long	96
-	.long	0
-	.long	0
+	.word	304
+	.word	48
+	.word	0
+	.word	96
+	.word	0
+	.word	0
 	.long	3
-	.long	304
-	.long	48
-	.long	0
-	.long	144
-	.long	0
-	.long	0
+	.word	304
+	.word	48
+	.word	0
+	.word	144
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15finishHimFrames:
-	.long	304
-	.long	48
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	304
+	.word	48
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	3
-	.long	304
-	.long	48
-	.long	0
-	.long	48
-	.long	0
-	.long	0
+	.word	304
+	.word	48
+	.word	0
+	.word	48
+	.word	0
+	.word	0
 	.long	3

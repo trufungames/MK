@@ -416,145 +416,33 @@ __Z14stageGetStartXv:
 	.globl	__Z9stageMovei
 __Z9stageMovei:
 	link.w %fp,#0
-	movem.l #8252,-(%sp)
+	move.l %d2,-(%sp)
 	move.l 8(%fp),%d1
 	move.l __ZL12currentStage,%d0
 	jne .L85
-	move.l sprite,%a2
-	lea ___floatsisf,%a4
-	move.l %d1,-(%sp)
-	jsr (%a4)
-	move.l %d0,%d2
-	move.w 6920(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	lea ___addsf3,%a3
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	lea ___fixsfsi,%a5
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	move.w %d0,6920(%a2)
-	move.l %d2,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	move.l %d0,%d2
-	move.w 12104(%a2),%a0
-	move.l %a0,-(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,12104(%a2)
-	move.w 8648(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,8648(%a2)
-	move.w 8840(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.w %d0,8840(%a2)
+	move.l sprite,%a0
+	add.w %d1,6920(%a0)
+	add.w %d1,%d1
+	add.w %d1,12104(%a0)
+	add.w %d1,8648(%a0)
+	add.w %d1,8840(%a0)
 .L80:
-	movem.l -20(%fp),#15364
+	move.l (%sp)+,%d2
 	unlk %fp
 	rts
 .L85:
 	moveq #1,%d2
 	cmp.l %d0,%d2
 	jne .L80
-	move.l sprite,%a2
-	lea ___floatsisf,%a4
-	move.l %d1,-(%sp)
-	jsr (%a4)
-	move.l %d0,%d2
-	move.w 7112(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	lea ___addsf3,%a3
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	lea ___fixsfsi,%a5
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	move.w %d0,7112(%a2)
-	move.w 7304(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7304(%a2)
-	move.w 7496(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7496(%a2)
-	move.w 7688(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,7688(%a2)
-	move.l %d2,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	move.l %d0,%d2
-	move.w 12104(%a2),%a0
-	move.l %a0,-(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,12104(%a2)
-	move.w 12296(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a4)
-	move.l %d0,(%sp)
-	move.l %d2,-(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.w %d0,12296(%a2)
-	movem.l -20(%fp),#15364
+	move.l sprite,%a0
+	add.w %d1,7112(%a0)
+	add.w %d1,7304(%a0)
+	add.w %d1,7496(%a0)
+	add.w %d1,7688(%a0)
+	add.w %d1,%d1
+	add.w %d1,12104(%a0)
+	add.w %d1,12296(%a0)
+	move.l (%sp)+,%d2
 	unlk %fp
 	rts
 	.even

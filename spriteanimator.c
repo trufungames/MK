@@ -43,7 +43,7 @@ void animateFrame(unsigned int spriteIndex, unsigned int frame, struct Animation
     }
 }
 
-void setFrame(unsigned int spriteIndex, int width, int height, int x, int y, float mulFactor, unsigned int base)
+void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base)
 {
     sprite[spriteIndex].width = width;
     sprite[spriteIndex].height =  height;
@@ -57,12 +57,12 @@ void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struc
     setFrame(spriteIndex, animationFrame->width, animationFrame->height, animationFrame->x, animationFrame->y, animator->mulFactor, animator->base);
 }
 
-int getAnimationFrameWidth(struct AnimationFrame animationFrames[], int currentFrame)
+short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame)
 {
     return animationFrames[currentFrame].width;
 }
 
-bool animationIsComplete(struct SpriteAnimator *animator, int totalFrames)
+bool animationIsComplete(struct SpriteAnimator *animator, short totalFrames)
 {
     if (animator->currentFrame >= totalFrames - 1)
         return true;
@@ -70,12 +70,12 @@ bool animationIsComplete(struct SpriteAnimator *animator, int totalFrames)
         return false;
 }
 
-void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], int totalFrames, bool playForward, bool loop)
+void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop)
 {
     updateSpriteAnimator(animator, animationFrames, totalFrames, playForward, loop, 0, 0, 1);
 }
 
-void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], int totalFrames, bool playForward, bool loop, int positionX, int positionY, int direction)
+void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop, short positionX, short positionY, short direction)
 {
     animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, positionX, positionY, direction);
 

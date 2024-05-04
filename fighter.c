@@ -15,10 +15,14 @@ int collision = 0;
 int turnOffset = 32;
 bool walkForward = false;
 int shadowY = 0;
+unsigned int tempScore;
+int scoreLength = 4;
+static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
+static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 
 void fighterStartUp()
 {
-    shadowY = sprite[P1_FIGHTER_SHADOW_PIT].y_;
+    shadowY = sprite[P1_FIGHTER_SHADOW].y_;
 }
 
 void fighterHide(struct Fighter *fighter)
@@ -60,6 +64,9 @@ void fighterShow(struct Fighter *fighter)
 
 void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
 {
+    fighter->Score = 0;
+    fighter->ScoreChanged = true;
+    
     if (isPlayer1)
     {
         sprite[fighter->spriteIndex].x_ = 14;
@@ -96,6 +103,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->uppercutMomentumYStart = -21.0f;
     fighter->dropKickMomentemYStart = -10.0f;
     fighter->throwMomentemYStart = 5.0f;
+    fighter->jumpIndex = 0;
 
     //assignments
     fighter->ResetTicks = false;
@@ -148,6 +156,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsUppercutting = false;
     fighter->ButtonReleased = true;
     fighter->DPadReleased = true;
+    fighter->DPadUpReleased = true;
     fighter->AcceptingInput = true;
     fighter->airAttackPerformed = false;
     fighter->IsSweeping = false;
@@ -1140,17 +1149,18 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
         }
         else if (((fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_RIGHT && fighter->direction == 1) ||
                 (fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_LEFT && fighter->direction == -1))
-                && fighter->DPadReleased && fighter->AcceptingInput || fighter->IsJumpingRollForward)
+                && fighter->DPadUpReleased && fighter->AcceptingInput || fighter->IsJumpingRollForward)
         {
-            if (!fighter->IsJumpingRollForward && fighter->DPadReleased)
+            if (!fighter->IsJumpingRollForward && fighter->DPadUpReleased)
             {
                 fighter->AcceptingInput = false;
                 fighter->airAttackPerformed = false;
-                fighter->DPadReleased = false;
+                fighter->DPadUpReleased = false;
                 fighter->IsJumpingRollForward = true;
                 animator->currentFrame = 0;
                 fighter->momentumY = fighter->jumpMomentumYStart;
                 fighter->JumpLanded = false;
+                fighter->jumpIndex = 0;
                 fighter->JumpRollTicks = rapTicks;
                 fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             }
@@ -1225,7 +1235,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 0)
+                    if (rapTicks >= fighter->JumpRollTicks + 2)
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
@@ -1236,14 +1246,28 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                         if (!fighter->MadeContact)
                         {
                             fighterPositionXAdd(fighter, fighter->playerJumpXSpeed * fighter->direction);
-                            fighter->positionY += fighter->momentumY;                            
+                            fighter->positionY += FlipOffsets[fighter->jumpIndex];
+
+                            fighter->jumpIndex++;
+
+                            if (fighter->jumpIndex > 20)// || fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
+                            {
+                                //landed
+                                fighter->jumpIndex = 0;
+                                impactFrameReset(fighter);
+                                fighter->JumpLanded = true;
+                                fighterSetOnFloor(fighter);
+                            }
+                            //fighter->positionY += fighter->momentumY;
                             fighter->momentumY += fighter->gravity;
                         }
 
                         if (!fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
-                            updateSpriteAnimator(animator, *fighter->jumpRollFrames, fighter->JUMP_ROLL_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+                            animateFrame(animator->spriteIndex, fighter->jumpIndex, *fighter->jumpRollFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                         }
+
+                        fighter->JumpRollTicks = rapTicks;
                     }
                 }
 
@@ -1277,15 +1301,16 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
         }
         else if (((fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_LEFT && fighter->direction == 1) ||
                 (fighter->pad & JAGPAD_UP && fighter->pad & JAGPAD_RIGHT && fighter->direction == -1))
-                && fighter->DPadReleased && fighter->AcceptingInput || fighter->IsJumpingRollBackward)
+                && fighter->DPadUpReleased && fighter->AcceptingInput || fighter->IsJumpingRollBackward)
         {
-            if (!fighter->IsJumpingRollBackward && fighter->DPadReleased)
+            if (!fighter->IsJumpingRollBackward && fighter->DPadUpReleased)
             {
                 fighter->AcceptingInput = false;
                 fighter->airAttackPerformed = false;
-                fighter->DPadReleased = false;
+                fighter->DPadUpReleased = false;
                 fighter->IsJumpingRollBackward = true;
                 animator->currentFrame = 0;
+                fighter->jumpIndex = 0;
                 fighter->momentumY = fighter->jumpMomentumYStart;
                 fighter->JumpLanded = false;
                 fighter->JumpRollTicks = rapTicks;
@@ -1362,7 +1387,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 0)
+                    if (rapTicks >= fighter->JumpRollTicks + 2)
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
@@ -1377,14 +1402,28 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                                 fighterPositionXAdd(fighter, -1 * fighter->playerJumpXSpeed * fighter->direction);
                             }
                             
-                            fighter->positionY += fighter->momentumY;
+                            fighter->positionY += FlipOffsets[fighter->jumpIndex];
+
+                            fighter->jumpIndex++;
+
+                            if (fighter->jumpIndex > 20)// || fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
+                            {
+                                //landed
+                                fighter->jumpIndex = 0;
+                                impactFrameReset(fighter);
+                                fighter->JumpLanded = true;
+                                fighterSetOnFloor(fighter);
+                            }
+                            //fighter->positionY += fighter->momentumY;
                             fighter->momentumY += fighter->gravity;
                         }
 
                         if (!fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
-                            updateSpriteAnimator(animator, *fighter->jumpRollFrames, fighter->JUMP_ROLL_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
+                            animateFrame(animator->spriteIndex, 20 - fighter->jumpIndex, *fighter->jumpRollFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
                         }
+
+                        fighter->JumpRollTicks = rapTicks;
                     }
                 }
 
@@ -1519,6 +1558,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 fighter->airAttackPerformed = false;
                 fighter->IsJumping = true;
                 animator->currentFrame = 0;
+                fighter->jumpIndex = 0;
                 fighter->momentumY = fighter->jumpMomentumYStart;
                 fighter->JumpLanded = false;
                 fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
@@ -1594,9 +1634,21 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->JumpLanded)
                 {
-                    if (rapTicks >= fighter->lastTicks + 0 && !fighter->MadeContact)
+                    if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
                     {
-                        fighter->positionY += fighter->momentumY;
+                        fighter->positionY += JumpOffsets[fighter->jumpIndex];
+
+                        fighter->jumpIndex++;
+
+                        if (fighter->jumpIndex > 20)// || fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
+                        {
+                            //landed
+                            fighter->jumpIndex = 0;
+                            impactFrameReset(fighter);
+                            fighter->JumpLanded = true;
+                            fighterSetOnFloor(fighter);
+                        }
+                        //fighter->positionY += fighter->momentumY;
                         fighter->momentumY += fighter->gravity;
                         fighter->lastTicks = rapTicks;
                     }
@@ -1693,6 +1745,11 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             && !(fighter->pad & JAGPAD_RIGHT))
         {
             fighter->DPadReleased = true;
+        }
+
+        if (!(fighter->pad & JAGPAD_UP))
+        {
+            fighter->DPadUpReleased = true;
         }
     }
 }
@@ -1963,27 +2020,27 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
         if (fighter1->IsLowPunching && !fighter2->IsDucking)
         {
             fighter2->IsHitLow = true;
-            fighterAddPendingDamage(fighter2, DMG_LP, false);
+            fighterAddPendingDamage(fighter2, DMG_LP, false, fighter1, POINTS_PUNCH);
         }
         else if (fighter1->IsHighPunching && !fighter2->IsDucking)
         {
             fighter2->IsHitHigh = true;
-            fighterAddPendingDamage(fighter2, DMG_HP, false);
+            fighterAddPendingDamage(fighter2, DMG_HP, false, fighter1, POINTS_PUNCH);
         }
         else if (fighter1->IsLowKicking && !fighter2->IsDucking)
         {
             fighter2->IsHitLow = true;
-            fighterAddPendingDamage(fighter2, DMG_LK, false);
+            fighterAddPendingDamage(fighter2, DMG_LK, false, fighter1, POINTS_KICK);
         }
         else if (fighter1->IsHighKicking && !fighter2->IsDucking)
         {
             fighter2->IsHitBack = true;
-            fighterAddPendingDamage(fighter2, DMG_HK, false);
+            fighterAddPendingDamage(fighter2, DMG_HK, false, fighter1, POINTS_KICK);
         }
         else if (fighter1->IsRoundhousing && !fighter2->IsDucking)
         {
             fighter2->IsHitBack = true;
-            fighterAddPendingDamage(fighter2, DMG_ROUNDHOUSE, true);
+            fighterAddPendingDamage(fighter2, DMG_ROUNDHOUSE, true, fighter1, POINTS_ROUNDHOUSE);
         }
         else if (fighter1->IsBodyPunching && !fighter2->IsDucking)
         {
@@ -1994,7 +2051,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
                 fighter2->IsHitBackLightKano = true;
             }
 
-            fighterAddPendingDamage(fighter2, DMG_BODY_PUNCH, true);
+            fighterAddPendingDamage(fighter2, DMG_BODY_PUNCH, true, fighter1, POINTS_BODY_TO_BODY_PUNCH);
         }
         else if (fighter1->IsJumpPunching)
         {
@@ -2002,7 +2059,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->AcceptingInput = false;
             fighter1->MadeContact = true;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_JUMPPUNCH, true);
+            fighterAddPendingDamage(fighter2, DMG_JUMPPUNCH, true, fighter1, POINTS_JUMP_PUNCH);
         }
         else if (fighter1->IsJumpKicking)
         {
@@ -2010,7 +2067,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->AcceptingInput = false;
             fighter1->MadeContact = true;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_JUMPKICK, false);
+            fighterAddPendingDamage(fighter2, DMG_JUMPKICK, false, fighter1, POINTS_JUMP_KICK);
         }
         else if (fighter1->IsUppercutting)
         {
@@ -2018,7 +2075,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->AcceptingInput = false;
             fighter1->MadeContactUppercut = true;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false);
+            fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false, fighter1, POINTS_UPPERCUT);
         }
         else if (fighter1->IsJumpDropKicking)
         {
@@ -2026,7 +2083,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->AcceptingInput = false;
             fighter1->MadeContact = true;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_DROPKICK, false);
+            fighterAddPendingDamage(fighter2, DMG_DROPKICK, false, fighter1, POINTS_JUMP_KICK);
         }
         else if (fighter1->IsBodyKicking)
         {
@@ -2034,7 +2091,7 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->AcceptingInput = false;
             fighter1->MadeContact = true;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_BODY_KICK, false);
+            fighterAddPendingDamage(fighter2, DMG_BODY_KICK, false, fighter1, POINTS_BODY_TO_BODY_KICK);
         }
     }
     else if (!fighter2->IsBeingDamaged && fighter2->IsBlocking)
@@ -2049,14 +2106,14 @@ void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
         if (fighter1->IsSweeping)
         {
             fighter2->IsHitSweep = true;
-            fighterAddPendingDamage(fighter2, DMG_SWEEP, false);
+            fighterAddPendingDamage(fighter2, DMG_SWEEP, false, fighter1, POINTS_SWEEP);
         }
         else if (fighter1->IsDuckKicking)
         {
             fighter2->IsHitBackLow = true;
             fighter1->AcceptingInput = false;
             fighter1->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_DUCK_KICK, false);
+            fighterAddPendingDamage(fighter2, DMG_DUCK_KICK, false, fighter1, POINTS_DUCK_KICK);
         }
     }
     else if (!fighter2->IsBeingDamaged && fighter2->IsBlocking && fighter2->IsDucking)
@@ -2157,10 +2214,12 @@ void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2)
 	sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter2->hitPoints) * 4);
 }
 
-void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen)
+void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen, struct Fighter* attackingFighter, int points)
 {
     fighter->pendingDamage = damage;
     fighter->shakeScreen = shakeScreen;
+    attackingFighter->Score += points;
+    attackingFighter->ScoreChanged = true;
 }
 
 void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
@@ -2396,4 +2455,45 @@ void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2)
 void fighterResetTicks(struct Fighter* fighter)
 {
     fighter->ResetTicks = true;
+}
+
+void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (fighter1->ScoreChanged || fighter2->ScoreChanged)
+    {
+        rapUse8x16fontPalette(10);
+        jsfSetFontSize(1);
+        jsfSetFontIndx(1);
+
+        if (fighter1->ScoreChanged)
+        {
+            rapLocate(8,10);
+            js_r_textbuffer= ee_printf("%02ld00",fighter1->Score);
+            rapPrint();
+        }
+        
+        if (fighter2->ScoreChanged)
+        {
+            fighter2->ScoreChanged = false;
+            tempScore = fighter2->Score;
+            scoreLength = 2;  //2 for the dummy digits at the end
+
+            if (tempScore == 0)
+            {
+                scoreLength = 4;
+            }
+            else
+            {
+                while (tempScore != 0)  
+                {  
+                    tempScore = tempScore / 10;  
+                    scoreLength++;  
+                }
+            }
+
+            rapLocate(312 - (scoreLength * 8),10);
+            js_r_textbuffer= ee_printf("%02ld00",fighter2->Score);
+            rapPrint();
+        }
+    }
 }

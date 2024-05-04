@@ -173,12 +173,12 @@ BloodSquirt bloodSquirts[] = {
 bool bloodSpray1InUse = false;
 bool bloodSpray2InUse = false;
 bool bloodGlobInUse = false;
-int bloodDirection = 1;
+short bloodDirection = 1;
 int updateTicks = 0;
 float bloodSpeed = 0.0f;
 float gravity = 0.0f;
 float bloodDropMomentumStart = 0.0f;
-int bloodStayDelay = 0;
+short bloodStayDelay = 0;
 int bloodSpeedRnd = 0;
 
 void bloodInit()
@@ -285,7 +285,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     }
 }
 
-void bloodSpray(int x, int y, int direction)
+void bloodSpray(short x, short y, short direction)
 {
     if (!bloodSpray1InUse)
     {
@@ -299,7 +299,7 @@ void bloodSpray(int x, int y, int direction)
     }
 }
 
-void bloodGlob(int x, int y, int direction)
+void bloodGlob(short x, short y, short direction)
 {
     if (!bloodGlobInUse)
     {
@@ -313,7 +313,7 @@ void bloodGlob(int x, int y, int direction)
     }
 }
 
-void bloodDrop(int x, int y, int direction)
+void bloodDrop(short x, short y, short direction)
 {
     bloodSpeedRnd = bloodSpeed + 0.0f;
 
@@ -334,9 +334,9 @@ void bloodDrop(int x, int y, int direction)
     }
 }
 
-void bloodPool(int x, int y)
+void bloodPool(short x, short y)
 {
-    for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
+    for (short i = 0; i < TOTAL_BLOOD_COUNT; i++)
     {
         if (!bloodPools[i].InUse)
         {
@@ -351,7 +351,7 @@ void bloodPool(int x, int y)
     }
 }
 
-void bloodSquirt(int x, int y)
+void bloodSquirt(short x, short y)
 {
     for (int i = 0; i < TOTAL_BLOOD_SQUIRT_COUNT; i++)
     {

@@ -69,17 +69,17 @@ __Z8bgUpdateP7FighterS0_:
 	jeq .L14
 .L13:
 	move.l sprite,%a0
-	move.l _bgYInc,%d1
-	add.w %d1,8460(%a0)
-	add.w %d1,7884(%a0)
-	add.w %d1,5196(%a0)
-	add.w %d1,6924(%a0)
-	add.w %d1,8652(%a0)
-	add.w %d1,8844(%a0)
-	add.w %d1,12108(%a0)
-	add.w %d1,12300(%a0)
-	add.l %d1,298(%a3)
-	add.l %d1,298(%a2)
+	move.w _bgYInc+2,%d0
+	add.w %d0,8460(%a0)
+	add.w %d0,7884(%a0)
+	add.w %d0,5196(%a0)
+	add.w %d0,6924(%a0)
+	add.w %d0,8652(%a0)
+	add.w %d0,8844(%a0)
+	add.w %d0,12108(%a0)
+	add.w %d0,12300(%a0)
+	add.w %d0,236(%a3)
+	add.w %d0,236(%a2)
 .L14:
 	move.l %a1,_LastTicks
 .L6:
@@ -129,17 +129,17 @@ __Z8bgUpdateP7FighterS0_:
 	move.b #1,_IsScrollingUp
 	clr.b _IsScrollingDown
 	move.l sprite,%a0
-	move.l _bgYInc,%d1
-	add.w %d1,8460(%a0)
-	add.w %d1,7884(%a0)
-	add.w %d1,5196(%a0)
-	add.w %d1,6924(%a0)
-	add.w %d1,8652(%a0)
-	add.w %d1,8844(%a0)
-	add.w %d1,12108(%a0)
-	add.w %d1,12300(%a0)
-	add.l %d1,298(%a3)
-	add.l %d1,298(%a2)
+	move.w _bgYInc+2,%d0
+	add.w %d0,8460(%a0)
+	add.w %d0,7884(%a0)
+	add.w %d0,5196(%a0)
+	add.w %d0,6924(%a0)
+	add.w %d0,8652(%a0)
+	add.w %d0,8844(%a0)
+	add.w %d0,12108(%a0)
+	add.w %d0,12300(%a0)
+	add.w %d0,236(%a3)
+	add.w %d0,236(%a2)
 	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv

@@ -1,7 +1,7 @@
 struct ImpactFrame {
-    int Frame;
-    int RelativePositionX;
-    int RelativePositionY;
+    short Frame;
+    short RelativePositionX;
+    short RelativePositionY;
 };
 
 void impactFrameReset(struct Fighter* fighter);

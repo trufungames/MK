@@ -91,28 +91,33 @@ __Z14initMenuScreenv:
 	move.l %a2,-(%sp)
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #12559760,-(%sp)
+	move.l #12555584,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
 	moveq #1,%d0
 	move.l %d0,196(%a0)
+	moveq #-1,%d0
+	move.l %d0,388(%a0)
+	move.l %d0,580(%a0)
+	moveq #1,%d0
 	move.l %d0,772(%a0)
 	move.l %d0,964(%a0)
 	move.l %d0,1156(%a0)
 	move.l %d0,1348(%a0)
+	move.l #12639200,1580(%a0)
 	move.l %d0,1540(%a0)
 	addq.l #8,%sp
 	pea 64.w
 	clr.l -(%sp)
-	move.l #12573232,-(%sp)
+	move.l #12569056,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	addq.l #8,%sp
 	moveq #16,%d0
 	move.l %d0,(%sp)
 	pea 4.w
-	move.l #12650032,-(%sp)
+	move.l #12645856,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	move.l #__ZL12soundHandler,(%sp)
@@ -135,7 +140,7 @@ __Z14initMenuScreenv:
 	.globl	__Z15initAttractModev
 __Z15initAttractModev:
 	link.w %fp,#0
-	clr.l _attractModeIndex
+	clr.w _attractModeIndex
 	clr.b _fadedIn
 	clr.b _fadedOut
 	move.w raptor_ticks,%a0
@@ -253,7 +258,7 @@ __Z15initAttractModev:
 	.even
 	.globl	__Z16switchAttractFMVv
 __Z16switchAttractFMVv:
-	link.w %fp,#-4
+	link.w %fp,#-28
 	movem.l #16188,-(%sp)
 	move.l _fmvIndex,%d0
 	addq.l #1,%d0
@@ -264,9 +269,9 @@ __Z16switchAttractFMVv:
 	clr.l _fmvIndex
 .L12:
 	jsr RAPTOR_particle_clear
-	clr.l __ZL11fmvAnimator+16
+	clr.w __ZL11fmvAnimator+16
 	pea __ZL18imageBuffer320x240
-	move.l #12663440,-(%sp)
+	move.l #12659264,-(%sp)
 	lea rapUnpack,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -281,15 +286,24 @@ __Z16switchAttractFMVv:
 	move.b #6,%d1
 	cmp.l _fmvIndex.l,%d1
 	jcc .L33
-	move.l #.LC0,%d4
-	move.l #.LC1,%d5
-	move.l #.LC2,%d6
-	move.l #.LC3,%d7
-	lea .LC4,%a4
+	moveq #12,%d3
+	moveq #8,%d4
+	moveq #32,%d5
+	moveq #20,%d7
+	move.w #32,%a4
+	moveq #16,%d0
+	move.l %d0,-28(%fp)
+	moveq #20,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC0,-20(%fp)
+	move.l #.LC1,-16(%fp)
+	move.l #.LC2,-12(%fp)
+	move.l #.LC3,%d6
+	lea .LC4,%a3
 	lea .LC5,%a5
-	move.l #.LC6,-4(%fp)
-	moveq #116,%d3
-	move.l #.LC7,%d2
+	move.l #.LC6,-8(%fp)
+	moveq #116,%d2
+	move.l #.LC7,-4(%fp)
 	lea jsfLoadClut,%a2
 .L13:
 	move.l #__ZL14imageBufferFMV,620(%a0)
@@ -304,7 +318,7 @@ __Z16switchAttractFMVv:
 	move.l %d1,1540(%a0)
 	pea 16.w
 	pea 8.w
-	move.l #12672832,-(%sp)
+	move.l #12668656,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	moveq #15,%d1
@@ -313,61 +327,60 @@ __Z16switchAttractFMVv:
 	clr.l _jsfFontSize
 	clr.l _jsfFontIndx
 	move.l #128,(%sp)
-	pea 8.w
-	lea rapLocate,%a3
-	jsr (%a3)
-	move.l -4(%fp),_js_r_textbuffer
-	addq.l #8,%sp
-	lea _rapPrint,%a2
+	move.l -24(%fp),-(%sp)
+	lea rapLocate,%a2
 	jsr (%a2)
+	move.l -8(%fp),_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	pea 140.w
-	pea 8.w
-	jsr (%a3)
+	move.l -28(%fp),-(%sp)
+	jsr (%a2)
 	move.l %a5,_js_r_textbuffer
 	addq.l #8,%sp
-	jsr (%a2)
+	jsr _rapPrint
 	pea 152.w
-	pea 8.w
-	jsr (%a3)
-	move.l %a4,_js_r_textbuffer
-	addq.l #8,%sp
+	move.l %a4,-(%sp)
 	jsr (%a2)
+	move.l %a3,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	pea 164.w
-	pea 8.w
-	jsr (%a3)
-	move.l %d7,_js_r_textbuffer
-	addq.l #8,%sp
+	move.l %d7,-(%sp)
 	jsr (%a2)
-	pea 176.w
-	pea 8.w
-	jsr (%a3)
 	move.l %d6,_js_r_textbuffer
 	addq.l #8,%sp
+	jsr _rapPrint
+	pea 176.w
+	move.l %d5,-(%sp)
 	jsr (%a2)
+	move.l -12(%fp),_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	pea 188.w
-	pea 8.w
-	jsr (%a3)
-	move.l %d5,_js_r_textbuffer
-	addq.l #8,%sp
+	move.l %d4,-(%sp)
 	jsr (%a2)
+	move.l -16(%fp),_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	pea 200.w
-	pea 8.w
-	jsr (%a3)
-	move.l %d4,_js_r_textbuffer
-	addq.l #8,%sp
+	move.l %d3,-(%sp)
 	jsr (%a2)
+	move.l -20(%fp),_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	pea 15.w
 	jsr rapUse8x16fontPalette
 	moveq #1,%d0
 	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #14,%d4
-	move.l %d4,(%sp)
-	move.l %d3,-(%sp)
-	jsr (%a3)
-	move.l %d2,_js_r_textbuffer
-	addq.l #8,%sp
+	moveq #14,%d3
+	move.l %d3,(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a2)
+	move.l -4(%fp),_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	moveq #6,%d1
 	cmp.l _fmvIndex.l,%d1
 	jcs .L22
@@ -391,7 +404,7 @@ __Z16switchAttractFMVv:
 .L22:
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L33:
@@ -409,25 +422,35 @@ __Z16switchAttractFMVv:
 	.word .L20-.L21
 .L19:
 	pea __ZL14imageBufferFMV
-	move.l #12824544,-(%sp)
+	move.l #12847824,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12851488,-(%sp)
+	move.l #12869648,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC16,%d4
-	move.l #.LC38,%d5
-	move.l #.LC39,%d6
-	move.l #.LC40,%d7
-	lea .LC41,%a4
+	moveq #8,%d3
+	moveq #71,%d4
+	moveq #47,%d5
+	moveq #23,%d7
+	move.w #47,%a4
+	moveq #31,%d0
+	move.l %d0,-28(%fp)
+	moveq #29,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC16,-20(%fp)
+	move.l #.LC38,-16(%fp)
+	move.l #.LC39,-12(%fp)
+	move.l #.LC40,%d6
+	lea .LC41,%a3
 	lea .LC42,%a5
-	move.l #.LC43,-4(%fp)
-	moveq #120,%d3
-	move.l #.LC44,%d2
+	move.l #.LC43,-8(%fp)
+	moveq #120,%d2
+	not.b %d2
+	move.l #.LC44,-4(%fp)
 	jra .L13
 .L29:
 	pea 1.w
@@ -436,7 +459,7 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L24:
@@ -446,7 +469,7 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L25:
@@ -456,7 +479,7 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L26:
@@ -466,7 +489,7 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L27:
@@ -476,7 +499,7 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L28:
@@ -486,166 +509,223 @@ __Z16switchAttractFMVv:
 	addq.l #8,%sp
 	move.w raptor_ticks,%a0
 	move.l %a0,_attractModeTicks
-	movem.l -44(%fp),#15612
+	movem.l -68(%fp),#15612
 	unlk %fp
 	rts
 .L20:
 	pea __ZL14imageBufferFMV
-	move.l #12874336,-(%sp)
+	move.l #12870160,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12892368,-(%sp)
+	move.l #12888192,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC45,%d4
-	move.l #.LC46,%d5
-	move.l #.LC47,%d6
-	move.l #.LC48,%d7
-	lea .LC49,%a4
+	moveq #36,%d3
+	moveq #36,%d4
+	moveq #44,%d5
+	moveq #60,%d7
+	move.w #32,%a4
+	moveq #28,%d0
+	move.l %d0,-28(%fp)
+	moveq #36,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC45,-20(%fp)
+	move.l #.LC46,-16(%fp)
+	move.l #.LC47,-12(%fp)
+	move.l #.LC48,%d6
+	lea .LC49,%a3
 	lea .LC50,%a5
-	move.l #.LC51,-4(%fp)
-	moveq #124,%d3
-	move.l #.LC52,%d2
+	move.l #.LC51,-8(%fp)
+	moveq #111,%d2
+	not.b %d2
+	move.l #.LC52,-4(%fp)
 	jra .L13
 .L14:
 	pea __ZL14imageBufferFMV
-	move.l #12672864,-(%sp)
+	move.l #12668688,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12715552,-(%sp)
+	move.l #12711376,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC0,%d4
-	move.l #.LC1,%d5
-	move.l #.LC2,%d6
-	move.l #.LC3,%d7
-	lea .LC4,%a4
+	moveq #12,%d3
+	moveq #8,%d4
+	moveq #32,%d5
+	moveq #20,%d7
+	move.w #32,%a4
+	moveq #16,%d0
+	move.l %d0,-28(%fp)
+	moveq #20,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC0,-20(%fp)
+	move.l #.LC1,-16(%fp)
+	move.l #.LC2,-12(%fp)
+	move.l #.LC3,%d6
+	lea .LC4,%a3
 	lea .LC5,%a5
-	move.l #.LC6,-4(%fp)
-	moveq #116,%d3
-	move.l #.LC7,%d2
+	move.l #.LC6,-8(%fp)
+	moveq #116,%d2
+	move.l #.LC7,-4(%fp)
 	jra .L13
 .L15:
 	pea __ZL14imageBufferFMV
-	move.l #12716064,-(%sp)
+	move.l #12711888,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12744464,-(%sp)
+	move.l #12740288,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC8,%d4
-	move.l #.LC9,%d5
-	move.l #.LC10,%d6
-	move.l #.LC11,%d7
-	lea .LC12,%a4
+	moveq #68,%d3
+	moveq #36,%d4
+	moveq #32,%d5
+	moveq #28,%d7
+	move.w #8,%a4
+	moveq #20,%d0
+	move.l %d0,-28(%fp)
+	moveq #32,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC8,-20(%fp)
+	move.l #.LC9,-16(%fp)
+	move.l #.LC10,-12(%fp)
+	move.l #.LC11,%d6
+	lea .LC12,%a3
 	lea .LC13,%a5
-	move.l #.LC14,-4(%fp)
-	moveq #127,%d3
-	not.b %d3
-	move.l #.LC15,%d2
+	move.l #.LC14,-8(%fp)
+	moveq #127,%d2
+	not.b %d2
+	move.l #.LC15,-4(%fp)
 	jra .L13
 .L16:
 	pea __ZL14imageBufferFMV
-	move.l #12744976,-(%sp)
+	move.l #12740800,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12790432,-(%sp)
+	move.l #12786256,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC16,%d4
-	move.l #.LC17,%d5
-	move.l #.LC18,%d6
-	move.l #.LC19,%d7
-	lea .LC20,%a4
+	moveq #8,%d3
+	moveq #61,%d4
+	moveq #37,%d5
+	moveq #29,%d7
+	move.w #17,%a4
+	moveq #29,%d0
+	move.l %d0,-28(%fp)
+	moveq #23,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC16,-20(%fp)
+	move.l #.LC17,-16(%fp)
+	move.l #.LC18,-12(%fp)
+	move.l #.LC19,%d6
+	lea .LC20,%a3
 	lea .LC21,%a5
-	move.l #.LC22,-4(%fp)
-	moveq #120,%d3
-	move.l #.LC23,%d2
+	move.l #.LC22,-8(%fp)
+	moveq #126,%d2
+	not.b %d2
+	move.l #.LC23,-4(%fp)
 	jra .L13
 .L17:
 	pea __ZL14imageBufferFMV
-	move.l #12790944,-(%sp)
+	move.l #12786768,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12824032,-(%sp)
+	move.l #12819856,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC16,%d4
-	move.l #.LC24,%d5
-	move.l #.LC25,%d6
-	move.l #.LC26,%d7
-	lea .LC27,%a4
+	moveq #8,%d3
+	moveq #27,%d4
+	moveq #27,%d5
+	moveq #31,%d7
+	move.w #54,%a4
+	moveq #31,%d0
+	move.l %d0,-28(%fp)
+	moveq #27,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC16,-20(%fp)
+	move.l #.LC24,-16(%fp)
+	move.l #.LC25,-12(%fp)
+	move.l #.LC26,%d6
+	lea .LC27,%a3
 	lea .LC28,%a5
-	move.l #.LC29,-4(%fp)
-	moveq #120,%d3
-	move.l #.LC30,%d2
+	move.l #.LC29,-8(%fp)
+	moveq #120,%d2
+	not.b %d2
+	move.l #.LC30,-4(%fp)
 	jra .L13
 .L18:
 	pea __ZL14imageBufferFMV
-	move.l #12824544,-(%sp)
+	move.l #12820368,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12851488,-(%sp)
+	move.l #12847312,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
 	lea (12,%sp),%sp
-	move.l #.LC16,%d4
-	move.l #.LC31,%d5
-	move.l #.LC32,%d6
-	move.l #.LC33,%d7
-	lea .LC34,%a4
+	moveq #8,%d3
+	moveq #16,%d4
+	moveq #41,%d5
+	moveq #53,%d7
+	move.w #41,%a4
+	moveq #41,%d0
+	move.l %d0,-28(%fp)
+	moveq #41,%d1
+	move.l %d1,-24(%fp)
+	move.l #.LC16,-20(%fp)
+	move.l #.LC31,-16(%fp)
+	move.l #.LC32,-12(%fp)
+	move.l #.LC33,%d6
+	lea .LC34,%a3
 	lea .LC35,%a5
-	move.l #.LC36,-4(%fp)
-	moveq #118,%d3
-	move.l #.LC37,%d2
+	move.l #.LC36,-8(%fp)
+	moveq #127,%d2
+	move.l #.LC37,-4(%fp)
 	jra .L13
 .LC53:
 	.ascii "LONGEST WINNING STREAKS\0"
 .LC54:
-	.ascii "TRU\0"
+	.ascii "GAV\0"
 .LC55:
 	.ascii "%02d. %s      %02d WINS      %08d\0"
 .LC56:
-	.ascii "FUN\0"
+	.ascii "GNT\0"
 .LC57:
-	.ascii "CRL\0"
+	.ascii "PKE\0"
 .LC58:
-	.ascii "STF\0"
+	.ascii "BOB\0"
 .LC59:
-	.ascii "DUY\0"
+	.ascii "MJJ\0"
 .LC60:
-	.ascii "BYL\0"
+	.ascii "GUR\0"
 .LC61:
-	.ascii "BBB\0"
+	.ascii "C.N\0"
 .LC62:
-	.ascii "FEL\0"
+	.ascii "DEN\0"
 .LC63:
-	.ascii "SAN\0"
+	.ascii "JPG\0"
 .LC64:
-	.ascii "HAI\0"
+	.ascii "YES\0"
 	.even
 	.globl	__Z15initLeaderboardv
 __Z15initLeaderboardv:
@@ -653,7 +733,7 @@ __Z15initLeaderboardv:
 	movem.l #56,-(%sp)
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #12892880,-(%sp)
+	move.l #12888704,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,428(%a0)
@@ -673,7 +753,7 @@ __Z15initLeaderboardv:
 	addq.l #8,%sp
 	pea 16.w
 	pea 8.w
-	move.l #12899456,-(%sp)
+	move.l #12895280,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #15,%d0
@@ -861,7 +941,7 @@ __Z15initGoroProfilev:
 	link.w %fp,#0
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #12899488,-(%sp)
+	move.l #12895312,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
@@ -873,12 +953,13 @@ __Z15initGoroProfilev:
 	addq.l #8,%sp
 	pea 240.w
 	clr.l -(%sp)
-	move.l #12948320,-(%sp)
+	move.l #12944144,-(%sp)
 	jsr jsfLoadClut
 	clr.b _fadedIn
 	clr.b _fadedOut
 	move.w raptor_ticks,%a0
 	move.l %a0,_gameStartTicks
+	clr.b _goroProfileShown
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -887,27 +968,63 @@ __Z15initGoroProfilev:
 __Z11initWinnersv:
 	link.w %fp,#0
 	jsr RAPTOR_particle_clear
+	move.l _attractSlideIndex,%d0
+	addq.l #1,%d0
+	move.l %d0,_attractSlideIndex
+	moveq #1,%d1
+	cmp.l %d0,%d1
+	jge .L39
+	clr.l _attractSlideIndex
+.L40:
 	pea __ZL18imageBuffer320x240
-	move.l #12948832,-(%sp)
+	move.l #12944656,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,428(%a0)
 	moveq #1,%d0
 	move.l %d0,388(%a0)
-	moveq #-1,%d0
-	move.l %d0,196(%a0)
-	moveq #8,%d0
+	moveq #-1,%d1
+	move.l %d1,196(%a0)
+	move.b #8,%d0
 	move.l %d0,480(%a0)
 	addq.l #8,%sp
 	pea 16.w
 	pea 8.w
-	move.l #12956416,-(%sp)
+	move.l #12952240,-(%sp)
 	jsr jsfLoadClut
+	lea (12,%sp),%sp
+.L42:
 	clr.b _fadedIn
 	clr.b _fadedOut
 	move.w raptor_ticks,%a0
 	move.l %a0,_gameStartTicks
+	unlk %fp
+	rts
+.L39:
+	tst.l %d0
+	jeq .L40
+	moveq #1,%d1
+	cmp.l %d0,%d1
+	jne .L42
+	pea __ZL18imageBuffer320x240
+	move.l #12952272,-(%sp)
+	jsr rapUnpack
+	move.l sprite,%a0
+	move.l #__ZL18imageBuffer320x240,236(%a0)
+	moveq #1,%d0
+	move.l %d0,196(%a0)
+	moveq #-1,%d1
+	move.l %d1,388(%a0)
+	addq.l #8,%sp
+	pea 256.w
+	clr.l -(%sp)
+	move.l #12996992,-(%sp)
+	jsr jsfLoadClut
 	lea (12,%sp),%sp
+	clr.b _fadedIn
+	clr.b _fadedOut
+	move.w raptor_ticks,%a0
+	move.l %a0,_gameStartTicks
 	unlk %fp
 	rts
 	.even
@@ -962,19 +1079,19 @@ __Z20switchScreenVsBattleii:
 	lea (12,%sp),%sp
 	moveq #6,%d0
 	cmp.l %d3,%d0
-	jcs .L41
+	jcs .L47
 	add.l %d3,%d3
-	move.w .L49(%pc,%d3.l),%d0
+	move.w .L55(%pc,%d3.l),%d0
 	jmp %pc@(2,%d0:w)
-.L49:
-	.word .L42-.L49
-	.word .L43-.L49
-	.word .L44-.L49
-	.word .L45-.L49
-	.word .L46-.L49
-	.word .L47-.L49
-	.word .L48-.L49
-.L48:
+.L55:
+	.word .L48-.L55
+	.word .L49-.L55
+	.word .L50-.L55
+	.word .L51-.L55
+	.word .L52-.L55
+	.word .L53-.L55
+	.word .L54-.L55
+.L54:
 	pea 16.w
 	pea 4.w
 	move.l #12120400,-(%sp)
@@ -982,22 +1099,22 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12117840,4268(%a0)
 	lea (12,%sp),%sp
-.L41:
+.L47:
 	moveq #6,%d0
 	cmp.l %d2,%d0
-	jcs .L50
+	jcs .L56
 	add.l %d2,%d2
-	move.w .L58(%pc,%d2.l),%d0
+	move.w .L64(%pc,%d2.l),%d0
 	jmp %pc@(2,%d0:w)
-.L58:
-	.word .L51-.L58
-	.word .L52-.L58
-	.word .L53-.L58
-	.word .L54-.L58
-	.word .L55-.L58
-	.word .L56-.L58
-	.word .L57-.L58
-.L57:
+.L64:
+	.word .L57-.L64
+	.word .L58-.L64
+	.word .L59-.L64
+	.word .L60-.L64
+	.word .L61-.L64
+	.word .L62-.L64
+	.word .L63-.L64
+.L63:
 	pea 16.w
 	pea 5.w
 	move.l #12120400,-(%sp)
@@ -1005,7 +1122,7 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12117840,4460(%a0)
 	lea (12,%sp),%sp
-.L50:
+.L56:
 	jsr __Z17stageLoadVsBattlev
 	clr.b _onScreenChooseFighter
 	move.b #1,_onScreenVsBattle
@@ -1014,7 +1131,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L56:
+.L62:
 	pea 16.w
 	pea 5.w
 	move.l #12115216,-(%sp)
@@ -1030,7 +1147,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L42:
+.L48:
 	pea 16.w
 	pea 4.w
 	move.l #12110032,-(%sp)
@@ -1038,8 +1155,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12107472,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L43:
+	jra .L47
+.L49:
 	pea 16.w
 	pea 4.w
 	move.l #12112624,-(%sp)
@@ -1047,8 +1164,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12110064,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L44:
+	jra .L47
+.L50:
 	pea 16.w
 	pea 4.w
 	move.l #12125584,-(%sp)
@@ -1056,8 +1173,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12123024,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L45:
+	jra .L47
+.L51:
 	pea 16.w
 	pea 4.w
 	move.l #12122992,-(%sp)
@@ -1065,8 +1182,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12120432,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L46:
+	jra .L47
+.L52:
 	pea 16.w
 	pea 4.w
 	move.l #12117808,-(%sp)
@@ -1074,8 +1191,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12115248,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L47:
+	jra .L47
+.L53:
 	pea 16.w
 	pea 4.w
 	move.l #12115216,-(%sp)
@@ -1083,8 +1200,8 @@ __Z20switchScreenVsBattleii:
 	move.l sprite,%a0
 	move.l #12112656,4268(%a0)
 	lea (12,%sp),%sp
-	jra .L41
-.L51:
+	jra .L47
+.L57:
 	pea 16.w
 	pea 5.w
 	move.l #12110032,-(%sp)
@@ -1100,7 +1217,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L52:
+.L58:
 	pea 16.w
 	pea 5.w
 	move.l #12112624,-(%sp)
@@ -1116,7 +1233,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L53:
+.L59:
 	pea 16.w
 	pea 5.w
 	move.l #12125584,-(%sp)
@@ -1132,7 +1249,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L54:
+.L60:
 	pea 16.w
 	pea 5.w
 	move.l #12122992,-(%sp)
@@ -1148,7 +1265,7 @@ __Z20switchScreenVsBattleii:
 	movem.l -12(%fp),#1036
 	unlk %fp
 	jra rapSetActiveList
-.L55:
+.L61:
 	pea 16.w
 	pea 5.w
 	move.l #12117808,-(%sp)
@@ -1187,17 +1304,17 @@ __Z17switchScreenFightiib:
 	jsr __Z8stageGetv
 	moveq #1,%d1
 	cmp.l %d0,%d1
-	jeq .L64
-	jge .L96
+	jeq .L70
+	jge .L102
 	moveq #2,%d1
 	cmp.l %d0,%d1
-	jeq .L65
+	jeq .L71
 	move.b #3,%d1
 	cmp.l %d0,%d1
-	jeq .L66
-.L62:
-	lea jsfLoadClut,%a3
+	jeq .L72
 .L68:
+	lea jsfLoadClut,%a3
+.L74:
 	pea 16.w
 	pea 9.w
 	pea __ZL11BLACKPALx16
@@ -1218,7 +1335,7 @@ __Z17switchScreenFightiib:
 	moveq #16,%d3
 	move.l %d3,(%sp)
 	pea 12.w
-	move.l #12556976,-(%sp)
+	move.l #12552800,-(%sp)
 	jsr (%a3)
 	addq.l #8,%sp
 	moveq #3,%d0
@@ -1229,24 +1346,24 @@ __Z17switchScreenFightiib:
 	lea (12,%sp),%sp
 	moveq #6,%d0
 	cmp.l %a2,%d0
-	jcs .L73
-.L98:
+	jcs .L79
+.L104:
 	move.l %a2,%d0
 	add.l %a2,%d0
-	move.w .L81(%pc,%d0.l),%d0
+	move.w .L87(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L81:
-	.word .L74-.L81
-	.word .L75-.L81
-	.word .L76-.L81
-	.word .L77-.L81
-	.word .L78-.L81
-	.word .L79-.L81
-	.word .L80-.L81
-.L65:
+.L87:
+	.word .L80-.L87
+	.word .L81-.L87
+	.word .L82-.L87
+	.word .L83-.L87
+	.word .L84-.L87
+	.word .L85-.L87
+	.word .L86-.L87
+.L71:
 	move.w #256,15728728
 	tst.b %d3
-	jne .L97
+	jne .L103
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,5036(%a0)
 	moveq #1,%d1
@@ -1307,7 +1424,7 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z13musicStagePitP12SoundHandler
 	addq.l #4,%sp
-.L102:
+.L108:
 	pea 16.w
 	pea 9.w
 	pea __ZL11BLACKPALx16
@@ -1328,7 +1445,7 @@ __Z17switchScreenFightiib:
 	moveq #16,%d3
 	move.l %d3,(%sp)
 	pea 12.w
-	move.l #12556976,-(%sp)
+	move.l #12552800,-(%sp)
 	jsr (%a3)
 	addq.l #8,%sp
 	moveq #3,%d0
@@ -1339,27 +1456,27 @@ __Z17switchScreenFightiib:
 	lea (12,%sp),%sp
 	moveq #6,%d0
 	cmp.l %a2,%d0
-	jcc .L98
-.L73:
+	jcc .L104
+.L79:
 	moveq #6,%d0
 	cmp.l %d2,%d0
-	jcs .L82
+	jcs .L88
 	move.l %d2,%d0
 	add.l %d2,%d0
-	move.w .L90(%pc,%d0.l),%d0
+	move.w .L96(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L90:
-	.word .L83-.L90
-	.word .L84-.L90
-	.word .L85-.L90
-	.word .L86-.L90
-	.word .L87-.L90
-	.word .L88-.L90
-	.word .L89-.L90
-.L66:
+.L96:
+	.word .L89-.L96
+	.word .L90-.L96
+	.word .L91-.L96
+	.word .L92-.L96
+	.word .L93-.L96
+	.word .L94-.L96
+	.word .L95-.L96
+.L72:
 	move.w #256,15728728
 	tst.b %d3
-	jne .L99
+	jne .L105
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,7916(%a0)
 	moveq #1,%d0
@@ -1411,8 +1528,8 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z14musicStageGoroP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
-.L89:
+	jra .L74
+.L95:
 	pea 16.w
 	pea 15.w
 	move.l #11999840,-(%sp)
@@ -1454,15 +1571,15 @@ __Z17switchScreenFightiib:
 	move.l #.LC37,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-.L82:
+.L88:
 	cmp.l %a2,%d2
-	jeq .L100
-.L91:
+	jeq .L106
+.L97:
 	move.l sprite,%a0
 	moveq #34,%d1
-	move.l %d1,15832(%a0)
 	move.l %d1,16024(%a0)
-	move.w #176,15944(%a0)
+	move.l %d1,16216(%a0)
+	move.w #176,16136(%a0)
 	pea 2.w
 	jsr rapSetActiveList
 	addq.l #4,%sp
@@ -1479,10 +1596,10 @@ __Z17switchScreenFightiib:
 	movem.l -16(%fp),#3084
 	unlk %fp
 	rts
-.L64:
+.L70:
 	move.w #256,15728728
 	tst.b %d3
-	jne .L101
+	jne .L107
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,5036(%a0)
 	moveq #1,%d0
@@ -1561,27 +1678,27 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z17musicStageWarriorP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
-.L100:
+	jra .L74
+.L106:
 	moveq #24,%d2
 	lea rapFadeClut,%a2
-.L92:
+.L98:
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jeq .L91
+	jeq .L97
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jne .L92
-	jra .L91
-.L88:
+	jne .L98
+	jra .L97
+.L94:
 	pea 16.w
 	pea 15.w
 	move.l #9689520,-(%sp)
@@ -1624,9 +1741,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L87:
+	jne .L97
+	jra .L106
+.L93:
 	pea 16.w
 	pea 15.w
 	move.l #10262992,-(%sp)
@@ -1674,9 +1791,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L86:
+	jne .L97
+	jra .L106
+.L92:
 	pea 16.w
 	pea 15.w
 	move.l #11401744,-(%sp)
@@ -1719,9 +1836,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L85:
+	jne .L97
+	jra .L106
+.L91:
 	pea 16.w
 	pea 15.w
 	move.l #10910192,-(%sp)
@@ -1764,9 +1881,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L84:
+	jne .L97
+	jra .L106
+.L90:
 	pea 16.w
 	pea 15.w
 	move.l #11999792,-(%sp)
@@ -1809,9 +1926,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L83:
+	jne .L97
+	jra .L106
+.L89:
 	pea 16.w
 	pea 15.w
 	move.l #9124240,-(%sp)
@@ -1854,9 +1971,9 @@ __Z17switchScreenFightiib:
 	addq.l #8,%sp
 	jsr _rapPrint
 	cmp.l %a2,%d2
-	jne .L91
-	jra .L100
-.L79:
+	jne .L97
+	jra .L106
+.L85:
 	pea 16.w
 	pea 14.w
 	move.l #9689520,-(%sp)
@@ -1898,8 +2015,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC30,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L78:
+	jra .L79
+.L84:
 	pea 16.w
 	pea 14.w
 	move.l #10262992,-(%sp)
@@ -1943,8 +2060,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC23,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L77:
+	jra .L79
+.L83:
 	pea 16.w
 	pea 14.w
 	move.l #11401744,-(%sp)
@@ -1986,8 +2103,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC52,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L76:
+	jra .L79
+.L82:
 	pea 16.w
 	pea 14.w
 	move.l #10910192,-(%sp)
@@ -2029,8 +2146,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC44,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L75:
+	jra .L79
+.L81:
 	pea 16.w
 	pea 14.w
 	move.l #11999792,-(%sp)
@@ -2072,8 +2189,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC15,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L74:
+	jra .L79
+.L80:
 	pea 16.w
 	pea 14.w
 	move.l #9124240,-(%sp)
@@ -2117,8 +2234,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC66,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L80:
+	jra .L79
+.L86:
 	pea 16.w
 	pea 14.w
 	move.l #11999840,-(%sp)
@@ -2160,8 +2277,8 @@ __Z17switchScreenFightiib:
 	move.l #.LC37,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr _rapPrint
-	jra .L73
-.L99:
+	jra .L79
+.L105:
 	pea __ZL18imageBuffer320x240
 	move.l #12339824,-(%sp)
 	lea rapUnpack,%a3
@@ -2222,8 +2339,8 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z14musicStageGoroP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
-.L97:
+	jra .L74
+.L103:
 	pea __ZL18imageBuffer320x240
 	move.l #12264624,-(%sp)
 	lea rapUnpack,%a3
@@ -2293,8 +2410,8 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z13musicStagePitP12SoundHandler
 	addq.l #4,%sp
-	jra .L102
-.L101:
+	jra .L108
+.L107:
 	pea __ZL18imageBuffer320x240
 	move.l #12264624,-(%sp)
 	lea rapUnpack,%a3
@@ -2382,13 +2499,13 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z17musicStageWarriorP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
-.L96:
+	jra .L74
+.L102:
 	tst.l %d0
-	jne .L62
+	jne .L68
 	move.w #-20673,15728728
 	tst.b %d3
-	jne .L103
+	jne .L109
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,5228(%a0)
 	moveq #-1,%d0
@@ -2478,8 +2595,8 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z15musicStageGatesP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
-.L103:
+	jra .L74
+.L109:
 	pea __ZL18imageBuffer320x240
 	move.l #12372736,-(%sp)
 	lea rapUnpack,%a3
@@ -2578,7 +2695,7 @@ __Z17switchScreenFightiib:
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z15musicStageGatesP12SoundHandler
 	addq.l #4,%sp
-	jra .L68
+	jra .L74
 	.even
 	.globl	__Z17SetPlayerPalettesv
 __Z17SetPlayerPalettesv:
@@ -2589,22 +2706,22 @@ __Z17SetPlayerPalettesv:
 	moveq #-1,%d0
 	move.l %d0,3268(%a0)
 	move.l %d0,3460(%a0)
-	moveq #6,%d1
-	cmp.l _p1Cursor.l,%d1
-	jcs .L106
-	move.l _p1Cursor,%d0
+	cmp.w #6,_p1Cursor.l
+	jhi .L112
+	moveq #0,%d0
+	move.w _p1Cursor,%d0
 	add.l %d0,%d0
-	move.w .L114(%pc,%d0.l),%d0
+	move.w .L120(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L114:
-	.word .L107-.L114
-	.word .L108-.L114
-	.word .L109-.L114
-	.word .L110-.L114
-	.word .L111-.L114
-	.word .L112-.L114
-	.word .L113-.L114
-.L113:
+.L120:
+	.word .L113-.L120
+	.word .L114-.L120
+	.word .L115-.L120
+	.word .L116-.L120
+	.word .L117-.L120
+	.word .L118-.L120
+	.word .L119-.L120
+.L119:
 	pea 16.w
 	pea 14.w
 	move.l #11999840,-(%sp)
@@ -2623,23 +2740,23 @@ __Z17SetPlayerPalettesv:
 	move.w #189,2120(%a0)
 	move.w #120,2124(%a0)
 	addq.l #4,%sp
-.L106:
-	move.l _p2Cursor,%d0
-	moveq #6,%d1
-	cmp.l %d0,%d1
-	jcs .L115
+.L112:
+	move.w _p2Cursor,%d0
+	cmp.w #6,%d0
+	jhi .L121
+	and.l #65535,%d0
 	add.l %d0,%d0
-	move.w .L123(%pc,%d0.l),%d0
+	move.w .L129(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L123:
-	.word .L116-.L123
-	.word .L117-.L123
-	.word .L118-.L123
-	.word .L119-.L123
-	.word .L120-.L123
-	.word .L121-.L123
-	.word .L122-.L123
-.L122:
+.L129:
+	.word .L122-.L129
+	.word .L123-.L129
+	.word .L124-.L129
+	.word .L125-.L129
+	.word .L126-.L129
+	.word .L127-.L129
+	.word .L128-.L129
+.L128:
 	pea 16.w
 	pea 15.w
 	move.l #11999840,-(%sp)
@@ -2656,36 +2773,36 @@ __Z17SetPlayerPalettesv:
 	move.w #116,1932(%a0)
 	move.w #189,1736(%a0)
 	move.w #120,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-.L115:
-	cmp.l _p1Cursor.l,%d0
-	jeq .L129
-.L105:
+.L121:
+	cmp.w _p1Cursor.l,%d0
+	jeq .L135
+.L111:
 	move.l -8(%fp),%d2
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L129:
+.L135:
 	moveq #24,%d2
 	lea rapFadeClut,%a2
-.L125:
+.L131:
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jeq .L105
+	jeq .L111
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jne .L125
-	jra .L105
-.L107:
+	jne .L131
+	jra .L111
+.L113:
 	pea 16.w
 	pea 14.w
 	move.l #9124240,-(%sp)
@@ -2704,8 +2821,8 @@ __Z17SetPlayerPalettesv:
 	move.w #7,2120(%a0)
 	move.w #46,2124(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L108:
+	jra .L112
+.L114:
 	pea 16.w
 	pea 14.w
 	move.l #11999792,-(%sp)
@@ -2724,8 +2841,8 @@ __Z17SetPlayerPalettesv:
 	move.w #68,2120(%a0)
 	move.w #46,2124(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L109:
+	jra .L112
+.L115:
 	pea 16.w
 	pea 14.w
 	move.l #10910192,-(%sp)
@@ -2744,8 +2861,8 @@ __Z17SetPlayerPalettesv:
 	move.w #189,2120(%a0)
 	move.w #46,2124(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L110:
+	jra .L112
+.L116:
 	pea 16.w
 	pea 14.w
 	move.l #11401744,-(%sp)
@@ -2764,8 +2881,8 @@ __Z17SetPlayerPalettesv:
 	move.w #250,2120(%a0)
 	move.w #46,2124(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L111:
+	jra .L112
+.L117:
 	pea 16.w
 	pea 14.w
 	move.l #10262992,-(%sp)
@@ -2786,8 +2903,8 @@ __Z17SetPlayerPalettesv:
 	moveq #1,%d0
 	move.l %d0,3268(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L112:
+	jra .L112
+.L118:
 	pea 16.w
 	pea 14.w
 	move.l #9689520,-(%sp)
@@ -2806,8 +2923,8 @@ __Z17SetPlayerPalettesv:
 	move.w #129,2120(%a0)
 	move.w #120,2124(%a0)
 	addq.l #4,%sp
-	jra .L106
-.L116:
+	jra .L112
+.L122:
 	pea 16.w
 	pea 15.w
 	move.l #9124240,-(%sp)
@@ -2824,12 +2941,12 @@ __Z17SetPlayerPalettesv:
 	move.w #42,1932(%a0)
 	move.w #7,1736(%a0)
 	move.w #46,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
-.L117:
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
+.L123:
 	pea 16.w
 	pea 15.w
 	move.l #11999792,-(%sp)
@@ -2846,12 +2963,12 @@ __Z17SetPlayerPalettesv:
 	move.w #42,1932(%a0)
 	move.w #68,1736(%a0)
 	move.w #46,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
-.L118:
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
+.L124:
 	pea 16.w
 	pea 15.w
 	move.l #10910192,-(%sp)
@@ -2868,12 +2985,12 @@ __Z17SetPlayerPalettesv:
 	move.w #42,1932(%a0)
 	move.w #189,1736(%a0)
 	move.w #46,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
-.L119:
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
+.L125:
 	pea 16.w
 	pea 15.w
 	move.l #11401744,-(%sp)
@@ -2890,12 +3007,12 @@ __Z17SetPlayerPalettesv:
 	move.w #42,1932(%a0)
 	move.w #250,1736(%a0)
 	move.w #46,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
-.L120:
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
+.L126:
 	pea 16.w
 	pea 15.w
 	move.l #10262992,-(%sp)
@@ -2914,12 +3031,12 @@ __Z17SetPlayerPalettesv:
 	move.w #116,1932(%a0)
 	move.w #68,1736(%a0)
 	move.w #120,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
-.L121:
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
+.L127:
 	pea 16.w
 	pea 15.w
 	move.l #9689520,-(%sp)
@@ -2936,11 +3053,11 @@ __Z17SetPlayerPalettesv:
 	move.w #116,1932(%a0)
 	move.w #129,1736(%a0)
 	move.w #120,1740(%a0)
-	move.l _p2Cursor,%d0
+	move.w _p2Cursor,%d0
 	addq.l #4,%sp
-	cmp.l _p1Cursor.l,%d0
-	jne .L105
-	jra .L129
+	cmp.w _p1Cursor.l,%d0
+	jne .L111
+	jra .L135
 	.even
 	.globl	__Z25switchScreenChooseFighterv
 __Z25switchScreenChooseFighterv:
@@ -3037,15 +3154,12 @@ __Z25switchScreenChooseFighterv:
 	move.l %d0,__ZL17lightningAnimator
 	move.b #18,%d0
 	move.l %d0,__ZL18lightning2Animator
-	move.b #1,%d0
-	move.l %d0,_p1Cursor
-	move.b #2,%d0
-	move.l %d0,_p2Cursor
-	moveq #-1,%d0
-	move.l %d0,_p1Selected
-	move.l %d0,_p2Selected
-	clr.l _p1FlashCount
-	clr.l _p2FlashCount
+	move.w #1,_p1Cursor
+	move.w #2,_p2Cursor
+	move.w #-1,_p1Selected
+	move.w #-1,_p2Selected
+	clr.w _p1FlashCount
+	clr.w _p2FlashCount
 	clr.b _chooseFighterDone
 	addq.l #8,%sp
 	move.l #__ZL18imageBuffer320x240,(%sp)
@@ -3062,6 +3176,7 @@ __Z25switchScreenChooseFighterv:
 	move.b #1,_onScreenChooseFighter
 	clr.b _onScreenVsBattle
 	clr.b _onScreenFight
+	clr.b _inAttractMode
 	addq.l #4,%sp
 	clr.l (%sp)
 	jsr rapSetActiveList
@@ -3107,31 +3222,31 @@ __Z26setFighterAlternatePaletteii:
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%d0
 	cmp.l 12(%fp),%d0
-	jeq .L138
-.L132:
+	jeq .L144
+.L138:
 	move.l -8(%fp),%d2
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L138:
+.L144:
 	moveq #24,%d2
 	lea rapFadeClut,%a2
-.L134:
+.L140:
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jeq .L132
+	jeq .L138
 	pea __ZL8BLACKPAL
 	pea 16.w
 	pea 15.w
 	jsr (%a2)
 	subq.l #1,%d2
 	lea (12,%sp),%sp
-	jne .L134
-	jra .L132
+	jne .L140
+	jra .L138
 	.even
 	.globl	__Z14setPlayer1NamePc
 __Z14setPlayer1NamePc:
@@ -3189,16 +3304,16 @@ __Z19displayWinnerMedalsv:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	moveq #2,%d0
+	moveq #1,%d0
 	move.l %d0,_jsfFontSize
 	clr.l _jsfFontIndx
 	jsr __Z20matchGetFighter1Winsv
 	moveq #1,%d1
 	cmp.l %d0,%d1
-	jeq .L144
+	jeq .L150
 	move.b #2,%d1
 	cmp.l %d0,%d1
-	jeq .L155
+	jeq .L161
 	pea 42.w
 	pea 8.w
 	lea rapLocate,%a2
@@ -3213,14 +3328,14 @@ __Z19displayWinnerMedalsv:
 	move.l #.LC68,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr (%a3)
-.L146:
+.L152:
 	jsr __Z20matchGetFighter2Winsv
 	moveq #1,%d1
 	cmp.l %d0,%d1
-	jeq .L153
+	jeq .L159
 	move.b #2,%d1
 	cmp.l %d0,%d1
-	jeq .L156
+	jeq .L162
 	pea 42.w
 	pea 292.w
 	jsr (%a2)
@@ -3236,14 +3351,14 @@ __Z19displayWinnerMedalsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	jra _rapPrint
-.L156:
+.L162:
 	pea 42.w
 	pea 292.w
 	jsr (%a2)
 	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr (%a3)
-.L153:
+.L159:
 	pea 42.w
 	pea 306.w
 	jsr (%a2)
@@ -3253,7 +3368,7 @@ __Z19displayWinnerMedalsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	jra _rapPrint
-.L144:
+.L150:
 	pea 42.w
 	pea 8.w
 	lea rapLocate,%a2
@@ -3262,8 +3377,8 @@ __Z19displayWinnerMedalsv:
 	addq.l #8,%sp
 	lea _rapPrint,%a3
 	jsr (%a3)
-	jra .L146
-.L155:
+	jra .L152
+.L161:
 	pea 42.w
 	pea 8.w
 	lea rapLocate,%a2
@@ -3278,7 +3393,7 @@ __Z19displayWinnerMedalsv:
 	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr (%a3)
-	jra .L146
+	jra .L152
 .LC69:
 	.ascii "MORTAL KOMBAT\0"
 .LC70:
@@ -3301,500 +3416,517 @@ __Z19displayWinnerMedalsv:
 	.ascii "TO REPORT BUGS AND PROVIDE FEEDBACK.\0"
 .LC79:
 	.ascii "THANKS FOR PLAYING!!\0"
+.LC80:
+	.ascii "A 2,000 YEAR OLD HALF HUMAN DRAGON\0"
+.LC81:
+	.ascii "GORO REMAINS UNDEFEATED FOR THE PAST\0"
+.LC82:
+	.ascii "500 YEARS. HE WON THE TITLE OF GRAND\0"
+.LC83:
+	.ascii "CHAMPION BY DEFEATING KUNG LAO, A\0"
+.LC84:
+	.ascii "SHAOLIN FIGHTING MONK. IT WAS DURING\0"
+.LC85:
+	.ascii "THIS PERIOD THAT THE TOURNAMENT FELL\0"
+.LC86:
+	.ascii "INTO SHANG TSUNG'S HANDS AND WAS\0"
+.LC87:
+	.ascii "CORRUPTED.\0"
+.LC88:
+	.ascii "%02d \0"
 	.even
 	.globl	__Z9basicmainv
 __Z9basicmainv:
-	link.w %fp,#-28
+	link.w %fp,#-24
 	movem.l #16188,-(%sp)
 	clr.l __ZL4pad1
 	clr.l __ZL4pad2
-	moveq #1,%d0
-	move.l %d0,_p1Cursor
-	moveq #2,%d1
-	move.l %d1,_p2Cursor
-	moveq #-1,%d2
-	move.l %d2,_p1Selected
-	move.l %d2,_p2Selected
+	move.w #1,_p1Cursor
+	move.w #2,_p2Cursor
+	move.w #-1,_p1Selected
+	move.w #-1,_p2Selected
 	clr.b _chooseFighterDone
-	clr.l _p1FlashCount
-	clr.l _p2FlashCount
-	move.b #6,%d0
+	clr.w _p1FlashCount
+	clr.w _p2FlashCount
+	moveq #6,%d0
 	move.l %d0,_fmvIndex
-	move.l #__ZL14cageIdleFrames,__ZL11fighterCage+406
-	move.l #__ZL15cageDizzyFrames,__ZL11fighterCage+410
-	move.l #__ZL14cageWinsFrames,__ZL11fighterCage+414
-	move.l #__ZL14cageWalkFrames,__ZL11fighterCage+418
-	move.l #__ZL14cageTurnFrames,__ZL11fighterCage+422
-	move.l #__ZL14cageJumpFrames,__ZL11fighterCage+426
-	move.l #__ZL18cageJumpRollFrames,__ZL11fighterCage+430
-	move.l #__ZL14cageDuckFrames,__ZL11fighterCage+434
-	move.l #__ZL15cageBlockFrames,__ZL11fighterCage+438
-	move.l #__ZL18cageBlockHitFrames,__ZL11fighterCage+442
-	move.l #__ZL19cageBlockDuckFrames,__ZL11fighterCage+446
-	move.l #__ZL22cageBlockDuckHitFrames,__ZL11fighterCage+450
-	move.l #__ZL18cagePunchLowFrames,__ZL11fighterCage+454
-	move.l #__ZL19cagePunchHighFrames,__ZL11fighterCage+458
-	move.l #__ZL17cageKickLowFrames,__ZL11fighterCage+462
-	move.l #__ZL18cageKickHighFrames,__ZL11fighterCage+466
-	move.l #__ZL19cageJumpPunchFrames,__ZL11fighterCage+470
-	move.l #__ZL18cageJumpKickFrames,__ZL11fighterCage+474
-	move.l #__ZL22cageJumpDropKickFrames,__ZL11fighterCage+478
-	move.l #__ZL18cageUppercutFrames,__ZL11fighterCage+482
-	move.l #__ZL16cageHitLowFrames,__ZL11fighterCage+486
-	move.l #__ZL17cageHitHighFrames,__ZL11fighterCage+490
-	move.l #__ZL17cageHitBackFrames,__ZL11fighterCage+494
-	move.l #__ZL17cageHitFallFrames,__ZL11fighterCage+498
-	move.l #__ZL18cageHitSweepFrames,__ZL11fighterCage+502
-	move.l #__ZL15cageKipUpFrames,__ZL11fighterCage+506
-	move.l #__ZL15cageSweepFrames,__ZL11fighterCage+510
-	move.l #__ZL20cageRoundhouseFrames,__ZL11fighterCage+514
-	move.l #__ZL19cageBodyPunchFrames,__ZL11fighterCage+518
-	move.l #__ZL18cageBodyKickFrames,__ZL11fighterCage+522
-	move.l #__ZL18cageDuckKickFrames,__ZL11fighterCage+526
-	move.l #__ZL15cageThrowFrames,__ZL11fighterCage+530
-	move.l #__ZL21cageBeingThrownFrames,__ZL11fighterCage+534
-	move.l #__ZL24cageBeingThrownLowFrames,__ZL11fighterCage+538
-	move.l #__ZL14cageIdleFrames,__ZL12fighterCage2+406
-	move.l #__ZL15cageDizzyFrames,__ZL12fighterCage2+410
-	move.l #__ZL14cageWinsFrames,__ZL12fighterCage2+414
-	move.l #__ZL14cageWalkFrames,__ZL12fighterCage2+418
-	move.l #__ZL14cageTurnFrames,__ZL12fighterCage2+422
-	move.l #__ZL14cageJumpFrames,__ZL12fighterCage2+426
-	move.l #__ZL18cageJumpRollFrames,__ZL12fighterCage2+430
-	move.l #__ZL14cageDuckFrames,__ZL12fighterCage2+434
-	move.l #__ZL15cageBlockFrames,__ZL12fighterCage2+438
-	move.l #__ZL18cageBlockHitFrames,__ZL12fighterCage2+442
-	move.l #__ZL19cageBlockDuckFrames,__ZL12fighterCage2+446
-	move.l #__ZL22cageBlockDuckHitFrames,__ZL12fighterCage2+450
-	move.l #__ZL18cagePunchLowFrames,__ZL12fighterCage2+454
-	move.l #__ZL19cagePunchHighFrames,__ZL12fighterCage2+458
-	move.l #__ZL17cageKickLowFrames,__ZL12fighterCage2+462
-	move.l #__ZL18cageKickHighFrames,__ZL12fighterCage2+466
-	move.l #__ZL19cageJumpPunchFrames,__ZL12fighterCage2+470
-	move.l #__ZL18cageJumpKickFrames,__ZL12fighterCage2+474
-	move.l #__ZL22cageJumpDropKickFrames,__ZL12fighterCage2+478
-	move.l #__ZL18cageUppercutFrames,__ZL12fighterCage2+482
-	move.l #__ZL16cageHitLowFrames,__ZL12fighterCage2+486
-	move.l #__ZL17cageHitHighFrames,__ZL12fighterCage2+490
-	move.l #__ZL17cageHitBackFrames,__ZL12fighterCage2+494
-	move.l #__ZL17cageHitFallFrames,__ZL12fighterCage2+498
-	move.l #__ZL18cageHitSweepFrames,__ZL12fighterCage2+502
-	move.l #__ZL15cageKipUpFrames,__ZL12fighterCage2+506
-	move.l #__ZL15cageSweepFrames,__ZL12fighterCage2+510
-	move.l #__ZL20cageRoundhouseFrames,__ZL12fighterCage2+514
-	move.l #__ZL19cageBodyPunchFrames,__ZL12fighterCage2+518
-	move.l #__ZL18cageBodyKickFrames,__ZL12fighterCage2+522
-	move.l #__ZL18cageDuckKickFrames,__ZL12fighterCage2+526
-	move.l #__ZL15cageThrowFrames,__ZL12fighterCage2+530
-	move.l #__ZL21cageBeingThrownFrames,__ZL12fighterCage2+534
-	move.l #__ZL24cageBeingThrownLowFrames,__ZL12fighterCage2+538
-	move.l #__ZL14kanoIdleFrames,__ZL11fighterKano+406
-	move.l #__ZL15kanoDizzyFrames,__ZL11fighterKano+410
-	move.l #__ZL14kanoWinsFrames,__ZL11fighterKano+414
-	move.l #__ZL14kanoWalkFrames,__ZL11fighterKano+418
-	move.l #__ZL14kanoTurnFrames,__ZL11fighterKano+422
-	move.l #__ZL14kanoJumpFrames,__ZL11fighterKano+426
-	move.l #__ZL18kanoJumpRollFrames,__ZL11fighterKano+430
-	move.l #__ZL14kanoDuckFrames,__ZL11fighterKano+434
-	move.l #__ZL15kanoBlockFrames,__ZL11fighterKano+438
-	move.l #__ZL18kanoBlockHitFrames,__ZL11fighterKano+442
-	move.l #__ZL19kanoBlockDuckFrames,__ZL11fighterKano+446
-	move.l #__ZL22kanoBlockDuckHitFrames,__ZL11fighterKano+450
-	move.l #__ZL18kanoPunchLowFrames,__ZL11fighterKano+454
-	move.l #__ZL19kanoPunchHighFrames,__ZL11fighterKano+458
-	move.l #__ZL17kanoKickLowFrames,__ZL11fighterKano+462
-	move.l #__ZL18kanoKickHighFrames,__ZL11fighterKano+466
-	move.l #__ZL19kanoJumpPunchFrames,__ZL11fighterKano+470
-	move.l #__ZL18kanoJumpKickFrames,__ZL11fighterKano+474
-	move.l #__ZL22kanoJumpDropKickFrames,__ZL11fighterKano+478
-	move.l #__ZL18kanoUppercutFrames,__ZL11fighterKano+482
-	move.l #__ZL15kanoSweepFrames,__ZL11fighterKano+510
-	move.l #__ZL20kanoRoundhouseFrames,__ZL11fighterKano+514
-	move.l #__ZL19kanoBodyPunchFrames,__ZL11fighterKano+518
-	move.l #__ZL18kanoBodyKickFrames,__ZL11fighterKano+522
-	move.l #__ZL18kanoDuckKickFrames,__ZL11fighterKano+526
-	move.l #__ZL15kanoThrowFrames,__ZL11fighterKano+530
-	move.l #__ZL21kanoBeingThrownFrames,__ZL11fighterKano+534
-	move.l #__ZL24kanoBeingThrownLowFrames,__ZL11fighterKano+538
-	move.l #__ZL16kanoHitLowFrames,__ZL11fighterKano+486
-	move.l #__ZL17kanoHitHighFrames,__ZL11fighterKano+490
-	move.l #__ZL17kanoHitBackFrames,__ZL11fighterKano+494
-	move.l #__ZL17kanoHitFallFrames,__ZL11fighterKano+498
-	move.l #__ZL18kanoHitSweepFrames,__ZL11fighterKano+502
-	move.l #__ZL15kanoKipUpFrames,__ZL11fighterKano+506
-	move.l #__ZL14kanoIdleFrames,__ZL12fighterKano2+406
-	move.l #__ZL15kanoDizzyFrames,__ZL12fighterKano2+410
-	move.l #__ZL14kanoWinsFrames,__ZL12fighterKano2+414
-	move.l #__ZL14kanoWalkFrames,__ZL12fighterKano2+418
-	move.l #__ZL14kanoTurnFrames,__ZL12fighterKano2+422
-	move.l #__ZL14kanoJumpFrames,__ZL12fighterKano2+426
-	move.l #__ZL18kanoJumpRollFrames,__ZL12fighterKano2+430
-	move.l #__ZL14kanoDuckFrames,__ZL12fighterKano2+434
-	move.l #__ZL15kanoBlockFrames,__ZL12fighterKano2+438
-	move.l #__ZL18kanoBlockHitFrames,__ZL12fighterKano2+442
-	move.l #__ZL19kanoBlockDuckFrames,__ZL12fighterKano2+446
-	move.l #__ZL22kanoBlockDuckHitFrames,__ZL12fighterKano2+450
-	move.l #__ZL18kanoPunchLowFrames,__ZL12fighterKano2+454
-	move.l #__ZL19kanoPunchHighFrames,__ZL12fighterKano2+458
-	move.l #__ZL17kanoKickLowFrames,__ZL12fighterKano2+462
-	move.l #__ZL18kanoKickHighFrames,__ZL12fighterKano2+466
-	move.l #__ZL19kanoJumpPunchFrames,__ZL12fighterKano2+470
-	move.l #__ZL18kanoJumpKickFrames,__ZL12fighterKano2+474
-	move.l #__ZL22kanoJumpDropKickFrames,__ZL12fighterKano2+478
-	move.l #__ZL18kanoUppercutFrames,__ZL12fighterKano2+482
-	move.l #__ZL15kanoSweepFrames,__ZL12fighterKano2+510
-	move.l #__ZL20kanoRoundhouseFrames,__ZL12fighterKano2+514
-	move.l #__ZL19kanoBodyPunchFrames,__ZL12fighterKano2+518
-	move.l #__ZL18kanoBodyKickFrames,__ZL12fighterKano2+522
-	move.l #__ZL18kanoDuckKickFrames,__ZL12fighterKano2+526
-	move.l #__ZL15kanoThrowFrames,__ZL12fighterKano2+530
-	move.l #__ZL21kanoBeingThrownFrames,__ZL12fighterKano2+534
-	move.l #__ZL24kanoBeingThrownLowFrames,__ZL12fighterKano2+538
-	move.l #__ZL16kanoHitLowFrames,__ZL12fighterKano2+486
-	move.l #__ZL17kanoHitHighFrames,__ZL12fighterKano2+490
-	move.l #__ZL17kanoHitBackFrames,__ZL12fighterKano2+494
-	move.l #__ZL17kanoHitFallFrames,__ZL12fighterKano2+498
-	move.l #__ZL18kanoHitSweepFrames,__ZL12fighterKano2+502
-	move.l #__ZL15kanoKipUpFrames,__ZL12fighterKano2+506
-	move.l #__ZL16raidenIdleFrames,__ZL13fighterRaiden+406
-	move.l #__ZL17raidenDizzyFrames,__ZL13fighterRaiden+410
-	move.l #__ZL16raidenWinsFrames,__ZL13fighterRaiden+414
-	move.l #__ZL16raidenWalkFrames,__ZL13fighterRaiden+418
-	move.l #__ZL16raidenTurnFrames,__ZL13fighterRaiden+422
-	move.l #__ZL16raidenJumpFrames,__ZL13fighterRaiden+426
-	move.l #__ZL20raidenJumpRollFrames,__ZL13fighterRaiden+430
-	move.l #__ZL16raidenDuckFrames,__ZL13fighterRaiden+434
-	move.l #__ZL17raidenBlockFrames,__ZL13fighterRaiden+438
-	move.l #__ZL20raidenBlockHitFrames,__ZL13fighterRaiden+442
-	move.l #__ZL21raidenBlockDuckFrames,__ZL13fighterRaiden+446
-	move.l #__ZL24raidenBlockDuckHitFrames,__ZL13fighterRaiden+450
-	move.l #__ZL20raidenPunchLowFrames,__ZL13fighterRaiden+454
-	move.l #__ZL21raidenPunchHighFrames,__ZL13fighterRaiden+458
-	move.l #__ZL19raidenKickLowFrames,__ZL13fighterRaiden+462
-	move.l #__ZL20raidenKickHighFrames,__ZL13fighterRaiden+466
-	move.l #__ZL21raidenJumpPunchFrames,__ZL13fighterRaiden+470
-	move.l #__ZL20raidenJumpKickFrames,__ZL13fighterRaiden+474
-	move.l #__ZL24raidenJumpDropKickFrames,__ZL13fighterRaiden+478
-	move.l #__ZL20raidenUppercutFrames,__ZL13fighterRaiden+482
-	move.l #__ZL17raidenSweepFrames,__ZL13fighterRaiden+510
-	move.l #__ZL22raidenRoundhouseFrames,__ZL13fighterRaiden+514
-	move.l #__ZL21raidenBodyPunchFrames,__ZL13fighterRaiden+518
-	move.l #__ZL20raidenBodyKickFrames,__ZL13fighterRaiden+522
-	move.l #__ZL20raidenDuckKickFrames,__ZL13fighterRaiden+526
-	move.l #__ZL17raidenThrowFrames,__ZL13fighterRaiden+530
-	move.l #__ZL23raidenBeingThrownFrames,__ZL13fighterRaiden+534
-	move.l #__ZL26raidenBeingThrownLowFrames,__ZL13fighterRaiden+538
-	move.l #__ZL17raidenKipUpFrames,__ZL13fighterRaiden+506
-	move.l #__ZL18raidenHitLowFrames,__ZL13fighterRaiden+486
-	move.l #__ZL19raidenHitHighFrames,__ZL13fighterRaiden+490
-	move.l #__ZL19raidenHitBackFrames,__ZL13fighterRaiden+494
-	move.l #__ZL19raidenHitFallFrames,__ZL13fighterRaiden+498
-	move.l #__ZL20raidenHitSweepFrames,__ZL13fighterRaiden+502
-	move.l #__ZL16raidenIdleFrames,__ZL14fighterRaiden2+406
-	move.l #__ZL17raidenDizzyFrames,__ZL14fighterRaiden2+410
-	move.l #__ZL16raidenWinsFrames,__ZL14fighterRaiden2+414
-	move.l #__ZL16raidenWalkFrames,__ZL14fighterRaiden2+418
-	move.l #__ZL16raidenTurnFrames,__ZL14fighterRaiden2+422
-	move.l #__ZL16raidenJumpFrames,__ZL14fighterRaiden2+426
-	move.l #__ZL20raidenJumpRollFrames,__ZL14fighterRaiden2+430
-	move.l #__ZL16raidenDuckFrames,__ZL14fighterRaiden2+434
-	move.l #__ZL17raidenBlockFrames,__ZL14fighterRaiden2+438
-	move.l #__ZL20raidenBlockHitFrames,__ZL14fighterRaiden2+442
-	move.l #__ZL21raidenBlockDuckFrames,__ZL14fighterRaiden2+446
-	move.l #__ZL24raidenBlockDuckHitFrames,__ZL14fighterRaiden2+450
-	move.l #__ZL20raidenPunchLowFrames,__ZL14fighterRaiden2+454
-	move.l #__ZL21raidenPunchHighFrames,__ZL14fighterRaiden2+458
-	move.l #__ZL19raidenKickLowFrames,__ZL14fighterRaiden2+462
-	move.l #__ZL20raidenKickHighFrames,__ZL14fighterRaiden2+466
-	move.l #__ZL21raidenJumpPunchFrames,__ZL14fighterRaiden2+470
-	move.l #__ZL20raidenJumpKickFrames,__ZL14fighterRaiden2+474
-	move.l #__ZL24raidenJumpDropKickFrames,__ZL14fighterRaiden2+478
-	move.l #__ZL20raidenUppercutFrames,__ZL14fighterRaiden2+482
-	move.l #__ZL17raidenSweepFrames,__ZL14fighterRaiden2+510
-	move.l #__ZL22raidenRoundhouseFrames,__ZL14fighterRaiden2+514
-	move.l #__ZL21raidenBodyPunchFrames,__ZL14fighterRaiden2+518
-	move.l #__ZL20raidenBodyKickFrames,__ZL14fighterRaiden2+522
-	move.l #__ZL20raidenDuckKickFrames,__ZL14fighterRaiden2+526
-	move.l #__ZL17raidenThrowFrames,__ZL14fighterRaiden2+530
-	move.l #__ZL23raidenBeingThrownFrames,__ZL14fighterRaiden2+534
-	move.l #__ZL26raidenBeingThrownLowFrames,__ZL14fighterRaiden2+538
-	move.l #__ZL17raidenKipUpFrames,__ZL14fighterRaiden2+506
-	move.l #__ZL18raidenHitLowFrames,__ZL14fighterRaiden2+486
-	move.l #__ZL19raidenHitHighFrames,__ZL14fighterRaiden2+490
-	move.l #__ZL19raidenHitBackFrames,__ZL14fighterRaiden2+494
-	move.l #__ZL19raidenHitFallFrames,__ZL14fighterRaiden2+498
-	move.l #__ZL20raidenHitSweepFrames,__ZL14fighterRaiden2+502
-	move.l #__ZL14kangIdleFrames,__ZL11fighterKang+406
-	move.l #__ZL15kangDizzyFrames,__ZL11fighterKang+410
-	move.l #__ZL14kangWinsFrames,__ZL11fighterKang+414
-	move.l #__ZL14kangWalkFrames,__ZL11fighterKang+418
-	move.l #__ZL14kangTurnFrames,__ZL11fighterKang+422
-	move.l #__ZL14kangJumpFrames,__ZL11fighterKang+426
-	move.l #__ZL18kangJumpRollFrames,__ZL11fighterKang+430
-	move.l #__ZL14kangDuckFrames,__ZL11fighterKang+434
-	move.l #__ZL15kangBlockFrames,__ZL11fighterKang+438
-	move.l #__ZL18kangBlockHitFrames,__ZL11fighterKang+442
-	move.l #__ZL19kangBlockDuckFrames,__ZL11fighterKang+446
-	move.l #__ZL22kangBlockDuckHitFrames,__ZL11fighterKang+450
-	move.l #__ZL18kangPunchLowFrames,__ZL11fighterKang+454
-	move.l #__ZL19kangPunchHighFrames,__ZL11fighterKang+458
-	move.l #__ZL17kangKickLowFrames,__ZL11fighterKang+462
-	move.l #__ZL18kangKickHighFrames,__ZL11fighterKang+466
-	move.l #__ZL19kangJumpPunchFrames,__ZL11fighterKang+470
-	move.l #__ZL18kangJumpKickFrames,__ZL11fighterKang+474
-	move.l #__ZL22kangJumpDropKickFrames,__ZL11fighterKang+478
-	move.l #__ZL18kangUppercutFrames,__ZL11fighterKang+482
-	move.l #__ZL15kangKipUpFrames,__ZL11fighterKang+506
-	move.l #__ZL15kangSweepFrames,__ZL11fighterKang+510
-	move.l #__ZL20kangRoundhouseFrames,__ZL11fighterKang+514
-	move.l #__ZL19kangBodyPunchFrames,__ZL11fighterKang+518
-	move.l #__ZL18kangBodyKickFrames,__ZL11fighterKang+522
-	move.l #__ZL18kangDuckKickFrames,__ZL11fighterKang+526
-	move.l #__ZL15kangThrowFrames,__ZL11fighterKang+530
-	move.l #__ZL21kangBeingThrownFrames,__ZL11fighterKang+534
-	move.l #__ZL24kangBeingThrownLowFrames,__ZL11fighterKang+538
-	move.l #__ZL16kangHitLowFrames,__ZL11fighterKang+486
-	move.l #__ZL17kangHitHighFrames,__ZL11fighterKang+490
-	move.l #__ZL17kangHitBackFrames,__ZL11fighterKang+494
-	move.l #__ZL17kangHitFallFrames,__ZL11fighterKang+498
-	move.l #__ZL18kangHitSweepFrames,__ZL11fighterKang+502
-	move.l #__ZL14kangIdleFrames,__ZL12fighterKang2+406
-	move.l #__ZL15kangDizzyFrames,__ZL12fighterKang2+410
-	move.l #__ZL14kangWinsFrames,__ZL12fighterKang2+414
-	move.l #__ZL14kangWalkFrames,__ZL12fighterKang2+418
-	move.l #__ZL14kangTurnFrames,__ZL12fighterKang2+422
-	move.l #__ZL14kangJumpFrames,__ZL12fighterKang2+426
-	move.l #__ZL18kangJumpRollFrames,__ZL12fighterKang2+430
-	move.l #__ZL14kangDuckFrames,__ZL12fighterKang2+434
-	move.l #__ZL15kangBlockFrames,__ZL12fighterKang2+438
-	move.l #__ZL18kangBlockHitFrames,__ZL12fighterKang2+442
-	move.l #__ZL19kangBlockDuckFrames,__ZL12fighterKang2+446
-	move.l #__ZL22kangBlockDuckHitFrames,__ZL12fighterKang2+450
-	move.l #__ZL18kangPunchLowFrames,__ZL12fighterKang2+454
-	move.l #__ZL19kangPunchHighFrames,__ZL12fighterKang2+458
-	move.l #__ZL17kangKickLowFrames,__ZL12fighterKang2+462
-	move.l #__ZL18kangKickHighFrames,__ZL12fighterKang2+466
-	move.l #__ZL18kangJumpKickFrames,__ZL12fighterKang2+474
-	move.l #__ZL22kangJumpDropKickFrames,__ZL12fighterKang2+478
-	move.l #__ZL18kangUppercutFrames,__ZL12fighterKang2+482
-	move.l #__ZL15kangKipUpFrames,__ZL12fighterKang2+506
-	move.l #__ZL15kangSweepFrames,__ZL12fighterKang2+510
-	move.l #__ZL20kangRoundhouseFrames,__ZL12fighterKang2+514
-	move.l #__ZL19kangBodyPunchFrames,__ZL12fighterKang2+518
-	move.l #__ZL18kangBodyKickFrames,__ZL12fighterKang2+522
-	move.l #__ZL18kangDuckKickFrames,__ZL12fighterKang2+526
-	move.l #__ZL15kangThrowFrames,__ZL12fighterKang2+530
-	move.l #__ZL21kangBeingThrownFrames,__ZL12fighterKang2+534
-	move.l #__ZL24kangBeingThrownLowFrames,__ZL12fighterKang2+538
-	move.l #__ZL16kangHitLowFrames,__ZL12fighterKang2+486
-	move.l #__ZL17kangHitHighFrames,__ZL12fighterKang2+490
-	move.l #__ZL17kangHitBackFrames,__ZL12fighterKang2+494
-	move.l #__ZL17kangHitFallFrames,__ZL12fighterKang2+498
-	move.l #__ZL18kangHitSweepFrames,__ZL12fighterKang2+502
-	move.l #__ZL18scorpionIdleFrames,__ZL15fighterScorpion+406
-	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterScorpion+410
-	move.l #__ZL17subzeroWinsFrames,__ZL15fighterScorpion+414
-	move.l #__ZL18scorpionWalkFrames,__ZL15fighterScorpion+418
-	move.l #__ZL17subzeroTurnFrames,__ZL15fighterScorpion+422
-	move.l #__ZL17subzeroJumpFrames,__ZL15fighterScorpion+426
-	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterScorpion+430
-	move.l #__ZL17subzeroDuckFrames,__ZL15fighterScorpion+434
-	move.l #__ZL18subzeroBlockFrames,__ZL15fighterScorpion+438
-	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterScorpion+442
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterScorpion+446
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterScorpion+450
-	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterScorpion+454
-	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterScorpion+458
-	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterScorpion+462
-	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterScorpion+466
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterScorpion+470
-	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterScorpion+474
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterScorpion+478
-	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterScorpion+482
-	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterScorpion+506
-	move.l #__ZL18subzeroSweepFrames,__ZL15fighterScorpion+510
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterScorpion+514
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterScorpion+518
-	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterScorpion+522
-	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterScorpion+526
-	move.l #__ZL18subzeroThrowFrames,__ZL15fighterScorpion+530
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterScorpion+534
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterScorpion+538
-	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterScorpion+486
-	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterScorpion+490
-	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterScorpion+494
-	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterScorpion+498
-	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterScorpion+502
-	move.l #__ZL18scorpionIdleFrames,__ZL16fighterScorpion2+406
-	move.l #__ZL18subzeroDizzyFrames,__ZL16fighterScorpion2+410
-	move.l #__ZL17subzeroWinsFrames,__ZL16fighterScorpion2+414
-	move.l #__ZL18scorpionWalkFrames,__ZL16fighterScorpion2+418
-	move.l #__ZL17subzeroTurnFrames,__ZL16fighterScorpion2+422
-	move.l #__ZL17subzeroJumpFrames,__ZL16fighterScorpion2+426
-	move.l #__ZL21subzeroJumpRollFrames,__ZL16fighterScorpion2+430
-	move.l #__ZL17subzeroDuckFrames,__ZL16fighterScorpion2+434
-	move.l #__ZL18subzeroBlockFrames,__ZL16fighterScorpion2+438
-	move.l #__ZL21subzeroBlockHitFrames,__ZL16fighterScorpion2+442
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL16fighterScorpion2+446
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL16fighterScorpion2+450
-	move.l #__ZL21subzeroPunchLowFrames,__ZL16fighterScorpion2+454
-	move.l #__ZL22subzeroPunchHighFrames,__ZL16fighterScorpion2+458
-	move.l #__ZL20subzeroKickLowFrames,__ZL16fighterScorpion2+462
-	move.l #__ZL21subzeroKickHighFrames,__ZL16fighterScorpion2+466
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL16fighterScorpion2+470
-	move.l #__ZL21subzeroJumpKickFrames,__ZL16fighterScorpion2+474
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL16fighterScorpion2+478
-	move.l #__ZL21subzeroUppercutFrames,__ZL16fighterScorpion2+482
-	move.l #__ZL18subzeroKipUpFrames,__ZL16fighterScorpion2+506
-	move.l #__ZL18subzeroSweepFrames,__ZL16fighterScorpion2+510
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL16fighterScorpion2+514
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL16fighterScorpion2+518
-	move.l #__ZL21subzeroBodyKickFrames,__ZL16fighterScorpion2+522
-	move.l #__ZL21subzeroDuckKickFrames,__ZL16fighterScorpion2+526
-	move.l #__ZL18subzeroThrowFrames,__ZL16fighterScorpion2+530
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL16fighterScorpion2+534
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL16fighterScorpion2+538
-	move.l #__ZL19subzeroHitLowFrames,__ZL16fighterScorpion2+486
-	move.l #__ZL20subzeroHitHighFrames,__ZL16fighterScorpion2+490
-	move.l #__ZL20subzeroHitBackFrames,__ZL16fighterScorpion2+494
-	move.l #__ZL20subzeroHitFallFrames,__ZL16fighterScorpion2+498
-	move.l #__ZL21subzeroHitSweepFrames,__ZL16fighterScorpion2+502
-	move.l #__ZL17subzeroIdleFrames,__ZL14fighterSubzero+406
-	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterSubzero+410
-	move.l #__ZL17subzeroWinsFrames,__ZL14fighterSubzero+414
-	move.l #__ZL17subzeroWalkFrames,__ZL14fighterSubzero+418
-	move.l #__ZL17subzeroTurnFrames,__ZL14fighterSubzero+422
-	move.l #__ZL17subzeroJumpFrames,__ZL14fighterSubzero+426
-	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterSubzero+430
-	move.l #__ZL17subzeroDuckFrames,__ZL14fighterSubzero+434
-	move.l #__ZL18subzeroBlockFrames,__ZL14fighterSubzero+438
-	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterSubzero+442
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterSubzero+446
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterSubzero+450
-	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterSubzero+454
-	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterSubzero+458
-	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterSubzero+462
-	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterSubzero+466
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterSubzero+470
-	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterSubzero+474
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterSubzero+478
-	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterSubzero+482
-	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterSubzero+506
-	move.l #__ZL18subzeroSweepFrames,__ZL14fighterSubzero+510
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterSubzero+514
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterSubzero+518
-	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterSubzero+522
-	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterSubzero+526
-	move.l #__ZL18subzeroThrowFrames,__ZL14fighterSubzero+530
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterSubzero+534
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterSubzero+538
-	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterSubzero+486
-	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterSubzero+490
-	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterSubzero+494
-	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterSubzero+498
-	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterSubzero+502
-	move.l #__ZL17subzeroIdleFrames,__ZL15fighterSubzero2+406
-	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterSubzero2+410
-	move.l #__ZL17subzeroWinsFrames,__ZL15fighterSubzero2+414
-	move.l #__ZL17subzeroTurnFrames,__ZL15fighterSubzero2+422
-	move.l #__ZL17subzeroWalkFrames,__ZL15fighterSubzero2+418
-	move.l #__ZL17subzeroJumpFrames,__ZL15fighterSubzero2+426
-	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterSubzero2+430
-	move.l #__ZL17subzeroDuckFrames,__ZL15fighterSubzero2+434
-	move.l #__ZL18subzeroBlockFrames,__ZL15fighterSubzero2+438
-	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterSubzero2+442
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterSubzero2+446
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterSubzero2+450
-	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterSubzero2+454
-	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterSubzero2+458
-	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterSubzero2+462
-	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterSubzero2+466
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterSubzero2+470
-	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterSubzero2+474
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterSubzero2+478
-	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterSubzero2+482
-	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterSubzero2+506
-	move.l #__ZL18subzeroSweepFrames,__ZL15fighterSubzero2+510
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterSubzero2+514
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterSubzero2+518
-	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterSubzero2+522
-	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterSubzero2+526
-	move.l #__ZL18subzeroThrowFrames,__ZL15fighterSubzero2+530
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterSubzero2+534
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterSubzero2+538
-	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterSubzero2+486
-	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterSubzero2+490
-	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterSubzero2+494
-	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterSubzero2+498
-	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterSubzero2+502
-	move.l #__ZL15sonyaIdleFrames,__ZL12fighterSonya+406
-	move.l #__ZL16sonyaDizzyFrames,__ZL12fighterSonya+410
-	move.l #__ZL15sonyaWinsFrames,__ZL12fighterSonya+414
-	move.l #__ZL15sonyaWalkFrames,__ZL12fighterSonya+418
-	move.l #__ZL15sonyaTurnFrames,__ZL12fighterSonya+422
-	move.l #__ZL15sonyaJumpFrames,__ZL12fighterSonya+426
-	move.l #__ZL19sonyaJumpRollFrames,__ZL12fighterSonya+430
-	move.l #__ZL15sonyaDuckFrames,__ZL12fighterSonya+434
-	move.l #__ZL16sonyaBlockFrames,__ZL12fighterSonya+438
-	move.l #__ZL19sonyaBlockHitFrames,__ZL12fighterSonya+442
-	move.l #__ZL20sonyaBlockDuckFrames,__ZL12fighterSonya+446
-	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL12fighterSonya+450
-	move.l #__ZL19sonyaPunchLowFrames,__ZL12fighterSonya+454
-	move.l #__ZL20sonyaPunchHighFrames,__ZL12fighterSonya+458
-	move.l #__ZL18sonyaKickLowFrames,__ZL12fighterSonya+462
-	move.l #__ZL19sonyaKickHighFrames,__ZL12fighterSonya+466
-	move.l #__ZL20sonyaJumpPunchFrames,__ZL12fighterSonya+470
-	move.l #__ZL19sonyaJumpKickFrames,__ZL12fighterSonya+474
-	move.l #__ZL23sonyaJumpDropKickFrames,__ZL12fighterSonya+478
-	move.l #__ZL19sonyaUppercutFrames,__ZL12fighterSonya+482
-	move.l #__ZL16sonyaKipUpFrames,__ZL12fighterSonya+506
-	move.l #__ZL16sonyaSweepFrames,__ZL12fighterSonya+510
-	move.l #__ZL21sonyaRoundhouseFrames,__ZL12fighterSonya+514
-	move.l #__ZL20sonyaBodyPunchFrames,__ZL12fighterSonya+518
-	move.l #__ZL19sonyaBodyKickFrames,__ZL12fighterSonya+522
-	move.l #__ZL19sonyaDuckKickFrames,__ZL12fighterSonya+526
-	move.l #__ZL16sonyaThrowFrames,__ZL12fighterSonya+530
-	move.l #__ZL22sonyaBeingThrownFrames,__ZL12fighterSonya+534
-	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL12fighterSonya+538
-	move.l #__ZL17sonyaHitLowFrames,__ZL12fighterSonya+486
-	move.l #__ZL18sonyaHitHighFrames,__ZL12fighterSonya+490
-	move.l #__ZL18sonyaHitBackFrames,__ZL12fighterSonya+494
-	move.l #__ZL18sonyaHitFallFrames,__ZL12fighterSonya+498
-	move.l #__ZL19sonyaHitSweepFrames,__ZL12fighterSonya+502
-	move.l #__ZL15sonyaIdleFrames,__ZL13fighterSonya2+406
-	move.l #__ZL16sonyaDizzyFrames,__ZL13fighterSonya2+410
-	move.l #__ZL15sonyaWinsFrames,__ZL13fighterSonya2+414
-	move.l #__ZL15sonyaWalkFrames,__ZL13fighterSonya2+418
-	move.l #__ZL15sonyaTurnFrames,__ZL13fighterSonya2+422
-	move.l #__ZL15sonyaJumpFrames,__ZL13fighterSonya2+426
-	move.l #__ZL19sonyaJumpRollFrames,__ZL13fighterSonya2+430
-	move.l #__ZL15sonyaDuckFrames,__ZL13fighterSonya2+434
-	move.l #__ZL16sonyaBlockFrames,__ZL13fighterSonya2+438
-	move.l #__ZL19sonyaBlockHitFrames,__ZL13fighterSonya2+442
-	move.l #__ZL20sonyaBlockDuckFrames,__ZL13fighterSonya2+446
-	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL13fighterSonya2+450
-	move.l #__ZL19sonyaPunchLowFrames,__ZL13fighterSonya2+454
-	move.l #__ZL20sonyaPunchHighFrames,__ZL13fighterSonya2+458
-	move.l #__ZL18sonyaKickLowFrames,__ZL13fighterSonya2+462
-	move.l #__ZL19sonyaKickHighFrames,__ZL13fighterSonya2+466
-	move.l #__ZL20sonyaJumpPunchFrames,__ZL13fighterSonya2+470
-	move.l #__ZL19sonyaJumpKickFrames,__ZL13fighterSonya2+474
-	move.l #__ZL23sonyaJumpDropKickFrames,__ZL13fighterSonya2+478
-	move.l #__ZL19sonyaUppercutFrames,__ZL13fighterSonya2+482
-	move.l #__ZL16sonyaKipUpFrames,__ZL13fighterSonya2+506
-	move.l #__ZL16sonyaSweepFrames,__ZL13fighterSonya2+510
-	move.l #__ZL21sonyaRoundhouseFrames,__ZL13fighterSonya2+514
-	move.l #__ZL20sonyaBodyPunchFrames,__ZL13fighterSonya2+518
-	move.l #__ZL19sonyaBodyKickFrames,__ZL13fighterSonya2+522
-	move.l #__ZL19sonyaDuckKickFrames,__ZL13fighterSonya2+526
-	move.l #__ZL16sonyaThrowFrames,__ZL13fighterSonya2+530
-	move.l #__ZL22sonyaBeingThrownFrames,__ZL13fighterSonya2+534
-	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL13fighterSonya2+538
-	move.l #__ZL17sonyaHitLowFrames,__ZL13fighterSonya2+486
-	move.l #__ZL18sonyaHitHighFrames,__ZL13fighterSonya2+490
-	move.l #__ZL18sonyaHitBackFrames,__ZL13fighterSonya2+494
-	move.l #__ZL18sonyaHitFallFrames,__ZL13fighterSonya2+498
-	move.l #__ZL19sonyaHitSweepFrames,__ZL13fighterSonya2+502
+	clr.b _goroProfileShown
+	clr.l _attractSlideIndex
+	move.l #__ZL14cageIdleFrames,__ZL11fighterCage+342
+	move.l #__ZL15cageDizzyFrames,__ZL11fighterCage+346
+	move.l #__ZL14cageWinsFrames,__ZL11fighterCage+350
+	move.l #__ZL14cageWalkFrames,__ZL11fighterCage+354
+	move.l #__ZL14cageTurnFrames,__ZL11fighterCage+358
+	move.l #__ZL14cageJumpFrames,__ZL11fighterCage+362
+	move.l #__ZL18cageJumpRollFrames,__ZL11fighterCage+366
+	move.l #__ZL14cageDuckFrames,__ZL11fighterCage+370
+	move.l #__ZL15cageBlockFrames,__ZL11fighterCage+374
+	move.l #__ZL18cageBlockHitFrames,__ZL11fighterCage+378
+	move.l #__ZL19cageBlockDuckFrames,__ZL11fighterCage+382
+	move.l #__ZL22cageBlockDuckHitFrames,__ZL11fighterCage+386
+	move.l #__ZL18cagePunchLowFrames,__ZL11fighterCage+390
+	move.l #__ZL19cagePunchHighFrames,__ZL11fighterCage+394
+	move.l #__ZL17cageKickLowFrames,__ZL11fighterCage+398
+	move.l #__ZL18cageKickHighFrames,__ZL11fighterCage+402
+	move.l #__ZL19cageJumpPunchFrames,__ZL11fighterCage+406
+	move.l #__ZL18cageJumpKickFrames,__ZL11fighterCage+410
+	move.l #__ZL22cageJumpDropKickFrames,__ZL11fighterCage+414
+	move.l #__ZL18cageUppercutFrames,__ZL11fighterCage+418
+	move.l #__ZL16cageHitLowFrames,__ZL11fighterCage+422
+	move.l #__ZL17cageHitHighFrames,__ZL11fighterCage+426
+	move.l #__ZL17cageHitBackFrames,__ZL11fighterCage+430
+	move.l #__ZL17cageHitFallFrames,__ZL11fighterCage+434
+	move.l #__ZL18cageHitSweepFrames,__ZL11fighterCage+438
+	move.l #__ZL15cageKipUpFrames,__ZL11fighterCage+442
+	move.l #__ZL15cageSweepFrames,__ZL11fighterCage+446
+	move.l #__ZL20cageRoundhouseFrames,__ZL11fighterCage+450
+	move.l #__ZL19cageBodyPunchFrames,__ZL11fighterCage+454
+	move.l #__ZL18cageBodyKickFrames,__ZL11fighterCage+458
+	move.l #__ZL18cageDuckKickFrames,__ZL11fighterCage+462
+	move.l #__ZL15cageThrowFrames,__ZL11fighterCage+466
+	move.l #__ZL21cageBeingThrownFrames,__ZL11fighterCage+470
+	move.l #__ZL24cageBeingThrownLowFrames,__ZL11fighterCage+474
+	move.l #__ZL14cageIdleFrames,__ZL12fighterCage2+342
+	move.l #__ZL15cageDizzyFrames,__ZL12fighterCage2+346
+	move.l #__ZL14cageWinsFrames,__ZL12fighterCage2+350
+	move.l #__ZL14cageWalkFrames,__ZL12fighterCage2+354
+	move.l #__ZL14cageTurnFrames,__ZL12fighterCage2+358
+	move.l #__ZL14cageJumpFrames,__ZL12fighterCage2+362
+	move.l #__ZL18cageJumpRollFrames,__ZL12fighterCage2+366
+	move.l #__ZL14cageDuckFrames,__ZL12fighterCage2+370
+	move.l #__ZL15cageBlockFrames,__ZL12fighterCage2+374
+	move.l #__ZL18cageBlockHitFrames,__ZL12fighterCage2+378
+	move.l #__ZL19cageBlockDuckFrames,__ZL12fighterCage2+382
+	move.l #__ZL22cageBlockDuckHitFrames,__ZL12fighterCage2+386
+	move.l #__ZL18cagePunchLowFrames,__ZL12fighterCage2+390
+	move.l #__ZL19cagePunchHighFrames,__ZL12fighterCage2+394
+	move.l #__ZL17cageKickLowFrames,__ZL12fighterCage2+398
+	move.l #__ZL18cageKickHighFrames,__ZL12fighterCage2+402
+	move.l #__ZL19cageJumpPunchFrames,__ZL12fighterCage2+406
+	move.l #__ZL18cageJumpKickFrames,__ZL12fighterCage2+410
+	move.l #__ZL22cageJumpDropKickFrames,__ZL12fighterCage2+414
+	move.l #__ZL18cageUppercutFrames,__ZL12fighterCage2+418
+	move.l #__ZL16cageHitLowFrames,__ZL12fighterCage2+422
+	move.l #__ZL17cageHitHighFrames,__ZL12fighterCage2+426
+	move.l #__ZL17cageHitBackFrames,__ZL12fighterCage2+430
+	move.l #__ZL17cageHitFallFrames,__ZL12fighterCage2+434
+	move.l #__ZL18cageHitSweepFrames,__ZL12fighterCage2+438
+	move.l #__ZL15cageKipUpFrames,__ZL12fighterCage2+442
+	move.l #__ZL15cageSweepFrames,__ZL12fighterCage2+446
+	move.l #__ZL20cageRoundhouseFrames,__ZL12fighterCage2+450
+	move.l #__ZL19cageBodyPunchFrames,__ZL12fighterCage2+454
+	move.l #__ZL18cageBodyKickFrames,__ZL12fighterCage2+458
+	move.l #__ZL18cageDuckKickFrames,__ZL12fighterCage2+462
+	move.l #__ZL15cageThrowFrames,__ZL12fighterCage2+466
+	move.l #__ZL21cageBeingThrownFrames,__ZL12fighterCage2+470
+	move.l #__ZL24cageBeingThrownLowFrames,__ZL12fighterCage2+474
+	move.l #__ZL14kanoIdleFrames,__ZL11fighterKano+342
+	move.l #__ZL15kanoDizzyFrames,__ZL11fighterKano+346
+	move.l #__ZL14kanoWinsFrames,__ZL11fighterKano+350
+	move.l #__ZL14kanoWalkFrames,__ZL11fighterKano+354
+	move.l #__ZL14kanoTurnFrames,__ZL11fighterKano+358
+	move.l #__ZL14kanoJumpFrames,__ZL11fighterKano+362
+	move.l #__ZL18kanoJumpRollFrames,__ZL11fighterKano+366
+	move.l #__ZL14kanoDuckFrames,__ZL11fighterKano+370
+	move.l #__ZL15kanoBlockFrames,__ZL11fighterKano+374
+	move.l #__ZL18kanoBlockHitFrames,__ZL11fighterKano+378
+	move.l #__ZL19kanoBlockDuckFrames,__ZL11fighterKano+382
+	move.l #__ZL22kanoBlockDuckHitFrames,__ZL11fighterKano+386
+	move.l #__ZL18kanoPunchLowFrames,__ZL11fighterKano+390
+	move.l #__ZL19kanoPunchHighFrames,__ZL11fighterKano+394
+	move.l #__ZL17kanoKickLowFrames,__ZL11fighterKano+398
+	move.l #__ZL18kanoKickHighFrames,__ZL11fighterKano+402
+	move.l #__ZL19kanoJumpPunchFrames,__ZL11fighterKano+406
+	move.l #__ZL18kanoJumpKickFrames,__ZL11fighterKano+410
+	move.l #__ZL22kanoJumpDropKickFrames,__ZL11fighterKano+414
+	move.l #__ZL18kanoUppercutFrames,__ZL11fighterKano+418
+	move.l #__ZL15kanoSweepFrames,__ZL11fighterKano+446
+	move.l #__ZL20kanoRoundhouseFrames,__ZL11fighterKano+450
+	move.l #__ZL19kanoBodyPunchFrames,__ZL11fighterKano+454
+	move.l #__ZL18kanoBodyKickFrames,__ZL11fighterKano+458
+	move.l #__ZL18kanoDuckKickFrames,__ZL11fighterKano+462
+	move.l #__ZL15kanoThrowFrames,__ZL11fighterKano+466
+	move.l #__ZL21kanoBeingThrownFrames,__ZL11fighterKano+470
+	move.l #__ZL24kanoBeingThrownLowFrames,__ZL11fighterKano+474
+	move.l #__ZL16kanoHitLowFrames,__ZL11fighterKano+422
+	move.l #__ZL17kanoHitHighFrames,__ZL11fighterKano+426
+	move.l #__ZL17kanoHitBackFrames,__ZL11fighterKano+430
+	move.l #__ZL17kanoHitFallFrames,__ZL11fighterKano+434
+	move.l #__ZL18kanoHitSweepFrames,__ZL11fighterKano+438
+	move.l #__ZL15kanoKipUpFrames,__ZL11fighterKano+442
+	move.l #__ZL14kanoIdleFrames,__ZL12fighterKano2+342
+	move.l #__ZL15kanoDizzyFrames,__ZL12fighterKano2+346
+	move.l #__ZL14kanoWinsFrames,__ZL12fighterKano2+350
+	move.l #__ZL14kanoWalkFrames,__ZL12fighterKano2+354
+	move.l #__ZL14kanoTurnFrames,__ZL12fighterKano2+358
+	move.l #__ZL14kanoJumpFrames,__ZL12fighterKano2+362
+	move.l #__ZL18kanoJumpRollFrames,__ZL12fighterKano2+366
+	move.l #__ZL14kanoDuckFrames,__ZL12fighterKano2+370
+	move.l #__ZL15kanoBlockFrames,__ZL12fighterKano2+374
+	move.l #__ZL18kanoBlockHitFrames,__ZL12fighterKano2+378
+	move.l #__ZL19kanoBlockDuckFrames,__ZL12fighterKano2+382
+	move.l #__ZL22kanoBlockDuckHitFrames,__ZL12fighterKano2+386
+	move.l #__ZL18kanoPunchLowFrames,__ZL12fighterKano2+390
+	move.l #__ZL19kanoPunchHighFrames,__ZL12fighterKano2+394
+	move.l #__ZL17kanoKickLowFrames,__ZL12fighterKano2+398
+	move.l #__ZL18kanoKickHighFrames,__ZL12fighterKano2+402
+	move.l #__ZL19kanoJumpPunchFrames,__ZL12fighterKano2+406
+	move.l #__ZL18kanoJumpKickFrames,__ZL12fighterKano2+410
+	move.l #__ZL22kanoJumpDropKickFrames,__ZL12fighterKano2+414
+	move.l #__ZL18kanoUppercutFrames,__ZL12fighterKano2+418
+	move.l #__ZL15kanoSweepFrames,__ZL12fighterKano2+446
+	move.l #__ZL20kanoRoundhouseFrames,__ZL12fighterKano2+450
+	move.l #__ZL19kanoBodyPunchFrames,__ZL12fighterKano2+454
+	move.l #__ZL18kanoBodyKickFrames,__ZL12fighterKano2+458
+	move.l #__ZL18kanoDuckKickFrames,__ZL12fighterKano2+462
+	move.l #__ZL15kanoThrowFrames,__ZL12fighterKano2+466
+	move.l #__ZL21kanoBeingThrownFrames,__ZL12fighterKano2+470
+	move.l #__ZL24kanoBeingThrownLowFrames,__ZL12fighterKano2+474
+	move.l #__ZL16kanoHitLowFrames,__ZL12fighterKano2+422
+	move.l #__ZL17kanoHitHighFrames,__ZL12fighterKano2+426
+	move.l #__ZL17kanoHitBackFrames,__ZL12fighterKano2+430
+	move.l #__ZL17kanoHitFallFrames,__ZL12fighterKano2+434
+	move.l #__ZL18kanoHitSweepFrames,__ZL12fighterKano2+438
+	move.l #__ZL15kanoKipUpFrames,__ZL12fighterKano2+442
+	move.l #__ZL16raidenIdleFrames,__ZL13fighterRaiden+342
+	move.l #__ZL17raidenDizzyFrames,__ZL13fighterRaiden+346
+	move.l #__ZL16raidenWinsFrames,__ZL13fighterRaiden+350
+	move.l #__ZL16raidenWalkFrames,__ZL13fighterRaiden+354
+	move.l #__ZL16raidenTurnFrames,__ZL13fighterRaiden+358
+	move.l #__ZL16raidenJumpFrames,__ZL13fighterRaiden+362
+	move.l #__ZL20raidenJumpRollFrames,__ZL13fighterRaiden+366
+	move.l #__ZL16raidenDuckFrames,__ZL13fighterRaiden+370
+	move.l #__ZL17raidenBlockFrames,__ZL13fighterRaiden+374
+	move.l #__ZL20raidenBlockHitFrames,__ZL13fighterRaiden+378
+	move.l #__ZL21raidenBlockDuckFrames,__ZL13fighterRaiden+382
+	move.l #__ZL24raidenBlockDuckHitFrames,__ZL13fighterRaiden+386
+	move.l #__ZL20raidenPunchLowFrames,__ZL13fighterRaiden+390
+	move.l #__ZL21raidenPunchHighFrames,__ZL13fighterRaiden+394
+	move.l #__ZL19raidenKickLowFrames,__ZL13fighterRaiden+398
+	move.l #__ZL20raidenKickHighFrames,__ZL13fighterRaiden+402
+	move.l #__ZL21raidenJumpPunchFrames,__ZL13fighterRaiden+406
+	move.l #__ZL20raidenJumpKickFrames,__ZL13fighterRaiden+410
+	move.l #__ZL24raidenJumpDropKickFrames,__ZL13fighterRaiden+414
+	move.l #__ZL20raidenUppercutFrames,__ZL13fighterRaiden+418
+	move.l #__ZL17raidenSweepFrames,__ZL13fighterRaiden+446
+	move.l #__ZL22raidenRoundhouseFrames,__ZL13fighterRaiden+450
+	move.l #__ZL21raidenBodyPunchFrames,__ZL13fighterRaiden+454
+	move.l #__ZL20raidenBodyKickFrames,__ZL13fighterRaiden+458
+	move.l #__ZL20raidenDuckKickFrames,__ZL13fighterRaiden+462
+	move.l #__ZL17raidenThrowFrames,__ZL13fighterRaiden+466
+	move.l #__ZL23raidenBeingThrownFrames,__ZL13fighterRaiden+470
+	move.l #__ZL26raidenBeingThrownLowFrames,__ZL13fighterRaiden+474
+	move.l #__ZL17raidenKipUpFrames,__ZL13fighterRaiden+442
+	move.l #__ZL18raidenHitLowFrames,__ZL13fighterRaiden+422
+	move.l #__ZL19raidenHitHighFrames,__ZL13fighterRaiden+426
+	move.l #__ZL19raidenHitBackFrames,__ZL13fighterRaiden+430
+	move.l #__ZL19raidenHitFallFrames,__ZL13fighterRaiden+434
+	move.l #__ZL20raidenHitSweepFrames,__ZL13fighterRaiden+438
+	move.l #__ZL16raidenIdleFrames,__ZL14fighterRaiden2+342
+	move.l #__ZL17raidenDizzyFrames,__ZL14fighterRaiden2+346
+	move.l #__ZL16raidenWinsFrames,__ZL14fighterRaiden2+350
+	move.l #__ZL16raidenWalkFrames,__ZL14fighterRaiden2+354
+	move.l #__ZL16raidenTurnFrames,__ZL14fighterRaiden2+358
+	move.l #__ZL16raidenJumpFrames,__ZL14fighterRaiden2+362
+	move.l #__ZL20raidenJumpRollFrames,__ZL14fighterRaiden2+366
+	move.l #__ZL16raidenDuckFrames,__ZL14fighterRaiden2+370
+	move.l #__ZL17raidenBlockFrames,__ZL14fighterRaiden2+374
+	move.l #__ZL20raidenBlockHitFrames,__ZL14fighterRaiden2+378
+	move.l #__ZL21raidenBlockDuckFrames,__ZL14fighterRaiden2+382
+	move.l #__ZL24raidenBlockDuckHitFrames,__ZL14fighterRaiden2+386
+	move.l #__ZL20raidenPunchLowFrames,__ZL14fighterRaiden2+390
+	move.l #__ZL21raidenPunchHighFrames,__ZL14fighterRaiden2+394
+	move.l #__ZL19raidenKickLowFrames,__ZL14fighterRaiden2+398
+	move.l #__ZL20raidenKickHighFrames,__ZL14fighterRaiden2+402
+	move.l #__ZL21raidenJumpPunchFrames,__ZL14fighterRaiden2+406
+	move.l #__ZL20raidenJumpKickFrames,__ZL14fighterRaiden2+410
+	move.l #__ZL24raidenJumpDropKickFrames,__ZL14fighterRaiden2+414
+	move.l #__ZL20raidenUppercutFrames,__ZL14fighterRaiden2+418
+	move.l #__ZL17raidenSweepFrames,__ZL14fighterRaiden2+446
+	move.l #__ZL22raidenRoundhouseFrames,__ZL14fighterRaiden2+450
+	move.l #__ZL21raidenBodyPunchFrames,__ZL14fighterRaiden2+454
+	move.l #__ZL20raidenBodyKickFrames,__ZL14fighterRaiden2+458
+	move.l #__ZL20raidenDuckKickFrames,__ZL14fighterRaiden2+462
+	move.l #__ZL17raidenThrowFrames,__ZL14fighterRaiden2+466
+	move.l #__ZL23raidenBeingThrownFrames,__ZL14fighterRaiden2+470
+	move.l #__ZL26raidenBeingThrownLowFrames,__ZL14fighterRaiden2+474
+	move.l #__ZL17raidenKipUpFrames,__ZL14fighterRaiden2+442
+	move.l #__ZL18raidenHitLowFrames,__ZL14fighterRaiden2+422
+	move.l #__ZL19raidenHitHighFrames,__ZL14fighterRaiden2+426
+	move.l #__ZL19raidenHitBackFrames,__ZL14fighterRaiden2+430
+	move.l #__ZL19raidenHitFallFrames,__ZL14fighterRaiden2+434
+	move.l #__ZL20raidenHitSweepFrames,__ZL14fighterRaiden2+438
+	move.l #__ZL14kangIdleFrames,__ZL11fighterKang+342
+	move.l #__ZL15kangDizzyFrames,__ZL11fighterKang+346
+	move.l #__ZL14kangWinsFrames,__ZL11fighterKang+350
+	move.l #__ZL14kangWalkFrames,__ZL11fighterKang+354
+	move.l #__ZL14kangTurnFrames,__ZL11fighterKang+358
+	move.l #__ZL14kangJumpFrames,__ZL11fighterKang+362
+	move.l #__ZL18kangJumpRollFrames,__ZL11fighterKang+366
+	move.l #__ZL14kangDuckFrames,__ZL11fighterKang+370
+	move.l #__ZL15kangBlockFrames,__ZL11fighterKang+374
+	move.l #__ZL18kangBlockHitFrames,__ZL11fighterKang+378
+	move.l #__ZL19kangBlockDuckFrames,__ZL11fighterKang+382
+	move.l #__ZL22kangBlockDuckHitFrames,__ZL11fighterKang+386
+	move.l #__ZL18kangPunchLowFrames,__ZL11fighterKang+390
+	move.l #__ZL19kangPunchHighFrames,__ZL11fighterKang+394
+	move.l #__ZL17kangKickLowFrames,__ZL11fighterKang+398
+	move.l #__ZL18kangKickHighFrames,__ZL11fighterKang+402
+	move.l #__ZL19kangJumpPunchFrames,__ZL11fighterKang+406
+	move.l #__ZL18kangJumpKickFrames,__ZL11fighterKang+410
+	move.l #__ZL22kangJumpDropKickFrames,__ZL11fighterKang+414
+	move.l #__ZL18kangUppercutFrames,__ZL11fighterKang+418
+	move.l #__ZL15kangKipUpFrames,__ZL11fighterKang+442
+	move.l #__ZL15kangSweepFrames,__ZL11fighterKang+446
+	move.l #__ZL20kangRoundhouseFrames,__ZL11fighterKang+450
+	move.l #__ZL19kangBodyPunchFrames,__ZL11fighterKang+454
+	move.l #__ZL18kangBodyKickFrames,__ZL11fighterKang+458
+	move.l #__ZL18kangDuckKickFrames,__ZL11fighterKang+462
+	move.l #__ZL15kangThrowFrames,__ZL11fighterKang+466
+	move.l #__ZL21kangBeingThrownFrames,__ZL11fighterKang+470
+	move.l #__ZL24kangBeingThrownLowFrames,__ZL11fighterKang+474
+	move.l #__ZL16kangHitLowFrames,__ZL11fighterKang+422
+	move.l #__ZL17kangHitHighFrames,__ZL11fighterKang+426
+	move.l #__ZL17kangHitBackFrames,__ZL11fighterKang+430
+	move.l #__ZL17kangHitFallFrames,__ZL11fighterKang+434
+	move.l #__ZL18kangHitSweepFrames,__ZL11fighterKang+438
+	move.l #__ZL14kangIdleFrames,__ZL12fighterKang2+342
+	move.l #__ZL15kangDizzyFrames,__ZL12fighterKang2+346
+	move.l #__ZL14kangWinsFrames,__ZL12fighterKang2+350
+	move.l #__ZL14kangWalkFrames,__ZL12fighterKang2+354
+	move.l #__ZL14kangTurnFrames,__ZL12fighterKang2+358
+	move.l #__ZL14kangJumpFrames,__ZL12fighterKang2+362
+	move.l #__ZL18kangJumpRollFrames,__ZL12fighterKang2+366
+	move.l #__ZL14kangDuckFrames,__ZL12fighterKang2+370
+	move.l #__ZL15kangBlockFrames,__ZL12fighterKang2+374
+	move.l #__ZL18kangBlockHitFrames,__ZL12fighterKang2+378
+	move.l #__ZL19kangBlockDuckFrames,__ZL12fighterKang2+382
+	move.l #__ZL22kangBlockDuckHitFrames,__ZL12fighterKang2+386
+	move.l #__ZL18kangPunchLowFrames,__ZL12fighterKang2+390
+	move.l #__ZL19kangPunchHighFrames,__ZL12fighterKang2+394
+	move.l #__ZL17kangKickLowFrames,__ZL12fighterKang2+398
+	move.l #__ZL18kangKickHighFrames,__ZL12fighterKang2+402
+	move.l #__ZL18kangJumpKickFrames,__ZL12fighterKang2+410
+	move.l #__ZL22kangJumpDropKickFrames,__ZL12fighterKang2+414
+	move.l #__ZL18kangUppercutFrames,__ZL12fighterKang2+418
+	move.l #__ZL15kangKipUpFrames,__ZL12fighterKang2+442
+	move.l #__ZL15kangSweepFrames,__ZL12fighterKang2+446
+	move.l #__ZL20kangRoundhouseFrames,__ZL12fighterKang2+450
+	move.l #__ZL19kangBodyPunchFrames,__ZL12fighterKang2+454
+	move.l #__ZL18kangBodyKickFrames,__ZL12fighterKang2+458
+	move.l #__ZL18kangDuckKickFrames,__ZL12fighterKang2+462
+	move.l #__ZL15kangThrowFrames,__ZL12fighterKang2+466
+	move.l #__ZL21kangBeingThrownFrames,__ZL12fighterKang2+470
+	move.l #__ZL24kangBeingThrownLowFrames,__ZL12fighterKang2+474
+	move.l #__ZL16kangHitLowFrames,__ZL12fighterKang2+422
+	move.l #__ZL17kangHitHighFrames,__ZL12fighterKang2+426
+	move.l #__ZL17kangHitBackFrames,__ZL12fighterKang2+430
+	move.l #__ZL17kangHitFallFrames,__ZL12fighterKang2+434
+	move.l #__ZL18kangHitSweepFrames,__ZL12fighterKang2+438
+	move.l #__ZL18scorpionIdleFrames,__ZL15fighterScorpion+342
+	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterScorpion+346
+	move.l #__ZL17subzeroWinsFrames,__ZL15fighterScorpion+350
+	move.l #__ZL18scorpionWalkFrames,__ZL15fighterScorpion+354
+	move.l #__ZL17subzeroTurnFrames,__ZL15fighterScorpion+358
+	move.l #__ZL17subzeroJumpFrames,__ZL15fighterScorpion+362
+	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterScorpion+366
+	move.l #__ZL17subzeroDuckFrames,__ZL15fighterScorpion+370
+	move.l #__ZL18subzeroBlockFrames,__ZL15fighterScorpion+374
+	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterScorpion+378
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterScorpion+382
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterScorpion+386
+	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterScorpion+390
+	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterScorpion+394
+	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterScorpion+398
+	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterScorpion+402
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterScorpion+406
+	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterScorpion+410
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterScorpion+414
+	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterScorpion+418
+	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterScorpion+442
+	move.l #__ZL18subzeroSweepFrames,__ZL15fighterScorpion+446
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterScorpion+450
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterScorpion+454
+	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterScorpion+458
+	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterScorpion+462
+	move.l #__ZL18subzeroThrowFrames,__ZL15fighterScorpion+466
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterScorpion+470
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterScorpion+474
+	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterScorpion+422
+	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterScorpion+426
+	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterScorpion+430
+	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterScorpion+434
+	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterScorpion+438
+	move.l #__ZL18scorpionIdleFrames,__ZL16fighterScorpion2+342
+	move.l #__ZL18subzeroDizzyFrames,__ZL16fighterScorpion2+346
+	move.l #__ZL17subzeroWinsFrames,__ZL16fighterScorpion2+350
+	move.l #__ZL18scorpionWalkFrames,__ZL16fighterScorpion2+354
+	move.l #__ZL17subzeroTurnFrames,__ZL16fighterScorpion2+358
+	move.l #__ZL17subzeroJumpFrames,__ZL16fighterScorpion2+362
+	move.l #__ZL21subzeroJumpRollFrames,__ZL16fighterScorpion2+366
+	move.l #__ZL17subzeroDuckFrames,__ZL16fighterScorpion2+370
+	move.l #__ZL18subzeroBlockFrames,__ZL16fighterScorpion2+374
+	move.l #__ZL21subzeroBlockHitFrames,__ZL16fighterScorpion2+378
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL16fighterScorpion2+382
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL16fighterScorpion2+386
+	move.l #__ZL21subzeroPunchLowFrames,__ZL16fighterScorpion2+390
+	move.l #__ZL22subzeroPunchHighFrames,__ZL16fighterScorpion2+394
+	move.l #__ZL20subzeroKickLowFrames,__ZL16fighterScorpion2+398
+	move.l #__ZL21subzeroKickHighFrames,__ZL16fighterScorpion2+402
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL16fighterScorpion2+406
+	move.l #__ZL21subzeroJumpKickFrames,__ZL16fighterScorpion2+410
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL16fighterScorpion2+414
+	move.l #__ZL21subzeroUppercutFrames,__ZL16fighterScorpion2+418
+	move.l #__ZL18subzeroKipUpFrames,__ZL16fighterScorpion2+442
+	move.l #__ZL18subzeroSweepFrames,__ZL16fighterScorpion2+446
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL16fighterScorpion2+450
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL16fighterScorpion2+454
+	move.l #__ZL21subzeroBodyKickFrames,__ZL16fighterScorpion2+458
+	move.l #__ZL21subzeroDuckKickFrames,__ZL16fighterScorpion2+462
+	move.l #__ZL18subzeroThrowFrames,__ZL16fighterScorpion2+466
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL16fighterScorpion2+470
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL16fighterScorpion2+474
+	move.l #__ZL19subzeroHitLowFrames,__ZL16fighterScorpion2+422
+	move.l #__ZL20subzeroHitHighFrames,__ZL16fighterScorpion2+426
+	move.l #__ZL20subzeroHitBackFrames,__ZL16fighterScorpion2+430
+	move.l #__ZL20subzeroHitFallFrames,__ZL16fighterScorpion2+434
+	move.l #__ZL21subzeroHitSweepFrames,__ZL16fighterScorpion2+438
+	move.l #__ZL17subzeroIdleFrames,__ZL14fighterSubzero+342
+	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterSubzero+346
+	move.l #__ZL17subzeroWinsFrames,__ZL14fighterSubzero+350
+	move.l #__ZL17subzeroWalkFrames,__ZL14fighterSubzero+354
+	move.l #__ZL17subzeroTurnFrames,__ZL14fighterSubzero+358
+	move.l #__ZL17subzeroJumpFrames,__ZL14fighterSubzero+362
+	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterSubzero+366
+	move.l #__ZL17subzeroDuckFrames,__ZL14fighterSubzero+370
+	move.l #__ZL18subzeroBlockFrames,__ZL14fighterSubzero+374
+	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterSubzero+378
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterSubzero+382
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterSubzero+386
+	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterSubzero+390
+	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterSubzero+394
+	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterSubzero+398
+	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterSubzero+402
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterSubzero+406
+	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterSubzero+410
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterSubzero+414
+	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterSubzero+418
+	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterSubzero+442
+	move.l #__ZL18subzeroSweepFrames,__ZL14fighterSubzero+446
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterSubzero+450
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterSubzero+454
+	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterSubzero+458
+	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterSubzero+462
+	move.l #__ZL18subzeroThrowFrames,__ZL14fighterSubzero+466
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterSubzero+470
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterSubzero+474
+	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterSubzero+422
+	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterSubzero+426
+	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterSubzero+430
+	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterSubzero+434
+	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterSubzero+438
+	move.l #__ZL17subzeroIdleFrames,__ZL15fighterSubzero2+342
+	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterSubzero2+346
+	move.l #__ZL17subzeroWinsFrames,__ZL15fighterSubzero2+350
+	move.l #__ZL17subzeroTurnFrames,__ZL15fighterSubzero2+358
+	move.l #__ZL17subzeroWalkFrames,__ZL15fighterSubzero2+354
+	move.l #__ZL17subzeroJumpFrames,__ZL15fighterSubzero2+362
+	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterSubzero2+366
+	move.l #__ZL17subzeroDuckFrames,__ZL15fighterSubzero2+370
+	move.l #__ZL18subzeroBlockFrames,__ZL15fighterSubzero2+374
+	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterSubzero2+378
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterSubzero2+382
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterSubzero2+386
+	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterSubzero2+390
+	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterSubzero2+394
+	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterSubzero2+398
+	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterSubzero2+402
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterSubzero2+406
+	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterSubzero2+410
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterSubzero2+414
+	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterSubzero2+418
+	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterSubzero2+442
+	move.l #__ZL18subzeroSweepFrames,__ZL15fighterSubzero2+446
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterSubzero2+450
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterSubzero2+454
+	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterSubzero2+458
+	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterSubzero2+462
+	move.l #__ZL18subzeroThrowFrames,__ZL15fighterSubzero2+466
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterSubzero2+470
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterSubzero2+474
+	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterSubzero2+422
+	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterSubzero2+426
+	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterSubzero2+430
+	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterSubzero2+434
+	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterSubzero2+438
+	move.l #__ZL15sonyaIdleFrames,__ZL12fighterSonya+342
+	move.l #__ZL16sonyaDizzyFrames,__ZL12fighterSonya+346
+	move.l #__ZL15sonyaWinsFrames,__ZL12fighterSonya+350
+	move.l #__ZL15sonyaWalkFrames,__ZL12fighterSonya+354
+	move.l #__ZL15sonyaTurnFrames,__ZL12fighterSonya+358
+	move.l #__ZL15sonyaJumpFrames,__ZL12fighterSonya+362
+	move.l #__ZL19sonyaJumpRollFrames,__ZL12fighterSonya+366
+	move.l #__ZL15sonyaDuckFrames,__ZL12fighterSonya+370
+	move.l #__ZL16sonyaBlockFrames,__ZL12fighterSonya+374
+	move.l #__ZL19sonyaBlockHitFrames,__ZL12fighterSonya+378
+	move.l #__ZL20sonyaBlockDuckFrames,__ZL12fighterSonya+382
+	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL12fighterSonya+386
+	move.l #__ZL19sonyaPunchLowFrames,__ZL12fighterSonya+390
+	move.l #__ZL20sonyaPunchHighFrames,__ZL12fighterSonya+394
+	move.l #__ZL18sonyaKickLowFrames,__ZL12fighterSonya+398
+	move.l #__ZL19sonyaKickHighFrames,__ZL12fighterSonya+402
+	move.l #__ZL20sonyaJumpPunchFrames,__ZL12fighterSonya+406
+	move.l #__ZL19sonyaJumpKickFrames,__ZL12fighterSonya+410
+	move.l #__ZL23sonyaJumpDropKickFrames,__ZL12fighterSonya+414
+	move.l #__ZL19sonyaUppercutFrames,__ZL12fighterSonya+418
+	move.l #__ZL16sonyaKipUpFrames,__ZL12fighterSonya+442
+	move.l #__ZL16sonyaSweepFrames,__ZL12fighterSonya+446
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL12fighterSonya+450
+	move.l #__ZL20sonyaBodyPunchFrames,__ZL12fighterSonya+454
+	move.l #__ZL19sonyaBodyKickFrames,__ZL12fighterSonya+458
+	move.l #__ZL19sonyaDuckKickFrames,__ZL12fighterSonya+462
+	move.l #__ZL16sonyaThrowFrames,__ZL12fighterSonya+466
+	move.l #__ZL22sonyaBeingThrownFrames,__ZL12fighterSonya+470
+	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL12fighterSonya+474
+	move.l #__ZL17sonyaHitLowFrames,__ZL12fighterSonya+422
+	move.l #__ZL18sonyaHitHighFrames,__ZL12fighterSonya+426
+	move.l #__ZL18sonyaHitBackFrames,__ZL12fighterSonya+430
+	move.l #__ZL18sonyaHitFallFrames,__ZL12fighterSonya+434
+	move.l #__ZL19sonyaHitSweepFrames,__ZL12fighterSonya+438
+	move.l #__ZL15sonyaIdleFrames,__ZL13fighterSonya2+342
+	move.l #__ZL16sonyaDizzyFrames,__ZL13fighterSonya2+346
+	move.l #__ZL15sonyaWinsFrames,__ZL13fighterSonya2+350
+	move.l #__ZL15sonyaWalkFrames,__ZL13fighterSonya2+354
+	move.l #__ZL15sonyaTurnFrames,__ZL13fighterSonya2+358
+	move.l #__ZL15sonyaJumpFrames,__ZL13fighterSonya2+362
+	move.l #__ZL19sonyaJumpRollFrames,__ZL13fighterSonya2+366
+	move.l #__ZL15sonyaDuckFrames,__ZL13fighterSonya2+370
+	move.l #__ZL16sonyaBlockFrames,__ZL13fighterSonya2+374
+	move.l #__ZL19sonyaBlockHitFrames,__ZL13fighterSonya2+378
+	move.l #__ZL20sonyaBlockDuckFrames,__ZL13fighterSonya2+382
+	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL13fighterSonya2+386
+	move.l #__ZL19sonyaPunchLowFrames,__ZL13fighterSonya2+390
+	move.l #__ZL20sonyaPunchHighFrames,__ZL13fighterSonya2+394
+	move.l #__ZL18sonyaKickLowFrames,__ZL13fighterSonya2+398
+	move.l #__ZL19sonyaKickHighFrames,__ZL13fighterSonya2+402
+	move.l #__ZL20sonyaJumpPunchFrames,__ZL13fighterSonya2+406
+	move.l #__ZL19sonyaJumpKickFrames,__ZL13fighterSonya2+410
+	move.l #__ZL23sonyaJumpDropKickFrames,__ZL13fighterSonya2+414
+	move.l #__ZL19sonyaUppercutFrames,__ZL13fighterSonya2+418
+	move.l #__ZL16sonyaKipUpFrames,__ZL13fighterSonya2+442
+	move.l #__ZL16sonyaSweepFrames,__ZL13fighterSonya2+446
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL13fighterSonya2+450
+	move.l #__ZL20sonyaBodyPunchFrames,__ZL13fighterSonya2+454
+	move.l #__ZL19sonyaBodyKickFrames,__ZL13fighterSonya2+458
+	move.l #__ZL19sonyaDuckKickFrames,__ZL13fighterSonya2+462
+	move.l #__ZL16sonyaThrowFrames,__ZL13fighterSonya2+466
+	move.l #__ZL22sonyaBeingThrownFrames,__ZL13fighterSonya2+470
+	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL13fighterSonya2+474
+	move.l #__ZL17sonyaHitLowFrames,__ZL13fighterSonya2+422
+	move.l #__ZL18sonyaHitHighFrames,__ZL13fighterSonya2+426
+	move.l #__ZL18sonyaHitBackFrames,__ZL13fighterSonya2+430
+	move.l #__ZL18sonyaHitFallFrames,__ZL13fighterSonya2+434
+	move.l #__ZL19sonyaHitSweepFrames,__ZL13fighterSonya2+438
 	move.w #0,15728728
 	pea 20.w
 	pea 5.w
@@ -3809,13 +3941,13 @@ __Z9basicmainv:
 	clr.l __ZL11BLACKPALx16+28
 	lea __ZL8BLACKPAL,%a0
 	addq.l #8,%sp
-.L159:
+.L165:
 	clr.l (%a0)+
 	cmp.l #__ZL8BLACKPAL+512,%a0
-	jne .L159
+	jne .L165
 	jsr __Z15initAlphaScreenv
-	move.l #134,-12(%fp)
-	move.l #-134,-8(%fp)
+	move.w #134,-6(%fp)
+	move.w #-134,%d7
 	clr.l -4(%fp)
 	move.l #jsfGetPadPressed,%d3
 	lea rapFadeClut,%a3
@@ -3823,29 +3955,28 @@ __Z9basicmainv:
 	lea rapLocate,%a5
 	lea _rapPrint,%a4
 	move.l #___floatsisf,%d4
-	move.l #__Z13fighterUpdatefP7FighterP14SpriteAnimator,%d7
-.L325:
+.L339:
 	move.w raptor_ticks,%a0
 	move.l %a0,%d2
 	sub.l _lastTicks,%d2
 	move.l %a0,_lastTicks
 	tst.b _onAlphaScreen
-	jne .L342
-.L161:
+	jne .L349
+.L167:
 	tst.b _onTruFunScreen
-	jeq .L167
+	jeq .L173
 	tst.b _fadedIn
-	jeq .L343
-.L168:
+	jeq .L350
+.L174:
 	tst.b _fadedOut
-	jne .L164
+	jne .L170
 	move.w raptor_ticks,%a0
 	move.l _gameStartTicks,%d0
 	add.l #300,%d0
 	cmp.l %a0,%d0
-	jge .L164
+	jge .L170
 	moveq #90,%d2
-.L170:
+.L176:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -3855,7 +3986,7 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L170
+	jne .L176
 	move.b #1,_fadedOut
 	clr.b _onTruFunScreen
 	jsr RAPTOR_particle_clear
@@ -3877,33 +4008,33 @@ __Z9basicmainv:
 	move.l %a0,_gameStartTicks
 	move.b #1,_onTitleScreen
 	lea (12,%sp),%sp
-.L164:
+.L170:
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-.L344:
+.L351:
 	move.w raptor_ticks,%a0
 	move.l %a0,%d2
 	sub.l _lastTicks,%d2
 	move.l %a0,_lastTicks
 	tst.b _onAlphaScreen
-	jeq .L161
-.L342:
+	jeq .L167
+.L349:
 	pea 1.w
 	move.l %d3,%a0
 	jsr (%a0)
 	move.l %d0,__ZL4pad1
-	moveq #2,%d1
-	move.l %d1,(%sp)
+	moveq #2,%d2
+	move.l %d2,(%sp)
 	move.l %d3,%a1
 	jsr (%a1)
 	move.l %d0,__ZL4pad2
 	addq.l #4,%sp
 	tst.b _fadedIn
-	jne .L162
+	jne .L168
 	move.b #1,_fadedIn
 	moveq #80,%d2
-.L163:
+.L169:
 	move.l #8447008,-(%sp)
 	pea 256.w
 	clr.l -(%sp)
@@ -3913,17 +4044,17 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L163
+	jne .L169
 	pea __ZL12soundHandler
 	jsr __Z21sfxAnnouncerExcellentP12SoundHandler
-	moveq #15,%d2
-	move.l %d2,(%sp)
+	moveq #15,%d0
+	move.l %d0,(%sp)
 	jsr rapUse8x16fontPalette
 	moveq #1,%d0
 	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #8,%d0
-	move.l %d0,(%sp)
+	moveq #8,%d1
+	move.l %d1,(%sp)
 	pea 108.w
 	jsr (%a5)
 	move.l #.LC69,_js_r_textbuffer
@@ -3997,44 +4128,44 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	jsr (%a4)
 	tst.b _fadedIn
-	jeq .L164
-.L162:
+	jeq .L170
+.L168:
 	tst.b _fadedOut
-	jne .L164
+	jne .L170
 	move.w raptor_ticks,%a0
 	move.l _gameStartTicks,%d0
 	move.l %d0,%d1
 	add.l #240,%d1
 	cmp.l %a0,%d1
-	jge .L165
+	jge .L171
 	move.l __ZL4pad1,%d1
-	move.l JAGPAD_C,-28(%fp)
-	move.l -28(%fp),%d2
+	move.l JAGPAD_C,-22(%fp)
+	move.l -22(%fp),%d2
 	and.l %d1,%d2
-	jne .L305
+	jne .L316
 	move.l JAGPAD_B,%a1
 	move.l %a1,%d2
 	and.l %d1,%d2
-	jne .L305
-	move.l JAGPAD_A,-16(%fp)
-	move.l -16(%fp),%d2
+	jne .L316
+	move.l JAGPAD_A,-10(%fp)
+	move.l -10(%fp),%d2
 	and.l %d1,%d2
-	jne .L305
-	move.l JAGPAD_OPTION,-20(%fp)
-	and.l -20(%fp),%d1
-	jne .L305
-	move.l __ZL4pad2,-24(%fp)
+	jne .L316
+	move.l JAGPAD_OPTION,-14(%fp)
+	and.l -14(%fp),%d1
+	jne .L316
+	move.l __ZL4pad2,-18(%fp)
 	move.l %a1,%d2
-	or.l -28(%fp),%d2
-	and.l -24(%fp),%d2
-	jne .L305
-	move.l -16(%fp),%d2
-	or.l -20(%fp),%d2
-	and.l -24(%fp),%d2
-	jeq .L165
-.L305:
+	or.l -22(%fp),%d2
+	and.l -18(%fp),%d2
+	jne .L316
+	move.l -10(%fp),%d2
+	or.l -14(%fp),%d2
+	and.l -18(%fp),%d2
+	jeq .L171
+.L316:
 	moveq #90,%d2
-.L312:
+.L323:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -4044,7 +4175,7 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L312
+	jne .L323
 	move.b #1,_fadedOut
 	clr.b _onAlphaScreen
 	jsr RAPTOR_particle_clear
@@ -4064,14 +4195,14 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L343:
+	jra .L351
+.L350:
 	move.b #1,_fadedIn
 	pea __ZL12soundHandler
 	jsr __Z9sfxTruFunP12SoundHandler
 	addq.l #4,%sp
 	moveq #80,%d2
-.L169:
+.L175:
 	move.l #8451264,-(%sp)
 	pea 256.w
 	clr.l -(%sp)
@@ -4081,21 +4212,21 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L169
+	jne .L175
 	tst.b _fadedIn
-	jne .L168
+	jne .L174
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L167:
+	jra .L351
+.L173:
 	tst.b _onTitleScreen
-	jeq .L171
+	jeq .L177
 	tst.b _fadedIn
-	jne .L172
+	jne .L178
 	move.b #1,_fadedIn
 	moveq #80,%d2
-.L173:
+.L179:
 	move.l #8434352,-(%sp)
 	pea 256.w
 	clr.l -(%sp)
@@ -4105,22 +4236,22 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L173
+	jne .L179
 	pea __ZL12soundHandler
 	jsr __Z8sfxIntroP12SoundHandler
 	addq.l #4,%sp
 	tst.b _fadedIn
-	jeq .L164
-.L172:
+	jeq .L170
+.L178:
 	tst.b _fadedOut
-	jne .L164
+	jne .L170
 	move.w raptor_ticks,%a0
 	move.l _gameStartTicks,%d0
 	add.l #240,%d0
 	cmp.l %a0,%d0
-	jge .L164
+	jge .L170
 	moveq #90,%d2
-.L174:
+.L180:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -4130,35 +4261,36 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L174
+	jne .L180
 	move.b #1,_fadedOut
 	clr.b _onTitleScreen
 	jsr __Z14initMenuScreenv
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L171:
-	tst.b _onMenuScreen
-	jeq .L175
-	cmp.l _menuTicks.l,%a0
-	jle .L176
-	move.l %a0,_menuTicks
-	addq.l #1,-8(%fp)
-	addq.l #1,-12(%fp)
-	cmp.l #268,-8(%fp)
-	jgt .L306
-	move.w -6(%fp),%d1
+	jra .L351
 .L177:
-	cmp.l #268,-12(%fp)
-	jgt .L307
-	move.w -10(%fp),%d0
+	tst.b _onMenuScreen
+	jeq .L181
+	cmp.l _menuTicks.l,%a0
+	jle .L182
+	move.l %a0,_menuTicks
+	addq.w #1,%d7
+	addq.w #1,-6(%fp)
+	cmp.w #268,%d7
+	jle .L183
+	move.w #-268,%d7
+.L183:
+	cmp.w #268,-6(%fp)
+	jle .L184
+	move.w #-268,-6(%fp)
+.L184:
 	move.l sprite,%a0
-	move.w %d1,780(%a0)
-	move.w %d0,972(%a0)
-	move.w %d1,1164(%a0)
-	move.w %d0,1356(%a0)
-.L176:
+	move.w %d7,780(%a0)
+	move.w -6(%fp),972(%a0)
+	move.w %d7,1164(%a0)
+	move.w -6(%fp),1356(%a0)
+.L182:
 	pea 1.w
 	move.l %d3,%a1
 	jsr (%a1)
@@ -4166,33 +4298,53 @@ __Z9basicmainv:
 	move.l %d0,%d1
 	and.l JAGPAD_LEFT,%d1
 	addq.l #4,%sp
-	jeq .L179
+	jeq .L185
 	tst.b _menuChanged
-	jne .L179
+	jne .L185
 	tst.b _menuSelected
-	jne .L179
+	jne .L185
 	move.l _menuIndex,%d0
 	subq.l #1,%d0
 	move.l %d0,_menuIndex
-	jlt .L345
+	jlt .L352
 	move.b #1,_menuChanged
 	pea __ZL12soundHandler
 	jsr __Z11sfxP2CursorP12SoundHandler
 	addq.l #4,%sp
-.L181:
+.L187:
 	move.w raptor_ticks,%a0
 	tst.b _menuChanged
-	jne .L185
-.L346:
+	jne .L191
+.L355:
 	move.l _attractModeTicks,%d0
+.L192:
 	add.l #600,%d0
 	cmp.l %d0,%a0
-	jle .L164
-.L347:
+	jle .L170
 	clr.b _onMenuScreen
-	clr.l _attractModeIndex
+	move.l sprite,%a0
+	moveq #-1,%d0
+	move.l %d0,772(%a0)
+	move.l %d0,964(%a0)
+	move.l %d0,1156(%a0)
+	move.l %d0,1348(%a0)
+	move.l %d0,1540(%a0)
+	moveq #90,%d2
+.L196:
+	pea __ZL8BLACKPAL
+	pea 256.w
+	clr.l -(%sp)
+	jsr (%a3)
+	addq.l #8,%sp
+	clr.l (%sp)
+	jsr (%a2)
+	subq.l #1,%d2
+	addq.l #4,%sp
+	jne .L196
+	clr.w _attractModeIndex
 	clr.b _fadedIn
 	clr.b _fadedOut
+	move.w raptor_ticks,%a0
 	move.l %a0,_gameStartTicks
 	move.l %a0,_attractModeTicks
 	move.b #1,_inAttractMode
@@ -4200,252 +4352,28 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L345:
+	jra .L351
+.L352:
 	moveq #2,%d0
 	move.l %d0,_menuIndex
 	move.b #1,_menuChanged
 	pea __ZL12soundHandler
 	jsr __Z11sfxP2CursorP12SoundHandler
 	addq.l #4,%sp
-	jra .L181
-.L175:
+	jra .L187
+.L181:
 	tst.b _inAttractMode
-	jeq .L190
-	move.l _attractModeTicks,%d0
-	add.l #300,%d0
-	cmp.l %a0,%d0
-	jge .L328
-	move.l %a0,_attractModeTicks
-	move.l _attractModeIndex,%d0
-	addq.l #1,%d0
-	move.l %d0,_attractModeIndex
-	moveq #4,%d1
-	cmp.l %d0,%d1
-	jge .L193
-	clr.l _attractModeIndex
-.L194:
-	jsr __Z15initLeaderboardv
-.L328:
-	move.l _attractModeIndex,%d0
-.L192:
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jne .L164
-.L363:
-	moveq #6,%d2
-	cmp.l _fmvIndex.l,%d2
-	jcs .L164
-	move.l _fmvIndex,%d0
-	add.l %d0,%d0
-	move.w .L208(%pc,%d0.l),%d0
-	jmp %pc@(2,%d0:w)
-.L208:
-	.word .L201-.L208
-	.word .L202-.L208
-	.word .L203-.L208
-	.word .L204-.L208
-	.word .L205-.L208
-	.word .L206-.L208
-	.word .L207-.L208
-.L206:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 16.w
-	pea __ZL16fmvSubzeroFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L205:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 19.w
-	pea __ZL17fmvScorpionFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L204:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 18.w
-	pea __ZL13fmvKangFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L203:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 20.w
-	pea __ZL15fmvRaidenFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L202:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 21.w
-	pea __ZL13fmvKanoFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L201:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 18.w
-	pea __ZL13fmvCageFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L207:
-	pea 1.w
-	pea 43.w
-	pea 120.w
-	clr.l -(%sp)
-	pea 1.w
-	pea 13.w
-	pea __ZL14fmvSonyaFrames
-	pea __ZL11fmvAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibbiii
-	lea (32,%sp),%sp
-	clr.l -(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	jra .L344
-.L179:
-	move.l %d0,%d1
-	and.l JAGPAD_RIGHT,%d1
-	jeq .L182
-	tst.b _menuChanged
-	jne .L182
-	tst.b _menuSelected
-	jne .L182
-	move.l _menuIndex,%d0
-	addq.l #1,%d0
-	move.l %d0,_menuIndex
-	moveq #2,%d1
-	cmp.l %d0,%d1
-	jge .L183
-	clr.l _menuIndex
-.L183:
-	move.b #1,_menuChanged
-	pea __ZL12soundHandler
-	jsr __Z11sfxP1CursorP12SoundHandler
-	addq.l #4,%sp
-	move.w raptor_ticks,%a0
-	tst.b _menuChanged
-	jeq .L346
-.L185:
-	move.l %a0,_attractModeTicks
-	clr.b _menuChanged
-	move.l _menuIndex,%d0
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jeq .L188
-	moveq #2,%d2
-	cmp.l %d0,%d2
-	jeq .L189
-	tst.l %d0
-	jne .L326
-	move.l sprite,%a1
-	move.l #12643376,1580(%a1)
-	move.l %a0,%d0
-	add.l #600,%d0
-	cmp.l %d0,%a0
-	jle .L164
-	jra .L347
-.L182:
-	move.l JAGPAD_B,%d1
-	or.l JAGPAD_A,%d1
-	or.l JAGPAD_C,%d1
-	and.l %d1,%d0
-	jeq .L181
-	tst.l _menuIndex
-	jne .L181
-	tst.b _menuSelected
-	jne .L181
-	move.b #1,_menuSelected
-	pea __ZL12soundHandler
-	jsr __Z13sfxTitleStartP12SoundHandler
-	move.l sprite,%a0
-	moveq #-1,%d2
-	move.l %d2,772(%a0)
-	move.l %d2,964(%a0)
-	move.l %d2,1156(%a0)
-	move.l %d2,1348(%a0)
-	move.l %d2,1540(%a0)
-	addq.l #4,%sp
-	moveq #90,%d2
-.L184:
-	pea __ZL8BLACKPAL
-	pea 256.w
-	clr.l -(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	clr.l (%sp)
-	jsr (%a2)
-	subq.l #1,%d2
-	addq.l #4,%sp
-	jne .L184
-	move.b #1,_fadedOut
-	jsr __Z14fighterStartUpv
-	jsr __Z25switchScreenChooseFighterv
-	pea __ZL12soundHandler
-	jsr __Z10musicTitleP12SoundHandler
-	addq.l #4,%sp
-	jra .L181
-.L190:
+	jne .L353
 	tst.b _onScreenChooseFighter
-	jne .L348
+	jne .L354
 	tst.b _onScreenVsBattle
-	jeq .L276
+	jeq .L287
 	move.l -4(%fp),%a1
 	lea (240,%a1),%a1
 	cmp.l %a0,%a1
-	jge .L164
+	jge .L170
 	moveq #80,%d2
-.L277:
+.L288:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -4455,7 +4383,7 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L277
+	jne .L288
 	move.w raptor_ticks,%a0
 	move.l %a0,-4(%fp)
 	jsr __Z6bgInitv
@@ -4468,57 +4396,81 @@ __Z9basicmainv:
 	jsr __Z19fighterRestartMatchP7Fighter
 	move.l %d6,(%sp)
 	jsr __Z19fighterRestartMatchP7Fighter
-	moveq #1,%d2
-	move.l %d2,(%sp)
-	move.l _p2Cursor,-(%sp)
-	move.l _p1Cursor,-(%sp)
+	moveq #1,%d1
+	move.l %d1,(%sp)
+	move.w _p2Cursor,%a1
+	move.l %a1,-(%sp)
+	move.w _p1Cursor,%a0
+	move.l %a0,-(%sp)
 	jsr __Z17switchScreenFightiib
 	lea (12,%sp),%sp
 	jsr __Z19displayWinnerMedalsv
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L165:
-	add.l #1200,%d0
-	cmp.l %a0,%d0
-	jge .L164
-	moveq #90,%d2
-	jra .L312
-.L307:
-	move.w #-268,%d0
-	move.l #-268,-12(%fp)
-	move.l sprite,%a0
-	move.w %d1,780(%a0)
-	move.w %d0,972(%a0)
-	move.w %d1,1164(%a0)
-	move.w %d0,1356(%a0)
-	jra .L176
-.L306:
-	move.w #-268,%d1
-	move.l #-268,-8(%fp)
-	jra .L177
-.L276:
-	tst.b _onScreenFight
-	jeq .L164
-	pea 1.w
-	jsr jsfGetPad
-	move.l %d0,__ZL4pad1
+	jra .L351
+.L185:
+	move.l %d0,%d1
+	and.l JAGPAD_RIGHT,%d1
+	jeq .L188
+	tst.b _menuChanged
+	jne .L188
+	tst.b _menuSelected
+	jne .L188
+	move.l _menuIndex,%d0
+	addq.l #1,%d0
+	move.l %d0,_menuIndex
 	moveq #2,%d1
-	move.l %d1,(%sp)
-	jsr jsfGetPad
-	move.l %d0,__ZL4pad2
-	addq.l #4,%sp
-	jsr __Z19displayWinnerMedalsv
-	move.l %d6,-(%sp)
-	move.l %d5,-(%sp)
+	cmp.l %d0,%d1
+	jge .L189
+	clr.l _menuIndex
+.L189:
+	move.b #1,_menuChanged
 	pea __ZL12soundHandler
-	jsr __Z11matchUpdateP12SoundHandlerP7FighterS2_
-	lea (12,%sp),%sp
-	tst.b %d0
-	jne .L278
+	jsr __Z11sfxP1CursorP12SoundHandler
+	addq.l #4,%sp
+	move.w raptor_ticks,%a0
+	tst.b _menuChanged
+	jeq .L355
+.L191:
+	move.l %a0,_attractModeTicks
+	clr.b _menuChanged
+	move.l _menuIndex,%d0
+	moveq #1,%d1
+	cmp.l %d0,%d1
+	jeq .L194
+	moveq #2,%d2
+	cmp.l %d0,%d2
+	jeq .L195
+	tst.l %d0
+	jne .L340
+	move.l sprite,%a1
+	move.l #12639200,1580(%a1)
+	move.l %a0,%d0
+	jra .L192
+.L188:
+	move.l JAGPAD_B,%d1
+	or.l JAGPAD_A,%d1
+	or.l JAGPAD_C,%d1
+	and.l %d1,%d0
+	jeq .L187
+	tst.l _menuIndex
+	jne .L187
+	tst.b _menuSelected
+	jne .L187
+	move.b #1,_menuSelected
+	pea __ZL12soundHandler
+	jsr __Z13sfxTitleStartP12SoundHandler
+	move.l sprite,%a0
+	moveq #-1,%d2
+	move.l %d2,772(%a0)
+	move.l %d2,964(%a0)
+	move.l %d2,1156(%a0)
+	move.l %d2,1348(%a0)
+	move.l %d2,1540(%a0)
+	addq.l #4,%sp
 	moveq #90,%d2
-.L279:
+.L190:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -4528,19 +4480,299 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L279
-	moveq #14,%d0
+	jne .L190
+	move.b #1,_fadedOut
+	jsr __Z14fighterStartUpv
+	jsr __Z25switchScreenChooseFighterv
+	pea __ZL12soundHandler
+	jsr __Z10musicTitleP12SoundHandler
+	addq.l #4,%sp
+	jra .L187
+.L171:
+	add.l #1200,%d0
+	cmp.l %a0,%d0
+	jge .L170
+	moveq #90,%d2
+	jra .L323
+.L353:
+	pea 1.w
+	move.l %d3,%a0
+	jsr (%a0)
+	move.l %d0,__ZL4pad1
+	move.l JAGPAD_B,%d1
+	or.l JAGPAD_A,%d1
+	or.l JAGPAD_C,%d1
+	and.l %d1,%d0
+	addq.l #4,%sp
+	jne .L356
+	move.w raptor_ticks,%a0
+	move.l _attractModeTicks,%d0
+	add.l #400,%d0
+	cmp.l %a0,%d0
+	jge .L342
+.L199:
+	move.l %a0,_attractModeTicks
+	move.w _attractModeIndex,%d0
+	addq.w #1,%d0
+	move.w %d0,_attractModeIndex
+	cmp.w #4,%d0
+	jle .L201
+	clr.w _attractModeIndex
+.L201:
+	moveq #90,%d2
+.L202:
+	pea __ZL8BLACKPAL
+	pea 256.w
+	clr.l -(%sp)
+	jsr (%a3)
+	addq.l #8,%sp
+	clr.l (%sp)
+	jsr (%a2)
+	subq.l #1,%d2
+	addq.l #4,%sp
+	jne .L202
+	move.w _attractModeIndex,%d0
+	cmp.w #4,%d0
+	jhi .L200
+	and.l #65535,%d0
+	add.l %d0,%d0
+	move.w .L208(%pc,%d0.l),%d0
+	jmp %pc@(2,%d0:w)
+.L208:
+	.word .L203-.L208
+	.word .L204-.L208
+	.word .L205-.L208
+	.word .L206-.L208
+	.word .L207-.L208
+.L356:
+	clr.b _inAttractMode
+	jsr __Z14initMenuScreenv
+	move.w raptor_ticks,%a0
+	move.l _attractModeTicks,%d0
+	add.l #400,%d0
+	cmp.l %a0,%d0
+	jlt .L199
+.L342:
+	move.w _attractModeIndex,%d0
+.L200:
+	cmp.w #1,%d0
+	jeq .L209
+.L357:
+	cmp.w #3,%d0
+	jne .L170
+	tst.b _goroProfileShown
+	jne .L170
+	move.w raptor_ticks,%a0
+	moveq #120,%d0
+	add.l _gameStartTicks,%d0
+	cmp.l %a0,%d0
+	jge .L170
+	move.b #1,_goroProfileShown
+	moveq #24,%d2
+.L219:
+	pea __ZL8BLACKPAL
+	pea 240.w
+	clr.l -(%sp)
+	jsr (%a3)
+	addq.l #8,%sp
+	clr.l (%sp)
+	jsr (%a2)
+	subq.l #1,%d2
+	addq.l #4,%sp
+	jne .L219
+	pea 15.w
+	jsr rapUse8x16fontPalette
+	moveq #1,%d1
+	move.l %d1,_jsfFontSize
+	clr.l _jsfFontIndx
+	moveq #28,%d1
+	move.l %d1,(%sp)
+	pea 26.w
+	jsr (%a5)
+	move.l #.LC80,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 48.w
+	pea 18.w
+	jsr (%a5)
+	move.l #.LC81,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 68.w
+	pea 18.w
+	jsr (%a5)
+	move.l #.LC82,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 88.w
+	pea 30.w
+	jsr (%a5)
+	move.l #.LC83,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 108.w
+	pea 18.w
+	jsr (%a5)
+	move.l #.LC84,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 128.w
+	pea 18.w
+	jsr (%a5)
+	move.l #.LC85,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 148.w
+	pea 34.w
+	jsr (%a5)
+	move.l #.LC86,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	pea 168.w
+	pea 122.w
+	jsr (%a5)
+	move.l #.LC87,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L206:
+	jsr RAPTOR_particle_clear
+	pea __ZL18imageBuffer320x240
+	move.l #12895312,-(%sp)
+	jsr rapUnpack
+	move.l sprite,%a0
+	move.l #__ZL18imageBuffer320x240,236(%a0)
+	moveq #1,%d0
+	move.l %d0,196(%a0)
+	moveq #-1,%d1
+	move.l %d1,388(%a0)
+	move.l %d1,580(%a0)
+	addq.l #8,%sp
+	pea 240.w
+	clr.l -(%sp)
+	move.l #12944144,-(%sp)
+	jsr jsfLoadClut
+	clr.b _fadedIn
+	clr.b _fadedOut
+	move.w raptor_ticks,%a0
+	move.l %a0,_gameStartTicks
+	clr.b _goroProfileShown
+	move.w _attractModeIndex,%d0
+	lea (12,%sp),%sp
+	cmp.w #1,%d0
+	jne .L357
+.L209:
+	moveq #6,%d0
+	cmp.l _fmvIndex.l,%d0
+	jcs .L170
+	move.l _fmvIndex,%d0
+	add.l %d0,%d0
+	move.w .L218(%pc,%d0.l),%d0
+	jmp %pc@(2,%d0:w)
+.L218:
+	.word .L211-.L218
+	.word .L212-.L218
+	.word .L213-.L218
+	.word .L214-.L218
+	.word .L215-.L218
+	.word .L216-.L218
+	.word .L217-.L218
+.L205:
+	jsr RAPTOR_particle_clear
+	move.l sprite,%a0
+	moveq #-1,%d0
+	move.l %d0,196(%a0)
+	move.l %d0,388(%a0)
+	move.l %d0,580(%a0)
+	pea 15.w
+	jsr rapUse8x16fontPalette
+	moveq #1,%d1
+	move.l %d1,_jsfFontSize
+	clr.l _jsfFontIndx
+	moveq #114,%d2
+	move.l %d2,(%sp)
+	pea 112.w
+	jsr (%a5)
+	move.l #.LC65,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	clr.b _fadedIn
+	clr.b _fadedOut
+	move.w raptor_ticks,%a0
+	move.l %a0,_gameStartTicks
+	move.w _attractModeIndex,%d0
+	jra .L200
+.L204:
+	jsr __Z16switchAttractFMVv
+	move.w _attractModeIndex,%d0
+	jra .L200
+.L203:
+	jsr __Z15initLeaderboardv
+	move.w _attractModeIndex,%d0
+	jra .L200
+.L207:
+	jsr __Z11initWinnersv
+	move.w _attractModeIndex,%d0
+	jra .L200
+.L287:
+	tst.b _onScreenFight
+	jeq .L170
+	pea 1.w
+	jsr jsfGetPad
+	move.l %d0,__ZL4pad1
+	moveq #2,%d1
+	move.l %d1,(%sp)
+	jsr jsfGetPad
+	move.l %d0,__ZL4pad2
+	clr.l _jsfFontIndx
+	moveq #2,%d0
+	move.l %d0,_jsfFontSize
+	moveq #8,%d0
+	move.l %d0,(%sp)
+	pea 146.w
+	jsr (%a5)
+	addq.l #8,%sp
+	pea 99.w
+	pea .LC88
+	jsr ee_printf
+	move.l %d0,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a4)
+	jsr __Z19displayWinnerMedalsv
+	move.l %d6,-(%sp)
+	move.l %d5,-(%sp)
+	pea __ZL12soundHandler
+	jsr __Z11matchUpdateP12SoundHandlerP7FighterS2_
+	lea (12,%sp),%sp
+	tst.b %d0
+	jne .L289
+	moveq #90,%d2
+.L290:
+	pea __ZL8BLACKPAL
+	pea 256.w
+	clr.l -(%sp)
+	jsr (%a3)
+	addq.l #8,%sp
+	clr.l (%sp)
+	jsr (%a2)
+	subq.l #1,%d2
+	addq.l #4,%sp
+	jne .L290
+	moveq #14,%d1
 	move.l %d5,%a0
-	move.l %d0,4(%a0)
-	move.b #16,%d0
+	move.l %d1,4(%a0)
+	moveq #16,%d0
 	move.l %d6,%a0
 	move.l %d0,4(%a0)
 	pea __ZL12soundHandler
 	jsr __Z10musicTitleP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z25switchScreenChooseFighterv
-	jra .L325
-.L348:
+	jra .L339
+.L354:
 	pea 1.w
 	move.l %d3,%a0
 	jsr (%a0)
@@ -4551,70 +4783,65 @@ __Z9basicmainv:
 	jsr (%a1)
 	move.l %d0,__ZL4pad2
 	addq.l #4,%sp
-	moveq #-1,%d0
-	cmp.l _p1Selected.l,%d0
-	jeq .L349
-.L210:
-	moveq #6,%d1
-	cmp.l _p1Cursor.l,%d1
-	jcs .L219
-.L352:
-	move.l _p1Cursor,%d0
+	cmp.w #-1,_p1Selected.l
+	jeq .L358
+.L221:
+	cmp.w #6,_p1Cursor.l
+	jhi .L230
+.L360:
+	moveq #0,%d0
+	move.w _p1Cursor,%d0
 	add.l %d0,%d0
-	move.w .L227(%pc,%d0.l),%d0
+	move.w .L238(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L227:
-	.word .L220-.L227
-	.word .L221-.L227
-	.word .L222-.L227
-	.word .L223-.L227
-	.word .L224-.L227
-	.word .L225-.L227
-	.word .L226-.L227
-.L349:
+.L238:
+	.word .L231-.L238
+	.word .L232-.L238
+	.word .L233-.L238
+	.word .L234-.L238
+	.word .L235-.L238
+	.word .L236-.L238
+	.word .L237-.L238
+.L358:
 	move.l __ZL4pad1,%d0
 	move.l %d0,%d1
 	and.l JAGPAD_LEFT,%d1
-	jeq .L211
-	move.l _p1Cursor,%d0
-	subq.l #1,%d0
-	move.l %d0,_p1Cursor
-	moveq #3,%d1
-	tst.l %d0
-	jlt .L350
-	cmp.l %d0,%d1
-	jeq .L351
-.L213:
+	jeq .L222
+	move.w _p1Cursor,%d0
+	subq.w #1,%d0
+	move.w %d0,_p1Cursor
+	jlt .L359
+	cmp.w #3,%d0
+	jeq .L343
+.L224:
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-.L362:
-	moveq #6,%d1
-	cmp.l _p1Cursor.l,%d1
-	jcc .L352
-.L219:
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jeq .L353
-.L228:
-	moveq #6,%d1
-	cmp.l _p2Cursor.l,%d1
-	jcs .L237
-.L356:
-	move.l _p2Cursor,%d0
+.L368:
+	cmp.w #6,_p1Cursor.l
+	jls .L360
+.L230:
+	cmp.w #-1,_p2Selected.l
+	jeq .L361
+.L239:
+	cmp.w #6,_p2Cursor.l
+	jhi .L248
+.L363:
+	moveq #0,%d0
+	move.w _p2Cursor,%d0
 	add.l %d0,%d0
-	move.w .L245(%pc,%d0.l),%d0
+	move.w .L256(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L245:
-	.word .L238-.L245
-	.word .L239-.L245
-	.word .L240-.L245
-	.word .L241-.L245
-	.word .L242-.L245
-	.word .L243-.L245
-	.word .L244-.L245
-.L225:
+.L256:
+	.word .L249-.L256
+	.word .L250-.L256
+	.word .L251-.L256
+	.word .L252-.L256
+	.word .L253-.L256
+	.word .L254-.L256
+	.word .L255-.L256
+.L236:
 	pea __ZL14kangIdleFrames
 	pea __ZL12kangAnimator
 	pea __ZL11fighterKang
@@ -4624,97 +4851,91 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-.L353:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+.L361:
 	move.l __ZL4pad2,%d0
 	move.l %d0,%d1
 	and.l JAGPAD_LEFT,%d1
-	jeq .L229
-	move.l _p2Cursor,%d0
-	subq.l #1,%d0
-	move.l %d0,_p2Cursor
-	moveq #3,%d1
-	tst.l %d0
-	jlt .L354
-	cmp.l %d0,%d1
-	jeq .L355
-.L231:
+	jeq .L240
+	move.w _p2Cursor,%d0
+	subq.w #1,%d0
+	move.w %d0,_p2Cursor
+	jlt .L362
+	cmp.w #3,%d0
+	jeq .L345
+.L242:
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-.L361:
-	moveq #6,%d1
-	cmp.l _p2Cursor.l,%d1
-	jcc .L356
-.L237:
+.L367:
+	cmp.w #6,_p2Cursor.l
+	jls .L363
+.L248:
 	move.l __ZL4pad1,%d1
 	move.l JAGPAD_C,%d0
 	move.l %d0,%d2
 	and.l %d1,%d2
-	jne .L246
-.L358:
+	jne .L257
+.L364:
 	move.l %d1,%d2
 	and.l JAGPAD_B,%d2
-	jne .L246
+	jne .L257
 	move.l %d1,%d2
 	and.l JAGPAD_A,%d2
-	jne .L246
+	jne .L257
 	move.l %d1,%d2
 	and.l JAGPAD_7,%d2
-	jne .L246
+	jne .L257
 	move.l %d1,%d2
 	and.l JAGPAD_8,%d2
-	jne .L246
+	jne .L257
 	and.l JAGPAD_9,%d1
-	jne .L246
+	jne .L257
 	move.l _chooseTicks,%d1
 	add.l #1799,%d1
 	move.w raptor_ticks,%a0
 	cmp.l %d1,%a0
-	jgt .L246
-.L247:
+	jgt .L257
+.L258:
 	move.l __ZL4pad2,%d1
 	and.l %d1,%d0
-	jne .L257
-.L360:
+	jne .L268
+.L366:
 	move.l %d1,%d0
 	and.l JAGPAD_B,%d0
-	jne .L257
+	jne .L268
 	move.l %d1,%d0
 	and.l JAGPAD_A,%d0
-	jne .L257
+	jne .L268
 	move.l %d1,%d0
 	and.l JAGPAD_7,%d0
-	jne .L257
+	jne .L268
 	move.l %d1,%d0
 	and.l JAGPAD_8,%d0
-	jne .L257
+	jne .L268
 	and.l JAGPAD_9,%d1
-	jne .L257
+	jne .L268
 	move.l _chooseTicks,%d0
 	add.l #1799,%d0
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
-	jgt .L257
-.L259:
-	move.l _p2Selected,%d0
-.L258:
-	move.l _p1Selected,-16(%fp)
-	moveq #-1,%d1
-	cmp.l -16(%fp),%d1
-	jeq .L268
-	move.l _p1FlashCount,-20(%fp)
-	moveq #7,%d2
-	cmp.l -20(%fp),%d2
-	jlt .L268
+	jgt .L268
+.L270:
+	move.w _p2Selected,%d0
+.L269:
+	move.w _p1Selected,-10(%fp)
+	cmp.w #-1,-10(%fp)
+	jeq .L279
+	move.w _p1FlashCount,-14(%fp)
+	cmp.w #7,-14(%fp)
+	jgt .L279
 	move.w raptor_ticks,%a0
 	move.l -4(%fp),%a1
 	addq.l #1,%a1
 	cmp.l %a1,%a0
-	jle .L268
+	jle .L279
 	moveq #1,%d1
 	move.l sprite,%a1
 	cmp.l 2116(%a1),%d1
@@ -4727,23 +4948,21 @@ __Z9basicmainv:
 	or.l -4(%fp),%d1
 	move.l sprite,%a1
 	move.l %d1,2116(%a1)
-	move.l -20(%fp),%d1
-	addq.l #1,%d1
-	move.l %d1,_p1FlashCount
+	move.w -14(%fp),%d1
+	addq.w #1,%d1
+	move.w %d1,_p1FlashCount
 	move.l %a0,-4(%fp)
-.L268:
-	moveq #-1,%d2
-	cmp.l %d0,%d2
-	jeq .L271
-	move.l _p2FlashCount,-20(%fp)
-	moveq #7,%d1
-	cmp.l -20(%fp),%d1
-	jlt .L271
+.L279:
+	cmp.w #-1,%d0
+	jeq .L282
+	move.w _p2FlashCount,-14(%fp)
+	cmp.w #7,-14(%fp)
+	jgt .L282
 	move.w raptor_ticks,%a0
 	move.l -4(%fp),%a1
 	addq.l #1,%a1
 	cmp.l %a1,%a0
-	jle .L271
+	jle .L282
 	moveq #1,%d2
 	move.l sprite,%a1
 	cmp.l 1732(%a1),%d2
@@ -4756,27 +4975,21 @@ __Z9basicmainv:
 	or.l -4(%fp),%d1
 	move.l sprite,%a1
 	move.l %d1,1732(%a1)
-	move.l -20(%fp),%d1
-	addq.l #1,%d1
-	move.l %d1,_p2FlashCount
+	move.w -14(%fp),%d1
+	addq.w #1,%d1
+	move.w %d1,_p2FlashCount
 	move.l %a0,-4(%fp)
-.L271:
+.L282:
 	tst.b _chooseFighterDone
-	jne .L357
-	tst.l -16(%fp)
-	jlt .L164
-	tst.l %d0
-	jlt .L164
-	move.b #1,_chooseFighterDone
+	jeq .L341
 	move.w raptor_ticks,%a0
-	move.l %a0,-4(%fp)
-.L274:
+.L285:
 	move.w #120,%a1
 	add.l -4(%fp),%a1
 	cmp.l %a0,%a1
-	jge .L164
+	jge .L170
 	moveq #60,%d2
-.L275:
+.L286:
 	pea __ZL8BLACKPAL
 	pea 256.w
 	clr.l -(%sp)
@@ -4786,11 +4999,13 @@ __Z9basicmainv:
 	jsr (%a2)
 	subq.l #1,%d2
 	addq.l #4,%sp
-	jne .L275
+	jne .L286
 	jsr __Z9musicStopv
 	jsr __Z12stageSetNextv
-	move.l _p2Cursor,-(%sp)
-	move.l _p1Cursor,-(%sp)
+	move.w _p2Cursor,%a1
+	move.l %a1,-(%sp)
+	move.w _p1Cursor,%a0
+	move.l %a0,-(%sp)
 	jsr __Z20switchScreenVsBattleii
 	addq.l #4,%sp
 	move.l #__ZL12soundHandler,(%sp)
@@ -4801,8 +5016,8 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L224:
+	jra .L351
+.L235:
 	pea __ZL16raidenIdleFrames
 	pea __ZL14raidenAnimator
 	pea __ZL13fighterRaiden
@@ -4817,13 +5032,12 @@ __Z9basicmainv:
 	pea 30.w
 	pea __ZL15lightningFrames
 	pea __ZL17lightningAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L223:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L234:
 	pea __ZL15sonyaIdleFrames
 	pea __ZL13sonyaAnimator
 	pea __ZL12fighterSonya
@@ -4833,11 +5047,10 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L222:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L233:
 	pea __ZL17subzeroIdleFrames
 	pea __ZL15subzeroAnimator
 	pea __ZL14fighterSubzero
@@ -4847,11 +5060,10 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L221:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L232:
 	pea __ZL14kanoIdleFrames
 	pea __ZL12kanoAnimator
 	pea __ZL11fighterKano
@@ -4861,11 +5073,10 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L226:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L237:
 	pea __ZL18scorpionIdleFrames
 	pea __ZL16scorpionAnimator
 	pea __ZL15fighterScorpion
@@ -4875,11 +5086,10 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L220:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L231:
 	pea __ZL14cageIdleFrames
 	pea __ZL12cageAnimator
 	pea __ZL11fighterCage
@@ -4889,17 +5099,16 @@ __Z9basicmainv:
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	moveq #-1,%d0
-	cmp.l _p2Selected.l,%d0
-	jne .L228
-	jra .L353
-.L243:
+	cmp.w #-1,_p2Selected.l
+	jne .L239
+	jra .L361
+.L254:
 	pea __ZL14kangIdleFrames
 	pea __ZL13kangAnimator2
 	pea __ZL12fighterKang2
 	move.l %d2,-(%sp)
-	move.l %d4,%a1
-	jsr (%a1)
+	move.l %d4,%a0
+	jsr (%a0)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
@@ -4907,61 +5116,60 @@ __Z9basicmainv:
 	move.l JAGPAD_C,%d0
 	move.l %d0,%d2
 	and.l %d1,%d2
-	jeq .L358
-.L246:
-	moveq #-1,%d1
-	cmp.l _p1Selected.l,%d1
-	jne .L247
-	move.l _p1Cursor,_p1Selected
+	jeq .L364
+.L257:
+	cmp.w #-1,_p1Selected.l
+	jne .L258
+	move.w _p1Cursor,_p1Selected
 	move.l sprite,%a0
-	move.l %d1,2308(%a0)
+	moveq #-1,%d0
+	move.l %d0,2308(%a0)
 	move.w raptor_ticks,%a0
 	move.l %a0,-4(%fp)
 	pea __ZL12soundHandler
 	jsr __Z11sfxSelectedP12SoundHandler
 	addq.l #4,%sp
-	moveq #6,%d0
-	cmp.l _p1Cursor.l,%d0
-	jcc .L359
+	cmp.w #6,_p1Cursor.l
+	jls .L365
 	move.l JAGPAD_C,%d0
 	move.l __ZL4pad2,%d1
 	and.l %d1,%d0
-	jeq .L360
-.L257:
-	move.l _p2Selected,%d0
-	moveq #-1,%d1
-	cmp.l %d0,%d1
-	jne .L258
-	move.l _p2Cursor,_p2Selected
+	jeq .L366
+.L268:
+	move.w _p2Selected,%d0
+	cmp.w #-1,%d0
+	jne .L269
+	move.w _p2Cursor,_p2Selected
 	move.l sprite,%a0
-	move.l %d1,1924(%a0)
+	moveq #-1,%d0
+	move.l %d0,1924(%a0)
 	move.w raptor_ticks,%a0
 	move.l %a0,-4(%fp)
 	pea __ZL12soundHandler
 	jsr __Z11sfxSelectedP12SoundHandler
 	addq.l #4,%sp
-	moveq #6,%d0
-	cmp.l _p2Cursor.l,%d0
-	jcs .L259
-	move.l _p2Cursor,%d0
+	cmp.w #6,_p2Cursor.l
+	jhi .L270
+	moveq #0,%d0
+	move.w _p2Cursor,%d0
 	add.l %d0,%d0
-	move.w .L267(%pc,%d0.l),%d0
+	move.w .L278(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L267:
-	.word .L260-.L267
-	.word .L261-.L267
-	.word .L262-.L267
-	.word .L263-.L267
-	.word .L264-.L267
-	.word .L265-.L267
-	.word .L266-.L267
-.L242:
+.L278:
+	.word .L271-.L278
+	.word .L272-.L278
+	.word .L273-.L278
+	.word .L274-.L278
+	.word .L275-.L278
+	.word .L276-.L278
+	.word .L277-.L278
+.L253:
 	pea __ZL16raidenIdleFrames
 	pea __ZL15raidenAnimator2
 	pea __ZL14fighterRaiden2
 	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
+	move.l %d4,%a1
+	jsr (%a1)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
@@ -4970,278 +5178,258 @@ __Z9basicmainv:
 	pea 30.w
 	pea __ZL15lightningFrames
 	pea __ZL18lightning2Animator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
-	jra .L237
-.L239:
+	jra .L248
+.L250:
 	pea __ZL14kanoIdleFrames
 	pea __ZL13kanoAnimator2
 	pea __ZL12fighterKano2
 	move.l %d2,-(%sp)
-	move.l %d4,%a1
-	jsr (%a1)
+	move.l %d4,%a0
+	jsr (%a0)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	jra .L237
-.L244:
+	jra .L248
+.L255:
 	pea __ZL18scorpionIdleFrames
 	pea __ZL17scorpionAnimator2
 	pea __ZL16fighterScorpion2
 	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
+	move.l %d4,%a1
+	jsr (%a1)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	jra .L237
-.L238:
+	jra .L248
+.L249:
 	pea __ZL14cageIdleFrames
 	pea __ZL13cageAnimator2
 	pea __ZL12fighterCage2
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l %d0,(%sp)
-	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
-	lea (16,%sp),%sp
-	jra .L237
-.L241:
-	pea __ZL15sonyaIdleFrames
-	pea __ZL14sonyaAnimator2
-	pea __ZL13fighterSonya2
 	move.l %d2,-(%sp)
 	move.l %d4,%a1
 	jsr (%a1)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	jra .L237
-.L240:
-	pea __ZL17subzeroIdleFrames
-	pea __ZL16subzeroAnimator2
-	pea __ZL15fighterSubzero2
+	jra .L248
+.L252:
+	pea __ZL15sonyaIdleFrames
+	pea __ZL14sonyaAnimator2
+	pea __ZL13fighterSonya2
 	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
 	move.l %d0,(%sp)
 	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
 	lea (16,%sp),%sp
-	jra .L237
-.L354:
-	move.l %d1,_p2Cursor
+	jra .L248
+.L251:
+	pea __ZL17subzeroIdleFrames
+	pea __ZL16subzeroAnimator2
+	pea __ZL15fighterSubzero2
+	move.l %d2,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame
+	lea (16,%sp),%sp
+	jra .L248
+.L245:
+	and.l JAGPAD_DOWN,%d0
+	jeq .L239
+	move.w _p2Cursor,%d0
+	cmp.w #1,%d0
+	jeq .L346
+	cmp.w #2,%d0
+	jne .L242
+.L345:
+	move.w #6,_p2Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L361
-.L350:
-	move.l %d1,_p1Cursor
+	jra .L367
+.L227:
+	and.l JAGPAD_DOWN,%d0
+	jeq .L221
+	move.w _p1Cursor,%d0
+	cmp.w #1,%d0
+	jeq .L344
+	cmp.w #2,%d0
+	jne .L224
+.L343:
+	move.w #6,_p1Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L326:
+	jra .L368
+.L340:
 	move.l %a0,%d0
-	add.l #600,%d0
-	cmp.l %d0,%a0
-	jle .L164
-	jra .L347
-.L193:
-	moveq #4,%d2
-	cmp.l %d0,%d2
-	jcs .L192
-	add.l %d0,%d0
-	move.w .L199(%pc,%d0.l),%d0
-	jmp %pc@(2,%d0:w)
-.L199:
-	.word .L194-.L199
-	.word .L195-.L199
-	.word .L196-.L199
-	.word .L197-.L199
-	.word .L198-.L199
-.L197:
-	jsr RAPTOR_particle_clear
-	pea __ZL18imageBuffer320x240
-	move.l #12899488,-(%sp)
-	jsr rapUnpack
-	move.l sprite,%a0
-	move.l #__ZL18imageBuffer320x240,236(%a0)
-	moveq #1,%d0
-	move.l %d0,196(%a0)
-	moveq #-1,%d1
-	move.l %d1,388(%a0)
-	move.l %d1,580(%a0)
-	addq.l #8,%sp
-	pea 240.w
-	clr.l -(%sp)
-	move.l #12948320,-(%sp)
-	jsr jsfLoadClut
-	clr.b _fadedIn
-	clr.b _fadedOut
-	move.w raptor_ticks,%a0
-	move.l %a0,_gameStartTicks
-	move.l _attractModeIndex,%d0
-	lea (12,%sp),%sp
-.L364:
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jne .L164
-	jra .L363
-.L196:
-	jsr RAPTOR_particle_clear
-	move.l sprite,%a0
-	moveq #-1,%d0
-	move.l %d0,196(%a0)
-	move.l %d0,388(%a0)
-	move.l %d0,580(%a0)
-	pea 15.w
-	jsr rapUse8x16fontPalette
-	moveq #1,%d1
-	move.l %d1,_jsfFontSize
-	clr.l _jsfFontIndx
-	moveq #114,%d1
-	move.l %d1,(%sp)
-	pea 112.w
-	jsr (%a5)
-	move.l #.LC65,_js_r_textbuffer
-	addq.l #8,%sp
-	jsr (%a4)
-	clr.b _fadedIn
-	clr.b _fadedOut
-	move.w raptor_ticks,%a0
-	move.l %a0,_gameStartTicks
-	move.l _attractModeIndex,%d0
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jne .L164
-	jra .L363
+	jra .L192
 .L195:
-	jsr __Z16switchAttractFMVv
-	move.l _attractModeIndex,%d0
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jne .L164
-	jra .L363
-.L198:
-	jsr RAPTOR_particle_clear
-	pea __ZL18imageBuffer320x240
-	move.l #12948832,-(%sp)
-	jsr rapUnpack
-	move.l sprite,%a0
-	move.l #__ZL18imageBuffer320x240,428(%a0)
-	moveq #1,%d0
-	move.l %d0,388(%a0)
-	moveq #-1,%d1
-	move.l %d1,196(%a0)
-	moveq #8,%d2
-	move.l %d2,480(%a0)
-	addq.l #8,%sp
+	move.l sprite,%a1
+	move.l #12652576,1580(%a1)
+	move.l %a0,%d0
+	jra .L192
+.L194:
+	move.l sprite,%a1
+	move.l #12645888,1580(%a1)
+	move.l %a0,%d0
+	jra .L192
+.L341:
+	tst.w -10(%fp)
+	jlt .L170
+	tst.w %d0
+	jlt .L170
+	move.b #1,_chooseFighterDone
+	move.w raptor_ticks,%a0
+	move.l %a0,-4(%fp)
+	jra .L285
+.L216:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
 	pea 16.w
-	pea 8.w
-	move.l #12956416,-(%sp)
-	jsr jsfLoadClut
-	clr.b _fadedIn
-	clr.b _fadedOut
-	move.w raptor_ticks,%a0
-	move.l %a0,_gameStartTicks
-	move.l _attractModeIndex,%d0
-	lea (12,%sp),%sp
-	jra .L364
-.L189:
-	move.l sprite,%a1
-	move.l #12656752,1580(%a1)
-	move.l %a0,%d0
-	add.l #600,%d0
-	cmp.l %d0,%a0
-	jle .L164
-	jra .L347
-.L188:
-	move.l sprite,%a1
-	move.l #12650064,1580(%a1)
-	move.l %a0,%d0
-	add.l #600,%d0
-	cmp.l %d0,%a0
-	jle .L164
-	jra .L347
-.L357:
-	move.w raptor_ticks,%a0
-	jra .L274
-.L229:
-	move.l %d0,%d1
-	and.l JAGPAD_RIGHT,%d1
-	jeq .L232
-	move.l _p2Cursor,%d0
-	addq.l #1,%d0
-	move.l %d0,_p2Cursor
-	moveq #4,%d1
-	cmp.l %d0,%d1
-	jeq .L365
-	moveq #7,%d1
-	cmp.l %d0,%d1
-	jne .L231
-.L335:
-	moveq #4,%d0
-	move.l %d0,_p2Cursor
-	pea __ZL12soundHandler
-	jsr __Z11sfxP1CursorP12SoundHandler
+	pea __ZL16fmvSubzeroFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
 	addq.l #4,%sp
-	jsr __Z17SetPlayerPalettesv
-	jra .L361
+	jra .L351
+.L215:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 19.w
+	pea __ZL17fmvScorpionFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L214:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 18.w
+	pea __ZL13fmvKangFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L213:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 20.w
+	pea __ZL15fmvRaidenFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L212:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 21.w
+	pea __ZL13fmvKanoFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
 .L211:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 18.w
+	pea __ZL13fmvCageFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L217:
+	pea 1.w
+	pea 43.w
+	pea 120.w
+	clr.l -(%sp)
+	pea 1.w
+	pea 13.w
+	pea __ZL14fmvSonyaFrames
+	pea __ZL11fmvAnimator
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #4,%sp
+	jra .L351
+.L222:
 	move.l %d0,%d1
 	and.l JAGPAD_RIGHT,%d1
-	jeq .L214
-	move.l _p1Cursor,%d0
-	addq.l #1,%d0
-	move.l %d0,_p1Cursor
-	moveq #4,%d1
-	cmp.l %d0,%d1
-	jeq .L366
-	moveq #7,%d1
-	cmp.l %d0,%d1
-	jne .L213
-.L333:
-	moveq #4,%d0
-	move.l %d0,_p1Cursor
+	jeq .L225
+	move.w _p1Cursor,%d0
+	addq.w #1,%d0
+	move.w %d0,_p1Cursor
+	cmp.w #4,%d0
+	jeq .L369
+	cmp.w #7,%d0
+	jne .L224
+.L344:
+	move.w #4,_p1Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L359:
-	move.l _p1Cursor,%d0
-	add.l %d0,%d0
-	move.w .L256(%pc,%d0.l),%d0
-	jmp %pc@(2,%d0:w)
-.L256:
-	.word .L249-.L256
-	.word .L250-.L256
-	.word .L251-.L256
-	.word .L252-.L256
-	.word .L253-.L256
-	.word .L254-.L256
-	.word .L255-.L256
-.L278:
+	jra .L368
+.L289:
 	jsr __Z15matchIsCompletev
 	tst.b %d0
-	jne .L367
+	jne .L370
 	jsr __Z10sleepCheckv
 	tst.b %d0
-	jne .L325
-.L370:
+	jne .L339
+.L371:
 	move.l %d6,-(%sp)
 	move.l %d5,-(%sp)
 	jsr __Z20fighterHasRoomToMoveP7FighterS0_
 	move.l %d5,%a0
-	move.b %d0,352(%a0)
+	move.b %d0,284(%a0)
 	addq.l #4,%sp
 	move.l %d5,(%sp)
 	move.l %d6,-(%sp)
 	jsr __Z20fighterHasRoomToMoveP7FighterS0_
 	move.l %d6,%a1
-	move.b %d0,352(%a1)
+	move.b %d0,284(%a1)
 	addq.l #4,%sp
 	move.l %d6,(%sp)
 	move.l %d5,-(%sp)
@@ -5259,58 +5447,22 @@ __Z9basicmainv:
 	move.l %d5,-(%sp)
 	jsr __Z18fighterImpactCheckP7FighterS0_
 	addq.l #8,%sp
-	moveq #6,%d0
-	cmp.l _p1Cursor.l,%d0
-	jcs .L282
-	move.l _p1Cursor,%d0
+	cmp.w #6,_p1Cursor.l
+	jhi .L293
+	moveq #0,%d0
+	move.w _p1Cursor,%d0
 	add.l %d0,%d0
-	move.w .L290(%pc,%d0.l),%d0
+	move.w .L301(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
-.L290:
-	.word .L283-.L290
-	.word .L284-.L290
-	.word .L285-.L290
-	.word .L286-.L290
-	.word .L287-.L290
-	.word .L288-.L290
-	.word .L289-.L290
-.L214:
-	move.l %d0,%d1
-	and.l JAGPAD_UP,%d1
-	jeq .L216
-	move.l _p1Cursor,%d0
-	moveq #4,%d1
-	cmp.l %d0,%d1
-	jeq .L368
-	moveq #6,%d1
-	cmp.l %d0,%d1
-	jne .L213
-	moveq #2,%d0
-	move.l %d0,_p1Cursor
-	pea __ZL12soundHandler
-	jsr __Z11sfxP1CursorP12SoundHandler
-	addq.l #4,%sp
-	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L232:
-	move.l %d0,%d1
-	and.l JAGPAD_UP,%d1
-	jeq .L234
-	move.l _p2Cursor,%d0
-	moveq #4,%d1
-	cmp.l %d0,%d1
-	jeq .L369
-	moveq #6,%d1
-	cmp.l %d0,%d1
-	jne .L231
-	moveq #2,%d0
-	move.l %d0,_p2Cursor
-	pea __ZL12soundHandler
-	jsr __Z11sfxP1CursorP12SoundHandler
-	addq.l #4,%sp
-	jsr __Z17SetPlayerPalettesv
-	jra .L361
-.L367:
+.L301:
+	.word .L294-.L301
+	.word .L295-.L301
+	.word .L296-.L301
+	.word .L297-.L301
+	.word .L298-.L301
+	.word .L299-.L301
+	.word .L300-.L301
+.L370:
 	move.w raptor_ticks,%a1
 	move.l %a1,-4(%fp)
 	jsr __Z6bgInitv
@@ -5323,116 +5475,135 @@ __Z9basicmainv:
 	jsr __Z20fighterResetFlagsAllP7FighterS0_
 	addq.l #4,%sp
 	clr.l (%sp)
-	move.l _p2Cursor,-(%sp)
-	move.l _p1Cursor,-(%sp)
+	move.w _p2Cursor,%a0
+	move.l %a0,-(%sp)
+	move.w _p1Cursor,%a1
+	move.l %a1,-(%sp)
 	jsr __Z17switchScreenFightiib
 	lea (12,%sp),%sp
 	jsr __Z10sleepCheckv
 	tst.b %d0
-	jne .L325
-	jra .L370
-.L369:
-	moveq #1,%d0
-	move.l %d0,_p2Cursor
+	jne .L339
+	jra .L371
+.L240:
+	move.l %d0,%d1
+	and.l JAGPAD_RIGHT,%d1
+	jeq .L243
+	move.w _p2Cursor,%d0
+	addq.w #1,%d0
+	move.w %d0,_p2Cursor
+	cmp.w #4,%d0
+	jeq .L372
+	cmp.w #7,%d0
+	jne .L242
+.L346:
+	move.w #4,_p2Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L361
-.L234:
-	and.l JAGPAD_DOWN,%d0
-	jeq .L228
-	move.l _p2Cursor,%d0
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jeq .L335
-	moveq #2,%d1
-	cmp.l %d0,%d1
-	jne .L231
-	jra .L355
-.L264:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z9sfxRaidenP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL14fighterRaiden2,%d6
-	jra .L258
-.L263:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z8sfxSonyaP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL13fighterSonya2,%d6
-	jra .L258
-.L351:
-	moveq #6,%d0
-	move.l %d0,_p1Cursor
+	jra .L367
+.L362:
+	move.w #3,_p2Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L355:
-	moveq #6,%d0
-	move.l %d0,_p2Cursor
+	jra .L367
+.L243:
+	move.l %d0,%d1
+	and.l JAGPAD_UP,%d1
+	jeq .L245
+	move.w _p2Cursor,%d0
+	cmp.w #4,%d0
+	jeq .L373
+	cmp.w #6,%d0
+	jne .L242
+	move.w #2,_p2Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L361
-.L366:
-	clr.l _p1Cursor
+	jra .L367
+.L365:
+	moveq #0,%d0
+	move.w _p1Cursor,%d0
+	add.l %d0,%d0
+	move.w .L267(%pc,%d0.l),%d0
+	jmp %pc@(2,%d0:w)
+.L267:
+	.word .L260-.L267
+	.word .L261-.L267
+	.word .L262-.L267
+	.word .L263-.L267
+	.word .L264-.L267
+	.word .L265-.L267
+	.word .L266-.L267
+.L225:
+	move.l %d0,%d1
+	and.l JAGPAD_UP,%d1
+	jeq .L227
+	move.w _p1Cursor,%d0
+	cmp.w #4,%d0
+	jeq .L374
+	cmp.w #6,%d0
+	jne .L224
+	move.w #2,_p1Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L265:
-	clr.l -(%sp)
+	jra .L368
+.L359:
+	move.w #3,_p1Cursor
 	pea __ZL12soundHandler
-	jsr __Z10sfxLiuKangP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL12fighterKang2,%d6
-	jra .L258
-.L288:
+	jsr __Z11sfxP1CursorP12SoundHandler
+	addq.l #4,%sp
+	jsr __Z17SetPlayerPalettesv
+	jra .L368
+.L299:
 	pea __ZL12kangAnimator
 	pea __ZL11fighterKang
 	move.l %d2,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+.L293:
+	cmp.w #6,_p2Cursor.l
+	jhi .L302
+	moveq #0,%d0
+	move.w _p2Cursor,%d0
+	add.l %d0,%d0
+	move.w .L310(%pc,%d0.l),%d0
+	jmp %pc@(2,%d0:w)
+.L310:
+	.word .L303-.L310
+	.word .L304-.L310
+	.word .L305-.L310
+	.word .L306-.L310
+	.word .L307-.L310
+	.word .L308-.L310
+	.word .L309-.L310
+.L300:
+	pea __ZL16scorpionAnimator
+	pea __ZL15fighterScorpion
+	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
-.L330:
 	move.l %d0,(%sp)
-	move.l %d7,%a1
-	jsr (%a1)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
 	lea (12,%sp),%sp
-.L282:
-	moveq #6,%d0
-	cmp.l _p2Cursor.l,%d0
-	jcs .L291
-	move.l _p2Cursor,%d0
-	add.l %d0,%d0
-	move.w .L299(%pc,%d0.l),%d0
-	jmp %pc@(2,%d0:w)
-.L299:
-	.word .L292-.L299
-	.word .L293-.L299
-	.word .L294-.L299
-	.word .L295-.L299
-	.word .L296-.L299
-	.word .L297-.L299
-	.word .L298-.L299
-.L287:
+	jra .L293
+.L298:
 	pea __ZL14raidenAnimator
 	pea __ZL13fighterRaiden
 	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
 	move.l %d0,(%sp)
-	move.l %d7,%a1
-	jsr (%a1)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
 	addq.l #8,%sp
 	moveq #1,%d0
 	move.l %d0,(%sp)
@@ -5440,21 +5611,19 @@ __Z9basicmainv:
 	pea 30.w
 	pea __ZL15lightningFrames
 	pea __ZL17lightningAnimator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
-	jra .L282
-.L297:
+	jra .L293
+.L308:
 	pea __ZL13kangAnimator2
 	pea __ZL12fighterKang2
 	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
-.L331:
 	move.l %d0,(%sp)
-	move.l %d7,%a1
-	jsr (%a1)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
 	lea (12,%sp),%sp
-.L291:
+.L302:
 	move.l %d6,-(%sp)
 	move.l %d5,-(%sp)
 	jsr __Z8bgUpdateP7FighterS0_
@@ -5468,19 +5637,22 @@ __Z9basicmainv:
 	jsr __Z11bloodUpdateP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17spriteDelayUpdatev
+	move.l %d6,-(%sp)
+	move.l %d5,-(%sp)
+	jsr __Z17fighterDrawScoresP7FighterS0_
+	addq.l #8,%sp
 	clr.l -(%sp)
 	jsr (%a2)
 	addq.l #4,%sp
-	jra .L344
-.L296:
+	jra .L351
+.L307:
 	pea __ZL15raidenAnimator2
 	pea __ZL14fighterRaiden2
 	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	move.l %d0,(%sp)
-	move.l %d7,%a1
+	move.l %d4,%a1
 	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
 	addq.l #8,%sp
 	moveq #1,%d1
 	move.l %d1,(%sp)
@@ -5488,193 +5660,239 @@ __Z9basicmainv:
 	pea 30.w
 	pea __ZL15lightningFrames
 	pea __ZL18lightning2Animator
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFrameibb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
 	lea (20,%sp),%sp
-	jra .L291
-.L298:
-	pea __ZL17scorpionAnimator2
-	pea __ZL16fighterScorpion2
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L331
-.L286:
-	pea __ZL13sonyaAnimator
-	pea __ZL12fighterSonya
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L330
-.L285:
-	pea __ZL15subzeroAnimator
-	pea __ZL14fighterSubzero
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L330
-.L295:
+	jra .L302
+.L306:
 	pea __ZL14sonyaAnimator2
 	pea __ZL13fighterSonya2
 	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
-	jra .L331
-.L294:
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L302
+.L305:
 	pea __ZL16subzeroAnimator2
 	pea __ZL15fighterSubzero2
 	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L331
-.L293:
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L302
+.L304:
 	pea __ZL13kanoAnimator2
 	pea __ZL12fighterKano2
 	move.l %d2,-(%sp)
 	move.l %d4,%a0
 	jsr (%a0)
-	jra .L331
-.L292:
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L302
+.L309:
+	pea __ZL17scorpionAnimator2
+	pea __ZL16fighterScorpion2
+	move.l %d2,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L302
+.L303:
 	pea __ZL13cageAnimator2
 	pea __ZL12fighterCage2
 	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L331
-.L284:
-	pea __ZL12kanoAnimator
-	pea __ZL11fighterKano
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L330
-.L289:
-	pea __ZL16scorpionAnimator
-	pea __ZL15fighterScorpion
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L330
-.L283:
-	pea __ZL12cageAnimator
-	pea __ZL11fighterCage
-	move.l %d2,-(%sp)
-	move.l %d4,%a0
-	jsr (%a0)
-	jra .L330
-.L254:
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L302
+.L373:
+	move.w #1,_p2Cursor
+	pea __ZL12soundHandler
+	jsr __Z11sfxP1CursorP12SoundHandler
+	addq.l #4,%sp
+	jsr __Z17SetPlayerPalettesv
+	jra .L367
+.L374:
+	move.w #1,_p1Cursor
+	pea __ZL12soundHandler
+	jsr __Z11sfxP1CursorP12SoundHandler
+	addq.l #4,%sp
+	jsr __Z17SetPlayerPalettesv
+	jra .L368
+.L276:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z10sfxLiuKangP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL12fighterKang2,%d6
+	jra .L269
+.L273:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z10sfxSubzeroP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL15fighterSubzero2,%d6
+	jra .L269
+.L272:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z7sfxKanoP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL12fighterKano2,%d6
+	jra .L269
+.L271:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z13sfxJohnnyCageP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL12fighterCage2,%d6
+	jra .L269
+.L277:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z11sfxScorpionP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL16fighterScorpion2,%d6
+	jra .L269
+.L369:
+	clr.w _p1Cursor
+	pea __ZL12soundHandler
+	jsr __Z11sfxP1CursorP12SoundHandler
+	addq.l #4,%sp
+	jsr __Z17SetPlayerPalettesv
+	jra .L368
+.L265:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z10sfxLiuKangP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL11fighterKang,%d5
-	jra .L247
-.L253:
+	jra .L258
+.L264:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z9sfxRaidenP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL13fighterRaiden,%d5
-	jra .L247
-.L252:
+	jra .L258
+.L263:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z8sfxSonyaP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL12fighterSonya,%d5
-	jra .L247
-.L251:
+	jra .L258
+.L262:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z10sfxSubzeroP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL14fighterSubzero,%d5
-	jra .L247
-.L250:
+	jra .L258
+.L261:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z7sfxKanoP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL11fighterKano,%d5
-	jra .L247
-.L249:
+	jra .L258
+.L260:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z13sfxJohnnyCageP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL11fighterCage,%d5
-	jra .L247
-.L255:
+	jra .L258
+.L266:
 	pea 1.w
 	pea __ZL12soundHandler
 	jsr __Z11sfxScorpionP12SoundHandlerb
 	move.l JAGPAD_C,%d0
 	addq.l #8,%sp
 	move.l #__ZL15fighterScorpion,%d5
-	jra .L247
-.L262:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z10sfxSubzeroP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL15fighterSubzero2,%d6
 	jra .L258
-.L261:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z7sfxKanoP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL12fighterKano2,%d6
-	jra .L258
-.L260:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z13sfxJohnnyCageP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL12fighterCage2,%d6
-	jra .L258
-.L266:
-	clr.l -(%sp)
-	pea __ZL12soundHandler
-	jsr __Z11sfxScorpionP12SoundHandlerb
-	move.l _p2Selected,%d0
-	addq.l #8,%sp
-	move.l #__ZL16fighterScorpion2,%d6
-	jra .L258
-.L365:
-	clr.l _p2Cursor
+.L297:
+	pea __ZL13sonyaAnimator
+	pea __ZL12fighterSonya
+	move.l %d2,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L293
+.L296:
+	pea __ZL15subzeroAnimator
+	pea __ZL14fighterSubzero
+	move.l %d2,-(%sp)
+	move.l %d4,%a0
+	jsr (%a0)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L293
+.L295:
+	pea __ZL12kanoAnimator
+	pea __ZL11fighterKano
+	move.l %d2,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L293
+.L294:
+	pea __ZL12cageAnimator
+	pea __ZL11fighterCage
+	move.l %d2,-(%sp)
+	move.l %d4,%a0
+	jsr (%a0)
+	move.l %d0,(%sp)
+	jsr __Z13fighterUpdatefP7FighterP14SpriteAnimator
+	lea (12,%sp),%sp
+	jra .L293
+.L372:
+	clr.w _p2Cursor
 	pea __ZL12soundHandler
 	jsr __Z11sfxP1CursorP12SoundHandler
 	addq.l #4,%sp
 	jsr __Z17SetPlayerPalettesv
-	jra .L361
-.L368:
-	moveq #1,%d0
-	move.l %d0,_p1Cursor
+	jra .L367
+.L275:
+	clr.l -(%sp)
 	pea __ZL12soundHandler
-	jsr __Z11sfxP1CursorP12SoundHandler
-	addq.l #4,%sp
-	jsr __Z17SetPlayerPalettesv
-	jra .L362
-.L216:
-	and.l JAGPAD_DOWN,%d0
-	jeq .L210
-	move.l _p1Cursor,%d0
-	moveq #1,%d1
-	cmp.l %d0,%d1
-	jeq .L333
-	moveq #2,%d1
-	cmp.l %d0,%d1
-	jne .L213
-	jra .L351
+	jsr __Z9sfxRaidenP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL14fighterRaiden2,%d6
+	jra .L269
+.L274:
+	clr.l -(%sp)
+	pea __ZL12soundHandler
+	jsr __Z8sfxSonyaP12SoundHandlerb
+	move.w _p2Selected,%d0
+	addq.l #8,%sp
+	move.l #__ZL13fighterSonya2,%d6
+	jra .L269
 	.even
 __GLOBAL__sub_I_sprite:
 	link.w %fp,#0
@@ -5687,480 +5905,489 @@ __GLOBAL__sub_I_sprite:
 	.data
 	.even
 _kanoImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_kanoImpactFrameJumpKick
 	.even
 _kanoImpactFrameJumpKick:
-	.long	1
-	.long	52
-	.long	46
+	.word	1
+	.word	52
+	.word	46
 	.globl	_kanoImpactFrameJumpPunch
 	.even
 _kanoImpactFrameJumpPunch:
-	.long	1
-	.long	42
-	.long	60
+	.word	1
+	.word	42
+	.word	60
 	.globl	_kanoImpactFrameDuckKick
 	.even
 _kanoImpactFrameDuckKick:
-	.long	2
-	.long	40
-	.long	30
+	.word	2
+	.word	40
+	.word	30
 	.globl	_kanoImpactFrameBodyKick
 	.even
 _kanoImpactFrameBodyKick:
-	.long	2
-	.long	30
-	.long	30
+	.word	2
+	.word	30
+	.word	30
 	.globl	_kanoImpactFrameBodyPunch
 	.even
 _kanoImpactFrameBodyPunch:
-	.long	2
-	.long	10
-	.long	30
+	.word	2
+	.word	10
+	.word	30
 	.globl	_kanoImpactFrameRoundhouse
 	.even
 _kanoImpactFrameRoundhouse:
-	.long	2
-	.long	52
-	.long	10
+	.word	2
+	.word	52
+	.word	10
 	.globl	_kanoImpactFrameSweep
 	.even
 _kanoImpactFrameSweep:
-	.long	4
-	.long	54
-	.long	35
+	.word	4
+	.word	54
+	.word	35
 	.globl	_kanoImpactFrameUppercut
 	.even
 _kanoImpactFrameUppercut:
-	.long	3
-	.long	20
-	.long	30
+	.word	3
+	.word	20
+	.word	30
 	.globl	_kanoImpactFrameHighKick
 	.even
 _kanoImpactFrameHighKick:
-	.long	3
-	.long	50
-	.long	10
+	.word	3
+	.word	50
+	.word	10
 	.globl	_kanoImpactFrameLowKick
 	.even
 _kanoImpactFrameLowKick:
-	.long	3
-	.long	50
-	.long	30
+	.word	3
+	.word	50
+	.word	30
 	.globl	_kanoImpactFrameHighPunch
 	.even
 _kanoImpactFrameHighPunch:
-	.long	2
-	.long	36
-	.long	10
+	.word	2
+	.word	36
+	.word	10
 	.globl	_kanoImpactFrameLowPunch
 	.even
 _kanoImpactFrameLowPunch:
-	.long	2
-	.long	52
-	.long	30
+	.word	2
+	.word	52
+	.word	30
 	.globl	_sonyaImpactFrameThrow
 	.even
 _sonyaImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_sonyaImpactFrameJumpKick
 	.even
 _sonyaImpactFrameJumpKick:
-	.long	1
-	.long	42
-	.long	46
+	.word	1
+	.word	42
+	.word	46
 	.globl	_sonyaImpactFrameJumpPunch
 	.even
 _sonyaImpactFrameJumpPunch:
-	.long	1
-	.long	80
-	.long	60
+	.word	1
+	.word	80
+	.word	60
 	.globl	_sonyaImpactFrameDuckKick
 	.even
 _sonyaImpactFrameDuckKick:
-	.long	2
-	.long	41
-	.long	10
+	.word	2
+	.word	41
+	.word	10
 	.globl	_sonyaImpactFrameBodyKick
 	.even
 _sonyaImpactFrameBodyKick:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_sonyaImpactFrameBodyPunch
 	.even
 _sonyaImpactFrameBodyPunch:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_sonyaImpactFrameRoundhouse
 	.even
 _sonyaImpactFrameRoundhouse:
-	.long	2
-	.long	50
-	.long	10
+	.word	2
+	.word	50
+	.word	10
 	.globl	_sonyaImpactFrameSweep
 	.even
 _sonyaImpactFrameSweep:
-	.long	4
-	.long	66
-	.long	50
+	.word	4
+	.word	66
+	.word	50
 	.globl	_sonyaImpactFrameUppercut
 	.even
 _sonyaImpactFrameUppercut:
-	.long	3
-	.long	30
-	.long	30
+	.word	3
+	.word	30
+	.word	30
 	.globl	_sonyaImpactFrameHighKick
 	.even
 _sonyaImpactFrameHighKick:
-	.long	3
-	.long	40
-	.long	10
+	.word	3
+	.word	40
+	.word	10
 	.globl	_sonyaImpactFrameLowKick
 	.even
 _sonyaImpactFrameLowKick:
-	.long	3
-	.long	52
-	.long	30
+	.word	3
+	.word	52
+	.word	30
 	.globl	_sonyaImpactFrameHighPunch
 	.even
 _sonyaImpactFrameHighPunch:
-	.long	2
-	.long	42
-	.long	10
+	.word	2
+	.word	42
+	.word	10
 	.globl	_sonyaImpactFrameLowPunch
 	.even
 _sonyaImpactFrameLowPunch:
-	.long	2
-	.long	48
-	.long	30
+	.word	2
+	.word	48
+	.word	30
 	.globl	_subzeroImpactFrameThrow
 	.even
 _subzeroImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_subzeroImpactFrameJumpKick
 	.even
 _subzeroImpactFrameJumpKick:
-	.long	1
-	.long	42
-	.long	46
+	.word	1
+	.word	42
+	.word	46
 	.globl	_subzeroImpactFrameJumpPunch
 	.even
 _subzeroImpactFrameJumpPunch:
-	.long	1
-	.long	70
-	.long	60
+	.word	1
+	.word	70
+	.word	60
 	.globl	_subzeroImpactFrameDuckKick
 	.even
 _subzeroImpactFrameDuckKick:
-	.long	2
-	.long	48
-	.long	20
+	.word	2
+	.word	48
+	.word	20
 	.globl	_subzeroImpactFrameBodyKick
 	.even
 _subzeroImpactFrameBodyKick:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_subzeroImpactFrameBodyPunch
 	.even
 _subzeroImpactFrameBodyPunch:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_subzeroImpactFrameRoundhouse
 	.even
 _subzeroImpactFrameRoundhouse:
-	.long	2
-	.long	52
-	.long	10
+	.word	2
+	.word	52
+	.word	10
 	.globl	_subzeroImpactFrameSweep
 	.even
 _subzeroImpactFrameSweep:
-	.long	4
-	.long	54
-	.long	20
+	.word	4
+	.word	54
+	.word	20
 	.globl	_subzeroImpactFrameUppercut
 	.even
 _subzeroImpactFrameUppercut:
-	.long	3
-	.long	34
-	.long	30
+	.word	3
+	.word	34
+	.word	30
 	.globl	_subzeroImpactFrameHighKick
 	.even
 _subzeroImpactFrameHighKick:
-	.long	4
-	.long	48
-	.long	10
+	.word	4
+	.word	48
+	.word	10
 	.globl	_subzeroImpactFrameLowKick
 	.even
 _subzeroImpactFrameLowKick:
-	.long	3
-	.long	48
-	.long	30
+	.word	3
+	.word	48
+	.word	30
 	.globl	_subzeroImpactFrameHighPunch
 	.even
 _subzeroImpactFrameHighPunch:
-	.long	2
-	.long	46
-	.long	10
+	.word	2
+	.word	46
+	.word	10
 	.globl	_subzeroImpactFrameLowPunch
 	.even
 _subzeroImpactFrameLowPunch:
-	.long	2
-	.long	46
-	.long	30
+	.word	2
+	.word	46
+	.word	30
 	.globl	_raidenImpactFrameThrow
 	.even
 _raidenImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_raidenImpactFrameJumpKick
 	.even
 _raidenImpactFrameJumpKick:
-	.long	1
-	.long	60
-	.long	46
+	.word	1
+	.word	60
+	.word	46
 	.globl	_raidenImpactFrameJumpPunch
 	.even
 _raidenImpactFrameJumpPunch:
-	.long	1
-	.long	36
-	.long	50
+	.word	1
+	.word	36
+	.word	50
 	.globl	_raidenImpactFrameDuckKick
 	.even
 _raidenImpactFrameDuckKick:
-	.long	2
-	.long	40
-	.long	30
+	.word	2
+	.word	40
+	.word	30
 	.globl	_raidenImpactFrameBodyKick
 	.even
 _raidenImpactFrameBodyKick:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_raidenImpactFrameBodyPunch
 	.even
 _raidenImpactFrameBodyPunch:
-	.long	2
-	.long	10
-	.long	30
+	.word	2
+	.word	10
+	.word	30
 	.globl	_raidenImpactFrameRoundhouse
 	.even
 _raidenImpactFrameRoundhouse:
-	.long	2
-	.long	42
-	.long	10
+	.word	2
+	.word	42
+	.word	10
 	.globl	_raidenImpactFrameSweep
 	.even
 _raidenImpactFrameSweep:
-	.long	4
-	.long	52
-	.long	30
+	.word	4
+	.word	52
+	.word	30
 	.globl	_raidenImpactFrameUppercut
 	.even
 _raidenImpactFrameUppercut:
-	.long	3
-	.long	20
-	.long	30
+	.word	3
+	.word	20
+	.word	30
 	.globl	_raidenImpactFrameHighKick
 	.even
 _raidenImpactFrameHighKick:
-	.long	3
-	.long	48
-	.long	10
+	.word	3
+	.word	48
+	.word	10
 	.globl	_raidenImpactFrameLowKick
 	.even
 _raidenImpactFrameLowKick:
-	.long	3
-	.long	48
-	.long	30
+	.word	3
+	.word	48
+	.word	30
 	.globl	_raidenImpactFrameHighPunch
 	.even
 _raidenImpactFrameHighPunch:
-	.long	2
-	.long	58
-	.long	10
+	.word	2
+	.word	58
+	.word	10
 	.globl	_raidenImpactFrameLowPunch
 	.even
 _raidenImpactFrameLowPunch:
-	.long	2
-	.long	52
-	.long	30
+	.word	2
+	.word	52
+	.word	30
 	.globl	_kangImpactFrameThrow
 	.even
 _kangImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_kangImpactFrameDuckKick
 	.even
 _kangImpactFrameDuckKick:
-	.long	2
-	.long	35
-	.long	30
+	.word	2
+	.word	35
+	.word	30
 	.globl	_kangImpactFrameBodyKick
 	.even
 _kangImpactFrameBodyKick:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_kangImpactFrameBodyPunch
 	.even
 _kangImpactFrameBodyPunch:
-	.long	2
-	.long	0
-	.long	30
+	.word	2
+	.word	0
+	.word	30
 	.globl	_kangImpactFrameJumpKick
 	.even
 _kangImpactFrameJumpKick:
-	.long	1
-	.long	46
-	.long	46
+	.word	1
+	.word	46
+	.word	46
 	.globl	_kangImpactFrameJumpPunch
 	.even
 _kangImpactFrameJumpPunch:
-	.long	1
-	.long	70
-	.long	60
+	.word	1
+	.word	70
+	.word	60
 	.globl	_kangImpactFrameRoundhouse
 	.even
 _kangImpactFrameRoundhouse:
-	.long	3
-	.long	38
-	.long	10
+	.word	3
+	.word	38
+	.word	10
 	.globl	_kangImpactFrameSweep
 	.even
 _kangImpactFrameSweep:
-	.long	4
-	.long	50
-	.long	20
+	.word	4
+	.word	50
+	.word	20
 	.globl	_kangImpactFrameUppercut
 	.even
 _kangImpactFrameUppercut:
-	.long	3
-	.long	20
-	.long	30
+	.word	3
+	.word	20
+	.word	30
 	.globl	_kangImpactFrameHighKick
 	.even
 _kangImpactFrameHighKick:
-	.long	4
-	.long	40
-	.long	10
+	.word	4
+	.word	40
+	.word	10
 	.globl	_kangImpactFrameLowKick
 	.even
 _kangImpactFrameLowKick:
-	.long	3
-	.long	46
-	.long	30
+	.word	3
+	.word	46
+	.word	30
 	.globl	_kangImpactFrameHighPunch
 	.even
 _kangImpactFrameHighPunch:
-	.long	2
-	.long	52
-	.long	10
+	.word	2
+	.word	52
+	.word	10
 	.globl	_kangImpactFrameLowPunch
 	.even
 _kangImpactFrameLowPunch:
-	.long	2
-	.long	52
-	.long	30
+	.word	2
+	.word	52
+	.word	30
 	.globl	_cageImpactFrameThrow
 	.even
 _cageImpactFrameThrow:
-	.long	1
-	.long	30
-	.long	30
+	.word	1
+	.word	30
+	.word	30
 	.globl	_cageImpactFrameDuckKick
 	.even
 _cageImpactFrameDuckKick:
-	.long	2
-	.long	48
-	.long	20
+	.word	2
+	.word	48
+	.word	20
 	.globl	_cageImpactFrameBodyKick
 	.even
 _cageImpactFrameBodyKick:
-	.long	2
-	.long	20
-	.long	30
+	.word	2
+	.word	20
+	.word	30
 	.globl	_cageImpactFrameBodyPunch
 	.even
 _cageImpactFrameBodyPunch:
-	.long	2
-	.long	10
-	.long	30
+	.word	2
+	.word	10
+	.word	30
 	.globl	_cageImpactFrameJumpKick
 	.even
 _cageImpactFrameJumpKick:
-	.long	1
-	.long	36
-	.long	46
+	.word	1
+	.word	36
+	.word	46
 	.globl	_cageImpactFrameJumpPunch
 	.even
 _cageImpactFrameJumpPunch:
-	.long	1
-	.long	26
-	.long	60
+	.word	1
+	.word	26
+	.word	60
 	.globl	_cageImpactFrameRoundhouse
 	.even
 _cageImpactFrameRoundhouse:
-	.long	2
-	.long	28
-	.long	20
+	.word	2
+	.word	28
+	.word	20
 	.globl	_cageImpactFrameSweep
 	.even
 _cageImpactFrameSweep:
-	.long	4
-	.long	56
-	.long	50
+	.word	4
+	.word	56
+	.word	50
 	.globl	_cageImpactFrameUppercut
 	.even
 _cageImpactFrameUppercut:
-	.long	3
-	.long	20
-	.long	30
+	.word	3
+	.word	20
+	.word	30
 	.globl	_cageImpactFrameHighKick
 	.even
 _cageImpactFrameHighKick:
-	.long	4
-	.long	42
-	.long	10
+	.word	4
+	.word	42
+	.word	10
 	.globl	_cageImpactFrameLowKick
 	.even
 _cageImpactFrameLowKick:
-	.long	3
-	.long	52
-	.long	30
+	.word	3
+	.word	52
+	.word	30
 	.globl	_cageImpactFrameHighPunch
 	.even
 _cageImpactFrameHighPunch:
-	.long	2
-	.long	38
-	.long	10
+	.word	2
+	.word	38
+	.word	10
 	.globl	_cageImpactFrameLowPunch
 	.even
 _cageImpactFrameLowPunch:
-	.long	2
-	.long	38
-	.long	30
+	.word	2
+	.word	38
+	.word	30
+	.globl	_attractSlideIndex
+	.bss
+	.even
+_attractSlideIndex:
+	.skip 4
 	.globl	_fmvIndex
+	.data
 	.even
 _fmvIndex:
 	.long	6
-	.globl	_attractModeIndex
+	.globl	_goroProfileShown
 	.bss
+_goroProfileShown:
+	.skip 1
+	.globl	_attractModeIndex
 	.even
 _attractModeIndex:
-	.skip 4
+	.skip 2
 	.globl	_menuSelected
 _menuSelected:
 	.skip 1
@@ -6186,11 +6413,11 @@ _chooseTicks:
 	.globl	_p2FlashCount
 	.even
 _p2FlashCount:
-	.skip 4
+	.skip 2
 	.globl	_p1FlashCount
 	.even
 _p1FlashCount:
-	.skip 4
+	.skip 2
 	.globl	_lastTicks
 	.even
 _lastTicks:
@@ -6244,19 +6471,19 @@ _chooseFighterDone:
 	.data
 	.even
 _p2Selected:
-	.long	-1
+	.word	-1
 	.globl	_p1Selected
 	.even
 _p1Selected:
-	.long	-1
+	.word	-1
 	.globl	_p2Cursor
 	.even
 _p2Cursor:
-	.long	2
+	.word	2
 	.globl	_p1Cursor
 	.even
 _p1Cursor:
-	.long	1
+	.word	1
 	.globl	colliders
 	.even
 colliders:
@@ -6272,9708 +6499,10212 @@ __ZL11fighterCage:
 	.long	1
 	.long	14
 	.long	8534416
-	.long	7
-	.long	7
-	.long	11
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	11
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL14cageIdleFrames:
-	.long	80
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	80
-	.long	0
-	.long	0
-	.long	1
+	.word	80
+	.word	112
+	.word	80
+	.word	0
+	.word	0
+	.word	1
 	.long	6
-	.long	80
-	.long	112
-	.long	160
-	.long	0
-	.long	0
-	.long	1
+	.word	80
+	.word	112
+	.word	160
+	.word	0
+	.word	0
+	.word	1
 	.long	6
-	.long	80
-	.long	112
-	.long	240
-	.long	0
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	240
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	400
-	.long	0
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	400
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	480
-	.long	0
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	480
+	.word	0
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL15cageDizzyFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	912
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	64
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	912
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	128
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	912
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	192
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	912
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	256
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	912
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	320
-	.long	912
-	.long	0
-	.long	1
+	.word	64
+	.word	112
+	.word	320
+	.word	912
+	.word	0
+	.word	1
 	.long	12
-	.long	64
-	.long	96
-	.long	384
-	.long	976
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	384
+	.word	976
+	.word	0
+	.word	16
 	.long	12
 	.even
 __ZL14cageWinsFrames:
-	.long	64
-	.long	112
-	.long	384
-	.long	864
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	864
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	448
-	.long	848
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	848
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	384
-	.long	864
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	864
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	512
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	800
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	576
-	.long	816
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	816
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	640
-	.long	848
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	848
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	704
-	.long	848
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	848
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	768
-	.long	848
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	848
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	832
-	.long	832
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	832
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	896
-	.long	832
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	832
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	960
-	.long	832
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	832
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL14cageWalkFrames:
-	.long	80
-	.long	112
-	.long	720
-	.long	960
-	.long	-16
-	.long	0
+	.word	80
+	.word	112
+	.word	720
+	.word	960
+	.word	-16
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	800
-	.long	960
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	960
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	864
-	.long	944
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	864
+	.word	944
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	928
-	.long	944
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	944
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	1024
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	1024
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	1024
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	1024
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	1024
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	1024
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	1024
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	1024
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL14cageTurnFrames:
-	.long	64
-	.long	112
-	.long	560
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	560
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	624
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	624
+	.word	0
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL14cageJumpFrames:
-	.long	64
-	.long	96
-	.long	896
-	.long	0
-	.long	0
-	.long	17
+	.word	64
+	.word	96
+	.word	896
+	.word	0
+	.word	0
+	.word	17
 	.long	3
-	.long	48
-	.long	96
-	.long	960
-	.long	0
-	.long	2
-	.long	12
+	.word	48
+	.word	96
+	.word	960
+	.word	0
+	.word	2
+	.word	12
 	.long	3
-	.long	64
-	.long	96
-	.long	896
-	.long	0
-	.long	0
-	.long	17
+	.word	64
+	.word	96
+	.word	896
+	.word	0
+	.word	0
+	.word	17
 	.long	3
-	.long	80
-	.long	96
-	.long	816
-	.long	0
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	816
+	.word	0
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL18cageJumpRollFrames:
-	.long	48
-	.long	64
-	.long	96
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	96
+	.word	0
+	.word	112
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	48
-	.long	144
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	80
+	.word	48
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	208
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	96
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	272
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	48
+	.word	144
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	320
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	48
+	.word	208
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	368
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	272
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	416
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	320
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	368
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	416
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	96
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	144
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	208
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	272
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	320
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	368
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	416
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	96
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	144
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	80
+	.word	48
+	.word	112
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	96
+	.word	0
+	.word	112
+	.word	0
+	.word	16
+	.long	3
 	.even
 __ZL14cageDuckFrames:
-	.long	80
-	.long	96
-	.long	816
-	.long	0
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	816
+	.word	0
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	80
-	.long	688
-	.long	0
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	688
+	.word	0
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	64
-	.long	752
-	.long	0
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	752
+	.word	0
+	.word	0
+	.word	48
 	.long	3
 	.even
 __ZL15cageBlockFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	624
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	64
-	.long	640
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	640
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	128
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	624
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL18cageBlockHitFrames:
-	.long	64
-	.long	112
-	.long	64
-	.long	640
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	640
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	128
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	624
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	64
-	.long	640
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	640
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	128
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	624
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	64
-	.long	640
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	640
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	128
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	624
+	.word	0
+	.word	0
 	.long	1
 	.even
 __ZL19cageBlockDuckFrames:
-	.long	64
-	.long	80
-	.long	192
-	.long	576
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	576
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	192
-	.long	656
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	656
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL22cageBlockDuckHitFrames:
-	.long	64
-	.long	80
-	.long	192
-	.long	576
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	576
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	192
-	.long	656
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	656
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	192
-	.long	576
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	576
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	192
-	.long	656
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	656
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	192
-	.long	576
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	576
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	192
-	.long	656
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	656
+	.word	0
+	.word	32
 	.long	1
 	.even
 __ZL18cagePunchLowFrames:
-	.long	80
-	.long	112
-	.long	0
-	.long	208
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	208
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	80
-	.long	192
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	80
+	.word	192
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	352
-	.long	432
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	352
+	.word	432
+	.word	0
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	80
-	.long	192
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	80
+	.word	192
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	0
-	.long	208
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	208
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL19cagePunchHighFrames:
-	.long	80
-	.long	112
-	.long	0
-	.long	208
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	208
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	80
-	.long	192
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	80
+	.word	192
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	144
-	.long	160
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	144
+	.word	160
+	.word	0
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	80
-	.long	192
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	80
+	.word	192
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	0
-	.long	208
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	208
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL17cageKickLowFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	320
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	320
+	.word	14
+	.word	0
 	.long	4
-	.long	64
-	.long	96
-	.long	880
-	.long	288
-	.long	15
-	.long	16
+	.word	64
+	.word	96
+	.word	880
+	.word	288
+	.word	15
+	.word	16
 	.long	4
-	.long	96
-	.long	96
-	.long	0
-	.long	432
-	.long	13
-	.long	16
+	.word	96
+	.word	96
+	.word	0
+	.word	432
+	.word	13
+	.word	16
 	.long	8
-	.long	64
-	.long	96
-	.long	880
-	.long	288
-	.long	15
-	.long	16
+	.word	64
+	.word	96
+	.word	880
+	.word	288
+	.word	15
+	.word	16
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	320
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	320
+	.word	14
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18cageKickHighFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	320
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	320
+	.word	14
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	112
-	.long	304
-	.long	12
-	.long	0
+	.word	48
+	.word	112
+	.word	112
+	.word	304
+	.word	12
+	.word	0
 	.long	4
-	.long	64
-	.long	96
-	.long	880
-	.long	288
-	.long	15
-	.long	16
+	.word	64
+	.word	96
+	.word	880
+	.word	288
+	.word	15
+	.word	16
 	.long	4
-	.long	80
-	.long	96
-	.long	304
-	.long	272
-	.long	14
-	.long	16
+	.word	80
+	.word	96
+	.word	304
+	.word	272
+	.word	14
+	.word	16
 	.long	4
-	.long	80
-	.long	80
-	.long	224
-	.long	272
-	.long	14
-	.long	32
+	.word	80
+	.word	80
+	.word	224
+	.word	272
+	.word	14
+	.word	32
 	.long	4
-	.long	64
-	.long	96
-	.long	160
-	.long	272
-	.long	15
-	.long	16
+	.word	64
+	.word	96
+	.word	160
+	.word	272
+	.word	15
+	.word	16
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	320
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	320
+	.word	14
+	.word	0
 	.long	4
 	.even
 __ZL19cageJumpPunchFrames:
-	.long	48
-	.long	80
-	.long	912
-	.long	96
-	.long	0
-	.long	0
+	.word	48
+	.word	80
+	.word	912
+	.word	96
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	80
-	.long	960
-	.long	96
-	.long	2
-	.long	0
+	.word	64
+	.word	80
+	.word	960
+	.word	96
+	.word	2
+	.word	0
 	.long	24
-	.long	64
-	.long	80
-	.long	960
-	.long	96
-	.long	2
-	.long	0
+	.word	64
+	.word	80
+	.word	960
+	.word	96
+	.word	2
+	.word	0
 	.long	4
 	.even
 __ZL18cageJumpKickFrames:
-	.long	80
-	.long	64
-	.long	528
-	.long	112
-	.long	0
-	.long	0
+	.word	80
+	.word	64
+	.word	528
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	80
-	.long	608
-	.long	112
-	.long	0
-	.long	0
+	.word	80
+	.word	80
+	.word	608
+	.word	112
+	.word	0
+	.word	0
 	.long	24
-	.long	80
-	.long	80
-	.long	608
-	.long	112
-	.long	0
-	.long	0
+	.word	80
+	.word	80
+	.word	608
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL22cageJumpDropKickFrames:
-	.long	48
-	.long	64
-	.long	688
-	.long	80
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	688
+	.word	80
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	80
-	.long	816
-	.long	96
-	.long	0
-	.long	0
+	.word	96
+	.word	80
+	.word	816
+	.word	96
+	.word	0
+	.word	0
 	.long	24
-	.long	96
-	.long	80
-	.long	816
-	.long	96
-	.long	0
-	.long	0
+	.word	96
+	.word	80
+	.word	816
+	.word	96
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18cageUppercutFrames:
-	.long	80
-	.long	64
-	.long	944
-	.long	288
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	944
+	.word	288
+	.word	0
+	.word	48
 	.long	4
-	.long	80
-	.long	96
-	.long	96
-	.long	416
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	96
+	.word	416
+	.word	0
+	.word	16
 	.long	4
-	.long	64
-	.long	112
-	.long	176
-	.long	368
-	.long	15
-	.long	2
+	.word	64
+	.word	112
+	.word	176
+	.word	368
+	.word	15
+	.word	2
 	.long	4
-	.long	48
-	.long	128
-	.long	240
-	.long	352
-	.long	21
-	.long	-14
+	.word	48
+	.word	128
+	.word	240
+	.word	352
+	.word	21
+	.word	-14
 	.long	12
-	.long	64
-	.long	112
-	.long	288
-	.long	368
+	.word	64
+	.word	112
+	.word	288
+	.word	368
+	.word	4
+	.word	0
 	.long	4
-	.long	0
-	.long	4
-	.long	64
-	.long	112
-	.long	288
-	.long	368
-	.long	4
-	.long	0
+	.word	64
+	.word	112
+	.word	288
+	.word	368
+	.word	4
+	.word	0
 	.long	4
 	.even
 __ZL16cageHitLowFrames:
-	.long	64
-	.long	112
-	.long	768
-	.long	176
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	176
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	832
-	.long	176
-	.long	-4
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	176
+	.word	-4
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	896
-	.long	176
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	176
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	960
-	.long	176
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	176
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17cageHitHighFrames:
-	.long	64
-	.long	112
-	.long	496
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	496
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	560
-	.long	192
-	.long	-3
-	.long	0
+	.word	80
+	.word	112
+	.word	560
+	.word	192
+	.word	-3
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	640
-	.long	192
-	.long	-11
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	192
+	.word	-11
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	704
-	.long	160
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	160
+	.word	-2
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17cageHitBackFrames:
-	.long	64
-	.long	112
-	.long	496
-	.long	224
-	.long	16
-	.long	0
+	.word	64
+	.word	112
+	.word	496
+	.word	224
+	.word	16
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	512
-	.long	496
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	512
+	.word	496
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	560
-	.long	496
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	560
+	.word	496
+	.word	-3
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	624
-	.long	496
-	.long	5
-	.long	0
+	.word	48
+	.word	112
+	.word	624
+	.word	496
+	.word	5
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	672
-	.long	496
-	.long	1
-	.long	0
+	.word	48
+	.word	112
+	.word	672
+	.word	496
+	.word	1
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	720
-	.long	496
-	.long	-1
-	.long	0
+	.word	48
+	.word	112
+	.word	720
+	.word	496
+	.word	-1
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	768
-	.long	528
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	528
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL17cageHitFallFrames:
-	.long	64
-	.long	96
-	.long	592
-	.long	368
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
 	.long	6
-	.long	80
-	.long	112
-	.long	656
-	.long	384
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	656
+	.word	384
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	80
-	.long	736
-	.long	384
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	736
+	.word	384
+	.word	0
+	.word	32
 	.long	6
-	.long	80
-	.long	64
-	.long	816
-	.long	384
-	.long	0
-	.long	32
+	.word	80
+	.word	64
+	.word	816
+	.word	384
+	.word	0
+	.word	32
 	.long	6
-	.long	64
-	.long	80
-	.long	896
-	.long	384
-	.long	0
-	.long	48
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
 	.long	6
-	.long	80
-	.long	80
-	.long	816
-	.long	448
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	816
+	.word	448
+	.word	0
+	.word	32
 	.long	6
-	.long	96
-	.long	48
-	.long	656
-	.long	1072
-	.long	0
-	.long	72
+	.word	96
+	.word	48
+	.word	656
+	.word	1072
+	.word	0
+	.word	72
 	.long	6
 	.even
 __ZL18cageHitSweepFrames:
-	.long	80
-	.long	96
-	.long	192
-	.long	480
-	.long	-16
-	.long	16
+	.word	80
+	.word	96
+	.word	192
+	.word	480
+	.word	-16
+	.word	16
 	.long	5
-	.long	80
-	.long	64
-	.long	272
-	.long	480
-	.long	-16
-	.long	12
+	.word	80
+	.word	64
+	.word	272
+	.word	480
+	.word	-16
+	.word	12
 	.long	5
-	.long	80
-	.long	64
-	.long	272
-	.long	544
-	.long	-16
-	.long	26
+	.word	80
+	.word	64
+	.word	272
+	.word	544
+	.word	-16
+	.word	26
 	.long	5
-	.long	80
-	.long	64
-	.long	352
-	.long	544
-	.long	-16
-	.long	48
+	.word	80
+	.word	64
+	.word	352
+	.word	544
+	.word	-16
+	.word	48
 	.long	5
-	.long	80
-	.long	48
-	.long	432
-	.long	544
-	.long	-16
-	.long	64
+	.word	80
+	.word	48
+	.word	432
+	.word	544
+	.word	-16
+	.word	64
 	.long	5
-	.long	80
-	.long	48
-	.long	752
-	.long	1072
-	.long	-16
-	.long	53
+	.word	80
+	.word	48
+	.word	752
+	.word	1072
+	.word	-16
+	.word	53
 	.long	5
 	.even
 __ZL15cageKipUpFrames:
-	.long	32
-	.long	64
-	.long	768
-	.long	464
-	.long	3
-	.long	48
+	.word	32
+	.word	64
+	.word	768
+	.word	464
+	.word	3
+	.word	48
 	.long	5
-	.long	48
-	.long	80
-	.long	832
-	.long	528
-	.long	0
-	.long	26
+	.word	48
+	.word	80
+	.word	832
+	.word	528
+	.word	0
+	.word	26
 	.long	5
-	.long	48
-	.long	48
-	.long	880
-	.long	576
-	.long	-2
-	.long	59
+	.word	48
+	.word	48
+	.word	880
+	.word	576
+	.word	-2
+	.word	59
 	.long	5
-	.long	80
-	.long	80
-	.long	928
-	.long	576
-	.long	-20
-	.long	30
+	.word	80
+	.word	80
+	.word	928
+	.word	576
+	.word	-20
+	.word	30
 	.long	5
-	.long	64
-	.long	96
-	.long	896
-	.long	0
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	896
+	.word	0
+	.word	0
+	.word	16
 	.long	5
 	.even
 __ZL15cageSweepFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	96
-	.long	384
-	.long	336
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	384
+	.word	336
+	.word	0
+	.word	16
 	.long	5
-	.long	64
-	.long	64
-	.long	448
-	.long	336
-	.long	2
-	.long	50
+	.word	64
+	.word	64
+	.word	448
+	.word	336
+	.word	2
+	.word	50
 	.long	5
-	.long	64
-	.long	48
-	.long	512
-	.long	336
-	.long	0
-	.long	62
+	.word	64
+	.word	48
+	.word	512
+	.word	336
+	.word	0
+	.word	62
 	.long	5
-	.long	96
-	.long	64
-	.long	576
-	.long	304
-	.long	6
-	.long	47
+	.word	96
+	.word	64
+	.word	576
+	.word	304
+	.word	6
+	.word	47
 	.long	5
-	.long	48
-	.long	80
-	.long	672
-	.long	304
-	.long	8
-	.long	46
+	.word	48
+	.word	80
+	.word	672
+	.word	304
+	.word	8
+	.word	46
 	.long	5
-	.long	80
-	.long	80
-	.long	720
-	.long	288
-	.long	-10
-	.long	32
+	.word	80
+	.word	80
+	.word	720
+	.word	288
+	.word	-10
+	.word	32
 	.long	5
-	.long	80
-	.long	96
-	.long	800
-	.long	288
-	.long	7
-	.long	16
+	.word	80
+	.word	96
+	.word	800
+	.word	288
+	.word	7
+	.word	16
 	.long	5
-	.long	80
-	.long	96
-	.long	800
-	.long	288
-	.long	7
-	.long	16
+	.word	80
+	.word	96
+	.word	800
+	.word	288
+	.word	7
+	.word	16
 	.long	5
 	.even
 __ZL20cageRoundhouseFrames:
-	.long	48
-	.long	96
-	.long	384
-	.long	608
-	.long	-16
-	.long	16
+	.word	48
+	.word	96
+	.word	384
+	.word	608
+	.word	-16
+	.word	16
 	.long	5
-	.long	64
-	.long	96
-	.long	432
-	.long	592
-	.long	-21
-	.long	16
+	.word	64
+	.word	96
+	.word	432
+	.word	592
+	.word	-21
+	.word	16
 	.long	5
-	.long	80
-	.long	96
-	.long	496
-	.long	608
-	.long	-4
-	.long	16
+	.word	80
+	.word	96
+	.word	496
+	.word	608
+	.word	-4
+	.word	16
 	.long	10
-	.long	48
-	.long	96
-	.long	576
-	.long	608
+	.word	48
+	.word	96
+	.word	576
+	.word	608
+	.word	5
+	.word	16
 	.long	5
-	.long	16
+	.word	32
+	.word	112
+	.word	624
+	.word	608
+	.word	11
+	.word	0
 	.long	5
-	.long	32
-	.long	112
-	.long	624
-	.long	608
-	.long	11
-	.long	0
+	.word	32
+	.word	112
+	.word	656
+	.word	608
+	.word	3
+	.word	0
 	.long	5
-	.long	32
-	.long	112
-	.long	656
-	.long	608
-	.long	3
-	.long	0
-	.long	5
-	.long	64
-	.long	112
-	.long	688
-	.long	608
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	688
+	.word	608
+	.word	-3
+	.word	0
 	.long	5
 	.even
 __ZL19cageBodyPunchFrames:
-	.long	64
-	.long	96
-	.long	0
-	.long	528
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	528
+	.word	0
+	.word	16
 	.long	5
-	.long	64
-	.long	112
-	.long	64
-	.long	528
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	528
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	128
-	.long	512
-	.long	12
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	512
+	.word	12
+	.word	0
 	.long	32
-	.long	64
-	.long	112
-	.long	64
-	.long	528
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	528
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	96
-	.long	0
-	.long	528
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	528
+	.word	0
+	.word	16
 	.long	5
 	.even
 __ZL18cageBodyKickFrames:
-	.long	64
-	.long	112
-	.long	960
-	.long	352
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	352
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	896
-	.long	464
-	.long	20
-	.long	-1
+	.word	48
+	.word	112
+	.word	896
+	.word	464
+	.word	20
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	944
-	.long	464
-	.long	20
-	.long	-1
+	.word	64
+	.word	112
+	.word	944
+	.word	464
+	.word	20
+	.word	-1
 	.long	32
-	.long	48
-	.long	112
-	.long	896
-	.long	464
-	.long	20
-	.long	-1
+	.word	48
+	.word	112
+	.word	896
+	.word	464
+	.word	20
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	960
-	.long	352
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	352
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL18cageDuckKickFrames:
-	.long	64
-	.long	48
-	.long	320
-	.long	1024
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	320
+	.word	1024
+	.word	0
+	.word	64
 	.long	6
-	.long	80
-	.long	48
-	.long	320
-	.long	1072
-	.long	0
-	.long	64
+	.word	80
+	.word	48
+	.word	320
+	.word	1072
+	.word	0
+	.word	64
 	.long	6
-	.long	96
-	.long	48
-	.long	400
-	.long	1072
-	.long	0
-	.long	64
+	.word	96
+	.word	48
+	.word	400
+	.word	1072
+	.word	0
+	.word	64
 	.long	10
-	.long	80
-	.long	48
-	.long	320
-	.long	1072
-	.long	0
-	.long	64
+	.word	80
+	.word	48
+	.word	320
+	.word	1072
+	.word	0
+	.word	64
 	.long	6
-	.long	64
-	.long	48
-	.long	320
-	.long	1024
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	320
+	.word	1024
+	.word	0
+	.word	64
 	.long	6
 	.even
 __ZL15cageThrowFrames:
-	.long	80
-	.long	112
-	.long	752
-	.long	640
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	752
+	.word	640
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	80
-	.long	832
-	.long	624
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	832
+	.word	624
+	.word	0
+	.word	32
 	.long	6
-	.long	64
-	.long	96
-	.long	912
-	.long	656
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	912
+	.word	656
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	736
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	736
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	96
-	.long	64
-	.long	752
-	.long	-28
-	.long	16
+	.word	96
+	.word	96
+	.word	64
+	.word	752
+	.word	-28
+	.word	16
 	.long	6
-	.long	80
-	.long	80
-	.long	160
-	.long	736
-	.long	-13
-	.long	32
+	.word	80
+	.word	80
+	.word	160
+	.word	736
+	.word	-13
+	.word	32
 	.long	6
-	.long	80
-	.long	96
-	.long	240
-	.long	736
-	.long	-14
-	.long	16
+	.word	80
+	.word	96
+	.word	240
+	.word	736
+	.word	-14
+	.word	16
 	.long	6
-	.long	80
-	.long	96
-	.long	240
-	.long	736
-	.long	-14
-	.long	16
+	.word	80
+	.word	96
+	.word	240
+	.word	736
+	.word	-14
+	.word	16
 	.long	6
 	.even
 __ZL21cageBeingThrownFrames:
-	.long	64
-	.long	80
-	.long	320
-	.long	672
-	.long	-40
-	.long	-10
+	.word	64
+	.word	80
+	.word	320
+	.word	672
+	.word	-40
+	.word	-10
 	.long	8
-	.long	64
-	.long	64
-	.long	384
-	.long	704
-	.long	10
-	.long	-10
+	.word	64
+	.word	64
+	.word	384
+	.word	704
+	.word	10
+	.word	-10
 	.long	8
-	.long	64
-	.long	48
-	.long	448
-	.long	704
-	.long	0
-	.long	-10
+	.word	64
+	.word	48
+	.word	448
+	.word	704
+	.word	0
+	.word	-10
 	.long	32
-	.long	80
-	.long	80
-	.long	816
-	.long	448
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	816
+	.word	448
+	.word	0
+	.word	32
 	.long	6
-	.long	96
-	.long	48
-	.long	656
-	.long	1072
-	.long	0
-	.long	64
+	.word	96
+	.word	48
+	.word	656
+	.word	1072
+	.word	0
+	.word	64
 	.long	6
-	.long	96
-	.long	48
-	.long	656
-	.long	1072
-	.long	0
-	.long	74
+	.word	96
+	.word	48
+	.word	656
+	.word	1072
+	.word	0
+	.word	74
 	.long	6
 	.even
 __ZL24cageBeingThrownLowFrames:
-	.long	64
-	.long	80
-	.long	320
-	.long	672
-	.long	-30
-	.long	20
+	.word	64
+	.word	80
+	.word	320
+	.word	672
+	.word	-30
+	.word	20
 	.long	8
-	.long	64
-	.long	64
-	.long	384
-	.long	704
-	.long	10
-	.long	20
+	.word	64
+	.word	64
+	.word	384
+	.word	704
+	.word	10
+	.word	20
 	.long	8
-	.long	64
-	.long	48
-	.long	448
-	.long	704
-	.long	0
-	.long	20
+	.word	64
+	.word	48
+	.word	448
+	.word	704
+	.word	0
+	.word	20
 	.long	32
-	.long	80
-	.long	80
-	.long	816
-	.long	448
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	816
+	.word	448
+	.word	0
+	.word	32
 	.long	6
-	.long	96
-	.long	48
-	.long	656
-	.long	1072
-	.long	0
-	.long	64
+	.word	96
+	.word	48
+	.word	656
+	.word	1072
+	.word	0
+	.word	64
 	.long	6
-	.long	96
-	.long	48
-	.long	656
-	.long	1072
-	.long	0
-	.long	74
+	.word	96
+	.word	48
+	.word	656
+	.word	1072
+	.word	0
+	.word	74
 	.long	6
 	.even
 __ZL12fighterCage2:
 	.long	1
 	.long	16
 	.long	8534416
-	.long	7
-	.long	7
-	.long	11
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	11
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL11fighterKano:
 	.long	2
 	.long	14
 	.long	11401776
-	.long	7
-	.long	7
-	.long	5
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	8
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	5
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	8
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL14kanoIdleFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	1
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	1
 	.long	5
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	384
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	0
+	.word	0
+	.word	0
 	.long	5
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL15kanoDizzyFrames:
-	.long	64
-	.long	96
-	.long	368
-	.long	704
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	368
+	.word	704
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	432
-	.long	720
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	432
+	.word	720
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	496
-	.long	768
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	496
+	.word	768
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	560
-	.long	736
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	560
+	.word	736
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	624
-	.long	784
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	624
+	.word	784
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	688
-	.long	848
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	688
+	.word	848
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	112
-	.long	752
-	.long	832
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	752
+	.word	832
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL14kanoWinsFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	992
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	992
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	128
-	.long	64
-	.long	1024
-	.long	0
-	.long	-16
+	.word	64
+	.word	128
+	.word	64
+	.word	1024
+	.word	0
+	.word	-16
 	.long	6
-	.long	64
-	.long	128
-	.long	128
-	.long	1024
-	.long	-3
-	.long	-16
+	.word	64
+	.word	128
+	.word	128
+	.word	1024
+	.word	-3
+	.word	-16
 	.long	60
-	.long	96
-	.long	112
-	.long	192
-	.long	1024
-	.long	-17
-	.long	0
+	.word	96
+	.word	112
+	.word	192
+	.word	1024
+	.word	-17
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	896
-	.long	1056
-	.long	0
-	.long	1
+	.word	64
+	.word	112
+	.word	896
+	.word	1056
+	.word	0
+	.word	1
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL14kanoWalkFrames:
-	.long	64
-	.long	112
-	.long	448
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	512
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	576
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	640
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	704
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	768
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	832
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL14kanoTurnFrames:
-	.long	48
-	.long	112
-	.long	192
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	192
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	240
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	240
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL14kanoJumpFrames:
-	.long	64
-	.long	112
-	.long	64
-	.long	416
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	416
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	128
-	.long	384
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	128
+	.word	384
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	64
-	.long	416
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	416
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	96
-	.long	0
-	.long	448
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	448
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL18kanoJumpRollFrames:
-	.long	48
-	.long	64
-	.long	288
-	.long	352
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	176
+	.word	384
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	336
-	.long	368
-	.long	0
-	.long	0
+	.word	48
+	.word	80
+	.word	240
+	.word	352
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	384
-	.long	384
-	.long	-12
-	.long	4
+	.word	48
+	.word	64
+	.word	288
+	.word	352
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	448
-	.long	384
-	.long	-12
-	.long	4
+	.word	48
+	.word	64
+	.word	336
+	.word	368
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	512
-	.long	416
-	.long	0
-	.long	-18
+	.word	64
+	.word	48
+	.word	384
+	.word	384
+	.word	-12
+	.word	4
 	.long	3
-	.long	48
-	.long	64
-	.long	560
-	.long	416
-	.long	0
-	.long	-18
+	.word	64
+	.word	48
+	.word	448
+	.word	384
+	.word	-12
+	.word	4
 	.long	3
-	.long	64
-	.long	48
-	.long	608
-	.long	416
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	512
+	.word	416
+	.word	0
+	.word	-18
 	.long	3
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	560
+	.word	416
+	.word	0
+	.word	-18
+	.long	3
+	.word	64
+	.word	48
+	.word	608
+	.word	416
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	288
+	.word	352
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	336
+	.word	368
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	384
+	.word	384
+	.word	-12
+	.word	4
+	.long	3
+	.word	64
+	.word	48
+	.word	448
+	.word	384
+	.word	-12
+	.word	4
+	.long	3
+	.word	48
+	.word	64
+	.word	512
+	.word	416
+	.word	0
+	.word	-18
+	.long	3
+	.word	48
+	.word	64
+	.word	560
+	.word	416
+	.word	0
+	.word	-18
+	.long	3
+	.word	64
+	.word	48
+	.word	608
+	.word	416
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	288
+	.word	352
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	336
+	.word	368
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	80
+	.word	240
+	.word	352
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	112
+	.word	176
+	.word	384
+	.word	0
+	.word	0
+	.long	3
 	.even
 __ZL14kanoDuckFrames:
-	.long	64
-	.long	96
-	.long	0
-	.long	112
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	112
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	80
-	.long	64
-	.long	112
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	64
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	48
-	.long	128
-	.long	112
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	128
+	.word	112
+	.word	0
+	.word	64
 	.long	3
 	.even
 __ZL15kanoBlockFrames:
-	.long	64
-	.long	112
-	.long	64
-	.long	528
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	528
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	128
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	496
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	192
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	496
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL18kanoBlockHitFrames:
-	.long	64
-	.long	112
-	.long	128
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	496
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	192
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	496
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	128
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	496
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	192
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	496
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	128
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	496
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	192
-	.long	496
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	496
+	.word	0
+	.word	0
 	.long	1
 	.even
 __ZL19kanoBlockDuckFrames:
-	.long	64
-	.long	64
-	.long	240
-	.long	432
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	240
+	.word	432
+	.word	0
+	.word	48
 	.long	3
-	.long	64
-	.long	80
-	.long	304
-	.long	432
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	304
+	.word	432
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL22kanoBlockDuckHitFrames:
-	.long	64
-	.long	64
-	.long	240
-	.long	432
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	240
+	.word	432
+	.word	0
+	.word	48
 	.long	1
-	.long	64
-	.long	80
-	.long	304
-	.long	432
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	304
+	.word	432
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	64
-	.long	240
-	.long	432
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	240
+	.word	432
+	.word	0
+	.word	48
 	.long	1
-	.long	64
-	.long	80
-	.long	304
-	.long	432
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	304
+	.word	432
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	64
-	.long	240
-	.long	432
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	240
+	.word	432
+	.word	0
+	.word	48
 	.long	1
-	.long	64
-	.long	80
-	.long	304
-	.long	432
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	304
+	.word	432
+	.word	0
+	.word	32
 	.long	1
 	.even
 __ZL18kanoPunchLowFrames:
-	.long	64
-	.long	112
-	.long	640
-	.long	112
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	112
+	.word	-2
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	704
-	.long	112
-	.long	8
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	112
+	.word	8
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	288
-	.long	112
-	.long	-4
-	.long	0
+	.word	96
+	.word	112
+	.word	288
+	.word	112
+	.word	-4
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	704
-	.long	112
-	.long	8
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	112
+	.word	8
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	640
-	.long	112
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	112
+	.word	-2
+	.word	0
 	.long	4
 	.even
 __ZL19kanoPunchHighFrames:
-	.long	64
-	.long	112
-	.long	640
-	.long	112
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	112
+	.word	-2
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	704
-	.long	112
-	.long	8
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	112
+	.word	8
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	768
-	.long	112
-	.long	10
-	.long	-1
+	.word	80
+	.word	112
+	.word	768
+	.word	112
+	.word	10
+	.word	-1
 	.long	8
-	.long	64
-	.long	112
-	.long	704
-	.long	112
-	.long	8
-	.long	0
+	.word	64
+	.word	112
+	.word	704
+	.word	112
+	.word	8
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	640
-	.long	112
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	112
+	.word	-2
+	.word	0
 	.long	4
 	.even
 __ZL17kanoKickLowFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	-6
-	.long	-2
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	-6
+	.word	-2
 	.long	4
-	.long	48
-	.long	112
-	.long	496
-	.long	272
-	.long	1
-	.long	-1
+	.word	48
+	.word	112
+	.word	496
+	.word	272
+	.word	1
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	544
-	.long	308
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	544
+	.word	308
+	.word	-2
+	.word	-1
 	.long	4
-	.long	96
-	.long	96
-	.long	688
-	.long	320
-	.long	-7
-	.long	15
+	.word	96
+	.word	96
+	.word	688
+	.word	320
+	.word	-7
+	.word	15
 	.long	8
-	.long	80
-	.long	96
-	.long	608
-	.long	320
-	.long	-6
-	.long	15
+	.word	80
+	.word	96
+	.word	608
+	.word	320
+	.word	-6
+	.word	15
 	.long	4
-	.long	64
-	.long	112
-	.long	544
-	.long	308
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	544
+	.word	308
+	.word	-2
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	1
-	.long	-1
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	1
+	.word	-1
 	.long	4
 	.even
 __ZL18kanoKickHighFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	-6
-	.long	-2
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	-6
+	.word	-2
 	.long	4
-	.long	48
-	.long	112
-	.long	496
-	.long	272
-	.long	1
-	.long	-1
+	.word	48
+	.word	112
+	.word	496
+	.word	272
+	.word	1
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	544
-	.long	308
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	544
+	.word	308
+	.word	-2
+	.word	-1
 	.long	4
-	.long	96
-	.long	112
-	.long	880
-	.long	336
-	.long	-6
-	.long	-1
+	.word	96
+	.word	112
+	.word	880
+	.word	336
+	.word	-6
+	.word	-1
 	.long	8
-	.long	80
-	.long	96
-	.long	608
-	.long	320
-	.long	-6
-	.long	15
+	.word	80
+	.word	96
+	.word	608
+	.word	320
+	.word	-6
+	.word	15
 	.long	4
-	.long	64
-	.long	112
-	.long	544
-	.long	308
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	544
+	.word	308
+	.word	-2
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	1
-	.long	-1
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	1
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	-6
-	.long	-2
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	-6
+	.word	-2
 	.long	4
 	.even
 __ZL19kanoJumpPunchFrames:
-	.long	48
-	.long	64
-	.long	912
-	.long	448
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	912
+	.word	448
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	64
-	.long	0
-	.long	544
-	.long	0
-	.long	0
+	.word	64
+	.word	64
+	.word	0
+	.word	544
+	.word	0
+	.word	0
 	.long	24
-	.long	64
-	.long	64
-	.long	0
-	.long	544
-	.long	0
-	.long	0
+	.word	64
+	.word	64
+	.word	0
+	.word	544
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18kanoJumpKickFrames:
-	.long	48
-	.long	112
-	.long	368
-	.long	432
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	368
+	.word	432
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	96
-	.long	416
-	.long	432
-	.long	0
-	.long	0
+	.word	96
+	.word	96
+	.word	416
+	.word	432
+	.word	0
+	.word	0
 	.long	24
-	.long	96
-	.long	96
-	.long	416
-	.long	432
-	.long	0
-	.long	0
+	.word	96
+	.word	96
+	.word	416
+	.word	432
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL22kanoJumpDropKickFrames:
-	.long	48
-	.long	80
-	.long	672
-	.long	416
-	.long	0
-	.long	0
+	.word	48
+	.word	80
+	.word	672
+	.word	416
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	64
-	.long	816
-	.long	448
-	.long	0
-	.long	0
+	.word	96
+	.word	64
+	.word	816
+	.word	448
+	.word	0
+	.word	0
 	.long	24
-	.long	96
-	.long	64
-	.long	816
-	.long	448
-	.long	0
-	.long	0
+	.word	96
+	.word	64
+	.word	816
+	.word	448
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18kanoUppercutFrames:
-	.long	64
-	.long	112
-	.long	800
-	.long	224
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	224
+	.word	-9
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	864
-	.long	224
-	.long	3
-	.long	1
+	.word	48
+	.word	112
+	.word	864
+	.word	224
+	.word	3
+	.word	1
 	.long	4
-	.long	80
-	.long	112
-	.long	912
-	.long	224
-	.long	6
-	.long	3
+	.word	80
+	.word	112
+	.word	912
+	.word	224
+	.word	6
+	.word	3
 	.long	4
-	.long	64
-	.long	128
-	.long	0
-	.long	320
+	.word	64
+	.word	128
+	.word	0
+	.word	320
+	.word	12
+	.word	-14
 	.long	12
-	.long	-14
-	.long	12
-	.long	64
-	.long	112
-	.long	64
-	.long	304
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	304
+	.word	-9
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	64
-	.long	304
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	304
+	.word	-9
+	.word	0
 	.long	4
 	.even
 __ZL15kanoSweepFrames:
-	.long	64
-	.long	96
-	.long	144
-	.long	224
-	.long	-6
-	.long	15
+	.word	64
+	.word	96
+	.word	144
+	.word	224
+	.word	-6
+	.word	15
 	.long	5
-	.long	80
-	.long	64
-	.long	208
-	.long	224
-	.long	-5
-	.long	47
+	.word	80
+	.word	64
+	.word	208
+	.word	224
+	.word	-5
+	.word	47
 	.long	5
-	.long	64
-	.long	48
-	.long	288
-	.long	224
-	.long	-3
-	.long	63
+	.word	64
+	.word	48
+	.word	288
+	.word	224
+	.word	-3
+	.word	63
 	.long	5
-	.long	96
-	.long	48
-	.long	560
-	.long	1120
-	.long	-3
-	.long	63
+	.word	96
+	.word	48
+	.word	560
+	.word	1120
+	.word	-3
+	.word	63
 	.long	5
-	.long	96
-	.long	64
-	.long	448
-	.long	208
-	.long	-3
-	.long	63
+	.word	96
+	.word	64
+	.word	448
+	.word	208
+	.word	-3
+	.word	63
 	.long	5
-	.long	80
-	.long	80
-	.long	544
-	.long	224
-	.long	-18
-	.long	34
+	.word	80
+	.word	80
+	.word	544
+	.word	224
+	.word	-18
+	.word	34
 	.long	5
-	.long	96
-	.long	96
-	.long	624
-	.long	224
-	.long	-8
-	.long	14
+	.word	96
+	.word	96
+	.word	624
+	.word	224
+	.word	-8
+	.word	14
 	.long	5
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	368
-	.long	256
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	256
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL20kanoRoundhouseFrames:
-	.long	64
-	.long	112
-	.long	528
-	.long	896
-	.long	-1
-	.long	-2
+	.word	64
+	.word	112
+	.word	528
+	.word	896
+	.word	-1
+	.word	-2
 	.long	5
-	.long	64
-	.long	112
-	.long	592
-	.long	896
-	.long	-7
-	.long	-2
+	.word	64
+	.word	112
+	.word	592
+	.word	896
+	.word	-7
+	.word	-2
 	.long	5
-	.long	96
-	.long	96
-	.long	288
-	.long	928
-	.long	0
-	.long	14
+	.word	96
+	.word	96
+	.word	288
+	.word	928
+	.word	0
+	.word	14
 	.long	10
-	.long	64
-	.long	96
-	.long	384
-	.long	928
-	.long	12
-	.long	14
+	.word	64
+	.word	96
+	.word	384
+	.word	928
+	.word	12
+	.word	14
 	.long	5
-	.long	48
-	.long	112
-	.long	976
-	.long	864
-	.long	7
-	.long	-2
+	.word	48
+	.word	112
+	.word	976
+	.word	864
+	.word	7
+	.word	-2
 	.long	5
-	.long	48
-	.long	96
-	.long	912
-	.long	928
-	.long	-5
-	.long	15
+	.word	48
+	.word	96
+	.word	912
+	.word	928
+	.word	-5
+	.word	15
 	.long	5
-	.long	64
-	.long	96
-	.long	960
-	.long	976
-	.long	-7
-	.long	15
+	.word	64
+	.word	96
+	.word	960
+	.word	976
+	.word	-7
+	.word	15
 	.long	5
 	.even
 __ZL19kanoBodyPunchFrames:
-	.long	64
-	.long	112
-	.long	720
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	512
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	384
-	.long	816
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	816
+	.word	0
+	.word	0
 	.long	5
-	.long	80
-	.long	96
-	.long	448
-	.long	864
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	448
+	.word	864
+	.word	0
+	.word	16
 	.long	32
-	.long	64
-	.long	112
-	.long	384
-	.long	816
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	816
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	720
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	512
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL18kanoBodyKickFrames:
-	.long	64
-	.long	112
-	.long	512
-	.long	480
-	.long	-14
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	480
+	.word	-14
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	576
-	.long	480
-	.long	-1
-	.long	-2
+	.word	64
+	.word	112
+	.word	576
+	.word	480
+	.word	-1
+	.word	-2
 	.long	5
-	.long	80
-	.long	112
-	.long	640
-	.long	496
-	.long	0
-	.long	-1
+	.word	80
+	.word	112
+	.word	640
+	.word	496
+	.word	0
+	.word	-1
 	.long	32
-	.long	64
-	.long	112
-	.long	576
-	.long	480
-	.long	-1
-	.long	-2
+	.word	64
+	.word	112
+	.word	576
+	.word	480
+	.word	-1
+	.word	-2
 	.long	5
-	.long	64
-	.long	112
-	.long	512
-	.long	480
-	.long	-14
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	480
+	.word	-14
+	.word	0
 	.long	5
 	.even
 __ZL18kanoDuckKickFrames:
-	.long	64
-	.long	64
-	.long	128
-	.long	320
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	128
+	.word	320
+	.word	0
+	.word	48
 	.long	6
-	.long	64
-	.long	64
-	.long	208
-	.long	288
-	.long	0
-	.long	49
+	.word	64
+	.word	64
+	.word	208
+	.word	288
+	.word	0
+	.word	49
 	.long	6
-	.long	96
-	.long	80
-	.long	272
-	.long	272
-	.long	0
-	.long	33
+	.word	96
+	.word	80
+	.word	272
+	.word	272
+	.word	0
+	.word	33
 	.long	10
-	.long	64
-	.long	64
-	.long	208
-	.long	288
-	.long	0
-	.long	49
+	.word	64
+	.word	64
+	.word	208
+	.word	288
+	.word	0
+	.word	49
 	.long	6
-	.long	64
-	.long	64
-	.long	128
-	.long	320
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	128
+	.word	320
+	.word	0
+	.word	48
 	.long	6
 	.even
 __ZL15kanoThrowFrames:
-	.long	64
-	.long	112
-	.long	688
-	.long	736
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	688
+	.word	736
+	.word	0
+	.word	0
 	.long	6
-	.long	112
-	.long	96
-	.long	752
-	.long	736
-	.long	0
-	.long	16
+	.word	112
+	.word	96
+	.word	752
+	.word	736
+	.word	0
+	.word	16
 	.long	6
-	.long	80
-	.long	112
-	.long	864
-	.long	704
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	864
+	.word	704
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	128
-	.long	944
-	.long	736
-	.long	0
-	.long	-16
+	.word	80
+	.word	128
+	.word	944
+	.word	736
+	.word	0
+	.word	-16
 	.long	6
-	.long	96
-	.long	80
-	.long	0
-	.long	832
-	.long	-28
-	.long	32
+	.word	96
+	.word	80
+	.word	0
+	.word	832
+	.word	-28
+	.word	32
 	.long	6
-	.long	80
-	.long	64
-	.long	96
-	.long	848
-	.long	-17
-	.long	48
+	.word	80
+	.word	64
+	.word	96
+	.word	848
+	.word	-17
+	.word	48
 	.long	6
-	.long	80
-	.long	64
-	.long	96
-	.long	848
-	.long	-17
-	.long	48
+	.word	80
+	.word	64
+	.word	96
+	.word	848
+	.word	-17
+	.word	48
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL21kanoBeingThrownFrames:
-	.long	80
-	.long	80
-	.long	0
-	.long	752
-	.long	-40
-	.long	0
+	.word	80
+	.word	80
+	.word	0
+	.word	752
+	.word	-40
+	.word	0
 	.long	8
-	.long	80
-	.long	64
-	.long	80
-	.long	768
-	.long	-20
-	.long	0
+	.word	80
+	.word	64
+	.word	80
+	.word	768
+	.word	-20
+	.word	0
 	.long	8
-	.long	48
-	.long	80
-	.long	160
-	.long	768
-	.long	0
-	.long	0
+	.word	48
+	.word	80
+	.word	160
+	.word	768
+	.word	0
+	.word	0
 	.long	32
-	.long	80
-	.long	80
-	.long	208
-	.long	720
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	208
+	.word	720
+	.word	0
+	.word	32
 	.long	6
-	.long	96
-	.long	32
-	.long	752
-	.long	1072
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	752
+	.word	1072
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	752
-	.long	1072
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	752
+	.word	1072
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL24kanoBeingThrownLowFrames:
-	.long	80
-	.long	80
-	.long	0
-	.long	752
-	.long	-40
-	.long	20
+	.word	80
+	.word	80
+	.word	0
+	.word	752
+	.word	-40
+	.word	20
 	.long	8
-	.long	80
-	.long	64
-	.long	80
-	.long	768
-	.long	-20
-	.long	20
+	.word	80
+	.word	64
+	.word	80
+	.word	768
+	.word	-20
+	.word	20
 	.long	8
-	.long	48
-	.long	80
-	.long	160
-	.long	768
-	.long	0
-	.long	20
+	.word	48
+	.word	80
+	.word	160
+	.word	768
+	.word	0
+	.word	20
 	.long	32
-	.long	80
-	.long	80
-	.long	208
-	.long	720
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	208
+	.word	720
+	.word	0
+	.word	32
 	.long	6
-	.long	96
-	.long	32
-	.long	752
-	.long	1072
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	752
+	.word	1072
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	752
-	.long	1072
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	752
+	.word	1072
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL16kanoHitLowFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	608
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	608
+	.word	-3
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	64
-	.long	640
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	640
+	.word	-5
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	608
-	.long	-8
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	608
+	.word	-8
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	608
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	608
+	.word	-3
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17kanoHitHighFrames:
-	.long	64
-	.long	112
-	.long	720
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	512
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	784
-	.long	512
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	512
+	.word	-5
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	848
-	.long	512
-	.long	-11
-	.long	0
+	.word	64
+	.word	112
+	.word	848
+	.word	512
+	.word	-11
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	912
-	.long	512
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	512
+	.word	-9
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17kanoHitBackFrames:
-	.long	64
-	.long	112
-	.long	784
-	.long	512
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	512
+	.word	-5
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	848
-	.long	512
-	.long	-11
-	.long	0
+	.word	64
+	.word	112
+	.word	848
+	.word	512
+	.word	-11
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	512
-	.long	-7
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	512
+	.word	-7
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	320
-	.long	512
-	.long	-14
-	.long	0
+	.word	48
+	.word	112
+	.word	320
+	.word	512
+	.word	-14
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	368
-	.long	544
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	544
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	432
-	.long	528
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	432
+	.word	528
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	512
-	.long	592
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	592
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL17kanoHitFallFrames:
-	.long	64
-	.long	112
-	.long	640
-	.long	608
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	704
-	.long	624
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	704
+	.word	624
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	80
-	.long	784
-	.long	624
-	.long	0
-	.long	32
+	.word	96
+	.word	80
+	.word	784
+	.word	624
+	.word	0
+	.word	32
 	.long	6
-	.long	80
-	.long	64
-	.long	880
-	.long	624
-	.long	5
-	.long	48
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
 	.long	6
-	.long	80
-	.long	48
-	.long	128
-	.long	720
-	.long	0
-	.long	64
+	.word	80
+	.word	48
+	.word	128
+	.word	720
+	.word	0
+	.word	64
 	.long	6
-	.long	96
-	.long	48
-	.long	256
-	.long	624
-	.long	-8
-	.long	76
+	.word	96
+	.word	48
+	.word	256
+	.word	624
+	.word	-8
+	.word	76
 	.long	6
-	.long	96
-	.long	32
-	.long	752
-	.long	1072
-	.long	-7
-	.long	95
+	.word	96
+	.word	32
+	.word	752
+	.word	1072
+	.word	-7
+	.word	95
 	.long	6
 	.even
 __ZL18kanoHitSweepFrames:
-	.long	80
-	.long	96
-	.long	288
-	.long	672
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	288
+	.word	672
+	.word	0
+	.word	16
 	.long	5
-	.long	80
-	.long	48
-	.long	368
-	.long	656
-	.long	-4
-	.long	30
+	.word	80
+	.word	48
+	.word	368
+	.word	656
+	.word	-4
+	.word	30
 	.long	5
-	.long	64
-	.long	80
-	.long	448
-	.long	640
-	.long	-1
-	.long	22
+	.word	64
+	.word	80
+	.word	448
+	.word	640
+	.word	-1
+	.word	22
 	.long	5
-	.long	48
-	.long	64
-	.long	512
-	.long	704
-	.long	7
-	.long	46
+	.word	48
+	.word	64
+	.word	512
+	.word	704
+	.word	7
+	.word	46
 	.long	5
-	.long	80
-	.long	32
-	.long	560
-	.long	704
-	.long	-12
-	.long	78
+	.word	80
+	.word	32
+	.word	560
+	.word	704
+	.word	-12
+	.word	78
 	.long	5
-	.long	80
-	.long	32
-	.long	752
-	.long	1104
-	.long	-5
-	.long	90
+	.word	80
+	.word	32
+	.word	752
+	.word	1104
+	.word	-5
+	.word	90
 	.long	5
 	.even
 __ZL15kanoKipUpFrames:
-	.long	48
-	.long	64
-	.long	640
-	.long	720
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	640
+	.word	720
+	.word	0
+	.word	48
 	.long	5
-	.long	32
-	.long	80
-	.long	992
-	.long	224
-	.long	8
-	.long	31
+	.word	32
+	.word	80
+	.word	992
+	.word	224
+	.word	8
+	.word	31
 	.long	5
-	.long	48
-	.long	48
-	.long	976
-	.long	336
-	.long	0
-	.long	64
+	.word	48
+	.word	48
+	.word	976
+	.word	336
+	.word	0
+	.word	64
 	.long	5
-	.long	48
-	.long	80
-	.long	848
-	.long	1056
-	.long	0
-	.long	33
+	.word	48
+	.word	80
+	.word	848
+	.word	1056
+	.word	0
+	.word	33
 	.long	5
-	.long	64
-	.long	112
-	.long	960
-	.long	624
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	624
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL12fighterKano2:
 	.long	2
 	.long	16
 	.long	11401776
-	.long	7
-	.long	7
-	.long	5
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	8
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	5
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	8
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL13fighterRaiden:
 	.long	3
 	.long	14
 	.long	9689552
-	.long	10
-	.long	7
-	.long	5
-	.long	9
-	.long	2
-	.long	4
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	6
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	5
-	.long	7
-	.long	7
-	.long	6
+	.word	10
+	.word	7
+	.word	5
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	6
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	5
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL16raidenIdleFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	-1
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	-1
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	-1
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	-1
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17raidenDizzyFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	1008
-	.long	-11
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	1008
+	.word	-11
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	64
-	.long	1008
-	.long	-12
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	1008
+	.word	-12
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	128
-	.long	1008
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	128
+	.word	1008
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	176
-	.long	1008
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	176
+	.word	1008
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	224
-	.long	992
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	224
+	.word	992
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	272
-	.long	992
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	272
+	.word	992
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	320
-	.long	992
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	320
+	.word	992
+	.word	0
+	.word	0
 	.long	12
 	.even
 __ZL16raidenWinsFrames:
-	.long	64
-	.long	112
-	.long	320
-	.long	384
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	384
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	96
-	.long	384
-	.long	352
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	384
+	.word	352
+	.word	0
+	.word	16
 	.long	6
-	.long	96
-	.long	96
-	.long	448
-	.long	368
-	.long	-15
-	.long	16
+	.word	96
+	.word	96
+	.word	448
+	.word	368
+	.word	-15
+	.word	16
 	.long	6
-	.long	96
-	.long	112
-	.long	544
-	.long	352
-	.long	-19
-	.long	0
+	.word	96
+	.word	112
+	.word	544
+	.word	352
+	.word	-19
+	.word	0
 	.long	6
-	.long	64
-	.long	128
-	.long	768
-	.long	992
-	.long	0
-	.long	-16
+	.word	64
+	.word	128
+	.word	768
+	.word	992
+	.word	0
+	.word	-16
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL16raidenWalkFrames:
-	.long	64
-	.long	112
-	.long	496
-	.long	464
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	496
+	.word	464
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	560
-	.long	464
-	.long	8
-	.long	0
+	.word	48
+	.word	112
+	.word	560
+	.word	464
+	.word	8
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	608
-	.long	464
+	.word	48
+	.word	112
+	.word	608
+	.word	464
+	.word	6
+	.word	0
 	.long	6
-	.long	0
+	.word	48
+	.word	112
+	.word	656
+	.word	432
+	.word	6
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	656
-	.long	432
+	.word	64
+	.word	112
+	.word	704
+	.word	497
+	.word	3
+	.word	0
 	.long	6
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	497
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	704
-	.long	497
-	.long	3
-	.long	0
+	.word	48
+	.word	112
+	.word	832
+	.word	496
+	.word	8
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	768
-	.long	497
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	880
+	.word	480
+	.word	8
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	832
-	.long	496
-	.long	8
-	.long	0
-	.long	6
-	.long	48
-	.long	112
-	.long	880
-	.long	480
-	.long	8
-	.long	0
-	.long	6
-	.long	48
-	.long	112
-	.long	928
-	.long	480
-	.long	6
-	.long	0
+	.word	48
+	.word	112
+	.word	928
+	.word	480
+	.word	6
+	.word	0
 	.long	6
 	.even
 __ZL16raidenTurnFrames:
-	.long	64
-	.long	112
-	.long	384
-	.long	960
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	960
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	448
-	.long	960
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	960
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL16raidenJumpFrames:
-	.long	64
-	.long	112
-	.long	64
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	224
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	96
-	.long	128
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	96
+	.word	128
+	.word	224
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	96
-	.long	0
-	.long	208
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	208
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	96
-	.long	0
-	.long	208
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	208
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL20raidenJumpRollFrames:
-	.long	64
-	.long	96
-	.long	256
-	.long	208
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	208
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	320
-	.long	208
-	.long	0
-	.long	0
+	.word	64
+	.word	96
+	.word	256
+	.word	208
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	64
-	.long	368
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	320
+	.word	208
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	432
-	.long	176
-	.long	-13
-	.long	0
+	.word	64
+	.word	64
+	.word	368
+	.word	176
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	64
-	.long	496
-	.long	176
-	.long	-12
-	.long	0
+	.word	64
+	.word	48
+	.word	432
+	.word	176
+	.word	-13
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	560
-	.long	144
-	.long	0
-	.long	0
+	.word	64
+	.word	64
+	.word	496
+	.word	176
+	.word	-12
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	608
-	.long	160
-	.long	-6
-	.long	0
+	.word	48
+	.word	64
+	.word	560
+	.word	144
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	656
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	608
+	.word	160
+	.word	-6
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	656
+	.word	176
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	320
+	.word	208
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	64
+	.word	368
+	.word	176
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	432
+	.word	176
+	.word	-13
+	.word	0
+	.long	3
+	.word	64
+	.word	64
+	.word	496
+	.word	176
+	.word	-12
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	560
+	.word	144
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	608
+	.word	160
+	.word	-6
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	656
+	.word	176
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	320
+	.word	208
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	64
+	.word	368
+	.word	176
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	96
+	.word	256
+	.word	208
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	112
+	.word	256
+	.word	208
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL16raidenDuckFrames:
-	.long	64
-	.long	96
-	.long	0
-	.long	592
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	592
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	80
-	.long	64
-	.long	608
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	64
+	.word	608
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	64
-	.long	128
-	.long	608
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	128
+	.word	608
+	.word	0
+	.word	48
 	.long	3
 	.even
 __ZL17raidenBlockFrames:
-	.long	64
-	.long	112
-	.long	304
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	304
+	.word	800
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	368
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	800
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	432
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	800
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL20raidenBlockHitFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	800
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	432
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	800
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	368
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	800
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	432
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	800
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	368
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	800
+	.word	0
+	.word	0
 	.long	1
-	.long	64
-	.long	112
-	.long	432
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	800
+	.word	0
+	.word	0
 	.long	1
 	.even
 __ZL21raidenBlockDuckFrames:
-	.long	64
-	.long	80
-	.long	496
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	496
+	.word	800
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	560
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	560
+	.word	800
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL24raidenBlockDuckHitFrames:
-	.long	64
-	.long	80
-	.long	496
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	496
+	.word	800
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	560
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	560
+	.word	800
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	496
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	496
+	.word	800
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	560
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	560
+	.word	800
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	496
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	496
+	.word	800
+	.word	0
+	.word	32
 	.long	1
-	.long	64
-	.long	80
-	.long	560
-	.long	800
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	560
+	.word	800
+	.word	0
+	.word	32
 	.long	1
 	.even
 __ZL20raidenPunchLowFrames:
-	.long	64
-	.long	112
-	.long	512
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	576
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	912
-	.long	592
-	.long	1
-	.long	0
+	.word	96
+	.word	112
+	.word	912
+	.word	592
+	.word	1
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	576
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	512
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	576
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL21raidenPunchHighFrames:
-	.long	64
-	.long	112
-	.long	512
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	576
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	640
-	.long	608
-	.long	0
-	.long	0
+	.word	96
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	576
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	576
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	512
-	.long	576
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	576
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL19raidenKickLowFrames:
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	17
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	17
+	.word	0
 	.long	4
-	.long	80
-	.long	96
-	.long	0
-	.long	112
-	.long	13
-	.long	16
+	.word	80
+	.word	96
+	.word	0
+	.word	112
+	.word	13
+	.word	16
 	.long	8
-	.long	96
-	.long	96
-	.long	176
-	.long	112
-	.long	12
-	.long	16
+	.word	96
+	.word	96
+	.word	176
+	.word	112
+	.word	12
+	.word	16
 	.long	4
-	.long	80
-	.long	96
-	.long	0
-	.long	112
-	.long	13
-	.long	16
+	.word	80
+	.word	96
+	.word	0
+	.word	112
+	.word	13
+	.word	16
 	.long	8
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	17
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	17
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL20raidenKickHighFrames:
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	17
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	17
+	.word	0
 	.long	4
-	.long	80
-	.long	96
-	.long	0
-	.long	112
-	.long	13
-	.long	16
+	.word	80
+	.word	96
+	.word	0
+	.word	112
+	.word	13
+	.word	16
 	.long	8
-	.long	96
-	.long	112
-	.long	80
-	.long	112
-	.long	9
-	.long	0
+	.word	96
+	.word	112
+	.word	80
+	.word	112
+	.word	9
+	.word	0
 	.long	4
-	.long	80
-	.long	96
-	.long	0
-	.long	112
-	.long	13
-	.long	16
+	.word	80
+	.word	96
+	.word	0
+	.word	112
+	.word	13
+	.word	16
 	.long	8
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	17
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	17
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL21raidenJumpPunchFrames:
-	.long	64
-	.long	80
-	.long	0
-	.long	304
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	0
+	.word	304
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	64
-	.long	64
-	.long	336
-	.long	7
-	.long	-2
+	.word	64
+	.word	64
+	.word	64
+	.word	336
+	.word	7
+	.word	-2
 	.long	24
-	.long	64
-	.long	64
-	.long	64
-	.long	336
-	.long	7
-	.long	-2
+	.word	64
+	.word	64
+	.word	64
+	.word	336
+	.word	7
+	.word	-2
 	.long	4
 	.even
 __ZL20raidenJumpKickFrames:
-	.long	96
-	.long	96
-	.long	128
-	.long	320
-	.long	0
-	.long	0
+	.word	96
+	.word	96
+	.word	128
+	.word	320
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	96
-	.long	224
-	.long	320
-	.long	-4
-	.long	-10
+	.word	96
+	.word	96
+	.word	224
+	.word	320
+	.word	-4
+	.word	-10
 	.long	24
-	.long	96
-	.long	96
-	.long	224
-	.long	320
-	.long	-4
-	.long	-10
+	.word	96
+	.word	96
+	.word	224
+	.word	320
+	.word	-4
+	.word	-10
 	.long	4
 	.even
 __ZL24raidenJumpDropKickFrames:
-	.long	80
-	.long	80
-	.long	784
-	.long	224
-	.long	0
-	.long	0
+	.word	80
+	.word	80
+	.word	784
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	112
-	.long	64
-	.long	864
-	.long	224
-	.long	-6
-	.long	10
+	.word	112
+	.word	64
+	.word	864
+	.word	224
+	.word	-6
+	.word	10
 	.long	24
-	.long	112
-	.long	64
-	.long	864
-	.long	224
-	.long	-6
-	.long	10
+	.word	112
+	.word	64
+	.word	864
+	.word	224
+	.word	-6
+	.word	10
 	.long	4
 	.even
 __ZL20raidenUppercutFrames:
-	.long	64
-	.long	80
-	.long	192
-	.long	592
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	592
+	.word	0
+	.word	32
 	.long	4
-	.long	64
-	.long	96
-	.long	256
-	.long	592
-	.long	1
-	.long	16
+	.word	64
+	.word	96
+	.word	256
+	.word	592
+	.word	1
+	.word	16
 	.long	4
-	.long	80
-	.long	112
-	.long	320
-	.long	608
-	.long	1
-	.long	0
+	.word	80
+	.word	112
+	.word	320
+	.word	608
+	.word	1
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	400
-	.long	576
-	.long	18
-	.long	0
+	.word	48
+	.word	112
+	.word	400
+	.word	576
+	.word	18
+	.word	0
 	.long	12
-	.long	64
-	.long	96
-	.long	448
-	.long	592
-	.long	8
-	.long	16
+	.word	64
+	.word	96
+	.word	448
+	.word	592
+	.word	8
+	.word	16
 	.long	4
-	.long	64
-	.long	96
-	.long	448
-	.long	592
-	.long	8
-	.long	16
+	.word	64
+	.word	96
+	.word	448
+	.word	592
+	.word	8
+	.word	16
 	.long	4
 	.even
 __ZL17raidenSweepFrames:
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	96
-	.long	272
-	.long	112
-	.long	-9
-	.long	16
+	.word	64
+	.word	96
+	.word	272
+	.word	112
+	.word	-9
+	.word	16
 	.long	5
-	.long	80
-	.long	64
-	.long	336
-	.long	112
-	.long	-8
-	.long	48
+	.word	80
+	.word	64
+	.word	336
+	.word	112
+	.word	-8
+	.word	48
 	.long	5
-	.long	64
-	.long	48
-	.long	416
-	.long	80
-	.long	4
-	.long	64
+	.word	64
+	.word	48
+	.word	416
+	.word	80
+	.word	4
+	.word	64
 	.long	5
-	.long	96
-	.long	48
-	.long	416
-	.long	128
-	.long	7
-	.long	65
+	.word	96
+	.word	48
+	.word	416
+	.word	128
+	.word	7
+	.word	65
 	.long	5
-	.long	48
-	.long	80
-	.long	512
-	.long	64
-	.long	19
-	.long	55
+	.word	48
+	.word	80
+	.word	512
+	.word	64
+	.word	19
+	.word	55
 	.long	5
-	.long	80
-	.long	80
-	.long	560
-	.long	64
-	.long	-10
-	.long	32
+	.word	80
+	.word	80
+	.word	560
+	.word	64
+	.word	-10
+	.word	32
 	.long	5
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL22raidenRoundhouseFrames:
-	.long	64
-	.long	80
-	.long	640
-	.long	80
-	.long	-4
-	.long	32
+	.word	64
+	.word	80
+	.word	640
+	.word	80
+	.word	-4
+	.word	32
 	.long	5
-	.long	64
-	.long	80
-	.long	704
-	.long	96
-	.long	4
-	.long	32
+	.word	64
+	.word	80
+	.word	704
+	.word	96
+	.word	4
+	.word	32
 	.long	5
-	.long	80
-	.long	112
-	.long	768
-	.long	112
-	.long	2
-	.long	0
+	.word	80
+	.word	112
+	.word	768
+	.word	112
+	.word	2
+	.word	0
 	.long	10
-	.long	64
-	.long	80
-	.long	848
-	.long	112
-	.long	2
-	.long	32
+	.word	64
+	.word	80
+	.word	848
+	.word	112
+	.word	2
+	.word	32
 	.long	5
-	.long	48
-	.long	96
-	.long	912
-	.long	112
-	.long	11
-	.long	16
+	.word	48
+	.word	96
+	.word	912
+	.word	112
+	.word	11
+	.word	16
 	.long	5
-	.long	64
-	.long	112
-	.long	960
-	.long	112
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	112
+	.word	-3
+	.word	0
 	.long	5
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL21raidenBodyPunchFrames:
-	.long	64
-	.long	112
-	.long	928
-	.long	704
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	704
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	0
-	.long	784
-	.long	1
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	784
+	.word	1
+	.word	0
 	.long	5
-	.long	80
-	.long	112
-	.long	64
-	.long	784
-	.long	5
-	.long	0
+	.word	80
+	.word	112
+	.word	64
+	.word	784
+	.word	5
+	.word	0
 	.long	32
-	.long	64
-	.long	112
-	.long	0
-	.long	784
-	.long	1
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	784
+	.word	1
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	928
-	.long	704
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	704
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL20raidenBodyKickFrames:
-	.long	48
-	.long	112
-	.long	144
-	.long	784
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	144
+	.word	784
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	192
-	.long	784
-	.long	9
-	.long	0
+	.word	48
+	.word	112
+	.word	192
+	.word	784
+	.word	9
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	240
-	.long	784
-	.long	8
-	.long	0
+	.word	64
+	.word	112
+	.word	240
+	.word	784
+	.word	8
+	.word	0
 	.long	32
-	.long	48
-	.long	112
-	.long	192
-	.long	784
-	.long	9
-	.long	0
+	.word	48
+	.word	112
+	.word	192
+	.word	784
+	.word	9
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	144
-	.long	784
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	144
+	.word	784
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL20raidenDuckKickFrames:
-	.long	48
-	.long	64
-	.long	624
-	.long	816
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	624
+	.word	816
+	.word	0
+	.word	48
 	.long	6
-	.long	80
-	.long	64
-	.long	672
-	.long	832
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	672
+	.word	832
+	.word	0
+	.word	48
 	.long	6
-	.long	80
-	.long	80
-	.long	752
-	.long	832
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	752
+	.word	832
+	.word	0
+	.word	32
 	.long	10
-	.long	80
-	.long	64
-	.long	672
-	.long	832
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	672
+	.word	832
+	.word	0
+	.word	48
 	.long	6
-	.long	48
-	.long	64
-	.long	624
-	.long	816
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	624
+	.word	816
+	.word	0
+	.word	48
 	.long	6
 	.even
 __ZL17raidenThrowFrames:
-	.long	64
-	.long	112
-	.long	384
-	.long	240
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	240
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	96
-	.long	448
-	.long	240
-	.long	0
-	.long	16
+	.word	96
+	.word	96
+	.word	448
+	.word	240
+	.word	0
+	.word	16
 	.long	6
-	.long	96
-	.long	112
-	.long	544
-	.long	240
-	.long	0
-	.long	0
+	.word	96
+	.word	112
+	.word	544
+	.word	240
+	.word	0
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	640
-	.long	224
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	640
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	96
-	.long	720
-	.long	304
-	.long	-18
-	.long	16
+	.word	96
+	.word	96
+	.word	720
+	.word	304
+	.word	-18
+	.word	16
 	.long	6
-	.long	112
-	.long	80
-	.long	816
-	.long	304
-	.long	-29
-	.long	32
+	.word	112
+	.word	80
+	.word	816
+	.word	304
+	.word	-29
+	.word	32
 	.long	6
-	.long	96
-	.long	96
-	.long	720
-	.long	304
-	.long	-18
-	.long	16
+	.word	96
+	.word	96
+	.word	720
+	.word	304
+	.word	-18
+	.word	16
 	.long	6
-	.long	96
-	.long	96
-	.long	720
-	.long	304
-	.long	-18
-	.long	16
+	.word	96
+	.word	96
+	.word	720
+	.word	304
+	.word	-18
+	.word	16
 	.long	6
 	.even
 __ZL23raidenBeingThrownFrames:
-	.long	64
-	.long	80
-	.long	928
-	.long	288
-	.long	-40
-	.long	-10
+	.word	64
+	.word	80
+	.word	928
+	.word	288
+	.word	-40
+	.word	-10
 	.long	8
-	.long	80
-	.long	80
-	.long	928
-	.long	368
-	.long	-20
-	.long	-10
+	.word	80
+	.word	80
+	.word	928
+	.word	368
+	.word	-20
+	.word	-10
 	.long	8
-	.long	80
-	.long	80
-	.long	0
-	.long	400
-	.long	0
-	.long	-10
+	.word	80
+	.word	80
+	.word	0
+	.word	400
+	.word	0
+	.word	-10
 	.long	32
-	.long	80
-	.long	64
-	.long	496
-	.long	880
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	496
+	.word	880
+	.word	0
+	.word	48
 	.long	6
-	.long	96
-	.long	32
-	.long	832
-	.long	1008
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	832
+	.word	1008
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	832
-	.long	1008
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	832
+	.word	1008
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL26raidenBeingThrownLowFrames:
-	.long	64
-	.long	80
-	.long	928
-	.long	288
-	.long	-40
-	.long	20
+	.word	64
+	.word	80
+	.word	928
+	.word	288
+	.word	-40
+	.word	20
 	.long	8
-	.long	80
-	.long	80
-	.long	928
-	.long	368
-	.long	-20
-	.long	20
+	.word	80
+	.word	80
+	.word	928
+	.word	368
+	.word	-20
+	.word	20
 	.long	8
-	.long	80
-	.long	80
-	.long	0
-	.long	400
-	.long	0
-	.long	20
+	.word	80
+	.word	80
+	.word	0
+	.word	400
+	.word	0
+	.word	20
 	.long	32
-	.long	80
-	.long	64
-	.long	496
-	.long	880
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	496
+	.word	880
+	.word	0
+	.word	48
 	.long	6
-	.long	96
-	.long	32
-	.long	832
-	.long	1008
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	832
+	.word	1008
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	832
-	.long	1008
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	832
+	.word	1008
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL17raidenKipUpFrames:
-	.long	64
-	.long	64
-	.long	576
-	.long	0
-	.long	0
-	.long	56
+	.word	64
+	.word	64
+	.word	576
+	.word	0
+	.word	0
+	.word	56
 	.long	5
-	.long	64
-	.long	80
-	.long	640
-	.long	0
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	640
+	.word	0
+	.word	0
+	.word	32
 	.long	5
-	.long	64
-	.long	96
-	.long	704
-	.long	0
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	704
+	.word	0
+	.word	0
+	.word	16
 	.long	5
-	.long	64
-	.long	112
-	.long	768
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	0
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	832
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	0
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL18raidenHitLowFrames:
-	.long	64
-	.long	112
-	.long	720
-	.long	720
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	720
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	784
-	.long	720
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	720
+	.word	-3
+	.word	0
 	.long	6
-	.long	80
-	.long	96
-	.long	848
-	.long	720
-	.long	-11
-	.long	16
+	.word	80
+	.word	96
+	.word	848
+	.word	720
+	.word	-11
+	.word	16
 	.long	6
-	.long	64
-	.long	112
-	.long	784
-	.long	720
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	720
+	.word	-3
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL19raidenHitHighFrames:
-	.long	64
-	.long	112
-	.long	448
-	.long	688
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	688
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	512
-	.long	688
-	.long	-1
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	688
+	.word	-1
+	.word	0
 	.long	6
-	.long	64
-	.long	96
-	.long	576
-	.long	688
-	.long	-7
-	.long	16
+	.word	64
+	.word	96
+	.word	576
+	.word	688
+	.word	-7
+	.word	16
 	.long	6
-	.long	80
-	.long	96
-	.long	640
-	.long	720
-	.long	-13
-	.long	16
+	.word	80
+	.word	96
+	.word	640
+	.word	720
+	.word	-13
+	.word	16
 	.long	6
-	.long	64
-	.long	112
-	.long	512
-	.long	688
-	.long	-1
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	688
+	.word	-1
+	.word	0
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL19raidenHitBackFrames:
-	.long	64
-	.long	112
-	.long	832
-	.long	832
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	832
+	.word	-5
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	896
-	.long	816
-	.long	-9
-	.long	0
+	.word	80
+	.word	112
+	.word	896
+	.word	816
+	.word	-9
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	896
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	896
+	.word	-9
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	896
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	896
+	.word	-3
+	.word	0
 	.long	6
-	.long	80
-	.long	112
-	.long	128
-	.long	896
-	.long	-14
-	.long	0
+	.word	80
+	.word	112
+	.word	128
+	.word	896
+	.word	-14
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL19raidenHitFallFrames:
-	.long	80
-	.long	96
-	.long	208
-	.long	896
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
 	.long	6
-	.long	96
-	.long	80
-	.long	288
-	.long	912
-	.long	0
-	.long	20
+	.word	96
+	.word	80
+	.word	288
+	.word	912
+	.word	0
+	.word	20
 	.long	6
-	.long	96
-	.long	48
-	.long	384
-	.long	912
-	.long	0
-	.long	54
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
 	.long	6
-	.long	96
-	.long	48
-	.long	384
-	.long	912
-	.long	0
-	.long	54
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
 	.long	6
-	.long	80
-	.long	64
-	.long	496
-	.long	880
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	496
+	.word	880
+	.word	0
+	.word	48
 	.long	6
-	.long	96
-	.long	64
-	.long	576
-	.long	880
-	.long	0
-	.long	49
+	.word	96
+	.word	64
+	.word	576
+	.word	880
+	.word	0
+	.word	49
 	.long	6
-	.long	96
-	.long	32
-	.long	832
-	.long	1008
-	.long	0
-	.long	91
+	.word	96
+	.word	32
+	.word	832
+	.word	1008
+	.word	0
+	.word	91
 	.long	6
 	.even
 __ZL20raidenHitSweepFrames:
-	.long	64
-	.long	80
-	.long	672
-	.long	896
-	.long	-4
-	.long	32
+	.word	64
+	.word	80
+	.word	672
+	.word	896
+	.word	-4
+	.word	32
 	.long	5
-	.long	48
-	.long	80
-	.long	736
-	.long	912
-	.long	6
-	.long	30
+	.word	48
+	.word	80
+	.word	736
+	.word	912
+	.word	6
+	.word	30
 	.long	5
-	.long	48
-	.long	64
-	.long	784
-	.long	912
-	.long	3
-	.long	22
+	.word	48
+	.word	64
+	.word	784
+	.word	912
+	.word	3
+	.word	22
 	.long	5
-	.long	64
-	.long	64
-	.long	832
-	.long	944
-	.long	-4
-	.long	40
+	.word	64
+	.word	64
+	.word	832
+	.word	944
+	.word	-4
+	.word	40
 	.long	5
-	.long	96
-	.long	64
-	.long	896
-	.long	928
-	.long	-14
-	.long	48
+	.word	96
+	.word	64
+	.word	896
+	.word	928
+	.word	-14
+	.word	48
 	.long	5
-	.long	96
-	.long	48
-	.long	832
-	.long	1040
-	.long	-12
-	.long	85
+	.word	96
+	.word	48
+	.word	832
+	.word	1040
+	.word	-12
+	.word	85
 	.long	5
 	.even
 __ZL14fighterRaiden2:
 	.long	3
 	.long	16
 	.long	9689552
-	.long	10
-	.long	7
-	.long	5
-	.long	9
-	.long	2
-	.long	4
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	6
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	5
-	.long	7
-	.long	7
-	.long	6
+	.word	10
+	.word	7
+	.word	5
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	6
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	5
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL11fighterKang:
 	.long	4
 	.long	14
 	.long	9124272
-	.long	7
-	.long	7
-	.long	15
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	15
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL14kangIdleFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	0
 	.long	7
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	0
 	.long	7
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL15kangDizzyFrames:
-	.long	64
-	.long	96
-	.long	256
-	.long	704
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	256
+	.word	704
+	.word	0
+	.word	16
 	.long	12
-	.long	64
-	.long	96
-	.long	320
-	.long	736
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	320
+	.word	736
+	.word	0
+	.word	16
 	.long	12
-	.long	64
-	.long	112
-	.long	384
-	.long	736
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	736
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	448
-	.long	720
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	720
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	512
-	.long	688
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	688
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	112
-	.long	576
-	.long	688
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	688
+	.word	0
+	.word	0
 	.long	12
-	.long	64
-	.long	96
-	.long	640
-	.long	688
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	640
+	.word	688
+	.word	0
+	.word	16
 	.long	12
 	.even
 __ZL14kangWinsFrames:
-	.long	48
-	.long	112
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	96
-	.long	112
-	.long	48
-	.long	976
-	.long	-25
-	.long	0
+	.word	96
+	.word	112
+	.word	48
+	.word	976
+	.word	-25
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	144
-	.long	992
-	.long	-4
-	.long	0
+	.word	64
+	.word	112
+	.word	144
+	.word	992
+	.word	-4
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	224
-	.long	960
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	224
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	480
-	.long	976
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	480
+	.word	976
+	.word	0
+	.word	0
 	.long	22
-	.long	48
-	.long	112
-	.long	480
-	.long	976
-	.long	-1
-	.long	1
+	.word	48
+	.word	112
+	.word	480
+	.word	976
+	.word	-1
+	.word	1
 	.long	4
-	.long	48
-	.long	112
-	.long	480
-	.long	976
-	.long	1
-	.long	-1
+	.word	48
+	.word	112
+	.word	480
+	.word	976
+	.word	1
+	.word	-1
 	.long	4
-	.long	48
-	.long	112
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	96
-	.long	112
-	.long	48
-	.long	976
-	.long	-25
-	.long	0
+	.word	96
+	.word	112
+	.word	48
+	.word	976
+	.word	-25
+	.word	0
 	.long	8
-	.long	80
-	.long	112
-	.long	672
-	.long	992
-	.long	-18
-	.long	0
+	.word	80
+	.word	112
+	.word	672
+	.word	992
+	.word	-18
+	.word	0
 	.long	8
-	.long	48
-	.long	128
-	.long	976
-	.long	928
-	.long	0
-	.long	-16
+	.word	48
+	.word	128
+	.word	976
+	.word	928
+	.word	0
+	.word	-16
 	.long	8
-	.long	48
-	.long	128
-	.long	752
-	.long	976
-	.long	0
-	.long	-16
+	.word	48
+	.word	128
+	.word	752
+	.word	976
+	.word	0
+	.word	-16
 	.long	8
-	.long	48
-	.long	112
-	.long	528
-	.long	976
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	528
+	.word	976
+	.word	0
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	800
-	.long	976
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	800
+	.word	976
+	.word	0
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	800
-	.long	976
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	800
+	.word	976
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL14kangWalkFrames:
-	.long	64
-	.long	112
-	.long	448
-	.long	0
-	.long	-6
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	0
+	.word	-6
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	512
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	512
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	560
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	560
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	608
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	608
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	656
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	656
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	704
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	704
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	752
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	752
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	800
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	800
+	.word	0
+	.word	10
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	848
-	.long	0
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	848
+	.word	0
+	.word	10
+	.word	0
 	.long	6
 	.even
 __ZL14kangTurnFrames:
-	.long	64
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	384
-	.long	0
-	.long	0
-	.long	1
+	.word	64
+	.word	112
+	.word	384
+	.word	0
+	.word	0
+	.word	1
 	.long	4
 	.even
 __ZL14kangJumpFrames:
-	.long	64
-	.long	112
-	.long	64
-	.long	592
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	592
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	80
-	.long	128
-	.long	592
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	128
+	.word	592
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	64
-	.long	592
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	592
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	96
-	.long	0
-	.long	592
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	592
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL18kangJumpRollFrames:
-	.long	64
-	.long	112
-	.long	432
-	.long	608
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	608
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	544
-	.long	560
-	.long	-3
-	.long	0
+	.word	48
+	.word	80
+	.word	496
+	.word	560
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	496
-	.long	640
-	.long	-13
-	.long	-6
+	.word	48
+	.word	64
+	.word	544
+	.word	560
+	.word	-3
+	.word	0
 	.long	3
-	.long	64
-	.long	32
-	.long	544
-	.long	640
-	.long	-12
-	.long	0
+	.word	48
+	.word	48
+	.word	496
+	.word	640
+	.word	-13
+	.word	-6
 	.long	3
-	.long	48
-	.long	48
-	.long	608
-	.long	640
-	.long	-2
-	.long	0
+	.word	64
+	.word	32
+	.word	544
+	.word	640
+	.word	-12
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	656
-	.long	640
-	.long	-6
-	.long	0
+	.word	48
+	.word	48
+	.word	608
+	.word	640
+	.word	-2
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	704
-	.long	640
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	656
+	.word	640
+	.word	-6
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	768
-	.long	576
-	.long	0
-	.long	-4
+	.word	48
+	.word	48
+	.word	704
+	.word	640
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	768
+	.word	576
+	.word	0
+	.word	-4
+	.long	3
+	.word	48
+	.word	64
+	.word	544
+	.word	560
+	.word	-3
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	496
+	.word	640
+	.word	-13
+	.word	-6
+	.long	3
+	.word	64
+	.word	32
+	.word	544
+	.word	640
+	.word	-12
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	608
+	.word	640
+	.word	-2
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	656
+	.word	640
+	.word	-6
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	704
+	.word	640
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	768
+	.word	576
+	.word	0
+	.word	-4
+	.long	3
+	.word	48
+	.word	64
+	.word	544
+	.word	560
+	.word	-3
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	496
+	.word	640
+	.word	-13
+	.word	-6
+	.long	3
+	.word	48
+	.word	80
+	.word	496
+	.word	560
+	.word	0
+	.word	0
+	.long	3
+	.word	64
+	.word	112
+	.word	432
+	.word	608
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL14kangDuckFrames:
-	.long	64
-	.long	96
-	.long	736
-	.long	224
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	736
+	.word	224
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	80
-	.long	800
-	.long	224
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	800
+	.word	224
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	64
-	.long	864
-	.long	224
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	864
+	.word	224
+	.word	0
+	.word	48
 	.long	3
 	.even
 __ZL15kangBlockFrames:
-	.long	64
-	.long	112
-	.long	592
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	592
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	656
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL18kangBlockHitFrames:
-	.long	64
-	.long	112
-	.long	656
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	656
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	656
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	112
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL19kangBlockDuckFrames:
-	.long	64
-	.long	80
-	.long	928
-	.long	224
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	928
+	.word	224
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	0
-	.long	320
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	0
+	.word	320
+	.word	8
+	.word	32
 	.long	3
 	.even
 __ZL22kangBlockDuckHitFrames:
-	.long	64
-	.long	80
-	.long	928
-	.long	224
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	928
+	.word	224
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	0
-	.long	320
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	0
+	.word	320
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	928
-	.long	224
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	928
+	.word	224
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	0
-	.long	320
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	0
+	.word	320
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	928
-	.long	224
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	928
+	.word	224
+	.word	8
+	.word	32
 	.long	3
-	.long	64
-	.long	80
-	.long	0
-	.long	320
-	.long	8
-	.long	32
+	.word	64
+	.word	80
+	.word	0
+	.word	320
+	.word	8
+	.word	32
 	.long	3
 	.even
 __ZL18kangPunchLowFrames:
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	2
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	2
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	400
-	.long	112
-	.long	2
-	.long	-2
+	.word	96
+	.word	112
+	.word	400
+	.word	112
+	.word	2
+	.word	-2
 	.long	8
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	2
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	2
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL19kangPunchHighFrames:
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	2
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	2
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	0
-	.long	112
+	.word	96
+	.word	112
+	.word	0
+	.word	112
+	.word	8
+	.word	0
 	.long	8
-	.long	0
-	.long	8
-	.long	64
-	.long	112
-	.long	960
-	.long	0
-	.long	2
-	.long	0
+	.word	64
+	.word	112
+	.word	960
+	.word	0
+	.word	2
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	896
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	896
+	.word	0
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL17kangKickLowFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	432
-	.long	496
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	496
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	480
-	.long	448
-	.long	-2
-	.long	-1
+	.word	48
+	.word	112
+	.word	480
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	96
-	.long	112
-	.long	672
-	.long	528
-	.long	-4
-	.long	0
+	.word	96
+	.word	112
+	.word	672
+	.word	528
+	.word	-4
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	480
-	.long	448
-	.long	-2
-	.long	-1
+	.word	48
+	.word	112
+	.word	480
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	48
-	.long	112
-	.long	432
-	.long	496
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	496
+	.word	16
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18kangKickHighFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	432
-	.long	496
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	496
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	480
-	.long	448
-	.long	-2
-	.long	-1
+	.word	48
+	.word	112
+	.word	480
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	64
-	.long	112
-	.long	528
-	.long	448
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	528
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	80
-	.long	112
-	.long	592
-	.long	528
-	.long	-5
-	.long	-1
+	.word	80
+	.word	112
+	.word	592
+	.word	528
+	.word	-5
+	.word	-1
 	.long	8
-	.long	64
-	.long	112
-	.long	528
-	.long	448
-	.long	-2
-	.long	-1
+	.word	64
+	.word	112
+	.word	528
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	48
-	.long	112
-	.long	480
-	.long	448
-	.long	-2
-	.long	-1
+	.word	48
+	.word	112
+	.word	480
+	.word	448
+	.word	-2
+	.word	-1
 	.long	4
-	.long	48
-	.long	112
-	.long	432
-	.long	496
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	496
+	.word	16
+	.word	0
 	.long	4
 	.even
 __ZL19kangJumpPunchFrames:
-	.long	80
-	.long	64
-	.long	64
-	.long	704
-	.long	0
-	.long	0
+	.word	80
+	.word	64
+	.word	64
+	.word	704
+	.word	0
+	.word	0
 	.long	4
-	.long	112
-	.long	64
-	.long	144
-	.long	704
-	.long	-23
-	.long	1
+	.word	112
+	.word	64
+	.word	144
+	.word	704
+	.word	-23
+	.word	1
 	.long	24
-	.long	112
-	.long	64
-	.long	144
-	.long	704
-	.long	-23
-	.long	1
+	.word	112
+	.word	64
+	.word	144
+	.word	704
+	.word	-23
+	.word	1
 	.long	4
 	.even
 __ZL18kangJumpKickFrames:
-	.long	80
-	.long	112
-	.long	240
-	.long	592
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	240
+	.word	592
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	320
-	.long	624
-	.long	1
-	.long	1
+	.word	80
+	.word	112
+	.word	320
+	.word	624
+	.word	1
+	.word	1
 	.long	24
-	.long	80
-	.long	112
-	.long	320
-	.long	624
-	.long	1
-	.long	1
+	.word	80
+	.word	112
+	.word	320
+	.word	624
+	.word	1
+	.word	1
 	.long	4
 	.even
 __ZL22kangJumpDropKickFrames:
-	.long	80
-	.long	64
-	.long	832
-	.long	592
-	.long	0
-	.long	0
+	.word	80
+	.word	64
+	.word	832
+	.word	592
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	64
-	.long	912
-	.long	624
-	.long	0
-	.long	-5
+	.word	96
+	.word	64
+	.word	912
+	.word	624
+	.word	0
+	.word	-5
 	.long	24
-	.long	96
-	.long	64
-	.long	912
-	.long	624
-	.long	0
-	.long	-5
+	.word	96
+	.word	64
+	.word	912
+	.word	624
+	.word	0
+	.word	-5
 	.long	4
 	.even
 __ZL18kangUppercutFrames:
-	.long	64
-	.long	96
-	.long	0
-	.long	224
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	0
+	.word	224
+	.word	0
+	.word	16
 	.long	4
-	.long	80
-	.long	112
-	.long	64
-	.long	224
+	.word	80
+	.word	112
+	.word	64
+	.word	224
+	.word	4
+	.word	0
 	.long	4
-	.long	0
+	.word	80
+	.word	112
+	.word	144
+	.word	224
+	.word	8
+	.word	2
 	.long	4
-	.long	80
-	.long	112
-	.long	144
-	.long	224
-	.long	8
-	.long	2
-	.long	4
-	.long	48
-	.long	128
-	.long	224
-	.long	224
-	.long	18
-	.long	-13
+	.word	48
+	.word	128
+	.word	224
+	.word	224
+	.word	18
+	.word	-13
 	.long	12
-	.long	64
-	.long	112
-	.long	272
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	272
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	272
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	272
+	.word	224
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL15kangKipUpFrames:
-	.long	64
-	.long	64
-	.long	912
-	.long	304
-	.long	-10
-	.long	50
+	.word	64
+	.word	64
+	.word	912
+	.word	304
+	.word	-10
+	.word	50
 	.long	5
-	.long	96
-	.long	64
-	.long	928
-	.long	368
-	.long	-10
-	.long	48
+	.word	96
+	.word	64
+	.word	928
+	.word	368
+	.word	-10
+	.word	48
 	.long	5
-	.long	80
-	.long	64
-	.long	0
-	.long	416
-	.long	-8
-	.long	44
+	.word	80
+	.word	64
+	.word	0
+	.word	416
+	.word	-8
+	.word	44
 	.long	5
-	.long	32
-	.long	80
-	.long	80
-	.long	416
-	.long	28
-	.long	26
+	.word	32
+	.word	80
+	.word	80
+	.word	416
+	.word	28
+	.word	26
 	.long	5
-	.long	48
-	.long	96
-	.long	112
-	.long	416
-	.long	22
-	.long	14
+	.word	48
+	.word	96
+	.word	112
+	.word	416
+	.word	22
+	.word	14
 	.long	5
 	.even
 __ZL15kangSweepFrames:
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	64
-	.long	592
-	.long	464
-	.long	-8
-	.long	47
+	.word	64
+	.word	64
+	.word	592
+	.word	464
+	.word	-8
+	.word	47
 	.long	5
-	.long	64
-	.long	48
-	.long	768
-	.long	480
-	.long	-3
-	.long	61
+	.word	64
+	.word	48
+	.word	768
+	.word	480
+	.word	-3
+	.word	61
 	.long	5
-	.long	80
-	.long	48
-	.long	768
-	.long	528
-	.long	0
-	.long	68
+	.word	80
+	.word	48
+	.word	768
+	.word	528
+	.word	0
+	.word	68
 	.long	5
-	.long	96
-	.long	48
-	.long	848
-	.long	544
-	.long	6
-	.long	67
+	.word	96
+	.word	48
+	.word	848
+	.word	544
+	.word	6
+	.word	67
 	.long	5
-	.long	48
-	.long	80
-	.long	960
-	.long	432
-	.long	3
-	.long	57
+	.word	48
+	.word	80
+	.word	960
+	.word	432
+	.word	3
+	.word	57
 	.long	5
-	.long	80
-	.long	80
-	.long	944
-	.long	544
-	.long	-1
-	.long	31
+	.word	80
+	.word	80
+	.word	944
+	.word	544
+	.word	-1
+	.word	31
 	.long	5
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	368
-	.long	512
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	512
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL20kangRoundhouseFrames:
-	.long	80
-	.long	112
-	.long	544
-	.long	800
-	.long	-14
-	.long	-1
+	.word	80
+	.word	112
+	.word	544
+	.word	800
+	.word	-14
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	624
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	624
+	.word	800
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	96
-	.long	688
-	.long	784
-	.long	19
-	.long	15
+	.word	48
+	.word	96
+	.word	688
+	.word	784
+	.word	19
+	.word	15
 	.long	5
-	.long	80
-	.long	112
-	.long	736
-	.long	784
-	.long	21
-	.long	-1
+	.word	80
+	.word	112
+	.word	736
+	.word	784
+	.word	21
+	.word	-1
 	.long	10
-	.long	48
-	.long	96
-	.long	816
-	.long	768
-	.long	25
-	.long	15
+	.word	48
+	.word	96
+	.word	816
+	.word	768
+	.word	25
+	.word	15
 	.long	5
-	.long	48
-	.long	80
-	.long	864
-	.long	784
-	.long	14
-	.long	31
+	.word	48
+	.word	80
+	.word	864
+	.word	784
+	.word	14
+	.word	31
 	.long	5
-	.long	64
-	.long	112
-	.long	912
-	.long	800
-	.long	7
-	.long	-1
+	.word	64
+	.word	112
+	.word	912
+	.word	800
+	.word	7
+	.word	-1
 	.long	5
 	.even
 __ZL19kangBodyPunchFrames:
-	.long	64
-	.long	112
-	.long	832
-	.long	368
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	368
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	896
-	.long	432
-	.long	3
-	.long	-2
+	.word	64
+	.word	112
+	.word	896
+	.word	432
+	.word	3
+	.word	-2
 	.long	5
-	.long	80
-	.long	112
-	.long	0
-	.long	480
-	.long	8
-	.long	-2
+	.word	80
+	.word	112
+	.word	0
+	.word	480
+	.word	8
+	.word	-2
 	.long	32
-	.long	64
-	.long	112
-	.long	896
-	.long	432
-	.long	3
-	.long	-2
+	.word	64
+	.word	112
+	.word	896
+	.word	432
+	.word	3
+	.word	-2
 	.long	5
-	.long	64
-	.long	112
-	.long	832
-	.long	368
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	832
+	.word	368
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL18kangBodyKickFrames:
-	.long	64
-	.long	112
-	.long	656
-	.long	416
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	416
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	720
-	.long	400
-	.long	22
-	.long	-1
+	.word	48
+	.word	112
+	.word	720
+	.word	400
+	.word	22
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	768
-	.long	368
-	.long	22
-	.long	-1
+	.word	64
+	.word	112
+	.word	768
+	.word	368
+	.word	22
+	.word	-1
 	.long	32
-	.long	48
-	.long	112
-	.long	720
-	.long	400
-	.long	22
-	.long	-1
+	.word	48
+	.word	112
+	.word	720
+	.word	400
+	.word	22
+	.word	-1
 	.long	5
-	.long	64
-	.long	112
-	.long	656
-	.long	416
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	416
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL18kangDuckKickFrames:
-	.long	48
-	.long	64
-	.long	80
-	.long	512
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	80
+	.word	512
+	.word	0
+	.word	48
 	.long	6
-	.long	64
-	.long	64
-	.long	128
-	.long	528
-	.long	2
-	.long	47
+	.word	64
+	.word	64
+	.word	128
+	.word	528
+	.word	2
+	.word	47
 	.long	6
-	.long	80
-	.long	80
-	.long	288
-	.long	512
-	.long	1
-	.long	31
+	.word	80
+	.word	80
+	.word	288
+	.word	512
+	.word	1
+	.word	31
 	.long	10
-	.long	64
-	.long	64
-	.long	128
-	.long	528
-	.long	2
-	.long	47
+	.word	64
+	.word	64
+	.word	128
+	.word	528
+	.word	2
+	.word	47
 	.long	6
-	.long	48
-	.long	64
-	.long	80
-	.long	512
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	80
+	.word	512
+	.word	0
+	.word	48
 	.long	6
 	.even
 __ZL15kangThrowFrames:
-	.long	80
-	.long	96
-	.long	704
-	.long	688
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	704
+	.word	688
+	.word	0
+	.word	16
 	.long	3
-	.long	80
-	.long	80
-	.long	784
-	.long	688
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	784
+	.word	688
+	.word	0
+	.word	32
 	.long	3
-	.long	80
-	.long	96
-	.long	864
-	.long	688
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	864
+	.word	688
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	112
-	.long	944
-	.long	688
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	944
+	.word	688
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	128
-	.long	0
-	.long	752
-	.long	0
-	.long	-16
+	.word	64
+	.word	128
+	.word	0
+	.word	752
+	.word	0
+	.word	-16
 	.long	3
-	.long	64
-	.long	112
-	.long	64
-	.long	768
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	768
+	.word	-5
+	.word	0
 	.long	6
-	.long	80
-	.long	96
-	.long	128
-	.long	768
-	.long	-15
-	.long	16
+	.word	80
+	.word	96
+	.word	128
+	.word	768
+	.word	-15
+	.word	16
 	.long	6
-	.long	80
-	.long	96
-	.long	128
-	.long	768
-	.long	-15
-	.long	16
+	.word	80
+	.word	96
+	.word	128
+	.word	768
+	.word	-15
+	.word	16
 	.long	6
 	.even
 __ZL21kangBeingThrownFrames:
-	.long	64
-	.long	80
-	.long	208
-	.long	800
-	.long	-40
-	.long	-10
+	.word	64
+	.word	80
+	.word	208
+	.word	800
+	.word	-40
+	.word	-10
 	.long	8
-	.long	80
-	.long	64
-	.long	272
-	.long	832
-	.long	-20
-	.long	-10
+	.word	80
+	.word	64
+	.word	272
+	.word	832
+	.word	-20
+	.word	-10
 	.long	8
-	.long	64
-	.long	80
-	.long	352
-	.long	848
-	.long	0
-	.long	-10
+	.word	64
+	.word	80
+	.word	352
+	.word	848
+	.word	0
+	.word	-10
 	.long	32
-	.long	64
-	.long	80
-	.long	416
-	.long	848
-	.long	0
-	.long	-10
+	.word	64
+	.word	80
+	.word	416
+	.word	848
+	.word	0
+	.word	-10
 	.long	6
-	.long	96
-	.long	32
-	.long	272
-	.long	1040
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	272
+	.word	1040
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	272
-	.long	1040
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	272
+	.word	1040
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL24kangBeingThrownLowFrames:
-	.long	64
-	.long	80
-	.long	208
-	.long	800
-	.long	-40
-	.long	20
+	.word	64
+	.word	80
+	.word	208
+	.word	800
+	.word	-40
+	.word	20
 	.long	8
-	.long	80
-	.long	64
-	.long	272
-	.long	832
-	.long	-20
-	.long	20
+	.word	80
+	.word	64
+	.word	272
+	.word	832
+	.word	-20
+	.word	20
 	.long	8
-	.long	64
-	.long	80
-	.long	352
-	.long	848
-	.long	0
-	.long	20
+	.word	64
+	.word	80
+	.word	352
+	.word	848
+	.word	0
+	.word	20
 	.long	32
-	.long	64
-	.long	80
-	.long	416
-	.long	848
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	416
+	.word	848
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	32
-	.long	272
-	.long	1040
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	272
+	.word	1040
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	272
-	.long	1040
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	272
+	.word	1040
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL16kangHitLowFrames:
-	.long	64
-	.long	112
-	.long	544
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	544
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	608
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	608
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	672
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	672
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	608
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	608
+	.word	224
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17kangHitHighFrames:
-	.long	64
-	.long	112
-	.long	352
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	352
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	480
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	480
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	96
-	.long	416
-	.long	224
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	416
+	.word	224
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	112
-	.long	480
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	480
+	.word	224
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17kangHitBackFrames:
-	.long	64
-	.long	112
-	.long	608
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	608
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	784
-	.long	112
-	.long	-9
-	.long	0
+	.word	48
+	.word	112
+	.word	784
+	.word	112
+	.word	-9
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	832
-	.long	112
-	.long	-6
-	.long	0
+	.word	48
+	.word	112
+	.word	832
+	.word	112
+	.word	-6
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	880
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	880
+	.word	112
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	944
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	944
+	.word	112
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL17kangHitFallFrames:
-	.long	96
-	.long	112
-	.long	272
-	.long	336
-	.long	0
-	.long	0
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	96
-	.long	368
-	.long	336
-	.long	-5
-	.long	16
+	.word	96
+	.word	96
+	.word	368
+	.word	336
+	.word	-5
+	.word	16
 	.long	6
-	.long	80
-	.long	64
-	.long	464
-	.long	336
-	.long	0
-	.long	48
+	.word	80
+	.word	64
+	.word	464
+	.word	336
+	.word	0
+	.word	48
 	.long	6
-	.long	64
-	.long	64
-	.long	672
-	.long	336
-	.long	0
-	.long	52
+	.word	64
+	.word	64
+	.word	672
+	.word	336
+	.word	0
+	.word	52
 	.long	6
-	.long	64
-	.long	64
-	.long	672
-	.long	336
-	.long	0
-	.long	52
+	.word	64
+	.word	64
+	.word	672
+	.word	336
+	.word	0
+	.word	52
 	.long	6
-	.long	96
-	.long	48
-	.long	736
-	.long	320
-	.long	0
-	.long	75
+	.word	96
+	.word	48
+	.word	736
+	.word	320
+	.word	0
+	.word	75
 	.long	6
-	.long	96
-	.long	32
-	.long	272
-	.long	1040
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	272
+	.word	1040
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL18kangHitSweepFrames:
-	.long	64
-	.long	112
-	.long	224
-	.long	448
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	224
+	.word	448
+	.word	0
+	.word	0
 	.long	5
-	.long	96
-	.long	64
-	.long	288
-	.long	448
-	.long	-16
-	.long	16
+	.word	96
+	.word	64
+	.word	288
+	.word	448
+	.word	-16
+	.word	16
 	.long	5
-	.long	80
-	.long	64
-	.long	384
-	.long	432
-	.long	-8
-	.long	28
+	.word	80
+	.word	64
+	.word	384
+	.word	432
+	.word	-8
+	.word	28
 	.long	5
-	.long	96
-	.long	48
-	.long	464
-	.long	400
-	.long	-18
-	.long	62
+	.word	96
+	.word	48
+	.word	464
+	.word	400
+	.word	-18
+	.word	62
 	.long	5
-	.long	96
-	.long	32
-	.long	560
-	.long	416
-	.long	-17
-	.long	80
+	.word	96
+	.word	32
+	.word	560
+	.word	416
+	.word	-17
+	.word	80
 	.long	5
-	.long	80
-	.long	32
-	.long	272
-	.long	1008
-	.long	-5
-	.long	88
+	.word	80
+	.word	32
+	.word	272
+	.word	1008
+	.word	-5
+	.word	88
 	.long	5
 	.even
 __ZL12fighterKang2:
 	.long	4
 	.long	16
 	.long	9124272
-	.long	7
-	.long	7
-	.long	15
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	8
-	.long	6
-	.long	4
-	.long	4
-	.long	7
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	15
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	8
+	.word	6
+	.word	4
+	.word	4
+	.word	7
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL15fighterScorpion:
 	.long	5
 	.long	14
 	.long	10263024
-	.long	7
-	.long	7
-	.long	3
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	3
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL18scorpionIdleFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	384
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	0
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL18subzeroDizzyFrames:
-	.long	64
-	.long	112
-	.long	96
-	.long	800
-	.long	-10
-	.long	0
+	.word	64
+	.word	112
+	.word	96
+	.word	800
+	.word	-10
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	160
-	.long	800
-	.long	-9
-	.long	0
+	.word	48
+	.word	112
+	.word	160
+	.word	800
+	.word	-9
+	.word	0
 	.long	12
-	.long	48
-	.long	96
-	.long	208
-	.long	800
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	208
+	.word	800
+	.word	0
+	.word	16
 	.long	12
-	.long	64
-	.long	96
-	.long	256
-	.long	800
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	256
+	.word	800
+	.word	0
+	.word	16
 	.long	12
-	.long	48
-	.long	112
-	.long	320
-	.long	800
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	320
+	.word	800
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	368
-	.long	800
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	368
+	.word	800
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	416
-	.long	784
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	416
+	.word	784
+	.word	0
+	.word	0
 	.long	12
 	.even
 __ZL17subzeroWinsFrames:
-	.long	48
-	.long	112
-	.long	528
-	.long	1072
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	528
+	.word	1072
+	.word	0
+	.word	0
 	.long	8
-	.long	48
-	.long	112
-	.long	976
-	.long	1072
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	1072
+	.word	0
+	.word	0
 	.long	8
-	.long	48
-	.long	128
-	.long	64
-	.long	1136
-	.long	0
-	.long	-16
+	.word	48
+	.word	128
+	.word	64
+	.word	1136
+	.word	0
+	.word	-16
 	.long	8
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL18scorpionWalkFrames:
-	.long	64
-	.long	112
-	.long	656
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	656
+	.word	800
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	720
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	800
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	784
-	.long	768
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	768
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	848
-	.long	800
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	848
+	.word	800
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	912
-	.long	816
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	816
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	912
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	128
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	912
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	192
-	.long	912
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	912
+	.word	0
+	.word	0
 	.long	6
 	.even
 __ZL17subzeroTurnFrames:
-	.long	64
-	.long	112
-	.long	784
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	784
+	.word	0
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	848
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	848
+	.word	0
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL17subzeroJumpFrames:
-	.long	64
-	.long	112
-	.long	800
-	.long	352
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	352
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	80
-	.long	864
-	.long	336
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	864
+	.word	336
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	112
-	.long	800
-	.long	352
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	352
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	96
-	.long	752
-	.long	352
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	752
+	.word	352
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL21subzeroJumpRollFrames:
-	.long	48
-	.long	112
-	.long	480
-	.long	400
-	.long	0
-	.long	-2
+	.word	48
+	.word	112
+	.word	480
+	.word	400
+	.word	0
+	.word	-2
 	.long	3
-	.long	48
-	.long	48
-	.long	528
-	.long	448
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	528
+	.word	448
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	576
-	.long	448
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	576
+	.word	448
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	624
-	.long	448
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	624
+	.word	448
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	672
-	.long	464
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	672
+	.word	464
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	720
-	.long	464
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	720
+	.word	464
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	768
-	.long	464
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	768
+	.word	464
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	48
-	.long	816
-	.long	464
-	.long	0
-	.long	0
+	.word	48
+	.word	48
+	.word	816
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	528
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	576
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	624
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	672
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	720
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	768
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	816
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	528
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	576
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	624
+	.word	448
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	48
+	.word	672
+	.word	464
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	112
+	.word	480
+	.word	400
+	.word	0
+	.word	-2
 	.long	3
 	.even
 __ZL17subzeroDuckFrames:
-	.long	64
-	.long	96
-	.long	64
-	.long	112
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	64
+	.word	112
+	.word	0
+	.word	16
 	.long	3
-	.long	64
-	.long	80
-	.long	128
-	.long	112
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	128
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	64
-	.long	64
-	.long	192
-	.long	112
-	.long	0
-	.long	48
+	.word	64
+	.word	64
+	.word	192
+	.word	112
+	.word	0
+	.word	48
 	.long	3
 	.even
 __ZL18subzeroBlockFrames:
-	.long	64
-	.long	112
-	.long	352
-	.long	112
-	.long	2
-	.long	0
+	.word	64
+	.word	112
+	.word	352
+	.word	112
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	416
-	.long	112
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	416
+	.word	112
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	976
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	0
+	.word	2
+	.word	0
 	.long	3
 	.even
 __ZL21subzeroBlockHitFrames:
-	.long	48
-	.long	112
-	.long	416
-	.long	112
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	416
+	.word	112
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	976
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	0
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	416
-	.long	112
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	416
+	.word	112
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	976
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	0
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	416
-	.long	112
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	416
+	.word	112
+	.word	2
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	976
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	0
+	.word	2
+	.word	0
 	.long	3
 	.even
 __ZL22subzeroBlockDuckFrames:
-	.long	48
-	.long	80
-	.long	256
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	256
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL25subzeroBlockDuckHitFrames:
-	.long	48
-	.long	80
-	.long	256
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	256
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	256
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	256
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	256
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	256
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL21subzeroPunchLowFrames:
-	.long	64
-	.long	112
-	.long	912
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	832
-	.long	112
+	.word	80
+	.word	112
+	.word	832
+	.word	112
+	.word	4
+	.word	0
 	.long	4
-	.long	0
-	.long	4
-	.long	96
-	.long	112
-	.long	368
-	.long	224
-	.long	5
-	.long	0
+	.word	96
+	.word	112
+	.word	368
+	.word	224
+	.word	5
+	.word	0
 	.long	8
-	.long	80
-	.long	112
-	.long	832
-	.long	112
+	.word	80
+	.word	112
+	.word	832
+	.word	112
+	.word	4
+	.word	0
 	.long	4
-	.long	0
-	.long	4
-	.long	64
-	.long	112
-	.long	912
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL22subzeroPunchHighFrames:
-	.long	64
-	.long	112
-	.long	912
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	224
-	.long	5
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	224
+	.word	5
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	64
-	.long	208
-	.long	6
-	.long	0
+	.word	96
+	.word	112
+	.word	64
+	.word	208
+	.word	6
+	.word	0
 	.long	8
-	.long	80
-	.long	112
-	.long	832
-	.long	112
-	.long	5
-	.long	0
+	.word	80
+	.word	112
+	.word	832
+	.word	112
+	.word	5
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	912
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	912
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL20subzeroKickLowFrames:
-	.long	64
-	.long	112
-	.long	864
-	.long	416
-	.long	-7
-	.long	0
+	.word	64
+	.word	112
+	.word	864
+	.word	416
+	.word	-7
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	528
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	528
+	.word	-3
+	.word	0
 	.long	4
-	.long	64
-	.long	96
-	.long	112
-	.long	512
-	.long	5
-	.long	15
+	.word	64
+	.word	96
+	.word	112
+	.word	512
+	.word	5
+	.word	15
 	.long	4
-	.long	96
-	.long	80
-	.long	384
-	.long	480
-	.long	4
-	.long	31
+	.word	96
+	.word	80
+	.word	384
+	.word	480
+	.word	4
+	.word	31
 	.long	8
-	.long	64
-	.long	96
-	.long	112
-	.long	512
-	.long	5
-	.long	15
+	.word	64
+	.word	96
+	.word	112
+	.word	512
+	.word	5
+	.word	15
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	528
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	528
+	.word	-3
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	864
-	.long	416
-	.long	-7
-	.long	0
+	.word	64
+	.word	112
+	.word	864
+	.word	416
+	.word	-7
+	.word	0
 	.long	4
 	.even
 __ZL21subzeroKickHighFrames:
-	.long	64
-	.long	112
-	.long	864
-	.long	416
-	.long	-7
-	.long	0
+	.word	64
+	.word	112
+	.word	864
+	.word	416
+	.word	-7
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	528
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	528
+	.word	-3
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	528
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	528
+	.word	14
+	.word	0
 	.long	4
-	.long	64
-	.long	96
-	.long	112
-	.long	512
-	.long	5
-	.long	15
+	.word	64
+	.word	96
+	.word	112
+	.word	512
+	.word	5
+	.word	15
 	.long	4
-	.long	96
-	.long	96
-	.long	256
-	.long	544
-	.long	1
-	.long	16
+	.word	96
+	.word	96
+	.word	256
+	.word	544
+	.word	1
+	.word	16
 	.long	8
-	.long	80
-	.long	80
-	.long	176
-	.long	512
-	.long	5
-	.long	32
+	.word	80
+	.word	80
+	.word	176
+	.word	512
+	.word	5
+	.word	32
 	.long	4
-	.long	48
-	.long	112
-	.long	64
-	.long	528
-	.long	14
-	.long	0
+	.word	48
+	.word	112
+	.word	64
+	.word	528
+	.word	14
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	528
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	528
+	.word	-3
+	.word	0
 	.long	4
 	.even
 __ZL22subzeroJumpPunchFrames:
-	.long	64
-	.long	80
-	.long	144
-	.long	432
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	144
+	.word	432
+	.word	0
+	.word	0
 	.long	4
-	.long	112
-	.long	64
-	.long	208
-	.long	448
-	.long	-20
-	.long	-2
+	.word	112
+	.word	64
+	.word	208
+	.word	448
+	.word	-20
+	.word	-2
 	.long	24
-	.long	112
-	.long	64
-	.long	208
-	.long	448
-	.long	-20
-	.long	-2
+	.word	112
+	.word	64
+	.word	208
+	.word	448
+	.word	-20
+	.word	-2
 	.long	4
 	.even
 __ZL21subzeroJumpKickFrames:
-	.long	64
-	.long	96
-	.long	320
-	.long	448
-	.long	0
-	.long	0
+	.word	64
+	.word	96
+	.word	320
+	.word	448
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	80
-	.long	384
-	.long	400
-	.long	0
-	.long	0
+	.word	96
+	.word	80
+	.word	384
+	.word	400
+	.word	0
+	.word	0
 	.long	24
-	.long	96
-	.long	80
-	.long	384
-	.long	400
-	.long	0
-	.long	0
+	.word	96
+	.word	80
+	.word	384
+	.word	400
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL25subzeroJumpDropKickFrames:
-	.long	80
-	.long	80
-	.long	928
-	.long	400
-	.long	0
-	.long	0
+	.word	80
+	.word	80
+	.word	928
+	.word	400
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	80
-	.long	0
-	.long	448
-	.long	-4
-	.long	0
+	.word	96
+	.word	80
+	.word	0
+	.word	448
+	.word	-4
+	.word	0
 	.long	24
-	.long	96
-	.long	80
-	.long	0
-	.long	448
-	.long	-4
-	.long	0
+	.word	96
+	.word	80
+	.word	0
+	.word	448
+	.word	-4
+	.word	0
 	.long	4
 	.even
 __ZL21subzeroUppercutFrames:
-	.long	64
-	.long	112
-	.long	528
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	528
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	592
-	.long	112
-	.long	5
-	.long	0
+	.word	80
+	.word	112
+	.word	592
+	.word	112
+	.word	5
+	.word	0
 	.long	4
-	.long	48
-	.long	128
-	.long	672
-	.long	112
-	.long	6
-	.long	-16
+	.word	48
+	.word	128
+	.word	672
+	.word	112
+	.word	6
+	.word	-16
 	.long	4
-	.long	48
-	.long	128
-	.long	784
-	.long	112
-	.long	2
-	.long	-16
+	.word	48
+	.word	128
+	.word	784
+	.word	112
+	.word	2
+	.word	-16
 	.long	12
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	720
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	720
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18subzeroKipUpFrames:
-	.long	48
-	.long	48
-	.long	976
-	.long	352
-	.long	0
-	.long	64
+	.word	48
+	.word	48
+	.word	976
+	.word	352
+	.word	0
+	.word	64
 	.long	5
-	.long	48
-	.long	80
-	.long	0
-	.long	736
-	.long	4
-	.long	31
+	.word	48
+	.word	80
+	.word	0
+	.word	736
+	.word	4
+	.word	31
 	.long	5
-	.long	48
-	.long	48
-	.long	48
-	.long	736
-	.long	0
-	.long	62
+	.word	48
+	.word	48
+	.word	48
+	.word	736
+	.word	0
+	.word	62
 	.long	5
-	.long	80
-	.long	64
-	.long	96
-	.long	736
-	.long	-10
-	.long	48
+	.word	80
+	.word	64
+	.word	96
+	.word	736
+	.word	-10
+	.word	48
 	.long	5
-	.long	64
-	.long	80
-	.long	176
-	.long	704
-	.long	-2
-	.long	32
+	.word	64
+	.word	80
+	.word	176
+	.word	704
+	.word	-2
+	.word	32
 	.long	5
 	.even
 __ZL18subzeroSweepFrames:
-	.long	64
-	.long	80
-	.long	128
-	.long	112
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	128
+	.word	112
+	.word	0
+	.word	32
 	.long	5
-	.long	64
-	.long	48
-	.long	352
-	.long	560
-	.long	-6
-	.long	64
+	.word	64
+	.word	48
+	.word	352
+	.word	560
+	.word	-6
+	.word	64
 	.long	5
-	.long	64
-	.long	64
-	.long	416
-	.long	560
-	.long	-2
-	.long	52
+	.word	64
+	.word	64
+	.word	416
+	.word	560
+	.word	-2
+	.word	52
 	.long	5
-	.long	96
-	.long	48
-	.long	480
-	.long	512
-	.long	-3
-	.long	68
+	.word	96
+	.word	48
+	.word	480
+	.word	512
+	.word	-3
+	.word	68
 	.long	5
-	.long	96
-	.long	48
-	.long	576
-	.long	496
-	.long	0
-	.long	68
+	.word	96
+	.word	48
+	.word	576
+	.word	496
+	.word	0
+	.word	68
 	.long	5
-	.long	64
-	.long	64
-	.long	672
-	.long	512
-	.long	0
-	.long	61
+	.word	64
+	.word	64
+	.word	672
+	.word	512
+	.word	0
+	.word	61
 	.long	5
-	.long	80
-	.long	64
-	.long	736
-	.long	512
-	.long	-5
-	.long	56
+	.word	80
+	.word	64
+	.word	736
+	.word	512
+	.word	-5
+	.word	56
 	.long	5
-	.long	64
-	.long	96
-	.long	64
-	.long	112
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	64
+	.word	112
+	.word	0
+	.word	16
 	.long	5
-	.long	64
-	.long	96
-	.long	64
-	.long	112
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	64
+	.word	112
+	.word	0
+	.word	16
 	.long	5
 	.even
 __ZL23subzeroRoundhouseFrames:
-	.long	64
-	.long	112
-	.long	816
-	.long	528
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	816
+	.word	528
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	96
-	.long	880
-	.long	528
-	.long	7
-	.long	16
+	.word	64
+	.word	96
+	.word	880
+	.word	528
+	.word	7
+	.word	16
 	.long	5
-	.long	96
-	.long	96
-	.long	576
-	.long	544
-	.long	3
-	.long	16
+	.word	96
+	.word	96
+	.word	576
+	.word	544
+	.word	3
+	.word	16
 	.long	10
-	.long	64
-	.long	96
-	.long	0
-	.long	640
+	.word	64
+	.word	96
+	.word	0
+	.word	640
+	.word	5
+	.word	16
 	.long	5
-	.long	16
+	.word	64
+	.word	96
+	.word	64
+	.word	640
+	.word	-1
+	.word	16
 	.long	5
-	.long	64
-	.long	96
-	.long	64
-	.long	640
-	.long	-1
-	.long	16
+	.word	64
+	.word	96
+	.word	128
+	.word	608
+	.word	-5
+	.word	16
 	.long	5
-	.long	64
-	.long	96
-	.long	128
-	.long	608
-	.long	-5
-	.long	16
-	.long	5
-	.long	64
-	.long	112
-	.long	0
-	.long	528
-	.long	-3
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	528
+	.word	-3
+	.word	0
 	.long	5
 	.even
 __ZL22subzeroBodyPunchFrames:
-	.long	64
-	.long	112
-	.long	736
-	.long	240
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	736
+	.word	240
+	.word	-2
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	800
-	.long	240
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	240
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	864
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	864
+	.word	224
+	.word	0
+	.word	0
 	.long	32
-	.long	64
-	.long	112
-	.long	800
-	.long	240
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	800
+	.word	240
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	736
-	.long	240
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	736
+	.word	240
+	.word	-2
+	.word	0
 	.long	5
 	.even
 __ZL21subzeroBodyKickFrames:
-	.long	48
-	.long	112
-	.long	560
-	.long	240
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	560
+	.word	240
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	608
-	.long	224
-	.long	13
-	.long	-1
+	.word	64
+	.word	112
+	.word	608
+	.word	224
+	.word	13
+	.word	-1
 	.long	5
-	.long	64
-	.long	96
-	.long	672
-	.long	240
-	.long	11
-	.long	15
+	.word	64
+	.word	96
+	.word	672
+	.word	240
+	.word	11
+	.word	15
 	.long	32
-	.long	64
-	.long	112
-	.long	608
-	.long	224
-	.long	13
-	.long	-1
+	.word	64
+	.word	112
+	.word	608
+	.word	224
+	.word	13
+	.word	-1
 	.long	5
-	.long	48
-	.long	112
-	.long	560
-	.long	240
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	560
+	.word	240
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL21subzeroDuckKickFrames:
-	.long	64
-	.long	48
-	.long	352
-	.long	560
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	352
+	.word	560
+	.word	0
+	.word	64
 	.long	6
-	.long	80
-	.long	48
-	.long	480
-	.long	560
-	.long	0
-	.long	64
+	.word	80
+	.word	48
+	.word	480
+	.word	560
+	.word	0
+	.word	64
 	.long	6
-	.long	96
-	.long	80
-	.long	480
-	.long	608
-	.long	0
-	.long	32
+	.word	96
+	.word	80
+	.word	480
+	.word	608
+	.word	0
+	.word	32
 	.long	10
-	.long	80
-	.long	48
-	.long	480
-	.long	560
-	.long	0
-	.long	64
+	.word	80
+	.word	48
+	.word	480
+	.word	560
+	.word	0
+	.word	64
 	.long	6
-	.long	64
-	.long	48
-	.long	352
-	.long	560
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	352
+	.word	560
+	.word	0
+	.word	64
 	.long	6
 	.even
 __ZL18subzeroThrowFrames:
-	.long	64
-	.long	112
-	.long	240
-	.long	688
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	240
+	.word	688
+	.word	0
+	.word	0
 	.long	3
-	.long	96
-	.long	112
-	.long	304
-	.long	688
-	.long	0
-	.long	0
+	.word	96
+	.word	112
+	.word	304
+	.word	688
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	80
-	.long	400
-	.long	704
-	.long	22
-	.long	32
+	.word	64
+	.word	80
+	.word	400
+	.word	704
+	.word	22
+	.word	32
 	.long	3
-	.long	64
-	.long	48
-	.long	656
-	.long	672
-	.long	5
-	.long	64
+	.word	64
+	.word	48
+	.word	656
+	.word	672
+	.word	5
+	.word	64
 	.long	3
-	.long	80
-	.long	64
-	.long	480
-	.long	688
-	.long	-14
-	.long	48
+	.word	80
+	.word	64
+	.word	480
+	.word	688
+	.word	-14
+	.word	48
 	.long	6
-	.long	96
-	.long	80
-	.long	560
-	.long	688
-	.long	-34
-	.long	32
+	.word	96
+	.word	80
+	.word	560
+	.word	688
+	.word	-34
+	.word	32
 	.long	6
-	.long	96
-	.long	80
-	.long	560
-	.long	688
-	.long	-34
-	.long	32
+	.word	96
+	.word	80
+	.word	560
+	.word	688
+	.word	-34
+	.word	32
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL24subzeroBeingThrownFrames:
-	.long	64
-	.long	80
-	.long	656
-	.long	720
-	.long	-40
-	.long	-10
+	.word	64
+	.word	80
+	.word	656
+	.word	720
+	.word	-40
+	.word	-10
 	.long	8
-	.long	64
-	.long	80
-	.long	720
-	.long	720
-	.long	-20
-	.long	-10
+	.word	64
+	.word	80
+	.word	720
+	.word	720
+	.word	-20
+	.word	-10
 	.long	8
-	.long	80
-	.long	48
-	.long	784
-	.long	720
-	.long	0
-	.long	-10
+	.word	80
+	.word	48
+	.word	784
+	.word	720
+	.word	0
+	.word	-10
 	.long	32
-	.long	64
-	.long	80
-	.long	864
-	.long	720
-	.long	0
-	.long	-10
+	.word	64
+	.word	80
+	.word	864
+	.word	720
+	.word	0
+	.word	-10
 	.long	6
-	.long	112
-	.long	32
-	.long	176
-	.long	1136
-	.long	0
-	.long	80
+	.word	112
+	.word	32
+	.word	176
+	.word	1136
+	.word	0
+	.word	80
 	.long	6
-	.long	112
-	.long	32
-	.long	176
-	.long	1136
-	.long	0
-	.long	90
+	.word	112
+	.word	32
+	.word	176
+	.word	1136
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL27subzeroBeingThrownLowFrames:
-	.long	64
-	.long	80
-	.long	656
-	.long	720
-	.long	-40
-	.long	20
+	.word	64
+	.word	80
+	.word	656
+	.word	720
+	.word	-40
+	.word	20
 	.long	8
-	.long	64
-	.long	80
-	.long	720
-	.long	720
-	.long	-20
-	.long	20
+	.word	64
+	.word	80
+	.word	720
+	.word	720
+	.word	-20
+	.word	20
 	.long	8
-	.long	80
-	.long	48
-	.long	784
-	.long	720
-	.long	0
-	.long	20
+	.word	80
+	.word	48
+	.word	784
+	.word	720
+	.word	0
+	.word	20
 	.long	32
-	.long	64
-	.long	80
-	.long	864
-	.long	720
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	864
+	.word	720
+	.word	0
+	.word	0
 	.long	6
-	.long	112
-	.long	32
-	.long	176
-	.long	1136
-	.long	0
-	.long	80
+	.word	112
+	.word	32
+	.word	176
+	.word	1136
+	.word	0
+	.word	80
 	.long	6
-	.long	112
-	.long	32
-	.long	176
-	.long	1136
-	.long	0
-	.long	90
+	.word	112
+	.word	32
+	.word	176
+	.word	1136
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL19subzeroHitLowFrames:
-	.long	64
-	.long	112
-	.long	128
-	.long	320
-	.long	-7
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	320
+	.word	-7
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	192
-	.long	304
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	304
+	.word	-5
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	256
-	.long	336
-	.long	-6
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	336
+	.word	-6
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	320
-	.long	336
-	.long	-8
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	336
+	.word	-8
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL20subzeroHitHighFrames:
-	.long	64
-	.long	112
-	.long	928
-	.long	224
-	.long	-6
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	224
+	.word	-6
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	336
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	336
+	.word	-9
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	320
-	.long	-13
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	320
+	.word	-13
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	336
-	.long	-9
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	336
+	.word	-9
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL20subzeroHitBackFrames:
-	.long	64
-	.long	112
-	.long	192
-	.long	304
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	304
+	.word	-5
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	976
-	.long	112
-	.long	-3
-	.long	0
+	.word	48
+	.word	112
+	.word	976
+	.word	112
+	.word	-3
+	.word	0
 	.long	6
-	.long	32
-	.long	112
-	.long	560
-	.long	336
-	.long	0
-	.long	0
+	.word	32
+	.word	112
+	.word	560
+	.word	336
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	592
-	.long	336
-	.long	-9
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	336
+	.word	-9
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	640
-	.long	336
-	.long	-9
-	.long	0
+	.word	48
+	.word	112
+	.word	640
+	.word	336
+	.word	-9
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	688
-	.long	352
+	.word	64
+	.word	112
+	.word	688
+	.word	352
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL20subzeroHitFallFrames:
-	.long	80
-	.long	96
-	.long	672
-	.long	576
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
 	.long	6
-	.long	96
-	.long	80
-	.long	752
-	.long	640
-	.long	0
-	.long	32
+	.word	96
+	.word	80
+	.word	752
+	.word	640
+	.word	0
+	.word	32
 	.long	6
-	.long	80
-	.long	96
-	.long	944
-	.long	480
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	944
+	.word	480
+	.word	0
+	.word	16
 	.long	6
-	.long	80
-	.long	96
-	.long	944
-	.long	480
-	.long	0
-	.long	16
+	.word	80
+	.word	96
+	.word	944
+	.word	480
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	80
-	.long	848
-	.long	640
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
 	.long	6
-	.long	64
-	.long	80
-	.long	848
-	.long	640
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
 	.long	6
-	.long	112
-	.long	32
-	.long	176
-	.long	1136
-	.long	0
-	.long	86
+	.word	112
+	.word	32
+	.word	176
+	.word	1136
+	.word	0
+	.word	86
 	.long	6
 	.even
 __ZL21subzeroHitSweepFrames:
-	.long	80
-	.long	96
-	.long	912
-	.long	640
-	.long	-15
-	.long	11
+	.word	80
+	.word	96
+	.word	912
+	.word	640
+	.word	-15
+	.word	11
 	.long	5
-	.long	80
-	.long	48
-	.long	256
-	.long	640
-	.long	-12
-	.long	27
+	.word	80
+	.word	48
+	.word	256
+	.word	640
+	.word	-12
+	.word	27
 	.long	5
-	.long	64
-	.long	80
-	.long	416
-	.long	624
-	.long	-14
-	.long	20
+	.word	64
+	.word	80
+	.word	416
+	.word	624
+	.word	-14
+	.word	20
 	.long	5
-	.long	64
-	.long	64
-	.long	752
-	.long	576
-	.long	-7
-	.long	42
+	.word	64
+	.word	64
+	.word	752
+	.word	576
+	.word	-7
+	.word	42
 	.long	5
-	.long	80
-	.long	48
-	.long	176
-	.long	1168
-	.long	-15
-	.long	80
+	.word	80
+	.word	48
+	.word	176
+	.word	1168
+	.word	-15
+	.word	80
 	.long	5
-	.long	80
-	.long	48
-	.long	176
-	.long	1168
-	.long	-15
-	.long	80
+	.word	80
+	.word	48
+	.word	176
+	.word	1168
+	.word	-15
+	.word	80
 	.long	5
 	.even
 __ZL16fighterScorpion2:
 	.long	5
 	.long	16
 	.long	10263024
-	.long	7
-	.long	7
-	.long	3
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	3
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL14fighterSubzero:
 	.long	6
 	.long	14
 	.long	10263024
-	.long	12
-	.long	7
-	.long	3
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	12
+	.word	7
+	.word	3
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL17subzeroIdleFrames:
-	.long	48
-	.long	112
-	.long	448
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	448
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	496
-	.long	0
-	.long	1
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	0
+	.word	1
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	544
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	544
+	.word	0
+	.word	2
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	592
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	592
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	640
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	640
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	688
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	688
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	736
-	.long	0
-	.long	3
-	.long	0
+	.word	48
+	.word	112
+	.word	736
+	.word	0
+	.word	3
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	688
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	688
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	640
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	640
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	592
-	.long	0
-	.long	2
-	.long	-1
+	.word	48
+	.word	112
+	.word	592
+	.word	0
+	.word	2
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	544
-	.long	0
-	.long	2
-	.long	0
+	.word	48
+	.word	112
+	.word	544
+	.word	0
+	.word	2
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	496
-	.long	0
-	.long	1
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	0
+	.word	1
+	.word	0
 	.long	6
 	.even
 __ZL17subzeroWalkFrames:
-	.long	64
-	.long	112
-	.long	256
-	.long	896
-	.long	0
-	.long	-1
+	.word	64
+	.word	112
+	.word	256
+	.word	896
+	.word	0
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	320
-	.long	912
-	.long	9
-	.long	-1
+	.word	48
+	.word	112
+	.word	320
+	.word	912
+	.word	9
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	368
-	.long	912
-	.long	10
-	.long	-1
+	.word	48
+	.word	112
+	.word	368
+	.word	912
+	.word	10
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	416
-	.long	896
-	.long	9
-	.long	-1
+	.word	48
+	.word	112
+	.word	416
+	.word	896
+	.word	9
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	464
-	.long	848
-	.long	10
-	.long	-1
+	.word	48
+	.word	112
+	.word	464
+	.word	848
+	.word	10
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	512
-	.long	848
-	.long	10
-	.long	-1
+	.word	48
+	.word	112
+	.word	512
+	.word	848
+	.word	10
+	.word	-1
 	.long	6
-	.long	48
-	.long	112
-	.long	560
-	.long	832
-	.long	9
-	.long	-1
+	.word	48
+	.word	112
+	.word	560
+	.word	832
+	.word	9
+	.word	-1
 	.long	6
-	.long	64
-	.long	112
-	.long	608
-	.long	912
-	.long	9
-	.long	-1
+	.word	64
+	.word	112
+	.word	608
+	.word	912
+	.word	9
+	.word	-1
 	.long	6
-	.long	64
-	.long	112
-	.long	672
-	.long	912
-	.long	10
-	.long	-1
+	.word	64
+	.word	112
+	.word	672
+	.word	912
+	.word	10
+	.word	-1
 	.long	6
 	.even
 __ZL15fighterSubzero2:
 	.long	6
 	.long	16
 	.long	10263024
-	.long	12
-	.long	7
-	.long	3
-	.long	9
-	.long	2
-	.long	4
-	.long	7
-	.long	3
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	9
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	12
+	.word	7
+	.word	3
+	.word	9
+	.word	2
+	.word	4
+	.word	20
+	.word	3
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	9
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL12fighterSonya:
 	.long	7
 	.long	14
 	.long	10910224
-	.long	7
-	.long	7
-	.long	8
-	.long	7
-	.long	2
-	.long	4
-	.long	7
-	.long	2
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	7
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	8
+	.word	7
+	.word	2
+	.word	4
+	.word	20
+	.word	2
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	7
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 	.even
 __ZL15sonyaIdleFrames:
-	.long	48
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	48
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	48
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	96
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	96
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	144
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	144
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	240
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	240
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	288
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	288
+	.word	0
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL16sonyaDizzyFrames:
-	.long	48
-	.long	96
-	.long	80
-	.long	528
-	.long	-6
-	.long	16
+	.word	48
+	.word	96
+	.word	80
+	.word	528
+	.word	-6
+	.word	16
 	.long	12
-	.long	48
-	.long	96
-	.long	128
-	.long	560
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	128
+	.word	560
+	.word	0
+	.word	16
 	.long	12
-	.long	48
-	.long	96
-	.long	176
-	.long	560
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	176
+	.word	560
+	.word	0
+	.word	16
 	.long	12
-	.long	48
-	.long	112
-	.long	224
-	.long	576
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	224
+	.word	576
+	.word	0
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	272
-	.long	592
-	.long	-2
-	.long	0
+	.word	48
+	.word	112
+	.word	272
+	.word	592
+	.word	-2
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	320
-	.long	592
-	.long	-4
-	.long	0
+	.word	48
+	.word	112
+	.word	320
+	.word	592
+	.word	-4
+	.word	0
 	.long	12
-	.long	48
-	.long	112
-	.long	368
-	.long	592
-	.long	-10
-	.long	0
+	.word	48
+	.word	112
+	.word	368
+	.word	592
+	.word	-10
+	.word	0
 	.long	12
 	.even
 __ZL15sonyaWinsFrames:
-	.long	48
-	.long	96
-	.long	144
-	.long	864
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	144
+	.word	864
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	192
-	.long	864
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	192
+	.word	864
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	96
-	.long	336
-	.long	864
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	336
+	.word	864
+	.word	0
+	.word	16
 	.long	6
-	.long	64
-	.long	80
-	.long	416
-	.long	800
-	.long	0
+	.word	64
+	.word	80
+	.word	416
+	.word	800
+	.word	0
+	.word	32
 	.long	32
-	.long	32
-	.long	64
-	.long	80
-	.long	400
-	.long	880
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	400
+	.word	880
+	.word	0
+	.word	32
 	.long	6
-	.long	64
-	.long	112
-	.long	480
-	.long	848
-	.long	12
-	.long	0
+	.word	64
+	.word	112
+	.word	480
+	.word	848
+	.word	12
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	544
-	.long	848
+	.word	64
+	.word	112
+	.word	544
+	.word	848
+	.word	6
+	.word	0
 	.long	6
-	.long	0
+	.word	96
+	.word	128
+	.word	688
+	.word	816
+	.word	-6
+	.word	-16
 	.long	6
-	.long	96
-	.long	128
-	.long	688
-	.long	816
-	.long	-6
-	.long	-16
-	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL15sonyaWalkFrames:
-	.long	64
-	.long	112
-	.long	432
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	432
+	.word	0
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	496
-	.long	0
-	.long	18
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	0
+	.word	18
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	544
-	.long	0
-	.long	19
-	.long	0
+	.word	48
+	.word	112
+	.word	544
+	.word	0
+	.word	19
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	592
-	.long	0
-	.long	17
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	0
+	.word	17
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	640
-	.long	0
-	.long	17
-	.long	0
+	.word	48
+	.word	112
+	.word	640
+	.word	0
+	.word	17
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	688
-	.long	0
-	.long	12
-	.long	0
+	.word	48
+	.word	112
+	.word	688
+	.word	0
+	.word	12
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	736
-	.long	0
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	736
+	.word	0
+	.word	16
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	784
-	.long	0
-	.long	15
-	.long	0
+	.word	48
+	.word	112
+	.word	784
+	.word	0
+	.word	15
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	832
-	.long	0
-	.long	9
-	.long	0
+	.word	48
+	.word	112
+	.word	832
+	.word	0
+	.word	9
+	.word	0
 	.long	6
 	.even
 __ZL15sonyaTurnFrames:
-	.long	48
-	.long	112
-	.long	336
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	336
+	.word	0
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	384
-	.long	0
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	384
+	.word	0
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL15sonyaJumpFrames:
-	.long	64
-	.long	96
-	.long	176
-	.long	352
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	176
+	.word	352
+	.word	0
+	.word	16
 	.long	3
-	.long	48
-	.long	96
-	.long	240
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	96
+	.word	240
+	.word	352
+	.word	0
+	.word	0
 	.long	3
-	.long	64
-	.long	96
-	.long	176
-	.long	352
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	176
+	.word	352
+	.word	0
+	.word	16
 	.long	3
-	.long	48
-	.long	80
-	.long	128
-	.long	336
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	128
+	.word	336
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL19sonyaJumpRollFrames:
-	.long	32
-	.long	96
-	.long	768
-	.long	336
-	.long	0
-	.long	0
+	.word	32
+	.word	96
+	.word	768
+	.word	336
+	.word	0
+	.word	16
 	.long	3
-	.long	48
-	.long	64
-	.long	800
-	.long	336
-	.long	0
-	.long	0
+	.word	48
+	.word	64
+	.word	800
+	.word	336
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	848
-	.long	336
-	.long	-7
-	.long	0
+	.word	48
+	.word	64
+	.word	848
+	.word	336
+	.word	-7
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	896
-	.long	336
-	.long	-15
-	.long	0
+	.word	64
+	.word	48
+	.word	896
+	.word	336
+	.word	-15
+	.word	0
 	.long	3
-	.long	64
-	.long	48
-	.long	960
-	.long	336
-	.long	-18
-	.long	0
+	.word	64
+	.word	48
+	.word	960
+	.word	336
+	.word	-18
+	.word	0
 	.long	3
-	.long	48
-	.long	64
-	.long	800
-	.long	400
-	.long	-5
-	.long	-16
+	.word	48
+	.word	64
+	.word	800
+	.word	400
+	.word	-5
+	.word	-16
 	.long	3
-	.long	48
-	.long	64
-	.long	848
-	.long	400
-	.long	-7
-	.long	-15
+	.word	48
+	.word	64
+	.word	848
+	.word	400
+	.word	-7
+	.word	-15
 	.long	3
-	.long	64
-	.long	48
-	.long	896
-	.long	384
-	.long	-9
-	.long	0
+	.word	64
+	.word	48
+	.word	896
+	.word	384
+	.word	-9
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	800
+	.word	336
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	848
+	.word	336
+	.word	-7
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	896
+	.word	336
+	.word	-15
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	960
+	.word	336
+	.word	-18
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	800
+	.word	400
+	.word	-5
+	.word	-16
+	.long	3
+	.word	48
+	.word	64
+	.word	848
+	.word	400
+	.word	-7
+	.word	-15
+	.long	3
+	.word	64
+	.word	48
+	.word	896
+	.word	384
+	.word	-9
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	800
+	.word	336
+	.word	0
+	.word	0
+	.long	3
+	.word	48
+	.word	64
+	.word	848
+	.word	336
+	.word	-7
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	896
+	.word	336
+	.word	-15
+	.word	0
+	.long	3
+	.word	64
+	.word	48
+	.word	960
+	.word	336
+	.word	-18
+	.word	0
+	.long	3
+	.word	32
+	.word	96
+	.word	768
+	.word	336
+	.word	0
+	.word	16
 	.long	3
 	.even
 __ZL15sonyaDuckFrames:
-	.long	48
-	.long	80
-	.long	880
-	.long	0
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	880
+	.word	0
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	64
-	.long	928
-	.long	0
-	.long	0
-	.long	48
+	.word	48
+	.word	64
+	.word	928
+	.word	0
+	.word	0
+	.word	48
 	.long	3
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL16sonyaBlockFrames:
-	.long	48
-	.long	112
-	.long	384
-	.long	192
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	384
+	.word	192
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	432
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	176
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	480
-	.long	160
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	480
+	.word	160
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL19sonyaBlockHitFrames:
-	.long	48
-	.long	112
-	.long	432
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	176
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	480
-	.long	160
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	480
+	.word	160
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	432
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	176
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	480
-	.long	160
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	480
+	.word	160
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	432
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	432
+	.word	176
+	.word	0
+	.word	0
 	.long	3
-	.long	48
-	.long	112
-	.long	480
-	.long	160
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	480
+	.word	160
+	.word	0
+	.word	0
 	.long	3
 	.even
 __ZL20sonyaBlockDuckFrames:
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	352
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	352
+	.word	112
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL23sonyaBlockDuckHitFrames:
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	352
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	352
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	352
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	352
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	304
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	304
+	.word	112
+	.word	0
+	.word	32
 	.long	3
-	.long	48
-	.long	80
-	.long	352
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	352
+	.word	112
+	.word	0
+	.word	32
 	.long	3
 	.even
 __ZL19sonyaPunchLowFrames:
-	.long	64
-	.long	112
-	.long	816
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	816
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	880
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	880
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	208
-	.long	240
-	.long	0
-	.long	0
+	.word	96
+	.word	112
+	.word	208
+	.word	240
+	.word	0
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	880
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	880
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	816
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	816
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL20sonyaPunchHighFrames:
-	.long	64
-	.long	112
-	.long	816
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	816
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	880
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	880
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	944
-	.long	112
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	944
+	.word	112
+	.word	0
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	880
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	880
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	816
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	816
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL18sonyaKickLowFrames:
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	592
-	.long	352
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	0
-	.long	416
-	.long	14
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	416
+	.word	14
+	.word	0
 	.long	4
-	.long	96
-	.long	112
-	.long	160
-	.long	448
-	.long	10
-	.long	0
+	.word	96
+	.word	112
+	.word	160
+	.word	448
+	.word	10
+	.word	0
 	.long	8
-	.long	64
-	.long	112
-	.long	640
-	.long	352
-	.long	16
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	592
-	.long	352
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL19sonyaKickHighFrames:
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	592
-	.long	352
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	0
-	.long	416
-	.long	14
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	416
+	.word	14
+	.word	0
 	.long	4
-	.long	80
-	.long	112
-	.long	80
-	.long	416
-	.long	13
-	.long	0
+	.word	80
+	.word	112
+	.word	80
+	.word	416
+	.word	13
+	.word	0
 	.long	8
-	.long	80
-	.long	112
-	.long	0
-	.long	416
-	.long	14
-	.long	0
+	.word	80
+	.word	112
+	.word	0
+	.word	416
+	.word	14
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	640
-	.long	352
-	.long	16
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	592
-	.long	352
-	.long	16
-	.long	0
+	.word	48
+	.word	112
+	.word	592
+	.word	352
+	.word	16
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL20sonyaJumpPunchFrames:
-	.long	80
-	.long	64
-	.long	560
-	.long	288
-	.long	0
-	.long	0
+	.word	80
+	.word	64
+	.word	560
+	.word	288
+	.word	0
+	.word	0
 	.long	4
-	.long	128
-	.long	64
-	.long	640
-	.long	288
-	.long	-22
-	.long	0
+	.word	128
+	.word	64
+	.word	640
+	.word	288
+	.word	-22
+	.word	0
 	.long	24
-	.long	128
-	.long	64
-	.long	640
-	.long	288
-	.long	-22
-	.long	0
+	.word	128
+	.word	64
+	.word	640
+	.word	288
+	.word	-22
+	.word	0
 	.long	4
 	.even
 __ZL19sonyaJumpKickFrames:
-	.long	48
-	.long	112
-	.long	448
-	.long	288
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	448
+	.word	288
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	80
-	.long	496
-	.long	272
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	496
+	.word	272
+	.word	0
+	.word	0
 	.long	24
-	.long	64
-	.long	80
-	.long	496
-	.long	272
-	.long	0
-	.long	0
+	.word	64
+	.word	80
+	.word	496
+	.word	272
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL23sonyaJumpDropKickFrames:
-	.long	64
-	.long	64
-	.long	304
-	.long	304
-	.long	0
-	.long	0
+	.word	64
+	.word	64
+	.word	304
+	.word	304
+	.word	0
+	.word	0
 	.long	4
-	.long	80
-	.long	64
-	.long	368
-	.long	304
-	.long	0
-	.long	-3
+	.word	80
+	.word	64
+	.word	368
+	.word	304
+	.word	0
+	.word	-3
 	.long	24
-	.long	80
-	.long	64
-	.long	368
-	.long	304
-	.long	0
-	.long	-3
+	.word	80
+	.word	64
+	.word	368
+	.word	304
+	.word	0
+	.word	-3
 	.long	4
 	.even
 __ZL19sonyaUppercutFrames:
-	.long	48
-	.long	80
-	.long	0
-	.long	112
-	.long	0
-	.long	32
+	.word	48
+	.word	80
+	.word	0
+	.word	112
+	.word	0
+	.word	32
 	.long	4
-	.long	80
-	.long	80
-	.long	48
-	.long	112
-	.long	0
-	.long	32
+	.word	80
+	.word	80
+	.word	48
+	.word	112
+	.word	0
+	.word	32
 	.long	4
-	.long	80
-	.long	112
-	.long	128
-	.long	112
-	.long	0
-	.long	0
+	.word	80
+	.word	112
+	.word	128
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	128
-	.long	208
-	.long	112
-	.long	6
-	.long	-16
+	.word	48
+	.word	128
+	.word	208
+	.word	112
+	.word	6
+	.word	-16
 	.long	12
-	.long	48
-	.long	112
-	.long	256
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	256
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	48
-	.long	112
-	.long	256
-	.long	112
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	256
+	.word	112
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL16sonyaKipUpFrames:
-	.long	48
-	.long	64
-	.long	880
-	.long	672
-	.long	0
-	.long	47
+	.word	48
+	.word	64
+	.word	880
+	.word	672
+	.word	0
+	.word	47
 	.long	5
-	.long	48
-	.long	48
-	.long	0
-	.long	688
-	.long	2
-	.long	63
+	.word	48
+	.word	48
+	.word	0
+	.word	688
+	.word	2
+	.word	63
 	.long	5
-	.long	48
-	.long	48
-	.long	0
-	.long	736
-	.long	-3
-	.long	63
+	.word	48
+	.word	48
+	.word	0
+	.word	736
+	.word	-3
+	.word	63
 	.long	5
-	.long	32
-	.long	64
-	.long	48
-	.long	688
-	.long	6
-	.long	48
+	.word	32
+	.word	64
+	.word	48
+	.word	688
+	.word	6
+	.word	48
 	.long	5
-	.long	32
-	.long	80
-	.long	80
-	.long	736
-	.long	5
-	.long	32
+	.word	32
+	.word	80
+	.word	80
+	.word	736
+	.word	5
+	.word	32
 	.long	5
 	.even
 __ZL16sonyaSweepFrames:
-	.long	64
-	.long	80
-	.long	656
-	.long	480
-	.long	0
-	.long	32
+	.word	64
+	.word	80
+	.word	656
+	.word	480
+	.word	0
+	.word	32
 	.long	5
-	.long	64
-	.long	64
-	.long	896
-	.long	432
-	.long	0
-	.long	52
+	.word	64
+	.word	64
+	.word	896
+	.word	432
+	.word	0
+	.word	52
 	.long	5
-	.long	64
-	.long	64
-	.long	416
-	.long	400
-	.long	-9
-	.long	53
+	.word	64
+	.word	64
+	.word	416
+	.word	400
+	.word	-9
+	.word	53
 	.long	5
-	.long	96
-	.long	64
-	.long	720
-	.long	480
-	.long	2
-	.long	52
+	.word	96
+	.word	64
+	.word	720
+	.word	480
+	.word	2
+	.word	52
 	.long	5
-	.long	96
-	.long	64
-	.long	816
-	.long	496
-	.long	1
-	.long	52
+	.word	96
+	.word	64
+	.word	816
+	.word	496
+	.word	1
+	.word	52
 	.long	5
-	.long	48
-	.long	80
-	.long	912
-	.long	496
-	.long	2
-	.long	49
+	.word	48
+	.word	80
+	.word	912
+	.word	496
+	.word	2
+	.word	49
 	.long	5
-	.long	80
-	.long	80
-	.long	0
-	.long	528
-	.long	-2
-	.long	32
+	.word	80
+	.word	80
+	.word	0
+	.word	528
+	.word	-2
+	.word	32
 	.long	5
-	.long	80
-	.long	80
-	.long	0
-	.long	528
-	.long	-2
-	.long	32
+	.word	80
+	.word	80
+	.word	0
+	.word	528
+	.word	-2
+	.word	32
 	.long	5
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL21sonyaRoundhouseFrames:
-	.long	48
-	.long	96
-	.long	256
-	.long	480
-	.long	0
-	.long	16
+	.word	48
+	.word	96
+	.word	256
+	.word	480
+	.word	0
+	.word	16
 	.long	5
-	.long	64
-	.long	112
-	.long	304
-	.long	480
-	.long	-14
-	.long	0
+	.word	64
+	.word	112
+	.word	304
+	.word	480
+	.word	-14
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	368
-	.long	480
-	.long	-5
-	.long	0
+	.word	64
+	.word	112
+	.word	368
+	.word	480
+	.word	-5
+	.word	0
 	.long	5
-	.long	80
-	.long	112
-	.long	432
-	.long	464
-	.long	2
-	.long	0
+	.word	80
+	.word	112
+	.word	432
+	.word	464
+	.word	2
+	.word	0
 	.long	10
-	.long	80
-	.long	112
-	.long	512
-	.long	464
-	.long	6
-	.long	0
+	.word	80
+	.word	112
+	.word	512
+	.word	464
+	.word	6
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	592
-	.long	464
-	.long	6
-	.long	0
+	.word	64
+	.word	112
+	.word	592
+	.word	464
+	.word	6
+	.word	0
 	.long	5
-	.long	64
-	.long	128
-	.long	704
-	.long	352
-	.long	0
-	.long	-16
+	.word	64
+	.word	128
+	.word	704
+	.word	352
+	.word	0
+	.word	-16
 	.long	5
 	.even
 __ZL20sonyaBodyPunchFrames:
-	.long	48
-	.long	112
-	.long	960
-	.long	384
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	960
+	.word	384
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	288
-	.long	368
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	288
+	.word	368
+	.word	0
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	352
-	.long	368
-	.long	1
-	.long	0
+	.word	64
+	.word	112
+	.word	352
+	.word	368
+	.word	1
+	.word	0
 	.long	32
-	.long	64
-	.long	112
-	.long	288
-	.long	368
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	288
+	.word	368
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	960
-	.long	384
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	960
+	.word	384
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL19sonyaBodyKickFrames:
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	544
-	.long	352
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	544
+	.word	352
+	.word	10
+	.word	0
 	.long	5
-	.long	64
-	.long	112
-	.long	640
-	.long	352
-	.long	15
-	.long	0
+	.word	64
+	.word	112
+	.word	640
+	.word	352
+	.word	15
+	.word	0
 	.long	32
-	.long	48
-	.long	112
-	.long	544
-	.long	352
-	.long	10
-	.long	0
+	.word	48
+	.word	112
+	.word	544
+	.word	352
+	.word	10
+	.word	0
 	.long	5
-	.long	48
-	.long	112
-	.long	496
-	.long	352
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	496
+	.word	352
+	.word	0
+	.word	0
 	.long	5
 	.even
 __ZL19sonyaDuckKickFrames:
-	.long	64
-	.long	48
-	.long	464
-	.long	112
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	464
+	.word	112
+	.word	0
+	.word	64
 	.long	5
-	.long	80
-	.long	48
-	.long	528
-	.long	112
-	.long	-1
-	.long	64
+	.word	80
+	.word	48
+	.word	528
+	.word	112
+	.word	-1
+	.word	64
 	.long	5
-	.long	96
-	.long	64
-	.long	608
-	.long	112
-	.long	1
-	.long	48
+	.word	96
+	.word	64
+	.word	608
+	.word	112
+	.word	1
+	.word	48
 	.long	10
-	.long	80
-	.long	48
-	.long	528
-	.long	112
-	.long	-1
-	.long	64
+	.word	80
+	.word	48
+	.word	528
+	.word	112
+	.word	-1
+	.word	64
 	.long	5
-	.long	64
-	.long	48
-	.long	464
-	.long	112
-	.long	0
-	.long	64
+	.word	64
+	.word	48
+	.word	464
+	.word	112
+	.word	0
+	.word	64
 	.long	5
 	.even
 __ZL16sonyaThrowFrames:
-	.long	64
-	.long	112
-	.long	928
-	.long	608
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	608
+	.word	0
+	.word	0
 	.long	3
-	.long	80
-	.long	80
-	.long	0
-	.long	608
-	.long	-6
-	.long	32
+	.word	80
+	.word	80
+	.word	0
+	.word	608
+	.word	-6
+	.word	32
 	.long	3
-	.long	48
-	.long	48
-	.long	80
-	.long	624
-	.long	-3
-	.long	64
+	.word	48
+	.word	48
+	.word	80
+	.word	624
+	.word	-3
+	.word	64
 	.long	6
-	.long	64
-	.long	64
-	.long	128
-	.long	656
-	.long	-16
-	.long	48
+	.word	64
+	.word	64
+	.word	128
+	.word	656
+	.word	-16
+	.word	48
 	.long	6
-	.long	48
-	.long	64
-	.long	80
-	.long	672
-	.long	-20
-	.long	48
+	.word	48
+	.word	64
+	.word	80
+	.word	672
+	.word	-20
+	.word	48
 	.long	6
-	.long	64
-	.long	80
-	.long	192
-	.long	688
-	.long	-40
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	688
+	.word	-40
+	.word	32
 	.long	6
-	.long	64
-	.long	80
-	.long	192
-	.long	688
-	.long	-40
-	.long	32
+	.word	64
+	.word	80
+	.word	192
+	.word	688
+	.word	-40
+	.word	32
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL22sonyaBeingThrownFrames:
-	.long	48
-	.long	96
-	.long	304
-	.long	704
-	.long	-40
-	.long	-10
+	.word	48
+	.word	96
+	.word	304
+	.word	704
+	.word	-40
+	.word	-10
 	.long	8
-	.long	64
-	.long	64
-	.long	352
-	.long	704
-	.long	-20
-	.long	-10
+	.word	64
+	.word	64
+	.word	352
+	.word	704
+	.word	-20
+	.word	-10
 	.long	8
-	.long	80
-	.long	80
-	.long	496
-	.long	640
-	.long	0
-	.long	-10
+	.word	80
+	.word	80
+	.word	496
+	.word	640
+	.word	0
+	.word	-10
 	.long	6
-	.long	80
-	.long	80
-	.long	496
-	.long	640
-	.long	0
-	.long	-10
+	.word	80
+	.word	80
+	.word	496
+	.word	640
+	.word	0
+	.word	-10
 	.long	6
-	.long	96
-	.long	32
-	.long	0
-	.long	928
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	0
+	.word	928
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	0
-	.long	928
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	0
+	.word	928
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL25sonyaBeingThrownLowFrames:
-	.long	48
-	.long	96
-	.long	304
-	.long	704
-	.long	-40
-	.long	20
+	.word	48
+	.word	96
+	.word	304
+	.word	704
+	.word	-40
+	.word	20
 	.long	8
-	.long	64
-	.long	64
-	.long	352
-	.long	704
-	.long	-20
-	.long	20
+	.word	64
+	.word	64
+	.word	352
+	.word	704
+	.word	-20
+	.word	20
 	.long	8
-	.long	80
-	.long	80
-	.long	496
-	.long	640
-	.long	0
-	.long	20
+	.word	80
+	.word	80
+	.word	496
+	.word	640
+	.word	0
+	.word	20
 	.long	6
-	.long	80
-	.long	80
-	.long	496
-	.long	640
-	.long	0
-	.long	0
+	.word	80
+	.word	80
+	.word	496
+	.word	640
+	.word	0
+	.word	0
 	.long	6
-	.long	96
-	.long	32
-	.long	0
-	.long	928
-	.long	0
-	.long	80
+	.word	96
+	.word	32
+	.word	0
+	.word	928
+	.word	0
+	.word	80
 	.long	6
-	.long	96
-	.long	32
-	.long	0
-	.long	928
-	.long	0
-	.long	90
+	.word	96
+	.word	32
+	.word	0
+	.word	928
+	.word	0
+	.word	90
 	.long	6
 	.even
 __ZL17sonyaHitLowFrames:
-	.long	48
-	.long	112
-	.long	720
-	.long	176
-	.long	-4
-	.long	0
+	.word	48
+	.word	112
+	.word	720
+	.word	176
+	.word	-4
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	768
-	.long	224
-	.long	-14
-	.long	0
+	.word	64
+	.word	112
+	.word	768
+	.word	224
+	.word	-14
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	720
-	.long	176
-	.long	-4
-	.long	0
+	.word	48
+	.word	112
+	.word	720
+	.word	176
+	.word	-4
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	672
-	.long	176
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	672
+	.word	176
+	.word	0
+	.word	0
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL18sonyaHitHighFrames:
-	.long	48
-	.long	96
-	.long	624
-	.long	176
-	.long	-4
-	.long	16
+	.word	48
+	.word	96
+	.word	624
+	.word	176
+	.word	-4
+	.word	16
 	.long	6
-	.long	48
-	.long	112
-	.long	576
-	.long	176
-	.long	-2
-	.long	1
+	.word	48
+	.word	112
+	.word	576
+	.word	176
+	.word	-2
+	.word	1
 	.long	6
-	.long	48
-	.long	112
-	.long	528
-	.long	160
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	528
+	.word	160
+	.word	0
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	576
-	.long	176
-	.long	-2
-	.long	1
+	.word	48
+	.word	112
+	.word	576
+	.word	176
+	.word	-2
+	.word	1
 	.long	6
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL18sonyaHitBackFrames:
-	.long	48
-	.long	112
-	.long	720
-	.long	176
-	.long	-4
-	.long	0
+	.word	48
+	.word	112
+	.word	720
+	.word	176
+	.word	-4
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	832
-	.long	224
-	.long	-13
-	.long	0
+	.word	48
+	.word	112
+	.word	832
+	.word	224
+	.word	-13
+	.word	0
 	.long	6
-	.long	48
-	.long	112
-	.long	880
-	.long	224
-	.long	0
-	.long	0
+	.word	48
+	.word	112
+	.word	880
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	928
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	928
+	.word	224
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	0
-	.long	304
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	304
+	.word	0
+	.word	0
 	.long	6
-	.long	64
-	.long	112
-	.long	64
-	.long	304
-	.long	-2
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	304
+	.word	-2
+	.word	0
 	.long	6
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	0
 	.even
 __ZL18sonyaHitFallFrames:
-	.long	64
-	.long	96
-	.long	432
-	.long	576
-	.long	0
-	.long	16
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
 	.long	6
-	.long	96
-	.long	64
-	.long	496
-	.long	576
-	.long	0
-	.long	48
+	.word	96
+	.word	64
+	.word	496
+	.word	576
+	.word	0
+	.word	48
 	.long	6
-	.long	96
-	.long	64
-	.long	592
-	.long	576
-	.long	0
-	.long	48
+	.word	96
+	.word	64
+	.word	592
+	.word	576
+	.word	0
+	.word	48
 	.long	6
-	.long	96
-	.long	64
-	.long	592
-	.long	576
-	.long	0
-	.long	48
+	.word	96
+	.word	64
+	.word	592
+	.word	576
+	.word	0
+	.word	48
 	.long	6
-	.long	64
-	.long	80
-	.long	688
-	.long	560
-	.long	0
-	.long	36
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
 	.long	6
-	.long	64
-	.long	80
-	.long	688
-	.long	560
-	.long	0
-	.long	36
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
 	.long	6
-	.long	96
-	.long	32
-	.long	0
-	.long	928
-	.long	0
-	.long	96
+	.word	96
+	.word	32
+	.word	0
+	.word	928
+	.word	0
+	.word	96
 	.long	6
 	.even
 __ZL19sonyaHitSweepFrames:
-	.long	80
-	.long	80
-	.long	576
-	.long	640
-	.long	-14
-	.long	24
+	.word	80
+	.word	80
+	.word	576
+	.word	640
+	.word	-14
+	.word	24
 	.long	5
-	.long	64
-	.long	64
-	.long	656
-	.long	640
-	.long	-7
-	.long	30
+	.word	64
+	.word	64
+	.word	656
+	.word	640
+	.word	-7
+	.word	30
 	.long	5
-	.long	64
-	.long	64
-	.long	720
-	.long	640
-	.long	-11
-	.long	20
+	.word	64
+	.word	64
+	.word	720
+	.word	640
+	.word	-11
+	.word	20
 	.long	5
-	.long	64
-	.long	64
-	.long	784
-	.long	624
-	.long	-8
-	.long	38
+	.word	64
+	.word	64
+	.word	784
+	.word	624
+	.word	-8
+	.word	38
 	.long	5
-	.long	80
-	.long	48
-	.long	256
-	.long	896
-	.long	-15
-	.long	90
+	.word	80
+	.word	48
+	.word	256
+	.word	896
+	.word	-15
+	.word	90
 	.long	5
-	.long	80
-	.long	48
-	.long	256
-	.long	896
-	.long	-15
-	.long	90
+	.word	80
+	.word	48
+	.word	256
+	.word	896
+	.word	-15
+	.word	90
 	.long	5
 	.even
 __ZL13fighterSonya2:
 	.long	7
 	.long	16
 	.long	10910224
-	.long	7
-	.long	7
-	.long	8
-	.long	7
-	.long	2
-	.long	4
-	.long	7
-	.long	2
-	.long	3
-	.long	6
-	.long	2
-	.long	6
-	.long	5
-	.long	5
-	.long	7
-	.long	8
-	.long	3
-	.long	3
-	.long	6
-	.long	5
-	.long	7
-	.long	7
-	.long	5
-	.long	5
-	.long	5
-	.long	7
-	.long	6
-	.long	4
-	.long	4
-	.long	6
-	.long	7
-	.long	6
+	.word	7
+	.word	7
+	.word	8
+	.word	7
+	.word	2
+	.word	4
+	.word	20
+	.word	2
+	.word	3
+	.word	6
+	.word	2
+	.word	6
+	.word	5
+	.word	5
+	.word	7
+	.word	8
+	.word	3
+	.word	3
+	.word	6
+	.word	5
+	.word	7
+	.word	7
+	.word	5
+	.word	5
+	.word	5
+	.word	7
+	.word	6
+	.word	4
+	.word	4
+	.word	6
+	.word	7
+	.word	6
 	.skip 402
 .lcomm __ZL11BLACKPALx16,32
 .lcomm __ZL8BLACKPAL,512
 	.even
 __ZL12soundHandler:
-	.byte	1
-	.byte	1
+	.byte	0
+	.byte	0
 	.long	163
 	.long	120
 	.even
@@ -15982,896 +16713,896 @@ __ZL11fmvAnimator:
 	.long	1056964608
 	.long	__ZL14imageBufferFMV
 	.long	0
-	.long	0
-	.skip 4
+	.word	0
+	.skip 2
 	.even
 __ZL13fmvCageFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1088
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1088
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL13fmvKanoFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1152
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1152
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1216
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1216
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1280
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1280
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1344
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1344
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL15fmvRaidenFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1152
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1152
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1216
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1216
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1280
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1280
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL13fmvKangFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1152
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1152
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL17fmvScorpionFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1024
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1024
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1152
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1152
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	1216
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	1216
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL16fmvSubzeroFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	832
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	832
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	896
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	896
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	960
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	960
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL14fmvSonyaFrames:
-	.long	160
-	.long	64
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	64
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	64
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	128
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	128
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	192
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	192
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	256
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	256
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	320
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	320
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	384
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	384
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	448
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	448
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	512
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	512
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	576
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	576
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	640
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	640
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	704
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	704
+	.word	0
+	.word	0
 	.long	8
-	.long	160
-	.long	64
-	.long	0
-	.long	768
-	.long	0
-	.long	0
+	.word	160
+	.word	64
+	.word	0
+	.word	768
+	.word	0
+	.word	0
 	.long	8
 	.even
 __ZL12cageAnimator:
@@ -16879,259 +17610,259 @@ __ZL12cageAnimator:
 	.long	1056964608
 	.long	8534416
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL12kanoAnimator:
 	.long	14
 	.long	1056964608
 	.long	11401776
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL15subzeroAnimator:
 	.long	14
 	.long	1056964608
 	.long	10263024
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL13sonyaAnimator:
 	.long	14
 	.long	1056964608
 	.long	10910224
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL14raidenAnimator:
 	.long	14
 	.long	1056964608
 	.long	9689552
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL17lightningAnimator:
 	.long	17
 	.long	1056964608
 	.long	11999920
 	.long	0
-	.long	0
-	.skip 4
+	.word	0
+	.skip 2
 	.even
 __ZL15lightningFrames:
-	.long	64
-	.long	112
-	.long	0
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	64
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	128
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	192
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	256
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	320
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	384
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	448
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	512
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	576
-	.long	0
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	0
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	64
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	128
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	192
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	256
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	320
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	384
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	448
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	512
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	576
-	.long	112
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	112
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	0
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	0
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	64
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	64
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	128
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	128
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	192
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	192
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	256
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	256
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	320
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	320
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	384
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	384
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	448
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	448
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	512
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	512
+	.word	224
+	.word	0
+	.word	0
 	.long	4
-	.long	64
-	.long	112
-	.long	576
-	.long	224
-	.long	0
-	.long	0
+	.word	64
+	.word	112
+	.word	576
+	.word	224
+	.word	0
+	.word	0
 	.long	4
 	.even
 __ZL12kangAnimator:
@@ -17139,80 +17870,80 @@ __ZL12kangAnimator:
 	.long	1056964608
 	.long	9124272
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL16scorpionAnimator:
 	.long	14
 	.long	1056964608
 	.long	10263024
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL13cageAnimator2:
 	.long	16
 	.long	1056964608
 	.long	8534416
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL13kanoAnimator2:
 	.long	16
 	.long	1056964608
 	.long	11401776
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL16subzeroAnimator2:
 	.long	16
 	.long	1056964608
 	.long	10263024
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL14sonyaAnimator2:
 	.long	16
 	.long	1056964608
 	.long	10910224
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL15raidenAnimator2:
 	.long	16
 	.long	1056964608
 	.long	9689552
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL18lightning2Animator:
 	.long	18
 	.long	1056964608
 	.long	11999920
 	.long	0
-	.long	0
-	.skip 4
+	.word	0
+	.skip 2
 	.even
 __ZL13kangAnimator2:
 	.long	16
 	.long	1056964608
 	.long	9124272
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 	.even
 __ZL17scorpionAnimator2:
 	.long	16
 	.long	1056964608
 	.long	10263024
 	.long	0
-	.long	0
-	.long	48
+	.word	0
+	.word	48
 .lcomm __ZL18imageBuffer320x240,71680
 .lcomm __ZL14imageBufferFMV,112640
 .lcomm __ZL11imageBuffer,466944

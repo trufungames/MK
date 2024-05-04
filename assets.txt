@@ -83,7 +83,7 @@ ROM,BMP_HITBOX_OFF,gfx_clut,ASSETS\GFX\hitbox_off.BMP
 ROM,BMP_HITBOX_ATTACK_OFF,gfx_clut,ASSETS\GFX\hitbox_attack_off.BMP
 ROM,BMP_MATCH,gfx_clut,ASSETS\GFX\match.BMP
 ROM,BMP_BLOOD,gfx_clut,ASSETS\GFX\blood.BMP
-ROM,BMP_HUD,gfx_clut,ASSETS\GFX\hud.BMP
+ROM,BMP_HEALTHBAR_OFF,gfx_clut,ASSETS\GFX\healthbar_off.BMP
 ROM,BMP_HEALTHBAR,gfx_clut,ASSETS\GFX\healthbar.BMP
 ROM,BMP_TESTYOURMIGHT_STONE,gfx_clut,ASSETS\GFX\testyourmight_stone.BMP
 ROM,BMP_TS_BACKGROUND,gfx_clut_pack,ASSETS\GFX\ts_background.BMP
@@ -103,6 +103,7 @@ ROM,BMP_FMV_SONYA,gfx_clut_pack,ASSETS\GFX\fmv_sonya.BMP
 ROM,BMP_ATTRACT_LEADERBOARD,gfx_clut_pack,ASSETS\GFX\attract_leaderboard.BMP
 ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
 ROM,BMP_ATTRACT_WINNERS,gfx_clut_pack,ASSETS\GFX\attract_winners.BMP
+ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav

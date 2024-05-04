@@ -2,39 +2,38 @@ struct Fighter {
     unsigned int fighterIndex;
     unsigned int spriteIndex;
     unsigned int spriteBase;
-    unsigned int IDLE_FRAME_COUNT;
-    unsigned int DIZZY_FRAME_COUNT;
-    unsigned int WINS_FRAME_COUNT;
-    unsigned int WALK_FRAME_COUNT;
-    unsigned int TURN_FRAME_COUNT;
-    unsigned int JUMP_FRAME_COUNT;
-    unsigned int JUMP_ROLL_FRAME_COUNT;
-    unsigned int DUCK_FRAME_COUNT;
-    unsigned int BLOCK_FRAME_COUNT;
-    unsigned int BLOCK_HIT_FRAME_COUNT;
-    unsigned int BLOCK_DUCK_FRAME_COUNT;
-    unsigned int BLOCK_DUCK_HIT_FRAME_COUNT;
-    unsigned int LOW_PUNCH_FRAME_COUNT;
-    unsigned int HIGH_PUNCH_FRAME_COUNT;
-    unsigned int LOW_KICK_FRAME_COUNT;
-    unsigned int HIGH_KICK_FRAME_COUNT;
-    unsigned int JUMP_PUNCH_FRAME_COUNT;
-    unsigned int JUMP_KICK_FRAME_COUNT;
-    unsigned int UPPERCUT_FRAME_COUNT;
-    unsigned int KIPUP_FRAME_COUNT;
-    unsigned int SWEEP_FRAME_COUNT;
-    unsigned int ROUNDHOUSE_FRAME_COUNT;
-    unsigned int BODY_PUNCH_FRAME_COUNT;
-    unsigned int BODY_KICK_FRAME_COUNT;
-    unsigned int DUCK_KICK_FRAME_COUNT;
-    unsigned int THROW_FRAME_COUNT;
-    unsigned int BEING_THROWN_FRAME_COUNT;
-    unsigned int HIT_LOW_FRAME_COUNT;
-    unsigned int HIT_HIGH_FRAME_COUNT;
-    unsigned int HIT_BACK_FRAME_COUNT;
-    unsigned int HIT_FALL_FRAME_COUNT;
-    unsigned int HIT_SWEEP_FRAME_COUNT;
-
+    unsigned short IDLE_FRAME_COUNT;
+    unsigned short DIZZY_FRAME_COUNT;
+    unsigned short WINS_FRAME_COUNT;
+    unsigned short WALK_FRAME_COUNT;
+    unsigned short TURN_FRAME_COUNT;
+    unsigned short JUMP_FRAME_COUNT;
+    unsigned short JUMP_ROLL_FRAME_COUNT;
+    unsigned short DUCK_FRAME_COUNT;
+    unsigned short BLOCK_FRAME_COUNT;
+    unsigned short BLOCK_HIT_FRAME_COUNT;
+    unsigned short BLOCK_DUCK_FRAME_COUNT;
+    unsigned short BLOCK_DUCK_HIT_FRAME_COUNT;
+    unsigned short LOW_PUNCH_FRAME_COUNT;
+    unsigned short HIGH_PUNCH_FRAME_COUNT;
+    unsigned short LOW_KICK_FRAME_COUNT;
+    unsigned short HIGH_KICK_FRAME_COUNT;
+    unsigned short JUMP_PUNCH_FRAME_COUNT;
+    unsigned short JUMP_KICK_FRAME_COUNT;
+    unsigned short UPPERCUT_FRAME_COUNT;
+    unsigned short KIPUP_FRAME_COUNT;
+    unsigned short SWEEP_FRAME_COUNT;
+    unsigned short ROUNDHOUSE_FRAME_COUNT;
+    unsigned short BODY_PUNCH_FRAME_COUNT;
+    unsigned short BODY_KICK_FRAME_COUNT;
+    unsigned short DUCK_KICK_FRAME_COUNT;
+    unsigned short THROW_FRAME_COUNT;
+    unsigned short BEING_THROWN_FRAME_COUNT;
+    unsigned short HIT_LOW_FRAME_COUNT;
+    unsigned short HIT_HIGH_FRAME_COUNT;
+    unsigned short HIT_BACK_FRAME_COUNT;
+    unsigned short HIT_FALL_FRAME_COUNT;
+    unsigned short HIT_SWEEP_FRAME_COUNT;
     unsigned int lightningSpriteIndex;
     bool IsIdle;
     bool IsWinner;
@@ -60,6 +59,7 @@ struct Fighter {
     bool IsBodyKicking;
     bool IsDuckKicking;
     bool DPadReleased;
+    bool DPadUpReleased;
     bool ButtonReleased;
     bool IsHitLow;
     bool IsHitHigh;
@@ -94,8 +94,8 @@ struct Fighter {
     bool DoWinSequence;
     bool DoThrowSequence;
     bool ResetTicks;
-    int ThrowX;
-    int ThrowY;
+    short ThrowX;
+    short ThrowY;
     bool AcceptingInput;
     bool MadeContactUppercut;
     bool MadeContact;
@@ -106,6 +106,8 @@ struct Fighter {
     int JumpRollTicks;
     unsigned int HB_ATTACK;
     int pad;
+    unsigned int Score;
+    bool ScoreChanged;
     unsigned int PAD;
     float playerMoveForwardSpeed;
     float playerMoveBackwardSpeed;
@@ -121,13 +123,13 @@ struct Fighter {
     int lastTicks;
     int damageTicks;
     int dropKickTicks;
-    int positionX;
-    int positionY;
+    short positionX;
+    short positionY;
     int hitPoints;
     int pendingDamage;
     bool shakeScreen;
     struct SoundHandler* soundHandler;
-    int direction;
+    short direction;
     bool justTurned;
     bool changedDirection;
     bool isPlayer1;
@@ -137,9 +139,10 @@ struct Fighter {
     float uppercutMomentumYStart;
     float dropKickMomentemYStart;
     float throwMomentemYStart;
-    int roundsLost;
+    short roundsLost;
     bool hasRoomToMove;
     bool isMaxDistance;
+    int jumpIndex;
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -159,7 +162,7 @@ struct Fighter {
     struct AnimationFrame (*walkFrames)[9];
     struct AnimationFrame (*turnFrames)[2];
     struct AnimationFrame (*jumpFrames)[4];
-    struct AnimationFrame (*jumpRollFrames)[8];
+    struct AnimationFrame (*jumpRollFrames)[20];
     struct AnimationFrame (*duckFrames)[3];
     struct AnimationFrame (*blockFrames)[3];
     struct AnimationFrame (*blockHitFrames)[6];
@@ -227,7 +230,7 @@ void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
-void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen);
+void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen, struct Fighter* attackingFighter, int points);
 
 void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks);
 
@@ -262,3 +265,5 @@ int fighterShadowHeightLookup(int height);
 void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterResetTicks(struct Fighter* fighter);
+
+void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2);

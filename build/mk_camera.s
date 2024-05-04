@@ -17,12 +17,15 @@ __Z10cameraInitjiiij:
 	jsr __Z14stageGetHeightv
 	move.l %d4,-(%sp)
 	move.l #0x40000000,-(%sp)
-	move.l %d3,-(%sp)
-	move.l %d2,-(%sp)
-	move.l %d0,-(%sp)
+	move.w %d3,%a0
+	move.l %a0,-(%sp)
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	pea 336.w
 	move.l _backgroundSpriteIndex,-(%sp)
-	jsr __Z8setFramejiiiifj
+	jsr __Z8setFramejssssfj
 	move.w raptor_ticks,%a0
 	move.l %a0,_cameraTicks
 	lea (28,%sp),%sp
@@ -41,16 +44,15 @@ __Z12cameraUpdateP7FighterS0_:
 	jle .L2
 	clr.b _backgroundChangedLeft
 	clr.b _backgroundChangedRight
-	moveq #1,%d0
-	cmp.l 316(%a2),%d0
-	jeq .L23
 	move.l _cameraX,%d0
 	moveq #10,%d1
+	cmp.w #1,252(%a2)
+	jeq .L24
 	cmp.l %d0,%d1
 	jge .L20
-	cmp.l 294(%a4),%d1
-	jlt .L20
-	cmp.l #278,294(%a2)
+	cmp.w #10,234(%a4)
+	jgt .L20
+	cmp.w #278,234(%a2)
 	jgt .L20
 	move.l %a2,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -260,11 +262,10 @@ __Z12cameraUpdateP7FighterS0_:
 .L7:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.l #280,294(%a2)
+	cmp.w #280,234(%a2)
 	jle .L6
-	moveq #10,%d0
-	cmp.l 294(%a4),%d0
-	jge .L6
+	cmp.w #10,234(%a4)
+	jle .L6
 	move.l %a4,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a3
 	jsr (%a3)
@@ -439,7 +440,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #8,%sp
 .L6:
 	tst.b %d1
-	jeq .L24
+	jeq .L25
 	addq.l #2,_xOffset
 	moveq #1,%d0
 	move.l %d0,-(%sp)
@@ -448,28 +449,29 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	moveq #-15,%d1
 	cmp.l %d0,%d1
-	jgt .L25
+	jgt .L26
 .L11:
 	tst.l %d0
 	jlt .L12
 	move.l _cameraX,%d2
 	subq.l #4,%d2
 	move.l %d2,_cameraX
-	move.l _backgroundGfxBase,%a2
-	move.l _cameraY,%d3
+	move.l _backgroundGfxBase,%d3
+	move.w _cameraY+2,%a2
 	jsr __Z14stageGetHeightv
-	move.l %a2,-(%sp)
-	move.l #0x40000000,-(%sp)
 	move.l %d3,-(%sp)
-	move.l %d2,-(%sp)
-	move.l %d0,-(%sp)
+	move.l #0x40000000,-(%sp)
+	move.l %a2,-(%sp)
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	pea 336.w
 	move.l _backgroundSpriteIndex,-(%sp)
-	jsr __Z8setFramejiiiifj
-	moveq #-8,%d1
-	move.l %d1,_xOffset
-	lea (28,%sp),%sp
+	jsr __Z8setFramejssssfj
 	moveq #-8,%d0
+	move.l %d0,_xOffset
+	lea (28,%sp),%sp
 .L12:
 	move.l sprite,%a0
 	move.w %d0,8456(%a0)
@@ -483,7 +485,7 @@ __Z12cameraUpdateP7FighterS0_:
 .L20:
 	clr.b %d1
 	jra .L7
-.L24:
+.L25:
 	tst.b _backgroundChangedRight
 	jeq .L10
 	subq.l #2,_xOffset
@@ -495,35 +497,33 @@ __Z12cameraUpdateP7FighterS0_:
 	moveq #-15,%d1
 	cmp.l %d0,%d1
 	jle .L11
-.L25:
+.L26:
 	move.l _cameraX,%d2
 	addq.l #4,%d2
 	move.l %d2,_cameraX
-	move.l _backgroundGfxBase,%a2
-	move.l _cameraY,%d3
+	move.l _backgroundGfxBase,%d3
+	move.w _cameraY+2,%a2
 	jsr __Z14stageGetHeightv
-	move.l %a2,-(%sp)
-	move.l #0x40000000,-(%sp)
 	move.l %d3,-(%sp)
-	move.l %d2,-(%sp)
-	move.l %d0,-(%sp)
+	move.l #0x40000000,-(%sp)
+	move.l %a2,-(%sp)
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	pea 336.w
 	move.l _backgroundSpriteIndex,-(%sp)
-	jsr __Z8setFramejiiiifj
+	jsr __Z8setFramejssssfj
 	moveq #-8,%d0
 	move.l %d0,_xOffset
 	lea (28,%sp),%sp
-	move.l sprite,%a0
-	move.w %d0,8456(%a0)
-	jra .L10
-.L23:
-	move.l _cameraX,%d0
-	moveq #10,%d1
+	jra .L12
+.L24:
 	cmp.l %d0,%d1
 	jge .L17
-	cmp.l 294(%a2),%d1
-	jlt .L17
-	cmp.l #278,294(%a4)
+	cmp.w #10,234(%a2)
+	jgt .L17
+	cmp.w #278,234(%a4)
 	jgt .L17
 	move.l %a4,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -733,11 +733,10 @@ __Z12cameraUpdateP7FighterS0_:
 .L5:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.l #280,294(%a4)
+	cmp.w #280,234(%a4)
 	jle .L6
-	moveq #10,%d0
-	cmp.l 294(%a2),%d0
-	jge .L6
+	cmp.w #10,234(%a2)
+	jle .L6
 	move.l %a2,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a2
 	jsr (%a2)
@@ -923,11 +922,11 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l 12(%fp),%a0
 	moveq #10,%d0
 	cmp.l _cameraX.l,%d0
-	jge .L31
-	cmp.l 294(%a2),%d0
-	jlt .L31
-	cmp.l #278,294(%a0)
-	jgt .L31
+	jge .L32
+	cmp.w #10,234(%a2)
+	jgt .L32
+	cmp.w #278,234(%a0)
+	jgt .L32
 	move.l %a0,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
 	jsr (%a3)
@@ -1102,7 +1101,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	movem.l -16(%fp),#15360
 	unlk %fp
 	rts
-.L31:
+.L32:
 	clr.b %d0
 	movem.l -16(%fp),#15360
 	unlk %fp
@@ -1116,12 +1115,11 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l 12(%fp),%a2
 	move.l _cameraX,%d0
 	cmp.l _cameraXMax.l,%d0
-	jge .L38
-	cmp.l #280,294(%a2)
-	jle .L38
-	moveq #10,%d0
-	cmp.l 294(%a0),%d0
-	jge .L38
+	jge .L39
+	cmp.w #280,234(%a2)
+	jle .L39
+	cmp.w #10,234(%a0)
+	jle .L39
 	move.l %a0,-(%sp)
 	lea __Z16fighterShiftLeftP7Fighter,%a3
 	jsr (%a3)
@@ -1296,7 +1294,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	movem.l -16(%fp),#15360
 	unlk %fp
 	rts
-.L38:
+.L39:
 	clr.b %d0
 	movem.l -16(%fp),#15360
 	unlk %fp
@@ -1308,13 +1306,13 @@ __Z13cameraCanMovev:
 	move.l _cameraX,%d0
 	moveq #10,%d1
 	cmp.l %d0,%d1
-	jge .L43
+	jge .L44
 	cmp.l _cameraXMax.l,%d0
 	slt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L43:
+.L44:
 	clr.b %d0
 	unlk %fp
 	rts

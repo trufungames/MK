@@ -23,10 +23,10 @@ static int imageBuffer320x240[320*224/4];
 static int imageBufferFMV[80*1408/4];
 static int BLACKPALx16[8];
 static int BLACKPAL[128];
-int p1Cursor = 1;
-int p2Cursor = 2;
-int p1Selected = -1;
-int p2Selected = -1;
+short p1Cursor = 1;
+short p2Cursor = 2;
+short p1Selected = -1;
+short p2Selected = -1;
 bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
@@ -41,25 +41,27 @@ bool fadedOut = false;
 int gameStartTicks = rapTicks;
 int ticksPerSec = 60;
 int lastTicks = 0;
-int p1FlashCount = 0;
-int p2FlashCount = 0;
+short p1FlashCount = 0;
+short p2FlashCount = 0;
 int chooseTicks = 0;
 int attractModeTicks = 0;
 int menuTicks = 0;
 int menuIndex = 0;
 bool menuChanged = false;
 bool menuSelected = false;
-int attractModeIndex = 0;
+short attractModeIndex = 0;
+bool goroProfileShown = false;
 //0 = Leaderboard
 //1 = FMV profile
 //2 = GORO LIVES!
 //3 = GORO PROFILE
 //4 = Winners don't use drugs!
 int fmvIndex = 6;
+int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //sound on/off
-	true,  //music on/off
+	false,  //sound on/off
+	false,  //music on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -272,6 +274,8 @@ static AnimationFrame cageJumpFrames[] = {
 	{ 80, 96, 816, 0, 0, 16, 3 }
 };
 static AnimationFrame cageJumpRollFrames[] = {
+	{ 48, 96, 0, 112, 0, 16, 3 },
+	{ 48, 80, 48, 112, 0, 0, 3 },
 	{ 48, 64, 96, 112, 0, 0, 3 },
 	{ 64, 48, 144, 112, 0, 0, 3 },
 	{ 64, 48, 208, 112, 0, 0, 3 },
@@ -279,7 +283,17 @@ static AnimationFrame cageJumpRollFrames[] = {
 	{ 48, 48, 320, 112, 0, 0, 3 },
 	{ 48, 48, 368, 112, 0, 0, 3 },
 	{ 48, 48, 416, 112, 0, 0, 3 },
-	{ 0, 0, 0, 0, 0, 0, 0 }
+	{ 48, 64, 96, 112, 0, 0, 3 },
+	{ 64, 48, 144, 112, 0, 0, 3 },
+	{ 64, 48, 208, 112, 0, 0, 3 },
+	{ 48, 48, 272, 112, 0, 0, 3 },
+	{ 48, 48, 320, 112, 0, 0, 3 },
+	{ 48, 48, 368, 112, 0, 0, 3 },
+	{ 48, 48, 416, 112, 0, 0, 3 },
+	{ 48, 64, 96, 112, 0, 0, 3 },
+	{ 64, 48, 144, 112, 0, 0, 3 },
+	{ 48, 80, 48, 112, 0, 0, 3 },
+	{ 48, 96, 0, 112, 0, 16, 3 }
 };
 static AnimationFrame cageDuckFrames[] = {
 	{ 80, 96, 816, 0, 0, 16, 3 },
@@ -605,13 +619,25 @@ static AnimationFrame kangJumpFrames[] = {
 };
 static AnimationFrame kangJumpRollFrames[] = {
 	{ 64, 112, 432, 608, 0, 0, 3 },
+	{ 48, 80, 496, 560, 0, 0, 3 },
 	{ 48, 64, 544, 560, -3, 0, 3 },
 	{ 48, 48, 496, 640, -13, -6, 3 },
 	{ 64, 32, 544, 640, -12, 0, 3 },
 	{ 48, 48, 608, 640, -2, 0, 3 },
 	{ 48, 48, 656, 640, -6, 0, 3 },
 	{ 48, 48, 704, 640, 0, 0, 3 },
-	{ 48, 48, 768, 576, 0, -4, 3 }
+	{ 48, 48, 768, 576, 0, -4, 3 },
+	{ 48, 64, 544, 560, -3, 0, 3 },
+	{ 48, 48, 496, 640, -13, -6, 3 },
+	{ 64, 32, 544, 640, -12, 0, 3 },
+	{ 48, 48, 608, 640, -2, 0, 3 },
+	{ 48, 48, 656, 640, -6, 0, 3 },
+	{ 48, 48, 704, 640, 0, 0, 3 },
+	{ 48, 48, 768, 576, 0, -4, 3 },
+	{ 48, 64, 544, 560, -3, 0, 3 },
+	{ 48, 48, 496, 640, -13, -6, 3 },
+	{ 48, 80, 496, 560, 0, 0, 3 },
+	{ 64, 112, 432, 608, 0, 0, 3 }
 };
 static AnimationFrame kangDuckFrames[] = {
 	{ 64, 96, 736, 224, 0, 16, 3 },
@@ -932,6 +958,7 @@ static AnimationFrame raidenJumpFrames[] = {
 	{ 64, 96, 0, 208, 0, 16, 3 }
 };
 static AnimationFrame raidenJumpRollFrames[] = {
+	{ 64, 112, 256, 208, 0, 0, 3 },
 	{ 64, 96, 256, 208, 0, 0, 3 },
 	{ 48, 64, 320, 208, 0, 0, 3 },
 	{ 64, 64, 368, 176, 0, 0, 3 },
@@ -939,7 +966,18 @@ static AnimationFrame raidenJumpRollFrames[] = {
 	{ 64, 64, 496, 176, -12, 0, 3 },
 	{ 48, 64, 560, 144, 0, 0, 3 },
 	{ 48, 64, 608, 160, -6, 0, 3 },
-	{ 64, 48, 656, 176, 0, 0, 3 }
+	{ 64, 48, 656, 176, 0, 0, 3 },
+	{ 48, 64, 320, 208, 0, 0, 3 },
+	{ 64, 64, 368, 176, 0, 0, 3 },
+	{ 64, 48, 432, 176, -13, 0, 3 },
+	{ 64, 64, 496, 176, -12, 0, 3 },
+	{ 48, 64, 560, 144, 0, 0, 3 },
+	{ 48, 64, 608, 160, -6, 0, 3 },
+	{ 64, 48, 656, 176, 0, 0, 3 },
+	{ 48, 64, 320, 208, 0, 0, 3 },
+	{ 64, 64, 368, 176, 0, 0, 3 },
+	{ 64, 96, 256, 208, 0, 0, 3 },
+	{ 64, 112, 256, 208, 0, 0, 3 }
 };
 static AnimationFrame raidenDuckFrames[] = {
 	{ 64, 96, 0, 592, 0, 16, 3 },
@@ -1317,7 +1355,19 @@ static AnimationFrame subzeroJumpRollFrames[] = {
 	{ 48, 48, 672, 464, 0, 0, 3 },
 	{ 48, 48, 720, 464, 0, 0, 3 },
 	{ 48, 48, 768, 464, 0, 0, 3 },
-	{ 48, 48, 816, 464, 0, 0, 3 }
+	{ 48, 48, 816, 464, 0, 0, 3 },
+	{ 48, 48, 528, 448, 0, 0, 3 },
+	{ 48, 48, 576, 448, 0, 0, 3 },
+	{ 48, 48, 624, 448, 0, 0, 3 },
+	{ 48, 48, 672, 464, 0, 0, 3 },
+	{ 48, 48, 720, 464, 0, 0, 3 },
+	{ 48, 48, 768, 464, 0, 0, 3 },
+	{ 48, 48, 816, 464, 0, 0, 3 },
+	{ 48, 48, 528, 448, 0, 0, 3 },
+	{ 48, 48, 576, 448, 0, 0, 3 },
+	{ 48, 48, 624, 448, 0, 0, 3 },
+	{ 48, 48, 672, 464, 0, 0, 3 },
+	{ 48, 112, 480, 400, 0, -2, 3 }
 };
 static AnimationFrame subzeroDuckFrames[] = {
 	{ 64, 96, 64, 112, 0, 16, 3 },
@@ -1639,14 +1689,26 @@ static AnimationFrame sonyaJumpFrames[] = {
 	{ 48, 80, 128, 336, 0, 32, 3 }
 };
 static AnimationFrame sonyaJumpRollFrames[] = {
-	{ 32, 96, 768, 336, 0, 0, 3 },
+	{ 32, 96, 768, 336, 0, 16, 3 },
 	{ 48, 64, 800, 336, 0, 0, 3 },
 	{ 48, 64, 848, 336, -7, 0, 3 },
 	{ 64, 48, 896, 336, -15, 0, 3 },
 	{ 64, 48, 960, 336, -18, 0, 3 },
 	{ 48, 64, 800, 400, -5, -16, 3 },
 	{ 48, 64, 848, 400, -7, -15, 3 },
-	{ 64, 48, 896, 384, -9, 0, 3 }
+	{ 64, 48, 896, 384, -9, 0, 3 },
+	{ 48, 64, 800, 336, 0, 0, 3 },
+	{ 48, 64, 848, 336, -7, 0, 3 },
+	{ 64, 48, 896, 336, -15, 0, 3 },
+	{ 64, 48, 960, 336, -18, 0, 3 },
+	{ 48, 64, 800, 400, -5, -16, 3 },
+	{ 48, 64, 848, 400, -7, -15, 3 },
+	{ 64, 48, 896, 384, -9, 0, 3 },
+	{ 48, 64, 800, 336, 0, 0, 3 },
+	{ 48, 64, 848, 336, -7, 0, 3 },
+	{ 64, 48, 896, 336, -15, 0, 3 },
+	{ 64, 48, 960, 336, -18, 0, 3 },
+	{ 32, 96, 768, 336, 0, 16, 3 }
 };
 static AnimationFrame sonyaDuckFrames[] = {
 	{ 48, 80, 880, 0, 0, 32, 3 },
@@ -1958,6 +2020,8 @@ static AnimationFrame kanoJumpFrames[] = {
 	{ 64, 96, 0, 448, 0, 16, 3 }
 };
 static AnimationFrame kanoJumpRollFrames[] = {
+	{ 64, 112, 176, 384, 0, 0, 3 },
+	{ 48, 80, 240, 352, 0, 0, 3 },
 	{ 48, 64, 288, 352, 0, 0, 3 },
 	{ 48, 64, 336, 368, 0, 0, 3 },
 	{ 64, 48, 384, 384, -12, 4, 3 },
@@ -1965,7 +2029,17 @@ static AnimationFrame kanoJumpRollFrames[] = {
 	{ 48, 64, 512, 416, 0, -18, 3 },
 	{ 48, 64, 560, 416, 0, -18, 3 },
 	{ 64, 48, 608, 416, 0, 0, 3 },
-	{ 0, 0, 0, 0, 0, 0, 0 }
+	{ 48, 64, 288, 352, 0, 0, 3 },
+	{ 48, 64, 336, 368, 0, 0, 3 },
+	{ 64, 48, 384, 384, -12, 4, 3 },
+	{ 64, 48, 448, 384, -12, 4, 3 },
+	{ 48, 64, 512, 416, 0, -18, 3 },
+	{ 48, 64, 560, 416, 0, -18, 3 },
+	{ 64, 48, 608, 416, 0, 0, 3 },
+	{ 48, 64, 288, 352, 0, 0, 3 },
+	{ 48, 64, 336, 368, 0, 0, 3 },
+	{ 48, 80, 240, 352, 0, 0, 3 },
+	{ 64, 112, 176, 384, 0, 0, 3 }
 };
 static AnimationFrame kanoDuckFrames[] = {
 	{ 64, 96, 0, 112, 0, 16, 3 },
@@ -2808,18 +2882,18 @@ static Fighter fighterSonya2 = {
 };
 
 static LeaderboardEntry leaderboard[] = {
-	{ "TRU", 16, 3356790 },
-	{ "FUN", 10, 2023570 },
-	{ "CRL", 9, 1257480 },
-	{ "STF", 9, 1098740 },
-	{ "DUY", 8, 949840 },
-	{ "BYL", 8, 908470 },
-	{ "BBB", 8, 901480 },
-	{ "FEL", 7, 879800 },
-	{ "SAN", 7, 824870 },
-	{ "HAI", 7, 748490 },
-	{ "SFT", 6, 735840 },
-	{ "BBD", 6, 698070 },
+	{ "GAV", 16, 3356790 },
+	{ "GNT", 10, 2023570 },
+	{ "PKE", 9, 1257480 },
+	{ "BOB", 9, 1098740 },
+	{ "MJJ", 8, 949840 },
+	{ "GUR", 8, 908470 },
+	{ "C.N", 8, 901480 },
+	{ "DEN", 7, 879800 },
+	{ "JPG", 7, 824870 },
+	{ "YES", 7, 748490 },
+	{ "ARS", 6, 735840 },
+	{ "NAJ", 6, 698070 },
 	{ "WIT", 6, 679870 },
 	{ "HOU", 5, 587800 },
 	{ "RYU", 5, 578890 }
@@ -2847,16 +2921,18 @@ void basicmain()
 		p2Selected = -1;
 		chooseFighterDone = false;
 		bool roundFightSequenceComplete = false;
-		int fightScale = 0;
-		int barScale = 0;
-		int barDirection = 1;
+		short fightScale = 0;
+		short barScale = 0;
+		short barDirection = 1;
 		p1FlashCount = 0;
 		p2FlashCount = 0;
 		struct Fighter* fighter1Ptr;
 		struct Fighter* fighter2Ptr; 
-		int fighters1OffsetY = -134;
-		int fighters2OffsetY = 134;
+		short fighters1OffsetY = -134;
+		short fighters2OffsetY = 134;
 		fmvIndex = 6;
+		goroProfileShown = false;
+		attractSlideIndex = 0;
 
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
@@ -3588,13 +3664,32 @@ void basicmain()
 				if (rapTicks > attractModeTicks + 600)
 				{
 					onMenuScreen = false;
+					sprite[TITLE_FIGHTERS].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+1].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+2].active = R_is_inactive;
+					sprite[TITLE_FIGHTERS+3].active = R_is_inactive;
+					sprite[TITLE_STONE].active = R_is_inactive;
+
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
 					initAttractMode();
 					initLeaderboard();
 				}
 			}
 			else if (inAttractMode)
 			{
-				if (rapTicks > attractModeTicks + 300)
+				pad1 = jsfGetPadPressed(LEFT_PAD);
+
+				if (pad1 & (JAGPAD_A | JAGPAD_B | JAGPAD_C))
+				{
+					inAttractMode = false;
+					initMenuScreen();
+				}
+
+				if (rapTicks > attractModeTicks + 400)
 				{
 					attractModeTicks = rapTicks;
 					attractModeIndex++;
@@ -3602,6 +3697,13 @@ void basicmain()
 					if (attractModeIndex > 4)
 					{
 						attractModeIndex = 0;
+					}
+
+					//fade out
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
 					}
 					//swap screens
 					//0 = Leaderboard
@@ -3658,7 +3760,45 @@ void basicmain()
 								updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
 								break;
 						}
-						
+						break;
+					case 3:
+						if (!goroProfileShown && rapTicks > gameStartTicks + 120)
+						{
+							goroProfileShown = true;
+							
+							for (int j = 0; j < 24; j++)
+							{
+								rapFadeClut(0,240,BLACKPAL);
+								jsfVsync(0);
+							}
+							rapUse8x16fontPalette(15);
+							jsfSetFontSize(1);
+							jsfSetFontIndx(0);
+							rapLocate(26,28);
+							js_r_textbuffer="A 2,000 YEAR OLD HALF HUMAN DRAGON";
+							rapPrint();
+							rapLocate(18,48);
+							js_r_textbuffer="GORO REMAINS UNDEFEATED FOR THE PAST";
+							rapPrint();
+							rapLocate(18,68);
+							js_r_textbuffer="500 YEARS. HE WON THE TITLE OF GRAND";
+							rapPrint();
+							rapLocate(30,88);
+							js_r_textbuffer="CHAMPION BY DEFEATING KUNG LAO, A";
+							rapPrint();
+							rapLocate(18,108);
+							js_r_textbuffer="SHAOLIN FIGHTING MONK. IT WAS DURING";
+							rapPrint();
+							rapLocate(18,128);
+							js_r_textbuffer="THIS PERIOD THAT THE TOURNAMENT FELL";
+							rapPrint();
+							rapLocate(34,148);
+							js_r_textbuffer="INTO SHANG TSUNG'S HANDS AND WAS";
+							rapPrint();
+							rapLocate(122,168);
+							js_r_textbuffer="CORRUPTED.";
+							rapPrint();
+						}
 						break;
 					default:
 						break;
@@ -4001,6 +4141,13 @@ void basicmain()
 				pad1=jsfGetPad(LEFT_PAD);
 				pad2=jsfGetPad(RIGHT_PAD);
 
+				//rapUse16x16fontPalette(12);
+				jsfSetFontIndx(0);
+				jsfSetFontSize(2);
+				rapLocate(146, 8);
+				js_r_textbuffer = ee_printf("%02d ",99);
+				rapPrint();
+
 				displayWinnerMedals();
 
 				//match progression
@@ -4148,6 +4295,19 @@ void basicmain()
 				// 	//sprite[STAGE_PRIMARY_BACKGROUND].active = R_is_active;
 				// }
 
+				//rapUse16x16fontPalette(10);
+				// jsfSetFontIndx(0);
+				// jsfSetFontSize(2);
+				// rapLocate(60, 5);
+				// js_r_textbuffer = ee_printf("%04d",0);
+				// rapPrint();
+
+				
+
+				fighterDrawScores(fighter1Ptr, fighter2Ptr);
+
+				
+				
 				if (debugMode)
 				{
 					rapDebugUpdate();
@@ -4259,10 +4419,13 @@ void initMenuScreen()
 	rapUnpack(BMP_TS_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
+	sprite[BACKGROUND16].active = R_is_inactive;
+	sprite[FMV].active = R_is_inactive;
 	sprite[TITLE_FIGHTERS].active = R_is_active;
 	sprite[TITLE_FIGHTERS+1].active = R_is_active;
 	sprite[TITLE_FIGHTERS+2].active = R_is_active;
 	sprite[TITLE_FIGHTERS+3].active = R_is_active;
+	sprite[TITLE_STONE].gfxbase = BMP_TS_MENU1;
 	sprite[TITLE_STONE].active = R_is_active;
 	
 	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,64);
@@ -4310,12 +4473,19 @@ void switchAttractFMV()
 	char* name = "JOHNNY CAGE";
 	int nameOffset = 116;
 	char* line1 = "A MARTIAL ARTS SUPERSTAR TRAINED BY";
+	int line1Offset = 12;
 	char* line2 = "GREAT MASTERS FROM AROUND THE WORLD.";
+	int line2Offset = 8;
 	char* line3 = "CAGE USES HIS TALENTS ON THE BIG";
+	int line3Offset = 24;
 	char* line4 = "SCREEN HE IS THE CURRENT BOX-OFFICE";
+	int line4Offset = 12;
 	char* line5 = "CHAMP AND STAR OF SUCH MOVIES AS";
+	int line5Offset = 24;
 	char* line6 = "DRAGON FIST AND DRAGON FIST II AS WELL";
+	int line6Offset = 0;
 	char* line7 = "AS THE AWARE WINNING SUDDEN VIOLENCE.";
+	int line7Offset = 4;
 
 	switch (fmvIndex)
 	{
@@ -4329,77 +4499,119 @@ void switchAttractFMV()
 			name = "KANO";
 			nameOffset = 128;
 			line1 = "A MERCENARY, THUG, EXTORTIONIST";
+			line1Offset = 24;
 			line2 = "THIEF - KANO LIVES A LIFE OF CRIME";
+			line2Offset = 12;
 			line3 = "AND INJUSTICE. HE IS A DEVOTED MEMBER";
+			line3Offset = 0;
 			line4 = "OF THE BLACK DRAGON, A DANGEROUS";
+			line4Offset = 20;
 			line5 = "GROUP OF CUT-THROAT MADMEN FEARED";
+			line5Offset = 24;
 			line6 = "AND RESPECTED THROUGHTOUT ALL OF";
+			line6Offset = 28;
 			line7 = "CRIME'S INNER CIRCLES.";
+			line7Offset = 60;
 			break;
 		case 2:
 			rapUnpack(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_RAIDEN_clut),0,128);
 			name = "RAIDEN";
-			nameOffset = 120;
+			nameOffset = 129;
 			line1 = "THE NAME RAIDEN IS ACTUALLY THAT OF";
+			line1Offset = 15;
 			line2 = "A DEITY KNOWN AS THE THUNDER GOD.";
+			line2Offset = 21;
 			line3 = "IT IS RUMORED HE RECEIVED A PERSONAL";
+			line3Offset = 9;
 			line4 = "INVITATION BY SHANG TSUNG HIMSELF";
+			line4Offset = 21;
 			line5 = "AND TOOK THE FORM OF A HUMAN TO";
+			line5Offset = 29;
 			line6 = "COMPETE IN THE TOURNAMENT";
+			line6Offset = 53;
 			line7 = "";
+			line7Offset = 0;
 			break;
 		case 3:
 			rapUnpack(BMP_FMV_KANG,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANG_clut),0,128);
 			name = "LIU KANG";
-			nameOffset = 120;
+			nameOffset = 135;
 			line1 = "ONCE A MEMBER OF THE SUPER SECRET";
+			line1Offset = 19;
 			line2 = "WHITE LOTUS SOCIETY, LIU KANG LEFT";
+			line2Offset = 23;
 			line3 = "THE ORGANIZATION IN ORDER TO";
+			line3Offset = 46;
 			line4 = "REPRESENT SHAOLIN TEMPLES IN THE";
+			line4Offset = 23;
 			line5 = "TOURNAMENT. KANG IS STRONG IN HIS";
+			line5Offset = 19;
 			line6 = "BELIEFS AND DESPISES SHANG TSUNG.";
+			line6Offset = 19;
 			line7 = "";
+			line7Offset = 0;
 			break;
 		case 4:
 			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
 			name = "SCORPION";
-			nameOffset = 118;
+			nameOffset = 127;
 			line1 = "LIKE SUB-ZERO, SCORPION'S TRUE";
+			line1Offset = 33;
 			line2 = "NAME AND ORIGIN ARE NOT KNOWN.";
+			line2Offset = 33;
 			line3 = "HE HAS SHOWN FROM TIME TO TIME";
+			line3Offset = 33;
 			line4 = "DISTRUST AND HATRED TOWARDS";
+			line4Offset = 45;
 			line5 = "SUB-ZERO. BETWEEN NINJAS, THIS";
+			line5Offset = 33;
 			line6 = "IS USUALLY A SIGN OF OPPOSING CLANS.";
+			line6Offset = 8;
 			line7 = "";
+			line7Offset = 0;
 			break;
 		case 5:
 			rapUnpack(BMP_FMV_SUBZERO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SUBZERO_clut),0,128);
 			name = "SUB-ZERO";
-			nameOffset = 120;
+			nameOffset = 135;
 			line1 = "THE ACTUAL NAME OR IDENTITY OF";
+			line1Offset = 21;
 			line2 = "THIS WARRIOR IS UNKNOWN. HOWEVER";
+			line2Offset = 23;
 			line3 = "BASED ON THE MARKINGS OF HIS";
+			line3Offset = 39;
 			line4 = "UNIFORM, IT IS BELIEVED HE BELONGS";
+			line4Offset = 15;
 			line5 = "TO THE LIN KUEI, A LEGENDARY";
+			line5Offset = 39;
 			line6 = "CLAN OF CHINESE NINJA.";
+			line6Offset = 63;
 			line7 = "";
+			line7Offset = 0;
 			break;
 		case 6:
 			rapUnpack(BMP_FMV_SONYA,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SONYA_clut),0,128);
 			name = "SONYA";
-			nameOffset = 124;
+			nameOffset = 144;
 			line1 = "SONYA IS A MEMBER OF A TOP U.S.";
+			line1Offset = 28;
 			line2 = "SPECIAL FORCES UNIT. HER TEAM WAS";
+			line2Offset = 20;
 			line3 = "HOT ON THE TRAIL OF KANO'S BLACK";
+			line3Offset = 24;
 			line4 = "DRAGON ORGANIZATION. THEY";
+			line4Offset = 52;
 			line5 = "FOLLOWED THEM TO AN UNCHARTED";
+			line5Offset = 36;
 			line6 = "ISLAND WHERE THEY WERE AMBUSHED";
+			line6Offset = 28;
 			line7 = "BY SHANG TSUNG'S PERSONAL ARMY.";
+			line7Offset = 28;
 			break;
 	}
 
@@ -4419,25 +4631,25 @@ void switchAttractFMV()
 	rapUse8x8fontPalette(15);
 	jsfSetFontSize(0);
 	jsfSetFontIndx(0);
-	rapLocate(8, 128);
+	rapLocate(8 + line1Offset, 128);
 	js_r_textbuffer=line1;
 	rapPrint();
-	rapLocate(8, 140);
+	rapLocate(8 + line2Offset, 140);
 	js_r_textbuffer=line2;
 	rapPrint();
-	rapLocate(8, 152);
+	rapLocate(8 + line3Offset, 152);
 	js_r_textbuffer=line3;
 	rapPrint();
-	rapLocate(8, 164);
+	rapLocate(8 + line4Offset, 164);
 	js_r_textbuffer=line4;
 	rapPrint();
-	rapLocate(8, 176);
+	rapLocate(8 + line5Offset, 176);
 	js_r_textbuffer=line5;
 	rapPrint();
-	rapLocate(8, 188);
+	rapLocate(8 + line6Offset, 188);
 	js_r_textbuffer=line6;
 	rapPrint();
-	rapLocate(8, 200);
+	rapLocate(8 + line7Offset, 200);
 	js_r_textbuffer=line7;
 	rapPrint();
 
@@ -4543,18 +4755,38 @@ void initGoroProfile()
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
+	goroProfileShown = false;
 }
 
 void initWinners()
 {
 	rapParticleClear();
-	rapUnpack(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
-	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
-	sprite[BACKGROUND16].active=R_is_active;
-	sprite[BACKGROUND].active=R_is_inactive;
-	sprite[BACKGROUND16].CLUT = 8;
-	jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_WINNERS_clut),8,16);
 
+	attractSlideIndex++;
+
+	if (attractSlideIndex > 1)
+	{
+		attractSlideIndex = 0;
+	}
+
+	if (attractSlideIndex == 0)
+	{
+		rapUnpack(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
+		sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+		sprite[BACKGROUND16].active=R_is_active;
+		sprite[BACKGROUND].active=R_is_inactive;
+		sprite[BACKGROUND16].CLUT = 8;
+		jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_WINNERS_clut),8,16);
+	}
+	else if (attractSlideIndex == 1)
+	{
+		rapUnpack(BMP_ATTRACT_REAL,(int)(int*)imageBuffer320x240);
+		sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+		sprite[BACKGROUND].active=R_is_active;
+		sprite[BACKGROUND16].active=R_is_inactive;
+		jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_REAL_clut),0,256);
+	}
+	
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
@@ -4619,6 +4851,7 @@ void switchScreenChooseFighter()
 	onScreenChooseFighter = true;
 	onScreenVsBattle = false;
 	onScreenFight = false;
+	inAttractMode = false;
 	
 	rapSetActiveList(0);
 	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
@@ -4967,7 +5200,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),10,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_MATCH_clut),11,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_HUD_clut),12,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_HEALTHBAR_OFF_clut),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 
 	switch (p1Cursor)
@@ -5312,7 +5545,7 @@ void setPlayer2Name(char* name, int length)
 void displayWinnerMedals()
 {
 	//rapUse16x16fontPalette(10);
-	jsfSetFontSize(2);
+	jsfSetFontSize(1);
 	jsfSetFontIndx(0);
 
 	switch(matchGetFighter1Wins())

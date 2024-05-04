@@ -164,19 +164,19 @@ void stageMove(int direction)
             // sprite[STAGE_WARRIOR_BUSH+1].x_ += 1.0f * direction;
             // sprite[STAGE_WARRIOR_BUSH+2].x_ += 1.0f * direction;
             // sprite[STAGE_WARRIOR_BUSH+3].x_ += 1.0f * direction;
-            sprite[STAGE_GATES_TEMPLE].x_ += 1.0f * direction;
-            sprite[FOREGROUND_PILLAR].x_ += 2.0f * direction;
+            sprite[STAGE_GATES_TEMPLE].x_ += 1 * direction;
+            sprite[FOREGROUND_PILLAR].x_ += 2 * direction;
             //sprite[FOREGROUND_PILLAR+2].x_ += 2.0f * direction;
-            sprite[STAGE_GATES_FLAME].x_ += 2.0f * direction;
-            sprite[STAGE_GATES_FLAME+1].x_ += 2.0f * direction;
+            sprite[STAGE_GATES_FLAME].x_ += 2 * direction;
+            sprite[STAGE_GATES_FLAME+1].x_ += 2 * direction;
             break;
         case STAGE_WARRIOR:
-            sprite[STAGE_WARRIOR_BUSH].x_ += 1.0f * direction;
-            sprite[STAGE_WARRIOR_BUSH+1].x_ += 1.0f * direction;
-            sprite[STAGE_WARRIOR_BUSH+2].x_ += 1.0f * direction;
-            sprite[STAGE_WARRIOR_BUSH+3].x_ += 1.0f * direction;
-            sprite[FOREGROUND_PILLAR].x_ += 2.0f * direction;
-            sprite[FOREGROUND_PILLAR+1].x_ += 2.0f * direction;
+            sprite[STAGE_WARRIOR_BUSH].x_ += 1 * direction;
+            sprite[STAGE_WARRIOR_BUSH+1].x_ += 1 * direction;
+            sprite[STAGE_WARRIOR_BUSH+2].x_ += 1 * direction;
+            sprite[STAGE_WARRIOR_BUSH+3].x_ += 1 * direction;
+            sprite[FOREGROUND_PILLAR].x_ += 2 * direction;
+            sprite[FOREGROUND_PILLAR+1].x_ += 2 * direction;
             break;
         case STAGE_PIT:
         case STAGE_GORO:

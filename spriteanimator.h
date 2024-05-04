@@ -1,10 +1,10 @@
 struct AnimationFrame {
-    unsigned int width;
-    unsigned int height;
-    unsigned int x;
-    unsigned int y;
-    unsigned int offsetX;
-    unsigned int offsetY;
+    unsigned short width;
+    unsigned short height;
+    unsigned short x;
+    unsigned short y;
+    unsigned short offsetX;
+    unsigned short offsetY;
     unsigned int ticks;
 };
 
@@ -17,18 +17,18 @@ struct SpriteAnimator {
     float mulFactor;
     unsigned int base;
     int lastTick;
-    int currentFrame;
-    int idleFrameWidth;
+    short currentFrame;
+    short idleFrameWidth;
 };
 
-void setFrame(unsigned int spriteIndex, int width, int height, int x, int y, float mulFactor, unsigned int base);
+void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base);
 
 void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame);
 
-int getAnimationFrameWidth(struct AnimationFrame animationFrames[], int currentFrame);
+short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame);
 
-bool animationIsComplete(struct SpriteAnimator *animator, int totalFrames);
+bool animationIsComplete(struct SpriteAnimator *animator, short totalFrames);
 
-void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], int totalFrames, bool playForward, bool loop);
+void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop);
 
-void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], int totalFrames, bool playForward, bool loop, int positionX, int positionY, int direction);
+void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop, short positionX, short positionY, short direction);
