@@ -100,6 +100,8 @@ static AnimationFrame shangWinsFrames[] = {
 
 void matchReset()
 {
+	rapSetClock(99);
+	rapClockMode = Clock_Freeze;
 	matchState = 0;
     matchTicks = 0;
     fightZoomed = false;
@@ -122,6 +124,13 @@ void matchInit()
 
 bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
 {
+	//rapUse16x16fontPalette(12);
+	jsfSetFontIndx(0);
+	jsfSetFontSize(2);
+	rapLocate(146, 8);
+	js_r_textbuffer = ee_printf("%02d",rapClockHex);
+	rapPrint();
+
     if (matchState == 0)
     {
         if (matchTicks == 0)
@@ -198,6 +207,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 					fighter1->AcceptingInput = true;
 					fighter2->AcceptingInput = true;
 					matchState = 2;
+					rapClockMode = Clock_Countdown;
 				}
 			}
         }
@@ -231,6 +241,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 
 		if (winner != 0)
 		{
+			rapClockMode = Clock_Freeze;
 			matchState = 3;  //XXXXX WINS!
 			sprite[FIGHT].x_ = 64;
 			sprite[FIGHT].y_ = 48;
@@ -240,6 +251,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 		}
 		else if (fighter1->IsDizzy || fighter2->IsDizzy)
 		{
+			rapClockMode = Clock_Freeze;
 			fighterResetFlagsAll(fighter1, fighter2);
 			fighterSetOnFloor(fighter1);
 			fighterSetOnFloor(fighter2);

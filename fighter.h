@@ -179,7 +179,7 @@ struct Fighter {
     struct AnimationFrame (*hitLowFrames)[6];
     struct AnimationFrame (*hitHighFrames)[6];
     struct AnimationFrame (*hitBackFrames)[7];
-    struct AnimationFrame (*hitFallFrames)[7];
+    struct AnimationFrame (*hitFallFrames)[26];
     struct AnimationFrame (*hitSweepFrames)[6];
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];

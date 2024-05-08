@@ -3063,6 +3063,7 @@ __Z17SetPlayerPalettesv:
 __Z25switchScreenChooseFighterv:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
+	move.w #0,15728728
 	clr.w raptor_ticks
 	clr.l _lastTicks
 	jsr __Z12bgResetTicksv
@@ -3432,8 +3433,6 @@ __Z19displayWinnerMedalsv:
 	.ascii "INTO SHANG TSUNG'S HANDS AND WAS\0"
 .LC87:
 	.ascii "CORRUPTED.\0"
-.LC88:
-	.ascii "%02d \0"
 	.even
 	.globl	__Z9basicmainv
 __Z9basicmainv:
@@ -4396,8 +4395,8 @@ __Z9basicmainv:
 	jsr __Z19fighterRestartMatchP7Fighter
 	move.l %d6,(%sp)
 	jsr __Z19fighterRestartMatchP7Fighter
-	moveq #1,%d1
-	move.l %d1,(%sp)
+	moveq #1,%d2
+	move.l %d2,(%sp)
 	move.w _p2Cursor,%a1
 	move.l %a1,-(%sp)
 	move.w _p1Cursor,%a0
@@ -4727,20 +4726,7 @@ __Z9basicmainv:
 	move.l %d1,(%sp)
 	jsr jsfGetPad
 	move.l %d0,__ZL4pad2
-	clr.l _jsfFontIndx
-	moveq #2,%d0
-	move.l %d0,_jsfFontSize
-	moveq #8,%d0
-	move.l %d0,(%sp)
-	pea 146.w
-	jsr (%a5)
-	addq.l #8,%sp
-	pea 99.w
-	pea .LC88
-	jsr ee_printf
-	move.l %d0,_js_r_textbuffer
-	addq.l #8,%sp
-	jsr (%a4)
+	addq.l #4,%sp
 	jsr __Z19displayWinnerMedalsv
 	move.l %d6,-(%sp)
 	move.l %d5,-(%sp)
@@ -4761,10 +4747,10 @@ __Z9basicmainv:
 	subq.l #1,%d2
 	addq.l #4,%sp
 	jne .L290
-	moveq #14,%d1
+	moveq #14,%d0
 	move.l %d5,%a0
-	move.l %d1,4(%a0)
-	moveq #16,%d0
+	move.l %d0,4(%a0)
+	move.b #16,%d0
 	move.l %d6,%a0
 	move.l %d0,4(%a0)
 	pea __ZL12soundHandler
@@ -7623,6 +7609,76 @@ __ZL17cageHitFallFrames:
 	.word	0
 	.word	16
 	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	592
+	.word	368
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	112
+	.word	656
+	.word	384
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	656
+	.word	384
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	656
+	.word	384
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	656
+	.word	384
+	.word	0
+	.word	0
+	.long	6
 	.word	80
 	.word	112
 	.word	656
@@ -7638,11 +7694,74 @@ __ZL17cageHitFallFrames:
 	.word	32
 	.long	6
 	.word	80
+	.word	80
+	.word	736
+	.word	384
+	.word	0
+	.word	32
+	.long	6
+	.word	80
 	.word	64
 	.word	816
 	.word	384
 	.word	0
 	.word	32
+	.long	6
+	.word	80
+	.word	64
+	.word	816
+	.word	384
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	896
+	.word	384
+	.word	0
+	.word	48
 	.long	6
 	.word	64
 	.word	80
@@ -9659,12 +9778,103 @@ __ZL17kanoHitFallFrames:
 	.word	0
 	.word	0
 	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
+	.word	64
+	.word	112
+	.word	640
+	.word	608
+	.word	0
+	.word	0
+	.long	6
 	.word	80
 	.word	112
 	.word	704
 	.word	624
 	.word	0
 	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	704
+	.word	624
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	704
+	.word	624
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	704
+	.word	624
+	.word	0
+	.word	0
+	.long	6
+	.word	80
+	.word	112
+	.word	704
+	.word	624
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	80
+	.word	784
+	.word	624
+	.word	0
+	.word	32
+	.long	6
+	.word	96
+	.word	80
+	.word	784
+	.word	624
+	.word	0
+	.word	32
+	.long	6
+	.word	96
+	.word	80
+	.word	784
+	.word	624
+	.word	0
+	.word	32
 	.long	6
 	.word	96
 	.word	80
@@ -9681,18 +9891,60 @@ __ZL17kanoHitFallFrames:
 	.word	48
 	.long	6
 	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	880
+	.word	624
+	.word	5
+	.word	48
+	.long	6
+	.word	80
 	.word	48
 	.word	128
 	.word	720
 	.word	0
 	.word	64
-	.long	6
-	.word	96
-	.word	48
-	.word	256
-	.word	624
-	.word	-8
-	.word	76
 	.long	6
 	.word	96
 	.word	32
@@ -11359,6 +11611,76 @@ __ZL19raidenHitFallFrames:
 	.word	0
 	.word	16
 	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	208
+	.word	896
+	.word	0
+	.word	16
+	.long	6
+	.word	96
+	.word	80
+	.word	288
+	.word	912
+	.word	0
+	.word	20
+	.long	6
+	.word	96
+	.word	80
+	.word	288
+	.word	912
+	.word	0
+	.word	20
+	.long	6
+	.word	96
+	.word	80
+	.word	288
+	.word	912
+	.word	0
+	.word	20
+	.long	6
+	.word	96
+	.word	80
+	.word	288
+	.word	912
+	.word	0
+	.word	20
+	.long	6
 	.word	96
 	.word	80
 	.word	288
@@ -11380,19 +11702,82 @@ __ZL19raidenHitFallFrames:
 	.word	0
 	.word	54
 	.long	6
-	.word	80
-	.word	64
-	.word	496
-	.word	880
-	.word	0
+	.word	96
 	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
 	.long	6
 	.word	96
-	.word	64
-	.word	576
-	.word	880
+	.word	48
+	.word	384
+	.word	912
 	.word	0
-	.word	49
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
+	.long	6
+	.word	96
+	.word	48
+	.word	384
+	.word	912
+	.word	0
+	.word	54
 	.long	6
 	.word	96
 	.word	32
@@ -13023,6 +13408,76 @@ __ZL17kangHitFallFrames:
 	.word	0
 	.long	6
 	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	112
+	.word	272
+	.word	336
+	.word	0
+	.word	0
+	.long	6
+	.word	96
+	.word	96
+	.word	368
+	.word	336
+	.word	-5
+	.word	16
+	.long	6
+	.word	96
+	.word	96
+	.word	368
+	.word	336
+	.word	-5
+	.word	16
+	.long	6
+	.word	96
+	.word	96
+	.word	368
+	.word	336
+	.word	-5
+	.word	16
+	.long	6
+	.word	96
+	.word	96
+	.word	368
+	.word	336
+	.word	-5
+	.word	16
+	.long	6
+	.word	96
 	.word	96
 	.word	368
 	.word	336
@@ -13036,12 +13491,75 @@ __ZL17kangHitFallFrames:
 	.word	0
 	.word	48
 	.long	6
+	.word	80
 	.word	64
-	.word	64
-	.word	672
+	.word	464
 	.word	336
 	.word	0
-	.word	52
+	.word	48
+	.long	6
+	.word	80
+	.word	64
+	.word	464
+	.word	336
+	.word	0
+	.word	48
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	608
+	.word	336
+	.word	0
+	.word	36
 	.long	6
 	.word	64
 	.word	64
@@ -14685,6 +15203,76 @@ __ZL20subzeroHitFallFrames:
 	.word	0
 	.word	16
 	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	672
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	96
+	.word	80
+	.word	752
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	96
+	.word	80
+	.word	752
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	96
+	.word	80
+	.word	752
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	96
+	.word	80
+	.word	752
+	.word	640
+	.word	0
+	.word	32
+	.long	6
 	.word	96
 	.word	80
 	.word	752
@@ -14705,6 +15293,69 @@ __ZL20subzeroHitFallFrames:
 	.word	480
 	.word	0
 	.word	16
+	.long	6
+	.word	80
+	.word	96
+	.word	944
+	.word	480
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
+	.long	6
+	.word	64
+	.word	80
+	.word	848
+	.word	640
+	.word	0
+	.word	32
 	.long	6
 	.word	64
 	.word	80
@@ -16575,6 +17226,76 @@ __ZL18sonyaHitFallFrames:
 	.word	0
 	.word	16
 	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	64
+	.word	96
+	.word	432
+	.word	576
+	.word	0
+	.word	16
+	.long	6
+	.word	96
+	.word	64
+	.word	496
+	.word	576
+	.word	0
+	.word	48
+	.long	6
+	.word	96
+	.word	64
+	.word	496
+	.word	576
+	.word	0
+	.word	48
+	.long	6
+	.word	96
+	.word	64
+	.word	496
+	.word	576
+	.word	0
+	.word	48
+	.long	6
+	.word	96
+	.word	64
+	.word	496
+	.word	576
+	.word	0
+	.word	48
+	.long	6
 	.word	96
 	.word	64
 	.word	496
@@ -16596,6 +17317,13 @@ __ZL18sonyaHitFallFrames:
 	.word	0
 	.word	48
 	.long	6
+	.word	96
+	.word	64
+	.word	592
+	.word	576
+	.word	0
+	.word	48
+	.long	6
 	.word	64
 	.word	80
 	.word	688
@@ -16609,6 +17337,62 @@ __ZL18sonyaHitFallFrames:
 	.word	560
 	.word	0
 	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	64
+	.word	80
+	.word	688
+	.word	560
+	.word	0
+	.word	36
+	.long	6
+	.word	96
+	.word	48
+	.word	832
+	.word	576
+	.word	0
+	.word	68
 	.long	6
 	.word	96
 	.word	32

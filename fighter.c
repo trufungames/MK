@@ -19,6 +19,7 @@ unsigned int tempScore;
 int scoreLength = 4;
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
+static short UppercutOffsets[26] = {-20, -20, -16, -14, -13, -10, -9, -6, -4, -3, -2, -1, 0, 0, 0, 2, 3, 4, 6, 9, 12, 13, 14, 20, 22, 24 };
 
 void fighterStartUp()
 {
@@ -125,7 +126,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->playerMoveForwardSpeed = 2;
     fighter->playerMoveBackwardSpeed = 2;
     fighter->playerKnockbackSpeed = 4.5f;
-    fighter->playerUppercutXSpeed = 3.5f;
+    fighter->playerUppercutXSpeed = 4.0f;
     fighter->playerDropKickXSpeed = 6.5f;
     fighter->playerThrowXSpeed = 8.0f;
     fighter->playerXTraveled = 0.0f;
@@ -706,7 +707,6 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
         else if (rapTicks >= fighter->lastTicks + 0)
         {
             fighterPositionXAdd(fighter, fighter->playerUppercutXSpeed * -fighter->direction);
-
             if (!fighter->IsMidAir)
             {
                 fighter->positionY += fighter->momentumY;
@@ -762,6 +762,8 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
     {
         if (fighter->IsLayingDown)
         {
+            animateFrame(animator->spriteIndex, 25, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+
             if (rapTicks >= fighter->lastTicks + 20)
             {
                 fighter->IsHitFall = false;
@@ -769,61 +771,33 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 fighter->IsFalling = false;
                 fighter->IsLayingDown = false;
                 fighter->IsGettingUp = true;
+                fighter->jumpIndex = 0;
                 animator->currentFrame = 0;
                 fighterSetOnFloor(fighter);
             }
         }
-        else if (rapTicks >= fighter->lastTicks + 0)
+        else if (rapTicks >= fighter->lastTicks + 3)
         {
             fighterPositionXAdd(fighter, fighter->playerUppercutXSpeed * -fighter->direction);
+            fighter->positionY += UppercutOffsets[fighter->jumpIndex];
+            fighter->jumpIndex++;
 
-            if (!fighter->IsMidAir)
+            if (fighter->jumpIndex == 8)
             {
-                fighter->positionY += fighter->momentumY;
-                fighter->momentumY += fighter->gravity;
+                fighterPlayUppercutReaction(fighter->soundHandler);
             }
 
-            if (fighter->momentumY >= fighter->uppercutMomentumYStart && fighter->momentumY < 0.0f)
+            if (fighter->jumpIndex == 25)
             {
-                animateFrame(fighter->spriteIndex, 0, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
-                animator->currentFrame = 0;
+                fighter->IsLayingDown = true;
+                fighter->lastTicks = rapTicks;
+                fighter->jumpIndex = 0;
+                fighterSetOnFloor(fighter);
+                bgShake(false);
+                sfxThud(fighter->soundHandler);
             }
-            else if (!fighter->IsFalling)
-            {
-                if (!fighter->IsMidAir)
-                {
-                    fighterPlayUppercutReaction(fighter->soundHandler);
-                }
-                fighter->IsMidAir = true;
-                
-                //once we've reached the apex of the uppercut hit, finish the animation (-1 frame), then complete the fall
-                updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-
-                if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT-1))
-                {
-                    fighter->IsFalling = true;
-                    fighter->IsMidAir = false;
-                }
-            }
-            else
-            {
-                if (fighter->positionY > FLOOR_LOCATION_Y_FIGHTER)
-                {
-                    fighter->IsLayingDown = true;
-                    fighter->lastTicks = rapTicks;
-                    fighterSetOnFloor(fighter);
-
-                    //show last frame of HitFall animation
-                    animateFrame(fighter->spriteIndex, 6, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
-
-                    bgShake(false);
-                    sfxThud(fighter->soundHandler);
-                }
-                else
-                {
-                    animateFrame(fighter->spriteIndex, 5, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
-                }
-            }
+            
+            animateFrame(animator->spriteIndex, fighter->jumpIndex, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
             fighter->lastTicks = rapTicks;
         }
@@ -1561,6 +1535,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 fighter->jumpIndex = 0;
                 fighter->momentumY = fighter->jumpMomentumYStart;
                 fighter->JumpLanded = false;
+                fighter->AcceptingInput = false;
                 fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             }
 
@@ -2487,7 +2462,12 @@ void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2)
                 while (tempScore != 0)  
                 {  
                     tempScore = tempScore / 10;  
-                    scoreLength++;  
+                    scoreLength++;
+                }
+
+                if (scoreLength < 4)
+                {
+                    scoreLength = 4;
                 }
             }
 

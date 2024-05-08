@@ -4,6 +4,9 @@
 	.globl	__Z10matchResetv
 __Z10matchResetv:
 	link.w %fp,#0
+	pea 99.w
+	jsr rapSetClock
+	clr.w raptor_clock_mode
 	clr.l _matchState
 	clr.l _matchTicks
 	clr.b _fightZoomed
@@ -14,6 +17,7 @@ __Z10matchResetv:
 	clr.l _winsTicks
 	clr.b _playedName
 	clr.b _playedWins
+	addq.l #4,%sp
 	unlk %fp
 	rts
 	.even
@@ -23,6 +27,9 @@ __Z9matchInitv:
 	clr.l _round
 	clr.l _fighter1Wins
 	clr.l _fighter2Wins
+	pea 99.w
+	jsr rapSetClock
+	clr.w raptor_clock_mode
 	clr.l _matchState
 	clr.l _matchTicks
 	clr.b _fightZoomed
@@ -33,8 +40,11 @@ __Z9matchInitv:
 	clr.l _winsTicks
 	clr.b _playedName
 	clr.b _playedWins
+	addq.l #4,%sp
 	unlk %fp
 	rts
+.LC0:
+	.ascii "%02d\0"
 	.even
 	.globl	__Z11matchUpdateP12SoundHandlerP7FighterS2_
 __Z11matchUpdateP12SoundHandlerP7FighterS2_:
@@ -42,6 +52,20 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l #8248,-(%sp)
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
+	clr.l _jsfFontIndx
+	moveq #2,%d0
+	move.l %d0,_jsfFontSize
+	pea 8.w
+	pea 146.w
+	jsr rapLocate
+	addq.l #8,%sp
+	move.w raptor_clock_hex,%a0
+	move.l %a0,-(%sp)
+	pea .LC0
+	jsr ee_printf
+	move.l %d0,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr _rapPrint
 	move.l _matchState,%d0
 	jne .L4
 	move.l _matchTicks,%a0
@@ -266,6 +290,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (28,%sp),%sp
 	jra .L8
 .L17:
+	clr.w raptor_clock_mode
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
 	jsr __Z20fighterResetFlagsAllP7FighterS0_
@@ -568,6 +593,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L79:
+	clr.w raptor_clock_mode
 	moveq #3,%d0
 	move.l %d0,_matchState
 	move.l sprite,%a0
@@ -633,6 +659,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.b #1,144(%a3)
 	moveq #2,%d2
 	move.l %d2,_matchState
+	move.w #4,raptor_clock_mode
 	moveq #1,%d0
 	movem.l -16(%fp),#7172
 	unlk %fp
