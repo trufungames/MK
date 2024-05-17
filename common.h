@@ -161,6 +161,8 @@
 #define FLOOR_LOCATION_Y 166
 #define FLOOR_LOCATION_Y_FIGHTER 90
 #define HITBOX_WIDTH 32
+#define PLAYER_INPUT_STACK_SIZE 6
+#define PLAYER_INPUT_TIMEOUT 30
 
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1
@@ -174,7 +176,16 @@
 #define KASUMI 9
 #define GORO 10
 #define SHANG 11
-
+//-----------------------------------------------------------------------------------------------------
+#define INPUT_BACK 1
+#define INPUT_FORWARD 2
+#define INPUT_UP 3
+#define INPUT_DOWN 4
+#define INPUT_HP 5
+#define INPUT_LP 6
+#define INPUT_BLK 7
+#define INPUT_HK 8
+#define INPUT_LK 9
 //-----------------------------------------------------------------------------------------------------
 #define CHOOSE_FIGHTER_TIME_TOTAL 30*60
 #define MATCH_TIME_TOTAL 99*60
@@ -222,6 +233,7 @@
 #define KANO_HIT_BACK_FRAME_COUNT 7
 #define KANO_HIT_LOW_FRAME_COUNT 4
 #define KANO_HIT_HIGH_FRAME_COUNT 4
+#define KANO_HIT_UPPERCUT_FRAME_COUNT 26
 #define KANO_HIT_FALL_FRAME_COUNT 7
 #define KANO_HIT_SWEEP_FRAME_COUNT 6
 
@@ -256,6 +268,7 @@
 #define CAGE_HIT_LOW_FRAME_COUNT 4
 #define CAGE_HIT_HIGH_FRAME_COUNT 4
 #define CAGE_HIT_BACK_FRAME_COUNT 7
+#define CAGE_HIT_UPPERCUT_FRAME_COUNT 26
 #define CAGE_HIT_FALL_FRAME_COUNT 7
 #define CAGE_HIT_SWEEP_FRAME_COUNT 6
 
@@ -290,6 +303,7 @@
 #define KANG_HIT_LOW_FRAME_COUNT 4
 #define KANG_HIT_HIGH_FRAME_COUNT 4
 #define KANG_HIT_BACK_FRAME_COUNT 7
+#define KANG_HIT_UPPERCUT_FRAME_COUNT 26
 #define KANG_HIT_FALL_FRAME_COUNT 7
 #define KANG_HIT_SWEEP_FRAME_COUNT 6
 
@@ -324,6 +338,7 @@
 #define RAIDEN_HIT_LOW_FRAME_COUNT 4
 #define RAIDEN_HIT_HIGH_FRAME_COUNT 5
 #define RAIDEN_HIT_BACK_FRAME_COUNT 7
+#define RAIDEN_HIT_UPPERCUT_FRAME_COUNT 26
 #define RAIDEN_HIT_FALL_FRAME_COUNT 7
 #define RAIDEN_HIT_SWEEP_FRAME_COUNT 6
 
@@ -358,6 +373,7 @@
 #define SUBZERO_HIT_LOW_FRAME_COUNT 4
 #define SUBZERO_HIT_HIGH_FRAME_COUNT 4
 #define SUBZERO_HIT_BACK_FRAME_COUNT 6
+#define SUBZERO_HIT_UPPERCUT_FRAME_COUNT 26
 #define SUBZERO_HIT_FALL_FRAME_COUNT 7
 #define SUBZERO_HIT_SWEEP_FRAME_COUNT 6
 
@@ -392,6 +408,7 @@
 #define SONYA_HIT_LOW_FRAME_COUNT 4
 #define SONYA_HIT_HIGH_FRAME_COUNT 4
 #define SONYA_HIT_BACK_FRAME_COUNT 6
+#define SONYA_HIT_UPPERCUT_FRAME_COUNT 26
 #define SONYA_HIT_FALL_FRAME_COUNT 7
 #define SONYA_HIT_SWEEP_FRAME_COUNT 6
 

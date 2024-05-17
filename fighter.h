@@ -32,6 +32,7 @@ struct Fighter {
     unsigned short HIT_LOW_FRAME_COUNT;
     unsigned short HIT_HIGH_FRAME_COUNT;
     unsigned short HIT_BACK_FRAME_COUNT;
+    unsigned short HIT_UPPERCUT_FRAME_COUNT;
     unsigned short HIT_FALL_FRAME_COUNT;
     unsigned short HIT_SWEEP_FRAME_COUNT;
     unsigned int lightningSpriteIndex;
@@ -61,6 +62,7 @@ struct Fighter {
     bool DPadReleased;
     bool DPadUpReleased;
     bool ButtonReleased;
+    bool DPadWasRecorded;
     bool IsHitLow;
     bool IsHitHigh;
     bool IsHitBack;
@@ -68,6 +70,7 @@ struct Fighter {
     bool IsHitBackHigh;
     bool IsHitBackLight;
     bool IsHitBackLightKano;
+    bool IsHitUppercut;
     bool IsHitFall;
     bool IsHitSweep;
     bool IsHitDropKick;
@@ -88,6 +91,12 @@ struct Fighter {
     bool IsDizzy;
     bool IsDefeated;
     bool IsBeingPushed;
+    bool IsDoingSpecial1;
+    bool IsDoingSpecial2;
+    bool IsDoingSpecial3;
+    bool HasSetupSpecial1;
+    bool HasSetupSpecial2;
+    bool HasSetupSpecial3;
     bool DoBlockSequence;
     bool DoUppercutSequence;
     bool DoDefeatedSequence;
@@ -143,6 +152,16 @@ struct Fighter {
     bool hasRoomToMove;
     bool isMaxDistance;
     int jumpIndex;
+    struct PlayerInput (*playerInputs)[PLAYER_INPUT_STACK_SIZE];
+    int (*special1Inputs)[PLAYER_INPUT_STACK_SIZE];
+    int (*special2Inputs)[PLAYER_INPUT_STACK_SIZE];
+    int (*special3Inputs)[PLAYER_INPUT_STACK_SIZE];
+    short special1InputCount;
+    short special2InputCount;
+    short special3InputCount;
+    void (*doSpecialMove1)(struct Fighter*, struct SpriteAnimator*);
+    void (*doSpecialMove2)(struct Fighter*, struct SpriteAnimator*);
+    void (*doSpecialMove3)(struct Fighter*, struct SpriteAnimator*);
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -156,6 +175,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameBodyKick;
     struct ImpactFrame* impactFrameDuckKick;
     struct ImpactFrame* impactFrameThrow;
+    struct SpriteAnimator* projectileAnimator;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*dizzyFrames)[7];
     struct AnimationFrame (*winsFrames)[15];
@@ -179,7 +199,8 @@ struct Fighter {
     struct AnimationFrame (*hitLowFrames)[6];
     struct AnimationFrame (*hitHighFrames)[6];
     struct AnimationFrame (*hitBackFrames)[7];
-    struct AnimationFrame (*hitFallFrames)[26];
+    struct AnimationFrame (*hitUppercutFrames)[26];
+    struct AnimationFrame (*hitFallFrames)[7];
     struct AnimationFrame (*hitSweepFrames)[6];
     struct AnimationFrame (*kipUpFrames)[5];
     struct AnimationFrame (*sweepFrames)[9];
@@ -190,6 +211,10 @@ struct Fighter {
     struct AnimationFrame (*throwFrames)[8];
     struct AnimationFrame (*beingThrownFrames)[6];
     struct AnimationFrame (*beingThrownLowFrames)[6];
+    struct AnimationFrame (*special1Frames)[6];
+    struct AnimationFrame (*special2Frames)[6];
+    struct AnimationFrame (*special3Frames)[6];
+    struct AnimationFrame (*projectileFrames)[6];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -209,6 +234,10 @@ void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* 
 void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
 
 void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
+
+void fighterCaptureDpadInputs(struct Fighter* fighter);
+
+bool fighterHandleSpecialMoves(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
 
 void fighterPlayHiya(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
@@ -267,3 +296,5 @@ void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2);
 void fighterResetTicks(struct Fighter* fighter);
 
 void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator);
