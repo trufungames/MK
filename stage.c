@@ -1,7 +1,7 @@
 #include "common.h"
 #include "stage.h"
 
-static int currentStage = STAGE_GORO;
+static short currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
@@ -109,15 +109,15 @@ int stageGetFighterHitboxIndex()
     switch (currentStage)
     {
         case STAGE_GATES:
-            return 30;
+            return 25;
         case STAGE_WARRIOR:
-            return 30;
+            return 25;
         case STAGE_PIT:
-            return 30;
+            return 25;
         case STAGE_GORO:
-            return 30;
+            return 25;
         default:
-            return 30;
+            return 25;
     }
 }
 

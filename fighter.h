@@ -97,6 +97,7 @@ struct Fighter {
     bool HasSetupSpecial1;
     bool HasSetupSpecial2;
     bool HasSetupSpecial3;
+    bool HasSetupProjectileEnd;
     bool DoBlockSequence;
     bool DoUppercutSequence;
     bool DoDefeatedSequence;
@@ -108,6 +109,7 @@ struct Fighter {
     bool AcceptingInput;
     bool MadeContactUppercut;
     bool MadeContact;
+    bool ProjectileMadeContact;
     int CooldownTicksUppercut;
     int CooldownTicksImpact;
     bool JumpLanded;
@@ -134,6 +136,7 @@ struct Fighter {
     int dropKickTicks;
     short positionX;
     short positionY;
+    short projectilePositionX;
     int hitPoints;
     int pendingDamage;
     bool shakeScreen;
@@ -162,6 +165,7 @@ struct Fighter {
     void (*doSpecialMove1)(struct Fighter*, struct SpriteAnimator*);
     void (*doSpecialMove2)(struct Fighter*, struct SpriteAnimator*);
     void (*doSpecialMove3)(struct Fighter*, struct SpriteAnimator*);
+    void (*doProjectileEnd)(struct Fighter*, struct SpriteAnimator*);
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -214,7 +218,8 @@ struct Fighter {
     struct AnimationFrame (*special1Frames)[6];
     struct AnimationFrame (*special2Frames)[6];
     struct AnimationFrame (*special3Frames)[6];
-    struct AnimationFrame (*projectileFrames)[6];
+    struct AnimationFrame (*projectileFrames)[8];
+    struct AnimationFrame (*projectileEndFrames)[4];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -252,6 +257,8 @@ void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 

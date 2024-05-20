@@ -2016,7 +2016,7 @@ raptor_init_table:
 	dc.l	%00100000						; sprite_scale_y				; y scale factor (if scaled)
 	dc.l	-1								; sprite_was_hit				; initially flagged as not hit
 	dc.l	13							; sprite_CLUT					; no_CLUT (8/16/24 bit) or CLUT (1/2/4 bit)
-	dc.l	cant_hit						; sprite_colchk					; if sprite can collide with another
+	dc.l	can_hit						; sprite_colchk					; if sprite can collide with another
 	dc.l	cd_keep							; sprite_remhit					; flag to remove (or keep) on collision
 	dc.l	single							; sprite_bboxlink				; single for normal bounding box, else pointer to table
 	dc.l	1								; sprite_hitpoint				; Hitpoints before death
@@ -2133,7 +2133,7 @@ raptor_init_table:
 	dc.l	%00100000						; sprite_scale_y				; y scale factor (if scaled)
 	dc.l	-1								; sprite_was_hit				; initially flagged as not hit
 	dc.l	13							; sprite_CLUT					; no_CLUT (8/16/24 bit) or CLUT (1/2/4 bit)
-	dc.l	cant_hit						; sprite_colchk					; if sprite can collide with another
+	dc.l	can_hit						; sprite_colchk					; if sprite can collide with another
 	dc.l	cd_keep							; sprite_remhit					; flag to remove (or keep) on collision
 	dc.l	single							; sprite_bboxlink				; single for normal bounding box, else pointer to table
 	dc.l	1								; sprite_hitpoint				; Hitpoints before death

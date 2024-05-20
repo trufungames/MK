@@ -6,7 +6,7 @@ __Z16impactFrameResetP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	move.l sprite,%a1
-	tst.b 266(%a0)
+	tst.b 268(%a0)
 	jne .L5
 	move.w 244(%a0),%d0
 	add.w #30,%d0
@@ -38,7 +38,7 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 	cmp.w 16(%a2),%d0
 	jeq .L13
 	move.l sprite,%a1
-	tst.b 266(%a0)
+	tst.b 268(%a0)
 	jne .L14
 	move.w 244(%a0),%d0
 	add.w #30,%d0
@@ -51,7 +51,7 @@ __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame:
 	unlk %fp
 	rts
 .L13:
-	move.w 262(%a0),%d1
+	move.w 264(%a0),%d1
 	move.l sprite,%a3
 	cmp.w #1,%d1
 	jeq .L15

@@ -119,21 +119,30 @@ struct ImpactFrame cageImpactFrameThrow = {
 };
 
 static AnimationFrame cageGreenBoltFrames[] = {
-	{ 64, 96, 320, 752, 0, 16, 46},
-	{ 64, 96, 384, 768, 0, 16, 46},
-	{ 64, 96, 448, 752, 0, 16, 46},
-	{ 80, 96, 512, 704, 0, 16, 46},
-	{ 96, 96, 592, 720, 0, 16, 46},
-	{ 96, 96, 592, 720, 0, 16, 46}
+	{ 64, 96, 320, 752, 0, 16, 4 },
+	{ 64, 96, 384, 768, 0, 16, 4 },
+	{ 64, 96, 448, 752, 0, 16, 4 },
+	{ 80, 96, 512, 704, 0, 16, 4 },
+	{ 96, 96, 592, 720, 0, 16, 4 },
+	{ 96, 96, 592, 720, 0, 16, 4 }
 };
 
 static AnimationFrame projectileGreenBoltFrames[] = {
-	{ 32, 32, 0, 0, 0, 0, 46},
-	{ 48, 32, 32, 0, 0, 0, 46},
-	{ 64, 32, 80, 0, 0, 0, 46},
-	{ 80, 16, 0, 32, 0, 16, 46},
-	{ 48, 16, 80, 32, 0, 16, 46},
-	{ 48, 16, 80, 32, 0, 16, 46}
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 32, 32, 0, 0, 0, 44, 4},
+	{ 48, 32, 32, 0, 18, 42, 4},
+	{ 64, 32, 80, 0, 29, 25, 4},
+	{ 80, 16, 0, 32, 17, 25, 4},
+	{ 48, 16, 80, 32, 52, 24, 4}
+};
+
+static AnimationFrame projectileGreenBoltEndFrames[] = {
+	{ 32, 32, 128, 32, 80, 20, 88 },
+	{ 16, 48, 160, 0, 96, 7, 88 },
+	{ 16, 48, 176, 0, 96, 2, 88 },
+	{ 16, 64, 192, 0, 96, -6, 88 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -3152,6 +3161,7 @@ void basicmain()
 		
 		fighterCage.projectileAnimator = &lightningAnimator;
 		fighterCage.projectileFrames = &projectileGreenBoltFrames;
+		fighterCage.projectileEndFrames = &projectileGreenBoltEndFrames;
 		fighterCage.special1Inputs = &specials_Cage_GreenBolt_Inputs;
 		fighterCage.special2Inputs = &specials_Cage_ShadowKick_Inputs;
 		fighterCage.special3Inputs = &specials_Cage_NutPunch_Inputs;
@@ -5840,29 +5850,53 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 	if (!fighter->HasSetupSpecial1)
 	{
 		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
 		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
 		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 208/2;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),13,16);
-		rapUse8x16fontPalette(10);
-        jsfSetFontSize(1);
-        jsfSetFontIndx(1);
-        rapLocate(120,60);
-        js_r_textbuffer = "FIREBALL!!!";
-        rapPrint();
 		fighter->lastTicks = rapTicks;
 	}
-	updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
-	if (animationIsComplete(animator, 6) && rapTicks > fighter->lastTicks + 500)
+	if (!fighter->ProjectileMadeContact)
 	{
-		fighter->IsDoingSpecial1 = false;
-		playerinputInit(fighter);
-		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+		if (animationIsComplete(animator, 6))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 4))
+		{
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 4, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
 }

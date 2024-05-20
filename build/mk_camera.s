@@ -46,7 +46,7 @@ __Z12cameraUpdateP7FighterS0_:
 	clr.b _backgroundChangedRight
 	move.l _cameraX,%d0
 	moveq #10,%d1
-	cmp.w #1,262(%a2)
+	cmp.w #1,264(%a2)
 	jeq .L24
 	cmp.l %d0,%d1
 	jge .L20

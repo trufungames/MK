@@ -130,6 +130,7 @@
 #define POINTS_FLAWLESS_VICTORY 2000
 #define POINTS_FLAWLESS_DOUBLE 5000
 #define POINTS_FATALITY 1000
+#define POINTS_PROJECTILE 20
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 34
@@ -148,6 +149,8 @@
 #define DMG_BODY_PUNCH 4
 #define DMG_BODY_KICK 4
 #define DMG_THROW 8
+#define DMG_GREENBOLT 5
+
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0
 #define STAGE_WARRIOR 1

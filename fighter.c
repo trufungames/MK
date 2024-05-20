@@ -125,7 +125,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->pad = 0;
     fighter->playerMoveForwardSpeed = 2;
     fighter->playerMoveBackwardSpeed = 2;
-    fighter->playerKnockbackSpeed = 4.5f;
+    fighter->playerKnockbackSpeed = 2.0f;
     fighter->playerUppercutXSpeed = 4.0f;
     fighter->playerDropKickXSpeed = 6.5f;
     fighter->playerThrowXSpeed = 8.0f;
@@ -586,7 +586,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
     {
         if (rapTicks >= fighter->lastTicks + fighter->damageTicks)
         {
-            fighterPositionXAdd(fighter, (fighter->playerKnockbackSpeed / 3) * -fighter->direction);
+            fighterPositionXAdd(fighter, (fighter->playerKnockbackSpeed) * -fighter->direction);
         }     
 
         updateSpriteAnimator(animator, *fighter->hitLowFrames, fighter->HIT_LOW_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -601,7 +601,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
     {
         if (rapTicks >= fighter->lastTicks + fighter->damageTicks)
         {
-            fighterPositionXAdd(fighter, (fighter->playerKnockbackSpeed / 2) * -fighter->direction);
+            fighterPositionXAdd(fighter, (fighter->playerKnockbackSpeed) * -fighter->direction);
         }     
 
         updateSpriteAnimator(animator, *fighter->hitBackFrames, fighter->HIT_BACK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -822,12 +822,12 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
     {
         //js_r_textbuffer = ee_printf("%d %d %d %d %d %d", fighter->playerInputs[0]->ButtonPressed,fighter->playerInputs[1]->ButtonPressed,fighter->playerInputs[2]->ButtonPressed,fighter->playerInputs[3]->ButtonPressed,fighter->playerInputs[4]->ButtonPressed,fighter->playerInputs[5]->ButtonPressed);
         //jsfDebugMessage();
-        rapUse8x16fontPalette(10);
-        jsfSetFontSize(1);
-        jsfSetFontIndx(1);
-        rapLocate(120,60);
-        js_r_textbuffer = ee_printf("%d %d %d %d %d %d", fighter->playerInputs[0]->ButtonPressed,fighter->playerInputs[1]->ButtonPressed,fighter->playerInputs[2]->ButtonPressed,fighter->playerInputs[3]->ButtonPressed,fighter->playerInputs[4]->ButtonPressed,fighter->playerInputs[5]->ButtonPressed);;
-        rapPrint();
+        // rapUse8x16fontPalette(10);
+        // jsfSetFontSize(1);
+        // jsfSetFontIndx(1);
+        // rapLocate(120,60);
+        // js_r_textbuffer = ee_printf("%d %d %d %d %d %d", fighter->playerInputs[0]->ButtonPressed,fighter->playerInputs[1]->ButtonPressed,fighter->playerInputs[2]->ButtonPressed,fighter->playerInputs[3]->ButtonPressed,fighter->playerInputs[4]->ButtonPressed,fighter->playerInputs[5]->ButtonPressed);;
+        // rapPrint();
     }
 
     if (fighter->pad & JAGPAD_LEFT && fighter->DPadReleased && !fighter->DPadWasRecorded)
@@ -1975,7 +1975,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         fighter2->IsPushing = false;
     }
 
-    collision = rapCollide(stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 7, stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 7);
+    collision = rapCollide(stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 12, stageGetFighterHitboxIndex(), stageGetFighterHitboxIndex() + 12);
 
     if (collision > -1)
     { 
@@ -2035,6 +2035,16 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                     fighterHandleImpact(fighter2, fighter1);
                 }
 
+                if (fighter1->IsDoingSpecial1 && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
+                {
+                    fighterHandleProjectile(fighter1, fighter2);
+                }
+                
+                if (fighter2->IsDoingSpecial1 && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
+                {
+                    fighterHandleProjectile(fighter2, fighter1);
+                }
+
                 if (collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     if (fighter2->IsWalking)
@@ -2051,6 +2061,32 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                 }
             }
             i++;
+        }
+    }
+}
+
+void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (fighter1->fighterIndex == CAGE)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighter2->IsBlocking)
+        {            
+            if (fighter2->IsJumping)
+            {
+                fighter2->IsHitDropKick = true;
+            }
+            else
+            {
+                fighter2->IsHitBackLight = true;
+            }
+            
+            fighterAddPendingDamage(fighter2, DMG_GREENBOLT, false, fighter1, POINTS_PROJECTILE);
+        }
+        else
+        {
+            fighterAddPendingDamage(fighter2, DMG_BLOCKED, false, fighter1, 0);
         }
     }
 }
