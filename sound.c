@@ -449,6 +449,15 @@ void sfxCageYeah(struct SoundHandler* soundHandler, bool isPlayer1)
 	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_CAGE_YEAH, 8000);
 }
 
+void sfxCageGreenbolt(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_CAGE_GREENBOLT, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_CAGE_GREENBOLT, 8000);
+}
+
 void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)

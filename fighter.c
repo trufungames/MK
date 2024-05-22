@@ -103,8 +103,9 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->momentumY = 0.0f;
     fighter->jumpMomentumYStart = -16.0f;
     fighter->uppercutMomentumYStart = -21.0f;
-    fighter->dropKickMomentemYStart = -10.0f;
+    fighter->dropKickMomentemYStart = -4.0f;
     fighter->throwMomentemYStart = 5.0f;
+    fighter->NoBlood = false;
 
     //assignments
     fighter->ResetTicks = false;
@@ -521,26 +522,33 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                     bloodX -= 40;
                 }
 
-                if (fighter->IsHitHigh || fighter->IsHitBackHigh || fighter->IsHitBackLight)
+                if (fighter->NoBlood == false)
                 {
-                    bloodSpray(bloodX, fighter->positionY - 10, fighter->direction);
-                }
-                else if (fighter->IsHitBack)
-                {
-                    bloodGlob(bloodX, fighter->positionY + 20, fighter->direction);
-                    bloodDrop(bloodX + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
-                }
-                else if (fighter->IsHitFall || fighter->IsHitUppercut)
-                {
-                    bgShake(false);
-                    bloodSquirt(bloodX, fighter->positionY - 10);
-                    bloodSquirt(bloodX+20, fighter->positionY - 30);
-                    bloodSquirt(bloodX+10, fighter->positionY - 50);
+                    if (fighter->IsHitHigh || fighter->IsHitBackHigh || fighter->IsHitBackLight)
+                    {
+                        bloodSpray(bloodX, fighter->positionY - 10, fighter->direction);
+                    }
+                    else if (fighter->IsHitBack)
+                    {
+                        bloodGlob(bloodX, fighter->positionY + 20, fighter->direction);
+                        bloodDrop(bloodX + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
+                    }
+                    else if (fighter->IsHitFall || fighter->IsHitUppercut)
+                    {
+                        bgShake(false);
+                        bloodSquirt(bloodX, fighter->positionY - 10);
+                        bloodSquirt(bloodX+20, fighter->positionY - 30);
+                        bloodSquirt(bloodX+10, fighter->positionY - 50);
 
-                    bloodDrop(bloodX + (0 * fighter->direction), fighter->positionY - 40, fighter->direction);
-                    bloodDrop(bloodX + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
-                    bloodDrop(bloodX + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
-                    bloodDrop(bloodX + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
+                        bloodDrop(bloodX + (0 * fighter->direction), fighter->positionY - 40, fighter->direction);
+                        bloodDrop(bloodX + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
+                        bloodDrop(bloodX + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
+                        bloodDrop(bloodX + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
+                    }
+                }
+                else
+                {
+                    fighter->NoBlood = false;
                 }
             }
         }
@@ -1887,6 +1895,7 @@ void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void fighterResetFlags(struct Fighter* fighter)
 {
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     sprite[fighter->HB_ATTACK].was_hit = -1;
     sprite[fighter->spriteIndex].was_hit = -1;
     fighter->IsWinner = false;
@@ -2075,18 +2084,21 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
         {            
             if (fighter2->IsJumping)
             {
-                fighter2->IsHitDropKick = true;
+                fighter2->IsHitDropKick = true;                
             }
             else
             {
                 fighter2->IsHitBackLight = true;
+                fighter2->NoBlood = true;
             }
             
             fighterAddPendingDamage(fighter2, DMG_GREENBOLT, false, fighter1, POINTS_PROJECTILE);
         }
         else
         {
-            fighterAddPendingDamage(fighter2, DMG_BLOCKED, false, fighter1, 0);
+            fighter2->IsBlockingHit = true;
+            fighter2->DoBlockSequence = true;
+            fighter2->lastTicks = rapTicks;
         }
     }
 }
@@ -2587,6 +2599,10 @@ void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator)
 
     if (rapTicks >= fighter->lastTicks + 20)
     {
+        fighter->AcceptingInput = true;
+        fighter->IsJumping = false;
+        fighter->IsJumpPunching = false;
+        fighter->IsJumpKicking = false;
         fighter->IsHitDropKick = false;
         fighter->IsHitBodyKick = false;
         fighter->IsBeingThrown = false;

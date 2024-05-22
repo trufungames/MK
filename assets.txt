@@ -159,6 +159,7 @@ ROM,wins_sam,sfx_raw8000,ASSETS\SFX\wins.wav
 ROM,flawless_sam,sfx_raw8000,ASSETS\SFX\flawless.wav
 ROM,fatality_sam,sfx_raw8000,ASSETS\SFX\fatality.wav
 ROM,cage_yeah_sam,sfx_raw8000,ASSETS\SFX\cage_yeah.wav
+ROM,cage_greenbolt_sam,sfx_raw8000,ASSETS\SFX\cage_greenbolt.wav
 ROM,kano_yell_sam,sfx_raw8000,ASSETS\SFX\kano_yell.wav
 ROM,kano_headbutt_sam,sfx_raw8000,ASSETS\SFX\kano_headbutt.wav
 ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav

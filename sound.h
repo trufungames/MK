@@ -36,6 +36,7 @@ void sfxThrowFemale(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxThrowNinja(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxJumpRoll(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxCageYeah(struct SoundHandler* soundHandler, bool isPlayer1);
+void sfxCageGreenbolt(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxKanoYell(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxHit(struct SoundHandler* soundHandler);

@@ -112,6 +112,7 @@
 #define SOUND_TITLE_RISE 58
 #define SOUND_TITLE_THUD 59
 #define SOUND_TITLE_START 60
+#define SOUND_CAGE_GREENBOLT 61
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10

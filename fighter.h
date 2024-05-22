@@ -63,6 +63,7 @@ struct Fighter {
     bool DPadUpReleased;
     bool ButtonReleased;
     bool DPadWasRecorded;
+    bool NoBlood;
     bool IsHitLow;
     bool IsHitHigh;
     bool IsHitBack;
@@ -219,7 +220,7 @@ struct Fighter {
     struct AnimationFrame (*special2Frames)[6];
     struct AnimationFrame (*special3Frames)[6];
     struct AnimationFrame (*projectileFrames)[8];
-    struct AnimationFrame (*projectileEndFrames)[4];
+    struct AnimationFrame (*projectileEndFrames)[5];
 };
 
 void fighterHide(struct Fighter* fighter);

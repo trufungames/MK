@@ -61,8 +61,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //sound on/off
-	false,  //music on/off
+	true,  //sound on/off
+	true,  //music on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -139,10 +139,11 @@ static AnimationFrame projectileGreenBoltFrames[] = {
 };
 
 static AnimationFrame projectileGreenBoltEndFrames[] = {
-	{ 32, 32, 128, 32, 80, 20, 88 },
-	{ 16, 48, 160, 0, 96, 7, 88 },
-	{ 16, 48, 176, 0, 96, 2, 88 },
-	{ 16, 64, 192, 0, 96, -6, 88 }
+	{ 32, 32, 128, 32, 80, 20, 5 },
+	{ 16, 48, 160, 0, 96, 13, 5 },
+	{ 16, 48, 176, 0, 102, 8, 5 },
+	{ 16, 64, 192, 0, 102, 0, 5 },
+	{ 16, 64, 192, 0, 102, 0, 5 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -5864,6 +5865,7 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),13,16);
 		fighter->lastTicks = rapTicks;
+		sfxCageGreenbolt(fighter->soundHandler, fighter->isPlayer1);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -5872,7 +5874,8 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 		{
 			fighter->projectilePositionX += (8 * fighter->direction);
 
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320)
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
 			{
 				fighter->IsDoingSpecial1 = false;
 				playerinputInit(fighter);
@@ -5891,12 +5894,12 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 			fighter->projectileAnimator->currentFrame = 0;
 		}
 
-		if (animationIsComplete(fighter->projectileAnimator, 4))
+		if (animationIsComplete(fighter->projectileAnimator, 5))
 		{
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 		}
 
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 4, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
 }
