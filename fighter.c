@@ -106,6 +106,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->dropKickMomentemYStart = -4.0f;
     fighter->throwMomentemYStart = 5.0f;
     fighter->NoBlood = false;
+    fighter->DoImpaleBloodSequence = false;
 
     //assignments
     fighter->ResetTicks = false;
@@ -333,6 +334,13 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 break;
         }        
         return;
+    }
+
+    if (fighter->DoImpaleBloodSequence)
+    {
+        fighter->DoImpaleBloodSequence = false;
+        
+        bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
     }
     
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
@@ -2002,8 +2010,11 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
                 int collisionSprIndex = jsfGetSpriteIndex(collisionSprAddr);
                 int collisionSprIndex2 = jsfGetSpriteIndex(collisionSprAddr2);
 
-                sprite[collisionSprIndex].was_hit = -1;
-                sprite[collisionSprIndex2].was_hit = -1;
+                if (collisionSprIndex != fighter1->lightningSpriteIndex && collisionSprIndex != fighter2->lightningSpriteIndex)
+                    sprite[collisionSprIndex].was_hit = -1;
+
+                if (collisionSprIndex2 != fighter1->lightningSpriteIndex && collisionSprIndex2 != fighter2->lightningSpriteIndex)
+                    sprite[collisionSprIndex2].was_hit = -1;
 
                 if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
@@ -2093,6 +2104,33 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
             }
             
             fighterAddPendingDamage(fighter2, DMG_GREENBOLT, false, fighter1, POINTS_PROJECTILE);
+        }
+        else
+        {
+            fighter2->IsBlockingHit = true;
+            fighter2->DoBlockSequence = true;
+            fighter2->lastTicks = rapTicks;
+        }
+    }
+    else if (fighter1->fighterIndex == KANO)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighter2->IsBlocking)
+        {            
+            if (fighter2->IsJumping)
+            {
+                fighter2->IsHitDropKick = true;
+            }
+            else
+            {
+                fighter2->IsHitBackLight = true;
+            }
+            
+            fighter2->DoImpaleBloodSequence = true;
+            fighter2->NoBlood = true;
+            fighter2->lastTicks = rapTicks;
+            fighterAddPendingDamage(fighter2, DMG_KNIFE, false, fighter1, POINTS_PROJECTILE);
         }
         else
         {

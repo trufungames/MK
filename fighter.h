@@ -104,6 +104,7 @@ struct Fighter {
     bool DoDefeatedSequence;
     bool DoWinSequence;
     bool DoThrowSequence;
+    bool DoImpaleBloodSequence;
     bool ResetTicks;
     short ThrowX;
     short ThrowY;
@@ -219,7 +220,7 @@ struct Fighter {
     struct AnimationFrame (*special1Frames)[6];
     struct AnimationFrame (*special2Frames)[6];
     struct AnimationFrame (*special3Frames)[6];
-    struct AnimationFrame (*projectileFrames)[8];
+    struct AnimationFrame (*projectileFrames)[20];
     struct AnimationFrame (*projectileEndFrames)[5];
 };
 

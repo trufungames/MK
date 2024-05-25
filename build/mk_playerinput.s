@@ -145,38 +145,47 @@ __Z15playerinputPushP7Fighteri:
 	.globl	__Z19playerinputContainsP7FighterPii
 __Z19playerinputContainsP7FighterPii:
 	link.w %fp,#0
-	move.l %d2,-(%sp)
-	move.l 12(%fp),%a1
+	movem.l #8240,-(%sp)
+	move.l 8(%fp),%a3
+	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
 	jeq .L28
 	clr.l _k
 	tst.l %d2
-	jle .L26
-	move.l 8(%fp),%a0
-	move.l 304(%a0),%a0
+	jle .L23
+	move.l 304(%a3),%a0
 	move.l (%a0),%d0
-	cmp.l (%a1),%d0
+	cmp.l (%a2),%d0
 	jne .L28
 	lea (48,%a0),%a0
-	addq.l #4,%a1
+	lea (4,%a2),%a1
 	moveq #1,%d0
-.L23:
+.L24:
 	move.l %d0,_k
 	cmp.l %d0,%d2
-	jeq .L26
+	jeq .L23
 	move.l (%a0),%d1
 	addq.l #1,%d0
 	lea (48,%a0),%a0
 	cmp.l (%a1)+,%d1
-	jeq .L23
+	jeq .L24
 .L28:
 	moveq #0,%d0
-	move.l (%sp)+,%d2
+	movem.l (%sp)+,#3076
 	unlk %fp
 	rts
-.L26:
+.L23:
+	moveq #7,%d0
+	cmp.l 20(%a2),%d0
+	jeq .L31
 	moveq #1,%d0
-	move.l (%sp)+,%d2
+	movem.l (%sp)+,#3076
+	unlk %fp
+	rts
+.L31:
+	moveq #0,%d0
+	move.b 90(%a3),%d0
+	movem.l (%sp)+,#3076
 	unlk %fp
 	rts
 	.even
@@ -193,87 +202,87 @@ __Z17playerinputUpdateP7FighterS0_:
 	moveq #30,%d0
 	add.l 4(%a2),%d0
 	cmp.l %d0,%a1
-	jle .L32
+	jle .L34
 	clr.l (%a2)
 	clr.l 4(%a2)
-.L32:
+.L34:
 	moveq #30,%d0
 	add.l 4(%a0),%d0
 	cmp.l %a1,%d0
-	jge .L33
+	jge .L35
 	clr.l (%a0)
 	clr.l 4(%a0)
-.L33:
+.L35:
 	moveq #30,%d0
 	add.l 52(%a2),%d0
 	cmp.l %a1,%d0
-	jge .L34
+	jge .L36
 	clr.l 48(%a2)
 	clr.l 52(%a2)
-.L34:
+.L36:
 	moveq #30,%d0
 	add.l 52(%a0),%d0
 	cmp.l %a1,%d0
-	jge .L35
+	jge .L37
 	clr.l 48(%a0)
 	clr.l 52(%a0)
-.L35:
+.L37:
 	moveq #30,%d0
 	add.l 100(%a2),%d0
 	cmp.l %a1,%d0
-	jge .L36
+	jge .L38
 	clr.l 96(%a2)
 	clr.l 100(%a2)
-.L36:
+.L38:
 	moveq #30,%d0
 	add.l 100(%a0),%d0
 	cmp.l %a1,%d0
-	jge .L37
+	jge .L39
 	clr.l 96(%a0)
 	clr.l 100(%a0)
-.L37:
+.L39:
 	moveq #30,%d0
 	add.l 148(%a2),%d0
 	cmp.l %a1,%d0
-	jge .L38
+	jge .L40
 	clr.l 144(%a2)
 	clr.l 148(%a2)
-.L38:
+.L40:
 	moveq #30,%d0
 	add.l 148(%a0),%d0
 	cmp.l %a1,%d0
-	jge .L39
+	jge .L41
 	clr.l 144(%a0)
 	clr.l 148(%a0)
-.L39:
+.L41:
 	moveq #30,%d0
 	add.l 196(%a2),%d0
 	cmp.l %a1,%d0
-	jge .L40
+	jge .L42
 	clr.l 192(%a2)
 	clr.l 196(%a2)
-.L40:
+.L42:
 	moveq #30,%d0
 	add.l 196(%a0),%d0
 	cmp.l %a1,%d0
-	jge .L41
+	jge .L43
 	clr.l 192(%a0)
 	clr.l 196(%a0)
-.L41:
+.L43:
 	moveq #30,%d0
 	add.l 244(%a2),%d0
 	cmp.l %d0,%a1
-	jle .L42
+	jle .L44
 	clr.l 240(%a2)
 	clr.l 244(%a2)
-.L42:
+.L44:
 	moveq #30,%d0
 	add.l 244(%a0),%d0
 	cmp.l %d0,%a1
-	jle .L43
+	jle .L45
 	clr.l 240(%a0)
 	clr.l 244(%a0)
-.L43:
+.L45:
 	moveq #6,%d0
 	move.l %d0,_k
 	move.l (%sp)+,%a2
@@ -321,37 +330,37 @@ __Z19playerinputGetValueii:
 	link.w %fp,#0
 	move.l 8(%fp),%d0
 	cmp.l JAGPAD_UP.l,%d0
-	jeq .L51
+	jeq .L53
 	cmp.l JAGPAD_DOWN.l,%d0
-	jeq .L52
+	jeq .L54
 	cmp.l JAGPAD_LEFT.l,%d0
-	jeq .L62
-	cmp.l JAGPAD_RIGHT.l,%d0
-	jeq .L63
-	cmp.l JAGPAD_C.l,%d0
-	jeq .L55
-	cmp.l JAGPAD_7.l,%d0
-	jeq .L56
-	cmp.l JAGPAD_B.l,%d0
-	jeq .L58
-	cmp.l JAGPAD_8.l,%d0
-	jeq .L58
-	cmp.l JAGPAD_A.l,%d0
-	jeq .L59
-	cmp.l JAGPAD_9.l,%d0
 	jeq .L64
+	cmp.l JAGPAD_RIGHT.l,%d0
+	jeq .L65
+	cmp.l JAGPAD_C.l,%d0
+	jeq .L57
+	cmp.l JAGPAD_7.l,%d0
+	jeq .L58
+	cmp.l JAGPAD_B.l,%d0
+	jeq .L60
+	cmp.l JAGPAD_8.l,%d0
+	jeq .L60
+	cmp.l JAGPAD_A.l,%d0
+	jeq .L61
+	cmp.l JAGPAD_9.l,%d0
+	jeq .L66
 	moveq #0,%d0
 	unlk %fp
 	rts
-.L52:
+.L54:
 	moveq #4,%d0
 	unlk %fp
 	rts
-.L51:
+.L53:
 	moveq #3,%d0
 	unlk %fp
 	rts
-.L63:
+.L65:
 	moveq #1,%d0
 	cmp.l 12(%fp),%d0
 	sne %d0
@@ -360,7 +369,7 @@ __Z19playerinputGetValueii:
 	addq.l #2,%d0
 	unlk %fp
 	rts
-.L62:
+.L64:
 	moveq #1,%d0
 	cmp.l 12(%fp),%d0
 	sne %d0
@@ -370,23 +379,23 @@ __Z19playerinputGetValueii:
 	move.l %a0,%d0
 	unlk %fp
 	rts
-.L55:
+.L57:
 	moveq #6,%d0
 	unlk %fp
 	rts
-.L58:
+.L60:
 	moveq #7,%d0
 	unlk %fp
 	rts
-.L56:
+.L58:
 	moveq #5,%d0
 	unlk %fp
 	rts
-.L59:
+.L61:
 	moveq #9,%d0
 	unlk %fp
 	rts
-.L64:
+.L66:
 	moveq #8,%d0
 	unlk %fp
 	rts

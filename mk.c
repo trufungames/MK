@@ -127,15 +127,59 @@ static AnimationFrame cageGreenBoltFrames[] = {
 	{ 96, 96, 592, 720, 0, 16, 4 }
 };
 
+static AnimationFrame kanoKnifeFrames[] = {
+	{ 64, 80, 0, 912, 0, 32, 4 },
+	{ 80, 112, 64, 912, -19, 0, 4 },
+	{ 80, 112, 144, 912, -14, 0, 4 },
+	{ 48, 112, 240, 864, 1, 0, 4 },
+	{ 80, 96, 304, 832, -1, 16, 4 },
+	{ 80, 96, 304, 832, -1, 16, 4 }
+};
+
 static AnimationFrame projectileGreenBoltFrames[] = {
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 6 },
+	{ 0, 0, 0, 0, 0, 0, 6 },
+	{ 0, 0, 0, 0, 0, 0, 6 },
+	{ 0, 0, 0, 0, 0, 0, 6 },
 	{ 32, 32, 0, 0, 0, 44, 4},
 	{ 48, 32, 32, 0, 18, 42, 4},
 	{ 64, 32, 80, 0, 29, 25, 4},
 	{ 80, 16, 0, 32, 17, 25, 4},
-	{ 48, 16, 80, 32, 52, 24, 4}
+	{ 48, 16, 80, 32, 52, 24, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame projectileKnifeFrames[] = {
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 48, 32, 48, 48, 38, 21, 2 },
+	{ 32, 32, 32, 80, 36, 16, 2 },
+	{ 32, 32, 64, 80, 36, 16, 2 },
+	{ 32, 32, 96, 80, 22, 22, 2 },
+	{ 32, 32, 160, 48, 18, 24, 2 },
+	{ 32, 32, 0, 48, 16, 9, 2 },
+	{ 32, 32, 96, 48, 23, 4, 2 },
+	{ 32, 32, 128, 64, 32, 4, 2 },
+	{ 32, 32, 32, 80, 36, 16, 2 },
+	{ 32, 32, 64, 80, 36, 16, 2 },
+	{ 32, 32, 96, 80, 22, 22, 2 },
+	{ 32, 32, 160, 48, 18, 24, 2 },
+	{ 32, 32, 0, 48, 16, 9, 2 },
+	{ 32, 32, 96, 48, 23, 4, 2 },
+	{ 32, 32, 128, 64, 32, 4, 2 }
 };
 
 static AnimationFrame projectileGreenBoltEndFrames[] = {
@@ -144,6 +188,14 @@ static AnimationFrame projectileGreenBoltEndFrames[] = {
 	{ 16, 48, 176, 0, 102, 8, 5 },
 	{ 16, 64, 192, 0, 102, 0, 5 },
 	{ 16, 64, 192, 0, 102, 0, 5 }
+};
+
+static AnimationFrame projectileKnifeEndFrames[] = {
+	{ 32, 32, 160, 80, 70, 12, 5 },
+	{ 16, 32, 32, 48, 86, 12, 5 },
+	{ 16, 32, 32, 48, 86, 12, 5 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -2404,9 +2456,12 @@ static AnimationFrame lightningFrames[] = {
 	{ 64, 112, 576, 224, 0, 0, 4 }
 };
 
-static int specials_Cage_GreenBolt_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };  //Green bolt
-static int specials_Cage_ShadowKick_Inputs[] = { INPUT_BACK, INPUT_FORWARD, INPUT_LK, 0, 0, 0 };  //Shadow kick
-static int specials_Cage_NutPunch_Inputs[] = { 0, 0, 0, 0, 0, 0 }; //Nut Punch BLK+LP (will handle in code)
+static int specials_Cage_GreenBolt_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
+static int specials_Cage_ShadowKick_Inputs[] = { INPUT_BACK, INPUT_FORWARD, INPUT_LK, 0, 0, 0 };
+static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
+static int specials_Kano_Knife_Inputs[] = { INPUT_FORWARD, INPUT_BACK, 0, 0, 0, INPUT_BLK }; //if IsBlocking
+static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK }; //if IsBlocking
+static int specials_Kano_Maaaaybbbeee_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -2582,6 +2637,7 @@ void setPlayer1Name(char* name);
 void setPlayer2Name(char* name, int length);
 void displayWinnerMedals();
 void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3168,7 +3224,7 @@ void basicmain()
 		fighterCage.special3Inputs = &specials_Cage_NutPunch_Inputs;
 		fighterCage.special1InputCount = 3;
 		fighterCage.special2InputCount = 3;
-		fighterCage.special3InputCount = 0;
+		fighterCage.special3InputCount = 1;
 		fighterCage.special1Frames = &cageGreenBoltFrames;
 		fighterCage.doSpecialMove1 = &doSpecial_Cage_GreenBolt;
 		fighterCage.idleFrames = &cageIdleFrames;
@@ -3206,6 +3262,17 @@ void basicmain()
 		fighterCage.throwFrames = &cageThrowFrames;
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
+		fighterCage2.projectileAnimator = &lightningAnimator;
+		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
+		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
+		fighterCage2.special1Inputs = &specials_Cage_GreenBolt_Inputs;
+		fighterCage2.special2Inputs = &specials_Cage_ShadowKick_Inputs;
+		fighterCage2.special3Inputs = &specials_Cage_NutPunch_Inputs;
+		fighterCage2.special1InputCount = 3;
+		fighterCage2.special2InputCount = 3;
+		fighterCage2.special3InputCount = 1;
+		fighterCage2.special1Frames = &cageGreenBoltFrames;
+		fighterCage2.doSpecialMove1 = &doSpecial_Cage_GreenBolt;
 		fighterCage2.idleFrames = &cageIdleFrames;
 		fighterCage2.dizzyFrames = &cageDizzyFrames;
 		fighterCage2.winsFrames = &cageWinsFrames;
@@ -3242,6 +3309,16 @@ void basicmain()
 		fighterCage2.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage2.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		//Kano
+		fighterKano.projectileAnimator = &lightningAnimator;
+		fighterKano.projectileFrames = &projectileKnifeFrames;
+		fighterKano.projectileEndFrames = &projectileKnifeEndFrames;
+		fighterKano.special1Inputs = &specials_Kano_Knife_Inputs;
+		fighterKano.special2Inputs = &specials_Kano_CannonBall_Inputs;
+		fighterKano.special1InputCount = 2;
+		fighterKano.special2InputCount = 4;
+		fighterKano.special3InputCount = 1;
+		fighterKano.special1Frames = &kanoKnifeFrames;
+		fighterKano.doSpecialMove1 = &doSpecial_Kano_Knife;
 		fighterKano.idleFrames = &kanoIdleFrames;
 		fighterKano.dizzyFrames = &kanoDizzyFrames;
 		fighterKano.winsFrames = &kanoWinsFrames;
@@ -5896,6 +5973,66 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 
 		if (animationIsComplete(fighter->projectileAnimator, 5))
 		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
+		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),13,16);
+		fighter->lastTicks = rapTicks;
+		sfxKanoKnife(fighter->soundHandler, fighter->isPlayer1);
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(animator, 6))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 		}

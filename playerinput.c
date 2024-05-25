@@ -37,6 +37,10 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
             return false;
     }
 
+    //the last input indicates a BLOCK hold
+    if (checkInputs[5] == INPUT_BLK && !fighter->IsBlocking)
+        return false;
+
     return true;
 }
 
