@@ -2099,7 +2099,7 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
             }
             else
             {
-                fighter2->IsHitBackLight = true;
+                fighter2->IsHitBack = true;
                 fighter2->NoBlood = true;
             }
             

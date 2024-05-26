@@ -95,6 +95,7 @@ ROM,BMP_TS_MENU3,gfx_clut,ASSETS\GFX\ts_menu3.BMP
 ROM,BMP_PROJECTILES,gfx_clut,ASSETS\GFX\projectiles.bmp
 ROM,BMP_PAL_PROJ_CAGE,gfx_clut,ASSETS\GFX\pal_proj_cage.bmp
 ROM,BMP_PAL_PROJ_KANO,gfx_clut,ASSETS\GFX\pal_proj_kano.bmp
+ROM,BMP_PAL_PROJ_RAIDEN,gfx_clut,ASSETS\GFX\pal_proj_raiden.bmp
 ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
 ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
 ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP

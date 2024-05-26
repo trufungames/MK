@@ -2415,7 +2415,7 @@ __Z23fighterHandleProjectileP7FighterS0_:
 	move.b #1,186(%a1)
 	jra .L288
 .L277:
-	move.b #1,115(%a0)
+	move.b #1,112(%a0)
 	move.b #1,109(%a0)
 	moveq #5,%d0
 	move.l %d0,256(%a0)

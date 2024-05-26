@@ -136,6 +136,15 @@ static AnimationFrame kanoKnifeFrames[] = {
 	{ 80, 96, 304, 832, -1, 16, 4 }
 };
 
+static AnimationFrame raidenLightningFrames[] = {
+	{ 64, 112, 512, 944, 0, 0, 4 },
+	{ 64, 112, 576, 944, 0, 0, 4 },
+	{ 64, 96, 640, 976, 0, 0, 4 },
+	{ 64, 96, 704, 992, 0, 0, 4 },
+	{ 64, 96, 704, 992, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
 static AnimationFrame projectileGreenBoltFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 6 },
 	{ 0, 0, 0, 0, 0, 0, 6 },
@@ -182,6 +191,29 @@ static AnimationFrame projectileKnifeFrames[] = {
 	{ 32, 32, 128, 64, 32, 4, 2 }
 };
 
+static AnimationFrame projectileLightningFrames[] = {
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 48, 48, 0, 592, 0, 0, 4 },
+	{ 48, 32, 160, 576, 0, 0, 4 },
+	{ 32, 32, 160, 608, 0, 0, 4 },
+	{ 32, 32, 160, 640, 0, 0, 4 },
+	{ 64, 48, 0, 672, 0, 0, 2 },
+	{ 96, 48, 64, 688, 0, 0, 2 },
+	{ 80, 16, 0, 112, 0, 0, 2 },
+	{ 48, 16, 64, 128, 0, 0, 2 },
+	{ 64, 16, 0, 128, 0, 0, 2 },
+	{ 64, 32, 0, 144, 0, 0, 2 },
+	{ 32, 32, 64, 144, 0, 0, 2 },
+	{ 80, 16, 0, 112, 0, 0, 2 },
+	{ 48, 16, 64, 128, 0, 0, 2 },
+	{ 64, 16, 0, 128, 0, 0, 2 },
+	{ 64, 32, 0, 144, 0, 0, 2 },
+	{ 32, 32, 64, 144, 0, 0, 2 },
+	{ 80, 16, 0, 112, 0, 0, 2 },
+	{ 48, 16, 64, 128, 0, 0, 2 },
+	{ 64, 16, 0, 128, 0, 0, 2 }
+};
+
 static AnimationFrame projectileGreenBoltEndFrames[] = {
 	{ 32, 32, 128, 32, 80, 20, 5 },
 	{ 16, 48, 160, 0, 96, 13, 5 },
@@ -191,11 +223,19 @@ static AnimationFrame projectileGreenBoltEndFrames[] = {
 };
 
 static AnimationFrame projectileKnifeEndFrames[] = {
-	{ 32, 32, 160, 80, 70, 12, 5 },
-	{ 16, 32, 32, 48, 86, 12, 5 },
-	{ 16, 32, 32, 48, 86, 12, 5 },
+	{ 32, 32, 160, 80, 50, 12, 5 },
+	{ 16, 32, 32, 48, 66, 12, 5 },
+	{ 16, 32, 32, 48, 66, 12, 5 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame projectileLightningEndFrames[] = {
+	{ 48, 64, 0, 176, 0, 0, 5 },
+	{ 64, 80, 48, 176, 0, 0, 5 },
+	{ 80, 96, 112, 192, 0, 0, 5 },
+	{ 80, 96, 0, 256, 0, 0, 4 },
+	{ 80, 96, 0, 256, 0, 0, 4 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -2461,7 +2501,10 @@ static int specials_Cage_ShadowKick_Inputs[] = { INPUT_BACK, INPUT_FORWARD, INPU
 static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
 static int specials_Kano_Knife_Inputs[] = { INPUT_FORWARD, INPUT_BACK, 0, 0, 0, INPUT_BLK }; //if IsBlocking
 static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK }; //if IsBlocking
-static int specials_Kano_Maaaaybbbeee_Inputs[] = { 0, 0, 0, 0, 0, 0 };
+static int specials_Kano_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
+static int specials_Raiden_Lightning_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
+static int specials_Raiden_Torpedo_Inputs[] = { INPUT_FORWARD, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
+static int specials_Raiden_Teleport_Inputs[] = { INPUT_UP, INPUT_DOWN, 0, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -2638,6 +2681,7 @@ void setPlayer2Name(char* name, int length);
 void displayWinnerMedals();
 void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3354,6 +3398,16 @@ void basicmain()
 		fighterKano.hitFallFrames = &kanoHitFallFrames;
 		fighterKano.hitSweepFrames = &kanoHitSweepFrames;
 		fighterKano.kipUpFrames = &kanoKipUpFrames;
+		fighterKano2.projectileAnimator = &lightningAnimator;
+		fighterKano2.projectileFrames = &projectileKnifeFrames;
+		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
+		fighterKano2.special1Inputs = &specials_Kano_Knife_Inputs;
+		fighterKano2.special2Inputs = &specials_Kano_CannonBall_Inputs;
+		fighterKano2.special1InputCount = 2;
+		fighterKano2.special2InputCount = 4;
+		fighterKano2.special3InputCount = 1;
+		fighterKano2.special1Frames = &kanoKnifeFrames;
+		fighterKano2.doSpecialMove1 = &doSpecial_Kano_Knife;
 		fighterKano2.idleFrames = &kanoIdleFrames;
 		fighterKano2.dizzyFrames = &kanoDizzyFrames;
 		fighterKano2.winsFrames = &kanoWinsFrames;
@@ -3389,7 +3443,17 @@ void basicmain()
 		fighterKano2.hitFallFrames = &kanoHitFallFrames;
 		fighterKano2.hitSweepFrames = &kanoHitSweepFrames;
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
-		//Raiden
+		//Raide
+		fighterRaiden.projectileAnimator = &lightningAnimator;
+		fighterRaiden.projectileFrames = &projectileLightningFrames;
+		fighterRaiden.projectileEndFrames = &projectileLightningEndFrames;
+		fighterRaiden.special1Inputs = &specials_Raiden_Lightning_Inputs;
+		fighterRaiden.special2Inputs = &specials_Raiden_Torpedo_Inputs;
+		fighterRaiden.special1InputCount = 3;
+		fighterRaiden.special2InputCount = 3;
+		fighterRaiden.special3InputCount = 1;
+		fighterRaiden.special1Frames = &raidenLightningFrames;
+		fighterRaiden.doSpecialMove1 = &doSpecial_Raiden_Lightning;
 		fighterRaiden.idleFrames = &raidenIdleFrames;
 		fighterRaiden.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden.winsFrames = &raidenWinsFrames;
@@ -3425,6 +3489,16 @@ void basicmain()
 		fighterRaiden.hitUppercutFrames = &raidenHitUppercutFrames;
 		fighterRaiden.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
+		fighterRaiden2.projectileAnimator = &lightningAnimator;
+		fighterRaiden2.projectileFrames = &projectileLightningFrames;
+		fighterRaiden2.projectileEndFrames = &projectileLightningEndFrames;
+		fighterRaiden2.special1Inputs = &specials_Raiden_Lightning_Inputs;
+		fighterRaiden2.special2Inputs = &specials_Raiden_Torpedo_Inputs;
+		fighterRaiden2.special1InputCount = 3;
+		fighterRaiden2.special2InputCount = 3;
+		fighterRaiden2.special3InputCount = 1;
+		fighterRaiden2.special1Frames = &raidenLightningFrames;
+		fighterRaiden2.doSpecialMove1 = &doSpecial_Raiden_Lightning;
 		fighterRaiden2.idleFrames = &raidenIdleFrames;
 		fighterRaiden2.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden2.winsFrames = &raidenWinsFrames;
@@ -6007,6 +6081,65 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 	if (!fighter->ProjectileMadeContact)
 	{
 		if (animationIsComplete(animator, 6))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
+		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
+		fighter->lastTicks = rapTicks;
+		sfxKanoKnife(fighter->soundHandler, fighter->isPlayer1);
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(animator, 5))
 		{
 			fighter->projectilePositionX += (8 * fighter->direction);
 
