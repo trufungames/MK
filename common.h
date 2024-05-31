@@ -115,6 +115,8 @@
 #define SOUND_TITLE_START 60
 #define SOUND_CAGE_GREENBOLT 61
 #define SOUND_KANO_KNIFE 62
+#define SOUND_RAIDEN_LIGHTNING 63
+#define SOUND_RAIDEN_LIGHTNING_END 64
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -154,6 +156,8 @@
 #define DMG_THROW 8
 #define DMG_GREENBOLT 5
 #define DMG_KNIFE 5
+#define DMG_LIGHTNING 5
+#define DMG_FIREBALL 5
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0

@@ -139,10 +139,19 @@ static AnimationFrame kanoKnifeFrames[] = {
 static AnimationFrame raidenLightningFrames[] = {
 	{ 64, 112, 512, 944, 0, 0, 4 },
 	{ 64, 112, 576, 944, 0, 0, 4 },
-	{ 64, 96, 640, 976, 0, 0, 4 },
-	{ 64, 96, 704, 992, 0, 0, 4 },
-	{ 64, 96, 704, 992, 0, 0, 4 },
+	{ 64, 96, 640, 976, 0, 16, 4 },
+	{ 64, 96, 704, 992, 0, 16, 4 },
+	{ 64, 96, 704, 992, 0, 16, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame kangFireballFrames[] = {
+	{ 64, 96, 848, 864, 0, 16, 4 },
+	{ 64, 80, 0, 880, 0, 32, 4 },
+	{ 64, 96, 64, 880, 0, 16, 4 },
+	{ 48, 112, 128, 864, 0, 0, 4 },
+	{ 48, 112, 176, 880, 0, 0, 4 },	
+	{ 48, 112, 176, 880, 0, 0, 4 }
 };
 
 static AnimationFrame projectileGreenBoltFrames[] = {
@@ -193,25 +202,48 @@ static AnimationFrame projectileKnifeFrames[] = {
 
 static AnimationFrame projectileLightningFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 48, 48, 0, 592, 0, 0, 4 },
-	{ 48, 32, 160, 576, 0, 0, 4 },
-	{ 32, 32, 160, 608, 0, 0, 4 },
-	{ 32, 32, 160, 640, 0, 0, 4 },
-	{ 64, 48, 0, 672, 0, 0, 2 },
-	{ 96, 48, 64, 688, 0, 0, 2 },
-	{ 80, 16, 0, 112, 0, 0, 2 },
-	{ 48, 16, 64, 128, 0, 0, 2 },
-	{ 64, 16, 0, 128, 0, 0, 2 },
-	{ 64, 32, 0, 144, 0, 0, 2 },
-	{ 32, 32, 64, 144, 0, 0, 2 },
-	{ 80, 16, 0, 112, 0, 0, 2 },
-	{ 48, 16, 64, 128, 0, 0, 2 },
-	{ 64, 16, 0, 128, 0, 0, 2 },
-	{ 64, 32, 0, 144, 0, 0, 2 },
-	{ 32, 32, 64, 144, 0, 0, 2 },
-	{ 80, 16, 0, 112, 0, 0, 2 },
-	{ 48, 16, 64, 128, 0, 0, 2 },
-	{ 64, 16, 0, 128, 0, 0, 2 }
+	{ 48, 48, 0, 592, 22, 22, 4 },
+	{ 48, 32, 160, 576, 16, 26, 4 },
+	{ 32, 32, 160, 608, 32, 16, 4 },
+	{ 32, 32, 160, 640, 32, 18, 4 },
+	{ 64, 48, 0, 672, 56, 8, 4 },
+	{ 96, 48, 64, 688, 56, 8, 4 },
+	{ 80, 16, 0, 112, 0, 24, 2 },
+	{ 48, 16, 64, 128, 0, 24, 2 },
+	{ 64, 16, 0, 128, 0, 24, 2 },
+	{ 64, 32, 0, 144, 0, 24, 2 },
+	{ 32, 32, 64, 144, 0, 24, 2 },
+	{ 80, 16, 0, 112, 0, 24, 2 },
+	{ 48, 16, 64, 128, 0, 24, 2 },
+	{ 64, 16, 0, 128, 0, 24, 2 },
+	{ 64, 32, 0, 144, 0, 24, 2 },
+	{ 32, 32, 64, 144, 0, 24, 2 },
+	{ 80, 16, 0, 112, 0, 24, 2 },
+	{ 48, 16, 64, 128, 0, 24, 2 },
+	{ 64, 16, 0, 128, 0, 24, 2 }
+};
+
+static AnimationFrame projectileFireballFrames[] = {
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 16, 32, 192, 64, 32, 16, 4 },
+	{ 32, 32, 176, 112, 42, 16, 4 },
+	{ 48, 16, 112, 176, 16, 16, 4 },
+	{ 80, 16, 128, 144, 0, 24, 4 },
+	{ 48, 16, 160, 176, 16, 32, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame projectileGreenBoltEndFrames[] = {
@@ -232,10 +264,18 @@ static AnimationFrame projectileKnifeEndFrames[] = {
 
 static AnimationFrame projectileLightningEndFrames[] = {
 	{ 48, 64, 0, 176, 0, 0, 5 },
-	{ 64, 80, 48, 176, 0, 0, 5 },
-	{ 80, 96, 112, 192, 0, 0, 5 },
-	{ 80, 96, 0, 256, 0, 0, 4 },
-	{ 80, 96, 0, 256, 0, 0, 4 }
+	{ 64, 80, 48, 176, 0, -8, 5 },
+	{ 80, 96, 112, 192, 0, -16, 5 },
+	{ 80, 96, 0, 256, 0, -16, 4 },
+	{ 80, 96, 0, 256, 0, -16, 4 }
+};
+
+static AnimationFrame projectileFireballEndFrames[] = {
+	{ 32, 48, 80, 288, 32, 0, 6 },
+	{ 32, 48, 112, 288, 32, 0, 6 },
+	{ 48, 48, 144, 288, 32, 0, 6 },
+	{ 48, 64, 112, 336, 32, 0, 6 },
+	{ 48, 64, 160, 336, 32, 0, 6 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -2505,6 +2545,9 @@ static int specials_Kano_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 static int specials_Raiden_Lightning_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
 static int specials_Raiden_Torpedo_Inputs[] = { INPUT_FORWARD, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Raiden_Teleport_Inputs[] = { INPUT_UP, INPUT_DOWN, 0, 0, 0, 0 };
+static int specials_Kang_Fireball_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
+static int specials_Kang_FlyingKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
+static int specials_Kang_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -2682,6 +2725,7 @@ void displayWinnerMedals();
 void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3535,6 +3579,17 @@ void basicmain()
 		fighterRaiden2.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden2.hitSweepFrames = &raidenHitSweepFrames;
 		//Liu Kang
+		fighterKang.projectileAnimator = &lightningAnimator;
+		fighterKang.projectileFrames = &projectileFireballFrames;
+		fighterKang.projectileEndFrames = &projectileFireballEndFrames;
+		fighterKang.special1Inputs = &specials_Kang_Fireball_Inputs;
+		fighterKang.special2Inputs = &specials_Kang_FlyingKick_Inputs;
+		fighterKang.special3Inputs = &specials_Kang_NONE_Inputs;
+		fighterKang.special1InputCount = 3;
+		fighterKang.special2InputCount = 3;
+		fighterKang.special3InputCount = 1;
+		fighterKang.special1Frames = &kangFireballFrames;
+		fighterKang.doSpecialMove1 = &doSpecial_Kang_Fireball;
 		fighterKang.idleFrames = &kangIdleFrames;
 		fighterKang.dizzyFrames = &kangDizzyFrames;
 		fighterKang.winsFrames = &kangWinsFrames;
@@ -3570,6 +3625,17 @@ void basicmain()
 		fighterKang.hitUppercutFrames = &kangHitUppercutFrames;
 		fighterKang.hitFallFrames = &kangHitFallFrames;
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
+		fighterKang2.projectileAnimator = &lightningAnimator;
+		fighterKang2.projectileFrames = &projectileFireballFrames;
+		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
+		fighterKang2.special1Inputs = &specials_Kang_Fireball_Inputs;
+		fighterKang2.special2Inputs = &specials_Kang_FlyingKick_Inputs;
+		fighterKang2.special3Inputs = &specials_Kang_NONE_Inputs;
+		fighterKang2.special1InputCount = 3;
+		fighterKang2.special2InputCount = 3;
+		fighterKang2.special3InputCount = 1;
+		fighterKang2.special1Frames = &kangFireballFrames;
+		fighterKang2.doSpecialMove1 = &doSpecial_Kang_Fireball;
 		fighterKang2.idleFrames = &kangIdleFrames;
 		fighterKang2.dizzyFrames = &kangDizzyFrames;
 		fighterKang2.winsFrames = &kangWinsFrames;
@@ -4613,7 +4679,9 @@ void basicmain()
 					case 4:
 						//Raiden
 						fighterUpdate(delta, &fighterRaiden, &raidenAnimator);
-						updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+
+						if (fighterRaiden.IsIdle)
+							updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
 						break;
 					case 5:
 						//Liu Kang
@@ -4649,7 +4717,9 @@ void basicmain()
 					case 4:
 						//Raiden
 						fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2);
-						updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+
+						if (fighterRaiden2.IsIdle)
+							updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 						break;
 					case 5:
 						//Liu Kang
@@ -6050,6 +6120,7 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 			sprite[fighter->lightningSpriteIndex].was_hit = -1;
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
 		}
 
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
@@ -6080,7 +6151,7 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 
 	if (!fighter->ProjectileMadeContact)
 	{
-		if (animationIsComplete(animator, 6))
+		if (animationIsComplete(animator, 7))
 		{
 			fighter->projectilePositionX += (8 * fighter->direction);
 
@@ -6109,6 +6180,7 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 			sprite[fighter->lightningSpriteIndex].was_hit = -1;
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
 		}
 
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
@@ -6116,6 +6188,76 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 }
 
 void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->HasSetupProjectileMovement = false;
+		fighter->ProjectileMadeContact = false;
+		animator->currentFrame = 0;
+		fighter->IsIdle = false;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
+		fighter->lastTicks = rapTicks;
+		sfxRaidenLightning(fighter->soundHandler, fighter->isPlayer1);
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(fighter->projectileAnimator, 8))
+		{
+			if (!fighter->HasSetupProjectileMovement)
+			{
+				fighter->HasSetupProjectileMovement = true;
+				fighter->projectilePositionX += 64;
+			}
+			
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+				fighterResetRaidenLightning(fighter);
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 5, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+			sfxRaidenLightningEnd(fighter->soundHandler, fighter->isPlayer1);
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	if (!fighter->HasSetupSpecial1)
 	{
@@ -6132,14 +6274,14 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 		sprite[fighter->lightningSpriteIndex].hbox = 16;
 		sprite[fighter->lightningSpriteIndex].vbox = 16;
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxKanoKnife(fighter->soundHandler, fighter->isPlayer1);
+		sfxCageGreenbolt(fighter->soundHandler, fighter->isPlayer1);
 	}
 
 	if (!fighter->ProjectileMadeContact)
 	{
-		if (animationIsComplete(animator, 5))
+		if (animationIsComplete(animator, 6))
 		{
 			fighter->projectilePositionX += (8 * fighter->direction);
 
@@ -6153,7 +6295,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 		}
 
 		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
 	else
 	{
@@ -6168,6 +6310,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 			sprite[fighter->lightningSpriteIndex].was_hit = -1;
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			//fighterResetRaidenLightning(fighter);
 		}
 
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);

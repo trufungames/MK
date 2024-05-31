@@ -579,5 +579,23 @@ sample62:	dc.l	kano_knife_sam		; start of sample
 			dc.b	0				; fine tune
 s62_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
+		
+sample63:	dc.l	raiden_lightning_sam		; start of sample
+			dc.l	raiden_lightning_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s63_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample64:	dc.l	raiden_lightning_end_sam		; start of sample
+			dc.l	raiden_lightning_end_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s64_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
 
 ; END OF FILE.

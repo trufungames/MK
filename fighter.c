@@ -239,6 +239,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     }
 
     sprite[fighter->spriteIndex-1].active = R_is_active;
+    fighterResetRaidenLightning(fighter);
     fighterSetOnFloor(fighter);
     fighterAlignSpriteAndHitbox(fighter);
     impactFrameReset(fighter);
@@ -276,7 +277,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     {
         sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_ - (4 * fighter->direction);
 
-        if (fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner)
+        if ((fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner) || fighter->IsDoingSpecial1)
         {
             sprite[fighter->lightningSpriteIndex].active = R_is_active;						
         }
@@ -856,6 +857,18 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
     {
         fighter->DPadWasRecorded = true;
         playerinputPush(fighter, JAGPAD_RIGHT);
+    }
+
+    if (fighter->pad & JAGPAD_DOWN && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    {
+        fighter->DPadWasRecorded = true;
+        playerinputPush(fighter, JAGPAD_DOWN);
+    }
+
+    if (fighter->pad & JAGPAD_UP && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    {
+        fighter->DPadWasRecorded = true;
+        playerinputPush(fighter, JAGPAD_UP);
     }
 }
 
@@ -1899,6 +1912,8 @@ void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2)
     fighterResetFlags(fighter2);
     impactFrameReset(fighter1);
     impactFrameReset(fighter2);
+    fighterResetRaidenLightning(fighter1);
+    fighterResetRaidenLightning(fighter2);
 }
 
 void fighterResetFlags(struct Fighter* fighter)
@@ -2131,6 +2146,57 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter2->NoBlood = true;
             fighter2->lastTicks = rapTicks;
             fighterAddPendingDamage(fighter2, DMG_KNIFE, false, fighter1, POINTS_PROJECTILE);
+        }
+        else
+        {
+            fighter2->IsBlockingHit = true;
+            fighter2->DoBlockSequence = true;
+            fighter2->lastTicks = rapTicks;
+        }
+    }
+    else if (fighter1->fighterIndex == RAIDEN)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighter2->IsBlocking)
+        {            
+            if (fighter2->IsJumping)
+            {
+                fighter2->IsHitDropKick = true;
+            }
+            else
+            {
+                fighter2->IsHitBackLight = true;
+            }
+            
+            fighter2->NoBlood = true;
+            fighter2->lastTicks = rapTicks;
+            fighterAddPendingDamage(fighter2, DMG_LIGHTNING, false, fighter1, POINTS_PROJECTILE);
+        }
+        else
+        {
+            fighter2->IsBlockingHit = true;
+            fighter2->DoBlockSequence = true;
+            fighter2->lastTicks = rapTicks;
+        }
+    }
+    else if (fighter1->fighterIndex == KANG)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighter2->IsBlocking)
+        {            
+            if (fighter2->IsJumping)
+            {
+                fighter2->IsHitDropKick = true;                
+            }
+            else
+            {
+                fighter2->IsHitBack = true;
+                fighter2->NoBlood = true;
+            }
+            
+            fighterAddPendingDamage(fighter2, DMG_FIREBALL, false, fighter1, POINTS_PROJECTILE);
         }
         else
         {
@@ -2655,4 +2721,14 @@ void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator)
         animator->currentFrame = 0;
         fighterSetOnFloor(fighter);
     }
+}
+
+void fighterResetRaidenLightning(struct Fighter* fighter)
+{
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_LIGHTNING;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_LIGHTNING;
+    sprite[fighter->lightningSpriteIndex].gwidth = 320;
+    jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 }

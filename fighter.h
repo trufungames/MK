@@ -98,6 +98,7 @@ struct Fighter {
     bool HasSetupSpecial1;
     bool HasSetupSpecial2;
     bool HasSetupSpecial3;
+    bool HasSetupProjectileMovement;
     bool HasSetupProjectileEnd;
     bool DoBlockSequence;
     bool DoUppercutSequence;
@@ -307,3 +308,5 @@ void fighterResetTicks(struct Fighter* fighter);
 void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator);
+
+void fighterResetRaidenLightning(struct Fighter* fighter);
