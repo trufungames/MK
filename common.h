@@ -117,6 +117,7 @@
 #define SOUND_KANO_KNIFE 62
 #define SOUND_RAIDEN_LIGHTNING 63
 #define SOUND_RAIDEN_LIGHTNING_END 64
+#define SOUND_SONYA_RINGS 65
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -158,6 +159,7 @@
 #define DMG_KNIFE 5
 #define DMG_LIGHTNING 5
 #define DMG_FIREBALL 5
+#define DMG_RINGS 5
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0

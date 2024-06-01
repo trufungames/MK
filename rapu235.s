@@ -598,4 +598,13 @@ sample64:	dc.l	raiden_lightning_end_sam		; start of sample
 s64_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
+sample65:	dc.l	sonya_rings_sam		; start of sample
+			dc.l	sonya_rings_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s65_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

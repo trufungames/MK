@@ -97,6 +97,7 @@ ROM,BMP_PAL_PROJ_CAGE,gfx_clut,ASSETS\GFX\pal_proj_cage.bmp
 ROM,BMP_PAL_PROJ_KANO,gfx_clut,ASSETS\GFX\pal_proj_kano.bmp
 ROM,BMP_PAL_PROJ_RAIDEN,gfx_clut,ASSETS\GFX\pal_proj_raiden.bmp
 ROM,BMP_PAL_PROJ_KANG,gfx_clut,ASSETS\GFX\pal_proj_kang.bmp
+ROM,BMP_PAL_PROJ_SONYA,gfx_clut,ASSETS\GFX\pal_proj_sonya.bmp
 ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
 ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
 ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP
@@ -166,6 +167,7 @@ ROM,fatality_sam,sfx_raw8000,ASSETS\SFX\fatality.wav
 ROM,cage_yeah_sam,sfx_raw8000,ASSETS\SFX\cage_yeah.wav
 ROM,cage_greenbolt_sam,sfx_raw8000,ASSETS\SFX\cage_greenbolt.wav
 ROM,kano_knife_sam,sfx_raw8000,ASSETS\SFX\kano_knife.wav
+ROM,sonya_rings_sam,sfx_raw8000,ASSETS\SFX\sonya_rings.wav
 ROM,kano_yell_sam,sfx_raw8000,ASSETS\SFX\kano_yell.wav
 ROM,kano_headbutt_sam,sfx_raw8000,ASSETS\SFX\kano_headbutt.wav
 ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav

@@ -476,6 +476,15 @@ void sfxKanoKnife(struct SoundHandler* soundHandler, bool isPlayer1)
 	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_KANO_KNIFE, 8000);
 }
 
+void sfxSonyaRings(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SONYA_RINGS, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SONYA_RINGS, 8000);
+}
+
 void sfxRaidenLightning(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)
