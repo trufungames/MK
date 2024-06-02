@@ -61,8 +61,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //sound on/off
-	true,  //music on/off
+	false,  //sound on/off
+	false,  //music on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -256,14 +256,14 @@ static AnimationFrame projectileFireballFrames[] = {
 };
 
 static AnimationFrame projectileRingsFrames[] = {
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 48, 64, 0, 528, 0, 24, 4},
-	{ 48, 32, 48, 544, 0, 32, 4},
-	{ 48, 32, 48, 544, 0, 32, 4},
-	{ 48, 32, 48, 544, 0, 32, 4},
-	{ 48, 32, 48, 544, 0, 32, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 48, 64, 0, 528, 40, 12, 4},
+	{ 48, 32, 48, 544, 40, 16, 4},
+	{ 48, 32, 48, 544, 40, 16, 4},
+	{ 48, 32, 48, 544, 40, 16, 4},
+	{ 48, 32, 48, 544, 40, 16, 4},
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 6 },
@@ -311,11 +311,11 @@ static AnimationFrame projectileFireballEndFrames[] = {
 };
 
 static AnimationFrame projectileRingsEndFrames[] = {
-	{ 48, 112, 112, 576, 32, -16, 6 },
-	{ 32, 112, 48, 576, 48, -16, 6 },
-	{ 16, 112, 80, 576, 64, -16, 6 },
-	{ 16, 128, 96, 560, 64, -24, 6 },
-	{ 16, 128, 96, 560, 64, -24, 6 }
+	{ 48, 112, 112, 576, 48, -16, 6 },
+	{ 32, 112, 48, 576, 64, -16, 6 },
+	{ 16, 112, 80, 576, 80, -16, 6 },
+	{ 16, 128, 96, 560, 80, -24, 6 },
+	{ 16, 128, 96, 560, 80, -24, 6 }
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -2588,6 +2588,9 @@ static int specials_Raiden_Teleport_Inputs[] = { INPUT_UP, INPUT_DOWN, 0, 0, 0, 
 static int specials_Kang_Fireball_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Kang_FlyingKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Kang_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
+static int specials_Sonya_Rings_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
+static int specials_Sonya_LegGrab_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_DOWN, INPUT_BLK };
+static int specials_Sonya_SquareFlight_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -2766,6 +2769,7 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3854,6 +3858,17 @@ void basicmain()
 		fighterSubzero2.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero2.hitSweepFrames = &subzeroHitSweepFrames;
 		//Sonya
+		fighterSonya.projectileAnimator = &lightningAnimator;
+		fighterSonya.projectileFrames = &projectileRingsFrames;
+		fighterSonya.projectileEndFrames = &projectileRingsEndFrames;
+		fighterSonya.special1Inputs = &specials_Sonya_Rings_Inputs;
+		fighterSonya.special2Inputs = &specials_Sonya_LegGrab_Inputs;
+		fighterSonya.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
+		fighterSonya.special1InputCount = 3;
+		fighterSonya.special2InputCount = 3;
+		fighterSonya.special3InputCount = 1;
+		fighterSonya.special1Frames = &sonyaRingsFrames;
+		fighterSonya.doSpecialMove1 = &doSpecial_Sonya_Rings;
 		fighterSonya.idleFrames = &sonyaIdleFrames;
 		fighterSonya.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya.winsFrames = &sonyaWinsFrames;
@@ -3889,6 +3904,17 @@ void basicmain()
 		fighterSonya.hitUppercutFrames = &sonyaHitUppercutFrames;
 		fighterSonya.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
+		fighterSonya2.projectileAnimator = &lightningAnimator;
+		fighterSonya2.projectileFrames = &projectileRingsFrames;
+		fighterSonya2.projectileEndFrames = &projectileRingsEndFrames;
+		fighterSonya2.special1Inputs = &specials_Sonya_Rings_Inputs;
+		fighterSonya2.special2Inputs = &specials_Sonya_LegGrab_Inputs;
+		fighterSonya2.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
+		fighterSonya2.special1InputCount = 3;
+		fighterSonya2.special2InputCount = 3;
+		fighterSonya2.special3InputCount = 1;
+		fighterSonya2.special1Frames = &sonyaRingsFrames;
+		fighterSonya2.doSpecialMove1 = &doSpecial_Sonya_Rings;
 		fighterSonya2.idleFrames = &sonyaIdleFrames;
 		fighterSonya2.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya2.winsFrames = &sonyaWinsFrames;
@@ -6351,6 +6377,66 @@ void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* ani
 			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 			//fighterResetRaidenLightning(fighter);
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
+		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
+		fighter->lastTicks = rapTicks;
+		sfxSonyaRings(fighter->soundHandler, fighter->isPlayer1);
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(animator, 4))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
 		}
 
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);

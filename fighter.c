@@ -2205,6 +2205,31 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter2->lastTicks = rapTicks;
         }
     }
+    else if (fighter1->fighterIndex == SONYA)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighter2->IsBlocking)
+        {            
+            if (fighter2->IsJumping)
+            {
+                fighter2->IsHitDropKick = true;                
+            }
+            else
+            {
+                fighter2->IsHitBack = true;
+                fighter2->NoBlood = true;
+            }
+            
+            fighterAddPendingDamage(fighter2, DMG_RINGS, false, fighter1, POINTS_PROJECTILE);
+        }
+        else
+        {
+            fighter2->IsBlockingHit = true;
+            fighter2->DoBlockSequence = true;
+            fighter2->lastTicks = rapTicks;
+        }
+    }
 }
 
 void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
