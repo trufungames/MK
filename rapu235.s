@@ -607,4 +607,32 @@ sample65:	dc.l	sonya_rings_sam		; start of sample
 s65_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
+sample66:	dc.l	subzero_freeze_sam		; start of sample
+			dc.l	subzero_freeze_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s66_vol:		dc.b	163				; volume
+			dc.l	8000			; default play rate
+
+sample67:	dc.l	subzero_freeze_end_sam		; start of sample
+			dc.l	subzero_freeze_end_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s67_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+	
+sample68:	dc.l	scorpion_harpoon_sam		; start of sample
+			dc.l	scorpion_harpoon_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s68_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+
 ; END OF FILE.

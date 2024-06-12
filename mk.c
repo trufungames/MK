@@ -61,8 +61,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //sound on/off
-	false,  //music on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -159,20 +159,47 @@ static AnimationFrame sonyaRingsFrames[] = {
 	{ 80, 96, 176, 768, 0, 16, 4 },
 	{ 80, 96, 256, 800, 0, 16, 4 },
 	{ 80, 96, 256, 800, 0, 16, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },	
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame subzeroFreezeFrames[] = {
+	{ 64, 112, 320, 1024, 0, 0, 4 },
+	{ 64, 96, 384, 1024, 0, 16, 4 },
+	{ 80, 96, 448, 1008, 0, 16, 4 },	
+	{ 80, 96, 448, 1008, 0, 16, 4 },
+	{ 80, 96, 448, 1008, 0, 16, 4 },
+	{ 80, 96, 448, 1008, 0, 16, 4 }
+};
+
+static AnimationFrame scorpionHarpoonFrames[] = {
+	{ 80, 112, 736, 912, -16, 0, 5 },
+	{ 64, 96, 816, 912, 0, 16, 5 },
+	{ 96, 112, 880, 928, 0, 0, 5 },
+	{ 96, 112, 880, 928, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame scorpionHarpoonEndFrames[] = {
+	{ 96, 112, 0, 1024, 0, 0, 54 },
+	{ 96, 112, 96, 1024, 0, 0, 54 },
+	{ 64, 112, 192, 1024, 0, 0, 54 },
+	{ 64, 112, 256, 1008, 0, 0, 54 },
+	{ 64, 112, 256, 1008, 0, 0, 54 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame projectileGreenBoltFrames[] = {
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 0, 0, 0, 0, 0, 0, 6 },
-	{ 0, 0, 0, 0, 0, 0, 6 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 32, 32, 0, 0, 0, 44, 4},
 	{ 48, 32, 32, 0, 18, 42, 4},
 	{ 64, 32, 80, 0, 29, 25, 4},
 	{ 80, 16, 0, 32, 17, 25, 4},
 	{ 48, 16, 80, 32, 52, 24, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
@@ -278,6 +305,52 @@ static AnimationFrame projectileRingsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
+static AnimationFrame projectileFreezeFrames[] = {
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 16, 16, 64, 352, 64, 34, 4},
+	{ 16, 32, 80, 336, 64, 28, 4},
+	{ 48, 32, 0, 368, 64, 28, 4},
+	{ 64, 32, 48, 368, 64, 28, 4},
+	{ 48, 16, 0, 496, 64, 34, 4},
+	{ 48, 16, 0, 496, 64, 34, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame projectileHarpoonFrames[] = {
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 208, 32, 0, 400, -112, 16, 4},	
+	{ 208, 32, 0, 432, -112, 16, 4},
+	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 208, 32, 0, 400, -112, 16, 4},	
+	{ 208, 32, 0, 432, -112, 16, 4},
+	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 208, 32, 0, 400, -112, 16, 4},	
+	{ 208, 32, 0, 432, -112, 16, 4},
+	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 208, 32, 0, 400, -112, 16, 4},	
+	{ 208, 32, 0, 432, -112, 16, 4},
+	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 208, 32, 0, 400, -112, 16, 4},	
+	{ 208, 32, 0, 432, -112, 16, 4},
+	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
 static AnimationFrame projectileGreenBoltEndFrames[] = {
 	{ 32, 32, 128, 32, 80, 20, 5 },
 	{ 16, 48, 160, 0, 96, 13, 5 },
@@ -316,6 +389,22 @@ static AnimationFrame projectileRingsEndFrames[] = {
 	{ 16, 112, 80, 576, 80, -16, 6 },
 	{ 16, 128, 96, 560, 80, -24, 6 },
 	{ 16, 128, 96, 560, 80, -24, 6 }
+};
+
+static AnimationFrame projectileFreezeEndFrames[] = {
+	{ 48, 48, 48, 496, 68, 16, 6 },
+	{ 32, 64, 96, 496, 84, 8, 6 },
+	{ 32, 80, 128, 496, 84, 8, 6 },
+	{ 16, 80, 160, 496, 100, 8, 6 },
+	{ 16, 80, 160, 496, 100, 2, 6 }
+};
+
+static AnimationFrame projectileHarpoonEndFrames[] = {
+	{ 208, 32, 0, 400, 0, 0, 4},
+	{ 208, 32, 0, 400, 0, 0, 4},
+	{ 208, 32, 0, 400, 0, 0, 4},
+	{ 208, 32, 0, 400, 0, 0, 4},
+	{ 208, 32, 0, 400, 0, 0, 4}
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -2581,16 +2670,19 @@ static int specials_Cage_ShadowKick_Inputs[] = { INPUT_BACK, INPUT_FORWARD, INPU
 static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
 static int specials_Kano_Knife_Inputs[] = { INPUT_FORWARD, INPUT_BACK, 0, 0, 0, INPUT_BLK }; //if IsBlocking
 static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK }; //if IsBlocking
-static int specials_Kano_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
+static int specials_FIGHTER_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 static int specials_Raiden_Lightning_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
 static int specials_Raiden_Torpedo_Inputs[] = { INPUT_FORWARD, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Raiden_Teleport_Inputs[] = { INPUT_UP, INPUT_DOWN, 0, 0, 0, 0 };
 static int specials_Kang_Fireball_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Kang_FlyingKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
-static int specials_Kang_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 static int specials_Sonya_Rings_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Sonya_LegGrab_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_DOWN, INPUT_BLK };
 static int specials_Sonya_SquareFlight_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
+static int specials_Subzero_Freeze_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
+static int specials_Subzero_Slide_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_BACK, INPUT_BLK };
+static int specials_Scorpion_Harpoon_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
+static int specials_Scorpion_Teleport_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_DOWN, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -2770,6 +2862,8 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Subzero_Freeze(struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3628,7 +3722,7 @@ void basicmain()
 		fighterKang.projectileEndFrames = &projectileFireballEndFrames;
 		fighterKang.special1Inputs = &specials_Kang_Fireball_Inputs;
 		fighterKang.special2Inputs = &specials_Kang_FlyingKick_Inputs;
-		fighterKang.special3Inputs = &specials_Kang_NONE_Inputs;
+		fighterKang.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKang.special1InputCount = 3;
 		fighterKang.special2InputCount = 3;
 		fighterKang.special3InputCount = 1;
@@ -3674,7 +3768,7 @@ void basicmain()
 		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
 		fighterKang2.special1Inputs = &specials_Kang_Fireball_Inputs;
 		fighterKang2.special2Inputs = &specials_Kang_FlyingKick_Inputs;
-		fighterKang2.special3Inputs = &specials_Kang_NONE_Inputs;
+		fighterKang2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKang2.special1InputCount = 3;
 		fighterKang2.special2InputCount = 3;
 		fighterKang2.special3InputCount = 1;
@@ -3716,6 +3810,17 @@ void basicmain()
 		fighterKang2.hitFallFrames = &kangHitFallFrames;
 		fighterKang2.hitSweepFrames = &kangHitSweepFrames;
 		//Scorpion
+		fighterScorpion.projectileAnimator = &lightningAnimator;
+		fighterScorpion.projectileFrames = &projectileHarpoonFrames;
+		fighterScorpion.projectileEndFrames = &projectileHarpoonEndFrames;
+		fighterScorpion.special1Inputs = &specials_Scorpion_Harpoon_Inputs;
+		fighterScorpion.special2Inputs = &specials_Scorpion_Teleport_Inputs;
+		fighterScorpion.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterScorpion.special1InputCount = 3;
+		fighterScorpion.special2InputCount = 3;
+		fighterScorpion.special3InputCount = 1;
+		fighterScorpion.special1Frames = &scorpionHarpoonFrames;
+		fighterScorpion.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
 		fighterScorpion.idleFrames = &scorpionIdleFrames;
 		fighterScorpion.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion.winsFrames = &subzeroWinsFrames;
@@ -3751,6 +3856,17 @@ void basicmain()
 		fighterScorpion.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterScorpion.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterScorpion2.projectileAnimator = &lightningAnimator;
+		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
+		fighterScorpion2.projectileEndFrames = &projectileHarpoonEndFrames;
+		fighterScorpion2.special1Inputs = &specials_Scorpion_Harpoon_Inputs;
+		fighterScorpion2.special2Inputs = &specials_Scorpion_Teleport_Inputs;
+		fighterScorpion2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterScorpion2.special1InputCount = 3;
+		fighterScorpion2.special2InputCount = 3;
+		fighterScorpion2.special3InputCount = 1;
+		fighterScorpion2.special1Frames = &scorpionHarpoonFrames;
+		fighterScorpion2.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
 		fighterScorpion2.idleFrames = &scorpionIdleFrames;
 		fighterScorpion2.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion2.winsFrames = &subzeroWinsFrames;
@@ -3787,6 +3903,17 @@ void basicmain()
 		fighterScorpion2.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion2.hitSweepFrames = &subzeroHitSweepFrames;
 		//Sub-Zero
+		fighterSubzero.projectileAnimator = &lightningAnimator;
+		fighterSubzero.projectileFrames = &projectileFreezeFrames;
+		fighterSubzero.projectileEndFrames = &projectileFreezeEndFrames;
+		fighterSubzero.special1Inputs = &specials_Subzero_Freeze_Inputs;
+		fighterSubzero.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterSubzero.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterSubzero.special1InputCount = 3;
+		fighterSubzero.special2InputCount = 3;
+		fighterSubzero.special3InputCount = 1;
+		fighterSubzero.special1Frames = &subzeroFreezeFrames;
+		fighterSubzero.doSpecialMove1 = &doSpecial_Subzero_Freeze;
 		fighterSubzero.idleFrames = &subzeroIdleFrames;
 		fighterSubzero.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero.winsFrames = &subzeroWinsFrames;
@@ -3822,6 +3949,17 @@ void basicmain()
 		fighterSubzero.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterSubzero2.projectileAnimator = &lightningAnimator;
+		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
+		fighterSubzero2.projectileEndFrames = &projectileFreezeEndFrames;
+		fighterSubzero2.special1Inputs = &specials_Subzero_Freeze_Inputs;
+		fighterSubzero2.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterSubzero2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterSubzero2.special1InputCount = 3;
+		fighterSubzero2.special2InputCount = 3;
+		fighterSubzero2.special3InputCount = 1;
+		fighterSubzero2.special1Frames = &subzeroFreezeFrames;
+		fighterSubzero2.doSpecialMove1 = &doSpecial_Subzero_Freeze;
 		fighterSubzero2.idleFrames = &subzeroIdleFrames;
 		fighterSubzero2.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero2.winsFrames = &subzeroWinsFrames;
@@ -5742,6 +5880,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 0:
 			//Johnny Cage
 			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),14,16);
+			fighterCage.defaultClut = BMPCAGE_clut;
+			fighterCage.frozenClut = BMP_PAL_FROZEN_CAGE_clut;
 			fighterCage.spriteIndex = P1_FIGHTER_PIT;
 			cageAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterCage, true, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse, &cageImpactFrameBodyPunch, &cageImpactFrameBodyKick, &cageImpactFrameDuckKick, &cageImpactFrameThrow);
@@ -5752,6 +5892,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 1:
 			//Kano
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),14,16);
+			fighterKano.defaultClut = BMPKANO_clut;
+			fighterKano.frozenClut = BMP_PAL_FROZEN_KANO_clut;
 			fighterKano.spriteIndex = P1_FIGHTER_PIT;
 			kanoAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKano, true, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &kanoImpactFrameThrow);
@@ -5761,6 +5903,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 2:
 			//Sub-Zero
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),14,16);
+			fighterSubzero.defaultClut = BMPSUBZERO_clut;
+			fighterSubzero.frozenClut = BMP_PAL_FROZEN_SUBZERO_clut;
 			fighterSubzero.spriteIndex = P1_FIGHTER_PIT;
 			subzeroAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
@@ -5770,6 +5914,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 3:
 			//Sonya
 			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),14,16);
+			fighterSonya.defaultClut = BMPSONYA_clut;
+			fighterSonya.frozenClut = BMP_PAL_FROZEN_SONYA_clut;
 			fighterSonya.spriteIndex = P1_FIGHTER_PIT;
 			sonyaAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya, true, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &sonyaImpactFrameRoundhouse, &sonyaImpactFrameBodyPunch, &sonyaImpactFrameBodyKick, &sonyaImpactFrameDuckKick, &sonyaImpactFrameThrow);
@@ -5779,6 +5925,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 4:
 			//Raiden
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),14,16);
+			fighterRaiden.defaultClut = BMPRAIDEN_clut;
+			fighterRaiden.frozenClut = BMP_PAL_FROZEN_RAIDEN_clut;
 			fighterRaiden.spriteIndex = P1_FIGHTER_PIT;
 			raidenAnimator.spriteIndex = P1_FIGHTER_PIT;
 			lightningAnimator.spriteIndex = P1_PROJECTILE;
@@ -5789,6 +5937,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 5:
 			//Liu Kang
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),14,16);
+			fighterKang.defaultClut = BMPKANG_clut;
+			fighterKang.frozenClut = BMP_PAL_FROZEN_KANG_clut;
 			fighterKang.spriteIndex = P1_FIGHTER_PIT;
 			kangAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterKang, true, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &kangImpactFrameThrow);
@@ -5798,6 +5948,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 6:
 			//Scorpion
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),14,16);
+			fighterScorpion.defaultClut = PAL_SCORPION_clut;
+			fighterScorpion.frozenClut = BMP_PAL_FROZEN_SCORPION_clut;
 			fighterScorpion.spriteIndex = P1_FIGHTER_PIT;
 			scorpionAnimator.spriteIndex = P1_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
@@ -5811,6 +5963,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 0:
 			//Johnny Cage
 			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
+			fighterCage2.defaultClut = BMPCAGE_clut;
+			fighterCage2.frozenClut = BMP_PAL_FROZEN_CAGE_clut;
 			fighterCage2.spriteIndex = P2_FIGHTER_PIT;
 			cageAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterCage2, false, &soundHandler, &cageImpactFrameLowPunch, &cageImpactFrameHighPunch, &cageImpactFrameLowKick, &cageImpactFrameHighKick, &cageImpactFrameUppercut, &cageImpactFrameSweep, &cageImpactFrameJumpPunch, &cageImpactFrameJumpKick, &cageImpactFrameRoundhouse, &cageImpactFrameBodyPunch, &cageImpactFrameBodyKick, &cageImpactFrameDuckKick, &cageImpactFrameThrow);
@@ -5820,6 +5974,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 1:
 			//Kano
 			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
+			fighterKano2.defaultClut = BMPKANO_clut;
+			fighterKano2.frozenClut = BMP_PAL_FROZEN_KANO_clut;
 			fighterKano2.spriteIndex = P2_FIGHTER_PIT;
 			kanoAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKano2, false, &soundHandler, &kanoImpactFrameLowPunch, &kanoImpactFrameHighPunch, &kanoImpactFrameLowKick, &kanoImpactFrameHighKick, &kanoImpactFrameUppercut, &kanoImpactFrameSweep, &kanoImpactFrameJumpPunch, &kanoImpactFrameJumpKick, &kanoImpactFrameRoundhouse, &kanoImpactFrameBodyPunch, &kanoImpactFrameBodyKick, &kanoImpactFrameDuckKick, &kanoImpactFrameThrow);
@@ -5829,6 +5985,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 2:
 			//Sub-Zero
 			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
+			fighterSubzero2.defaultClut = BMPSUBZERO_clut;
+			fighterSubzero2.frozenClut = BMP_PAL_FROZEN_SUBZERO_clut;
 			fighterSubzero2.spriteIndex = P2_FIGHTER_PIT;
 			subzeroAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSubzero2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
@@ -5838,6 +5996,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 3:
 			//Sonya
 			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
+			fighterSonya2.defaultClut = BMPSONYA_clut;
+			fighterSonya2.frozenClut = BMP_PAL_FROZEN_SONYA_clut;
 			fighterSonya2.spriteIndex = P2_FIGHTER_PIT;
 			sonyaAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterSonya2, false, &soundHandler, &sonyaImpactFrameLowPunch, &sonyaImpactFrameHighPunch, &sonyaImpactFrameLowKick, &sonyaImpactFrameHighKick, &sonyaImpactFrameUppercut, &sonyaImpactFrameSweep, &sonyaImpactFrameJumpPunch, &sonyaImpactFrameJumpKick, &sonyaImpactFrameRoundhouse, &sonyaImpactFrameBodyPunch, &sonyaImpactFrameBodyKick, &sonyaImpactFrameDuckKick, &sonyaImpactFrameThrow);
@@ -5847,6 +6007,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 4:
 			//Raiden
 			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
+			fighterRaiden2.defaultClut = BMPRAIDEN_clut;
+			fighterRaiden2.frozenClut = BMP_PAL_FROZEN_RAIDEN_clut;
 			fighterRaiden2.spriteIndex = P2_FIGHTER_PIT;
 			raidenAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			lightning2Animator.spriteIndex = P2_PROJECTILE;
@@ -5858,6 +6020,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 5:
 			//Liu Kang
 			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
+			fighterKang2.defaultClut = BMPKANG_clut;
+			fighterKang2.frozenClut = BMP_PAL_FROZEN_KANG_clut;
 			fighterKang2.spriteIndex = P2_FIGHTER_PIT;
 			kangAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterKang2, false, &soundHandler, &kangImpactFrameLowPunch, &kangImpactFrameHighPunch, &kangImpactFrameLowKick, &kangImpactFrameHighKick, &kangImpactFrameUppercut, &kangImpactFrameSweep, &kangImpactFrameJumpPunch, &kangImpactFrameJumpKick, &kangImpactFrameRoundhouse, &kangImpactFrameBodyPunch, &kangImpactFrameBodyKick, &kangImpactFrameDuckKick, &kangImpactFrameThrow);
@@ -5867,6 +6031,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 		case 6:
 			//Scorpion
 			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
+			fighterScorpion2.defaultClut = PAL_SCORPION_clut;
+			fighterScorpion2.frozenClut = BMP_PAL_FROZEN_SCORPION_clut;
 			fighterScorpion2.spriteIndex = P2_FIGHTER_PIT;
 			scorpionAnimator2.spriteIndex = P2_FIGHTER_PIT;
 			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
@@ -6142,6 +6308,7 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 		fighter->ProjectileMadeContact = false;
 		animator->currentFrame = 0;
 		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -6200,8 +6367,10 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 		fighter->HasSetupSpecial1 = true;
 		fighter->HasSetupProjectileEnd = false;
 		fighter->ProjectileMadeContact = false;
+		fighter->HasSetupProjectileMovement = false;
 		animator->currentFrame = 0;
 		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -6217,8 +6386,14 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 
 	if (!fighter->ProjectileMadeContact)
 	{
-		if (animationIsComplete(animator, 7))
+		if (animationIsComplete(animator, 6))
 		{
+			if (!fighter->HasSetupProjectileMovement)
+			{
+				fighter->HasSetupProjectileMovement = true;
+				fighter->projectilePositionX += (16 * fighter->direction);
+			}
+
 			fighter->projectilePositionX += (8 * fighter->direction);
 
 			if (fighter->direction == 1 && fighter->projectilePositionX > 320
@@ -6264,6 +6439,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 		animator->currentFrame = 0;
 		fighter->IsIdle = false;
 		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -6284,7 +6460,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 			if (!fighter->HasSetupProjectileMovement)
 			{
 				fighter->HasSetupProjectileMovement = true;
-				fighter->projectilePositionX += 64;
+				fighter->projectilePositionX += (64 * fighter->direction);
 			}
 			
 			fighter->projectilePositionX += (8 * fighter->direction);
@@ -6332,6 +6508,7 @@ void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* ani
 		fighter->ProjectileMadeContact = false;
 		animator->currentFrame = 0;
 		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -6392,6 +6569,7 @@ void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* anima
 		fighter->ProjectileMadeContact = false;
 		animator->currentFrame = 0;
 		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
 		fighter->projectileAnimator->currentFrame = 0;
 		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
 		fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -6422,6 +6600,133 @@ void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* anima
 
 		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Subzero_Freeze(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
+		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
+		fighter->lastTicks = rapTicks;
+		sfxSubzeroFreeze(fighter->soundHandler, fighter->isPlayer1);
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(fighter->projectileAnimator, 9))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (!fighter->HasSetupProjectileEnd)
+		{
+			fighter->HasSetupProjectileEnd = true;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+}
+
+void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	if (!fighter->HasSetupSpecial1)
+	{
+		fighter->HasSetupSpecial1 = true;
+		fighter->HasSetupProjectileEnd = false;
+		fighter->ProjectileMadeContact = false;
+		fighter->HasSetupProjectileMovement = false;
+		animator->currentFrame = 0;
+		fighter->projectilePositionX = fighter->positionX;
+		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+		fighter->projectileAnimator->currentFrame = 0;
+		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+		fighter->projectileAnimator->base = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+		sprite[fighter->lightningSpriteIndex].gwidth = 104;
+		sprite[fighter->lightningSpriteIndex].hbox = 16;
+		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].active = R_is_active;
+		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+		fighter->lastTicks = rapTicks;
+	}
+
+	if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(animator, 4))
+		{
+			if (!fighter->HasSetupProjectileMovement)
+			{
+				fighter->HasSetupProjectileMovement = true;
+				sfxScorpionHarpoon(fighter->soundHandler, fighter->isPlayer1);
+			}
+			fighter->projectilePositionX += (6 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				fighter->IsDoingSpecial1 = false;
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			}
+		}
+
+		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
 	else
 	{

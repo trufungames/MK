@@ -52,9 +52,24 @@ void setFrame(unsigned int spriteIndex, short width, short height, short x, shor
     sprite[spriteIndex].gfxbase = base + (x * mulFactor) + (y * sprite[spriteIndex].gwidth);
 }
 
-void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struct AnimationFrame* animationFrame)
+void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struct AnimationFrame* animationFrame, int x, int y, int direction)
 {
     setFrame(spriteIndex, animationFrame->width, animationFrame->height, animationFrame->x, animationFrame->y, animator->mulFactor, animator->base);
+    sprite[spriteIndex].x_ = x + (animationFrame->offsetX * direction);
+    
+    tempY = y + (animationFrame->offsetY);
+
+    if (tempY < 0)
+    {
+        tempY = 0;
+    }
+    
+    sprite[spriteIndex].y_ = tempY;
+
+    if (direction == -1)
+    {
+        sprite[spriteIndex].x_ -= animationFrame->width - FIGHTER_WIDTH;
+    }
 }
 
 short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame)
@@ -77,6 +92,7 @@ void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame
 
 void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop, short positionX, short positionY, short direction)
 {
+    animator->currentAnimationFrame = &animationFrames[animator->currentFrame];
     animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, positionX, positionY, direction);
 
     if (rapTicks >= animator->lastTick + animationFrames[animator->currentFrame].ticks)

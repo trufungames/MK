@@ -19,11 +19,12 @@ struct SpriteAnimator {
     int lastTick;
     short currentFrame;
     short idleFrameWidth;
+    struct AnimationFrame* currentAnimationFrame;
 };
 
 void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base);
 
-void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame);
+void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame, int x, int y, int direction);
 
 short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame);
 

@@ -485,6 +485,33 @@ void sfxSonyaRings(struct SoundHandler* soundHandler, bool isPlayer1)
 	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SONYA_RINGS, 8000);
 }
 
+void sfxSubzeroFreeze(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SUBZERO_FREEZE, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SUBZERO_FREEZE, 8000);
+}
+
+void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SUBZERO_FREEZE_END, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SUBZERO_FREEZE_END, 8000);
+}
+
+void sfxScorpionHarpoon(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SCORPION_HARPOON, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SCORPION_HARPOON, 8000);
+}
+
 void sfxRaidenLightning(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)

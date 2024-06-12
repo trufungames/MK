@@ -3778,7 +3778,7 @@ _bloodSquirt4Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSquirt3Animator
 	.even
 _bloodSquirt3Animator:
@@ -3787,7 +3787,7 @@ _bloodSquirt3Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSquirt2Animator
 	.even
 _bloodSquirt2Animator:
@@ -3796,7 +3796,7 @@ _bloodSquirt2Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSquirt1Animator
 	.even
 _bloodSquirt1Animator:
@@ -3805,7 +3805,7 @@ _bloodSquirt1Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSquirtFrames
 	.even
 _bloodSquirtFrames:
@@ -4023,7 +4023,7 @@ _bloodPool8Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool7Animator
 	.even
 _bloodPool7Animator:
@@ -4032,7 +4032,7 @@ _bloodPool7Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool6Animator
 	.even
 _bloodPool6Animator:
@@ -4041,7 +4041,7 @@ _bloodPool6Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool5Animator
 	.even
 _bloodPool5Animator:
@@ -4050,7 +4050,7 @@ _bloodPool5Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool4Animator
 	.even
 _bloodPool4Animator:
@@ -4059,7 +4059,7 @@ _bloodPool4Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool3Animator
 	.even
 _bloodPool3Animator:
@@ -4068,7 +4068,7 @@ _bloodPool3Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool2Animator
 	.even
 _bloodPool2Animator:
@@ -4077,7 +4077,7 @@ _bloodPool2Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodPool1Animator
 	.even
 _bloodPool1Animator:
@@ -4086,7 +4086,7 @@ _bloodPool1Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodBallFrames
 	.even
 _bloodBallFrames:
@@ -4133,7 +4133,7 @@ _bloodBall4Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodBall3Animator
 	.even
 _bloodBall3Animator:
@@ -4142,7 +4142,7 @@ _bloodBall3Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodBall2Animator
 	.even
 _bloodBall2Animator:
@@ -4151,7 +4151,7 @@ _bloodBall2Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodBall1Animator
 	.even
 _bloodBall1Animator:
@@ -4160,7 +4160,7 @@ _bloodBall1Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDropFrames
 	.even
 _bloodDropFrames:
@@ -4228,7 +4228,7 @@ _bloodDrop8Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop7Animator
 	.even
 _bloodDrop7Animator:
@@ -4237,7 +4237,7 @@ _bloodDrop7Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop6Animator
 	.even
 _bloodDrop6Animator:
@@ -4246,7 +4246,7 @@ _bloodDrop6Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop5Animator
 	.even
 _bloodDrop5Animator:
@@ -4255,7 +4255,7 @@ _bloodDrop5Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop4Animator
 	.even
 _bloodDrop4Animator:
@@ -4264,7 +4264,7 @@ _bloodDrop4Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop3Animator
 	.even
 _bloodDrop3Animator:
@@ -4273,7 +4273,7 @@ _bloodDrop3Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop2Animator
 	.even
 _bloodDrop2Animator:
@@ -4282,7 +4282,7 @@ _bloodDrop2Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodDrop1Animator
 	.even
 _bloodDrop1Animator:
@@ -4291,7 +4291,7 @@ _bloodDrop1Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodGlobFrames
 	.even
 _bloodGlobFrames:
@@ -4345,7 +4345,7 @@ _bloodGlobAnimator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSprayFrames
 	.even
 _bloodSprayFrames:
@@ -4392,7 +4392,7 @@ _bloodSpray2Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	_bloodSpray1Animator
 	.even
 _bloodSpray1Animator:
@@ -4401,7 +4401,7 @@ _bloodSpray1Animator:
 	.long	12508816
 	.long	0
 	.word	0
-	.skip 2
+	.skip 6
 	.globl	colliders
 	.even
 colliders:

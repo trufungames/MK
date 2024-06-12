@@ -118,6 +118,9 @@
 #define SOUND_RAIDEN_LIGHTNING 63
 #define SOUND_RAIDEN_LIGHTNING_END 64
 #define SOUND_SONYA_RINGS 65
+#define SOUND_SUBZERO_FREEZE 66
+#define SOUND_SUBZERO_FREEZE_END 67
+#define SOUND_SCORPION_HARPOON 68
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -160,6 +163,8 @@
 #define DMG_LIGHTNING 5
 #define DMG_FIREBALL 5
 #define DMG_RINGS 5
+#define DMG_FREEZE 0
+#define DMG_HARPOON 2
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0
@@ -176,6 +181,7 @@
 #define HITBOX_WIDTH 32
 #define PLAYER_INPUT_STACK_SIZE 6
 #define PLAYER_INPUT_TIMEOUT 30
+#define HARPOON_MINIMUM_DISTANCE 64
 
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1

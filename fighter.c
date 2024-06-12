@@ -106,6 +106,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->dropKickMomentemYStart = -4.0f;
     fighter->throwMomentemYStart = 5.0f;
     fighter->NoBlood = false;
+    fighter->NoSound = false;
     fighter->DoImpaleBloodSequence = false;
 
     //assignments
@@ -137,6 +138,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->damageTicks = 1;
     fighter->dropKickTicks = 0;
     fighter->touchTicks = 0;
+    fighter->HarpoonKnockbackDistance = 0;
     fighter->IsActive = true;
     fighter->IsIdle = true;
     fighter->IsWinner = false;
@@ -182,6 +184,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsHitBackLightKano = false;
     fighter->IsHitFall = false;
     fighter->IsHitBodyKick = false;
+    fighter->IsHitHarpoon = false;
     fighter->IsMidAir = false;
     fighter->IsFalling = false;
     fighter->IsLayingDown = false;
@@ -190,6 +193,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
     fighter->IsDefeated = false;
+    fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
     fighter->IsDoingSpecial1 = false;
     fighter->IsDoingSpecial2 = false;
@@ -269,6 +273,40 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->dropKickTicks = rapTicks;
         fighter->JumpRollTicks = rapTicks;
         animator->lastTick = rapTicks;
+    }
+
+    if (fighter->IsFrozen)
+    {
+        if (!fighter->FrozenShakeComplete)
+        {
+            if (rapTicks > fighter->FrozenShakeTicks + 2)
+            {
+                fighter->positionX += (2 * fighter->FrozenShakeDirection);
+                fighter->FrozenShakeDirection *= -1;
+                fighter->FrozenShakeCount++;
+                fighter->FrozenShakeTicks = rapTicks;
+            }
+
+            if (fighter->FrozenShakeCount >= 6)
+            {
+                fighter->FrozenShakeComplete = true;
+            }
+        }
+
+        if (rapTicks > fighter->lastTicks + 60 * 3)
+        {
+            fighterUnfreeze(fighter);
+        }
+
+        fighterHandleDamage(delta, fighter, animator, walkForward);
+        setAnimationFrame(fighter->spriteIndex, animator, animator->currentAnimationFrame, fighter->positionX, fighter->positionY, fighter->direction);
+        fighterCastShadow(fighter, true);
+
+        if (fighter->IsBeingDamaged)
+        {
+            fighterUnfreeze(fighter);
+        }
+        return;
     }
 
     fighterCastShadow(fighter, true);
@@ -496,11 +534,11 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 fighter->momentumY = 0.0f; //fighter->throwMomentemYStart;  HACK
             }
 
-            if (fighter->IsHitLow || fighter->IsHitHigh || fighter->IsHitSweep || fighter->IsHitBackHigh || fighter->IsHitBackLow)
+            if ((fighter->IsHitLow || fighter->IsHitHigh || fighter->IsHitSweep || fighter->IsHitBackHigh || fighter->IsHitBackLow) && !fighter->NoSound)
             {
                 fighterPlayGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             }
-            else if (fighter->IsHitBackLight || fighter->IsHitBodyKick)
+            else if ((fighter->IsHitBackLight || fighter->IsHitBodyKick) && !fighter->NoSound)
             {
                 if (fighter->IsHitBackLightKano)
                 {
@@ -512,11 +550,14 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
                 }
                 
             }
-            else if (fighter->IsHitBack || fighter->IsHitFall || fighter->IsHitUppercut || fighter->IsHitDropKick)
+            else if ((fighter->IsHitBack || fighter->IsHitFall || fighter->IsHitUppercut || fighter->IsHitDropKick) && !fighter->NoSound)
             {
                 sfxImpact(fighter->soundHandler);
                 fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             }
+
+            if (fighter->NoSound)
+                fighter->NoSound = false;
 
             if (fighter->IsHitHigh || fighter->IsHitBack || fighter->IsHitFall || fighter->IsHitUppercut || fighter->IsHitBackHigh || fighter->IsHitBackLight)
             {
@@ -1787,7 +1828,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 }
 
                 updateSpriteAnimator(animator, *fighter->idleFrames, fighter->IDLE_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-            
+                
             //fighter->positionX = sprite[fighter->spriteIndex].x_;
             //fighter->positionY = sprite[fighter->spriteIndex].y_;
             }
@@ -1960,6 +2001,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsHitUppercut = false;
     fighter->IsHitDropKick = false;
     fighter->IsHitBodyKick = false;
+    fighter->IsHitHarpoon = false;
     fighter->IsMidAir = false;
     fighter->IsFalling = false;
     fighter->IsLayingDown = false;
@@ -1967,6 +2009,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDefeated = false;
+    fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
@@ -2228,6 +2271,53 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter2->IsBlockingHit = true;
             fighter2->DoBlockSequence = true;
             fighter2->lastTicks = rapTicks;
+        }
+    }
+    else if (fighter1->fighterIndex == SUBZERO)
+    {
+        if (!fighter1->ProjectileMadeContact)
+        {
+            fighter1->ProjectileMadeContact = true;
+
+            if (fighter2->IsFrozen)
+            {
+                fighterUnfreeze(fighter2);
+                sprite[fighter1->lightningSpriteIndex].active = R_is_inactive;
+                fighterFreeze(fighter1);
+                return;
+            }
+
+            if (!fighter2->IsBlocking)
+            {
+                fighterFreeze(fighter2);
+                fighterAddPendingDamage(fighter2, DMG_FREEZE, false, fighter1, POINTS_PROJECTILE);
+            }
+            else
+            {
+                fighter2->IsBlockingHit = true;
+                fighter2->DoBlockSequence = true;
+                fighter2->lastTicks = rapTicks;
+            }
+        }
+    }
+    else if (fighter1->fighterIndex == SCORPION)
+    {
+        //IsHitHarpoon = true; hitUppercutFrames[0]
+        if (!fighter1->ProjectileMadeContact)
+        {
+            fighter1->ProjectileMadeContact = true;
+
+            if (!fighter2->IsBlocking)
+            {
+                fighterHarpoon(fighter2, fighter1);
+                fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
+            }
+            else
+            {
+                fighter2->IsBlockingHit = true;
+                fighter2->DoBlockSequence = true;
+                fighter2->lastTicks = rapTicks;
+            }
         }
     }
 }
@@ -2756,4 +2846,86 @@ void fighterResetRaidenLightning(struct Fighter* fighter)
     sprite[fighter->lightningSpriteIndex].gfxbase = BMP_LIGHTNING;
     sprite[fighter->lightningSpriteIndex].gwidth = 320;
     jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
+}
+
+void fighterFreeze(struct Fighter* fighter)
+{
+    if (!fighter->IsFrozen)
+    {
+        fighter->IsFrozen = true;
+        fighter->AcceptingInput = false;
+        fighter->FrozenShakeComplete = false;
+        fighter->FrozenShakeDirection = -1;
+        fighter->FrozenShakeCount = 0;
+        fighter->FrozenShakeTicks = rapTicks;
+        fighter->lastTicks = rapTicks;
+        fighter->NoSound = true;
+
+        if (fighter->isPlayer1)
+        {
+            jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),14,16);
+        }
+        else
+        {
+            jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),15,16);
+        }
+        
+        sfxSubzeroFreezeEnd(fighter->soundHandler, fighter->isPlayer1);
+    }
+}
+
+void fighterUnfreeze(struct Fighter* fighter)
+{
+    fighter->IsFrozen = false;
+    fighter->AcceptingInput = true;
+
+    if (fighter->isPlayer1)
+    {
+        jsfLoadClut((unsigned short *)(void *)fighter->defaultClut, 14, 16);
+    }
+    else
+    {
+        jsfLoadClut((unsigned short *)(void *)fighter->defaultClut, 15, 16);
+    }
+}
+
+void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (!fighter1->IsHitHarpoon)
+    {
+        fighter1->IsHitHarpoon = true;
+        
+
+        //calculate distance between the two fighters
+        if (fighter1->direction == -1)
+        {
+            fighter1->HarpoonKnockbackDistance = fighter1->positionX - fighter2->positionX + FIGHTER_WIDTH;
+        }
+        else
+        {
+            fighter1->HarpoonKnockbackDistance = fighter2->positionX - fighter1->positionX + FIGHTER_WIDTH;
+        }
+
+        if (fighter1->HarpoonKnockbackDistance < HARPOON_MINIMUM_DISTANCE)
+        {   
+            fighter1->HarpoonKnockbackDistance = HARPOON_MINIMUM_DISTANCE - fighter1->HarpoonKnockbackDistance;
+        }
+        else
+        {
+            //this fighter is being harpooned far away, so no need to knockback
+            fighter1->HarpoonKnockbackDistance = 0;
+        }
+
+        fighterPositionXAdd(fighter1, fighter1->HarpoonKnockbackDistance * fighter1->direction * -1);
+
+        sfxYellMale(fighter1->soundHandler, fighter1->isPlayer1);
+
+        //show fighter->HitUppercutFrames[0]
+        //if close to other fighter, knock them back
+        //do impaled blood sequence
+        //play "yell" sfx
+        //zip them closer to other fighter
+        //make dizzy
+        //animate harpoon cord
+    }
 }

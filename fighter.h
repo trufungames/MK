@@ -64,6 +64,7 @@ struct Fighter {
     bool ButtonReleased;
     bool DPadWasRecorded;
     bool NoBlood;
+    bool NoSound;
     bool IsHitLow;
     bool IsHitHigh;
     bool IsHitBack;
@@ -76,6 +77,8 @@ struct Fighter {
     bool IsHitSweep;
     bool IsHitDropKick;
     bool IsHitBodyKick;
+    bool IsHitHarpoon;
+    int HarpoonKnockbackDistance;
     bool IsMidAir;
     bool IsFalling;
     bool IsLayingDown;
@@ -91,6 +94,11 @@ struct Fighter {
     bool IsActive;
     bool IsDizzy;
     bool IsDefeated;
+    bool IsFrozen;
+    bool FrozenShakeComplete;
+    int FrozenShakeDirection;
+    int FrozenShakeCount;
+    int FrozenShakeTicks;
     bool IsBeingPushed;
     bool IsDoingSpecial1;
     bool IsDoingSpecial2;
@@ -158,6 +166,8 @@ struct Fighter {
     bool hasRoomToMove;
     bool isMaxDistance;
     int jumpIndex;
+    int defaultClut;
+    int frozenClut;
     struct PlayerInput (*playerInputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special1Inputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special2Inputs)[PLAYER_INPUT_STACK_SIZE];
@@ -310,3 +320,9 @@ void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2);
 void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator);
 
 void fighterResetRaidenLightning(struct Fighter* fighter);
+
+void fighterFreeze(struct Fighter* fighter);
+
+void fighterUnfreeze(struct Fighter* fighter);
+
+void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2);
