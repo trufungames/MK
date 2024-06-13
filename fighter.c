@@ -192,6 +192,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
+    fighter->IsStunned = false;
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
@@ -275,6 +276,43 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         animator->lastTick = rapTicks;
     }
 
+    if (fighter->DoImpaleBloodSequence)
+    {
+        fighter->DoImpaleBloodSequence = false;
+        
+        bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (fighter->DoHarpoonReelingInSequence && rapTicks >= fighter->lastTicks + 60)
+    {
+        fighter->DoHarpoonReelingInSequence = false;
+        fighter->IsDoingSpecial1 = false;
+        fighter->IsHarpoonReelingIn = true;
+        animator->currentFrame = 0;
+        sfxScorpionGetOverHere(fighter->soundHandler, fighter->isPlayer1);
+    }
+
+    if (fighter->IsSlidingToPositionX)
+    {
+        if (fighter->SlidePositionXTarget > fighter->positionX)
+        {
+            fighterPositionXAdd(fighter, 8);
+
+            if (fighter->positionX >= fighter->SlidePositionXTarget)
+            {
+                fighter->IsSlidingToPositionX = false;
+            }
+        }
+        else if (fighter->SlidePositionXTarget < fighter->positionX)
+        {
+            fighterPositionXAdd(fighter, -8);
+
+            if (fighter->positionX <= fighter->SlidePositionXTarget)
+            {
+                fighter->IsSlidingToPositionX = false;
+            }
+        }
+    }
+
     if (fighter->IsFrozen)
     {
         if (!fighter->FrozenShakeComplete)
@@ -306,6 +344,49 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         {
             fighterUnfreeze(fighter);
         }
+        return;
+    }
+    else if (fighter->IsHitHarpoon)
+    {
+        setAnimationFrame(fighter->spriteIndex, animator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
+
+        if (!fighter->IsSlidingToPositionX && rapTicks > fighter->lastTicks + 60 && !fighter->IsHarpoonComplete)
+        {
+            fighterSlideToPositionX(fighter, fighter->HarpoonSourceX);
+            fighter->lastTicks = rapTicks;
+            fighter->IsHarpoonComplete = true;
+        }
+        else if (!fighter->IsSlidingToPositionX && fighter->IsHarpoonComplete)
+        {
+            fighter->IsHitHarpoon = false;
+            fighter->IsStunned = true;
+            animator->currentFrame = 0;
+            fighter->lastTicks = rapTicks;
+        }
+        fighterCastShadow(fighter, true);
+        return;
+    }
+    else if (fighter->IsHarpoonReelingIn)
+    {
+        // if (animationIsComplete(animator, 6))
+        // {
+        //     fighter->IsHarpoonReelingIn = false;
+        // }
+
+        updateSpriteAnimator(animator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        fighterCastShadow(fighter, true);
+        return;
+    }
+    else if (fighter->IsStunned)
+    {
+        if (rapTicks >= fighter->lastTicks + 120 || fighter->IsBeingDamaged)
+        {
+            fighter->IsStunned = false;
+        }
+
+        fighterHandleDamage(delta, fighter, animator, walkForward);
+        updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+        fighterCastShadow(fighter, true);
         return;
     }
 
@@ -373,13 +454,6 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 break;
         }        
         return;
-    }
-
-    if (fighter->DoImpaleBloodSequence)
-    {
-        fighter->DoImpaleBloodSequence = false;
-        
-        bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
     }
     
     if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
@@ -2011,6 +2085,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
+    fighter->IsStunned = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
     fighter->DoThrowSequence = false;
@@ -2302,13 +2377,14 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
     }
     else if (fighter1->fighterIndex == SCORPION)
     {
-        //IsHitHarpoon = true; hitUppercutFrames[0]
         if (!fighter1->ProjectileMadeContact)
         {
             fighter1->ProjectileMadeContact = true;
 
             if (!fighter2->IsBlocking)
             {
+                fighter1->DoHarpoonReelingInSequence = true;                
+                fighter1->lastTicks = rapTicks;
                 fighterHarpoon(fighter2, fighter1);
                 fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
             }
@@ -2889,26 +2965,28 @@ void fighterUnfreeze(struct Fighter* fighter)
     }
 }
 
-void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterHarpoon(struct Fighter* fighter1, struct Fighter* scorpion)
 {
     if (!fighter1->IsHitHarpoon)
     {
         fighter1->IsHitHarpoon = true;
-        
+        fighter1->IsHarpoonComplete = false;
+        fighter1->DoImpaleBloodSequence = true;
 
         //calculate distance between the two fighters
         if (fighter1->direction == -1)
         {
-            fighter1->HarpoonKnockbackDistance = fighter1->positionX - fighter2->positionX + FIGHTER_WIDTH;
+            fighter1->HarpoonKnockbackDistance = fighter1->positionX - scorpion->positionX + FIGHTER_WIDTH;
         }
         else
         {
-            fighter1->HarpoonKnockbackDistance = fighter2->positionX - fighter1->positionX + FIGHTER_WIDTH;
+            fighter1->HarpoonKnockbackDistance = scorpion->positionX - fighter1->positionX + FIGHTER_WIDTH;
         }
 
         if (fighter1->HarpoonKnockbackDistance < HARPOON_MINIMUM_DISTANCE)
         {   
             fighter1->HarpoonKnockbackDistance = HARPOON_MINIMUM_DISTANCE - fighter1->HarpoonKnockbackDistance;
+            fighterSlideToPositionX(fighter1, fighter1->positionX + (fighter1->HarpoonKnockbackDistance * fighter1->direction * -1));
         }
         else
         {
@@ -2916,10 +2994,21 @@ void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2)
             fighter1->HarpoonKnockbackDistance = 0;
         }
 
-        fighterPositionXAdd(fighter1, fighter1->HarpoonKnockbackDistance * fighter1->direction * -1);
+        fighterPlayYell(fighter1->fighterIndex, fighter1->soundHandler, fighter1->isPlayer1);
 
-        sfxYellMale(fighter1->soundHandler, fighter1->isPlayer1);
+        if (fighter1->direction == -1)
+        {
+            fighter1->HarpoonSourceX = scorpion->positionX + FIGHTER_WIDTH;
+        }
+        else
+        {
+            fighter1->HarpoonSourceX = scorpion->positionX - FIGHTER_WIDTH;
+        }
 
+        fighter1->lastTicks = rapTicks;
+
+        sprite[scorpion->lightningSpriteIndex].active = R_is_inactive;
+        fighterResetRaidenLightning(scorpion);
         //show fighter->HitUppercutFrames[0]
         //if close to other fighter, knock them back
         //do impaled blood sequence
@@ -2927,5 +3016,22 @@ void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2)
         //zip them closer to other fighter
         //make dizzy
         //animate harpoon cord
+    }
+}
+
+void fighterSlideToPositionX(struct Fighter* fighter, int x)
+{
+    if (!fighter->IsSlidingToPositionX)
+    {
+        fighter->IsSlidingToPositionX = true;
+        fighter->SlidePositionXTarget = x;
+    }
+}
+
+void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion)
+{
+    if (scorpion->IsHarpoonReelingIn && !fighter1->IsSlidingToPositionX && fighter1->IsHarpoonComplete)
+    {
+        scorpion->IsHarpoonReelingIn = false;
     }
 }

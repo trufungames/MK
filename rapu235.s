@@ -634,5 +634,22 @@ sample68:	dc.l	scorpion_harpoon_sam		; start of sample
 s68_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample69:	dc.l	scorpion_comehere_sam		; start of sample
+			dc.l	scorpion_comehere_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s69_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample70:	dc.l	scorpion_getoverhere_sam		; start of sample
+			dc.l	scorpion_getoverhere_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s70_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
 
 ; END OF FILE.

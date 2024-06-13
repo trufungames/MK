@@ -182,12 +182,12 @@ static AnimationFrame scorpionHarpoonFrames[] = {
 };
 
 static AnimationFrame scorpionHarpoonEndFrames[] = {
-	{ 96, 112, 0, 1024, 0, 0, 54 },
-	{ 96, 112, 96, 1024, 0, 0, 54 },
-	{ 64, 112, 192, 1024, 0, 0, 54 },
-	{ 64, 112, 256, 1008, 0, 0, 54 },
-	{ 64, 112, 256, 1008, 0, 0, 54 },
-	{ 0, 0, 0, 0, 0, 0, 4 }
+	{ 96, 112, 0, 1024, 0, 0, 5 },
+	{ 96, 112, 96, 1024, 0, 0, 5 },
+	{ 64, 112, 192, 1024, 0, 0, 5 },
+	{ 64, 112, 256, 1008, 0, 0, 5 },
+	{ 64, 112, 256, 1008, 0, 0, 5 },
+	{ 64, 112, 256, 1008, 0, 0, 5 }
 };
 
 static AnimationFrame projectileGreenBoltFrames[] = {
@@ -3820,6 +3820,7 @@ void basicmain()
 		fighterScorpion.special2InputCount = 3;
 		fighterScorpion.special3InputCount = 1;
 		fighterScorpion.special1Frames = &scorpionHarpoonFrames;
+		fighterScorpion.special1EndFrames = &scorpionHarpoonEndFrames;
 		fighterScorpion.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
 		fighterScorpion.idleFrames = &scorpionIdleFrames;
 		fighterScorpion.dizzyFrames = &subzeroDizzyFrames;
@@ -3866,6 +3867,7 @@ void basicmain()
 		fighterScorpion2.special2InputCount = 3;
 		fighterScorpion2.special3InputCount = 1;
 		fighterScorpion2.special1Frames = &scorpionHarpoonFrames;
+		fighterScorpion2.special1EndFrames = &scorpionHarpoonEndFrames;
 		fighterScorpion2.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
 		fighterScorpion2.idleFrames = &scorpionIdleFrames;
 		fighterScorpion2.dizzyFrames = &subzeroDizzyFrames;
@@ -4853,6 +4855,18 @@ void basicmain()
 
 				fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
 				fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
+
+				if (fighter1Ptr->fighterIndex == SCORPION || fighter2Ptr->fighterIndex == SCORPION)
+				{
+					if (fighter1Ptr->IsHarpoonReelingIn)
+					{
+						fighterHarpoonCheck(fighter2Ptr, fighter1Ptr);
+					}
+					else if (fighter2Ptr->IsHarpoonReelingIn)
+					{
+						fighterHarpoonCheck(fighter1Ptr, fighter2Ptr);
+					}
+				}
 				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
@@ -6688,6 +6702,7 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 	{
 		fighter->HasSetupSpecial1 = true;
 		fighter->HasSetupProjectileEnd = false;
+		fighter->IsHarpoonReelingIn = false;
 		fighter->ProjectileMadeContact = false;
 		fighter->HasSetupProjectileMovement = false;
 		animator->currentFrame = 0;
@@ -6733,17 +6748,9 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 		if (!fighter->HasSetupProjectileEnd)
 		{
 			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-		}
-
-		if (animationIsComplete(fighter->projectileAnimator, 5))
-		{
-			sprite[fighter->lightningSpriteIndex].was_hit = -1;
-			fighter->IsDoingSpecial1 = false;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 			fighterResetRaidenLightning(fighter);
+			fighter->projectileAnimator->currentFrame = 0;
 		}
-
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
 }

@@ -79,6 +79,12 @@ struct Fighter {
     bool IsHitBodyKick;
     bool IsHitHarpoon;
     int HarpoonKnockbackDistance;
+    int HarpoonSourceX;
+    bool IsHarpoonComplete;
+    bool DoHarpoonReelingInSequence;
+    bool IsHarpoonReelingIn;
+    bool IsSlidingToPositionX;
+    int SlidePositionXTarget;
     bool IsMidAir;
     bool IsFalling;
     bool IsLayingDown;
@@ -93,6 +99,7 @@ struct Fighter {
     bool IsClose;
     bool IsActive;
     bool IsDizzy;
+    bool IsStunned;
     bool IsDefeated;
     bool IsFrozen;
     bool FrozenShakeComplete;
@@ -229,6 +236,7 @@ struct Fighter {
     struct AnimationFrame (*beingThrownFrames)[6];
     struct AnimationFrame (*beingThrownLowFrames)[6];
     struct AnimationFrame (*special1Frames)[6];
+    struct AnimationFrame (*special1EndFrames)[6];
     struct AnimationFrame (*special2Frames)[6];
     struct AnimationFrame (*special3Frames)[6];
     struct AnimationFrame (*projectileFrames)[20];
@@ -325,4 +333,8 @@ void fighterFreeze(struct Fighter* fighter);
 
 void fighterUnfreeze(struct Fighter* fighter);
 
-void fighterHarpoon(struct Fighter* fighter1, struct Fighter* fighter2);
+void fighterHarpoon(struct Fighter* fighter1, struct Fighter* scorpion);
+
+void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion);
+
+void fighterSlideToPositionX(struct Fighter* fighter, int x);

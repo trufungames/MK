@@ -43,6 +43,7 @@ void sfxSonyaRings(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxSubzeroFreeze(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxScorpionHarpoon(struct SoundHandler* soundHandler, bool isPlayer1);
+void sfxScorpionGetOverHere(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxRaidenLightning(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxRaidenLightningEnd(struct SoundHandler* soundHandler, bool isPlayer1);
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler, bool isPlayer1);

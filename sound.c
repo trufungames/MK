@@ -512,6 +512,23 @@ void sfxScorpionHarpoon(struct SoundHandler* soundHandler, bool isPlayer1)
 	u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SCORPION_HARPOON, 8000);
 }
 
+void sfxScorpionGetOverHere(struct SoundHandler* soundHandler, bool isPlayer1)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	if (rapRND() & 255 > 125)
+	{
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SCORPION_COMEHERE, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SCORPION_COMEHERE, 8000);
+	}
+	else
+	{
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_L, SOUND_SCORPION_GETOVERHERE, 8000);
+		u235PlaySampleFreq(SOUND_CHANNEL_PLAYER_R, SOUND_SCORPION_GETOVERHERE, 8000);	
+	}
+}
+
 void sfxRaidenLightning(struct SoundHandler* soundHandler, bool isPlayer1)
 {
 	if (!soundHandler->EnableSFX)

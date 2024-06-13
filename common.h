@@ -121,6 +121,8 @@
 #define SOUND_SUBZERO_FREEZE 66
 #define SOUND_SUBZERO_FREEZE_END 67
 #define SOUND_SCORPION_HARPOON 68
+#define SOUND_SCORPION_COMEHERE 69
+#define SOUND_SCORPION_GETOVERHERE 70
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -181,7 +183,7 @@
 #define HITBOX_WIDTH 32
 #define PLAYER_INPUT_STACK_SIZE 6
 #define PLAYER_INPUT_TIMEOUT 30
-#define HARPOON_MINIMUM_DISTANCE 64
+#define HARPOON_MINIMUM_DISTANCE 150
 
 //-----------------------------------------------------------------------------------------------------
 #define CAGE 1

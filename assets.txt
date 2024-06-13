@@ -180,6 +180,8 @@ ROM,sonya_rings_sam,sfx_raw8000,ASSETS\SFX\sonya_rings.wav
 ROM,subzero_freeze_sam,sfx_raw8000,ASSETS\SFX\subzero_freeze.wav
 ROM,subzero_freeze_end_sam,sfx_raw8000,ASSETS\SFX\subzero_freeze_end.wav
 ROM,scorpion_harpoon_sam,sfx_raw8000,ASSETS\SFX\scorpion_harpoon.wav
+ROM,scorpion_comehere_sam,sfx_raw8000,ASSETS\SFX\scorpion_comehere.wav
+ROM,scorpion_getoverhere_sam,sfx_raw8000,ASSETS\SFX\scorpion_getoverhere.wav
 ROM,kano_yell_sam,sfx_raw8000,ASSETS\SFX\kano_yell.wav
 ROM,kano_headbutt_sam,sfx_raw8000,ASSETS\SFX\kano_headbutt.wav
 ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav
