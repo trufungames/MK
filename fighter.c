@@ -278,8 +278,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
 
     if (fighter->DoImpaleBloodSequence)
     {
-        fighter->DoImpaleBloodSequence = false;
-        
+        fighter->DoImpaleBloodSequence = false;        
         bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
     }
     else if (fighter->DoHarpoonReelingInSequence && rapTicks >= fighter->lastTicks + 60)
@@ -372,6 +371,22 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         // {
         //     fighter->IsHarpoonReelingIn = false;
         // }
+        
+        updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + 32, fighter->direction);
+
+        if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+        {
+            fighter->projectileAnimator->currentFrame = 0;
+            fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+            fighter->projectileAnimator->base = BMP_PROJECTILES;
+            sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+            sprite[fighter->lightningSpriteIndex].gwidth = 104;
+            sprite[fighter->lightningSpriteIndex].hbox = 16;
+            sprite[fighter->lightningSpriteIndex].vbox = 16;
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+            sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+        }
 
         updateSpriteAnimator(animator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
         fighterCastShadow(fighter, true);
@@ -3033,5 +3048,22 @@ void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion)
     if (scorpion->IsHarpoonReelingIn && !fighter1->IsSlidingToPositionX && fighter1->IsHarpoonComplete)
     {
         scorpion->IsHarpoonReelingIn = false;
+        fighterResetRaidenLightning(scorpion);
+        sprite[scorpion->lightningSpriteIndex].active = R_is_inactive;
+    }
+    else if (scorpion->IsHarpoonReelingIn)
+    {
+        if (fighter1->direction == -1)
+        {
+            scorpion->HarpoonDistance = fighter1->positionX - scorpion->positionX + FIGHTER_WIDTH;
+            scorpion->HarpoonCenterX = scorpion->positionX + (scorpion->HarpoonDistance / 2) - ((scorpion->HarpoonDistance - 64) / 2);
+        }
+        else
+        {
+            scorpion->HarpoonDistance = scorpion->positionX - fighter1->positionX + FIGHTER_WIDTH;
+            scorpion->HarpoonCenterX = fighter1->positionX + (scorpion->HarpoonDistance / 2) + ((scorpion->HarpoonDistance - 64) / 2);
+        }
+
+        sprite[scorpion->lightningSpriteIndex].scale_x = scorpion->HarpoonDistance - 64;
     }
 }

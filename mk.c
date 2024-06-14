@@ -400,11 +400,11 @@ static AnimationFrame projectileFreezeEndFrames[] = {
 };
 
 static AnimationFrame projectileHarpoonEndFrames[] = {
-	{ 208, 32, 0, 400, 0, 0, 4},
-	{ 208, 32, 0, 400, 0, 0, 4},
-	{ 208, 32, 0, 400, 0, 0, 4},
-	{ 208, 32, 0, 400, 0, 0, 4},
-	{ 208, 32, 0, 400, 0, 0, 4}
+	{ 32, 16, 32, 352, 0, 0, 4},
+	{ 32, 16, 32, 352, 0, 0, 4},
+	{ 32, 16, 32, 352, 0, 0, 4},
+	{ 32, 16, 32, 352, 0, 0, 4},
+	{ 32, 16, 32, 352, 0, 0, 4}
 };
 
 static AnimationFrame cageThrowFrames[] = {
@@ -6715,6 +6715,7 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 		sprite[fighter->lightningSpriteIndex].gwidth = 104;
 		sprite[fighter->lightningSpriteIndex].hbox = 16;
 		sprite[fighter->lightningSpriteIndex].vbox = 16;
+		sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
 		fighter->lastTicks = rapTicks;
@@ -6749,7 +6750,6 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 		{
 			fighter->HasSetupProjectileEnd = true;
 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			fighterResetRaidenLightning(fighter);
 			fighter->projectileAnimator->currentFrame = 0;
 		}
 	}

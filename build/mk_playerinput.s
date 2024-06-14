@@ -5,7 +5,7 @@
 __Z15playerinputInitP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	move.l 346(%a0),%a0
+	move.l 356(%a0),%a0
 	clr.l (%a0)
 	clr.l 4(%a0)
 	clr.l 48(%a0)
@@ -28,7 +28,7 @@ __Z15playerinputPushP7Fighteri:
 	link.w %fp,#0
 	move.l 8(%fp),%a1
 	move.l 12(%fp),%d0
-	move.l 346(%a1),%a0
+	move.l 356(%a1),%a0
 	move.l 192(%a0),240(%a0)
 	move.l 196(%a0),244(%a0)
 	move.l 144(%a0),192(%a0)
@@ -40,7 +40,7 @@ __Z15playerinputPushP7Fighteri:
 	move.l (%a0),48(%a0)
 	move.l 4(%a0),52(%a0)
 	clr.l _k
-	move.w 300(%a1),%d1
+	move.w 310(%a1),%d1
 	cmp.l JAGPAD_UP.l,%d0
 	jeq .L6
 	cmp.l JAGPAD_DOWN.l,%d0
@@ -153,7 +153,7 @@ __Z19playerinputContainsP7FighterPii:
 	clr.l _k
 	tst.l %d2
 	jle .L23
-	move.l 346(%a3),%a0
+	move.l 356(%a3),%a0
 	move.l (%a0),%d0
 	cmp.l (%a2),%d0
 	jne .L28
@@ -196,9 +196,9 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.l _k
 	move.w raptor_ticks,%a1
 	move.l 8(%fp),%a0
-	move.l 346(%a0),%a2
+	move.l 356(%a0),%a2
 	move.l 12(%fp),%a0
-	move.l 346(%a0),%a0
+	move.l 356(%a0),%a0
 	moveq #30,%d0
 	add.l 4(%a2),%d0
 	cmp.l %d0,%a1
@@ -293,9 +293,9 @@ __Z17playerinputUpdateP7FighterS0_:
 __Z16playerinputResetP7FighterS0_:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	move.l 346(%a0),%a1
+	move.l 356(%a0),%a1
 	move.l 12(%fp),%a0
-	move.l 346(%a0),%a0
+	move.l 356(%a0),%a0
 	clr.l (%a1)
 	clr.l 4(%a1)
 	clr.l (%a0)
