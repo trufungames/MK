@@ -19,10 +19,11 @@
 // -----------------------------------------------------------------------
 static int pad1;
 static int pad2;
-static int imageBuffer[768*608/4];
+static int imageBuffer[768*640/4];
 static int imageBuffer320x240[320*224/4];
 static int imageBufferFMV[80*1408/4];
 static int BLACKPALx16[8];
+static int WHITEPALx16[16];
 static int BLACKPAL[128];
 short p1Cursor = 1;
 short p2Cursor = 2;
@@ -61,11 +62,33 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
+
+static SpriteAnimator shangTsungAnimator = {
+	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
+};
+
+static AnimationFrame shangTsungSitFrames[] = {
+	{ 64, 44, 0, 0, 0, 0, 6},
+	{ 64, 44, 0, 44, 0, 0, 6},
+	{ 64, 44, 0, 88, 0, 0, 6},
+	{ 64, 44, 0, 132, 0, 0, 6},
+	{ 64, 44, 0, 176, -18, 16, 6}
+};
+
+static AnimationFrame shangTsungClapFrames[] = {
+	{ 64, 44, 64, 0, 0, 0, 6},
+	{ 64, 44, 64, 44, 0, 0, 6},
+	{ 64, 44, 64, 88, 0, 0, 6},
+	{ 64, 44, 64, 132, 0, 0, 6},
+	{ 64, 44, 64, 88, 0, 0, 6},
+    { 64, 44, 64, 44, 0, 0, 6}
+};
+
 static SpriteAnimator cageAnimator = {
 	P1_FIGHTER, 0.5f, BMPCAGE, 0, 0, 48
 };
@@ -4858,11 +4881,11 @@ void basicmain()
 
 				if (fighter1Ptr->fighterIndex == SCORPION || fighter2Ptr->fighterIndex == SCORPION)
 				{
-					if (fighter1Ptr->IsHarpoonReelingIn)
+					if (fighter1Ptr->IsHarpoonReelingIn || fighter1Ptr->DoHarpoonReelingInSequence)
 					{
 						fighterHarpoonCheck(fighter2Ptr, fighter1Ptr);
 					}
-					else if (fighter2Ptr->IsHarpoonReelingIn)
+					else if (fighter2Ptr->IsHarpoonReelingIn || fighter2Ptr->DoHarpoonReelingInSequence)
 					{
 						fighterHarpoonCheck(fighter1Ptr, fighter2Ptr);
 					}
@@ -4951,6 +4974,38 @@ void basicmain()
 				
 				bgUpdate(fighter1Ptr, fighter2Ptr);
 				stageUpdate();
+
+				//clb
+				if (stageGet() == STAGE_THRONE)
+				{
+					// if (!matchIsComplete())
+					// {
+					// 	if (cameraGetX() < 40)
+					// 	{
+					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[3], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+					// 	}
+					// 	else if (cameraGetX() < 80)
+					// 	{
+					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[4], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+					// 	}
+					// 	else if (cameraGetX() > 120)
+					// 	{
+					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[1], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+					// 	}
+					// 	else if (cameraGetX() > 160)
+					// 	{
+					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[2], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+					// 	}
+					// 	else
+					// 	{
+					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[0], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+					// 	}
+					// }
+					// else
+					// {
+					//	updateSpriteAnimator(&shangTsungAnimator, shangTsungClapFrames, 7, true, true);
+					// }
+				}
 
 				//if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
 				//{
@@ -5048,6 +5103,11 @@ void initBlackPalettes()
 	for (int i = 0; i < 8; i++)
 	{
 		BLACKPALx16[i] = 0;
+	}
+
+	for (int i = 0; i < 16; i++)
+	{
+		WHITEPALx16[i] = 256;
 	}
 
 	for (int i = 0; i < 128; i++)
@@ -5690,6 +5750,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_GATES_FLAME+1].active = R_is_active;
 			sprite[STAGE_PIT_CLOUDS1].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+1].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
 			sprite[STAGE_GATES_TEMPLE].active = R_is_active;
 			sprite[STAGE_GATES_TEMPLE].x_ = 110;
 			sprite[STAGE_PIT_CLOUDS1].y_ = 8;
@@ -5765,6 +5826,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_PIT_CLOUDS1+5].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+6].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+7].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES+1].active = R_is_inactive;
 			sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_inactive;
@@ -5821,6 +5883,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_WARRIOR_BUSH+3].active = R_is_inactive;
 			sprite[FOREGROUND_PILLAR].active = R_is_inactive;
 			sprite[FOREGROUND_PILLAR+1].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES+1].active = R_is_inactive;
 			sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_inactive;
@@ -5835,6 +5898,93 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
             musicStagePit(&soundHandler);
             break;
+		case STAGE_PIT_BOTTOM:
+            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+
+            if (unpackBackground)
+            {
+                rapUnpack(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
+            }
+
+			sprite[FOREGROUND_SPIKES].active = R_is_active;
+			sprite[FOREGROUND_SPIKES].x_ = -256;
+
+            sprite[STAGE_PIT_MOON].active=R_is_inactive;
+            sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
+            sprite[STAGE_PRIMARY_BACKGROUND].active=R_is_active;
+			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
+			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
+            sprite[STAGE_PIT_CLOUDS1].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+1].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+2].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+3].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+4].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+5].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+6].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+7].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+1].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+2].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+3].active = R_is_inactive;
+			sprite[FOREGROUND_PILLAR].active = R_is_inactive;
+			sprite[FOREGROUND_PILLAR+1].active = R_is_inactive;
+			sprite[STAGE_GORO_EYES].active = R_is_inactive;
+			sprite[STAGE_GORO_EYES+1].active = R_is_inactive;
+			sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_inactive;
+			sprite[STAGE_GATES_MOUNTAIN].active = R_is_inactive;
+			sprite[STAGE_GATES_FLAME].active = R_is_inactive;
+			sprite[STAGE_GATES_FLAME+1].active = R_is_inactive;
+			sprite[STAGE_GATES_TEMPLE].active = R_is_inactive;
+
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,80);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),5,16);
+
+            musicStagePit(&soundHandler);
+            break;
+		case STAGE_THRONE:
+			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+
+            if (unpackBackground)
+            {
+                rapUnpack(BMP_THRONE_BACKGROUND,(int)(int*)imageBuffer);
+            }
+
+			sprite[THRONE_SHANG_TSUNG].active = R_is_active;
+            sprite[STAGE_PIT_MOON].active=R_is_inactive;
+            sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
+			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
+			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
+            sprite[STAGE_PRIMARY_BACKGROUND].active=R_is_active;
+			sprite[STAGE_WARRIOR_BUSH].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+1].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+2].active = R_is_inactive;
+			sprite[STAGE_WARRIOR_BUSH+3].active = R_is_inactive;
+			sprite[FOREGROUND_PILLAR].active = R_is_inactive;
+			sprite[FOREGROUND_PILLAR+1].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+1].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+2].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+3].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+4].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+5].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+6].active = R_is_inactive;
+			sprite[STAGE_PIT_CLOUDS1+7].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
+			sprite[STAGE_GORO_EYES].active = R_is_inactive;
+			sprite[STAGE_GORO_EYES+1].active = R_is_inactive;
+			sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_inactive;
+			sprite[STAGE_GATES_MOUNTAIN].active = R_is_inactive;
+			sprite[STAGE_GATES_FLAME].active = R_is_inactive;
+			sprite[STAGE_GATES_FLAME+1].active = R_is_inactive;
+			sprite[STAGE_GATES_TEMPLE].active = R_is_inactive;
+
+            jsfLoadClut((unsigned short *)(void *)(BMP_THRONE_BACKGROUND_clut),0,112);
+            jsfLoadClut((unsigned short *)(void *)(BMP_THRONE_SHANG_clut),8,16);
+
+            musicStageWarrior(&soundHandler);
+			break;
         case STAGE_GORO:
 			bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
             *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
@@ -5869,6 +6019,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_PIT_CLOUDS1+6].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+7].active = R_is_inactive;
 			sprite[STAGE_GATES_MOUNTAIN].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
 			sprite[STAGE_GATES_FLAME].active = R_is_inactive;
 			sprite[STAGE_GATES_FLAME+1].active = R_is_inactive;
 			sprite[STAGE_GATES_TEMPLE].active = R_is_inactive;
@@ -6062,7 +6213,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
 	rapSetActiveList(2);
 	
-	cameraInit(STAGE_PRIMARY_BACKGROUND, stageGetStartX(), 0, 214, (int)imageBuffer);
+	cameraInit(STAGE_PRIMARY_BACKGROUND, stageGetStartX(), stageGetStartY(), 214, (int)imageBuffer);
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }
@@ -6700,11 +6851,14 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 {
 	if (!fighter->HasSetupSpecial1)
 	{
+		fighter->HarpoonBlocked = false;
 		fighter->HasSetupSpecial1 = true;
 		fighter->HasSetupProjectileEnd = false;
 		fighter->IsHarpoonReelingIn = false;
 		fighter->ProjectileMadeContact = false;
 		fighter->HasSetupProjectileMovement = false;
+		fighter->HarpoonFlashCount = 0;
+		fighter->HarpoonFlashDirection = -1;
 		animator->currentFrame = 0;
 		fighter->projectilePositionX = fighter->positionX;
 		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
@@ -6744,13 +6898,30 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 	}
-	else
+	else if (fighter->HarpoonBlocked)
 	{
 		if (!fighter->HasSetupProjectileEnd)
 		{
 			fighter->HasSetupProjectileEnd = true;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (fighter->HarpoonFlashDirection == -1)
+		{
+			jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+		}
+		else
+		{
+			jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
+		}
+
+		fighter->HarpoonFlashDirection *= -1;
+		fighter->HarpoonFlashCount++;
+
+		if (fighter->HarpoonFlashCount > 8)
+		{
+			fighter->IsDoingSpecial1 = false;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 		}
 	}
 }

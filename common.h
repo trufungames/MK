@@ -42,7 +42,9 @@
 #define P1_HB_ATTACK P2_PROJECTILE + 1
 #define P2_HB_ATTACK P1_HB_ATTACK + 1
 #define FOREGROUND_PILLAR P2_HB_ATTACK + 1
-#define BLOOD_SPRAY FOREGROUND_PILLAR + 2  //1 of 2
+#define FOREGROUND_SPIKES FOREGROUND_PILLAR + 2  //1 of 2
+#define THRONE_SHANG_TSUNG FOREGROUND_SPIKES + 1
+#define BLOOD_SPRAY THRONE_SHANG_TSUNG + 1
 #define BLOOD_GLOB BLOOD_SPRAY + 2
 #define BLOOD_DROP BLOOD_GLOB + 1  //1 of 8
 #define BLOOD_SQUIRT BLOOD_DROP + 8 //1 of 4
@@ -172,7 +174,9 @@
 #define STAGE_GATES 0
 #define STAGE_WARRIOR 1
 #define STAGE_PIT 2
-#define STAGE_GORO 3
+#define STAGE_PIT_BOTTOM 3
+#define STAGE_THRONE 4
+#define STAGE_GORO 5
 
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 10

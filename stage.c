@@ -1,7 +1,7 @@
 #include "common.h"
 #include "stage.h"
 
-static short currentStage = STAGE_GORO;
+static short currentStage = STAGE_PIT_BOTTOM;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
@@ -41,8 +41,13 @@ void stageLoadVsBattle()
             sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_WARRIOR;
             break;
         case STAGE_PIT:
+        case STAGE_PIT_BOTTOM:
             jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_THEPIT_clut),1,16);
             sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_THEPIT;
+            break;
+        case STAGE_THRONE:
+            jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_THRONE_clut),1,16);
+            sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_THRONE;
             break;
         case STAGE_GORO:
             jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_GORO_clut),1,16);
@@ -99,6 +104,8 @@ void stageUpdate()
             stageHideShowSprite(STAGE_GORO_EYES, 16);
             stageHideShowSprite(STAGE_GORO_EYES+1, 16);
             break;
+        case STAGE_THRONE:
+            break;
         default:
             break;
     }
@@ -148,10 +155,25 @@ int stageGetStartX()
             return 113;
         case STAGE_PIT:
             return 130;
+        case STAGE_PIT_BOTTOM:
+            return 130;
+        case STAGE_THRONE:
+            return 113;
         case STAGE_GORO:
             return 70;
         default:
             return 120;
+    }
+}
+
+int stageGetStartY()
+{
+    switch (currentStage)
+    {
+        case STAGE_PIT_BOTTOM:
+            return 400;
+        default:
+            return 0;
     }
 }
 
@@ -170,6 +192,9 @@ void stageMove(int direction)
             sprite[STAGE_GATES_FLAME].x_ += 2 * direction;
             sprite[STAGE_GATES_FLAME+1].x_ += 2 * direction;
             break;
+        case STAGE_PIT_BOTTOM:
+            sprite[FOREGROUND_SPIKES].x_ += 2 * direction;
+            break;
         case STAGE_WARRIOR:
             sprite[STAGE_WARRIOR_BUSH].x_ += 1 * direction;
             sprite[STAGE_WARRIOR_BUSH+1].x_ += 1 * direction;
@@ -180,6 +205,9 @@ void stageMove(int direction)
             break;
         case STAGE_PIT:
         case STAGE_GORO:
+            break;
+        case STAGE_THRONE:
+            sprite[THRONE_SHANG_TSUNG].x_ += 2 * direction;
             break;
         default:
             break;

@@ -83,8 +83,14 @@ struct Fighter {
     bool IsHarpoonComplete;
     bool DoHarpoonReelingInSequence;
     bool IsHarpoonReelingIn;
-    int HarpoonCenterX;
-    int HarpoonDistance;
+    short HarpoonCenterX;
+    short HarpoonOffsetY;
+    short HarpoonDistance;
+    short HarpoonShakeDirection;
+    short HarpoonShakeCount;
+    bool HarpoonBlocked;
+    short HarpoonFlashDirection;
+    short HarpoonFlashCount;
     bool IsSlidingToPositionX;
     int SlidePositionXTarget;
     bool IsMidAir;
