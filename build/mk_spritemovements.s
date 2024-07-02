@@ -76,9 +76,10 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,6924(%a0)
 	add.w %d0,8652(%a0)
 	add.w %d0,8844(%a0)
-	add.w %d0,12108(%a0)
 	add.w %d0,12300(%a0)
 	add.w %d0,12492(%a0)
+	add.w %d0,12684(%a0)
+	add.w %d0,9036(%a0)
 	add.w %d0,300(%a3)
 	add.w %d0,300(%a2)
 .L14:
@@ -137,9 +138,10 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,6924(%a0)
 	add.w %d0,8652(%a0)
 	add.w %d0,8844(%a0)
-	add.w %d0,12108(%a0)
 	add.w %d0,12300(%a0)
 	add.w %d0,12492(%a0)
+	add.w %d0,12684(%a0)
+	add.w %d0,9036(%a0)
 	add.w %d0,300(%a3)
 	add.w %d0,300(%a2)
 	jra .L14

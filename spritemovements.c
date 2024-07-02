@@ -131,6 +131,7 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 			sprite[FOREGROUND_PILLAR].y_ += bgYInc;
 			sprite[FOREGROUND_PILLAR+1].y_ += bgYInc;
 			sprite[FOREGROUND_SPIKES].y_ += bgYInc;
+			sprite[THRONE_SHANG_TSUNG].y_ += bgYInc;
 			//sprite[STAGE_PIT_MOON].y_ += bgYInc;
 			fighter1->positionY += bgYInc;
 			fighter2->positionY += bgYInc;

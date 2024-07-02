@@ -652,4 +652,13 @@ sample70:	dc.l	scorpion_getoverhere_sam		; start of sample
 s70_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample71:	dc.l	crowd_clap_sam		; start of sample
+			dc.l	crowd_clap_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s71_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

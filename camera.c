@@ -17,14 +17,14 @@ unsigned int backgroundGfxBase;
 
 void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsigned int gfxBase)
 {
-    xOffset = 0;
+    xOffset = -8;
     backgroundSpriteIndex = spriteIndex;
     cameraX = startX;
     cameraY = startY;
     cameraXMax = xMax;
     backgroundGfxBase = gfxBase;
 
-    setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+    setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
     cameraTicks = rapTicks;
 }
 
@@ -50,21 +50,20 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
         if (backgroundChangedLeft || backgroundChangedRight)
         {
             xOffset += backgroundChangedLeft ? 2 : -2;
-            stageMove(backgroundChangedLeft ? 1 : -1);
+            stageMove(backgroundChangedLeft ? 1 : -1, xOffset);
 
             if (xOffset <= -16)
             {
                 //Camera headed RIGHT
                 cameraX += 4;
-                setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
-                xOffset = -8;
-                
+                setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+                xOffset = -8;                
             }
             else if (xOffset >= 0)
             {
                 //Camera headed LEFT
                 cameraX -= 4;
-                setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+                setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
                 xOffset = -8;
             }
 
@@ -136,6 +135,11 @@ bool cameraIsAtRightWall()
 int cameraGetX()
 {
     return cameraX;
+}
+
+int cameraGetOffset()
+{
+    return xOffset;
 }
 
 void cameraResetTicks()

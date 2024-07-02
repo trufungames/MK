@@ -7,3 +7,4 @@ bool cameraIsAtLeftWall();
 bool cameraIsAtRightWall();
 int cameraGetX();
 void cameraResetTicks();
+int cameraGetOffset();

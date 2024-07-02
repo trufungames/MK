@@ -295,21 +295,21 @@ __Z11stageUpdatev:
 	moveq #1,%d0
 	move.l %d0,7684(%a0)
 .L46:
-	move.w 12104(%a0),%d0
+	move.w 12296(%a0),%d0
 	cmp.w #-32,%d0
 	jlt .L47
 	cmp.w #319,%d0
 	jgt .L47
 	moveq #1,%d0
-	move.l %d0,12100(%a0)
-	move.w 12296(%a0),%d0
+	move.l %d0,12292(%a0)
+	move.w 12488(%a0),%d0
 	cmp.w #-32,%d0
 	jlt .L50
 .L66:
 	cmp.w #319,%d0
 	jgt .L50
 	moveq #1,%d0
-	move.l %d0,12292(%a0)
+	move.l %d0,12484(%a0)
 	movem.l -20(%fp),#15364
 	unlk %fp
 	rts
@@ -323,13 +323,13 @@ __Z11stageUpdatev:
 	jra .L56
 .L47:
 	moveq #-1,%d0
-	move.l %d0,12100(%a0)
-	move.w 12296(%a0),%d0
+	move.l %d0,12292(%a0)
+	move.w 12488(%a0),%d0
 	cmp.w #-32,%d0
 	jge .L66
 .L50:
 	moveq #-1,%d0
-	move.l %d0,12292(%a0)
+	move.l %d0,12484(%a0)
 	movem.l -20(%fp),#15364
 	unlk %fp
 	rts
@@ -383,7 +383,7 @@ __Z11stageUpdatev:
 	.globl	__Z26stageGetFighterHitboxIndexv
 __Z26stageGetFighterHitboxIndexv:
 	link.w %fp,#0
-	moveq #25,%d0
+	moveq #26,%d0
 	unlk %fp
 	rts
 	.even
@@ -428,8 +428,8 @@ __Z14stageGetStartYv:
 	unlk %fp
 	rts
 	.even
-	.globl	__Z9stageMovei
-__Z9stageMovei:
+	.globl	__Z9stageMoveii
+__Z9stageMoveii:
 	link.w %fp,#0
 	move.l 8(%fp),%d1
 	move.w __ZL12currentStage,%d0
@@ -446,13 +446,13 @@ __Z9stageMovei:
 .L86:
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,12488(%a0)
+	add.w %d1,12680(%a0)
 	unlk %fp
 	rts
 .L91:
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,12680(%a0)
+	add.w %d1,9032(%a0)
 	unlk %fp
 	rts
 .L85:
@@ -462,8 +462,8 @@ __Z9stageMovei:
 	add.w %d1,7496(%a0)
 	add.w %d1,7688(%a0)
 	add.w %d1,%d1
-	add.w %d1,12104(%a0)
 	add.w %d1,12296(%a0)
+	add.w %d1,12488(%a0)
 	unlk %fp
 	rts
 .L90:
@@ -472,7 +472,7 @@ __Z9stageMovei:
 	move.l sprite,%a0
 	add.w %d1,6920(%a0)
 	add.w %d1,%d1
-	add.w %d1,12104(%a0)
+	add.w %d1,12296(%a0)
 	add.w %d1,8648(%a0)
 	add.w %d1,8840(%a0)
 	unlk %fp

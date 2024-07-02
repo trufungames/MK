@@ -194,11 +194,13 @@ ROM,trufun_sam,sfx_raw8000,ASSETS\SFX\trufun.wav
 ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
 ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
 ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
+ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
 ROM,MOD_STAGE_PIT,modfile1,ASSETS\Music\stage_pit.mod
 ROM,MOD_STAGE_WARRIOR,modfile1,ASSETS\Music\stage_warrior.mod
 ROM,MOD_STAGE_GORO,modfile1,ASSETS\Music\stage_goro.mod
+ROM,MOD_STAGE_THRONE,modfile1,ASSETS\Music\stage_throne.mod
 ' End of file.
 

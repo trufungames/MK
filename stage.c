@@ -116,15 +116,15 @@ int stageGetFighterHitboxIndex()
     switch (currentStage)
     {
         case STAGE_GATES:
-            return 25;
+            return 26;
         case STAGE_WARRIOR:
-            return 25;
+            return 26;
         case STAGE_PIT:
-            return 25;
+            return 26;
         case STAGE_GORO:
-            return 25;
+            return 26;
         default:
-            return 25;
+            return 26;
     }
 }
 
@@ -177,7 +177,7 @@ int stageGetStartY()
     }
 }
 
-void stageMove(int direction)
+void stageMove(int direction, int offset)
 {
     switch (currentStage)
     {

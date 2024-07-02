@@ -2,6 +2,7 @@
 #include "fighter.h"
 #include "match.h"
 #include "sound.h"
+#include "stage.h"
 #include "spriteanimator.h"
 #include "spritemovements.h"
 #include "debug.h"
@@ -19,6 +20,7 @@ int fighter2Wins = 0;
 int winsTicks = 0;
 bool playedName = false;
 bool playedWins = false;
+bool playedCrowd = false;
 
 static SpriteAnimator fightAnimator = {
 	FIGHT, 0.5f, BMP_MATCH, 0, 0
@@ -112,6 +114,7 @@ void matchReset()
 	winsTicks = 0;
 	playedName = false;
 	playedWins = false;
+	playedCrowd = false;
 }
 
 void matchInit()
@@ -285,7 +288,13 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 	}
 	else if (matchState == 3)
 	{
-		if (rapTicks > matchTicks + 60)
+		if (!playedCrowd)
+		{
+			playedCrowd = true;
+			sfxCrowdClap(soundHandler);
+		}
+
+		if (rapTicks > matchTicks + 140)
 		{
 			if (!playedName)
 			{

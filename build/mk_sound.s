@@ -1551,8 +1551,8 @@ __Z11sfxCrowdAwwP12SoundHandler:
 	unlk %fp
 	rts
 	.even
-	.globl	__Z21sfxAnnouncerExcellentP12SoundHandler
-__Z21sfxAnnouncerExcellentP12SoundHandler:
+	.globl	__Z12sfxCrowdClapP12SoundHandler
+__Z12sfxCrowdClapP12SoundHandler:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
@@ -1562,6 +1562,32 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 	unlk %fp
 	rts
 .L288:
+	pea 8000.w
+	pea 71.w
+	pea 6.w
+	lea u235PlaySampleFreq,%a2
+	jsr (%a2)
+	lea (12,%sp),%sp
+	pea 8000.w
+	pea 71.w
+	pea 7.w
+	jsr (%a2)
+	lea (12,%sp),%sp
+	move.l -4(%fp),%a2
+	unlk %fp
+	rts
+	.even
+	.globl	__Z21sfxAnnouncerExcellentP12SoundHandler
+__Z21sfxAnnouncerExcellentP12SoundHandler:
+	link.w %fp,#0
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a0
+	tst.b (%a0)
+	jne .L293
+	move.l -4(%fp),%a2
+	unlk %fp
+	rts
+.L293:
 	pea 8000.w
 	pea 44.w
 	pea 6.w
@@ -1583,11 +1609,11 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L293
+	jne .L298
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L293:
+.L298:
 	pea 8000.w
 	pea 45.w
 	pea 6.w
@@ -1609,11 +1635,11 @@ __Z12sfxFinishHerP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L298
+	jne .L303
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L298:
+.L303:
 	pea 8000.w
 	pea 46.w
 	pea 6.w
@@ -1635,11 +1661,11 @@ __Z12sfxFinishHimP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L303
+	jne .L308
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L303:
+.L308:
 	pea 8000.w
 	pea 47.w
 	pea 6.w
@@ -1661,11 +1687,11 @@ __Z7sfxWinsP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L308
+	jne .L313
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L308:
+.L313:
 	pea 8000.w
 	pea 48.w
 	pea 6.w
@@ -1687,11 +1713,11 @@ __Z11sfxFlawlessP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L313
+	jne .L318
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L313:
+.L318:
 	pea 8000.w
 	pea 49.w
 	pea 6.w
@@ -1713,11 +1739,11 @@ __Z11sfxFatalityP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	tst.b (%a0)
-	jne .L318
+	jne .L323
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L318:
+.L323:
 	pea 8000.w
 	pea 50.w
 	pea 6.w
@@ -1739,25 +1765,25 @@ __Z10musicTitleP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L324
+	jne .L329
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L324:
+.L329:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13621296,-(%sp)
+	move.l #13638256,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),%d0
-	jlt .L325
+	jlt .L330
 	asr.l #2,%d0
 	move.l %d0,8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra _u235ModuleVol
-.L325:
+.L330:
 	addq.l #3,%d0
 	asr.l #2,%d0
 	move.l %d0,8(%fp)
@@ -1771,15 +1797,15 @@ __Z15musicStageGatesP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L330
+	jne .L335
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L330:
+.L335:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13711232,-(%sp)
+	move.l #13728192,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)
@@ -1792,14 +1818,14 @@ __Z13musicStagePitP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b 1(%a0)
-	jne .L335
+	jne .L340
 	unlk %fp
 	rts
-.L335:
+.L340:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13768448,-(%sp)
+	move.l #13785408,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	moveq #60,%d0
@@ -1813,15 +1839,15 @@ __Z17musicStageWarriorP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L340
+	jne .L345
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L340:
+.L345:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13827200,-(%sp)
+	move.l #13844160,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)
@@ -1835,15 +1861,37 @@ __Z14musicStageGoroP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L345
+	jne .L350
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L345:
+.L350:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13872416,-(%sp)
+	move.l #13889376,-(%sp)
+	jsr __Z14u235PlayModuleis
+	addq.l #8,%sp
+	move.l 6(%a2),8(%fp)
+	move.l -4(%fp),%a2
+	unlk %fp
+	jra _u235ModuleVol
+	.even
+	.globl	__Z16musicStageThroneP12SoundHandler
+__Z16musicStageThroneP12SoundHandler:
+	link.w %fp,#0
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a2
+	tst.b 1(%a2)
+	jne .L355
+	move.l -4(%fp),%a2
+	unlk %fp
+	rts
+.L355:
+	jsr __Z14u235StopModulev
+	jsr __Z11u235Silencev
+	pea 1.w
+	move.l #13932384,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.l 6(%a2),8(%fp)

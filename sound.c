@@ -565,6 +565,15 @@ void sfxCrowdAww(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_CROWD_AWW, 8000);
 }
 
+void sfxCrowdClap(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+	
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_L, SOUND_CROWD_CLAP, 8000);
+	u235PlaySampleFreq(SOUND_CHANNEL_MISC_R, SOUND_CROWD_CLAP, 8000);
+}
+
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)
@@ -681,6 +690,17 @@ void musicStageGoro(struct SoundHandler* soundHandler)
 	u235StopModule();
 	u235Silence();
 	u235PlayModule(MOD_STAGE_GORO,MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);	
+}
+
+void musicStageThrone(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule(MOD_STAGE_THRONE,MOD_STEREO);
 	u235ModuleVol(soundHandler->VolumeMusic);	
 }
 

@@ -62,8 +62,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -73,20 +73,20 @@ static SpriteAnimator shangTsungAnimator = {
 };
 
 static AnimationFrame shangTsungSitFrames[] = {
-	{ 64, 44, 0, 0, 0, 0, 6},
-	{ 64, 44, 0, 44, 0, 0, 6},
-	{ 64, 44, 0, 88, 0, 0, 6},
-	{ 64, 44, 0, 132, 0, 0, 6},
-	{ 64, 44, 0, 176, -18, 16, 6}
+	{ 64, 48, 0, 0, 0, 0, 6},
+	{ 64, 48, 0, 48, 0, 0, 6},
+	{ 64, 48, 0, 96, 0, 0, 6},
+	{ 64, 48, 0, 144, 0, 0, 6},
+	{ 64, 48, 0, 192, 0, 0, 6}
 };
 
 static AnimationFrame shangTsungClapFrames[] = {
-	{ 64, 44, 64, 0, 0, 0, 6},
-	{ 64, 44, 64, 44, 0, 0, 6},
-	{ 64, 44, 64, 88, 0, 0, 6},
-	{ 64, 44, 64, 132, 0, 0, 6},
-	{ 64, 44, 64, 88, 0, 0, 6},
-    { 64, 44, 64, 44, 0, 0, 6}
+	{ 64, 48, 0, 240, 0, 0, 4},
+	{ 64, 48, 0, 288, 0, 0, 4},
+	{ 64, 48, 0, 336, 0, 0, 4},
+	{ 64, 48, 0, 384, 0, 0, 4},
+	{ 64, 48, 0, 336, 0, 0, 4},
+    { 64, 48, 0, 288, 0, 0, 4}
 };
 
 static SpriteAnimator cageAnimator = {
@@ -4978,33 +4978,33 @@ void basicmain()
 				//clb
 				if (stageGet() == STAGE_THRONE)
 				{
-					// if (!matchIsComplete())
-					// {
-					// 	if (cameraGetX() < 40)
-					// 	{
-					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[3], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
-					// 	}
-					// 	else if (cameraGetX() < 80)
-					// 	{
-					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[4], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
-					// 	}
-					// 	else if (cameraGetX() > 120)
-					// 	{
-					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[1], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
-					// 	}
-					// 	else if (cameraGetX() > 160)
-					// 	{
-					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[2], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
-					// 	}
-					// 	else
-					// 	{
-					// 		setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[0], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
-					// 	}
-					// }
-					// else
-					// {
-					//	updateSpriteAnimator(&shangTsungAnimator, shangTsungClapFrames, 7, true, true);
-					// }
+					if (fighter1Ptr->IsDefeated || fighter2Ptr->IsDefeated)
+					{
+						updateSpriteAnimator(&shangTsungAnimator, shangTsungClapFrames, 6, true, true);
+					}
+					else
+					{
+						if (cameraGetX() < 40)
+						{
+							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[4], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+						}
+						else if (cameraGetX() < 80)
+						{
+							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[3], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+						}
+						else if (cameraGetX() > 120)
+						{
+							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[1], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+						}
+						else if (cameraGetX() > 130)
+						{
+							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[2], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+						}
+						else
+						{
+							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[0], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+						}
+					}
 				}
 
 				//if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
@@ -5952,6 +5952,9 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
             }
 
 			sprite[THRONE_SHANG_TSUNG].active = R_is_active;
+			sprite[THRONE_SHANG_TSUNG].x_ = 120;
+			setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[0], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
+			
             sprite[STAGE_PIT_MOON].active=R_is_inactive;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
@@ -5983,7 +5986,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
             jsfLoadClut((unsigned short *)(void *)(BMP_THRONE_BACKGROUND_clut),0,112);
             jsfLoadClut((unsigned short *)(void *)(BMP_THRONE_SHANG_clut),8,16);
 
-            musicStageWarrior(&soundHandler);
+            musicStageThrone(&soundHandler);
 			break;
         case STAGE_GORO:
 			bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green

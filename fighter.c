@@ -474,7 +474,12 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
             case KANO:
                 sfxKanoYell(fighter->soundHandler, fighter->isPlayer1);
                 break;
-        }        
+        }
+        if (stageGet() == STAGE_THRONE)
+        {
+            sfxCrowdClap(fighter->soundHandler);
+        }
+        
         return;
     }
     
