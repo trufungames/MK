@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "leaderboard.h"
 #include "playerinput.h"
+#include "hud.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
@@ -6210,9 +6211,10 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 	}
 
 	setFighterAlternatePalette(p1Cursor, p2Cursor);
-	sprite[P1_HEALTHBAR].scale_x = MAX_HEALTH;
-	sprite[P2_HEALTHBAR].scale_x = MAX_HEALTH;
-	sprite[P2_HEALTHBAR].x_ = 176;
+	hudInit();
+	//sprite[P1_HEALTHBAR].scale_x = MAX_HEALTH;
+	//sprite[P2_HEALTHBAR].scale_x = MAX_HEALTH;
+	//sprite[P2_HEALTHBAR].x_ = 176;
 
 	rapSetActiveList(2);
 	
@@ -6392,20 +6394,20 @@ void setFighterAlternatePalette(int fighter1Index, int fighter2Index)
 
 void setPlayer1Name(char* name)
 {
-	rapUse8x16fontPalette(10);
-	jsfSetFontSize(1);
+	rapUse8x8fontPalette(10);
+	jsfSetFontSize(0);
 	jsfSetFontIndx(1);
-	rapLocate(20,27);
+	rapLocate(26,29);
 	js_r_textbuffer=name;
 	rapPrint();
 }
 
 void setPlayer2Name(char* name, int length)
 {
-	rapUse8x16fontPalette(10);
-	jsfSetFontSize(1);
+	rapUse8x8fontPalette(10);
+	jsfSetFontSize(0);
 	jsfSetFontIndx(1);
-	rapLocate(300 - (length * 8),27);
+	rapLocate(301 - (length * 8),29);
 	js_r_textbuffer=name;
 	rapPrint();
 }
@@ -6419,23 +6421,23 @@ void displayWinnerMedals()
 	switch(matchGetFighter1Wins())
 	{
 		case 1:
-			rapLocate(8,42);
+			rapLocate(136,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
 			break;
 		case 2:
-			rapLocate(8,42);
+			rapLocate(136,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
-			rapLocate(22,42);
+			rapLocate(128,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
 			break;
 		default:
-			rapLocate(8,42);
+			rapLocate(136,29);
 			js_r_textbuffer=(char *)" ";
 			rapPrint();
-			rapLocate(22,42);
+			rapLocate(128,29);
 			js_r_textbuffer=(char *)" ";
 			rapPrint();
 			break;
@@ -6444,23 +6446,23 @@ void displayWinnerMedals()
 	switch(matchGetFighter2Wins())
 	{
 		case 1:
-			rapLocate(306,42);
+			rapLocate(180,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
 			break;
 		case 2:
-			rapLocate(292,42);
+			rapLocate(180,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
-			rapLocate(306,42);
+			rapLocate(190,29);
 			js_r_textbuffer=(char *)"*";
 			rapPrint();
 			break;
 		default:
-			rapLocate(292,42);
+			rapLocate(180,29);
 			js_r_textbuffer=(char *)" ";
 			rapPrint();
-			rapLocate(306,42);
+			rapLocate(190,29);
 			js_r_textbuffer=(char *)" ";
 			rapPrint();
 			break;

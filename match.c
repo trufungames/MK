@@ -127,10 +127,10 @@ void matchInit()
 
 bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
 {
-	//rapUse16x16fontPalette(12);
-	jsfSetFontIndx(0);
-	jsfSetFontSize(2);
-	rapLocate(146, 8);
+	//rapUse8x16fontPalette(10);
+	jsfSetFontIndx(1);
+	jsfSetFontSize(1);
+	rapLocate(156, 8);
 	js_r_textbuffer = ee_printf("%02d",rapClockHex);
 	rapPrint();
 

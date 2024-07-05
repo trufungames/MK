@@ -529,7 +529,7 @@ sprite:
 .lcomm __ZL11cloudTicks3,4
 	.even
 __ZL12currentStage:
-	.word	3
+	.word	5
 	.text
 	.even
 _CSWTCH.24:

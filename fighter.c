@@ -11,6 +11,7 @@
 #include "stage.h"
 #include "debug.h"
 #include "playerinput.h"
+#include "hud.h"
 
 int collision = 0;
 int turnOffset = 32;
@@ -212,7 +213,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->CooldownTicksUppercut = 50;
     fighter->CooldownTicksImpact = 20;
     fighter->isPlayer1 = isPlayer1;
-    fighter->hitPoints = 33;
+    fighter->hitPoints = MAX_HEALTH;
     fighter->pendingDamage = 0;
     fighter->shakeScreen = false;
     fighter->justTurned = false;
@@ -475,11 +476,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
                 sfxKanoYell(fighter->soundHandler, fighter->isPlayer1);
                 break;
         }
-        if (stageGet() == STAGE_THRONE)
-        {
-            sfxCrowdClap(fighter->soundHandler);
-        }
-        
+
         return;
     }
     
@@ -2625,9 +2622,10 @@ void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    sprite[P1_HEALTHBAR].scale_x = fighter1->hitPoints;
-	sprite[P2_HEALTHBAR].scale_x = fighter2->hitPoints;
-	sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter2->hitPoints) * 4);
+    //sprite[P1_HEALTHBAR].scale_x = fighter1->hitPoints;
+	//sprite[P2_HEALTHBAR].scale_x = fighter2->hitPoints;
+	//sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter2->hitPoints) * 4);
+    hudUpdate(fighter1, fighter2);
 }
 
 void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen, struct Fighter* attackingFighter, int points)
@@ -2657,15 +2655,16 @@ void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
         fighter->DoDefeatedSequence = true;
     }
 
-    if (fighter->isPlayer1)
-    {
-        sprite[P1_HEALTHBAR].scale_x = fighter->hitPoints;
-    }
-    else
-    {
-        sprite[P2_HEALTHBAR].scale_x = fighter->hitPoints;
-        sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter->hitPoints) * 4);
-    }
+    hudUpdateFighter(fighter);
+    // if (fighter->isPlayer1)
+    // {
+    //     sprite[P1_HEALTHBAR].scale_x = fighter->hitPoints;
+    // }
+    // else
+    // {
+    //     sprite[P2_HEALTHBAR].scale_x = fighter->hitPoints;
+    //     sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter->hitPoints) * 4);
+    // }
 
     sleepAdd(sleepTicks);
 }
@@ -2877,13 +2876,13 @@ void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2)
 {
     if (fighter1->ScoreChanged || fighter2->ScoreChanged)
     {
-        rapUse8x16fontPalette(10);
-        jsfSetFontSize(1);
+        rapUse8x8fontPalette(10);
+        jsfSetFontSize(0);
         jsfSetFontIndx(1);
 
         if (fighter1->ScoreChanged)
         {
-            rapLocate(8,10);
+            rapLocate(26,10);
             js_r_textbuffer= ee_printf("%02ld00",fighter1->Score);
             rapPrint();
         }
@@ -2912,7 +2911,7 @@ void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2)
                 }
             }
 
-            rapLocate(312 - (scoreLength * 8),10);
+            rapLocate(302 - (scoreLength * 8),10);
             js_r_textbuffer= ee_printf("%02ld00",fighter2->Score);
             rapPrint();
         }

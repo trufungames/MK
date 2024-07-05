@@ -50,9 +50,9 @@
 #define BLOOD_SQUIRT BLOOD_DROP + 8 //1 of 4
 #define BLOOD_BALL BLOOD_SQUIRT + 4
 #define FIGHT BLOOD_BALL + 4
-#define HUD FIGHT + 1
-#define P1_HEALTHBAR HUD + 2
-#define P2_HEALTHBAR P1_HEALTHBAR + 1
+//#define HUD FIGHT + 1
+//#define P1_HEALTHBAR HUD + 2
+//#define P2_HEALTHBAR P1_HEALTHBAR + 1
 //-----------------------------------------------------------------------------------------------------
 #define SOUND_P1CURSOR 0
 #define SOUND_P2CURSOR 1
@@ -147,29 +147,29 @@
 #define POINTS_PROJECTILE 20
 
 //-----------------------------------------------------------------------------------------------------
-#define MAX_HEALTH 34
-#define DMG_LP 2
-#define DMG_HP 2
-#define DMG_LK 5
-#define DMG_HK 5
-#define DMG_SWEEP 4
-#define DMG_UPPERCUT 8
-#define DMG_ROUNDHOUSE 6
-#define DMG_JUMPPUNCH 5
-#define DMG_JUMPKICK 4
-#define DMG_DROPKICK 6
-#define DMG_BLOCKED 1
-#define DMG_DUCK_KICK 2
-#define DMG_BODY_PUNCH 4
-#define DMG_BODY_KICK 4
-#define DMG_THROW 8
-#define DMG_GREENBOLT 5
-#define DMG_KNIFE 5
-#define DMG_LIGHTNING 5
-#define DMG_FIREBALL 5
-#define DMG_RINGS 5
+#define MAX_HEALTH 120
+#define DMG_LP 8
+#define DMG_HP 8
+#define DMG_LK 20
+#define DMG_HK 20
+#define DMG_SWEEP 16
+#define DMG_UPPERCUT 32
+#define DMG_ROUNDHOUSE 24
+#define DMG_JUMPPUNCH 20
+#define DMG_JUMPKICK 16
+#define DMG_DROPKICK 24
+#define DMG_BLOCKED 4
+#define DMG_DUCK_KICK 8
+#define DMG_BODY_PUNCH 16
+#define DMG_BODY_KICK 16
+#define DMG_THROW 32
+#define DMG_GREENBOLT 20
+#define DMG_KNIFE 20
+#define DMG_LIGHTNING 20
+#define DMG_FIREBALL 20
+#define DMG_RINGS 20
 #define DMG_FREEZE 0
-#define DMG_HARPOON 2
+#define DMG_HARPOON 8
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0

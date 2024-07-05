@@ -1,7 +1,7 @@
 #include "common.h"
 #include "stage.h"
 
-static short currentStage = STAGE_PIT_BOTTOM;
+static short currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;

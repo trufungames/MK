@@ -3540,13 +3540,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d1
 	move.l %d1,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d1
-	move.l %d1,_jsfFontSize
 	move.l %d1,_jsfFontIndx
-	moveq #27,%d3
+	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC37,_js_r_textbuffer
 	addq.l #8,%sp
@@ -3600,13 +3600,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d3
 	move.l %d3,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 236.w
+	pea 237.w
 	jsr rapLocate
 	move.l #.LC37,_js_r_textbuffer
 	addq.l #8,%sp
@@ -3615,11 +3615,7 @@ __Z17switchScreenFightiib:
 	cmp.l %a2,%d2
 	jeq .L269
 .L263:
-	move.l sprite,%a0
-	moveq #34,%d1
-	move.l %d1,17176(%a0)
-	move.l %d1,17368(%a0)
-	move.w #176,17288(%a0)
+	jsr __Z7hudInitv
 	pea 2.w
 	jsr rapSetActiveList
 	addq.l #4,%sp
@@ -4022,13 +4018,13 @@ __Z17switchScreenFightiib:
 	move.l #8535888,10988(%a0)
 	moveq #10,%d1
 	move.l %d1,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d3
+	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC66,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4067,13 +4063,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d3
 	move.l %d3,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC15,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4112,13 +4108,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d0
 	move.l %d0,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d1
+	moveq #29,%d1
 	move.l %d1,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC44,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4157,13 +4153,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d1
 	move.l %d1,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d3
+	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC52,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4204,13 +4200,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d3
 	move.l %d3,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d1
-	move.l %d1,_jsfFontSize
 	move.l %d1,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC23,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4249,13 +4245,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d0
 	move.l %d0,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d1
-	move.l %d1,_jsfFontSize
 	move.l %d1,_jsfFontIndx
-	moveq #27,%d1
+	moveq #29,%d1
 	move.l %d1,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l #.LC30,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4294,13 +4290,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d3
 	move.l %d3,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 268.w
+	pea 269.w
 	jsr rapLocate
 	move.l #.LC66,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4341,13 +4337,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d0
 	move.l %d0,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d1
+	moveq #29,%d1
 	move.l %d1,(%sp)
-	pea 268.w
+	pea 269.w
 	jsr rapLocate
 	move.l #.LC15,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4388,13 +4384,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d1
 	move.l %d1,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d3
+	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 236.w
+	pea 237.w
 	jsr rapLocate
 	move.l #.LC44,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4435,13 +4431,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d3
 	move.l %d3,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 260.w
+	pea 261.w
 	jsr rapLocate
 	move.l #.LC52,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4487,13 +4483,13 @@ __Z17switchScreenFightiib:
 	move.l %d1,3460(%a0)
 	moveq #10,%d0
 	move.l %d0,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d1
+	moveq #29,%d1
 	move.l %d1,(%sp)
-	pea 252.w
+	pea 253.w
 	jsr rapLocate
 	move.l #.LC23,_js_r_textbuffer
 	addq.l #8,%sp
@@ -4534,13 +4530,13 @@ __Z17switchScreenFightiib:
 	jsr __Z11fighterShowP7Fighter
 	moveq #10,%d1
 	move.l %d1,(%sp)
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d3
+	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 236.w
+	pea 237.w
 	jsr rapLocate
 	move.l #.LC30,_js_r_textbuffer
 	addq.l #8,%sp
@@ -5445,13 +5441,13 @@ __Z14setPlayer1NamePc:
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%d2
 	pea 10.w
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d0
+	moveq #29,%d0
 	move.l %d0,(%sp)
-	pea 20.w
+	pea 26.w
 	jsr rapLocate
 	move.l %d2,_js_r_textbuffer
 	addq.l #8,%sp
@@ -5467,15 +5463,15 @@ __Z14setPlayer2NamePci:
 	move.l 8(%fp),%d2
 	move.l 12(%fp),%d3
 	pea 10.w
-	jsr rapUse8x16fontPalette
+	jsr rapUse8x8fontPalette
+	clr.l _jsfFontSize
 	moveq #1,%d0
-	move.l %d0,_jsfFontSize
 	move.l %d0,_jsfFontIndx
-	moveq #27,%d1
+	moveq #29,%d1
 	move.l %d1,(%sp)
 	move.l %d3,%d0
 	lsl.l #3,%d0
-	move.l #300,%d1
+	move.l #301,%d1
 	sub.l %d0,%d1
 	move.l %d1,-(%sp)
 	jsr rapLocate
@@ -5504,17 +5500,17 @@ __Z19displayWinnerMedalsv:
 	jeq .L316
 	move.b #2,%d1
 	cmp.l %d0,%d1
-	jeq .L327
-	pea 42.w
-	pea 8.w
+	jeq .L326
+	pea 29.w
+	pea 136.w
 	lea rapLocate,%a2
 	jsr (%a2)
 	move.l #.LC68,_js_r_textbuffer
 	addq.l #8,%sp
 	lea _rapPrint,%a3
 	jsr (%a3)
-	pea 42.w
-	pea 22.w
+	pea 29.w
+	pea 128.w
 	jsr (%a2)
 	move.l #.LC68,_js_r_textbuffer
 	addq.l #8,%sp
@@ -5523,63 +5519,76 @@ __Z19displayWinnerMedalsv:
 	jsr __Z20matchGetFighter2Winsv
 	moveq #1,%d1
 	cmp.l %d0,%d1
-	jeq .L325
+	jeq .L320
+.L328:
 	move.b #2,%d1
 	cmp.l %d0,%d1
-	jeq .L328
-	pea 42.w
-	pea 292.w
+	jeq .L327
+	pea 29.w
+	pea 180.w
 	jsr (%a2)
 	move.l #.LC68,_js_r_textbuffer
 	addq.l #8,%sp
 	jsr (%a3)
-	pea 42.w
-	pea 306.w
+	pea 29.w
+	pea 190.w
 	jsr (%a2)
 	move.l #.LC68,_js_r_textbuffer
-	addq.l #8,%sp
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	jra _rapPrint
-.L328:
-	pea 42.w
-	pea 292.w
-	jsr (%a2)
-	move.l #.LC67,_js_r_textbuffer
-	addq.l #8,%sp
-	jsr (%a3)
-.L325:
-	pea 42.w
-	pea 306.w
-	jsr (%a2)
-	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
 	jra _rapPrint
 .L316:
-	pea 42.w
-	pea 8.w
+	pea 29.w
+	pea 136.w
 	lea rapLocate,%a2
 	jsr (%a2)
 	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp
 	lea _rapPrint,%a3
 	jsr (%a3)
-	jra .L318
+	jsr __Z20matchGetFighter2Winsv
+	moveq #1,%d1
+	cmp.l %d0,%d1
+	jne .L328
+.L320:
+	pea 29.w
+	pea 180.w
+	jsr (%a2)
+	move.l #.LC67,_js_r_textbuffer
+	addq.l #8,%sp
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	jra _rapPrint
 .L327:
-	pea 42.w
-	pea 8.w
+	pea 29.w
+	pea 180.w
+	jsr (%a2)
+	move.l #.LC67,_js_r_textbuffer
+	addq.l #8,%sp
+	jsr (%a3)
+	pea 29.w
+	pea 190.w
+	jsr (%a2)
+	move.l #.LC67,_js_r_textbuffer
+	addq.l #8,%sp
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	jra _rapPrint
+.L326:
+	pea 29.w
+	pea 136.w
 	lea rapLocate,%a2
 	jsr (%a2)
 	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp
 	lea _rapPrint,%a3
 	jsr (%a3)
-	pea 42.w
-	pea 22.w
+	pea 29.w
+	pea 128.w
 	jsr (%a2)
 	move.l #.LC67,_js_r_textbuffer
 	addq.l #8,%sp

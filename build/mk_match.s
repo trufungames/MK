@@ -54,11 +54,11 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	movem.l #8248,-(%sp)
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	clr.l _jsfFontIndx
-	moveq #2,%d0
+	moveq #1,%d0
+	move.l %d0,_jsfFontIndx
 	move.l %d0,_jsfFontSize
 	pea 8.w
-	pea 146.w
+	pea 156.w
 	jsr rapLocate
 	addq.l #8,%sp
 	move.w raptor_clock_hex,%a0
