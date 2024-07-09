@@ -116,15 +116,15 @@ int stageGetFighterHitboxIndex()
     switch (currentStage)
     {
         case STAGE_GATES:
-            return 26;
+            return 27;
         case STAGE_WARRIOR:
-            return 26;
+            return 27;
         case STAGE_PIT:
-            return 26;
+            return 27;
         case STAGE_GORO:
-            return 26;
+            return 27;
         default:
-            return 26;
+            return 27;
     }
 }
 
@@ -216,14 +216,14 @@ void stageMove(int direction, int offset)
 
 void stageHideShowSprite(int spriteIndex, int width)
 {
-    if (sprite[spriteIndex].x_ < (width * -1) || sprite[spriteIndex].x_ >= 320)
-    {
-        sprite[spriteIndex].active = R_is_inactive;
-    }
-    else
-    {
-        sprite[spriteIndex].active = R_is_active;
-    }
+    // if (sprite[spriteIndex].x_ < (width * -1) || sprite[spriteIndex].x_ >= 320)
+    // {
+    //     sprite[spriteIndex].active = R_is_inactive;
+    // }
+    // else
+    // {
+    //     sprite[spriteIndex].active = R_is_active;
+    // }
 }
 
 void stageResetTicks()

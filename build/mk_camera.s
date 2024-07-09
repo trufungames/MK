@@ -62,7 +62,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a3)
 	move.l sprite,%a3
 	move.l #___floatsisf,%d3
-	move.w 13448(%a3),%a0
+	move.w 13640(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -75,7 +75,7 @@ __Z12cameraUpdateP7FighterS0_:
 	lea ___fixsfsi,%a5
 	move.l %d0,-(%sp)
 	jsr (%a5)
-	move.w %d0,13448(%a3)
+	move.w %d0,13640(%a3)
 	move.w 9224(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -88,30 +88,6 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,9224(%a3)
-	move.w 13640(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,13640(%a3)
-	move.w 9416(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,9416(%a3)
 	move.w 13832(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -124,7 +100,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,13832(%a3)
-	move.w 9608(%a3),%a0
+	move.w 9416(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -135,7 +111,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9608(%a3)
+	move.w %d0,9416(%a3)
 	move.w 14024(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -148,7 +124,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14024(%a3)
-	move.w 9800(%a3),%a0
+	move.w 9608(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -159,7 +135,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9800(%a3)
+	move.w %d0,9608(%a3)
 	move.w 14216(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -172,7 +148,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14216(%a3)
-	move.w 9992(%a3),%a0
+	move.w 9800(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -183,7 +159,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9992(%a3)
+	move.w %d0,9800(%a3)
 	move.w 14408(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -196,7 +172,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14408(%a3)
-	move.w 10184(%a3),%a0
+	move.w 9992(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -207,7 +183,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10184(%a3)
+	move.w %d0,9992(%a3)
 	move.w 14600(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -220,7 +196,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14600(%a3)
-	move.w 10376(%a3),%a0
+	move.w 10184(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -231,7 +207,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10376(%a3)
+	move.w %d0,10184(%a3)
 	move.w 14792(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -244,6 +220,30 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14792(%a3)
+	move.w 10376(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,10376(%a3)
+	move.w 14984(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,14984(%a3)
 	move.w 10568(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -274,7 +274,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a3)
 	move.l sprite,%a2
 	lea ___floatsisf,%a5
-	move.w 13448(%a2),%a0
+	move.w 13640(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a5)
 	lea ___subsf3,%a4
@@ -285,7 +285,7 @@ __Z12cameraUpdateP7FighterS0_:
 	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
 	jsr (%a3)
-	move.w %d0,13448(%a2)
+	move.w %d0,13640(%a2)
 	move.w 9224(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -296,26 +296,6 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,9224(%a2)
-	move.w 13640(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,13640(%a2)
-	move.w 9416(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,9416(%a2)
 	move.w 13832(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -326,7 +306,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,13832(%a2)
-	move.w 9608(%a2),%a0
+	move.w 9416(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -335,7 +315,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9608(%a2)
+	move.w %d0,9416(%a2)
 	move.w 14024(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -346,7 +326,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14024(%a2)
-	move.w 9800(%a2),%a0
+	move.w 9608(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -355,7 +335,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9800(%a2)
+	move.w %d0,9608(%a2)
 	move.w 14216(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -366,7 +346,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14216(%a2)
-	move.w 9992(%a2),%a0
+	move.w 9800(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -375,7 +355,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9992(%a2)
+	move.w %d0,9800(%a2)
 	move.w 14408(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -386,7 +366,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14408(%a2)
-	move.w 10184(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -395,7 +375,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10184(%a2)
+	move.w %d0,9992(%a2)
 	move.w 14600(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -406,7 +386,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14600(%a2)
-	move.w 10376(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -415,7 +395,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10376(%a2)
+	move.w %d0,10184(%a2)
 	move.w 14792(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -426,6 +406,26 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14792(%a2)
+	move.w 10376(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,10376(%a2)
+	move.w 14984(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,14984(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -539,7 +539,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a3)
 	move.l sprite,%a3
 	move.l #___floatsisf,%d3
-	move.w 13448(%a3),%a0
+	move.w 13640(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -552,7 +552,7 @@ __Z12cameraUpdateP7FighterS0_:
 	lea ___fixsfsi,%a5
 	move.l %d0,-(%sp)
 	jsr (%a5)
-	move.w %d0,13448(%a3)
+	move.w %d0,13640(%a3)
 	move.w 9224(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -565,30 +565,6 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,9224(%a3)
-	move.w 13640(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,13640(%a3)
-	move.w 9416(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d3,%a0
-	jsr (%a0)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a5)
-	move.w %d0,9416(%a3)
 	move.w 13832(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -601,7 +577,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,13832(%a3)
-	move.w 9608(%a3),%a0
+	move.w 9416(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -612,7 +588,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9608(%a3)
+	move.w %d0,9416(%a3)
 	move.w 14024(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -625,7 +601,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14024(%a3)
-	move.w 9800(%a3),%a0
+	move.w 9608(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -636,7 +612,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9800(%a3)
+	move.w %d0,9608(%a3)
 	move.w 14216(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -649,7 +625,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14216(%a3)
-	move.w 9992(%a3),%a0
+	move.w 9800(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -660,7 +636,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,9992(%a3)
+	move.w %d0,9800(%a3)
 	move.w 14408(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -673,7 +649,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14408(%a3)
-	move.w 10184(%a3),%a0
+	move.w 9992(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -684,7 +660,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10184(%a3)
+	move.w %d0,9992(%a3)
 	move.w 14600(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -697,7 +673,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14600(%a3)
-	move.w 10376(%a3),%a0
+	move.w 10184(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
 	jsr (%a0)
@@ -708,7 +684,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a5)
-	move.w %d0,10376(%a3)
+	move.w %d0,10184(%a3)
 	move.w 14792(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -721,6 +697,30 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a5)
 	move.w %d0,14792(%a3)
+	move.w 10376(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,10376(%a3)
+	move.w 14984(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d3,%a0
+	jsr (%a0)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a5)
+	move.w %d0,14984(%a3)
 	move.w 10568(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d3,%a0
@@ -751,7 +751,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a2)
 	move.l sprite,%a2
 	lea ___floatsisf,%a5
-	move.w 13448(%a2),%a0
+	move.w 13640(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a5)
 	lea ___subsf3,%a4
@@ -762,7 +762,7 @@ __Z12cameraUpdateP7FighterS0_:
 	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
 	jsr (%a3)
-	move.w %d0,13448(%a2)
+	move.w %d0,13640(%a2)
 	move.w 9224(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -773,26 +773,6 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,9224(%a2)
-	move.w 13640(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,13640(%a2)
-	move.w 9416(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,9416(%a2)
 	move.w 13832(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -803,7 +783,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,13832(%a2)
-	move.w 9608(%a2),%a0
+	move.w 9416(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -812,7 +792,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9608(%a2)
+	move.w %d0,9416(%a2)
 	move.w 14024(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -823,7 +803,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14024(%a2)
-	move.w 9800(%a2),%a0
+	move.w 9608(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -832,7 +812,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9800(%a2)
+	move.w %d0,9608(%a2)
 	move.w 14216(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -843,7 +823,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14216(%a2)
-	move.w 9992(%a2),%a0
+	move.w 9800(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -852,7 +832,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9992(%a2)
+	move.w %d0,9800(%a2)
 	move.w 14408(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -863,7 +843,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14408(%a2)
-	move.w 10184(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -872,7 +852,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10184(%a2)
+	move.w %d0,9992(%a2)
 	move.w 14600(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -883,7 +863,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14600(%a2)
-	move.w 10376(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -892,7 +872,7 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10376(%a2)
+	move.w %d0,10184(%a2)
 	move.w 14792(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -903,6 +883,26 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14792(%a2)
+	move.w 10376(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,10376(%a2)
+	move.w 14984(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,14984(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -941,7 +941,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	jsr (%a3)
 	move.l sprite,%a2
 	lea ___floatsisf,%a5
-	move.w 13448(%a2),%a0
+	move.w 13640(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a5)
 	lea ___addsf3,%a4
@@ -952,7 +952,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
 	jsr (%a3)
-	move.w %d0,13448(%a2)
+	move.w %d0,13640(%a2)
 	move.w 9224(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -963,26 +963,6 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,9224(%a2)
-	move.w 13640(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,13640(%a2)
-	move.w 9416(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,9416(%a2)
 	move.w 13832(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -993,7 +973,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,13832(%a2)
-	move.w 9608(%a2),%a0
+	move.w 9416(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1002,7 +982,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9608(%a2)
+	move.w %d0,9416(%a2)
 	move.w 14024(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1013,7 +993,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14024(%a2)
-	move.w 9800(%a2),%a0
+	move.w 9608(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1022,7 +1002,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9800(%a2)
+	move.w %d0,9608(%a2)
 	move.w 14216(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1033,7 +1013,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14216(%a2)
-	move.w 9992(%a2),%a0
+	move.w 9800(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1042,7 +1022,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9992(%a2)
+	move.w %d0,9800(%a2)
 	move.w 14408(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1053,7 +1033,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14408(%a2)
-	move.w 10184(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1062,7 +1042,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10184(%a2)
+	move.w %d0,9992(%a2)
 	move.w 14600(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1073,7 +1053,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14600(%a2)
-	move.w 10376(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1082,7 +1062,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10376(%a2)
+	move.w %d0,10184(%a2)
 	move.w 14792(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1093,6 +1073,26 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14792(%a2)
+	move.w 10376(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,10376(%a2)
+	move.w 14984(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,14984(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1134,7 +1134,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	jsr (%a3)
 	move.l sprite,%a2
 	lea ___floatsisf,%a5
-	move.w 13448(%a2),%a0
+	move.w 13640(%a2),%a0
 	move.l %a0,-(%sp)
 	jsr (%a5)
 	lea ___subsf3,%a4
@@ -1145,7 +1145,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
 	jsr (%a3)
-	move.w %d0,13448(%a2)
+	move.w %d0,13640(%a2)
 	move.w 9224(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1156,26 +1156,6 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,9224(%a2)
-	move.w 13640(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,13640(%a2)
-	move.w 9416(%a2),%a0
-	move.l %a0,(%sp)
-	jsr (%a5)
-	move.l #0x40000000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a4)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	move.w %d0,9416(%a2)
 	move.w 13832(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1186,7 +1166,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,13832(%a2)
-	move.w 9608(%a2),%a0
+	move.w 9416(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1195,7 +1175,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9608(%a2)
+	move.w %d0,9416(%a2)
 	move.w 14024(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1206,7 +1186,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14024(%a2)
-	move.w 9800(%a2),%a0
+	move.w 9608(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1215,7 +1195,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9800(%a2)
+	move.w %d0,9608(%a2)
 	move.w 14216(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1226,7 +1206,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14216(%a2)
-	move.w 9992(%a2),%a0
+	move.w 9800(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1235,7 +1215,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,9992(%a2)
+	move.w %d0,9800(%a2)
 	move.w 14408(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1246,7 +1226,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14408(%a2)
-	move.w 10184(%a2),%a0
+	move.w 9992(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1255,7 +1235,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10184(%a2)
+	move.w %d0,9992(%a2)
 	move.w 14600(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1266,7 +1246,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14600(%a2)
-	move.w 10376(%a2),%a0
+	move.w 10184(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
 	move.l #0x40000000,(%sp)
@@ -1275,7 +1255,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a3)
-	move.w %d0,10376(%a2)
+	move.w %d0,10184(%a2)
 	move.w 14792(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)
@@ -1286,6 +1266,26 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l %d0,(%sp)
 	jsr (%a3)
 	move.w %d0,14792(%a2)
+	move.w 10376(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,10376(%a2)
+	move.w 14984(%a2),%a0
+	move.l %a0,(%sp)
+	jsr (%a5)
+	move.l #0x40000000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	move.w %d0,14984(%a2)
 	move.w 10568(%a2),%a0
 	move.l %a0,(%sp)
 	jsr (%a5)

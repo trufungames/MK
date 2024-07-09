@@ -4560,32 +4560,82 @@ void basicmain()
 				{
 					case 0:
 						//Johnny Cage
-						fighterUpdateIdle(delta, &fighterCage, &cageAnimator, cageIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterCage, &cageAnimator, cageWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterCage, &cageAnimator, cageIdleFrames);
+						}
+						
 						break;
 					case 1:
 						//Kano
-						fighterUpdateIdle(delta, &fighterKano, &kanoAnimator, kanoIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterKano, &kanoAnimator, kanoWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKano, &kanoAnimator, kanoIdleFrames);
+						}
 						break;
 					case 2:
 						//Sub-Zero
-						fighterUpdateIdle(delta, &fighterSubzero, &subzeroAnimator, subzeroIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterSubzero, &subzeroAnimator, subzeroWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterSubzero, &subzeroAnimator, subzeroIdleFrames);
+						}
 						break;
 					case 3:
 						//Sonya
-						fighterUpdateIdle(delta, &fighterSonya, &sonyaAnimator, sonyaIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterSonya, &sonyaAnimator, sonyaWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterSonya, &sonyaAnimator, sonyaIdleFrames);
+						}
 						break;
 					case 4:
 						//Raiden
-						fighterUpdateIdle(delta, &fighterRaiden, &raidenAnimator, raidenIdleFrames);
-						updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterRaiden, &raidenAnimator, raidenWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterRaiden, &raidenAnimator, raidenIdleFrames);
+							updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+						}
 						break;
 					case 5:
 						//Liu Kang
-						fighterUpdateIdle(delta, &fighterKang, &kangAnimator, kangIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterKang, &kangAnimator, kangWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKang, &kangAnimator, kangIdleFrames);
+						}
 						break;
 					case 6:
 						//Scorpion
-						fighterUpdateIdle(delta, &fighterScorpion, &scorpionAnimator, scorpionIdleFrames);
+						if (p1Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterScorpion, &scorpionAnimator, subzeroWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterScorpion, &scorpionAnimator, scorpionIdleFrames);
+						}
 						break;
 				}
 
@@ -4641,32 +4691,81 @@ void basicmain()
 				{
 					case 0:
 						//Johnny Cage
-						fighterUpdateIdle(delta, &fighterCage2, &cageAnimator2, cageIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterCage2, &cageAnimator2, cageWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterCage2, &cageAnimator2, cageIdleFrames);
+						}
 						break;
 					case 1:
 						//Kano
-						fighterUpdateIdle(delta, &fighterKano2, &kanoAnimator2, kanoIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterKano2, &kanoAnimator2, kanoWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKano2, &kanoAnimator2, kanoIdleFrames);
+						}
 						break;
 					case 2:
 						//Sub-Zero
-						fighterUpdateIdle(delta, &fighterSubzero2, &subzeroAnimator2, subzeroIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterSubzero2, &subzeroAnimator2, subzeroIdleFrames);
+						}
 						break;
 					case 3:
 						//Sonya
-						fighterUpdateIdle(delta, &fighterSonya2, &sonyaAnimator2, sonyaIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterSonya2, &sonyaAnimator2, sonyaIdleFrames);
+						}
 						break;
 					case 4:
 						//Raiden
-						fighterUpdateIdle(delta, &fighterRaiden2, &raidenAnimator2, raidenIdleFrames);
-						updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterRaiden2, &raidenAnimator2, raidenWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterRaiden2, &raidenAnimator2, raidenIdleFrames);
+							updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+						}
 						break;
 					case 5:
 						//Liu Kang
-						fighterUpdateIdle(delta, &fighterKang2, &kangAnimator2, kangIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterKang2, &kangAnimator2, kangWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKang2, &kangAnimator2, kangIdleFrames);
+						}
 						break;
 					case 6:
 						//Scorpion
-						fighterUpdateIdle(delta, &fighterScorpion2, &scorpionAnimator2, scorpionIdleFrames);
+						if (p2Selected > -1)
+						{
+							fighterUpdateVictoryPose(delta, &fighterScorpion2, &scorpionAnimator2, subzeroWinsFrames);
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterScorpion2, &scorpionAnimator2, scorpionIdleFrames);
+						}
 						break;
 				}
 
@@ -4682,31 +4781,39 @@ void basicmain()
 						case 0:
 							sfxJohnnyCage(&soundHandler, true);
 							fighter1Ptr = &fighterCage;
+							cageAnimator.currentFrame = 0;
 							break;
 						case 1:
 							sfxKano(&soundHandler, true);
 							fighter1Ptr = &fighterKano;
+							kanoAnimator.currentFrame = 0;
 							break;
 						case 2:
 							sfxSubzero(&soundHandler, true);
 							fighter1Ptr = &fighterSubzero;
+							subzeroAnimator.currentFrame = 0;
 							break;
 						case 3:
 							sfxSonya(&soundHandler, true);
 							fighter1Ptr = &fighterSonya;
+							sonyaAnimator.currentFrame = 0;
 							break;
 						case 4:
 							sfxRaiden(&soundHandler, true);
 							fighter1Ptr = &fighterRaiden;
+							raidenAnimator.currentFrame = 0;
+							sprite[LIGHTNING].active = R_is_inactive;
 							break;
 						case 5:
 							sfxLiuKang(&soundHandler, true);
 							fighter1Ptr = &fighterKang;
+							kangAnimator.currentFrame = 0;
 							break;
 						case 6:
 							sfxScorpion(&soundHandler, true);
 							fighter1Ptr = &fighterScorpion;
-							break;
+							scorpionAnimator.currentFrame = 0;
+							break; 
 					}
 				}
 
@@ -4722,30 +4829,38 @@ void basicmain()
 						case 0:
 							sfxJohnnyCage(&soundHandler, false);
 							fighter2Ptr = &fighterCage2;
+							cageAnimator2.currentFrame = 0;
 							break;
 						case 1:
 							sfxKano(&soundHandler, false);
 							fighter2Ptr = &fighterKano2;
+							kanoAnimator2.currentFrame = 0;
 							break;
 						case 2:
 							sfxSubzero(&soundHandler, false);
 							fighter2Ptr = &fighterSubzero2;
+							subzeroAnimator2.currentFrame = 0;
 							break;
 						case 3:
 							sfxSonya(&soundHandler, false);
 							fighter2Ptr = &fighterSonya2;
+							sonyaAnimator2.currentFrame = 0;
 							break;
 						case 4:
 							sfxRaiden(&soundHandler, false);
 							fighter2Ptr = &fighterRaiden2;
+							raidenAnimator2.currentFrame = 0;
+							sprite[LIGHTNING2].active = R_is_inactive;
 							break;
 						case 5:
 							sfxLiuKang(&soundHandler, false);
 							fighter2Ptr = &fighterKang2;
+							kangAnimator2.currentFrame = 0;
 							break;
 						case 6:
 							sfxScorpion(&soundHandler, false);
 							fighter2Ptr = &fighterScorpion2;
+							scorpionAnimator2.currentFrame = 0;
 							break;
 					}
 				}

@@ -1945,6 +1945,13 @@ raptor_init_table:
 	dc.l	2								; sprite_damage					; Hitpoints deducted from target
 	dc.l	384/2							; sprite_gwidth					; GFX width (of data)
 
+; BRANCH Object 21
+	dc.l    -3                                ; BRANCH object
+    dc.l    BR_more
+    dc.l    220
+    dc.l    7
+    dc.l    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
 ; Player 1 Object Shadow
 	dc.l	1								; (REPEAT COUNTER) 				; Create this many objects of this type (or 1 for a single object)
 	dc.l	is_inactive						; sprite_active					; sprite active flag
@@ -2608,6 +2615,20 @@ raptor_init_table:
 	dc.l	1								; sprite_hitpoint				; Hitpoints before death
 	dc.l	2								; sprite_damage					; Hitpoints deducted from target
 	dc.l	688/2							; sprite_gwidth					; GFX width (of data)	
+
+; BRANCH Object 21
+	dc.l    -3                                ; BRANCH object
+    dc.l    BR_less
+    dc.l    8
+    dc.l    3
+    dc.l    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+; BRANCH Object 21
+	dc.l    -3                                ; BRANCH object
+    dc.l    BR_more
+    dc.l    53
+    dc.l    2
+    dc.l    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ; Text/Particle Layer
 	dc.l	1																; (REPEAT COUNTER) 	; Create this many objects of this type (or 1 for a single object)

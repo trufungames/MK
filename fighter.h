@@ -59,12 +59,6 @@ struct Fighter {
     bool IsBodyPunching;
     bool IsBodyKicking;
     bool IsDuckKicking;
-    bool DPadReleased;
-    bool DPadUpReleased;
-    bool ButtonReleased;
-    bool DPadWasRecorded;
-    bool NoBlood;
-    bool NoSound;
     bool IsHitLow;
     bool IsHitHigh;
     bool IsHitBack;
@@ -78,6 +72,12 @@ struct Fighter {
     bool IsHitDropKick;
     bool IsHitBodyKick;
     bool IsHitHarpoon;
+    bool DPadReleased;
+    bool DPadUpReleased;
+    bool ButtonReleased;
+    bool DPadWasRecorded;
+    bool NoBlood;
+    bool NoSound;
     int HarpoonKnockbackDistance;
     int HarpoonSourceX;
     bool IsHarpoonComplete;
@@ -262,6 +262,8 @@ void fighterInitialize(struct Fighter* fighter, bool isPlayer1, struct SoundHand
 void fighterRestartMatch(struct Fighter* fighter);
 
 void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame idleFrames[]);
+
+void fighterUpdateVictoryPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame winFrames[]);
 
 void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator);
 

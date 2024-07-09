@@ -265,6 +265,13 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
     fighterCastShadow(fighter, false);
 }
 
+void fighterUpdateVictoryPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame winFrames[])
+{
+    updateSpriteAnimator(animator, winFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+    fighterCastShadow(fighter, false);
+}
+
 void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
     if (fighter->ResetTicks)
