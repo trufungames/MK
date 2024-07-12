@@ -49,6 +49,7 @@ void spriteDelaySetInactive(int spriteIndex, int ticks, bool* inUseFlag)
             sprites[i].inUse = true;
             sprites[i].inUseFlag = inUseFlag;
             break;
+            
         }
     }
 }

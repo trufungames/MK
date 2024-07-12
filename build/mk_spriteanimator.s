@@ -384,8 +384,7 @@ __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb:
 	pea 1.w
 	clr.l -(%sp)
 	clr.l -(%sp)
-	move.w 18(%a2),%a0
-	move.l %a0,-(%sp)
+	pea 48.w
 	move.l 8(%a2),-(%sp)
 	move.l 4(%a2),-(%sp)
 	move.l %a3,-(%sp)
@@ -459,8 +458,7 @@ __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss:
 	move.l %a0,-(%sp)
 	move.w 30(%fp),%a0
 	move.l %a0,-(%sp)
-	move.w 18(%a2),%a0
-	move.l %a0,-(%sp)
+	pea 48.w
 	move.l 8(%a2),-(%sp)
 	move.l 4(%a2),-(%sp)
 	move.l %a3,-(%sp)

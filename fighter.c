@@ -127,15 +127,12 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->impactFrameDuckKick = impactFrameDuckKick;
     fighter->impactFrameThrow = impactFrameThrow;
     fighter->pad = 0;
-    fighter->playerMoveForwardSpeed = 2;
-    fighter->playerMoveBackwardSpeed = 2;
     fighter->playerKnockbackSpeed = 2.0f;
     fighter->playerUppercutXSpeed = 4.0f;
     fighter->playerDropKickXSpeed = 6.5f;
     fighter->playerThrowXSpeed = 8.0f;
     fighter->playerXTraveled = 0.0f;
     fighter->playerJumpXSpeed = 7.5f;
-    fighter->playerPushSpeed = 1;
     fighter->damageTicks = 1;
     fighter->dropKickTicks = 0;
     fighter->touchTicks = 0;
@@ -274,6 +271,7 @@ void fighterUpdateVictoryPose(float delta, struct Fighter *fighter, struct Sprit
 
 void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
+    return;
     if (fighter->ResetTicks)
     {
         fighter->ResetTicks = false;
@@ -596,7 +594,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
 
     if (fighter->IsBeingPushed)
     {
-        fighterPositionXAdd(fighter, fighter->playerPushSpeed * delta * -fighter->direction);
+        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta * -fighter->direction);
 
         if (rapTicks >= fighter->touchTicks + 4)
         {
@@ -613,6 +611,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
 
 void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward)
 {
+    return;
     //**************************************
     //Impact Damage Checks
     //**************************************
@@ -1047,6 +1046,7 @@ bool fighterHandleSpecialMoves(float delta, struct Fighter* fighter, struct Spri
 
 void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward)
 {
+    return;
     //**************************************
     //Player Input Handling
     //**************************************
@@ -1684,18 +1684,18 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->IsPushing)
                 {
-                    float speed = fighter->playerMoveBackwardSpeed;
+                    float speed = FIGHTER_WALK_SPEED_BACKWARD;
 
                     if (fighter->direction == -1)
                     {
-                        speed = fighter->playerMoveForwardSpeed;
+                        speed = FIGHTER_WALK_SPEED_FORWARD;
                     }
 
                     fighterPositionXAdd(fighter, -1 * speed * delta);
                 }
                 else if (cameraCanMove())
                 {
-                    fighterPositionXAdd(fighter, -1 * fighter->playerPushSpeed * delta);
+                    fighterPositionXAdd(fighter, -1 * FIGHTER_WALK_PUSH_SPEED * delta);
                 }
             }
 
@@ -1726,18 +1726,18 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
             {
                 if (!fighter->IsPushing)
                 {
-                    float speed = fighter->playerMoveForwardSpeed;
+                    float speed = FIGHTER_WALK_SPEED_FORWARD;
 
                     if (fighter->direction == -1)
                     {
-                        speed = fighter->playerMoveBackwardSpeed;
+                        speed = FIGHTER_WALK_SPEED_BACKWARD;
                     }
 
                     fighterPositionXAdd(fighter, speed * delta);
                 }
                 else
                 {
-                    fighterPositionXAdd(fighter, fighter->playerPushSpeed * delta);
+                    fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta);
                 }
             }
 

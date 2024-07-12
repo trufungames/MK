@@ -146,8 +146,6 @@ struct Fighter {
     unsigned int Score;
     bool ScoreChanged;
     unsigned int PAD;
-    float playerMoveForwardSpeed;
-    float playerMoveBackwardSpeed;
     float playerKnockbackSpeed;
     float playerUppercutXSpeed;
     float playerDropKickXSpeed;
@@ -207,6 +205,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameBodyKick;
     struct ImpactFrame* impactFrameDuckKick;
     struct ImpactFrame* impactFrameThrow;
+    struct SpriteAnimator* spriteAnimator;
     struct SpriteAnimator* projectileAnimator;
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*dizzyFrames)[7];

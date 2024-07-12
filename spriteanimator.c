@@ -1,5 +1,6 @@
 #include "common.h"
 #include "spriteanimator.h"
+#include "debug.h"
 
 static int tempY = 0;
 
@@ -93,7 +94,8 @@ void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame
 void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop, short positionX, short positionY, short direction)
 {
     animator->currentAnimationFrame = &animationFrames[animator->currentFrame];
-    animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, positionX, positionY, direction);
+    //animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, positionX, positionY, direction);
+    animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, FIGHTER_WIDTH, positionX, positionY, direction);
 
     if (rapTicks >= animator->lastTick + animationFrames[animator->currentFrame].ticks)
     {

@@ -14,6 +14,7 @@
 #include "leaderboard.h"
 #include "playerinput.h"
 #include "hud.h"
+#include "statemachine.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
@@ -24,7 +25,7 @@ static int imageBuffer[768*640/4];
 static int imageBuffer320x240[320*224/4];
 static int imageBufferFMV[80*1408/4];
 static int BLACKPALx16[8];
-static int WHITEPALx16[16];
+static int WHITEPALx16[8];
 static int BLACKPAL[128];
 short p1Cursor = 1;
 short p2Cursor = 2;
@@ -63,10 +64,32 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
+};
+
+static StateMachine fighter1StateMachine = {};
+static StateMachine fighter2StateMachine = {};
+
+static State stateIdle = {
+	STATE_IDLE
+};
+static State stateBlocking = {
+	STATE_BLOCKING
+};
+static State stateDucking = {
+	STATE_DUCKING
+};
+static State stateWalkingForward = {
+	STATE_WALKING_FORWARD
+};
+static State stateWalkingBackward = {
+	STATE_WALKING_BACKWARD
+};
+static State stateJumping = {
+	STATE_JUMPING
 };
 
 static SpriteAnimator shangTsungAnimator = {
@@ -3459,13 +3482,55 @@ void basicmain()
 		p1FlashCount = 0;
 		p2FlashCount = 0;
 		struct Fighter* fighter1Ptr;
-		struct Fighter* fighter2Ptr; 
+		struct Fighter* fighter2Ptr;
+		struct SpriteAnimator* spriteAnimator1Ptr;
+		struct SpriteAnimator* spriteAnimator2Ptr;
 		short fighters1OffsetY = -134;
 		short fighters2OffsetY = 134;
 		fmvIndex = 6;
 		goroProfileShown = false;
 		attractSlideIndex = 0;
-		
+
+		stateIdle.enter = &StateIdle_Enter;
+		stateIdle.exit = &StateIdle_Exit;
+		stateIdle.update = &StateIdle_Update;
+		stateIdle.handleInput = &StateIdle_HandleInput;
+		stateBlocking.enter = &StateBlocking_Enter;
+		stateBlocking.exit = &StateBlocking_Exit;
+		stateBlocking.update = &StateBlocking_Update;
+		stateBlocking.handleInput = &StateBlocking_HandleInput;
+		stateDucking.enter = &StateDucking_Enter;
+		stateDucking.exit = &StateDucking_Exit;
+		stateDucking.update = &StateDucking_Update;
+		stateDucking.handleInput = &StateDucking_HandleInput;
+		stateWalkingForward.enter = &StateWalkingForward_Enter;
+		stateWalkingForward.exit = &StateWalkingForward_Exit;
+		stateWalkingForward.update = &StateWalkingForward_Update;
+		stateWalkingForward.handleInput = &StateWalkingForward_HandleInput;
+		stateWalkingBackward.enter = &StateWalkingBackward_Enter;
+		stateWalkingBackward.exit = &StateWalkingBackward_Exit;
+		stateWalkingBackward.update = &StateWalkingBackward_Update;
+		stateWalkingBackward.handleInput = &StateWalkingBackward_HandleInput;
+		stateJumping.enter = &StateJumping_Enter;
+		stateJumping.exit = &StateJumping_Exit;
+		stateJumping.update = &StateJumping_Update;
+		stateJumping.handleInput = &StateJumping_HandleInput;
+				
+		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
+		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
+		stateMachineAdd(&fighter1StateMachine, STATE_DUCKING, &stateDucking);
+		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
+		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING, &stateJumping);
+
+		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
+		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
+		stateMachineAdd(&fighter2StateMachine, STATE_DUCKING, &stateDucking);
+		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
+		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING, &stateJumping);
+
+		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
 		fighterCage.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -3512,6 +3577,7 @@ void basicmain()
 		fighterCage.throwFrames = &cageThrowFrames;
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
+		fighterCage2.spriteAnimator = &cageAnimator2;
 		fighterCage2.projectileAnimator = &lightningAnimator;
 		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -3559,6 +3625,7 @@ void basicmain()
 		fighterCage2.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage2.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		//Kano
+		fighterKano.spriteAnimator = &kanoAnimator;
 		fighterKano.projectileAnimator = &lightningAnimator;
 		fighterKano.projectileFrames = &projectileKnifeFrames;
 		fighterKano.projectileEndFrames = &projectileKnifeEndFrames;
@@ -3604,6 +3671,7 @@ void basicmain()
 		fighterKano.hitFallFrames = &kanoHitFallFrames;
 		fighterKano.hitSweepFrames = &kanoHitSweepFrames;
 		fighterKano.kipUpFrames = &kanoKipUpFrames;
+		fighterKano2.spriteAnimator = &kanoAnimator2;
 		fighterKano2.projectileAnimator = &lightningAnimator;
 		fighterKano2.projectileFrames = &projectileKnifeFrames;
 		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
@@ -3650,6 +3718,7 @@ void basicmain()
 		fighterKano2.hitSweepFrames = &kanoHitSweepFrames;
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
 		//Raide
+		fighterRaiden.spriteAnimator = &raidenAnimator;
 		fighterRaiden.projectileAnimator = &lightningAnimator;
 		fighterRaiden.projectileFrames = &projectileLightningFrames;
 		fighterRaiden.projectileEndFrames = &projectileLightningEndFrames;
@@ -3695,6 +3764,7 @@ void basicmain()
 		fighterRaiden.hitUppercutFrames = &raidenHitUppercutFrames;
 		fighterRaiden.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
+		fighterRaiden2.spriteAnimator = &raidenAnimator2;
 		fighterRaiden2.projectileAnimator = &lightningAnimator;
 		fighterRaiden2.projectileFrames = &projectileLightningFrames;
 		fighterRaiden2.projectileEndFrames = &projectileLightningEndFrames;
@@ -3741,6 +3811,7 @@ void basicmain()
 		fighterRaiden2.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden2.hitSweepFrames = &raidenHitSweepFrames;
 		//Liu Kang
+		fighterKang.spriteAnimator = &kangAnimator;
 		fighterKang.projectileAnimator = &lightningAnimator;
 		fighterKang.projectileFrames = &projectileFireballFrames;
 		fighterKang.projectileEndFrames = &projectileFireballEndFrames;
@@ -3787,6 +3858,7 @@ void basicmain()
 		fighterKang.hitUppercutFrames = &kangHitUppercutFrames;
 		fighterKang.hitFallFrames = &kangHitFallFrames;
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
+		fighterKang2.spriteAnimator = &kangAnimator2;
 		fighterKang2.projectileAnimator = &lightningAnimator;
 		fighterKang2.projectileFrames = &projectileFireballFrames;
 		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
@@ -3834,6 +3906,7 @@ void basicmain()
 		fighterKang2.hitFallFrames = &kangHitFallFrames;
 		fighterKang2.hitSweepFrames = &kangHitSweepFrames;
 		//Scorpion
+		fighterScorpion.spriteAnimator = &scorpionAnimator;
 		fighterScorpion.projectileAnimator = &lightningAnimator;
 		fighterScorpion.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion.projectileEndFrames = &projectileHarpoonEndFrames;
@@ -3881,6 +3954,7 @@ void basicmain()
 		fighterScorpion.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterScorpion.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
 		fighterScorpion2.projectileAnimator = &lightningAnimator;
 		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion2.projectileEndFrames = &projectileHarpoonEndFrames;
@@ -3929,6 +4003,7 @@ void basicmain()
 		fighterScorpion2.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion2.hitSweepFrames = &subzeroHitSweepFrames;
 		//Sub-Zero
+		fighterSubzero.spriteAnimator = &subzeroAnimator;
 		fighterSubzero.projectileAnimator = &lightningAnimator;
 		fighterSubzero.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero.projectileEndFrames = &projectileFreezeEndFrames;
@@ -3975,6 +4050,7 @@ void basicmain()
 		fighterSubzero.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterSubzero2.spriteAnimator = &subzeroAnimator2;
 		fighterSubzero2.projectileAnimator = &lightningAnimator;
 		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero2.projectileEndFrames = &projectileFreezeEndFrames;
@@ -4022,6 +4098,7 @@ void basicmain()
 		fighterSubzero2.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero2.hitSweepFrames = &subzeroHitSweepFrames;
 		//Sonya
+		fighterSonya.spriteAnimator = &sonyaAnimator;
 		fighterSonya.projectileAnimator = &lightningAnimator;
 		fighterSonya.projectileFrames = &projectileRingsFrames;
 		fighterSonya.projectileEndFrames = &projectileRingsEndFrames;
@@ -4068,6 +4145,7 @@ void basicmain()
 		fighterSonya.hitUppercutFrames = &sonyaHitUppercutFrames;
 		fighterSonya.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
+		fighterSonya2.spriteAnimator = &sonyaAnimator2;
 		fighterSonya2.projectileAnimator = &lightningAnimator;
 		fighterSonya2.projectileFrames = &projectileRingsFrames;
 		fighterSonya2.projectileEndFrames = &projectileRingsEndFrames;
@@ -4780,41 +4858,43 @@ void basicmain()
 					{
 						case 0:
 							sfxJohnnyCage(&soundHandler, true);
-							fighter1Ptr = &fighterCage;
-							cageAnimator.currentFrame = 0;
+							fighter1Ptr = &fighterCage;							
+							spriteAnimator1Ptr = &cageAnimator;
 							break;
 						case 1:
 							sfxKano(&soundHandler, true);
 							fighter1Ptr = &fighterKano;
-							kanoAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &kanoAnimator;
 							break;
 						case 2:
 							sfxSubzero(&soundHandler, true);
 							fighter1Ptr = &fighterSubzero;
-							subzeroAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &subzeroAnimator;
 							break;
 						case 3:
 							sfxSonya(&soundHandler, true);
 							fighter1Ptr = &fighterSonya;
-							sonyaAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &sonyaAnimator;
 							break;
 						case 4:
 							sfxRaiden(&soundHandler, true);
 							fighter1Ptr = &fighterRaiden;
-							raidenAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &raidenAnimator;
 							sprite[LIGHTNING].active = R_is_inactive;
 							break;
 						case 5:
 							sfxLiuKang(&soundHandler, true);
 							fighter1Ptr = &fighterKang;
-							kangAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &kangAnimator;
 							break;
 						case 6:
 							sfxScorpion(&soundHandler, true);
 							fighter1Ptr = &fighterScorpion;
-							scorpionAnimator.currentFrame = 0;
+							spriteAnimator1Ptr = &scorpionAnimator;
 							break; 
 					}
+
+					fighter1Ptr->spriteAnimator->currentFrame = 0;
 				}
 
 				if ((pad2 & JAGPAD_C || pad2 & JAGPAD_B || pad2 & JAGPAD_A || pad2 & JAGPAD_7 || pad2 & JAGPAD_8 || pad2 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p2Selected == -1)
@@ -4829,40 +4909,42 @@ void basicmain()
 						case 0:
 							sfxJohnnyCage(&soundHandler, false);
 							fighter2Ptr = &fighterCage2;
-							cageAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &cageAnimator2;
 							break;
 						case 1:
 							sfxKano(&soundHandler, false);
 							fighter2Ptr = &fighterKano2;
-							kanoAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &kanoAnimator2;
 							break;
 						case 2:
 							sfxSubzero(&soundHandler, false);
 							fighter2Ptr = &fighterSubzero2;
-							subzeroAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &subzeroAnimator2;
 							break;
 						case 3:
 							sfxSonya(&soundHandler, false);
 							fighter2Ptr = &fighterSonya2;
-							sonyaAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &sonyaAnimator2;
 							break;
 						case 4:
 							sfxRaiden(&soundHandler, false);
 							fighter2Ptr = &fighterRaiden2;
-							raidenAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &raidenAnimator2;
 							sprite[LIGHTNING2].active = R_is_inactive;
 							break;
 						case 5:
 							sfxLiuKang(&soundHandler, false);
 							fighter2Ptr = &fighterKang2;
-							kangAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &kangAnimator2;
 							break;
 						case 6:
 							sfxScorpion(&soundHandler, false);
 							fighter2Ptr = &fighterScorpion2;
-							scorpionAnimator2.currentFrame = 0;
+							spriteAnimator2Ptr = &scorpionAnimator2;
 							break;
 					}
+
+					fighter2Ptr->spriteAnimator->currentFrame = 0;
 				}
 
 				if (p1Selected != -1 && p1FlashCount <= 7)
@@ -4943,6 +5025,8 @@ void basicmain()
 					fighterRestartMatch(fighter1Ptr);
 					fighterRestartMatch(fighter2Ptr);
 					switchScreenFight(p1Cursor, p2Cursor, true);
+					stateMachineInit(&fighter1StateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighter2StateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 					displayWinnerMedals();
 				}
 			}
@@ -4954,6 +5038,29 @@ void basicmain()
 				pad1=jsfGetPad(LEFT_PAD);
 				pad2=jsfGetPad(RIGHT_PAD);
 
+				stateMachineUpdate(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr);
+				stateMachineUpdate(&fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
+
+				if (pad1 & JAGPAD_5)
+				{
+					showMessageInt("currentFrame", spriteAnimator1Ptr->currentFrame);
+				}
+
+				if (pad1 & JAGPAD_6)
+				{
+					showMessageInt("black palette", BLACKPALx16[0]);
+				}
+
+				fighterCastShadow(fighter1Ptr, false);
+				fighterCastShadow(fighter2Ptr, false);
+
+				fighter1Ptr->pad = jsfGetPad(fighter1Ptr->PAD);
+				fighter2Ptr->pad = jsfGetPad(fighter2Ptr->PAD);
+
+				stateMachineHandleInput(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr);
+				stateMachineHandleInput(&fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
+
+				//clb uncomment here once things above work...
 				displayWinnerMedals();
 
 				//match progression
@@ -4982,6 +5089,8 @@ void basicmain()
 					spriteDelayInit();
 					sleepInit();
 					matchReset();
+					stateMachineInit(&fighter1StateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighter2StateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 					fighterResetFlagsAll(fighter1Ptr, fighter2Ptr);
 					switchScreenFight(p1Cursor, p2Cursor, false);
 				}
@@ -4991,7 +5100,7 @@ void basicmain()
 					//we're sleeping, so just loop again.
 					continue;
 				}
-
+				
 				fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
 				fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
 
@@ -5010,88 +5119,95 @@ void basicmain()
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
 				fighterImpactCheck(fighter1Ptr, fighter2Ptr);	
-				playerinputUpdate(fighter1Ptr, fighter2Ptr);		
+				playerinputUpdate(fighter1Ptr, fighter2Ptr);
 
-				//////////////////////////////////////
-				// Player 1 fighter
-				/////////////////////////////////////
-				switch (p1Cursor)
+				if (fighter1Ptr->pad & JAGPAD_5)
 				{
-					case 0:
-						//Johnny Cage
-						fighterUpdate(delta, &fighterCage, &cageAnimator);
-						break;
-					case 1:
-						//Kano
-						fighterUpdate(delta, &fighterKano, &kanoAnimator);
-						break;
-					case 2:
-						//Sub-Zero
-						fighterUpdate(delta, &fighterSubzero, &subzeroAnimator);
-						break;
-					case 3:
-						//Sonya
-						fighterUpdate(delta, &fighterSonya, &sonyaAnimator);
-						break;
-					case 4:
-						//Raiden
-						fighterUpdate(delta, &fighterRaiden, &raidenAnimator);
-
-						if (fighterRaiden.IsIdle)
-							updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
-						break;
-					case 5:
-						//Liu Kang
-						fighterUpdate(delta, &fighterKang, &kangAnimator);
-						break;
-					case 6:
-						//Scorpion
-						fighterUpdate(delta, &fighterScorpion, &scorpionAnimator);
-						break;
+					showMessageInt("currentFrame", spriteAnimator1Ptr->currentFrame);
 				}
+
+				// jsfVsync(0);
+				// continue;
+
+				// //////////////////////////////////////
+				// // Player 1 fighter
+				// /////////////////////////////////////
+				// switch (p1Cursor)
+				// {
+				// 	case 0:
+				// 		//Johnny Cage
+				// 		fighterUpdate(delta, &fighterCage, &cageAnimator);
+				// 		break;
+				// 	case 1:
+				// 		//Kano
+				// 		fighterUpdate(delta, &fighterKano, &kanoAnimator);
+				// 		break;
+				// 	case 2:
+				// 		//Sub-Zero
+				// 		fighterUpdate(delta, &fighterSubzero, &subzeroAnimator);
+				// 		break;
+				// 	case 3:
+				// 		//Sonya
+				// 		fighterUpdate(delta, &fighterSonya, &sonyaAnimator);
+				// 		break;
+				// 	case 4:
+				// 		//Raiden
+				// 		fighterUpdate(delta, &fighterRaiden, &raidenAnimator);
+
+				// 		if (fighterRaiden.IsIdle)
+				// 			updateSpriteAnimator(&lightningAnimator, lightningFrames, 30, true, true);
+				// 		break;
+				// 	case 5:
+				// 		//Liu Kang
+				// 		fighterUpdate(delta, &fighterKang, &kangAnimator);
+				// 		break;
+				// 	case 6:
+				// 		//Scorpion
+				// 		fighterUpdate(delta, &fighterScorpion, &scorpionAnimator);
+				// 		break;
+				// }
 				
-				//////////////////////////////////////
-				// Player 2 fighter
-				/////////////////////////////////////
-				switch (p2Cursor)
-				{
-					case 0:
-						//Johnny Cage
-						fighterUpdate(delta, &fighterCage2, &cageAnimator2);
-						break;
-					case 1:
-						//Kano
-						fighterUpdate(delta, &fighterKano2, &kanoAnimator2);
-						break;
-					case 2:
-						//Sub-Zero
-						fighterUpdate(delta, &fighterSubzero2, &subzeroAnimator2);
-						break;
-					case 3:
-						//Sonya
-						fighterUpdate(delta, &fighterSonya2, &sonyaAnimator2);
-						break;
-					case 4:
-						//Raiden
-						fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2);
+				// //////////////////////////////////////
+				// // Player 2 fighter
+				// /////////////////////////////////////
+				// switch (p2Cursor)
+				// {
+				// 	case 0:
+				// 		//Johnny Cage
+				// 		fighterUpdate(delta, &fighterCage2, &cageAnimator2);
+				// 		break;
+				// 	case 1:
+				// 		//Kano
+				// 		fighterUpdate(delta, &fighterKano2, &kanoAnimator2);
+				// 		break;
+				// 	case 2:
+				// 		//Sub-Zero
+				// 		fighterUpdate(delta, &fighterSubzero2, &subzeroAnimator2);
+				// 		break;
+				// 	case 3:
+				// 		//Sonya
+				// 		fighterUpdate(delta, &fighterSonya2, &sonyaAnimator2);
+				// 		break;
+				// 	case 4:
+				// 		//Raiden
+				// 		fighterUpdate(delta, &fighterRaiden2, &raidenAnimator2);
 
-						if (fighterRaiden2.IsIdle)
-							updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
-						break;
-					case 5:
-						//Liu Kang
-						fighterUpdate(delta, &fighterKang2, &kangAnimator2);
-						break;
-					case 6:
-						//Scorpion
-						fighterUpdate(delta, &fighterScorpion2, &scorpionAnimator2);
-						break;
-				}
+				// 		if (fighterRaiden2.IsIdle)
+				// 			updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
+				// 		break;
+				// 	case 5:
+				// 		//Liu Kang
+				// 		fighterUpdate(delta, &fighterKang2, &kangAnimator2);
+				// 		break;
+				// 	case 6:
+				// 		//Scorpion
+				// 		fighterUpdate(delta, &fighterScorpion2, &scorpionAnimator2);
+				// 		break;
+				// }
 				
 				bgUpdate(fighter1Ptr, fighter2Ptr);
 				stageUpdate();
 
-				//clb
 				if (stageGet() == STAGE_THRONE)
 				{
 					if (fighter1Ptr->IsDefeated || fighter2Ptr->IsDefeated)
@@ -5122,46 +5238,11 @@ void basicmain()
 						}
 					}
 				}
-
-				//if (fighter1Ptr->IsWalking || fighter2Ptr->IsWalking)
-				//{
-					cameraUpdate(fighter1Ptr, fighter2Ptr);
-				//}
 				
+				cameraUpdate(fighter1Ptr, fighter2Ptr);
 				bloodUpdate(&soundHandler);
 				spriteDelayUpdate();
-				
-				// if(pad1 & JAGPAD_STAR)
-				// {
-				// 	debugMode = true;
-				// 	// sleepAdd(40);
-				// 	// setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
-				// 	// setFrame(P2_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK);
-				// 	//rapDebugInverse();
-				// 	//rapDebugSetVisible(DEBUG_SHOW);
-				// 	//sprite[STAGE_PRIMARY_BACKGROUND].active = R_is_inactive;
-				// }
-				// else if (pad1 & JAGPAD_HASH)
-				// {
-				// 	debugMode = false;
-				// 	// setFrame(P1_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
-				// 	// setFrame(P2_HB_ATTACK, 48, 16, 0, 0, 0.5f, BMP_HITBOX_ATTACK_OFF);
-				// 	//rapDebugSetVisible(DEBUG_HIDE);
-				// 	//sprite[STAGE_PRIMARY_BACKGROUND].active = R_is_active;
-				// }
-
-				//rapUse16x16fontPalette(10);
-				// jsfSetFontIndx(0);
-				// jsfSetFontSize(2);
-				// rapLocate(60, 5);
-				// js_r_textbuffer = ee_printf("%04d",0);
-				// rapPrint();
-
-				
-
 				fighterDrawScores(fighter1Ptr, fighter2Ptr);
-
-				
 				
 				if (debugMode)
 				{
@@ -5221,7 +5302,7 @@ void initBlackPalettes()
 		BLACKPALx16[i] = 0;
 	}
 
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		WHITEPALx16[i] = 256;
 	}
