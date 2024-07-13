@@ -9,6 +9,8 @@ struct State {
 struct StateMachine {
     struct State* (states)[STATE_TOTAL_COUNT];
     struct State* currentState;
+    int vars[3];
+    bool exitingState;
 };
 
 void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state);

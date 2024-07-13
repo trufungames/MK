@@ -5,9 +5,6 @@
 #include "impactFrame.h"
 #include "debug.h"
 
-int nextState;
-bool exitingState = false;
-int vars[3];
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 
 void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state)
@@ -20,6 +17,7 @@ void stateMachineInit(struct StateMachine* stateMachine, int name, struct Fighte
 {
     stateMachine->currentState = stateMachine->states[name];
     stateMachine->currentState->enter(stateMachine, fighter, spriteAnimator);
+    stateMachine->exitingState = false;
 }
 
 void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -46,7 +44,7 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
 {
    spriteAnimator->currentFrame = 0;
    spriteAnimator->lastTick = rapTicks;
-   exitingState = false;
+   stateMachine->exitingState = false;
 }
 
 void StateIdle_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -92,7 +90,7 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
 void StateBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     spriteAnimator->currentFrame = 0;
-    exitingState = false;
+    stateMachine->exitingState = false;
 }
 
 void StateBlocking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -101,7 +99,7 @@ void StateBlocking_Exit(struct StateMachine* stateMachine, struct Fighter* fight
 
 void StateBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    if (!exitingState)
+    if (!stateMachine->exitingState)
     {
         updateSpriteAnimator(spriteAnimator, *fighter->blockFrames, fighter->BLOCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);    
     }
@@ -120,7 +118,7 @@ void StateBlocking_HandleInput(struct StateMachine* stateMachine, struct Fighter
 {
     if (!(fighter->pad & JAGPAD_B || fighter->pad & JAGPAD_8))
     {
-        exitingState = true;
+        stateMachine->exitingState = true;
     }
 }
 
@@ -130,7 +128,7 @@ void StateBlocking_HandleInput(struct StateMachine* stateMachine, struct Fighter
 void StateDucking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     spriteAnimator->currentFrame = 0;
-    exitingState = false;
+    stateMachine->exitingState = false;
 }
 
 void StateDucking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -139,7 +137,7 @@ void StateDucking_Exit(struct StateMachine* stateMachine, struct Fighter* fighte
 
 void StateDucking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    if (!exitingState)
+    if (!stateMachine->exitingState)
     {
         updateSpriteAnimator(spriteAnimator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
     }
@@ -158,7 +156,7 @@ void StateDucking_HandleInput(struct StateMachine* stateMachine, struct Fighter*
 {
     if (!(fighter->pad & JAGPAD_DOWN))
     {
-        exitingState = true;
+        stateMachine->exitingState = true;
     }
 }
 
@@ -169,8 +167,8 @@ void StateDucking_HandleInput(struct StateMachine* stateMachine, struct Fighter*
 void StateWalkingForward_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     spriteAnimator->currentFrame = 0;
-    exitingState = false;
-    vars[0] = 0;  //reset DistanceWalked back to 0
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 0;  //reset DistanceWalked back to 0
 }
 
 void StateWalkingForward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -181,9 +179,9 @@ void StateWalkingForward_Update(struct StateMachine* stateMachine, struct Fighte
 {
     updateSpriteAnimator(spriteAnimator, *fighter->walkFrames, fighter->WALK_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
     fighterPositionXAdd(fighter, FIGHTER_WALK_SPEED_FORWARD * fighter->direction);
-    vars[0] += FIGHTER_WALK_SPEED_FORWARD;
+    stateMachine->vars[0] += FIGHTER_WALK_SPEED_FORWARD;
 
-    if (exitingState && vars[0] >= FIGHTER_WALK_MIN_FORWARD)
+    if (stateMachine->exitingState && stateMachine->vars[0] >= FIGHTER_WALK_MIN_FORWARD)
     {
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
     }
@@ -193,7 +191,7 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
 {
     if (!(fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT))
     {
-        exitingState = true;
+        stateMachine->exitingState = true;
     }
 }
 
@@ -204,8 +202,8 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
 void StateWalkingBackward_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     spriteAnimator->currentFrame = 0;
-    exitingState = false;
-    vars[0] = 0;  //reset DistanceWalked back to 0
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 0;  //reset DistanceWalked back to 0
 }
 
 void StateWalkingBackward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -216,9 +214,9 @@ void StateWalkingBackward_Update(struct StateMachine* stateMachine, struct Fight
 {
     updateSpriteAnimator(spriteAnimator, *fighter->walkFrames, fighter->WALK_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
     fighterPositionXAdd(fighter, FIGHTER_WALK_SPEED_BACKWARD * fighter->direction * -1);
-    vars[0] += FIGHTER_WALK_SPEED_BACKWARD;
+    stateMachine->vars[0] += FIGHTER_WALK_SPEED_BACKWARD;
 
-    if (exitingState && vars[0] >= FIGHTER_WALK_MIN_BACKWARD)
+    if (stateMachine->exitingState && stateMachine->vars[0] >= FIGHTER_WALK_MIN_BACKWARD)
     {
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
     }
@@ -228,19 +226,19 @@ void StateWalkingBackward_HandleInput(struct StateMachine* stateMachine, struct 
 {
     if (!(fighter->direction == 1 && fighter->pad & JAGPAD_LEFT || fighter->direction == -1 && fighter->pad & JAGPAD_RIGHT))
     {
-        exitingState = true;
+        stateMachine->exitingState = true;
     }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // JUMPING
+// vars[0] == JumpIndex (for the JumpOffset array)
 
 void StateJumping_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    fighter->jumpIndex = 0;
     spriteAnimator->currentFrame = 0;
-    exitingState = false;
-
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
 }
 
 void StateJumping_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -251,13 +249,31 @@ void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* figh
 {
     updateSpriteAnimator(spriteAnimator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
 
-    if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
+    if (stateMachine->vars[0] == 0 || stateMachine->vars[0] == 1)
     {
-        fighter->positionY += JumpOffsets[fighter->jumpIndex];
-        fighter->jumpIndex++;
+        animateFrame(fighter->spriteIndex, 0, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (stateMachine->vars[0] == 18)
+    {
+        animateFrame(fighter->spriteIndex, 2, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (stateMachine->vars[0] == 19)
+    {
+        animateFrame(fighter->spriteIndex, 3, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        animateFrame(fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     }
 
-    if (fighter->jumpIndex > 20)
+    if (rapTicks >= fighter->lastTicks + 3 && !fighter->MadeContact)
+    {
+        fighter->positionY += JumpOffsets[stateMachine->vars[0]];
+        stateMachine->vars[0]++;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (stateMachine->vars[0] > 19)
     {
         //landed
         impactFrameReset(fighter);

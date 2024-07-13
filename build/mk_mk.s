@@ -9348,8 +9348,8 @@ __ZL20stateWalkingBackward:
 __ZL12stateJumping:
 	.long	5
 	.skip 16
-.lcomm __ZL20fighter1StateMachine,28
-.lcomm __ZL20fighter2StateMachine,28
+.lcomm __ZL20fighter1StateMachine,42
+.lcomm __ZL20fighter2StateMachine,42
 	.even
 __ZL11fighterCage:
 	.long	1
