@@ -6,6 +6,7 @@
 #include "debug.h"
 
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
+static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 
 void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state)
 {
@@ -69,6 +70,10 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
         {
             stateMachineGoto(stateMachine, STATE_DUCKING, fighter, spriteAnimator);
         }
+        else if (fighter->pad & JAGPAD_UP && (fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT))
+        {
+            stateMachineGoto(stateMachine, STATE_JUMPING_FORWARD, fighter, spriteAnimator);
+        }
         else if (fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT)
         {
             stateMachineGoto(stateMachine, STATE_WALKING_FORWARD, fighter, spriteAnimator);
@@ -76,7 +81,7 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
         else if (fighter->direction == 1 && fighter->pad & JAGPAD_LEFT || fighter->direction == -1 && fighter->pad & JAGPAD_RIGHT)
         {
             stateMachineGoto(stateMachine, STATE_WALKING_BACKWARD, fighter, spriteAnimator);
-        }
+        }        
         else if (fighter->pad & JAGPAD_UP)
         {
             stateMachineGoto(stateMachine, STATE_JUMPING, fighter, spriteAnimator);
@@ -247,7 +252,7 @@ void StateJumping_Exit(struct StateMachine* stateMachine, struct Fighter* fighte
 
 void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    updateSpriteAnimator(spriteAnimator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
+    //updateSpriteAnimator(spriteAnimator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
 
     if (stateMachine->vars[0] == 0 || stateMachine->vars[0] == 1)
     {
@@ -283,6 +288,47 @@ void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* figh
 }
 
 void StateJumping_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    //TODO check for air punches and kicks
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// JUMPING FORWARD
+// vars[0] == JumpIndex (for the JumpOffset array)
+
+void StateJumpingForward_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
+}
+
+void StateJumpingForward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    animateFrame(fighter->spriteIndex, stateMachine->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    
+    if (rapTicks >= fighter->lastTicks + 3 && !fighter->MadeContact)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_JUMP_X_SPEED * fighter->direction);
+        fighter->positionY += FlipOffsets[stateMachine->vars[0]];
+        stateMachine->vars[0]++;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (stateMachine->vars[0] > 19)
+    {
+        //landed
+        impactFrameReset(fighter);
+        fighterSetOnFloor(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateJumpingForward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //TODO check for air punches and kicks
 }

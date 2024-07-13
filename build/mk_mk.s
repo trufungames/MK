@@ -5670,6 +5670,10 @@ __Z9basicmainv:
 	move.l #__Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+8
 	move.l #__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+12
 	move.l #__Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+16
+	move.l #__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+4
+	move.l #__Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+8
+	move.l #__Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+12
+	move.l #__Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+16
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL20fighter1StateMachine
@@ -5701,6 +5705,11 @@ __Z9basicmainv:
 	pea __ZL20fighter1StateMachine
 	jsr (%a2)
 	addq.l #8,%sp
+	move.l #__ZL19stateJumpingForward,(%sp)
+	pea 6.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
 	move.l #__ZL9stateIdle,(%sp)
 	clr.l -(%sp)
 	pea __ZL20fighter2StateMachine
@@ -5728,6 +5737,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL12stateJumping,(%sp)
 	pea 5.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL19stateJumpingForward,(%sp)
+	pea 6.w
 	pea __ZL20fighter2StateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+446
@@ -9348,8 +9362,12 @@ __ZL20stateWalkingBackward:
 __ZL12stateJumping:
 	.long	5
 	.skip 16
-.lcomm __ZL20fighter1StateMachine,42
-.lcomm __ZL20fighter2StateMachine,42
+	.even
+__ZL19stateJumpingForward:
+	.long	6
+	.skip 16
+.lcomm __ZL20fighter1StateMachine,46
+.lcomm __ZL20fighter2StateMachine,46
 	.even
 __ZL11fighterCage:
 	.long	1

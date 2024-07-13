@@ -231,15 +231,17 @@
 #define FIGHTER_WALK_PUSH_SPEED 1
 #define FIGHTER_WALK_MIN_FORWARD 32
 #define FIGHTER_WALK_MIN_BACKWARD 28
+#define FIGHTER_JUMP_X_SPEED 7.5f
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 6
+#define STATE_TOTAL_COUNT 7
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
 #define STATE_WALKING_FORWARD 3
 #define STATE_WALKING_BACKWARD 4
 #define STATE_JUMPING 5
+#define STATE_JUMPING_FORWARD 6
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

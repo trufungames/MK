@@ -91,6 +91,9 @@ static State stateWalkingBackward = {
 static State stateJumping = {
 	STATE_JUMPING
 };
+static State stateJumpingForward = {
+	STATE_JUMPING_FORWARD
+};
 
 static SpriteAnimator shangTsungAnimator = {
 	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
@@ -3515,6 +3518,10 @@ void basicmain()
 		stateJumping.exit = &StateJumping_Exit;
 		stateJumping.update = &StateJumping_Update;
 		stateJumping.handleInput = &StateJumping_HandleInput;
+		stateJumpingForward.enter = &StateJumpingForward_Enter;
+		stateJumpingForward.exit = &StateJumpingForward_Exit;
+		stateJumpingForward.update = &StateJumpingForward_Update;
+		stateJumpingForward.handleInput = &StateJumpingForward_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3522,6 +3529,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
 		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING, &stateJumping);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3529,6 +3537,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
 		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING, &stateJumping);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
