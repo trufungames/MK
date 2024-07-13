@@ -299,6 +299,9 @@ __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a0)
 	move.l 8(%fp),%a0
 	clr.b 44(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -395,6 +398,9 @@ __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a0)
 	move.l 8(%fp),%a0
 	clr.b 44(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -489,6 +495,9 @@ __Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a1)
 	clr.b 44(%a0)
 	clr.l 32(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -591,6 +600,9 @@ __Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a1)
 	clr.b 44(%a0)
 	clr.l 32(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -696,6 +708,9 @@ __Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a1)
 	clr.b 44(%a0)
 	clr.l 32(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -847,6 +862,9 @@ __Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.w 16(%a1)
 	clr.b 44(%a0)
 	clr.l 32(%a0)
+	move.l 12(%fp),%a0
+	move.w raptor_ticks,%a1
+	move.l %a1,278(%a0)
 	unlk %fp
 	rts
 	.even

@@ -96,6 +96,7 @@ void StateBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* figh
 {
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
 }
 
 void StateBlocking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -134,6 +135,7 @@ void StateDucking_Enter(struct StateMachine* stateMachine, struct Fighter* fight
 {
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
 }
 
 void StateDucking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -174,6 +176,7 @@ void StateWalkingForward_Enter(struct StateMachine* stateMachine, struct Fighter
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset DistanceWalked back to 0
+    fighter->lastTicks = rapTicks;
 }
 
 void StateWalkingForward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -209,6 +212,7 @@ void StateWalkingBackward_Enter(struct StateMachine* stateMachine, struct Fighte
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset DistanceWalked back to 0
+    fighter->lastTicks = rapTicks;
 }
 
 void StateWalkingBackward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -244,6 +248,7 @@ void StateJumping_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
+    fighter->lastTicks = rapTicks;
 }
 
 void StateJumping_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -301,6 +306,7 @@ void StateJumpingForward_Enter(struct StateMachine* stateMachine, struct Fighter
     spriteAnimator->currentFrame = 0;
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
+    fighter->lastTicks = rapTicks;
 }
 
 void StateJumpingForward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
