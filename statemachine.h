@@ -53,3 +53,8 @@ void StateJumpingForward_Enter(struct StateMachine*, struct Fighter*, struct Spr
 void StateJumpingForward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateJumpingForward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateJumpingForward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpingBackward_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingBackward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingBackward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingBackward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

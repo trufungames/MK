@@ -3,6 +3,7 @@
 #include "spriteanimator.h"
 #include "statemachine.h"
 #include "impactFrame.h"
+#include "sound.h"
 #include "debug.h"
 
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
@@ -73,6 +74,10 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
         else if (fighter->pad & JAGPAD_UP && (fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT))
         {
             stateMachineGoto(stateMachine, STATE_JUMPING_FORWARD, fighter, spriteAnimator);
+        }
+        else if (fighter->pad & JAGPAD_UP && (fighter->direction == 1 && fighter->pad & JAGPAD_LEFT || fighter->direction == -1 && fighter->pad & JAGPAD_RIGHT))
+        {
+            stateMachineGoto(stateMachine, STATE_JUMPING_BACKWARD, fighter, spriteAnimator);
         }
         else if (fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT)
         {
@@ -201,6 +206,10 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
     {
         stateMachine->exitingState = true;
     }
+    else if (fighter->pad & JAGPAD_UP)
+    {
+        stateMachineGoto(stateMachine, STATE_JUMPING_FORWARD, fighter, spriteAnimator);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,6 +246,10 @@ void StateWalkingBackward_HandleInput(struct StateMachine* stateMachine, struct 
     {
         stateMachine->exitingState = true;
     }
+    else if (fighter->pad & JAGPAD_UP)
+    {
+        stateMachineGoto(stateMachine, STATE_JUMPING_BACKWARD, fighter, spriteAnimator);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -249,6 +262,7 @@ void StateJumping_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
     fighter->lastTicks = rapTicks;
+    fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
 void StateJumping_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -307,6 +321,7 @@ void StateJumpingForward_Enter(struct StateMachine* stateMachine, struct Fighter
     stateMachine->exitingState = false;
     stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
     fighter->lastTicks = rapTicks;
+    fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
 void StateJumpingForward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -323,6 +338,11 @@ void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighte
         fighter->positionY += FlipOffsets[stateMachine->vars[0]];
         stateMachine->vars[0]++;
         fighter->lastTicks = rapTicks;
+
+        if (stateMachine->vars[0] == 5)
+        {
+            sfxJumpRoll(fighter->soundHandler, fighter->isPlayer1);
+        }
     }
 
     if (stateMachine->vars[0] > 19)
@@ -335,6 +355,54 @@ void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighte
 }
 
 void StateJumpingForward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    //TODO check for air punches and kicks
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// JUMPING BACKWARD
+// vars[0] == JumpIndex (for the JumpOffset array)
+
+void StateJumpingBackward_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 0;  //reset JumpIndex back to 0
+    fighter->lastTicks = rapTicks;
+    fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateJumpingBackward_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateJumpingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    animateFrame(fighter->spriteIndex, 19 - stateMachine->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    
+    if (rapTicks >= fighter->lastTicks + 3 && !fighter->MadeContact)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_JUMP_X_SPEED * fighter->direction * -1);
+        fighter->positionY += FlipOffsets[stateMachine->vars[0]];
+        stateMachine->vars[0]++;
+        fighter->lastTicks = rapTicks;
+
+        if (stateMachine->vars[0] == 5)
+        {
+            sfxJumpRoll(fighter->soundHandler, fighter->isPlayer1);
+        }
+    }
+
+    if (stateMachine->vars[0] > 19)
+    {
+        //landed
+        impactFrameReset(fighter);
+        fighterSetOnFloor(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateJumpingBackward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //TODO check for air punches and kicks
 }

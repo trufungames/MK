@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -93,6 +93,9 @@ static State stateJumping = {
 };
 static State stateJumpingForward = {
 	STATE_JUMPING_FORWARD
+};
+static State stateJumpingBackward = {
+	STATE_JUMPING_BACKWARD
 };
 
 static SpriteAnimator shangTsungAnimator = {
@@ -3522,6 +3525,10 @@ void basicmain()
 		stateJumpingForward.exit = &StateJumpingForward_Exit;
 		stateJumpingForward.update = &StateJumpingForward_Update;
 		stateJumpingForward.handleInput = &StateJumpingForward_HandleInput;
+		stateJumpingBackward.enter = &StateJumpingBackward_Enter;
+		stateJumpingBackward.exit = &StateJumpingBackward_Exit;
+		stateJumpingBackward.update = &StateJumpingBackward_Update;
+		stateJumpingBackward.handleInput = &StateJumpingBackward_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3530,6 +3537,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING, &stateJumping);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3538,6 +3546,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING, &stateJumping);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
