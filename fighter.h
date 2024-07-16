@@ -15,6 +15,7 @@ struct Fighter {
     unsigned short BLOCK_DUCK_FRAME_COUNT;
     unsigned short BLOCK_DUCK_HIT_FRAME_COUNT;
     unsigned short LOW_PUNCH_FRAME_COUNT;
+    unsigned short LOW_PUNCH_REPEAT_FRAME_COUNT;
     unsigned short HIGH_PUNCH_FRAME_COUNT;
     unsigned short LOW_KICK_FRAME_COUNT;
     unsigned short HIGH_KICK_FRAME_COUNT;
@@ -193,6 +194,7 @@ struct Fighter {
     void (*doSpecialMove3)(struct Fighter*, struct SpriteAnimator*);
     void (*doProjectileEnd)(struct Fighter*, struct SpriteAnimator*);
     struct ImpactFrame* impactFrameLowPunch;
+    struct ImpactFrame* impactFrameLowRepeatPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
     struct ImpactFrame* impactFrameHighKick;
@@ -220,6 +222,7 @@ struct Fighter {
     struct AnimationFrame (*blockDuckFrames)[2];
     struct AnimationFrame (*blockDuckHitFrames)[6];
     struct AnimationFrame (*punchLowFrames)[5];
+    struct AnimationFrame (*punchLowRepeatFrames)[6];
     struct AnimationFrame (*punchHighFrames)[5];
     struct AnimationFrame (*kickLowFrames)[7];
     struct AnimationFrame (*kickHighFrames)[8];
@@ -347,3 +350,5 @@ void fighterHarpoon(struct Fighter* fighter1, struct Fighter* scorpion);
 void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion);
 
 void fighterSlideToPositionX(struct Fighter* fighter, int x);
+
+void fighterButtonCheck(struct Fighter* fighter);

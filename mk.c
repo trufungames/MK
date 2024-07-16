@@ -97,6 +97,15 @@ static State stateJumpingForward = {
 static State stateJumpingBackward = {
 	STATE_JUMPING_BACKWARD
 };
+static State stateDuckBlocking = {
+	STATE_DUCK_BLOCKING
+};
+static State stateLowPunching = {
+	STATE_LOW_PUNCHING
+};
+static State stateLowRepeatPunching = {
+	STATE_LOW_REPEAT_PUNCHING
+};
 
 static SpriteAnimator shangTsungAnimator = {
 	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
@@ -128,6 +137,9 @@ static SpriteAnimator cageAnimator2 = {
 };
 
 struct ImpactFrame cageImpactFrameLowPunch = {
+	2, 38, 30
+};
+struct ImpactFrame cageImpactFrameLowRepeatPunch = {
 	2, 38, 30
 };
 struct ImpactFrame cageImpactFrameHighPunch = {
@@ -701,9 +713,17 @@ static AnimationFrame cageBlockDuckHitFrames[] = {
 static AnimationFrame cagePunchLowFrames[] = {
 	{ 80, 112, 0, 208, 0, 0, 4 },
 	{ 64, 112, 80, 192, 0, 0, 4 },
-	{ 80, 112, 352, 432, 0, 0, 8 },
+	{ 80, 112, 352, 432, 0, 0, 10 },
 	{ 64, 112, 80, 192, 0, 0, 4 },
 	{ 80, 112, 0, 208, 0, 0, 4 },
+};
+static AnimationFrame cagePunchLowRepeatFrames[] = {
+	{ 80, 112, 0, 208, 0, 0, 4 },
+	{ 64, 112, 80, 192, 0, 0, 4 },
+	{ 80, 112, 352, 432, 0, 0, 10 },
+	{ 80, 112, 432, 432, 0, 0, 4 },
+	{ 64, 112, 432, 224, 0, 0, 4 },
+	{ 80, 112, 512, 384, 0, 0, 10 }
 };
 static AnimationFrame cagePunchHighFrames[] = {
 	{ 80, 112, 0, 208, 0, 0, 4 },
@@ -2599,6 +2619,14 @@ static AnimationFrame kanoPunchLowFrames[] = {
 	{ 64, 112, 704, 112, 8, 0, 4 },
 	{ 64, 112, 640, 112, -2, 0, 4 }
 };
+static AnimationFrame kanoPunchLowRepeatFrames[] = {
+	{ 64, 112, 640, 112, -2, 0, 4 },
+	{ 64, 112, 704, 112, 8, 0, 4 },
+	{ 96, 112, 288, 112, -4, 0, 10 },
+	{ 80, 96, 384, 112, 0, 15, 4 },
+	{ 64, 112, 704, 112, 13, 0, 4 },
+	{ 96, 96, 464, 112, 6, 15, 10 }
+};
 static AnimationFrame kanoPunchHighFrames[] = {
 	{ 64, 112, 640, 112, -2, 0, 4 },
 	{ 64, 112, 704, 112, 8, 0, 4 },
@@ -2936,6 +2964,7 @@ static Fighter fighterScorpion = {
 	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
 	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
 	SUBZERO_LOW_KICK_FRAME_COUNT,
 	SUBZERO_HIGH_KICK_FRAME_COUNT,
@@ -2973,6 +3002,7 @@ static Fighter fighterKano = {
 	KANO_BLOCK_DUCK_FRAME_COUNT,
 	KANO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	KANO_LOW_PUNCH_FRAME_COUNT,
+	KANO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	KANO_HIGH_PUNCH_FRAME_COUNT,
 	KANO_LOW_KICK_FRAME_COUNT,
 	KANO_HIGH_KICK_FRAME_COUNT,
@@ -3010,6 +3040,7 @@ static Fighter fighterCage = {
 	CAGE_BLOCK_DUCK_FRAME_COUNT,
 	CAGE_BLOCK_DUCK_HIT_FRAME_COUNT,
 	CAGE_LOW_PUNCH_FRAME_COUNT,
+	CAGE_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	CAGE_HIGH_PUNCH_FRAME_COUNT,
 	CAGE_LOW_KICK_FRAME_COUNT,
 	CAGE_HIGH_KICK_FRAME_COUNT,
@@ -3047,6 +3078,7 @@ static Fighter fighterKang = {
 	KANG_BLOCK_DUCK_FRAME_COUNT,
 	KANG_BLOCK_DUCK_HIT_FRAME_COUNT,
 	KANG_LOW_PUNCH_FRAME_COUNT,
+	KANG_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	KANG_HIGH_PUNCH_FRAME_COUNT,
 	KANG_LOW_KICK_FRAME_COUNT,
 	KANG_HIGH_KICK_FRAME_COUNT,
@@ -3084,6 +3116,7 @@ static Fighter fighterRaiden = {
 	RAIDEN_BLOCK_DUCK_FRAME_COUNT,
 	RAIDEN_BLOCK_DUCK_HIT_FRAME_COUNT,
 	RAIDEN_LOW_PUNCH_FRAME_COUNT,
+	RAIDEN_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	RAIDEN_HIGH_PUNCH_FRAME_COUNT,
 	RAIDEN_LOW_KICK_FRAME_COUNT,
 	RAIDEN_HIGH_KICK_FRAME_COUNT,
@@ -3121,6 +3154,7 @@ static Fighter fighterSubzero = {
 	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
 	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
 	SUBZERO_LOW_KICK_FRAME_COUNT,
 	SUBZERO_HIGH_KICK_FRAME_COUNT,
@@ -3158,6 +3192,7 @@ static Fighter fighterSonya = {
 	SONYA_BLOCK_DUCK_FRAME_COUNT,
 	SONYA_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SONYA_LOW_PUNCH_FRAME_COUNT,
+	SONYA_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SONYA_HIGH_PUNCH_FRAME_COUNT,
 	SONYA_LOW_KICK_FRAME_COUNT,
 	SONYA_HIGH_KICK_FRAME_COUNT,
@@ -3198,6 +3233,7 @@ static Fighter fighterScorpion2 = {
 	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
 	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
 	SUBZERO_LOW_KICK_FRAME_COUNT,
 	SUBZERO_HIGH_KICK_FRAME_COUNT,
@@ -3235,6 +3271,7 @@ static Fighter fighterKano2 = {
 	KANO_BLOCK_DUCK_FRAME_COUNT,
 	KANO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	KANO_LOW_PUNCH_FRAME_COUNT,
+	KANO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	KANO_HIGH_PUNCH_FRAME_COUNT,
 	KANO_LOW_KICK_FRAME_COUNT,
 	KANO_HIGH_KICK_FRAME_COUNT,
@@ -3272,6 +3309,7 @@ static Fighter fighterCage2 = {
 	CAGE_BLOCK_DUCK_FRAME_COUNT,
 	CAGE_BLOCK_DUCK_HIT_FRAME_COUNT,
 	CAGE_LOW_PUNCH_FRAME_COUNT,
+	CAGE_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	CAGE_HIGH_PUNCH_FRAME_COUNT,
 	CAGE_LOW_KICK_FRAME_COUNT,
 	CAGE_HIGH_KICK_FRAME_COUNT,
@@ -3309,6 +3347,7 @@ static Fighter fighterKang2 = {
 	KANG_BLOCK_DUCK_FRAME_COUNT,
 	KANG_BLOCK_DUCK_HIT_FRAME_COUNT,
 	KANG_LOW_PUNCH_FRAME_COUNT,
+	KANG_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	KANG_HIGH_PUNCH_FRAME_COUNT,
 	KANG_LOW_KICK_FRAME_COUNT,
 	KANG_HIGH_KICK_FRAME_COUNT,
@@ -3346,6 +3385,7 @@ static Fighter fighterRaiden2 = {
 	RAIDEN_BLOCK_DUCK_FRAME_COUNT,
 	RAIDEN_BLOCK_DUCK_HIT_FRAME_COUNT,
 	RAIDEN_LOW_PUNCH_FRAME_COUNT,
+	RAIDEN_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	RAIDEN_HIGH_PUNCH_FRAME_COUNT,
 	RAIDEN_LOW_KICK_FRAME_COUNT,
 	RAIDEN_HIGH_KICK_FRAME_COUNT,
@@ -3383,6 +3423,7 @@ static Fighter fighterSubzero2 = {
 	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
 	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
 	SUBZERO_LOW_KICK_FRAME_COUNT,
 	SUBZERO_HIGH_KICK_FRAME_COUNT,
@@ -3420,6 +3461,7 @@ static Fighter fighterSonya2 = {
 	SONYA_BLOCK_DUCK_FRAME_COUNT,
 	SONYA_BLOCK_DUCK_HIT_FRAME_COUNT,
 	SONYA_LOW_PUNCH_FRAME_COUNT,
+	SONYA_LOW_PUNCH_REPEAT_FRAME_COUNT,
 	SONYA_HIGH_PUNCH_FRAME_COUNT,
 	SONYA_LOW_KICK_FRAME_COUNT,
 	SONYA_HIGH_KICK_FRAME_COUNT,
@@ -3529,6 +3571,18 @@ void basicmain()
 		stateJumpingBackward.exit = &StateJumpingBackward_Exit;
 		stateJumpingBackward.update = &StateJumpingBackward_Update;
 		stateJumpingBackward.handleInput = &StateJumpingBackward_HandleInput;
+		stateDuckBlocking.enter = &StateDuckBlocking_Enter;
+		stateDuckBlocking.exit = &StateDuckBlocking_Exit;
+		stateDuckBlocking.update = &StateDuckBlocking_Update;
+		stateDuckBlocking.handleInput = &StateDuckBlocking_HandleInput;
+		stateLowPunching.enter = &StateLowPunching_Enter;
+		stateLowPunching.exit = &StateLowPunching_Exit;
+		stateLowPunching.update = &StateLowPunching_Update;
+		stateLowPunching.handleInput = &StateLowPunching_HandleInput;
+		stateLowRepeatPunching.enter = &StateLowRepeatPunching_Enter;
+		stateLowRepeatPunching.exit = &StateLowRepeatPunching_Exit;
+		stateLowRepeatPunching.update = &StateLowRepeatPunching_Update;
+		stateLowRepeatPunching.handleInput = &StateLowRepeatPunching_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3538,6 +3592,9 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING, &stateJumping);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
+		stateMachineAdd(&fighter1StateMachine, STATE_DUCK_BLOCKING, &stateDuckBlocking);
+		stateMachineAdd(&fighter1StateMachine, STATE_LOW_PUNCHING, &stateLowPunching);
+		stateMachineAdd(&fighter1StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3547,8 +3604,12 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING, &stateJumping);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
+		stateMachineAdd(&fighter2StateMachine, STATE_DUCK_BLOCKING, &stateDuckBlocking);
+		stateMachineAdd(&fighter2StateMachine, STATE_LOW_PUNCHING, &stateLowPunching);
+		stateMachineAdd(&fighter2StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
 
 		fighterCage.spriteAnimator = &cageAnimator;
+		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
 		fighterCage.projectileAnimator = &lightningAnimator;
 		fighterCage.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -3573,6 +3634,7 @@ void basicmain()
 		fighterCage.blockDuckFrames = &cageBlockDuckFrames;
 		fighterCage.blockDuckHitFrames = &cageBlockDuckHitFrames;
 		fighterCage.punchLowFrames = &cagePunchLowFrames;
+		fighterCage.punchLowRepeatFrames = &cagePunchLowRepeatFrames;
 		fighterCage.punchHighFrames = &cagePunchHighFrames;
 		fighterCage.kickLowFrames = &cageKickLowFrames;
 		fighterCage.kickHighFrames = &cageKickHighFrames;
@@ -3596,6 +3658,7 @@ void basicmain()
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		fighterCage2.spriteAnimator = &cageAnimator2;
+		fighterCage2.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
 		fighterCage2.projectileAnimator = &lightningAnimator;
 		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -3620,6 +3683,7 @@ void basicmain()
 		fighterCage2.blockDuckFrames = &cageBlockDuckFrames;
 		fighterCage2.blockDuckHitFrames = &cageBlockDuckHitFrames;
 		fighterCage2.punchLowFrames = &cagePunchLowFrames;
+		fighterCage2.punchLowRepeatFrames = &cagePunchLowRepeatFrames;
 		fighterCage2.punchHighFrames = &cagePunchHighFrames;
 		fighterCage2.kickLowFrames = &cageKickLowFrames;
 		fighterCage2.kickHighFrames = &cageKickHighFrames;
@@ -3667,6 +3731,7 @@ void basicmain()
 		fighterKano.blockDuckFrames = &kanoBlockDuckFrames;
 		fighterKano.blockDuckHitFrames = &kanoBlockDuckHitFrames;
 		fighterKano.punchLowFrames = &kanoPunchLowFrames;
+		fighterKano.punchLowRepeatFrames = &kanoPunchLowRepeatFrames;
 		fighterKano.punchHighFrames = &kanoPunchHighFrames;
 		fighterKano.kickLowFrames = &kanoKickLowFrames;
 		fighterKano.kickHighFrames = &kanoKickHighFrames;
@@ -3713,6 +3778,7 @@ void basicmain()
 		fighterKano2.blockDuckFrames = &kanoBlockDuckFrames;
 		fighterKano2.blockDuckHitFrames = &kanoBlockDuckHitFrames;
 		fighterKano2.punchLowFrames = &kanoPunchLowFrames;
+		fighterKano2.punchLowRepeatFrames = &kanoPunchLowRepeatFrames;
 		fighterKano2.punchHighFrames = &kanoPunchHighFrames;
 		fighterKano2.kickLowFrames = &kanoKickLowFrames;
 		fighterKano2.kickHighFrames = &kanoKickHighFrames;
@@ -5120,7 +5186,7 @@ void basicmain()
 				}
 				
 				fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
-				fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);
+				fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);  
 
 				if (fighter1Ptr->fighterIndex == SCORPION || fighter2Ptr->fighterIndex == SCORPION)
 				{
@@ -5137,6 +5203,8 @@ void basicmain()
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
 				fighterImpactCheck(fighter1Ptr, fighter2Ptr);	
+				fighterButtonCheck(fighter1Ptr);
+				fighterButtonCheck(fighter2Ptr);
 				playerinputUpdate(fighter1Ptr, fighter2Ptr);
 
 				if (fighter1Ptr->pad & JAGPAD_5)

@@ -1967,6 +1967,35 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
     }
 }
 
+void fighterButtonCheck(struct Fighter* fighter)
+{
+    if (!(fighter->pad & JAGPAD_C)
+        && !(fighter->pad & JAGPAD_9)
+        && !(fighter->pad & JAGPAD_A)
+        && !(fighter->pad & JAGPAD_B)
+        && !(fighter->pad & JAGPAD_8)
+        && !(fighter->pad & JAGPAD_7))
+    {
+        fighter->ButtonReleased = true;
+    }
+
+    fighterCaptureDpadInputs(fighter);
+
+    if (!(fighter->pad & JAGPAD_UP)
+        && !(fighter->pad & JAGPAD_DOWN)
+        && !(fighter->pad & JAGPAD_LEFT)
+        && !(fighter->pad & JAGPAD_RIGHT))
+    {
+        fighter->DPadReleased = true;
+        fighter->DPadWasRecorded = false;
+    }
+
+    if (!(fighter->pad & JAGPAD_UP))
+    {
+        fighter->DPadUpReleased = true;
+    }
+}
+
 void fighterPlayHiya(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
 {
     switch (fighter)
