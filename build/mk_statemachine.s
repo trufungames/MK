@@ -2058,13 +2058,19 @@ __Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimato
 	move.l 12(%fp),%a0
 	tst.b 124(%a0)
 	jeq .L248
-	move.l JAGPAD_C,%d0
-	and.l 234(%a0),%d0
-	jeq .L248
+	move.l 234(%a0),%d0
+	move.l %d0,%d1
+	and.l JAGPAD_C,%d1
+	jeq .L252
 	addq.l #1,56(%a1)
 .L248:
 	unlk %fp
 	rts
+.L252:
+	and.l JAGPAD_7,%d0
+	jeq .L248
+	addq.l #1,56(%a1)
+	jra .L248
 	.globl	colliders
 	.data
 	.even

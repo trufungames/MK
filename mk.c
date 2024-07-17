@@ -741,6 +741,14 @@ static AnimationFrame cagePunchHighFrames[] = {
 	{ 64, 112, 80, 192, 0, 0, 4 },
 	{ 80, 112, 0, 208, 0, 0, 4 },
 };
+static AnimationFrame cagePunchHighRepeatFrames[] = {
+	{ 80, 112, 0, 208, 0, 0, 4 },
+	{ 64, 112, 80, 192, 0, 0, 4 },
+	{ 80, 112, 144, 160, 0, 0, 10 },
+	{ 64, 112, 224, 160, 0, 0, 4 },
+	{ 64, 112, 432, 224, 0, 0, 4 },
+	{ 80, 112, 288, 160, 0, 0, 10 }
+};
 static AnimationFrame cageKickLowFrames[] = {
 	{ 64, 112, 0, 320, 0, 0, 4 },
 	{ 48, 112, 64, 320, 14, 0, 4 },
@@ -1123,6 +1131,14 @@ static AnimationFrame kangPunchHighFrames[] = {
 	{ 64, 112, 960, 0, 2, 0, 4 },
 	{ 64, 112, 896, 0, 0, 0, 4 }
 };
+static AnimationFrame kangPunchHighRepeatFrames[] = {
+	{ 64, 112, 896, 0, 0, 0, 4 },
+	{ 64, 112, 960, 0, 2, 0, 4 },
+	{ 96, 112, 0, 112, 8, 0, 10 },
+	{ 80, 112, 96, 112, 2, 0, 4 },
+	{ 64, 112, 176, 112, 0, 4 },
+	{ 96, 112, 240, 112, 0, 0, 10 }
+};
 static AnimationFrame kangKickLowFrames[] = {
 	{ 64, 112, 368, 512, 0, 0, 4 },
 	{ 48, 112, 432, 496, 16, 0, 4 },
@@ -1500,6 +1516,14 @@ static AnimationFrame raidenPunchHighFrames[] = {
 	{ 96, 112, 640, 608, 0, 0, 8 },
 	{ 64, 112, 576, 576, 0, 0, 4 },
 	{ 64, 112, 512, 576, 0, 0, 4 }
+};
+static AnimationFrame raidenPunchHighRepeatFrames[] = {
+	{ 64, 112, 512, 576, 0, 0, 4 },
+	{ 64, 112, 576, 576, 0, 0, 4 },
+	{ 96, 112, 640, 608, 0, 0, 10 },
+	{ 80, 96, 0, 688, 0, 16, 4 },
+	{ 80, 96, 80, 688, 0, 16, 4 },
+	{ 96, 112, 816, 608, 0, 0, 10 }
 };
 static AnimationFrame raidenKickLowFrames[] = {
 	{ 64, 112, 896, 0, 0, 0, 4 },
@@ -1929,6 +1953,14 @@ static AnimationFrame subzeroPunchHighFrames[] = {
 	{ 80, 112, 832, 112, 5, 0, 4 },
 	{ 64, 112, 912, 112, 0, 0, 4 }
 };
+static AnimationFrame subzeroPunchHighRepeatFrames[] = {
+	{ 64, 112, 912, 112, 0, 0, 4 },
+	{ 64, 112, 0, 224, 5, 0, 4 },
+	{ 96, 112, 64, 208, 6, 0, 10 },
+	{ 48, 112, 160, 192, 4, 0, 4 },
+	{ 64, 112, 208, 192, 0, 0, 4 },
+	{ 96, 112, 272, 224, 0, 0, 10 }
+};
 static AnimationFrame subzeroKickLowFrames[] = {
 	{ 64, 112, 864, 416, -7, 0, 4 },
 	{ 64, 112, 0, 528, -3, 0, 4 },
@@ -2306,6 +2338,14 @@ static AnimationFrame sonyaPunchHighFrames[] = {
 	{ 64, 112, 880, 112, 0, 0, 4 },
 	{ 64, 112, 816, 112, 0, 0, 4 }
 };
+static AnimationFrame sonyaPunchHighRepeatFrames[] = {
+	{ 64, 112, 816, 112, 0, 0, 4 },
+	{ 64, 112, 880, 112, 0, 0, 4 },
+	{ 80, 112, 944, 112, 0, 0, 10 },
+	{ 64, 112, 0, 192, 0, 0, 4 },	
+	{ 64, 112, 64, 192, 0, 0, 4 },
+	{ 80, 112, 128, 224, 0, 0, 10 }
+};
 static AnimationFrame sonyaKickLowFrames[] = {
 	{ 48, 112, 496, 352, 0, 0, 4 },
 	{ 48, 112, 592, 352, 16, 0, 4 },
@@ -2674,6 +2714,14 @@ static AnimationFrame kanoPunchHighFrames[] = {
 	{ 80, 112, 768, 112, 10, -1, 8 },
 	{ 64, 112, 704, 112, 8, 0, 4 },
 	{ 64, 112, 640, 112, -2, 0, 4 }
+};
+static AnimationFrame kanoPunchHighRepeatFrames[] = {
+	{ 64, 112, 640, 112, -2, 0, 4 },
+	{ 64, 112, 704, 112, 8, 0, 4 },
+	{ 80, 112, 768, 112, 10, -1, 10 },
+	{ 80, 112, 848, 112, 8, 0, 4 },
+	{ 64, 112, 704, 112, 8, 0, 4 },
+	{ 96, 112, 928, 112, 8, 0, 10 }
 };
 static AnimationFrame kanoKickLowFrames[] = {
 	{ 64, 112, 368, 256, -6, -2, 4 },
@@ -3704,6 +3752,7 @@ void basicmain()
 		fighterCage.punchLowFrames = &cagePunchLowFrames;
 		fighterCage.punchLowRepeatFrames = &cagePunchLowRepeatFrames;
 		fighterCage.punchHighFrames = &cagePunchHighFrames;
+		fighterCage.punchHighRepeatFrames = &cagePunchHighRepeatFrames;
 		fighterCage.kickLowFrames = &cageKickLowFrames;
 		fighterCage.kickHighFrames = &cageKickHighFrames;
 		fighterCage.jumpPunchFrames = &cageJumpPunchFrames;
@@ -3754,6 +3803,7 @@ void basicmain()
 		fighterCage2.punchLowFrames = &cagePunchLowFrames;
 		fighterCage2.punchLowRepeatFrames = &cagePunchLowRepeatFrames;
 		fighterCage2.punchHighFrames = &cagePunchHighFrames;
+		fighterCage2.punchHighRepeatFrames = &cagePunchHighRepeatFrames;
 		fighterCage2.kickLowFrames = &cageKickLowFrames;
 		fighterCage2.kickHighFrames = &cageKickHighFrames;
 		fighterCage2.jumpPunchFrames = &cageJumpPunchFrames;
@@ -3802,6 +3852,7 @@ void basicmain()
 		fighterKano.punchLowFrames = &kanoPunchLowFrames;
 		fighterKano.punchLowRepeatFrames = &kanoPunchLowRepeatFrames;
 		fighterKano.punchHighFrames = &kanoPunchHighFrames;
+		fighterKano.punchHighRepeatFrames = &kanoPunchHighRepeatFrames;
 		fighterKano.kickLowFrames = &kanoKickLowFrames;
 		fighterKano.kickHighFrames = &kanoKickHighFrames;
 		fighterKano.jumpPunchFrames = &kanoJumpPunchFrames;
@@ -3849,6 +3900,7 @@ void basicmain()
 		fighterKano2.punchLowFrames = &kanoPunchLowFrames;
 		fighterKano2.punchLowRepeatFrames = &kanoPunchLowRepeatFrames;
 		fighterKano2.punchHighFrames = &kanoPunchHighFrames;
+		fighterKano2.punchHighRepeatFrames = &kanoPunchHighRepeatFrames;
 		fighterKano2.kickLowFrames = &kanoKickLowFrames;
 		fighterKano2.kickHighFrames = &kanoKickHighFrames;
 		fighterKano2.jumpPunchFrames = &kanoJumpPunchFrames;
@@ -3897,6 +3949,7 @@ void basicmain()
 		fighterRaiden.punchLowFrames = &raidenPunchLowFrames;
 		fighterRaiden.punchLowRepeatFrames = &raidenPunchLowRepeatFrames;
 		fighterRaiden.punchHighFrames = &raidenPunchHighFrames;
+		fighterRaiden.punchHighRepeatFrames = &raidenPunchHighRepeatFrames;
 		fighterRaiden.kickLowFrames = &raidenKickLowFrames;
 		fighterRaiden.kickHighFrames = &raidenKickHighFrames;
 		fighterRaiden.jumpPunchFrames = &raidenJumpPunchFrames;
@@ -3942,9 +3995,10 @@ void basicmain()
 		fighterRaiden2.blockDuckFrames = &raidenBlockDuckFrames;
 		fighterRaiden2.blockDuckHitFrames = &raidenBlockDuckHitFrames;
 		fighterRaiden2.punchLowFrames = &raidenPunchLowFrames;
-		fighterRaiden2.punchHighFrames = &raidenPunchHighFrames;
-		fighterRaiden2.kickLowFrames = &raidenKickLowFrames;
 		fighterRaiden2.punchLowRepeatFrames = &raidenPunchLowRepeatFrames;
+		fighterRaiden2.punchHighFrames = &raidenPunchHighFrames;
+		fighterRaiden2.punchHighRepeatFrames = &raidenPunchHighRepeatFrames;
+		fighterRaiden2.kickLowFrames = &raidenKickLowFrames;
 		fighterRaiden2.kickHighFrames = &raidenKickHighFrames;
 		fighterRaiden2.jumpPunchFrames = &raidenJumpPunchFrames;
 		fighterRaiden2.jumpKickFrames = &raidenJumpKickFrames;
@@ -3993,6 +4047,7 @@ void basicmain()
 		fighterKang.punchLowFrames = &kangPunchLowFrames;
 		fighterKang.punchLowRepeatFrames = &kangPunchLowRepeatFrames;
 		fighterKang.punchHighFrames = &kangPunchHighFrames;
+		fighterKang.punchHighRepeatFrames = &kangPunchHighRepeatFrames;
 		fighterKang.kickLowFrames = &kangKickLowFrames;
 		fighterKang.kickHighFrames = &kangKickHighFrames;
 		fighterKang.jumpPunchFrames = &kangJumpPunchFrames;
@@ -4041,6 +4096,7 @@ void basicmain()
 		fighterKang2.punchLowFrames = &kangPunchLowFrames;
 		fighterKang2.punchLowRepeatFrames = &kangPunchLowRepeatFrames;
 		fighterKang2.punchHighFrames = &kangPunchHighFrames;
+		fighterKang2.punchHighRepeatFrames = &kangPunchHighRepeatFrames;
 		fighterKang2.kickLowFrames = &kangKickLowFrames;
 		fighterKang2.kickHighFrames = &kangKickHighFrames;
 		fighterKang2.jumpKickFrames = &kangJumpKickFrames;
@@ -4091,6 +4147,7 @@ void basicmain()
 		fighterScorpion.punchLowFrames = &subzeroPunchLowFrames;
 		fighterScorpion.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
 		fighterScorpion.punchHighFrames = &subzeroPunchHighFrames;
+		fighterScorpion.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
 		fighterScorpion.kickLowFrames = &subzeroKickLowFrames;
 		fighterScorpion.kickHighFrames = &subzeroKickHighFrames;
 		fighterScorpion.jumpPunchFrames = &subzeroJumpPunchFrames;
@@ -4140,6 +4197,7 @@ void basicmain()
 		fighterScorpion2.punchLowFrames = &subzeroPunchLowFrames;
 		fighterScorpion2.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
 		fighterScorpion2.punchHighFrames = &subzeroPunchHighFrames;
+		fighterScorpion2.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
 		fighterScorpion2.kickLowFrames = &subzeroKickLowFrames;
 		fighterScorpion2.kickHighFrames = &subzeroKickHighFrames;
 		fighterScorpion2.jumpPunchFrames = &subzeroJumpPunchFrames;
@@ -4189,6 +4247,7 @@ void basicmain()
 		fighterSubzero.punchLowFrames = &subzeroPunchLowFrames;
 		fighterSubzero.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
 		fighterSubzero.punchHighFrames = &subzeroPunchHighFrames;
+		fighterSubzero.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
 		fighterSubzero.kickLowFrames = &subzeroKickLowFrames;
 		fighterSubzero.kickHighFrames = &subzeroKickHighFrames;
 		fighterSubzero.jumpPunchFrames = &subzeroJumpPunchFrames;
@@ -4237,6 +4296,7 @@ void basicmain()
 		fighterSubzero2.punchLowFrames = &subzeroPunchLowFrames;
 		fighterSubzero2.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
 		fighterSubzero2.punchHighFrames = &subzeroPunchHighFrames;
+		fighterSubzero2.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
 		fighterSubzero2.kickLowFrames = &subzeroKickLowFrames;
 		fighterSubzero2.kickHighFrames = &subzeroKickHighFrames;
 		fighterSubzero2.jumpPunchFrames = &subzeroJumpPunchFrames;
@@ -4286,6 +4346,7 @@ void basicmain()
 		fighterSonya.punchLowFrames = &sonyaPunchLowFrames;
 		fighterSonya.punchLowRepeatFrames = &sonyaPunchLowRepeatFrames;
 		fighterSonya.punchHighFrames = &sonyaPunchHighFrames;
+		fighterSonya.punchHighRepeatFrames = &sonyaPunchHighRepeatFrames;
 		fighterSonya.kickLowFrames = &sonyaKickLowFrames;
 		fighterSonya.kickHighFrames = &sonyaKickHighFrames;
 		fighterSonya.jumpPunchFrames = &sonyaJumpPunchFrames;
@@ -4334,6 +4395,7 @@ void basicmain()
 		fighterSonya2.punchLowFrames = &sonyaPunchLowFrames;
 		fighterSonya2.punchLowRepeatFrames = &sonyaPunchLowRepeatFrames;
 		fighterSonya2.punchHighFrames = &sonyaPunchHighFrames;
+		fighterSonya2.punchHighRepeatFrames = &sonyaPunchHighRepeatFrames;
 		fighterSonya2.kickLowFrames = &sonyaKickLowFrames;
 		fighterSonya2.kickHighFrames = &sonyaKickHighFrames;
 		fighterSonya2.jumpPunchFrames = &sonyaJumpPunchFrames;

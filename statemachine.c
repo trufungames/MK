@@ -731,7 +731,7 @@ void StateHighRepeatPunching_Update(struct StateMachine* stateMachine, struct Fi
 
 void StateHighRepeatPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    if (fighter->ButtonReleased && fighter->pad & JAGPAD_C)
+    if (fighter->ButtonReleased && (fighter->pad & JAGPAD_C || fighter->pad & JAGPAD_7))
     {
         stateMachine->vars[0]++;
     }
