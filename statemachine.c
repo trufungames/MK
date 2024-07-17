@@ -83,6 +83,11 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
         {
             stateMachineGoto(stateMachine, STATE_JUMPING_BACKWARD, fighter, spriteAnimator);
         }
+        else if (((((fighter->pad & JAGPAD_RIGHT && fighter->direction == 1) || (fighter->pad & JAGPAD_LEFT && fighter->direction == -1)) && fighter->pad & JAGPAD_C) || fighter->pad & JAGPAD_7) && fighter->ButtonReleased)
+        {
+            fighter->ButtonReleased = false;
+            stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
+        }
         else if (fighter->direction == 1 && fighter->pad & JAGPAD_RIGHT || fighter->direction == -1 && fighter->pad & JAGPAD_LEFT)
         {
             stateMachineGoto(stateMachine, STATE_WALKING_FORWARD, fighter, spriteAnimator);
@@ -94,7 +99,7 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
         else if (fighter->pad & JAGPAD_UP)
         {
             stateMachineGoto(stateMachine, STATE_JUMPING, fighter, spriteAnimator);
-        }
+        }        
         else if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
         {
             fighter->ButtonReleased = false;
@@ -237,6 +242,16 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
     {
         stateMachineGoto(stateMachine, STATE_JUMPING_FORWARD, fighter, spriteAnimator);
     }
+    else if (fighter->pad & JAGPAD_7 && fighter->ButtonReleased)
+    {
+        fighter->ButtonReleased = false;
+        stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
+    }
+    else if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
+    {
+        fighter->ButtonReleased = false;
+        stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,6 +291,16 @@ void StateWalkingBackward_HandleInput(struct StateMachine* stateMachine, struct 
     else if (fighter->pad & JAGPAD_UP)
     {
         stateMachineGoto(stateMachine, STATE_JUMPING_BACKWARD, fighter, spriteAnimator);
+    }
+    else if (fighter->pad & JAGPAD_7 && fighter->ButtonReleased)
+    {
+        fighter->ButtonReleased = false;
+        stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
+    }
+    else if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
+    {
+        fighter->ButtonReleased = false;
+        stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
     }
 }
 
@@ -593,6 +618,118 @@ void StateLowRepeatPunching_Update(struct StateMachine* stateMachine, struct Fig
 }
 
 void StateLowRepeatPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (fighter->ButtonReleased && fighter->pad & JAGPAD_C)
+    {
+        stateMachine->vars[0]++;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIGH PUNCHING
+// vars[0] = LP button tap count, if == 2, goto STATE_LOW_REPEAT_PUNCHINIG
+// vars[2] = Played sound
+
+void StateHighPunching_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    stateMachine->vars[0] = 0;
+    stateMachine->vars[2] = 0;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    sfxSwing(fighter->soundHandler);
+}
+
+void StateHighPunching_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHighPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameLowPunch);
+    updateSpriteAnimator(spriteAnimator, *fighter->punchHighFrames, fighter->HIGH_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+    if (spriteAnimator->currentFrame == 2 && stateMachine->vars[2] == 0)
+    {
+        stateMachine->vars[2] = 1;
+        fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);        
+    }
+
+    if (stateMachine->vars[0] >= 1)
+    {
+        stateMachineGoto(stateMachine, STATE_HIGH_REPEAT_PUNCHING, fighter, spriteAnimator);
+    }
+    else if (animationIsComplete(spriteAnimator, fighter->HIGH_PUNCH_FRAME_COUNT))
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateHighPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (fighter->ButtonReleased && (fighter->pad & JAGPAD_C || fighter->pad & JAGPAD_7))
+    {
+        stateMachine->vars[0]++;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIGH REPEAT PUNCHING
+// vars[0] = LP button tap count to see if the player is spamming the LP button
+// vars[1] = TIMEOUT
+// vars[2] = Played sound
+
+void StateHighRepeatPunching_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    stateMachine->vars[0] = 0;
+    stateMachine->vars[1] = rapTicks;
+    stateMachine->vars[2] = 0;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    sfxSwing(fighter->soundHandler);
+}
+
+void StateHighRepeatPunching_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHighRepeatPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (!stateMachine->exitingState)
+    {
+        impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameHighRepeatPunch);
+        updateSpriteAnimator(spriteAnimator, *fighter->punchHighRepeatFrames, fighter->HIGH_PUNCH_REPEAT_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+
+        if (spriteAnimator->currentFrame == 3 && stateMachine->vars[2] == 0)
+        {
+            stateMachine->vars[2] = 1;
+            fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+        }
+
+        if (stateMachine->vars[0] > 0)
+        {
+            //stay here in this state, because the player keeps pressing LP
+            stateMachine->vars[0] = 0;
+            stateMachine->vars[1] = rapTicks; //extend the timer 
+            stateMachine->vars[2] = 0;
+        }
+        else if (rapTicks >= stateMachine->vars[1] + 30)
+        {
+            stateMachine->exitingState = true;     
+            spriteAnimator->currentFrame = 3;
+            spriteAnimator->lastTick = rapTicks;
+        }
+    }
+    else
+    {
+        //we're exiting, so play the Low Punch exit animation
+        updateSpriteAnimator(spriteAnimator, *fighter->punchLowFrames, fighter->LOW_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateHighRepeatPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     if (fighter->ButtonReleased && fighter->pad & JAGPAD_C)
     {

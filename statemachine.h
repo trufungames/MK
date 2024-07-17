@@ -73,3 +73,13 @@ void StateLowRepeatPunching_Enter(struct StateMachine*, struct Fighter*, struct 
 void StateLowRepeatPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateLowRepeatPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateLowRepeatPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHighPunching_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHighRepeatPunching_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighRepeatPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighRepeatPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighRepeatPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

@@ -17,6 +17,7 @@ struct Fighter {
     unsigned short LOW_PUNCH_FRAME_COUNT;
     unsigned short LOW_PUNCH_REPEAT_FRAME_COUNT;
     unsigned short HIGH_PUNCH_FRAME_COUNT;
+    unsigned short HIGH_PUNCH_REPEAT_FRAME_COUNT;
     unsigned short LOW_KICK_FRAME_COUNT;
     unsigned short HIGH_KICK_FRAME_COUNT;
     unsigned short JUMP_PUNCH_FRAME_COUNT;
@@ -196,6 +197,7 @@ struct Fighter {
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameLowRepeatPunch;
     struct ImpactFrame* impactFrameHighPunch;
+    struct ImpactFrame* impactFrameHighRepeatPunch;
     struct ImpactFrame* impactFrameLowKick;
     struct ImpactFrame* impactFrameHighKick;
     struct ImpactFrame* impactFrameJumpPunch;
@@ -224,6 +226,7 @@ struct Fighter {
     struct AnimationFrame (*punchLowFrames)[5];
     struct AnimationFrame (*punchLowRepeatFrames)[6];
     struct AnimationFrame (*punchHighFrames)[5];
+    struct AnimationFrame (*punchHighRepeatFrames)[6];
     struct AnimationFrame (*kickLowFrames)[7];
     struct AnimationFrame (*kickHighFrames)[8];
     struct AnimationFrame (*jumpPunchFrames)[3];
