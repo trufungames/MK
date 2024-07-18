@@ -5698,6 +5698,54 @@ __Z9basicmainv:
 	move.l #__Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+8
 	move.l #__Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+12
 	move.l #__Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+16
+	move.l #__Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+4
+	move.l #__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+8
+	move.l #__Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+12
+	move.l #__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+16
+	move.l #__Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+4
+	move.l #__Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+8
+	move.l #__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+12
+	move.l #__Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+16
+	move.l #__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+4
+	move.l #__Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+8
+	move.l #__Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+12
+	move.l #__Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+16
+	move.l #__Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+4
+	move.l #__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+8
+	move.l #__Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+12
+	move.l #__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+16
+	move.l #__Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+4
+	move.l #__Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+8
+	move.l #__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+12
+	move.l #__Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+16
+	move.l #__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+4
+	move.l #__Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+8
+	move.l #__Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+12
+	move.l #__Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+16
+	move.l #__Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+4
+	move.l #__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+8
+	move.l #__Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+12
+	move.l #__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+16
+	move.l #__Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+4
+	move.l #__Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+8
+	move.l #__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+12
+	move.l #__Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+16
+	move.l #__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+4
+	move.l #__Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+8
+	move.l #__Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+12
+	move.l #__Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+16
+	move.l #__Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+4
+	move.l #__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+8
+	move.l #__Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+12
+	move.l #__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+16
+	move.l #__Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+4
+	move.l #__Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+8
+	move.l #__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+12
+	move.l #__Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+16
+	move.l #__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+4
+	move.l #__Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+8
+	move.l #__Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+12
+	move.l #__Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+16
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL20fighter1StateMachine
@@ -5764,6 +5812,66 @@ __Z9basicmainv:
 	pea __ZL20fighter1StateMachine
 	jsr (%a2)
 	addq.l #8,%sp
+	move.l #__ZL15stateLowKicking,(%sp)
+	pea 13.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateHighKicking,(%sp)
+	pea 14.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL22stateRoundhouseKicking,(%sp)
+	pea 15.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL17stateUppercutting,(%sp)
+	pea 16.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateDuckKicking,(%sp)
+	pea 17.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL17stateJumpPunching,(%sp)
+	pea 18.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateJumpKicking,(%sp)
+	pea 19.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL13stateSweeping,(%sp)
+	pea 20.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL26stateJumpingKickingForward,(%sp)
+	pea 21.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL27stateJumpingKickingBackward,(%sp)
+	pea 22.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL27stateJumpingPunchingForward,(%sp)
+	pea 23.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL28stateJumpingPunchingBackward,(%sp)
+	pea 24.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
 	move.l #__ZL9stateIdle,(%sp)
 	clr.l -(%sp)
 	pea __ZL20fighter2StateMachine
@@ -5826,6 +5934,66 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL23stateHighRepeatPunching,(%sp)
 	pea 12.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL15stateLowKicking,(%sp)
+	pea 13.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateHighKicking,(%sp)
+	pea 14.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL22stateRoundhouseKicking,(%sp)
+	pea 15.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL17stateUppercutting,(%sp)
+	pea 16.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateDuckKicking,(%sp)
+	pea 17.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL17stateJumpPunching,(%sp)
+	pea 18.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL16stateJumpKicking,(%sp)
+	pea 19.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL13stateSweeping,(%sp)
+	pea 20.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL26stateJumpingKickingForward,(%sp)
+	pea 21.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL27stateJumpingKickingBackward,(%sp)
+	pea 22.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL27stateJumpingPunchingForward,(%sp)
+	pea 23.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL28stateJumpingPunchingBackward,(%sp)
+	pea 24.w
 	pea __ZL20fighter2StateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+458
@@ -9522,8 +9690,56 @@ __ZL17stateHighPunching:
 __ZL23stateHighRepeatPunching:
 	.long	12
 	.skip 16
-.lcomm __ZL20fighter1StateMachine,70
-.lcomm __ZL20fighter2StateMachine,70
+	.even
+__ZL15stateLowKicking:
+	.long	13
+	.skip 16
+	.even
+__ZL16stateHighKicking:
+	.long	14
+	.skip 16
+	.even
+__ZL22stateRoundhouseKicking:
+	.long	15
+	.skip 16
+	.even
+__ZL17stateUppercutting:
+	.long	16
+	.skip 16
+	.even
+__ZL16stateDuckKicking:
+	.long	17
+	.skip 16
+	.even
+__ZL17stateJumpPunching:
+	.long	18
+	.skip 16
+	.even
+__ZL16stateJumpKicking:
+	.long	19
+	.skip 16
+	.even
+__ZL13stateSweeping:
+	.long	20
+	.skip 16
+	.even
+__ZL26stateJumpingKickingForward:
+	.long	21
+	.skip 16
+	.even
+__ZL27stateJumpingKickingBackward:
+	.long	22
+	.skip 16
+	.even
+__ZL27stateJumpingPunchingForward:
+	.long	23
+	.skip 16
+	.even
+__ZL28stateJumpingPunchingBackward:
+	.long	24
+	.skip 16
+.lcomm __ZL20fighter1StateMachine,118
+.lcomm __ZL20fighter2StateMachine,118
 	.even
 __ZL11fighterCage:
 	.long	1
@@ -10755,14 +10971,14 @@ __ZL19cageJumpPunchFrames:
 	.word	96
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	64
 	.word	80
 	.word	960
 	.word	96
 	.word	2
 	.word	0
-	.long	24
+	.long	4
 	.word	64
 	.word	80
 	.word	960
@@ -10778,14 +10994,14 @@ __ZL18cageJumpKickFrames:
 	.word	112
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	80
 	.word	80
 	.word	608
 	.word	112
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	80
 	.word	80
 	.word	608
@@ -10801,14 +11017,14 @@ __ZL22cageJumpDropKickFrames:
 	.word	80
 	.word	0
 	.word	0
-	.long	4
-	.word	96
+	.long	6
 	.word	80
-	.word	816
-	.word	96
+	.word	80
+	.word	736
+	.word	80
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	96
 	.word	80
 	.word	816
@@ -12953,14 +13169,14 @@ __ZL19kanoJumpPunchFrames:
 	.word	448
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	64
 	.word	64
 	.word	0
 	.word	544
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	64
 	.word	64
 	.word	0
@@ -12976,14 +13192,14 @@ __ZL18kanoJumpKickFrames:
 	.word	432
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	96
 	.word	96
 	.word	416
 	.word	432
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	96
 	.word	96
 	.word	416
@@ -12999,14 +13215,14 @@ __ZL22kanoJumpDropKickFrames:
 	.word	416
 	.word	0
 	.word	0
-	.long	4
+	.long	6
 	.word	96
-	.word	64
-	.word	816
-	.word	448
+	.word	80
+	.word	720
+	.word	432
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	96
 	.word	64
 	.word	816
@@ -15151,14 +15367,14 @@ __ZL21raidenJumpPunchFrames:
 	.word	304
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	64
 	.word	64
 	.word	64
 	.word	336
 	.word	7
 	.word	-2
-	.long	24
+	.long	4
 	.word	64
 	.word	64
 	.word	64
@@ -15174,14 +15390,14 @@ __ZL20raidenJumpKickFrames:
 	.word	320
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	96
 	.word	96
 	.word	224
 	.word	320
 	.word	-4
 	.word	-10
-	.long	24
+	.long	4
 	.word	96
 	.word	96
 	.word	224
@@ -15191,6 +15407,13 @@ __ZL20raidenJumpKickFrames:
 	.long	4
 	.even
 __ZL24raidenJumpDropKickFrames:
+	.word	64
+	.word	80
+	.word	720
+	.word	224
+	.word	0
+	.word	0
+	.long	6
 	.word	80
 	.word	80
 	.word	784
@@ -15198,13 +15421,6 @@ __ZL24raidenJumpDropKickFrames:
 	.word	0
 	.word	0
 	.long	4
-	.word	112
-	.word	64
-	.word	864
-	.word	224
-	.word	-6
-	.word	10
-	.long	24
 	.word	112
 	.word	64
 	.word	864
@@ -17350,14 +17566,14 @@ __ZL19kangJumpPunchFrames:
 	.word	704
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	112
 	.word	64
 	.word	144
 	.word	704
 	.word	-23
 	.word	1
-	.long	24
+	.long	4
 	.word	112
 	.word	64
 	.word	144
@@ -17373,14 +17589,14 @@ __ZL18kangJumpKickFrames:
 	.word	592
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	80
 	.word	112
 	.word	320
 	.word	624
 	.word	1
 	.word	1
-	.long	24
+	.long	4
 	.word	80
 	.word	112
 	.word	320
@@ -17390,6 +17606,13 @@ __ZL18kangJumpKickFrames:
 	.long	4
 	.even
 __ZL22kangJumpDropKickFrames:
+	.word	64
+	.word	64
+	.word	768
+	.word	624
+	.word	0
+	.word	0
+	.long	6
 	.word	80
 	.word	64
 	.word	832
@@ -17397,13 +17620,6 @@ __ZL22kangJumpDropKickFrames:
 	.word	0
 	.word	0
 	.long	4
-	.word	96
-	.word	64
-	.word	912
-	.word	624
-	.word	0
-	.word	-5
-	.long	24
 	.word	96
 	.word	64
 	.word	912
@@ -19592,14 +19808,14 @@ __ZL22subzeroJumpPunchFrames:
 	.word	432
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	112
 	.word	64
 	.word	208
 	.word	448
 	.word	-20
 	.word	-2
-	.long	24
+	.long	4
 	.word	112
 	.word	64
 	.word	208
@@ -19615,14 +19831,14 @@ __ZL21subzeroJumpKickFrames:
 	.word	448
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	96
 	.word	80
 	.word	384
 	.word	400
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	96
 	.word	80
 	.word	384
@@ -19632,6 +19848,13 @@ __ZL21subzeroJumpKickFrames:
 	.long	4
 	.even
 __ZL25subzeroJumpDropKickFrames:
+	.word	48
+	.word	64
+	.word	928
+	.word	336
+	.word	0
+	.word	0
+	.long	6
 	.word	80
 	.word	80
 	.word	928
@@ -19639,13 +19862,6 @@ __ZL25subzeroJumpDropKickFrames:
 	.word	0
 	.word	0
 	.long	4
-	.word	96
-	.word	80
-	.word	0
-	.word	448
-	.word	-4
-	.word	0
-	.long	24
 	.word	96
 	.word	80
 	.word	0
@@ -22288,14 +22504,14 @@ __ZL20sonyaJumpPunchFrames:
 	.word	288
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	128
 	.word	64
 	.word	640
 	.word	288
 	.word	-22
 	.word	0
-	.long	24
+	.long	4
 	.word	128
 	.word	64
 	.word	640
@@ -22311,14 +22527,14 @@ __ZL19sonyaJumpKickFrames:
 	.word	288
 	.word	0
 	.word	0
-	.long	4
+	.long	18
 	.word	64
 	.word	80
 	.word	496
 	.word	272
 	.word	0
 	.word	0
-	.long	24
+	.long	4
 	.word	64
 	.word	80
 	.word	496
@@ -22328,6 +22544,13 @@ __ZL19sonyaJumpKickFrames:
 	.long	4
 	.even
 __ZL23sonyaJumpDropKickFrames:
+	.word	48
+	.word	48
+	.word	768
+	.word	176
+	.word	0
+	.word	0
+	.long	6
 	.word	64
 	.word	64
 	.word	304
@@ -22335,13 +22558,6 @@ __ZL23sonyaJumpDropKickFrames:
 	.word	0
 	.word	0
 	.long	4
-	.word	80
-	.word	64
-	.word	368
-	.word	304
-	.word	0
-	.word	-3
-	.long	24
 	.word	80
 	.word	64
 	.word	368

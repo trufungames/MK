@@ -83,3 +83,63 @@ void StateHighRepeatPunching_Enter(struct StateMachine*, struct Fighter*, struct
 void StateHighRepeatPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHighRepeatPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHighRepeatPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateLowKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLowKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLowKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLowKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHighKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHighKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateRoundhouseKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateRoundhouseKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateRoundhouseKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateRoundhouseKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateUppercutting_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateUppercutting_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateUppercutting_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateUppercutting_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateDuckKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateDuckKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateDuckKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateDuckKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpPunching_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateSweeping_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateSweeping_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateSweeping_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateSweeping_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpingKickingForward_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingForward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingForward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingForward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpingKickingBackward_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingBackward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingBackward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingKickingBackward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpingPunchingForward_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingForward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingForward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingForward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateJumpingPunchingBackward_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingBackward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingBackward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateJumpingPunchingBackward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

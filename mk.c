@@ -112,7 +112,44 @@ static State stateHighPunching = {
 static State stateHighRepeatPunching = {
 	STATE_HIGH_REPEAT_PUNCHING
 };
+static State stateLowKicking = {
+	STATE_LOW_KICKING
+};
+static State stateHighKicking = {
+	STATE_HIGH_KICKING
+};
+static State stateRoundhouseKicking = {
+	STATE_ROUNDHOUSE_KICKING
+};
+static State stateUppercutting = {
+	STATE_UPPERCUTTING
+};
+static State stateDuckKicking = {
+	STATE_DUCK_KICKING
+};
+static State stateJumpPunching = {
+	STATE_JUMP_PUNCHING
+};
+static State stateJumpKicking = {
+	STATE_JUMP_KICKING
+};
+static State stateSweeping = {
+	STATE_SWEEPING
+};
+static State stateJumpingKickingForward = {
+	STATE_JUMPING_KICKING_FORWARD
+};
+static State stateJumpingKickingBackward = {
+	STATE_JUMPING_KICKING_BACKWARD
+};
+static State stateJumpingPunchingForward = {
+	STATE_JUMPING_PUNCHING_FORWARD
+};
+static State stateJumpingPunchingBackward = {
+	STATE_JUMPING_PUNCHING_BACKWARD
+};
 
+////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
 	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
 };
@@ -769,18 +806,18 @@ static AnimationFrame cageKickHighFrames[] = {
 	{ 48, 112, 64, 320, 14, 0, 4 }
 };
 static AnimationFrame cageJumpPunchFrames[] = {
-	{ 48, 80, 912, 96, 0, 0, 4 },
-	{ 64, 80, 960, 96, 2, 0, 24 },
+	{ 48, 80, 912, 96, 0, 0, 18 },
+	{ 64, 80, 960, 96, 2, 0, 4 },
 	{ 64, 80, 960, 96, 2, 0, 4 }
 };
 static AnimationFrame cageJumpKickFrames[] = {
-	{ 80, 64, 528, 112, 0, 0, 4 },
-	{ 80, 80, 608, 112, 0, 0, 24 },
+	{ 80, 64, 528, 112, 0, 0, 18 },
+	{ 80, 80, 608, 112, 0, 0, 4 },
 	{ 80, 80, 608, 112, 0, 0, 4 }
 };
 static AnimationFrame cageJumpDropKickFrames[] = {
-	{ 48, 64, 688, 80, 0, 0, 4 },
-	{ 96, 80, 816, 96, 0, 0, 24 },
+	{ 48, 64, 688, 80, 0, 0, 6 },
+	{ 80, 80, 736, 80, 0, 0, 4 },
 	{ 96, 80, 816, 96, 0, 0, 4 }
 };
 static AnimationFrame cageUppercutFrames[] = {
@@ -1159,18 +1196,18 @@ static AnimationFrame kangKickHighFrames[] = {
 	{ 48, 112, 432, 496, 16, 0, 4 }
 };
 static AnimationFrame kangJumpPunchFrames[] = {
-	{ 80, 64, 64, 704, 0, 0, 4 },
-	{ 112, 64, 144, 704, -23, 1, 24 },
+	{ 80, 64, 64, 704, 0, 0, 18 },
+	{ 112, 64, 144, 704, -23, 1, 4 },
 	{ 112, 64, 144, 704, -23, 1, 4 }
 };
 static AnimationFrame kangJumpKickFrames[] = {
-	{ 80, 112, 240, 592, 0, 0, 4 },
-	{ 80, 112, 320, 624, 1, 1, 24 },
+	{ 80, 112, 240, 592, 0, 0, 18 },
+	{ 80, 112, 320, 624, 1, 1, 4 },
 	{ 80, 112, 320, 624, 1, 1, 4 }
 };
 static AnimationFrame kangJumpDropKickFrames[] = {
+	{ 64, 64, 768, 624, 0, 0, 6 },
 	{ 80, 64, 832, 592, 0, 0, 4 },
-	{ 96, 64, 912, 624, 0, -5, 24 },
 	{ 96, 64, 912, 624, 0, -5, 4 }
 };
 static AnimationFrame kangUppercutFrames[] = {
@@ -1545,19 +1582,19 @@ static AnimationFrame raidenKickHighFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 static AnimationFrame raidenJumpPunchFrames[] = {
-	{ 64, 80, 0, 304, 0, 0, 4 },
-	{ 64, 64, 64, 336, 7, -2, 24 },
+	{ 64, 80, 0, 304, 0, 0, 18 },
+	{ 64, 64, 64, 336, 7, -2, 4 },
 	{ 64, 64, 64, 336, 7, -2, 4 }
 };
 static AnimationFrame raidenJumpKickFrames[] = {
-	{ 96, 96, 128, 320, 0, 0, 4 },
-	{ 96, 96, 224, 320, -4, -10, 24 },
+	{ 96, 96, 128, 320, 0, 0, 18 },
+	{ 96, 96, 224, 320, -4, -10, 4 },
 	{ 96, 96, 224, 320, -4, -10, 4 }
 };
 static AnimationFrame raidenJumpDropKickFrames[] = {
+	{ 64, 80, 720, 224, 0, 0, 6 },
 	{ 80, 80, 784, 224, 0, 0, 4 },
-	{ 112, 64, 864, 224, -6, 10, 24 },
-	{ 112, 64, 864, 224, -6, 10, 4 }
+	{ 112, 64, 864, 224, -6, 10, 4 }	
 };
 static AnimationFrame raidenUppercutFrames[] = {
 	{ 64, 80, 192, 592, 0, 32, 4 },
@@ -1769,19 +1806,19 @@ static AnimationFrame subzeroHitSweepFrames[] = {
 	{ 80, 48, 176, 1168, -15, 80, 5 }
 };
 static AnimationFrame subzeroJumpPunchFrames[] = {
-	{ 64, 80, 144, 432, 0, 0, 4 },
-	{ 112, 64, 208, 448, -20, -2, 24 },
+	{ 64, 80, 144, 432, 0, 0, 18 },
+	{ 112, 64, 208, 448, -20, -2, 4 },
 	{ 112, 64, 208, 448, -20, -2, 4 }
 };
 static AnimationFrame subzeroJumpKickFrames[] = {
-	{ 64, 96, 320, 448, 0, 0, 4 },
-	{ 96, 80, 384, 400, 0, 0, 24 },
+	{ 64, 96, 320, 448, 0, 0, 18 },
+	{ 96, 80, 384, 400, 0, 0, 4 },
 	{ 96, 80, 384, 400, 0, 0, 4 }
 };
 static AnimationFrame subzeroJumpDropKickFrames[] = {
+	{ 48, 64, 928, 336, 0, 0, 6 },
 	{ 80, 80, 928, 400, 0, 0, 4 },
-	{ 96, 80, 0, 448, -4, 0, 24 },
-	{ 96, 80, 0, 448, -4, 0, 4 }
+	{ 96, 80, 0, 448, -4, 0, 4 }	
 };
 static AnimationFrame subzeroUppercutFrames[] = {
 	{ 64, 112, 528, 112, 0, 0, 4 },
@@ -2154,18 +2191,18 @@ static AnimationFrame sonyaHitSweepFrames[] = {
 	{ 80, 48, 256, 896, -15, 90, 5 }
 };
 static AnimationFrame sonyaJumpPunchFrames[] = {
-	{ 80, 64, 560, 288, 0, 0, 4 },
-	{ 128, 64, 640, 288, -22, 0, 24 },
+	{ 80, 64, 560, 288, 0, 0, 18 },
+	{ 128, 64, 640, 288, -22, 0, 4 },
 	{ 128, 64, 640, 288, -22, 0, 4 }
 };
 static AnimationFrame sonyaJumpKickFrames[] = {
-	{ 48, 112, 448, 288, 0, 0, 4 },
-	{ 64, 80, 496, 272, 0, 0, 24 },
+	{ 48, 112, 448, 288, 0, 0, 18 },
+	{ 64, 80, 496, 272, 0, 0, 4 },
 	{ 64, 80, 496, 272, 0, 0, 4 }
 };
 static AnimationFrame sonyaJumpDropKickFrames[] = {
+	{ 48, 48, 768, 176, 0, 0, 6 },
 	{ 64, 64, 304, 304, 0, 0, 4 },
-	{ 80, 64, 368, 304, 0, -3, 24 },
 	{ 80, 64, 368, 304, 0, -3, 4 }
 };
 static AnimationFrame sonyaUppercutFrames[] = {
@@ -2743,19 +2780,19 @@ static AnimationFrame kanoKickHighFrames[] = {
 	{ 64, 112, 368, 256, -6, -2, 4 }
 };
 static AnimationFrame kanoJumpPunchFrames[] = {
-	{ 48, 64, 912, 448, 0, 0, 4 },
-	{ 64, 64, 0, 544, 0, 0, 24 },
+	{ 48, 64, 912, 448, 0, 0, 18 },
+	{ 64, 64, 0, 544, 0, 0, 4 },
 	{ 64, 64, 0, 544, 0, 0, 4 }
 };
 static AnimationFrame kanoJumpKickFrames[] = {
-	{ 48, 112, 368, 432, 0, 0, 4 },
-	{ 96, 96, 416, 432, 0, 0, 24 },
+	{ 48, 112, 368, 432, 0, 0, 18 },
+	{ 96, 96, 416, 432, 0, 0, 4 },
 	{ 96, 96, 416, 432, 0, 0, 4 }
 };
 static AnimationFrame kanoJumpDropKickFrames[] = {
-	{ 48, 80, 672, 416, 0, 0, 4 },
-	{ 96, 64, 816, 448, 0, 0, 24 },
-	{ 96, 64, 816, 448, 0, 0, 4 }
+	{ 48, 80, 672, 416, 0, 0, 6 },
+	{ 96, 80, 720, 432, 0, 0, 4 },
+	{ 96, 64, 816, 448, 0, 0, 4 }	
 };
 static AnimationFrame kanoUppercutFrames[] = {
 	{ 64, 112, 800, 224, -9, 0, 4 },
@@ -3694,6 +3731,54 @@ void basicmain()
 		stateHighRepeatPunching.exit = &StateHighRepeatPunching_Exit;
 		stateHighRepeatPunching.update = &StateHighRepeatPunching_Update;
 		stateHighRepeatPunching.handleInput = &StateHighRepeatPunching_HandleInput;
+		stateLowKicking.enter = &StateLowKicking_Enter;
+		stateLowKicking.exit = &StateLowKicking_Exit;
+		stateLowKicking.update = &StateLowKicking_Update;
+		stateLowKicking.handleInput = &StateLowKicking_HandleInput;
+		stateHighKicking.enter = &StateHighKicking_Enter;
+		stateHighKicking.exit = &StateHighKicking_Exit;
+		stateHighKicking.update = &StateHighKicking_Update;
+		stateHighKicking.handleInput = &StateHighKicking_HandleInput;
+		stateRoundhouseKicking.enter = &StateRoundhouseKicking_Enter;
+		stateRoundhouseKicking.exit = &StateRoundhouseKicking_Exit;
+		stateRoundhouseKicking.update = &StateRoundhouseKicking_Update;
+		stateRoundhouseKicking.handleInput = &StateRoundhouseKicking_HandleInput;
+		stateUppercutting.enter = &StateUppercutting_Enter;
+		stateUppercutting.exit = &StateUppercutting_Exit;
+		stateUppercutting.update = &StateUppercutting_Update;
+		stateUppercutting.handleInput = &StateUppercutting_HandleInput;
+		stateDuckKicking.enter = &StateDuckKicking_Enter;
+		stateDuckKicking.exit = &StateDuckKicking_Exit;
+		stateDuckKicking.update = &StateDuckKicking_Update;
+		stateDuckKicking.handleInput = &StateDuckKicking_HandleInput;
+		stateJumpPunching.enter = &StateJumpPunching_Enter;
+		stateJumpPunching.exit = &StateJumpPunching_Exit;
+		stateJumpPunching.update = &StateJumpPunching_Update;
+		stateJumpPunching.handleInput = &StateJumpPunching_HandleInput;
+		stateJumpKicking.enter = &StateJumpKicking_Enter;
+		stateJumpKicking.exit = &StateJumpKicking_Exit;
+		stateJumpKicking.update = &StateJumpKicking_Update;
+		stateJumpKicking.handleInput = &StateJumpKicking_HandleInput;
+		stateSweeping.enter = &StateSweeping_Enter;
+		stateSweeping.exit = &StateSweeping_Exit;
+		stateSweeping.update = &StateSweeping_Update;
+		stateSweeping.handleInput = &StateSweeping_HandleInput;
+		stateJumpingKickingForward.enter = &StateJumpingKickingForward_Enter;
+		stateJumpingKickingForward.exit = &StateJumpingKickingForward_Exit;
+		stateJumpingKickingForward.update = &StateJumpingKickingForward_Update;
+		stateJumpingKickingForward.handleInput = &StateJumpingKickingForward_HandleInput;
+		stateJumpingKickingBackward.enter = &StateJumpingKickingBackward_Enter;
+		stateJumpingKickingBackward.exit = &StateJumpingKickingBackward_Exit;
+		stateJumpingKickingBackward.update = &StateJumpingKickingBackward_Update;
+		stateJumpingKickingBackward.handleInput = &StateJumpingKickingBackward_HandleInput;
+		stateJumpingPunchingForward.enter = &StateJumpingPunchingForward_Enter;
+		stateJumpingPunchingForward.exit = &StateJumpingPunchingForward_Exit;
+		stateJumpingPunchingForward.update = &StateJumpingPunchingForward_Update;
+		stateJumpingPunchingForward.handleInput = &StateJumpingPunchingForward_HandleInput;
+		stateJumpingPunchingBackward.enter = &StateJumpingPunchingBackward_Enter;
+		stateJumpingPunchingBackward.exit = &StateJumpingPunchingBackward_Exit;
+		stateJumpingPunchingBackward.update = &StateJumpingPunchingBackward_Update;
+		stateJumpingPunchingBackward.handleInput = &StateJumpingPunchingBackward_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3708,6 +3793,18 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_PUNCHING, &stateHighPunching);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_REPEAT_PUNCHING, &stateHighRepeatPunching);
+		stateMachineAdd(&fighter1StateMachine, STATE_LOW_KICKING, &stateLowKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_KICKING, &stateHighKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_ROUNDHOUSE_KICKING, &stateRoundhouseKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_UPPERCUTTING, &stateUppercutting);
+		stateMachineAdd(&fighter1StateMachine, STATE_DUCK_KICKING, &stateDuckKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMP_PUNCHING, &stateJumpPunching);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMP_KICKING, &stateJumpKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_SWEEPING, &stateSweeping);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_KICKING_FORWARD, &stateJumpingKickingForward);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
+		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3722,6 +3819,18 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_PUNCHING, &stateHighPunching);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_REPEAT_PUNCHING, &stateHighRepeatPunching);
+		stateMachineAdd(&fighter2StateMachine, STATE_LOW_KICKING, &stateLowKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_KICKING, &stateHighKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_ROUNDHOUSE_KICKING, &stateRoundhouseKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_UPPERCUTTING, &stateUppercutting);
+		stateMachineAdd(&fighter2StateMachine, STATE_DUCK_KICKING, &stateDuckKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMP_PUNCHING, &stateJumpPunching);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMP_KICKING, &stateJumpKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_SWEEPING, &stateSweeping);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_KICKING_FORWARD, &stateJumpingKickingForward);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
+		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;

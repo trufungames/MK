@@ -234,7 +234,7 @@
 #define FIGHTER_JUMP_X_SPEED 7.5f
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 13
+#define STATE_TOTAL_COUNT 25
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -248,6 +248,18 @@
 #define STATE_LOW_REPEAT_PUNCHING 10
 #define STATE_HIGH_PUNCHING 11
 #define STATE_HIGH_REPEAT_PUNCHING 12
+#define STATE_LOW_KICKING 13
+#define STATE_HIGH_KICKING 14
+#define STATE_ROUNDHOUSE_KICKING 15
+#define STATE_UPPERCUTTING 16
+#define STATE_DUCK_KICKING 17
+#define STATE_JUMP_PUNCHING 18
+#define STATE_JUMP_KICKING 19
+#define STATE_SWEEPING 20
+#define STATE_JUMPING_KICKING_FORWARD 21
+#define STATE_JUMPING_KICKING_BACKWARD 22
+#define STATE_JUMPING_PUNCHING_FORWARD 23
+#define STATE_JUMPING_PUNCHING_BACKWARD 24
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
