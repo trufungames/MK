@@ -31,6 +31,8 @@ short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
 short p2Selected = -1;
+bool p1SelectedSpecial = false;
+bool p2SelectedSpecial = false;
 bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
@@ -147,6 +149,13 @@ static State stateJumpingPunchingForward = {
 };
 static State stateJumpingPunchingBackward = {
 	STATE_JUMPING_PUNCHING_BACKWARD
+};
+////////////////////////////////////////////////////////////////////
+// DAMAGE STATES
+////////////////////////////////////////////////////////////////////
+
+static State stateHitLow = {
+	STATE_HIT_LOW
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -683,6 +692,23 @@ static AnimationFrame cageWinsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame cageSpecialFrames[] = {
+	{ 96, 96, 688, 752, -16, 16, 6 },
+	{ 112, 80, 784, 752, -28, 32, 6 },
+	{ 128, 80, 896, 752, -29, 32, 6 },
+	{ 128, 64, 0, 848, -31, 48, 6 },
+	{ 128, 64, 128, 848, -29, 48, 6 },
+	{ 128, 64, 256, 848, -29, 48, 6 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame cageWalkFrames[] = {
 	{ 80, 112, 720, 960, -16, 0, 6 },
 	{ 64, 112, 800, 960, 0, 0, 6 },
@@ -1073,6 +1099,23 @@ static AnimationFrame kangWinsFrames[] = {
 	{ 48, 112, 800, 976, 0, 0, 8 },
 	{ 48, 112, 800, 976, 0, 0, 8 }
 };
+static AnimationFrame kangSpecialFrames[] = {
+	{ 64, 64, 244, 896, 1, 48, 4 },
+	{ 112, 80, 288, 928, -20, 32, 4 },
+	{ 80, 96, 400, 928, -5, 16, 4 },
+	{ 112, 64, 480, 912, -8, 16, 4 },
+	{ 80, 112, 592, 912, -14, 0, 4 },
+	{ 80, 80, 672, 912, 0, 32, 4 },	
+	{ 80, 80, 752, 896, -8, 32, 4 },
+	{ 64, 96, 848, 864, -4, 16, 4 },
+	{ 64, 96, 736, 224, 0, 16, 4 },	
+	{ 64, 80, 800, 224, 0, 32, 4 },
+	{ 64, 96, 0, 224, 0, 16, 4 },
+	{ 80, 112, 64, 224, 4, 0, 4 },
+	{ 80, 112, 144, 224, 7, 2, 4 },
+	{ 48, 128, 224, 224, 16, -14, 4 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame kangWalkFrames[] = {
 	{ 64, 112, 448, 0, -6, 0, 6 },
 	{ 48, 112, 512, 0, 10, 0, 6 },
@@ -1448,6 +1491,23 @@ static AnimationFrame raidenWinsFrames[] = {
 	{ 96, 96, 448, 368, -15, 16, 6 },
 	{ 96, 112, 544, 352, -19, 0, 6 },
 	{ 64, 128, 768, 992, 0, -16, 6 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+static AnimationFrame raidenSpecialFrames[] = {
+	{ 64, 112, 0, 480, 0, 0, 6 },
+	{ 64, 96, 64, 512, 0, 16, 6 },
+	{ 64, 96, 128, 512, 0, 16, 6 },
+	{ 80, 96, 192, 496, 0, 16, 6 },
+	{ 80, 96, 272, 496, 0, 16, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -1895,6 +1955,40 @@ static AnimationFrame subzeroWinsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame subzeroSpecialFrames[] = {
+	{ 64, 112, 736, 240, 0, 0, 8 },
+	{ 64, 112, 800, 240, 0, 0, 8 },
+	{ 64, 112, 864, 224, 0, 0, 8 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+static AnimationFrame scorpionSpecialFrames[] = {
+	{ 48, 112, 528, 960, -2, 0, 8 },
+	{ 48, 128, 576, 1024, 0, -16, 8 },
+	{ 48, 112, 624, 1024, 0, 0, 22 },
+	{ 48, 96, 672, 1024, 0, 16, 8 },
+	{ 48, 112, 720, 1024, 1, 0, 8 },
+	{ 64, 112, 768, 1024, -7, 0, 8 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame subzeroWalkFrames[] = {
 	{ 64, 112, 256, 896, 0, -1, 6 },
 	{ 48, 112, 320, 912, 9, -1, 6 },
@@ -2280,6 +2374,23 @@ static AnimationFrame sonyaWinsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame sonyaSpecialFrames[] = {
+	{ 48, 112, 768, 704, 0, 0, 6 },
+	{ 48, 112, 816, 688, 0, 0, 6 },
+	{ 48, 112, 864, 736, 0, 0, 6 },
+	{ 48, 112, 912, 736, 0, 0, 6 },
+	{ 48, 112, 960, 720, -5, 0, 6 },
+	{ 48, 112, 0, 784, -6, 0, 6 },
+	{ 48, 112, 48, 816, -5, 0, 6 },
+	{ 48, 96, 96, 832, -4, 16, 6},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame sonyaWalkFrames[] = {
 	{ 64, 112, 432, 0, 0, 0, 6 },
 	{ 48, 112, 496, 0, 18, 0, 6 },
@@ -2649,6 +2760,23 @@ static AnimationFrame kanoWinsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+static AnimationFrame kanoSpecialFrames[] = {
+	{ 64, 112, 288, 1024, 0, 0, 6 },
+	{ 64, 112, 352, 1024, 0, 0, 6 },
+	{ 112, 96, 416, 1024, 0, 16, 30 },
+	{ 64, 112, 528, 1008, 0, 0, 6 },
+	{ 64, 112, 592, 1008, 0, 0, 6 },
+	{ 64, 112, 656, 944, 0, 0, 6 },
+	{ 64, 112, 720, 944, 0, 0, 6 },
+	{ 64, 128, 784, 944, 0, -16, 6 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -3080,6 +3208,7 @@ static Fighter fighterScorpion = {
 	SCORPION_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
+	SCORPION_SPECIAL_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
@@ -3119,6 +3248,7 @@ static Fighter fighterKano = {
 	KANO_IDLE_FRAME_COUNT,
 	KANO_DIZZY_FRAME_COUNT,
 	KANO_WINS_FRAME_COUNT,
+	KANO_SPECIAL_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
 	KANO_TURN_FRAME_COUNT,
 	KANO_JUMP_FRAME_COUNT,
@@ -3158,6 +3288,7 @@ static Fighter fighterCage = {
 	CAGE_IDLE_FRAME_COUNT,
 	CAGE_DIZZY_FRAME_COUNT,
 	CAGE_WINS_FRAME_COUNT,
+	CAGE_SPECIAL_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
 	CAGE_TURN_FRAME_COUNT,
 	CAGE_JUMP_FRAME_COUNT,
@@ -3197,6 +3328,7 @@ static Fighter fighterKang = {
 	KANG_IDLE_FRAME_COUNT,
 	KANG_DIZZY_FRAME_COUNT,
 	KANG_WINS_FRAME_COUNT,
+	KANG_SPECIAL_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
 	KANG_TURN_FRAME_COUNT,
 	KANG_JUMP_FRAME_COUNT,
@@ -3236,6 +3368,7 @@ static Fighter fighterRaiden = {
 	RAIDEN_IDLE_FRAME_COUNT,
 	RAIDEN_DIZZY_FRAME_COUNT,
 	RAIDEN_WINS_FRAME_COUNT,
+	RAIDEN_SPECIAL_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
 	RAIDEN_TURN_FRAME_COUNT,
 	RAIDEN_JUMP_FRAME_COUNT,
@@ -3275,6 +3408,7 @@ static Fighter fighterSubzero = {
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
+	SUBZERO_SPECIAL_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
@@ -3314,7 +3448,8 @@ static Fighter fighterSonya = {
 	SONYA_IDLE_FRAME_COUNT,
 	SONYA_DIZZY_FRAME_COUNT,
 	SONYA_WINS_FRAME_COUNT,
-	SONYA_WALK_FRAME_COUNT,
+	SONYA_SPECIAL_FRAME_COUNT,
+	SONYA_WALK_FRAME_COUNT,	
 	SONYA_TURN_FRAME_COUNT,
 	SONYA_JUMP_FRAME_COUNT,
 	SONYA_JUMP_ROLL_FRAME_COUNT,
@@ -3356,7 +3491,9 @@ static Fighter fighterScorpion2 = {
 	SCORPION_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
+	SCORPION_SPECIAL_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
+	SCORPION_SPECIAL_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
@@ -3395,6 +3532,7 @@ static Fighter fighterKano2 = {
 	KANO_IDLE_FRAME_COUNT,
 	KANO_DIZZY_FRAME_COUNT,
 	KANO_WINS_FRAME_COUNT,
+	KANO_SPECIAL_FRAME_COUNT,
 	KANO_WALK_FRAME_COUNT,
 	KANO_TURN_FRAME_COUNT,
 	KANO_JUMP_FRAME_COUNT,
@@ -3434,6 +3572,7 @@ static Fighter fighterCage2 = {
 	CAGE_IDLE_FRAME_COUNT,
 	CAGE_DIZZY_FRAME_COUNT,
 	CAGE_WINS_FRAME_COUNT,
+	CAGE_SPECIAL_FRAME_COUNT,
 	CAGE_WALK_FRAME_COUNT,
 	CAGE_TURN_FRAME_COUNT,
 	CAGE_JUMP_FRAME_COUNT,
@@ -3473,6 +3612,7 @@ static Fighter fighterKang2 = {
 	KANG_IDLE_FRAME_COUNT,
 	KANG_DIZZY_FRAME_COUNT,
 	KANG_WINS_FRAME_COUNT,
+	KANG_SPECIAL_FRAME_COUNT,
 	KANG_WALK_FRAME_COUNT,
 	KANG_TURN_FRAME_COUNT,
 	KANG_JUMP_FRAME_COUNT,
@@ -3512,6 +3652,7 @@ static Fighter fighterRaiden2 = {
 	RAIDEN_IDLE_FRAME_COUNT,
 	RAIDEN_DIZZY_FRAME_COUNT,
 	RAIDEN_WINS_FRAME_COUNT,
+	RAIDEN_SPECIAL_FRAME_COUNT,
 	RAIDEN_WALK_FRAME_COUNT,
 	RAIDEN_TURN_FRAME_COUNT,
 	RAIDEN_JUMP_FRAME_COUNT,
@@ -3551,6 +3692,7 @@ static Fighter fighterSubzero2 = {
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
+	SUBZERO_SPECIAL_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
@@ -3590,6 +3732,7 @@ static Fighter fighterSonya2 = {
 	SONYA_IDLE_FRAME_COUNT,
 	SONYA_DIZZY_FRAME_COUNT,
 	SONYA_WINS_FRAME_COUNT,
+	SONYA_SPECIAL_FRAME_COUNT,
 	SONYA_WALK_FRAME_COUNT,
 	SONYA_TURN_FRAME_COUNT,
 	SONYA_JUMP_FRAME_COUNT,
@@ -3662,6 +3805,8 @@ void basicmain()
 		p2Cursor = 2;
 		p1Selected = -1;
 		p2Selected = -1;
+		p1SelectedSpecial = false;
+		p2SelectedSpecial = false;
 		chooseFighterDone = false;
 		bool roundFightSequenceComplete = false;
 		short fightScale = 0;
@@ -3779,6 +3924,10 @@ void basicmain()
 		stateJumpingPunchingBackward.exit = &StateJumpingPunchingBackward_Exit;
 		stateJumpingPunchingBackward.update = &StateJumpingPunchingBackward_Update;
 		stateJumpingPunchingBackward.handleInput = &StateJumpingPunchingBackward_HandleInput;
+		stateHitLow.enter = &StateHitLow_Enter;
+		stateHitLow.exit = &StateHitLow_Exit;
+		stateHitLow.update = &StateHitLow_Update;
+		stateHitLow.handleInput = &StateHitLow_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3805,6 +3954,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_LOW, &stateHitLow);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3831,6 +3981,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_LOW, &stateHitLow);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
@@ -3849,6 +4000,7 @@ void basicmain()
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
 		fighterCage.winsFrames = &cageWinsFrames;
+		fighterCage.specialFrames = &cageSpecialFrames;
 		fighterCage.walkFrames = &cageWalkFrames;
 		fighterCage.turnFrames = &cageTurnFrames;
 		fighterCage.jumpFrames = &cageJumpFrames;
@@ -3900,6 +4052,7 @@ void basicmain()
 		fighterCage2.idleFrames = &cageIdleFrames;
 		fighterCage2.dizzyFrames = &cageDizzyFrames;
 		fighterCage2.winsFrames = &cageWinsFrames;
+		fighterCage2.specialFrames = &cageSpecialFrames;
 		fighterCage2.walkFrames = &cageWalkFrames;
 		fighterCage2.turnFrames = &cageTurnFrames;
 		fighterCage2.jumpFrames = &cageJumpFrames;
@@ -3949,6 +4102,7 @@ void basicmain()
 		fighterKano.idleFrames = &kanoIdleFrames;
 		fighterKano.dizzyFrames = &kanoDizzyFrames;
 		fighterKano.winsFrames = &kanoWinsFrames;
+		fighterKano.specialFrames = &kanoSpecialFrames;
 		fighterKano.walkFrames = &kanoWalkFrames;
 		fighterKano.turnFrames = &kanoTurnFrames;
 		fighterKano.jumpFrames = &kanoJumpFrames;
@@ -3997,6 +4151,7 @@ void basicmain()
 		fighterKano2.idleFrames = &kanoIdleFrames;
 		fighterKano2.dizzyFrames = &kanoDizzyFrames;
 		fighterKano2.winsFrames = &kanoWinsFrames;
+		fighterKano2.specialFrames = &kanoSpecialFrames;
 		fighterKano2.walkFrames = &kanoWalkFrames;
 		fighterKano2.turnFrames = &kanoTurnFrames;
 		fighterKano2.jumpFrames = &kanoJumpFrames;
@@ -4046,6 +4201,7 @@ void basicmain()
 		fighterRaiden.idleFrames = &raidenIdleFrames;
 		fighterRaiden.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden.winsFrames = &raidenWinsFrames;
+		fighterRaiden.specialFrames = &raidenSpecialFrames;
 		fighterRaiden.walkFrames = &raidenWalkFrames;
 		fighterRaiden.turnFrames = &raidenTurnFrames;
 		fighterRaiden.jumpFrames = &raidenJumpFrames;
@@ -4094,6 +4250,7 @@ void basicmain()
 		fighterRaiden2.idleFrames = &raidenIdleFrames;
 		fighterRaiden2.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden2.winsFrames = &raidenWinsFrames;
+		fighterRaiden2.specialFrames = &raidenSpecialFrames;
 		fighterRaiden2.walkFrames = &raidenWalkFrames;
 		fighterRaiden2.turnFrames = &raidenTurnFrames;
 		fighterRaiden2.jumpFrames = &raidenJumpFrames;
@@ -4144,6 +4301,7 @@ void basicmain()
 		fighterKang.idleFrames = &kangIdleFrames;
 		fighterKang.dizzyFrames = &kangDizzyFrames;
 		fighterKang.winsFrames = &kangWinsFrames;
+		fighterKang.specialFrames = &kangSpecialFrames;
 		fighterKang.walkFrames = &kangWalkFrames;
 		fighterKang.turnFrames = &kangTurnFrames;
 		fighterKang.jumpFrames = &kangJumpFrames;
@@ -4193,6 +4351,7 @@ void basicmain()
 		fighterKang2.idleFrames = &kangIdleFrames;
 		fighterKang2.dizzyFrames = &kangDizzyFrames;
 		fighterKang2.winsFrames = &kangWinsFrames;
+		fighterKang2.specialFrames = &kangSpecialFrames;
 		fighterKang2.walkFrames = &kangWalkFrames;
 		fighterKang2.turnFrames = &kangTurnFrames;
 		fighterKang2.jumpFrames = &kangJumpFrames;
@@ -4244,6 +4403,7 @@ void basicmain()
 		fighterScorpion.idleFrames = &scorpionIdleFrames;
 		fighterScorpion.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion.winsFrames = &subzeroWinsFrames;
+		fighterScorpion.specialFrames = &scorpionSpecialFrames;
 		fighterScorpion.walkFrames = &scorpionWalkFrames;
 		fighterScorpion.turnFrames = &subzeroTurnFrames;
 		fighterScorpion.jumpFrames = &subzeroJumpFrames;
@@ -4294,6 +4454,7 @@ void basicmain()
 		fighterScorpion2.idleFrames = &scorpionIdleFrames;
 		fighterScorpion2.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion2.winsFrames = &subzeroWinsFrames;
+		fighterScorpion2.specialFrames = &scorpionSpecialFrames;
 		fighterScorpion2.walkFrames = &scorpionWalkFrames;
 		fighterScorpion2.turnFrames = &subzeroTurnFrames;
 		fighterScorpion2.jumpFrames = &subzeroJumpFrames;
@@ -4344,6 +4505,7 @@ void basicmain()
 		fighterSubzero.idleFrames = &subzeroIdleFrames;
 		fighterSubzero.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero.winsFrames = &subzeroWinsFrames;
+		fighterSubzero.specialFrames = &subzeroSpecialFrames;
 		fighterSubzero.walkFrames = &subzeroWalkFrames;
 		fighterSubzero.turnFrames = &subzeroTurnFrames;
 		fighterSubzero.jumpFrames = &subzeroJumpFrames;
@@ -4393,6 +4555,7 @@ void basicmain()
 		fighterSubzero2.idleFrames = &subzeroIdleFrames;
 		fighterSubzero2.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero2.winsFrames = &subzeroWinsFrames;
+		fighterSubzero2.specialFrames = &subzeroSpecialFrames;
 		fighterSubzero2.turnFrames = &subzeroTurnFrames;
 		fighterSubzero2.walkFrames = &subzeroWalkFrames;
 		fighterSubzero2.jumpFrames = &subzeroJumpFrames;
@@ -4443,6 +4606,7 @@ void basicmain()
 		fighterSonya.idleFrames = &sonyaIdleFrames;
 		fighterSonya.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya.winsFrames = &sonyaWinsFrames;
+		fighterSonya.specialFrames = &sonyaSpecialFrames;
 		fighterSonya.walkFrames = &sonyaWalkFrames;
 		fighterSonya.turnFrames = &sonyaTurnFrames;
 		fighterSonya.jumpFrames = &sonyaJumpFrames;
@@ -4492,6 +4656,7 @@ void basicmain()
 		fighterSonya2.idleFrames = &sonyaIdleFrames;
 		fighterSonya2.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya2.winsFrames = &sonyaWinsFrames;
+		fighterSonya2.specialFrames = &sonyaSpecialFrames;
 		fighterSonya2.walkFrames = &sonyaWalkFrames;
 		fighterSonya2.turnFrames = &sonyaTurnFrames;
 		fighterSonya2.jumpFrames = &sonyaJumpFrames;
@@ -4974,7 +5139,14 @@ void basicmain()
 						//Johnny Cage
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterCage, &cageAnimator, cageWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterCage, &cageAnimator, cageSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterCage, &cageAnimator, cageWinsFrames);
+							}
 						}
 						else
 						{
@@ -4986,7 +5158,14 @@ void basicmain()
 						//Kano
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterKano, &kanoAnimator, kanoWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKano, &kanoAnimator, kanoSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKano, &kanoAnimator, kanoWinsFrames);
+							}
 						}
 						else
 						{
@@ -4997,7 +5176,14 @@ void basicmain()
 						//Sub-Zero
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterSubzero, &subzeroAnimator, subzeroWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterSubzero, &subzeroAnimator, subzeroSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterSubzero, &subzeroAnimator, subzeroWinsFrames);
+							}
 						}
 						else
 						{
@@ -5008,7 +5194,14 @@ void basicmain()
 						//Sonya
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterSonya, &sonyaAnimator, sonyaWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterSonya, &sonyaAnimator, sonyaSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterSonya, &sonyaAnimator, sonyaWinsFrames);
+							}
 						}
 						else
 						{
@@ -5019,7 +5212,14 @@ void basicmain()
 						//Raiden
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterRaiden, &raidenAnimator, raidenWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterRaiden, &raidenAnimator, raidenSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterRaiden, &raidenAnimator, raidenWinsFrames);
+							}							
 						}
 						else
 						{
@@ -5031,7 +5231,14 @@ void basicmain()
 						//Liu Kang
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterKang, &kangAnimator, kangWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKang, &kangAnimator, kangSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKang, &kangAnimator, kangWinsFrames);
+							}
 						}
 						else
 						{
@@ -5042,7 +5249,14 @@ void basicmain()
 						//Scorpion
 						if (p1Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterScorpion, &scorpionAnimator, subzeroWinsFrames);
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterScorpion, &scorpionAnimator, scorpionSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterScorpion, &scorpionAnimator, subzeroWinsFrames);
+							}
 						}
 						else
 						{
@@ -5105,7 +5319,14 @@ void basicmain()
 						//Johnny Cage
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterCage2, &cageAnimator2, cageWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterCage2, &cageAnimator2, cageSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterCage2, &cageAnimator2, cageWinsFrames);
+							}
 						}
 						else
 						{
@@ -5116,7 +5337,14 @@ void basicmain()
 						//Kano
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterKano2, &kanoAnimator2, kanoWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKano2, &kanoAnimator2, kanoSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKano2, &kanoAnimator2, kanoWinsFrames);
+							}
 						}
 						else
 						{
@@ -5127,7 +5355,14 @@ void basicmain()
 						//Sub-Zero
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroWinsFrames);
+							}
 						}
 						else
 						{
@@ -5138,7 +5373,14 @@ void basicmain()
 						//Sonya
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaWinsFrames);
+							}
 						}
 						else
 						{
@@ -5149,7 +5391,14 @@ void basicmain()
 						//Raiden
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterRaiden2, &raidenAnimator2, raidenWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterRaiden2, &raidenAnimator2, raidenSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterRaiden2, &raidenAnimator2, raidenWinsFrames);
+							}							
 						}
 						else
 						{
@@ -5161,7 +5410,14 @@ void basicmain()
 						//Liu Kang
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterKang2, &kangAnimator2, kangWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKang2, &kangAnimator2, kangSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKang2, &kangAnimator2, kangWinsFrames);
+							}
 						}
 						else
 						{
@@ -5172,7 +5428,14 @@ void basicmain()
 						//Scorpion
 						if (p2Selected > -1)
 						{
-							fighterUpdateVictoryPose(delta, &fighterScorpion2, &scorpionAnimator2, subzeroWinsFrames);
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterScorpion2, &scorpionAnimator2, scorpionSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterScorpion2, &scorpionAnimator2, subzeroWinsFrames);
+							}
 						}
 						else
 						{
@@ -5183,6 +5446,15 @@ void basicmain()
 
 				if ((pad1 & JAGPAD_C || pad1 & JAGPAD_B || pad1 & JAGPAD_A || pad1 & JAGPAD_7 || pad1 & JAGPAD_8 || pad1 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p1Selected == -1)
 				{
+					if (pad1 & JAGPAD_A)
+					{
+						p1SelectedSpecial = true;
+					}
+					else
+					{
+						p1SelectedSpecial = false;
+					}
+
 					p1Selected = p1Cursor;
 					sprite[P1_CURSOR].active = R_is_inactive;
 					myTicks = rapTicks;
@@ -5233,6 +5505,15 @@ void basicmain()
 
 				if ((pad2 & JAGPAD_C || pad2 & JAGPAD_B || pad2 & JAGPAD_A || pad2 & JAGPAD_7 || pad2 & JAGPAD_8 || pad2 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p2Selected == -1)
 				{
+					if (pad2 & JAGPAD_A)
+					{
+						p2SelectedSpecial = true;
+					}
+					else
+					{
+						p2SelectedSpecial = false;
+					}
+
 					p2Selected = p2Cursor;
 					sprite[P2_CURSOR].active = R_is_inactive;
 					myTicks = rapTicks;
@@ -5375,16 +5656,6 @@ void basicmain()
 				stateMachineUpdate(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr);
 				stateMachineUpdate(&fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
 
-				if (pad1 & JAGPAD_5)
-				{
-					showMessageInt("currentFrame", spriteAnimator1Ptr->currentFrame);
-				}
-
-				if (pad1 & JAGPAD_6)
-				{
-					showMessageInt("black palette", BLACKPALx16[0]);
-				}
-
 				fighterCastShadow(fighter1Ptr, false);
 				fighterCastShadow(fighter2Ptr, false);
 
@@ -5452,15 +5723,10 @@ void basicmain()
 				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
-				fighterImpactCheck(fighter1Ptr, fighter2Ptr);	
+				fighterImpactCheck(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr, &fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
 				fighterButtonCheck(fighter1Ptr);
 				fighterButtonCheck(fighter2Ptr);
 				playerinputUpdate(fighter1Ptr, fighter2Ptr);
-
-				if (fighter1Ptr->pad & JAGPAD_5)
-				{
-					showMessageInt("currentFrame", spriteAnimator1Ptr->currentFrame);
-				}
 
 				// jsfVsync(0);
 				// continue;
@@ -6115,6 +6381,8 @@ void switchScreenChooseFighter()
 	p2Cursor = 2;
 	p1Selected = -1;
 	p2Selected = -1;
+	p1SelectedSpecial = false;
+	p2SelectedSpecial = false;
 	p1FlashCount = 0;
 	p2FlashCount = 0;
 	chooseFighterDone = false;

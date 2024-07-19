@@ -17,7 +17,7 @@ void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* 
 void stateMachineInit(struct StateMachine* stateMachine, int name, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 void stateMachineHandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
-void stateMachineGoto(struct StateMachine* stateMachine, int name);
+void stateMachineGoto(struct StateMachine* stateMachine, int newState, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 
 void StateIdle_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateIdle_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
@@ -143,3 +143,8 @@ void StateJumpingPunchingBackward_Enter(struct StateMachine*, struct Fighter*, s
 void StateJumpingPunchingBackward_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateJumpingPunchingBackward_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateJumpingPunchingBackward_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitLow_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitLow_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitLow_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitLow_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

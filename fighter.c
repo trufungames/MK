@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "playerinput.h"
 #include "hud.h"
+#include "statemachine.h"
 
 int collision = 0;
 int turnOffset = 32;
@@ -265,7 +266,12 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
 void fighterUpdateVictoryPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame winFrames[])
 {
     updateSpriteAnimator(animator, winFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    fighterCastShadow(fighter, false);
+}
 
+void fighterUpdateSpecialPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame specialFrames[])
+{
+    updateSpriteAnimator(animator, specialFrames, fighter->SPECIAL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
     fighterCastShadow(fighter, false);
 }
 
@@ -490,7 +496,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->DoBlockSequence = false;
         animator->currentFrame = 0;
         sfxBlock(fighter->soundHandler, fighter->isPlayer1);
-        fighterTakeDamage(fighter, DMG_BLOCKED, 0);
+        fighterTakeDamage(fighter, DMG_BLOCKED);
     }
     else if (fighter->DoThrowSequence)
     {
@@ -619,7 +625,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
     {
         if (fighter->IsHitLow || fighter->IsHitHigh || fighter->IsHitBack || fighter->IsHitFall || fighter->IsHitUppercut || fighter->IsHitSweep || fighter->IsHitBackHigh || fighter->IsHitBackLow || fighter->IsHitDropKick || fighter->IsHitBackLight || fighter->IsHitBodyKick || fighter->IsBeingThrown)        
         {
-            fighterTakeDamage(fighter, fighter->pendingDamage, 0);
+            fighterTakeDamage(fighter, fighter->pendingDamage);
             
             fighter->pendingDamage = 0;
             fighter->playerXTraveled = 0.0f;
@@ -828,7 +834,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
 
                     bgShake(false);
                     sfxThud(fighter->soundHandler);
-                    fighterTakeDamage(fighter, DMG_THROW, 0);
+                    fighterTakeDamage(fighter, DMG_THROW);
                 }
                 else
                 {
@@ -2162,19 +2168,8 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsDoingSpecial3 = false;
 }
 
-void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)
 {
-    // if (fighter1->IsBeingThrown || fighter2->IsBeingThrown)
-    // {
-    //     sprite[fighter1->spriteIndex].colchk = R_cant_hit;   
-    //     sprite[fighter2->spriteIndex].colchk = R_cant_hit;
-    // }
-    // else
-    // {
-    //     sprite[fighter1->spriteIndex].colchk = R_can_hit;   
-    //     sprite[fighter2->spriteIndex].colchk = R_can_hit;
-    // }
-
     if (fighter1->IsPushing && sprite[fighter2->spriteIndex].was_hit == -1)
     {
         fighter1->IsPushing = false;
@@ -2211,7 +2206,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 
                 if (collisionSprIndex == P1_HB_ATTACK && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
-                    fighterHandleImpact(fighter1, fighter2);
+                    fighterHandleImpact(stateMachine1, fighter1, spriteAnimator1, stateMachine2, fighter2, spriteAnimator2);
                 }
 
                 if (collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT)
@@ -2245,7 +2240,7 @@ void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 
                 if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
-                    fighterHandleImpact(fighter2, fighter1);
+                    fighterHandleImpact(stateMachine2, fighter2, spriteAnimator2, stateMachine1, fighter1, spriteAnimator1);
                 }
 
                 if (fighter1->IsDoingSpecial1 && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
@@ -2462,8 +2457,25 @@ void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
     }
 }
 
-void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)
 {
+    //clb here
+    if (!fighterIsBlocking(stateMachine2, fighter2) && fighterCanTakeDamage(stateMachine2, fighter2))
+    {
+        if (stateMachine1->currentState->Name == STATE_LOW_PUNCHING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_LP, false, fighter1, POINTS_PUNCH);
+            stateMachineGoto(stateMachine2, STATE_HIT_LOW, fighter2, spriteAnimator2);
+        }
+    }    
+    else if (fighterIsBlocking(stateMachine2, fighter2))
+    {
+        //TODO
+        //stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING, fighter2, spriteAnimator2);
+    }
+
+    return;
+
     if (!fighter2->IsBeingDamaged && !fighter2->IsBlocking || fighter2->IsDizzy)
     {
         if (fighter1->IsLowPunching && !fighter2->IsDucking)
@@ -2672,7 +2684,7 @@ void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScre
     attackingFighter->ScoreChanged = true;
 }
 
-void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
+void fighterTakeDamage(struct Fighter* fighter, int damage)
 {
     if (fighter->IsDizzy)
         return;
@@ -2692,17 +2704,6 @@ void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks)
     }
 
     hudUpdateFighter(fighter);
-    // if (fighter->isPlayer1)
-    // {
-    //     sprite[P1_HEALTHBAR].scale_x = fighter->hitPoints;
-    // }
-    // else
-    // {
-    //     sprite[P2_HEALTHBAR].scale_x = fighter->hitPoints;
-    //     sprite[P2_HEALTHBAR].x_ = 176 + ((MAX_HEALTH - fighter->hitPoints) * 4);
-    // }
-
-    sleepAdd(sleepTicks);
 }
 
 void fighterShiftRight(struct Fighter* fighter)
@@ -3125,4 +3126,17 @@ void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion)
             scorpion->HarpoonCenterX += (32 * scorpion->direction);
         }
     }
+}
+
+bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fighter)
+{
+    return !fighter->IsBeingDamaged;
+}
+
+bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter)
+{
+    if (stateMachine->currentState->Name == STATE_BLOCKING || stateMachine->currentState->Name == STATE_DUCK_BLOCKING)
+        return true;
+
+    return false;
 }

@@ -1256,3 +1256,35 @@ void StateJumpingPunchingBackward_Update(struct StateMachine* stateMachine, stru
 void StateJumpingPunchingBackward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT LOW
+
+void StateHitLow_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    fighterPlayGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+    fighterTakeDamage(fighter, fighter->pendingDamage);    
+}
+
+void StateHitLow_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->IsBeingDamaged = false;
+}
+
+void StateHitLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    updateSpriteAnimator(spriteAnimator, *fighter->hitLowFrames, fighter->HIT_LOW_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+    if (spriteAnimator->currentFrame == 0)
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateHitLow_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}

@@ -5,6 +5,7 @@ struct Fighter {
     unsigned short IDLE_FRAME_COUNT;
     unsigned short DIZZY_FRAME_COUNT;
     unsigned short WINS_FRAME_COUNT;
+    unsigned short SPECIAL_FRAME_COUNT;
     unsigned short WALK_FRAME_COUNT;
     unsigned short TURN_FRAME_COUNT;
     unsigned short JUMP_FRAME_COUNT;
@@ -214,6 +215,7 @@ struct Fighter {
     struct AnimationFrame (*idleFrames)[12];
     struct AnimationFrame (*dizzyFrames)[7];
     struct AnimationFrame (*winsFrames)[15];
+    struct AnimationFrame (*specialFrames)[15];
     struct AnimationFrame (*walkFrames)[9];
     struct AnimationFrame (*turnFrames)[2];
     struct AnimationFrame (*jumpFrames)[4];
@@ -270,6 +272,8 @@ void fighterUpdateIdle(float delta, struct Fighter *fighter, struct SpriteAnimat
 
 void fighterUpdateVictoryPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame winFrames[]);
 
+void fighterUpdateSpecialPose(float delta, struct Fighter *fighter, struct SpriteAnimator* animator, struct AnimationFrame winFrames[]);
+
 void fighterUpdate(float delta, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward);
@@ -290,9 +294,9 @@ void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlay
 
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 
-void fighterImpactCheck(struct Fighter* fighter1, struct Fighter* fighter2);
+void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2);
 
-void fighterHandleImpact(struct Fighter* fighter1, struct Fighter* fighter2);
+void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2);
 
 void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2);
 
@@ -304,7 +308,7 @@ void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen, struct Fighter* attackingFighter, int points);
 
-void fighterTakeDamage(struct Fighter* fighter, int damage, int sleepTicks);
+void fighterTakeDamage(struct Fighter* fighter, int damage);
 
 void fighterShiftRight(struct Fighter* fighter);
 
@@ -355,3 +359,7 @@ void fighterHarpoonCheck(struct Fighter* fighter1, struct Fighter* scorpion);
 void fighterSlideToPositionX(struct Fighter* fighter, int x);
 
 void fighterButtonCheck(struct Fighter* fighter);
+
+bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fighter);
+
+bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
