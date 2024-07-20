@@ -940,201 +940,203 @@ Buildlink finished - everything went fine!
 Assembling raptor skeleton... 
  
 Compiling C code to O... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3795:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4728:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4732:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4736:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4743:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4746:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4749:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4752:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4755:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4758:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4761:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4764:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5053:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5056:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5059:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5062:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5065:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5068:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5071:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5074:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3793:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4726:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4730:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4734:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4741:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4744:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4747:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4750:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4753:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4756:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4759:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4762:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5051:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5054:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5057:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5060:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5063:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5066:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5069:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5072:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5671:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6016:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6018:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6020:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6022:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6024:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6026:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6028:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6030:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6042:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6044:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6046:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6048:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6050:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6052:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6054:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6056:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6062:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6064:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6066:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6068:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6070:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6072:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6074:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6076:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6082:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6084:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6086:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6088:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6090:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6092:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6094:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6096:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6102:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6104:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6106:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6108:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6110:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6112:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6114:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6116:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6122:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6124:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6126:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6128:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6130:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6132:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6134:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6136:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6142:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6144:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6146:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6148:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6150:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6152:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6154:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6156:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6019:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6021:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6023:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6025:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6027:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6029:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6031:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6033:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6045:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6047:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6049:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6051:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6053:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6055:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6057:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6059:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6065:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6067:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6069:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6071:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6073:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6075:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6077:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6079:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6085:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6087:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6089:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6091:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6093:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6095:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6097:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6099:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6105:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6107:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6109:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6111:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6113:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6115:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6117:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6119:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6125:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6127:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6129:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6131:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6133:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6135:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6137:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6139:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6145:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6147:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6149:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6151:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6153:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6155:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6157:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6159:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6255:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6258:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6280:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6283:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 Compiling C code to S... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3786:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3784:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3795:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4728:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4732:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4736:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4743:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4746:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4749:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4752:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4755:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4758:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4761:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4764:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5053:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5056:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5059:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5062:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5065:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5068:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5071:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5074:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3793:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4726:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4730:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4734:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4741:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4744:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4747:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4750:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4753:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4756:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4759:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4762:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5051:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5054:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5057:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5060:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5063:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5066:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5069:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5072:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5671:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6016:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6018:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6020:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6022:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6024:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6026:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6028:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6030:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6042:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6044:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6046:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6048:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6050:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6052:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6054:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6056:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6062:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6064:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6066:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6068:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6070:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6072:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6074:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6076:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6082:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6084:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6086:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6088:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6090:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6092:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6094:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6096:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6102:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6104:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6106:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6108:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6110:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6112:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6114:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6116:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6122:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6124:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6126:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6128:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6130:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6132:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6134:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6136:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6142:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6144:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6146:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6148:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6150:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6152:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6154:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6156:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6019:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6021:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6023:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6025:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6027:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6029:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6031:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6033:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6045:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6047:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6049:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6051:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6053:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6055:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6057:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6059:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6065:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6067:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6069:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6071:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6073:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6075:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6077:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6079:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6085:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6087:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6089:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6091:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6093:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6095:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6097:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6099:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6105:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6107:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6109:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6111:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6113:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6115:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6117:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6119:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6125:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6127:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6129:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6131:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6133:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6135:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6137:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6139:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6145:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6147:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6149:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6151:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6153:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6155:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6157:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6159:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6255:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6258:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6280:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6283:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  
 Linking things... 
 LOAD MAP
@@ -1169,7 +1171,7 @@ raptor_mtapp G  00020D38   raptor_mtfn G  00020D3C   raptor_vidmode G  00020CB8
 raptor_videnable G  00020CBC   raptor_varmod G  00020CC0   raptor_top_of_bss G  00020D00   
 raptor_trashram G  00020D04   raptor_uvbi_jmp G  00020D08   raptor_poobjl G  00020D0C   
 raptor_probjl G  00020D10   raptor_inittab G  00020D40   RAPTOR_U235init G  0003E6BA   
-raptor_samplebank_ptr G  0003E9B0   __Z9basicmainv G  0002E7E0   RAPTOR_U235playqueue G  0003E7B0   
+raptor_samplebank_ptr G  0003E9B0   __Z9basicmainv G  0002E7E2   RAPTOR_U235playqueue G  0003E7B0   
 RAPTOR_U235resetqueue G  0003E7DC   RAPTOR_Version G  000145A0   RAPTOR_random G  000145BA   
 RAPTOR_Install G  000145CC   RAPTOR_usepartipal G  0001466E   RAPTOR_use8x8fontpal G  0001467C   
 RAPTOR_use8x16fontpal G  0001468A   RAPTOR_use16x16fontpal G  00014698   raptor_font8x8_pal G  000147D8   
@@ -1278,8 +1280,8 @@ __Z15stageResetTicksv G  0003576C   __Z8stageGetv G  0003539A   __Z15musicStageG
 __Z14stageGetStartYv G  000356C0   __Z14stageGetStartXv G  00035690   rapFadeClut G  000454B4   
 __Z17musicStageWarriorP12SoundHandler G  000348F2   __Z13musicStagePitP12SoundHandler G  000348B4   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  00034C4A   
 __Z16musicStageThroneP12SoundHandler G  00034982   __Z17SetPlayerPalettesv G  0002DA92   __Z25switchScreenChooseFighterv G  0002E078   
-__Z26setFighterAlternatePaletteii G  0002E2FE   __Z14setPlayer1NamePc G  0002E356   __Z14setPlayer2NamePci G  0002E39A   
-__Z19displayWinnerMedalsv G  0002E3F6   __Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035894   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000358B6   
+__Z26setFighterAlternatePaletteii G  0002E2F2   __Z14setPlayer1NamePc G  0002E34A   __Z14setPlayer2NamePci G  0002E38E   
+__Z19displayWinnerMedalsv G  0002E3EA   __Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035894   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000358B6   
 __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000358BE   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000358FC   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035D50   
 __Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00035D76   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00035D7E   __Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00035E40   
 __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035EC4   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00035F0E   __Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00035F16   
@@ -1313,16 +1315,16 @@ __Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G
 __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038066   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  000380A8   __Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000380B0   
 __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000381B8   __Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  000381C0   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038202   
 __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003820A   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038318   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038320   
-__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038378   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038388   __Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003840C   
+__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003837C   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003838C   __Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038420   
 __Z15stateMachineAddP12StateMachineiP5State G  000357C0   rapDebugSetXY G  0004538E   jsfGetPadPressed G  00044A2E   
 _jsfVsync G  00044D26   __Z9sfxTruFunP12SoundHandler G  00033DB6   __Z8sfxIntroP12SoundHandler G  000337A2   
 __Z11sfxP2CursorP12SoundHandler G  000336E8   __Z6bgInitv G  000350B0   __Z15spriteDelayInitv G  00034F40   
 __Z9sleepInitv G  00033400   __Z9stageInitv G  00035380   __Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  000357DE   
 __Z11sfxP1CursorP12SoundHandler G  000336C0   __Z13sfxTitleStartP12SoundHandler G  00033E8E   __Z10musicTitleP12SoundHandler G  0003480A   
 jsfGetPad G  00044864   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  00035818   __Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003582C   
-__Z9musicStopv G  000349CA   __Z12stageSetNextv G  000353AA   __Z11sfxSelectedP12SoundHandler G  00033712   
 __Z10sleepCheckv G  0003341A   __Z17playerinputUpdateP7FighterS0_ G  000331C6   __Z8bgUpdateP7FighterS0_ G  000350F8   
-__Z11stageUpdatev G  000354CA   __Z17spriteDelayUpdatev G  00034F8C   __Z16playerinputResetP7FighterS0_ G  000332CA   
+__Z11stageUpdatev G  000354CA   __Z17spriteDelayUpdatev G  00034F8C   __Z9musicStopv G  000349CA   
+__Z12stageSetNextv G  000353AA   __Z11sfxSelectedP12SoundHandler G  00033712   __Z16playerinputResetP7FighterS0_ G  000332CA   
 __Z19playerinputGetValueii G  00033346   __Z8sleepAddi G  00033454   u235PlaySampleFreq G  000459C6   
 __Z7sfxGongP12SoundHandler G  0003375A   __Z8sfxBlockP12SoundHandlerb G  00033A02   __Z6sfxHitP12SoundHandler G  00033B94   
 __Z9sfxImpactP12SoundHandler G  00033C1A   __Z8sfxSwingP12SoundHandler G  00033CE8   __Z7sfxThudP12SoundHandler G  00033D6E   
@@ -1475,21 +1477,20 @@ _menuIndex G  00078EEA   _menuTicks G  00078EEE   _onMenuScreen G  00078F0C
 _attractModeTicks G  00078EF2   _attractModeIndex G  00078EE6   _inAttractMode G  00078F0B   
 _goroProfileShown G  00078EE4   _attractSlideIndex G  00078EE0   _chooseTicks G  00078EF6   
 _onScreenChooseFighter G  00078F0A   _onScreenVsBattle G  00078F09   _lastTicks G  00078EFE   
-_onScreenFight G  00078F08   _p1SelectedSpecial G  00078F11   _p2SelectedSpecial G  00078F10   
-_p1FlashCount G  00078EFC   _p2FlashCount G  00078EFA   _chooseFighterDone G  00078F0F   
-_k       G  0011E2A0   _isSleeping G  0011E2C8   _lastTick G  0011E2C4   
-_totalSleepTicks G  0011E2C0   _spriteCount G  0011E300   _sprites G  0011E304   
-_LastTicks G  0011E3BE   _IsScrollingUp G  0011E3C4   _IsScrollingDown G  0011E3C3   
-_IsShaking G  0011E3C2   _cloudTicks1 G  0011E3A8   _cloudTicks2 G  0011E3A4   
-_cloudTicks3 G  0011E3A0   _bgYOffset G  0011E3BA   _bgYInc  G  0011E3B2   
-_shakeCount G  0011E3AE   _scrollUpAfterShake G  0011E3AC   _bgYStart G  0011E3B6   
-zero_left_pad G  0011E438   zero_right_pad G  0011E43C   _pad1    G  0011E41C   
-_pad1Last G  0011E414   _pad1Prev G  0011E40C   _pad2    G  0011E418   
-_pad2Last G  0011E410   _pad2Prev G  0011E408   _plot_colour G  0011E44C   
-rapAngle_xAdd G  0011E404   rapAngle_yAdd G  0011E400   _js_r_xpos G  0011E45A   
-_js_r_ypos G  0011E456   _yt2     G  0011E424   _y       G  0011E42C   
-_errno   G  0011E434   zero_mousex_delta G  0011E440   zero_mousey_delta G  0011E444   
-zero_rotary_delta G  0011E448   
+_onScreenFight G  00078F08   _p1FlashCount G  00078EFC   _p2FlashCount G  00078EFA   
+_chooseFighterDone G  00078F0F   _k       G  0011E2A0   _isSleeping G  0011E2C8   
+_lastTick G  0011E2C4   _totalSleepTicks G  0011E2C0   _spriteCount G  0011E300   
+_sprites G  0011E304   _LastTicks G  0011E3BE   _IsScrollingUp G  0011E3C4   
+_IsScrollingDown G  0011E3C3   _IsShaking G  0011E3C2   _cloudTicks1 G  0011E3A8   
+_cloudTicks2 G  0011E3A4   _cloudTicks3 G  0011E3A0   _bgYOffset G  0011E3BA   
+_bgYInc  G  0011E3B2   _shakeCount G  0011E3AE   _scrollUpAfterShake G  0011E3AC   
+_bgYStart G  0011E3B6   zero_left_pad G  0011E438   zero_right_pad G  0011E43C   
+_pad1    G  0011E41C   _pad1Last G  0011E414   _pad1Prev G  0011E40C   
+_pad2    G  0011E418   _pad2Last G  0011E410   _pad2Prev G  0011E408   
+_plot_colour G  0011E44C   rapAngle_xAdd G  0011E404   rapAngle_yAdd G  0011E400   
+_js_r_xpos G  0011E45A   _js_r_ypos G  0011E456   _yt2     G  0011E424   
+_y       G  0011E42C   _errno   G  0011E434   zero_mousex_delta G  0011E440   
+zero_mousey_delta G  0011E444   zero_rotary_delta G  0011E448   
 
 LOAD MAP
 
@@ -1523,7 +1524,7 @@ raptor_mtapp G  00020D38   raptor_mtfn G  00020D3C   raptor_vidmode G  00020CB8
 raptor_videnable G  00020CBC   raptor_varmod G  00020CC0   raptor_top_of_bss G  00020D00   
 raptor_trashram G  00020D04   raptor_uvbi_jmp G  00020D08   raptor_poobjl G  00020D0C   
 raptor_probjl G  00020D10   raptor_inittab G  00020D40   RAPTOR_U235init G  0003E6BA   
-raptor_samplebank_ptr G  0003E9B0   __Z9basicmainv G  0002E7E0   RAPTOR_U235playqueue G  0003E7B0   
+raptor_samplebank_ptr G  0003E9B0   __Z9basicmainv G  0002E7E2   RAPTOR_U235playqueue G  0003E7B0   
 RAPTOR_U235resetqueue G  0003E7DC   RAPTOR_Version G  000145A0   RAPTOR_random G  000145BA   
 RAPTOR_Install G  000145CC   RAPTOR_usepartipal G  0001466E   RAPTOR_use8x8fontpal G  0001467C   
 RAPTOR_use8x16fontpal G  0001468A   RAPTOR_use16x16fontpal G  00014698   raptor_font8x8_pal G  000147D8   
@@ -1632,8 +1633,8 @@ __Z15stageResetTicksv G  0003576C   __Z8stageGetv G  0003539A   __Z15musicStageG
 __Z14stageGetStartYv G  000356C0   __Z14stageGetStartXv G  00035690   rapFadeClut G  000454B4   
 __Z17musicStageWarriorP12SoundHandler G  000348F2   __Z13musicStagePitP12SoundHandler G  000348B4   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  00034C4A   
 __Z16musicStageThroneP12SoundHandler G  00034982   __Z17SetPlayerPalettesv G  0002DA92   __Z25switchScreenChooseFighterv G  0002E078   
-__Z26setFighterAlternatePaletteii G  0002E2FE   __Z14setPlayer1NamePc G  0002E356   __Z14setPlayer2NamePci G  0002E39A   
-__Z19displayWinnerMedalsv G  0002E3F6   __Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035894   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000358B6   
+__Z26setFighterAlternatePaletteii G  0002E2F2   __Z14setPlayer1NamePc G  0002E34A   __Z14setPlayer2NamePci G  0002E38E   
+__Z19displayWinnerMedalsv G  0002E3EA   __Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035894   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000358B6   
 __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000358BE   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000358FC   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035D50   
 __Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00035D76   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00035D7E   __Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00035E40   
 __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00035EC4   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00035F0E   __Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00035F16   
@@ -1667,16 +1668,16 @@ __Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G
 __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038066   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  000380A8   __Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000380B0   
 __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000381B8   __Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  000381C0   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038202   
 __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003820A   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038318   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038320   
-__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038378   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038388   __Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003840C   
+__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003837C   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003838C   __Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038420   
 __Z15stateMachineAddP12StateMachineiP5State G  000357C0   rapDebugSetXY G  0004538E   jsfGetPadPressed G  00044A2E   
 _jsfVsync G  00044D26   __Z9sfxTruFunP12SoundHandler G  00033DB6   __Z8sfxIntroP12SoundHandler G  000337A2   
 __Z11sfxP2CursorP12SoundHandler G  000336E8   __Z6bgInitv G  000350B0   __Z15spriteDelayInitv G  00034F40   
 __Z9sleepInitv G  00033400   __Z9stageInitv G  00035380   __Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  000357DE   
 __Z11sfxP1CursorP12SoundHandler G  000336C0   __Z13sfxTitleStartP12SoundHandler G  00033E8E   __Z10musicTitleP12SoundHandler G  0003480A   
 jsfGetPad G  00044864   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  00035818   __Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003582C   
-__Z9musicStopv G  000349CA   __Z12stageSetNextv G  000353AA   __Z11sfxSelectedP12SoundHandler G  00033712   
 __Z10sleepCheckv G  0003341A   __Z17playerinputUpdateP7FighterS0_ G  000331C6   __Z8bgUpdateP7FighterS0_ G  000350F8   
-__Z11stageUpdatev G  000354CA   __Z17spriteDelayUpdatev G  00034F8C   __Z16playerinputResetP7FighterS0_ G  000332CA   
+__Z11stageUpdatev G  000354CA   __Z17spriteDelayUpdatev G  00034F8C   __Z9musicStopv G  000349CA   
+__Z12stageSetNextv G  000353AA   __Z11sfxSelectedP12SoundHandler G  00033712   __Z16playerinputResetP7FighterS0_ G  000332CA   
 __Z19playerinputGetValueii G  00033346   __Z8sleepAddi G  00033454   u235PlaySampleFreq G  000459C6   
 __Z7sfxGongP12SoundHandler G  0003375A   __Z8sfxBlockP12SoundHandlerb G  00033A02   __Z6sfxHitP12SoundHandler G  00033B94   
 __Z9sfxImpactP12SoundHandler G  00033C1A   __Z8sfxSwingP12SoundHandler G  00033CE8   __Z7sfxThudP12SoundHandler G  00033D6E   
@@ -1829,21 +1830,20 @@ _menuIndex G  00078EEA   _menuTicks G  00078EEE   _onMenuScreen G  00078F0C
 _attractModeTicks G  00078EF2   _attractModeIndex G  00078EE6   _inAttractMode G  00078F0B   
 _goroProfileShown G  00078EE4   _attractSlideIndex G  00078EE0   _chooseTicks G  00078EF6   
 _onScreenChooseFighter G  00078F0A   _onScreenVsBattle G  00078F09   _lastTicks G  00078EFE   
-_onScreenFight G  00078F08   _p1SelectedSpecial G  00078F11   _p2SelectedSpecial G  00078F10   
-_p1FlashCount G  00078EFC   _p2FlashCount G  00078EFA   _chooseFighterDone G  00078F0F   
-_k       G  0011E2A0   _isSleeping G  0011E2C8   _lastTick G  0011E2C4   
-_totalSleepTicks G  0011E2C0   _spriteCount G  0011E300   _sprites G  0011E304   
-_LastTicks G  0011E3BE   _IsScrollingUp G  0011E3C4   _IsScrollingDown G  0011E3C3   
-_IsShaking G  0011E3C2   _cloudTicks1 G  0011E3A8   _cloudTicks2 G  0011E3A4   
-_cloudTicks3 G  0011E3A0   _bgYOffset G  0011E3BA   _bgYInc  G  0011E3B2   
-_shakeCount G  0011E3AE   _scrollUpAfterShake G  0011E3AC   _bgYStart G  0011E3B6   
-zero_left_pad G  0011E438   zero_right_pad G  0011E43C   _pad1    G  0011E41C   
-_pad1Last G  0011E414   _pad1Prev G  0011E40C   _pad2    G  0011E418   
-_pad2Last G  0011E410   _pad2Prev G  0011E408   _plot_colour G  0011E44C   
-rapAngle_xAdd G  0011E404   rapAngle_yAdd G  0011E400   _js_r_xpos G  0011E45A   
-_js_r_ypos G  0011E456   _yt2     G  0011E424   _y       G  0011E42C   
-_errno   G  0011E434   zero_mousex_delta G  0011E440   zero_mousey_delta G  0011E444   
-zero_rotary_delta G  0011E448   
+_onScreenFight G  00078F08   _p1FlashCount G  00078EFC   _p2FlashCount G  00078EFA   
+_chooseFighterDone G  00078F0F   _k       G  0011E2A0   _isSleeping G  0011E2C8   
+_lastTick G  0011E2C4   _totalSleepTicks G  0011E2C0   _spriteCount G  0011E300   
+_sprites G  0011E304   _LastTicks G  0011E3BE   _IsScrollingUp G  0011E3C4   
+_IsScrollingDown G  0011E3C3   _IsShaking G  0011E3C2   _cloudTicks1 G  0011E3A8   
+_cloudTicks2 G  0011E3A4   _cloudTicks3 G  0011E3A0   _bgYOffset G  0011E3BA   
+_bgYInc  G  0011E3B2   _shakeCount G  0011E3AE   _scrollUpAfterShake G  0011E3AC   
+_bgYStart G  0011E3B6   zero_left_pad G  0011E438   zero_right_pad G  0011E43C   
+_pad1    G  0011E41C   _pad1Last G  0011E414   _pad1Prev G  0011E40C   
+_pad2    G  0011E418   _pad2Last G  0011E410   _pad2Prev G  0011E408   
+_plot_colour G  0011E44C   rapAngle_xAdd G  0011E404   rapAngle_yAdd G  0011E400   
+_js_r_xpos G  0011E45A   _js_r_ypos G  0011E456   _yt2     G  0011E424   
+_y       G  0011E42C   _errno   G  0011E434   zero_mousex_delta G  0011E440   
+zero_mousey_delta G  0011E444   zero_rotary_delta G  0011E448   
 
  
 Making packed ROM... 

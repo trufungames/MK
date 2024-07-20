@@ -1263,6 +1263,7 @@ void StateJumpingPunchingBackward_HandleInput(struct StateMachine* stateMachine,
 void StateHitLow_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
     stateMachine->exitingState = false;
     fighter->lastTicks = rapTicks;
     fighter->IsBeingDamaged = true;
@@ -1277,9 +1278,9 @@ void StateHitLow_Exit(struct StateMachine* stateMachine, struct Fighter* fighter
 
 void StateHitLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    updateSpriteAnimator(spriteAnimator, *fighter->hitLowFrames, fighter->HIT_LOW_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+    updateSpriteAnimator(spriteAnimator, *fighter->hitLowFrames, fighter->HIT_LOW_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
-    if (spriteAnimator->currentFrame == 0)
+    if (animationIsComplete(spriteAnimator, fighter->HIT_LOW_FRAME_COUNT))
     {
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
     }

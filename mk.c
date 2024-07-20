@@ -31,8 +31,6 @@ short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
 short p2Selected = -1;
-bool p1SelectedSpecial = false;
-bool p2SelectedSpecial = false;
 bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
@@ -3805,8 +3803,6 @@ void basicmain()
 		p2Cursor = 2;
 		p1Selected = -1;
 		p2Selected = -1;
-		p1SelectedSpecial = false;
-		p2SelectedSpecial = false;
 		chooseFighterDone = false;
 		bool roundFightSequenceComplete = false;
 		short fightScale = 0;
@@ -3819,7 +3815,9 @@ void basicmain()
 		struct SpriteAnimator* spriteAnimator1Ptr;
 		struct SpriteAnimator* spriteAnimator2Ptr;
 		short fighters1OffsetY = -134;
-		short fighters2OffsetY = 134;
+		short fighters2OffsetY = 134;		
+		bool p1SelectedSpecial = false;
+		bool p2SelectedSpecial = false;
 		fmvIndex = 6;
 		goroProfileShown = false;
 		attractSlideIndex = 0;
@@ -5668,6 +5666,11 @@ void basicmain()
 				//clb uncomment here once things above work...
 				displayWinnerMedals();
 
+				if (pad1 & JAGPAD_5)
+				{
+					showMessageInt("Black Palette", BLACKPALx16[3]);
+				}
+
 				//match progression
 				if (!matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr))
 				{
@@ -6381,8 +6384,6 @@ void switchScreenChooseFighter()
 	p2Cursor = 2;
 	p1Selected = -1;
 	p2Selected = -1;
-	p1SelectedSpecial = false;
-	p2SelectedSpecial = false;
 	p1FlashCount = 0;
 	p2FlashCount = 0;
 	chooseFighterDone = false;
