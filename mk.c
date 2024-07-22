@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -154,6 +154,27 @@ static State stateJumpingPunchingBackward = {
 
 static State stateHitLow = {
 	STATE_HIT_LOW
+};
+static State stateHitHigh = {
+	STATE_HIT_HIGH
+};
+static State stateHitSweep = {
+	STATE_HIT_SWEEP
+};
+static State stateGetUp = {
+	STATE_GETUP
+};
+static State stateHitBack = {
+	STATE_HIT_BACK
+};
+static State stateHitBackLow = {
+	STATE_HIT_BACK_LOW
+};
+static State stateHitUppercut = {
+	STATE_HIT_UPPERCUT
+};
+static State stateLaydown = {
+	STATE_LAYDOWN
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -3926,6 +3947,34 @@ void basicmain()
 		stateHitLow.exit = &StateHitLow_Exit;
 		stateHitLow.update = &StateHitLow_Update;
 		stateHitLow.handleInput = &StateHitLow_HandleInput;
+		stateHitHigh.enter = &StateHitHigh_Enter;
+		stateHitHigh.exit = &StateHitHigh_Exit;
+		stateHitHigh.update = &StateHitHigh_Update;
+		stateHitHigh.handleInput = &StateHitHigh_HandleInput;
+		stateHitSweep.enter = &StateHitSweep_Enter;
+		stateHitSweep.exit = &StateHitSweep_Exit;
+		stateHitSweep.update = &StateHitSweep_Update;
+		stateHitSweep.handleInput = &StateHitSweep_HandleInput;
+		stateGetUp.enter = &StateGetUp_Enter;
+		stateGetUp.exit = &StateGetUp_Exit;
+		stateGetUp.update = &StateGetUp_Update;
+		stateGetUp.handleInput = &StateGetUp_HandleInput;
+		stateHitBack.enter = &StateHitBack_Enter;
+		stateHitBack.exit = &StateHitBack_Exit;
+		stateHitBack.update = &StateHitBack_Update;
+		stateHitBack.handleInput = &StateHitBack_HandleInput;
+		stateHitBackLow.enter = &StateHitBackLow_Enter;
+		stateHitBackLow.exit = &StateHitBackLow_Exit;
+		stateHitBackLow.update = &StateHitBackLow_Update;
+		stateHitBackLow.handleInput = &StateHitBackLow_HandleInput;
+		stateHitUppercut.enter = &StateHitUppercut_Enter;
+		stateHitUppercut.exit = &StateHitUppercut_Exit;
+		stateHitUppercut.update = &StateHitUppercut_Update;
+		stateHitUppercut.handleInput = &StateHitUppercut_HandleInput;
+		stateLaydown.enter = &StateLaydown_Enter;
+		stateLaydown.exit = &StateLaydown_Exit;
+		stateLaydown.update = &StateLaydown_Update;
+		stateLaydown.handleInput = &StateLaydown_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3953,6 +4002,13 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
 		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_LOW, &stateHitLow);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_HIGH, &stateHitHigh);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_SWEEP, &stateHitSweep);
+		stateMachineAdd(&fighter1StateMachine, STATE_GETUP, &stateGetUp);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BACK, &stateHitBack);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
+		stateMachineAdd(&fighter1StateMachine, STATE_LAYDOWN, &stateLaydown);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -3980,6 +4036,13 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
 		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_LOW, &stateHitLow);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_HIGH, &stateHitHigh);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_SWEEP, &stateHitSweep);
+		stateMachineAdd(&fighter2StateMachine, STATE_GETUP, &stateGetUp);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BACK, &stateHitBack);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
+		stateMachineAdd(&fighter2StateMachine, STATE_LAYDOWN, &stateLaydown);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;

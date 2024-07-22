@@ -148,3 +148,38 @@ void StateHitLow_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnima
 void StateHitLow_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitLow_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitLow_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitHigh_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitHigh_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitHigh_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitHigh_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitSweep_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSweep_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSweep_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSweep_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateGetUp_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateGetUp_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateGetUp_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateGetUp_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitBack_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBack_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBack_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBack_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitBackLow_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBackLow_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBackLow_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBackLow_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitUppercut_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitUppercut_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitUppercut_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitUppercut_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateLaydown_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLaydown_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLaydown_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateLaydown_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

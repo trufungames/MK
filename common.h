@@ -232,9 +232,11 @@
 #define FIGHTER_WALK_MIN_FORWARD 32
 #define FIGHTER_WALK_MIN_BACKWARD 28
 #define FIGHTER_JUMP_X_SPEED 7.5f
+#define FIGHTER_KNOCKBACK_SPEED 2
+#define FIGHTER_UPPERCUT_X_SPEED 4
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 26
+#define STATE_TOTAL_COUNT 33
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -262,6 +264,13 @@
 #define STATE_JUMPING_PUNCHING_BACKWARD 24
 //-DAMAGE STATES-
 #define STATE_HIT_LOW 25
+#define STATE_HIT_HIGH 26
+#define STATE_HIT_SWEEP 27
+#define STATE_GETUP 28
+#define STATE_HIT_BACK 29
+#define STATE_HIT_BACK_LOW 30
+#define STATE_HIT_UPPERCUT 31
+#define STATE_LAYDOWN 32
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

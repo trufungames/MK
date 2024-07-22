@@ -29,6 +29,15 @@ struct BloodSquirt {
     bool InUse;
 };
 
+struct BloodSpray {
+    unsigned int SpriteIndex;
+    struct SpriteAnimator* Animator;
+    bool InUse;
+    int X;
+    int Y;
+    int LastTicks;
+};
+
 void bloodInit();
 
 void bloodUpdate(struct SoundHandler* soundHandler);
