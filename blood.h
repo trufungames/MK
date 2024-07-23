@@ -4,6 +4,8 @@ struct BloodDrop {
     bool InUse;
     int LastTicks;
     short Direction;
+    int X;
+    int Y;
     float MomentumY;
     float MomentumX;
 };

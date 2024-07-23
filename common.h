@@ -234,6 +234,9 @@
 #define FIGHTER_JUMP_X_SPEED 7.5f
 #define FIGHTER_KNOCKBACK_SPEED 2
 #define FIGHTER_UPPERCUT_X_SPEED 4
+#define FIGHTER_BLOOD_TICKS 3
+#define FIGHTER_BLOOD_DROP_MOMENTUM_Y -13
+#define FIGHTER_BLOOD_SPEED_X 6
 
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 33
