@@ -29,6 +29,8 @@ struct BloodSquirt {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
+    int X;
+    int Y;
 };
 
 struct BloodSpray {

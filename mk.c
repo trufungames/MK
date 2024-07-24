@@ -176,6 +176,9 @@ static State stateHitUppercut = {
 static State stateLaydown = {
 	STATE_LAYDOWN
 };
+static State stateHitDropKick = {
+	STATE_HIT_DROPKICK
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -2615,7 +2618,7 @@ struct ImpactFrame kanoImpactFrameJumpPunch = {
 	1, 42, 60
 };
 struct ImpactFrame kanoImpactFrameJumpKick = {
-	1, 52, 46
+	1, 52, 46, true
 };
 
 struct ImpactFrame kanoImpactFrameThrow = {
@@ -3975,6 +3978,10 @@ void basicmain()
 		stateLaydown.exit = &StateLaydown_Exit;
 		stateLaydown.update = &StateLaydown_Update;
 		stateLaydown.handleInput = &StateLaydown_HandleInput;
+		stateHitDropKick.enter = &StateHitDropKick_Enter;
+		stateHitDropKick.exit = &StateHitDropKick_Exit;
+		stateHitDropKick.update = &StateHitDropKick_Update;
+		stateHitDropKick.handleInput = &StateHitDropKick_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4009,6 +4016,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
 		stateMachineAdd(&fighter1StateMachine, STATE_LAYDOWN, &stateLaydown);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4043,6 +4051,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
 		stateMachineAdd(&fighter2StateMachine, STATE_LAYDOWN, &stateLaydown);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;

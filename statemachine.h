@@ -183,3 +183,8 @@ void StateLaydown_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnim
 void StateLaydown_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateLaydown_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateLaydown_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitDropKick_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDropKick_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDropKick_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDropKick_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

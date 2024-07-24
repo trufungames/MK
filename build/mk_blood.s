@@ -133,13 +133,13 @@ __Z11bloodUpdateP12SoundHandler:
 	tst.b _bloodSquirts+8
 	jne .L117
 .L53:
-	tst.b _bloodSquirts+18
+	tst.b _bloodSquirts+26
 	jne .L118
 .L54:
-	tst.b _bloodSquirts+28
+	tst.b _bloodSquirts+44
 	jne .L119
 .L55:
-	tst.b _bloodSquirts+38
+	tst.b _bloodSquirts+62
 	jne .L120
 .L2:
 	movem.l -48(%fp),#15612
@@ -214,7 +214,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%d0
 	lsl.l #6,%d0
 	move.l sprite,%a0
-	cmp.w #166,12(%a0,%d0.l)
+	cmp.w #182,12(%a0,%d0.l)
 	jgt .L121
 	move.l _gravity,-(%sp)
 	move.l %d4,%a0
@@ -473,7 +473,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a5)
 	addq.l #4,%sp
 	move.w %d0,12(%a3)
-	cmp.w #166,%d0
+	cmp.w #182,%d0
 	jgt .L24
 	move.l %a2,_bloodBalls+10
 .L130:
@@ -481,21 +481,26 @@ __Z11bloodUpdateP12SoundHandler:
 	jeq .L29
 	jra .L106
 .L120:
+	pea 1.w
+	move.w _bloodSquirts+70,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodSquirts+66,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
 	pea 6.w
 	pea _bloodSquirtFrames
-	move.l _bloodSquirts+34,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
-	lea (20,%sp),%sp
+	move.l _bloodSquirts+58,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
 	pea 6.w
-	move.l _bloodSquirts+34,-(%sp)
+	move.l _bloodSquirts+58,-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
 	addq.l #8,%sp
 	tst.b %d0
 	jeq .L2
-	clr.b _bloodSquirts+38
-	move.l _bloodSquirts+30,%d0
+	clr.b _bloodSquirts+62
+	move.l _bloodSquirts+54,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -507,21 +512,26 @@ __Z11bloodUpdateP12SoundHandler:
 	unlk %fp
 	rts
 .L119:
+	pea 1.w
+	move.w _bloodSquirts+52,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodSquirts+48,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
 	pea 6.w
 	pea _bloodSquirtFrames
-	move.l _bloodSquirts+24,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
-	lea (20,%sp),%sp
+	move.l _bloodSquirts+40,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
 	pea 6.w
-	move.l _bloodSquirts+24,-(%sp)
+	move.l _bloodSquirts+40,-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
 	addq.l #8,%sp
 	tst.b %d0
 	jeq .L55
-	clr.b _bloodSquirts+28
-	move.l _bloodSquirts+20,%d0
+	clr.b _bloodSquirts+44
+	move.l _bloodSquirts+36,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -529,25 +539,30 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+38
+	tst.b _bloodSquirts+62
 	jeq .L2
 	jra .L120
 .L118:
+	pea 1.w
+	move.w _bloodSquirts+34,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodSquirts+30,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
 	pea 6.w
 	pea _bloodSquirtFrames
-	move.l _bloodSquirts+14,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
-	lea (20,%sp),%sp
+	move.l _bloodSquirts+22,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
 	pea 6.w
-	move.l _bloodSquirts+14,-(%sp)
+	move.l _bloodSquirts+22,-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
 	addq.l #8,%sp
 	tst.b %d0
 	jeq .L54
-	clr.b _bloodSquirts+18
-	move.l _bloodSquirts+10,%d0
+	clr.b _bloodSquirts+26
+	move.l _bloodSquirts+18,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -555,17 +570,22 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+28
+	tst.b _bloodSquirts+44
 	jeq .L55
 	jra .L119
 .L117:
+	pea 1.w
+	move.w _bloodSquirts+16,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodSquirts+12,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
 	pea 6.w
 	pea _bloodSquirtFrames
 	move.l _bloodSquirts+4,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
-	lea (20,%sp),%sp
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
 	pea 6.w
 	move.l _bloodSquirts+4,-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
@@ -581,7 +601,7 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+18
+	tst.b _bloodSquirts+26
 	jeq .L54
 	jra .L118
 .L116:
@@ -728,7 +748,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a5)
 	addq.l #4,%sp
 	move.w %d0,12(%a3)
-	cmp.w #166,%d0
+	cmp.w #182,%d0
 	jgt .L127
 	move.l %a2,_bloodBalls+70
 .L132:
@@ -791,7 +811,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a5)
 	addq.l #4,%sp
 	move.w %d0,12(%a3)
-	cmp.w #166,%d0
+	cmp.w #182,%d0
 	jgt .L36
 	move.l %a2,_bloodBalls+50
 .L138:
@@ -854,7 +874,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a5)
 	addq.l #4,%sp
 	move.w %d0,12(%a3)
-	cmp.w #166,%d0
+	cmp.w #182,%d0
 	jgt .L30
 	move.l %a2,_bloodBalls+30
 .L135:
@@ -1052,7 +1072,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1103,7 +1123,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1153,7 +1173,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1203,7 +1223,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1253,7 +1273,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1303,7 +1323,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1339,7 +1359,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1375,7 +1395,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1411,7 +1431,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1447,7 +1467,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1483,7 +1503,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1519,7 +1539,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d1,%a0
 	move.w -6(%fp),8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1554,7 +1574,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1589,7 +1609,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1624,7 +1644,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1659,7 +1679,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1694,7 +1714,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1729,7 +1749,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1764,7 +1784,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1799,7 +1819,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1834,7 +1854,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1869,7 +1889,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1904,7 +1924,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1942,7 +1962,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -1977,7 +1997,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %d2,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2012,7 +2032,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2047,7 +2067,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2082,7 +2102,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2117,7 +2137,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2152,7 +2172,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2193,7 +2213,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2228,7 +2248,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2263,7 +2283,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2298,7 +2318,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2333,7 +2353,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2368,7 +2388,7 @@ __Z11bloodUpdateP12SoundHandler:
 	add.l %d3,%a0
 	move.w %a1,8(%a0)
 	and.w #4,%d0
-	add.w #166,%d0
+	add.w #182,%d0
 	move.w %d0,12(%a0)
 	moveq #1,%d0
 	move.l %d0,4(%a0)
@@ -2543,7 +2563,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2600,7 +2620,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2654,7 +2674,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2708,7 +2728,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2762,7 +2782,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2816,7 +2836,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2870,7 +2890,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -2924,7 +2944,7 @@ __Z9bloodDropsss:
 	and.l %d1,%d0
 	lea ___floatsisf,%a3
 	move.l %d0,%a0
-	pea -13(%a0)
+	pea -10(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a5)
@@ -3452,117 +3472,129 @@ __Z9bloodPoolss:
 	.globl	__Z11bloodSquirtss
 __Z11bloodSquirtss:
 	link.w %fp,#0
-	move.l %d2,-(%sp)
+	movem.l #12320,-(%sp)
 	move.w 10(%fp),%d1
 	move.w 14(%fp),%d0
 	tst.b _bloodSquirts+8
 	jeq .L207
-	tst.b _bloodSquirts+18
+	tst.b _bloodSquirts+26
 	jeq .L208
-	tst.b _bloodSquirts+28
+	tst.b _bloodSquirts+44
 	jeq .L209
-	tst.b _bloodSquirts+38
+	tst.b _bloodSquirts+62
 	jeq .L211
-	move.l (%sp)+,%d2
+	movem.l (%sp)+,#1036
 	unlk %fp
 	rts
 .L211:
-	move.w #3,%a0
-	lea (%a0,%a0.l),%a1
-	add.l %a1,%a1
-	lea (%a1,%a0.l),%a0
-	add.l %a0,%a0
-	lea _bloodSquirts+8,%a1
-	move.b #1,(%a0,%a1.l)
-	lea _bloodSquirts,%a1
-	move.l (%a1,%a0.l),%a1
-	move.l %a1,%d2
-	add.l %a1,%d2
-	add.l %a1,%d2
-	lsl.l #6,%d2
-	move.l sprite,%a1
+	moveq #3,%d2
+	move.l %d2,%d3
+	lsl.l #3,%d3
+	add.l %d3,%d2
+	move.l %d2,%a1
 	add.l %d2,%a1
-	move.w %d1,8(%a1)
-	move.w %d0,12(%a1)
-	moveq #1,%d0
-	move.l %d0,4(%a1)
-	add.l #_bloodSquirts+4,%a0
-	move.l (%a0),%a0
+	lea _bloodSquirts+8,%a0
+	move.b #1,(%a1,%a0.l)
+	move.l %a1,%a0
+	add.l #_bloodSquirts,%a0
+	move.w %d1,%a2
+	move.l %a2,10(%a0)
+	move.w %d0,%a2
+	move.l %a2,14(%a0)
+	lea _bloodSquirts,%a2
+	move.l (%a2,%a1.l),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a1
+	moveq #1,%d1
+	move.l %d1,4(%a1,%d0.l)
+	move.l 4(%a0),%a0
 	clr.w 16(%a0)
 .L212:
-	move.l (%sp)+,%d2
+	movem.l (%sp)+,#1036
 	unlk %fp
 	rts
 .L207:
-	sub.l %a0,%a0
-	lea (%a0,%a0.l),%a1
-	add.l %a1,%a1
-	lea (%a1,%a0.l),%a0
-	add.l %a0,%a0
-	lea _bloodSquirts+8,%a1
-	move.b #1,(%a0,%a1.l)
-	lea _bloodSquirts,%a1
-	move.l (%a1,%a0.l),%a1
-	move.l %a1,%d2
-	add.l %a1,%d2
-	add.l %a1,%d2
-	lsl.l #6,%d2
-	move.l sprite,%a1
+	moveq #0,%d2
+	move.l %d2,%d3
+	lsl.l #3,%d3
+	add.l %d3,%d2
+	move.l %d2,%a1
 	add.l %d2,%a1
-	move.w %d1,8(%a1)
-	move.w %d0,12(%a1)
-	moveq #1,%d0
-	move.l %d0,4(%a1)
-	add.l #_bloodSquirts+4,%a0
-	move.l (%a0),%a0
+	lea _bloodSquirts+8,%a0
+	move.b #1,(%a1,%a0.l)
+	move.l %a1,%a0
+	add.l #_bloodSquirts,%a0
+	move.w %d1,%a2
+	move.l %a2,10(%a0)
+	move.w %d0,%a2
+	move.l %a2,14(%a0)
+	lea _bloodSquirts,%a2
+	move.l (%a2,%a1.l),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a1
+	moveq #1,%d1
+	move.l %d1,4(%a1,%d0.l)
+	move.l 4(%a0),%a0
 	clr.w 16(%a0)
 	jra .L212
 .L208:
-	move.w #1,%a0
-	lea (%a0,%a0.l),%a1
-	add.l %a1,%a1
-	lea (%a1,%a0.l),%a0
-	add.l %a0,%a0
-	lea _bloodSquirts+8,%a1
-	move.b #1,(%a0,%a1.l)
-	lea _bloodSquirts,%a1
-	move.l (%a1,%a0.l),%a1
-	move.l %a1,%d2
-	add.l %a1,%d2
-	add.l %a1,%d2
-	lsl.l #6,%d2
-	move.l sprite,%a1
+	moveq #1,%d2
+	move.l %d2,%d3
+	lsl.l #3,%d3
+	add.l %d3,%d2
+	move.l %d2,%a1
 	add.l %d2,%a1
-	move.w %d1,8(%a1)
-	move.w %d0,12(%a1)
-	moveq #1,%d0
-	move.l %d0,4(%a1)
-	add.l #_bloodSquirts+4,%a0
-	move.l (%a0),%a0
+	lea _bloodSquirts+8,%a0
+	move.b #1,(%a1,%a0.l)
+	move.l %a1,%a0
+	add.l #_bloodSquirts,%a0
+	move.w %d1,%a2
+	move.l %a2,10(%a0)
+	move.w %d0,%a2
+	move.l %a2,14(%a0)
+	lea _bloodSquirts,%a2
+	move.l (%a2,%a1.l),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a1
+	moveq #1,%d1
+	move.l %d1,4(%a1,%d0.l)
+	move.l 4(%a0),%a0
 	clr.w 16(%a0)
 	jra .L212
 .L209:
-	move.w #2,%a0
-	lea (%a0,%a0.l),%a1
-	add.l %a1,%a1
-	lea (%a1,%a0.l),%a0
-	add.l %a0,%a0
-	lea _bloodSquirts+8,%a1
-	move.b #1,(%a0,%a1.l)
-	lea _bloodSquirts,%a1
-	move.l (%a1,%a0.l),%a1
-	move.l %a1,%d2
-	add.l %a1,%d2
-	add.l %a1,%d2
-	lsl.l #6,%d2
-	move.l sprite,%a1
+	moveq #2,%d2
+	move.l %d2,%d3
+	lsl.l #3,%d3
+	add.l %d3,%d2
+	move.l %d2,%a1
 	add.l %d2,%a1
-	move.w %d1,8(%a1)
-	move.w %d0,12(%a1)
-	moveq #1,%d0
-	move.l %d0,4(%a1)
-	add.l #_bloodSquirts+4,%a0
-	move.l (%a0),%a0
+	lea _bloodSquirts+8,%a0
+	move.b #1,(%a1,%a0.l)
+	move.l %a1,%a0
+	add.l #_bloodSquirts,%a0
+	move.w %d1,%a2
+	move.l %a2,10(%a0)
+	move.w %d0,%a2
+	move.l %a2,14(%a0)
+	lea _bloodSquirts,%a2
+	move.l (%a2,%a1.l),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a1
+	moveq #1,%d1
+	move.l %d1,4(%a1,%d0.l)
+	move.l 4(%a0),%a0
 	clr.w 16(%a0)
 	jra .L212
 	.even
@@ -3612,11 +3644,11 @@ __Z15bloodResetTicksv:
 	move.l %a0,12(%a1)
 	move.l _bloodSquirts+4,%a1
 	move.l %a0,12(%a1)
-	move.l _bloodSquirts+14,%a1
+	move.l _bloodSquirts+22,%a1
 	move.l %a0,12(%a1)
-	move.l _bloodSquirts+24,%a1
+	move.l _bloodSquirts+40,%a1
 	move.l %a0,12(%a1)
-	move.l _bloodSquirts+34,%a1
+	move.l _bloodSquirts+58,%a1
 	move.l %a0,12(%a1)
 	move.l %a0,_bloodSpray1Animator+12
 	move.l %a0,_bloodSpray2Animator+12
@@ -3815,19 +3847,19 @@ _bloodSquirts:
 	.long	79
 	.long	_bloodSquirt1Animator
 	.byte	0
-	.skip 1
+	.skip 9
 	.long	80
 	.long	_bloodSquirt2Animator
 	.byte	0
-	.skip 1
+	.skip 9
 	.long	81
 	.long	_bloodSquirt3Animator
 	.byte	0
-	.skip 1
+	.skip 9
 	.long	82
 	.long	_bloodSquirt4Animator
 	.byte	0
-	.skip 1
+	.skip 9
 	.globl	_bloodSquirt4Animator
 	.even
 _bloodSquirt4Animator:
@@ -3867,52 +3899,52 @@ _bloodSquirt1Animator:
 	.globl	_bloodSquirtFrames
 	.even
 _bloodSquirtFrames:
-	.word	48
-	.word	64
+	.word	16
+	.word	32
 	.word	0
-	.word	64
-	.word	0
-	.word	0
+	.word	32
+	.word	14
+	.word	9
+	.long	8
+	.word	16
+	.word	32
+	.word	16
+	.word	32
+	.word	13
+	.word	12
+	.long	8
+	.word	32
+	.word	32
+	.word	32
+	.word	32
+	.word	6
+	.word	10
 	.long	8
 	.word	48
-	.word	64
 	.word	48
 	.word	64
-	.word	0
-	.word	0
+	.word	32
+	.word	-1
+	.word	-6
 	.long	8
 	.word	48
-	.word	64
-	.word	96
-	.word	64
-	.word	0
-	.word	0
+	.word	48
+	.word	112
+	.word	32
+	.word	-4
+	.word	-4
 	.long	8
 	.word	48
-	.word	64
-	.word	144
-	.word	64
-	.word	0
-	.word	0
+	.word	48
+	.word	160
+	.word	32
+	.word	-2
+	.word	-1
 	.long	8
 	.word	48
-	.word	64
-	.word	192
-	.word	64
-	.word	0
-	.word	0
-	.long	8
 	.word	48
-	.word	64
-	.word	240
-	.word	64
-	.word	0
-	.word	0
-	.long	8
-	.word	48
-	.word	64
-	.word	288
-	.word	64
+	.word	208
+	.word	32
 	.word	0
 	.word	0
 	.long	8

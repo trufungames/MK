@@ -178,13 +178,13 @@ BloodPool bloodPools[] = {
 };
 
 AnimationFrame bloodSquirtFrames[] = {
-	{ 48, 64, 0, 64, 0, 0, 8 },
-	{ 48, 64, 48, 64, 0, 0, 8 },
-    { 48, 64, 96, 64, 0, 0, 8 },
-    { 48, 64, 144, 64, 0, 0, 8 },
-    { 48, 64, 192, 64, 0, 0, 8 },
-    { 48, 64, 240, 64, 0, 0, 8 },
-    { 48, 64, 288, 64, 0, 0, 8 }
+	{ 16, 32, 0, 32, 14, 9, 8 },
+	{ 16, 32, 16, 32, 13, 12, 8 },
+    { 32, 32, 32, 32, 6, 10, 8 },
+    { 48, 48, 64, 32, -1, -6, 8 },
+    { 48, 48, 112, 32, -4, -4, 8 },
+    { 48, 48, 160, 32, -2, -1, 8 },
+    { 48, 48, 208, 32, 0, 0, 8 }
 };
 
 SpriteAnimator bloodSquirt1Animator = {
@@ -308,9 +308,9 @@ void bloodUpdate(struct SoundHandler* soundHandler)
                 bloodDrops[i].X -= bloodDrops[i].MomentumX * bloodDrops[i].Direction;
                 bloodDrops[i].Y += bloodDrops[i].MomentumY;
 
-                if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y)
+                if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
-                    bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, FLOOR_LOCATION_Y + (rapRND() & 4));
+                    bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                     sfxBlood(soundHandler);
                     sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
                     bloodDrops[i].InUse  = false;
@@ -333,9 +333,9 @@ void bloodUpdate(struct SoundHandler* soundHandler)
                 sprite[bloodBalls[i].SpriteIndex].x_ -= bloodBalls[i].MomentumX * bloodBalls[i].Direction;
                 sprite[bloodBalls[i].SpriteIndex].y_ += 7.0f;
 
-                if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y)
+                if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
-                    bloodPool(sprite[bloodBalls[i].SpriteIndex].x_, FLOOR_LOCATION_Y + (rapRND() & 4));
+                    bloodPool(sprite[bloodBalls[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                     sfxBlood(soundHandler);
                     sprite[bloodBalls[i].SpriteIndex].active = R_is_inactive;
                     bloodBalls[i].InUse  = false;
@@ -358,7 +358,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodSquirts[i].InUse)
         {
-            updateSpriteAnimator(bloodSquirts[i].Animator, bloodSquirtFrames, 6, true, false);     
+            updateSpriteAnimator(bloodSquirts[i].Animator, bloodSquirtFrames, 6, true, false, bloodSquirts[i].X, bloodSquirts[i].Y, 1);     
 
             if (animationIsComplete(bloodSquirts[i].Animator, 6))
             {
@@ -471,8 +471,8 @@ void bloodSquirt(short x, short y)
         if (!bloodSquirts[i].InUse)
         {
             bloodSquirts[i].InUse = true;
-            sprite[bloodSquirts[i].SpriteIndex].x_ = x;
-            sprite[bloodSquirts[i].SpriteIndex].y_ = y;
+            bloodSquirts[i].X = x;
+            bloodSquirts[i].Y = y;
             sprite[bloodSquirts[i].SpriteIndex].active = R_is_active;
             bloodSquirts[i].Animator->currentFrame = 0;
             break;

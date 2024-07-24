@@ -28,6 +28,7 @@ void stateMachineInit(struct StateMachine* stateMachine, int name, struct Fighte
 void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     stateMachine->currentState->update(stateMachine, fighter, spriteAnimator);
+    fighter->CurrentState = stateMachine->currentState->Name;
 }
 
 void stateMachineHandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1111,6 +1112,7 @@ void StateJumpingKickingForward_Exit(struct StateMachine* stateMachine, struct F
 
 void StateJumpingKickingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpDropKickFrames, 3, true, false, fighter->positionX, fighter->positionY, fighter->direction);
     
     if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
@@ -1405,7 +1407,7 @@ void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighter->IsBeingDamaged = true;
     fighterTakeDamage(fighter, fighter->pendingDamage);
     sfxImpact(fighter->soundHandler);
-    bloodGlob(fighter->positionX - (40 * fighter->direction), fighter->positionY + 20, fighter->direction);
+    bloodGlob(fighter->positionX - (40 * fighter->direction), fighter->positionY + 0, fighter->direction);
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
 }
 
@@ -1579,5 +1581,71 @@ void StateLaydown_Update(struct StateMachine* stateMachine, struct Fighter* figh
 }
 
 void StateLaydown_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT DROPKICK
+// vars[0] = Frame index
+// vars[1] = Played Sound
+// vars[2] = Played Sound
+
+void StateHitDropKick_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    stateMachine->exitingState = false;
+    stateMachine->vars[0] = 7;  //start animation as they are falling
+    stateMachine->vars[1] = 0;
+    stateMachine->vars[2] = 0;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    fighterTakeDamage(fighter, fighter->pendingDamage);
+    sfxImpact(fighter->soundHandler);
+}
+
+void StateHitDropKick_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->IsBeingDamaged = false;
+}
+
+void StateHitDropKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (spriteAnimator->currentFrame == 1 && stateMachine->vars[1] == 0)
+    {
+        stateMachine->vars[1] = 1;
+        fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+    }
+    else if (spriteAnimator->currentFrame == 3 && stateMachine->vars[2] == 0)
+    {
+        stateMachine->vars[2] = 1;
+        fighterPlayUppercutReaction(fighter->soundHandler);
+    }
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_UPPERCUT_X_SPEED * -fighter->direction);
+        fighter->positionY += FIGHTER_FALL_Y_SPEED;
+        stateMachine->vars[0]++;
+
+        if (stateMachine->vars[0] > fighter->HIT_UPPERCUT_FRAME_COUNT - 1)
+        {
+            stateMachine->vars[0] = fighter->HIT_UPPERCUT_FRAME_COUNT - 1;
+        }
+
+        if (fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER + 32)
+        {
+            fighterSetOnFloor(fighter);
+            bgShake(false);
+            sfxThud(fighter->soundHandler);
+            stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+        }
+        
+        animateFrame(spriteAnimator->spriteIndex, stateMachine->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+        fighter->lastTicks = rapTicks;
+    }
+}
+
+void StateHitDropKick_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

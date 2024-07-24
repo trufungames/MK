@@ -101,6 +101,7 @@ void fighterMakeSelectable(struct Fighter* fighter, bool isPlayer1)
 void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHandler* soundHandler, struct ImpactFrame* impactFrameLowPunch, struct ImpactFrame* impactFrameHighPunch, struct ImpactFrame* impactFrameLowKick, struct ImpactFrame* impactFrameHighKick, struct ImpactFrame* impactFrameUppercut, struct ImpactFrame* impactFrameSweep, struct ImpactFrame* impactFrameJumpPunch, struct ImpactFrame* impactFrameJumpKick, struct ImpactFrame* impactFrameRoundhouse, struct ImpactFrame* impactFrameBodyPunch, struct ImpactFrame* impactFrameBodyKick, struct ImpactFrame* impactFrameDuckKick, struct ImpactFrame* impactFrameThrow)
 {
     //defaults
+    fighter->CurrentState = STATE_IDLE;
     fighter->gravity = 2.2f;
     fighter->momentumY = 0.0f;
     fighter->jumpMomentumYStart = -16.0f;
@@ -2502,6 +2503,11 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
             fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false, fighter1, POINTS_UPPERCUT);
             stateMachineGoto(stateMachine2, STATE_HIT_UPPERCUT, fighter2, spriteAnimator2);
         }
+        else if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_FORWARD)
+        {
+            fighterAddPendingDamage(fighter2, DMG_DROPKICK, false, fighter1, POINTS_JUMP_KICK);
+            stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
     }    
     else if (fighterIsBlocking(stateMachine2, fighter2))
     {
@@ -2803,7 +2809,7 @@ void fighterAlignSpriteAndHitbox(struct Fighter* fighter)
     //sprite[fighter->HB_BODY].x_ = fighter->positionX + 4;
     //sprite[fighter->HB_BODY].y_ = fighter->positionY + 4;
 
-    if (fighter->IsIdle)
+    if (fighter->CurrentState == STATE_IDLE)
     {
         //reset the attack hitbox when the fighter is idle
         sprite[fighter->HB_ATTACK].x_ = fighter->positionX + 12;

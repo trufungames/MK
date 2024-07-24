@@ -2512,12 +2512,12 @@ raptor_init_table:
 	dc.l	0								; sprite_coffx					; x offset from center for collision box center
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	48/2							; sprite_hbox					; width of collision box
-	dc.l	64/2							; sprite_vbox					; height of collision box
+	dc.l	48/2							; sprite_vbox					; height of collision box
 	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
-	dc.l	48*64/2						; sprite_framesz				; size per frame in bytes of sprite data
+	dc.l	48*48/2						; sprite_framesz				; size per frame in bytes of sprite data
 	dc.l	48/2							; sprite_bytewid				; width in bytes of one line of sprite data
 	dc.l	1								; sprite_animspd				; frame delay between animation changes
 	dc.l	0								; sprite_maxframe				; number of frames in animation chain
