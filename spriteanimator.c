@@ -30,9 +30,9 @@ void animateFrame(unsigned int spriteIndex, unsigned int frame, struct Animation
 
     tempY = positionY + (animationFrames[frame].offsetY);
 
-    if (tempY < 0)
+    if (tempY < 8)
     {
-        tempY = 0;
+        tempY = 8;
     }
     
     sprite[spriteIndex].y_ = tempY;

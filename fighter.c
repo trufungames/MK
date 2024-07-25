@@ -2501,12 +2501,44 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
         else if (stateMachine1->currentState->Name == STATE_UPPERCUTTING)
         {
             fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false, fighter1, POINTS_UPPERCUT);
+            stateMachineSleep(stateMachine1, 50, fighter1, spriteAnimator1);
             stateMachineGoto(stateMachine2, STATE_HIT_UPPERCUT, fighter2, spriteAnimator2);
         }
         else if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_FORWARD)
         {
             fighterAddPendingDamage(fighter2, DMG_DROPKICK, false, fighter1, POINTS_JUMP_KICK);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
             stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_BACKWARD)
+        {
+            fighterAddPendingDamage(fighter2, DMG_DROPKICK, false, fighter1, POINTS_JUMP_KICK);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD)
+        {
+            fighterAddPendingDamage(fighter2, DMG_JUMPPUNCH, false, fighter1, POINTS_JUMP_PUNCH);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_JUMPING_PUNCHING_BACKWARD)
+        {
+            fighterAddPendingDamage(fighter2, DMG_JUMPPUNCH, false, fighter1, POINTS_JUMP_PUNCH);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_JUMP_PUNCHING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_JUMPPUNCH, false, fighter1, POINTS_JUMP_PUNCH);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_JUMP_KICKING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_JUMPKICK, false, fighter1, POINTS_JUMP_KICK);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
         }
     }    
     else if (fighterIsBlocking(stateMachine2, fighter2))

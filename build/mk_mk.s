@@ -5647,139 +5647,178 @@ __Z9basicmainv:
 	move.l #__Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+4
 	move.l #__Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+8
 	move.l #__Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+12
-	move.l #__Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+16
+	move.l #__Z15StateIdle_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+16
+	move.l #__Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL9stateIdle+20
 	move.l #__Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+4
 	move.l #__Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+8
 	move.l #__Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+12
-	move.l #__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+16
+	move.l #__Z19StateBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+16
+	move.l #__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateBlocking+20
 	move.l #__Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+4
 	move.l #__Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+8
 	move.l #__Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+12
-	move.l #__Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+16
+	move.l #__Z18StateDucking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+16
+	move.l #__Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateDucking+20
 	move.l #__Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+4
 	move.l #__Z24StateWalkingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+8
 	move.l #__Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+12
-	move.l #__Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+16
+	move.l #__Z25StateWalkingForward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+16
+	move.l #__Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateWalkingForward+20
 	move.l #__Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+4
 	move.l #__Z25StateWalkingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+8
 	move.l #__Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+12
-	move.l #__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+16
+	move.l #__Z26StateWalkingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+16
+	move.l #__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateWalkingBackward+20
 	move.l #__Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+4
 	move.l #__Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+8
 	move.l #__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+12
-	move.l #__Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+16
+	move.l #__Z18StateJumping_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+16
+	move.l #__Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateJumping+20
 	move.l #__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+4
 	move.l #__Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+8
 	move.l #__Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+12
-	move.l #__Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+16
+	move.l #__Z25StateJumpingForward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+16
+	move.l #__Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL19stateJumpingForward+20
 	move.l #__Z26StateJumpingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+4
 	move.l #__Z25StateJumpingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+8
 	move.l #__Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+12
-	move.l #__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+16
+	move.l #__Z26StateJumpingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+16
+	move.l #__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL20stateJumpingBackward+20
 	move.l #__Z23StateDuckBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+4
 	move.l #__Z22StateDuckBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+8
 	move.l #__Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+12
-	move.l #__Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+16
+	move.l #__Z23StateDuckBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+16
+	move.l #__Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateDuckBlocking+20
 	move.l #__Z22StateLowPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+4
 	move.l #__Z21StateLowPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+8
 	move.l #__Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+12
-	move.l #__Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+16
+	move.l #__Z22StateLowPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+16
+	move.l #__Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateLowPunching+20
 	move.l #__Z28StateLowRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+4
 	move.l #__Z27StateLowRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+8
 	move.l #__Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+12
-	move.l #__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+16
+	move.l #__Z28StateLowRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+16
+	move.l #__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateLowRepeatPunching+20
 	move.l #__Z23StateHighPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+4
 	move.l #__Z22StateHighPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+8
 	move.l #__Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+12
-	move.l #__Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+16
+	move.l #__Z23StateHighPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+16
+	move.l #__Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateHighPunching+20
 	move.l #__Z29StateHighRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+4
 	move.l #__Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+8
 	move.l #__Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+12
-	move.l #__Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+16
+	move.l #__Z29StateHighRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+16
+	move.l #__Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL23stateHighRepeatPunching+20
 	move.l #__Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+4
 	move.l #__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+8
 	move.l #__Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+12
-	move.l #__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+16
+	move.l #__Z21StateLowKicking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+16
+	move.l #__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateLowKicking+20
 	move.l #__Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+4
 	move.l #__Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+8
 	move.l #__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+12
-	move.l #__Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+16
+	move.l #__Z22StateHighKicking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+16
+	move.l #__Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHighKicking+20
 	move.l #__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+4
 	move.l #__Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+8
 	move.l #__Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+12
-	move.l #__Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+16
+	move.l #__Z28StateRoundhouseKicking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+16
+	move.l #__Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL22stateRoundhouseKicking+20
 	move.l #__Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+4
 	move.l #__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+8
 	move.l #__Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+12
-	move.l #__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+16
+	move.l #__Z23StateUppercutting_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+16
+	move.l #__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateUppercutting+20
 	move.l #__Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+4
 	move.l #__Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+8
 	move.l #__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+12
-	move.l #__Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+16
+	move.l #__Z22StateDuckKicking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+16
+	move.l #__Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateDuckKicking+20
 	move.l #__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+4
 	move.l #__Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+8
 	move.l #__Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+12
-	move.l #__Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+16
+	move.l #__Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+16
+	move.l #__Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateJumpPunching+20
 	move.l #__Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+4
 	move.l #__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+8
 	move.l #__Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+12
-	move.l #__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+16
+	move.l #__Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+16
+	move.l #__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateJumpKicking+20
 	move.l #__Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+4
 	move.l #__Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+8
 	move.l #__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+12
-	move.l #__Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+16
+	move.l #__Z19StateSweeping_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+16
+	move.l #__Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateSweeping+20
 	move.l #__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+4
 	move.l #__Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+8
 	move.l #__Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+12
-	move.l #__Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+16
+	move.l #__Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+16
+	move.l #__Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL26stateJumpingKickingForward+20
 	move.l #__Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+4
 	move.l #__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+8
 	move.l #__Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+12
-	move.l #__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+16
+	move.l #__Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+16
+	move.l #__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingKickingBackward+20
 	move.l #__Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+4
 	move.l #__Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+8
 	move.l #__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+12
-	move.l #__Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+16
+	move.l #__Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+16
+	move.l #__Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL27stateJumpingPunchingForward+20
 	move.l #__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+4
 	move.l #__Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+8
 	move.l #__Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+12
-	move.l #__Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+16
+	move.l #__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+16
+	move.l #__Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+20
 	move.l #__Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+4
 	move.l #__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+8
 	move.l #__Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+12
-	move.l #__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+16
+	move.l #__Z17StateHitLow_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+16
+	move.l #__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+20
 	move.l #__Z18StateHitHigh_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+4
 	move.l #__Z17StateHitHigh_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+8
 	move.l #__Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+12
-	move.l #__Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+16
+	move.l #__Z18StateHitHigh_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+16
+	move.l #__Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitHigh+20
 	move.l #__Z19StateHitSweep_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+4
 	move.l #__Z18StateHitSweep_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+8
 	move.l #__Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+12
-	move.l #__Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+16
+	move.l #__Z19StateHitSweep_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+16
+	move.l #__Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateHitSweep+20
 	move.l #__Z16StateGetUp_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+4
 	move.l #__Z15StateGetUp_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+8
 	move.l #__Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+12
-	move.l #__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+16
+	move.l #__Z16StateGetUp_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+16
+	move.l #__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL10stateGetUp+20
 	move.l #__Z18StateHitBack_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+4
 	move.l #__Z17StateHitBack_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+8
 	move.l #__Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+12
-	move.l #__Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+16
+	move.l #__Z18StateHitBack_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+16
+	move.l #__Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitBack+20
 	move.l #__Z21StateHitBackLow_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+4
 	move.l #__Z20StateHitBackLow_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+8
 	move.l #__Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+12
-	move.l #__Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+16
+	move.l #__Z21StateHitBackLow_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+16
+	move.l #__Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateHitBackLow+20
 	move.l #__Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+4
 	move.l #__Z21StateHitUppercut_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+8
 	move.l #__Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+12
-	move.l #__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+16
+	move.l #__Z22StateHitUppercut_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+16
+	move.l #__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitUppercut+20
 	move.l #__Z18StateLaydown_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+4
 	move.l #__Z17StateLaydown_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+8
 	move.l #__Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+12
-	move.l #__Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+16
+	move.l #__Z18StateLaydown_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+16
+	move.l #__Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateLaydown+20
 	move.l #__Z22StateHitDropKick_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+4
 	move.l #__Z21StateHitDropKick_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+8
 	move.l #__Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+12
-	move.l #__Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+16
+	move.l #__Z22StateHitDropKick_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+16
+	move.l #__Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL16stateHitDropKick+20
+	move.l #__Z17StateHitAir_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitAir+4
+	move.l #__Z16StateHitAir_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitAir+8
+	move.l #__Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitAir+12
+	move.l #__Z17StateHitAir_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitAir+16
+	move.l #__Z23StateHitAir_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitAir+20
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL20fighter1StateMachine
@@ -5951,6 +5990,11 @@ __Z9basicmainv:
 	pea __ZL20fighter1StateMachine
 	jsr (%a2)
 	addq.l #8,%sp
+	move.l #__ZL11stateHitAir,(%sp)
+	pea 34.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
 	move.l #__ZL9stateIdle,(%sp)
 	clr.l -(%sp)
 	pea __ZL20fighter2StateMachine
@@ -6118,6 +6162,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL16stateHitDropKick,(%sp)
 	pea 33.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL11stateHitAir,(%sp)
+	pea 34.w
 	pea __ZL20fighter2StateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+464
@@ -9301,7 +9350,8 @@ _kanoImpactFrameJumpPunch:
 	.word	1
 	.word	42
 	.word	60
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_kanoImpactFrameDuckKick
 	.even
 _kanoImpactFrameDuckKick:
@@ -9385,14 +9435,16 @@ _sonyaImpactFrameJumpKick:
 	.word	1
 	.word	42
 	.word	46
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_sonyaImpactFrameJumpPunch
 	.even
 _sonyaImpactFrameJumpPunch:
 	.word	1
 	.word	80
 	.word	60
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_sonyaImpactFrameDuckKick
 	.even
 _sonyaImpactFrameDuckKick:
@@ -9476,14 +9528,16 @@ _subzeroImpactFrameJumpKick:
 	.word	1
 	.word	42
 	.word	46
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_subzeroImpactFrameJumpPunch
 	.even
 _subzeroImpactFrameJumpPunch:
 	.word	1
 	.word	70
 	.word	60
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_subzeroImpactFrameDuckKick
 	.even
 _subzeroImpactFrameDuckKick:
@@ -9567,14 +9621,16 @@ _raidenImpactFrameJumpKick:
 	.word	1
 	.word	60
 	.word	46
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_raidenImpactFrameJumpPunch
 	.even
 _raidenImpactFrameJumpPunch:
 	.word	1
 	.word	36
 	.word	50
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_raidenImpactFrameDuckKick
 	.even
 _raidenImpactFrameDuckKick:
@@ -9679,14 +9735,16 @@ _kangImpactFrameJumpKick:
 	.word	1
 	.word	46
 	.word	46
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_kangImpactFrameJumpPunch
 	.even
 _kangImpactFrameJumpPunch:
 	.word	1
 	.word	70
 	.word	60
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_kangImpactFrameRoundhouse
 	.even
 _kangImpactFrameRoundhouse:
@@ -9770,14 +9828,16 @@ _cageImpactFrameJumpKick:
 	.word	1
 	.word	36
 	.word	46
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_cageImpactFrameJumpPunch
 	.even
 _cageImpactFrameJumpPunch:
 	.word	1
 	.word	26
 	.word	60
-	.skip 2
+	.byte	1
+	.skip 1
 	.globl	_cageImpactFrameRoundhouse
 	.even
 _cageImpactFrameRoundhouse:
@@ -9965,141 +10025,145 @@ sprite:
 	.long	RAPTOR_sprite_table
 .lcomm __ZL4pad1,4
 .lcomm __ZL4pad2,4
-.lcomm __ZL9stateIdle,20
+.lcomm __ZL9stateIdle,24
 	.even
 __ZL13stateBlocking:
 	.long	1
-	.skip 16
+	.skip 20
 	.even
 __ZL12stateDucking:
 	.long	2
-	.skip 16
+	.skip 20
 	.even
 __ZL19stateWalkingForward:
 	.long	3
-	.skip 16
+	.skip 20
 	.even
 __ZL20stateWalkingBackward:
 	.long	4
-	.skip 16
+	.skip 20
 	.even
 __ZL12stateJumping:
 	.long	5
-	.skip 16
+	.skip 20
 	.even
 __ZL19stateJumpingForward:
 	.long	6
-	.skip 16
+	.skip 20
 	.even
 __ZL20stateJumpingBackward:
 	.long	7
-	.skip 16
+	.skip 20
 	.even
 __ZL17stateDuckBlocking:
 	.long	8
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateLowPunching:
 	.long	9
-	.skip 16
+	.skip 20
 	.even
 __ZL22stateLowRepeatPunching:
 	.long	10
-	.skip 16
+	.skip 20
 	.even
 __ZL17stateHighPunching:
 	.long	11
-	.skip 16
+	.skip 20
 	.even
 __ZL23stateHighRepeatPunching:
 	.long	12
-	.skip 16
+	.skip 20
 	.even
 __ZL15stateLowKicking:
 	.long	13
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateHighKicking:
 	.long	14
-	.skip 16
+	.skip 20
 	.even
 __ZL22stateRoundhouseKicking:
 	.long	15
-	.skip 16
+	.skip 20
 	.even
 __ZL17stateUppercutting:
 	.long	16
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateDuckKicking:
 	.long	17
-	.skip 16
+	.skip 20
 	.even
 __ZL17stateJumpPunching:
 	.long	18
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateJumpKicking:
 	.long	19
-	.skip 16
+	.skip 20
 	.even
 __ZL13stateSweeping:
 	.long	20
-	.skip 16
+	.skip 20
 	.even
 __ZL26stateJumpingKickingForward:
 	.long	21
-	.skip 16
+	.skip 20
 	.even
 __ZL27stateJumpingKickingBackward:
 	.long	22
-	.skip 16
+	.skip 20
 	.even
 __ZL27stateJumpingPunchingForward:
 	.long	23
-	.skip 16
+	.skip 20
 	.even
 __ZL28stateJumpingPunchingBackward:
 	.long	24
-	.skip 16
+	.skip 20
 	.even
 __ZL11stateHitLow:
 	.long	25
-	.skip 16
+	.skip 20
 	.even
 __ZL12stateHitHigh:
 	.long	26
-	.skip 16
+	.skip 20
 	.even
 __ZL13stateHitSweep:
 	.long	27
-	.skip 16
+	.skip 20
 	.even
 __ZL10stateGetUp:
 	.long	28
-	.skip 16
+	.skip 20
 	.even
 __ZL12stateHitBack:
 	.long	29
-	.skip 16
+	.skip 20
 	.even
 __ZL15stateHitBackLow:
 	.long	30
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateHitUppercut:
 	.long	31
-	.skip 16
+	.skip 20
 	.even
 __ZL12stateLaydown:
 	.long	32
-	.skip 16
+	.skip 20
 	.even
 __ZL16stateHitDropKick:
 	.long	33
-	.skip 16
-.lcomm __ZL20fighter1StateMachine,154
-.lcomm __ZL20fighter2StateMachine,154
+	.skip 20
+	.even
+__ZL11stateHitAir:
+	.long	34
+	.skip 20
+.lcomm __ZL20fighter1StateMachine,162
+.lcomm __ZL20fighter2StateMachine,162
 	.even
 __ZL11fighterCage:
 	.long	1
@@ -24613,8 +24677,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	1
-	.byte	1
+	.byte	0
+	.byte	0
 	.long	163
 	.long	120
 .lcomm __ZL8BLACKPAL,512

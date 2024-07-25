@@ -105,16 +105,21 @@ __Z12animateFramejjP14AnimationFramefjiiii:
 	move.w 10(%a3),%d1
 	add.l %d1,%d3
 	move.l %d3,__ZL5tempY
-	jlt .L9
+	moveq #7,%d1
+	cmp.l %d3,%d1
+	jlt .L6
+	moveq #8,%d1
+	move.l %d1,__ZL5tempY
+	moveq #8,%d3
+.L6:
 	move.w %d3,12(%a2)
 	moveq #-1,%d1
 	cmp.l %d6,%d1
-	jeq .L10
-.L1:
+	jeq .L9
 	movem.l -44(%fp),#15612
 	unlk %fp
 	rts
-.L10:
+.L9:
 	move.w 30(%fp),%a0
 	sub.w %d5,%a0
 	move.w %a0,%d5
@@ -123,14 +128,6 @@ __Z12animateFramejjP14AnimationFramefjiiii:
 	movem.l -44(%fp),#15612
 	unlk %fp
 	rts
-.L9:
-	clr.l __ZL5tempY
-	clr.w %d3
-	move.w %d3,12(%a2)
-	moveq #-1,%d1
-	cmp.l %d6,%d1
-	jne .L1
-	jra .L10
 	.even
 	.globl	__Z12animateFramejjP14AnimationFramefji
 __Z12animateFramejjP14AnimationFramefji:
@@ -315,16 +312,16 @@ __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii:
 	move.w 10(%a3),%d1
 	add.l 24(%fp),%d1
 	move.l %d1,__ZL5tempY
-	jlt .L19
+	jlt .L18
 	move.w %d1,12(%a2)
 	moveq #-1,%d1
 	cmp.l %d4,%d1
-	jeq .L20
-.L14:
+	jeq .L19
+.L13:
 	movem.l -48(%fp),#15612
 	unlk %fp
 	rts
-.L20:
+.L19:
 	moveq #48,%d1
 	sub.w %d2,%d1
 	move.w %d1,%d2
@@ -333,14 +330,14 @@ __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii:
 	movem.l -48(%fp),#15612
 	unlk %fp
 	rts
-.L19:
+.L18:
 	clr.l __ZL5tempY
 	clr.w %d1
 	move.w %d1,12(%a2)
 	moveq #-1,%d1
 	cmp.l %d4,%d1
-	jne .L14
-	jra .L20
+	jne .L13
+	jra .L19
 	.even
 	.globl	__Z22getAnimationFrameWidthP14AnimationFrames
 __Z22getAnimationFrameWidthP14AnimationFrames:
@@ -401,41 +398,41 @@ __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb:
 	add.l 12(%a2),%d0
 	lea (36,%sp),%sp
 	cmp.l %a1,%d0
-	jhi .L24
+	jhi .L23
 	tst.b %d2
-	jne .L26
+	jne .L25
 	move.w %a0,%d0
 	subq.w #1,%d0
 	move.w %d0,16(%a2)
-	jlt .L32
-.L27:
+	jlt .L31
+.L26:
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-.L24:
+.L23:
 	movem.l -20(%fp),#3100
 	unlk %fp
 	rts
-.L26:
+.L25:
 	addq.w #1,%a0
 	move.w %a0,16(%a2)
 	cmp.w %a0,%d3
-	jgt .L27
+	jgt .L26
 	tst.b %d4
-	jeq .L29
-.L30:
+	jeq .L28
+.L29:
 	clr.w 16(%a2)
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-	jra .L24
-.L32:
+	jra .L23
+.L31:
 	tst.b %d4
-	jeq .L30
-.L29:
+	jeq .L29
+.L28:
 	subq.w #1,%d3
 	move.w %d3,16(%a2)
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-	jra .L24
+	jra .L23
 	.even
 	.globl	__Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss:
@@ -475,41 +472,41 @@ __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss:
 	add.l 12(%a2),%d0
 	lea (36,%sp),%sp
 	cmp.l %a1,%d0
-	jhi .L34
+	jhi .L33
 	tst.b %d2
-	jne .L36
+	jne .L35
 	move.w %a0,%d0
 	subq.w #1,%d0
 	move.w %d0,16(%a2)
-	jlt .L42
-.L37:
+	jlt .L41
+.L36:
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-.L34:
+.L33:
 	movem.l -20(%fp),#3100
 	unlk %fp
 	rts
-.L36:
+.L35:
 	addq.w #1,%a0
 	move.w %a0,16(%a2)
 	cmp.w %a0,%d3
-	jgt .L37
+	jgt .L36
 	tst.b %d4
-	jeq .L39
-.L40:
+	jeq .L38
+.L39:
 	clr.w 16(%a2)
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-	jra .L34
-.L42:
+	jra .L33
+.L41:
 	tst.b %d4
-	jeq .L40
-.L39:
+	jeq .L39
+.L38:
 	subq.w #1,%d3
 	move.w %d3,16(%a2)
 	move.w %d1,%a0
 	move.l %a0,12(%a2)
-	jra .L34
+	jra .L33
 	.globl	colliders
 	.data
 	.even

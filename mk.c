@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -179,6 +179,9 @@ static State stateLaydown = {
 static State stateHitDropKick = {
 	STATE_HIT_DROPKICK
 };
+static State stateHitAir = {
+	STATE_HIT_AIR
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -238,10 +241,10 @@ struct ImpactFrame cageImpactFrameRoundhouse = {
 	2, 28, 20
 };
 struct ImpactFrame cageImpactFrameJumpPunch = {
-	1, 26, 60
+	1, 26, 60, true
 };
 struct ImpactFrame cageImpactFrameJumpKick = {
-	1, 36, 46
+	1, 36, 46, true
 };
 
 struct ImpactFrame cageImpactFrameBodyPunch = {
@@ -927,10 +930,10 @@ struct ImpactFrame kangImpactFrameRoundhouse = {
 	3, 38, 10
 };
 struct ImpactFrame kangImpactFrameJumpPunch = {
-	1, 70, 60
+	1, 70, 60, true
 };
 struct ImpactFrame kangImpactFrameJumpKick = {
-	1, 46, 46
+	1, 46, 46, true
 };
 struct ImpactFrame kangImpactFrameBodyPunch = {
 	2, 0, 30
@@ -1342,10 +1345,10 @@ struct ImpactFrame raidenImpactFrameDuckKick = {
 	2, 40, 30
 };
 struct ImpactFrame raidenImpactFrameJumpPunch = {
-	1, 36, 50
+	1, 36, 50, true
 };
 struct ImpactFrame raidenImpactFrameJumpKick = {
-	1, 60, 46
+	1, 60, 46, true
 };
 static SpriteAnimator raidenAnimator = {
 	P1_FIGHTER, 0.5f, BMPRAIDEN, 0, 0, 48
@@ -1745,10 +1748,10 @@ struct ImpactFrame subzeroImpactFrameDuckKick = {
 	2, 48, 20
 };
 struct ImpactFrame subzeroImpactFrameJumpPunch = {
-	1, 70, 60
+	1, 70, 60, true
 };
 struct ImpactFrame subzeroImpactFrameJumpKick = {
-	1, 42, 46
+	1, 42, 46, true
 };
 static SpriteAnimator subzeroAnimator = {
 	P1_FIGHTER, 0.5f, BMPSUBZERO, 0, 0, 48
@@ -2166,10 +2169,10 @@ struct ImpactFrame sonyaImpactFrameDuckKick = {
 	2, 41, 10
 };
 struct ImpactFrame sonyaImpactFrameJumpPunch = {
-	1, 80, 60
+	1, 80, 60, true
 };
 struct ImpactFrame sonyaImpactFrameJumpKick = {
-	1, 42, 46
+	1, 42, 46, true
 };
 static SpriteAnimator sonyaAnimator = {
 	P1_FIGHTER, 0.5f, BMPSONYA, 0, 0, 48
@@ -2615,7 +2618,7 @@ struct ImpactFrame kanoImpactFrameDuckKick = {
 };
 
 struct ImpactFrame kanoImpactFrameJumpPunch = {
-	1, 42, 60
+	1, 42, 60, true
 };
 struct ImpactFrame kanoImpactFrameJumpKick = {
 	1, 52, 46, true
@@ -3849,139 +3852,178 @@ void basicmain()
 		stateIdle.enter = &StateIdle_Enter;
 		stateIdle.exit = &StateIdle_Exit;
 		stateIdle.update = &StateIdle_Update;
+		stateIdle.sleep = &StateIdle_Sleep;
 		stateIdle.handleInput = &StateIdle_HandleInput;
 		stateBlocking.enter = &StateBlocking_Enter;
 		stateBlocking.exit = &StateBlocking_Exit;
 		stateBlocking.update = &StateBlocking_Update;
+		stateBlocking.sleep = &StateBlocking_Sleep;
 		stateBlocking.handleInput = &StateBlocking_HandleInput;
 		stateDucking.enter = &StateDucking_Enter;
 		stateDucking.exit = &StateDucking_Exit;
 		stateDucking.update = &StateDucking_Update;
+		stateDucking.sleep = &StateDucking_Sleep;
 		stateDucking.handleInput = &StateDucking_HandleInput;
 		stateWalkingForward.enter = &StateWalkingForward_Enter;
 		stateWalkingForward.exit = &StateWalkingForward_Exit;
 		stateWalkingForward.update = &StateWalkingForward_Update;
+		stateWalkingForward.sleep = &StateWalkingForward_Sleep;
 		stateWalkingForward.handleInput = &StateWalkingForward_HandleInput;
 		stateWalkingBackward.enter = &StateWalkingBackward_Enter;
 		stateWalkingBackward.exit = &StateWalkingBackward_Exit;
 		stateWalkingBackward.update = &StateWalkingBackward_Update;
+		stateWalkingBackward.sleep = &StateWalkingBackward_Sleep;
 		stateWalkingBackward.handleInput = &StateWalkingBackward_HandleInput;
 		stateJumping.enter = &StateJumping_Enter;
 		stateJumping.exit = &StateJumping_Exit;
 		stateJumping.update = &StateJumping_Update;
+		stateJumping.sleep = &StateJumping_Sleep;
 		stateJumping.handleInput = &StateJumping_HandleInput;
 		stateJumpingForward.enter = &StateJumpingForward_Enter;
 		stateJumpingForward.exit = &StateJumpingForward_Exit;
 		stateJumpingForward.update = &StateJumpingForward_Update;
+		stateJumpingForward.sleep = &StateJumpingForward_Sleep;
 		stateJumpingForward.handleInput = &StateJumpingForward_HandleInput;
 		stateJumpingBackward.enter = &StateJumpingBackward_Enter;
 		stateJumpingBackward.exit = &StateJumpingBackward_Exit;
 		stateJumpingBackward.update = &StateJumpingBackward_Update;
+		stateJumpingBackward.sleep = &StateJumpingBackward_Sleep;
 		stateJumpingBackward.handleInput = &StateJumpingBackward_HandleInput;
 		stateDuckBlocking.enter = &StateDuckBlocking_Enter;
 		stateDuckBlocking.exit = &StateDuckBlocking_Exit;
 		stateDuckBlocking.update = &StateDuckBlocking_Update;
+		stateDuckBlocking.sleep = &StateDuckBlocking_Sleep;
 		stateDuckBlocking.handleInput = &StateDuckBlocking_HandleInput;
 		stateLowPunching.enter = &StateLowPunching_Enter;
 		stateLowPunching.exit = &StateLowPunching_Exit;
 		stateLowPunching.update = &StateLowPunching_Update;
+		stateLowPunching.sleep = &StateLowPunching_Sleep;
 		stateLowPunching.handleInput = &StateLowPunching_HandleInput;
 		stateLowRepeatPunching.enter = &StateLowRepeatPunching_Enter;
 		stateLowRepeatPunching.exit = &StateLowRepeatPunching_Exit;
 		stateLowRepeatPunching.update = &StateLowRepeatPunching_Update;
+		stateLowRepeatPunching.sleep = &StateLowRepeatPunching_Sleep;
 		stateLowRepeatPunching.handleInput = &StateLowRepeatPunching_HandleInput;
 		stateHighPunching.enter = &StateHighPunching_Enter;
 		stateHighPunching.exit = &StateHighPunching_Exit;
 		stateHighPunching.update = &StateHighPunching_Update;
+		stateHighPunching.sleep = &StateHighPunching_Sleep;
 		stateHighPunching.handleInput = &StateHighPunching_HandleInput;
 		stateHighRepeatPunching.enter = &StateHighRepeatPunching_Enter;
 		stateHighRepeatPunching.exit = &StateHighRepeatPunching_Exit;
 		stateHighRepeatPunching.update = &StateHighRepeatPunching_Update;
+		stateHighRepeatPunching.sleep = &StateHighRepeatPunching_Sleep;
 		stateHighRepeatPunching.handleInput = &StateHighRepeatPunching_HandleInput;
 		stateLowKicking.enter = &StateLowKicking_Enter;
 		stateLowKicking.exit = &StateLowKicking_Exit;
 		stateLowKicking.update = &StateLowKicking_Update;
+		stateLowKicking.sleep = &StateLowKicking_Sleep;
 		stateLowKicking.handleInput = &StateLowKicking_HandleInput;
 		stateHighKicking.enter = &StateHighKicking_Enter;
 		stateHighKicking.exit = &StateHighKicking_Exit;
 		stateHighKicking.update = &StateHighKicking_Update;
+		stateHighKicking.sleep = &StateHighKicking_Sleep;
 		stateHighKicking.handleInput = &StateHighKicking_HandleInput;
 		stateRoundhouseKicking.enter = &StateRoundhouseKicking_Enter;
 		stateRoundhouseKicking.exit = &StateRoundhouseKicking_Exit;
 		stateRoundhouseKicking.update = &StateRoundhouseKicking_Update;
+		stateRoundhouseKicking.sleep = &StateRoundhouseKicking_Sleep;
 		stateRoundhouseKicking.handleInput = &StateRoundhouseKicking_HandleInput;
 		stateUppercutting.enter = &StateUppercutting_Enter;
 		stateUppercutting.exit = &StateUppercutting_Exit;
 		stateUppercutting.update = &StateUppercutting_Update;
+		stateUppercutting.sleep = &StateUppercutting_Sleep;
 		stateUppercutting.handleInput = &StateUppercutting_HandleInput;
 		stateDuckKicking.enter = &StateDuckKicking_Enter;
 		stateDuckKicking.exit = &StateDuckKicking_Exit;
 		stateDuckKicking.update = &StateDuckKicking_Update;
+		stateDuckKicking.sleep = &StateDuckKicking_Sleep;
 		stateDuckKicking.handleInput = &StateDuckKicking_HandleInput;
 		stateJumpPunching.enter = &StateJumpPunching_Enter;
 		stateJumpPunching.exit = &StateJumpPunching_Exit;
 		stateJumpPunching.update = &StateJumpPunching_Update;
+		stateJumpPunching.sleep = &StateJumpPunching_Sleep;
 		stateJumpPunching.handleInput = &StateJumpPunching_HandleInput;
 		stateJumpKicking.enter = &StateJumpKicking_Enter;
 		stateJumpKicking.exit = &StateJumpKicking_Exit;
 		stateJumpKicking.update = &StateJumpKicking_Update;
+		stateJumpKicking.sleep = &StateJumpKicking_Sleep;
 		stateJumpKicking.handleInput = &StateJumpKicking_HandleInput;
 		stateSweeping.enter = &StateSweeping_Enter;
 		stateSweeping.exit = &StateSweeping_Exit;
 		stateSweeping.update = &StateSweeping_Update;
+		stateSweeping.sleep = &StateSweeping_Sleep;
 		stateSweeping.handleInput = &StateSweeping_HandleInput;
 		stateJumpingKickingForward.enter = &StateJumpingKickingForward_Enter;
 		stateJumpingKickingForward.exit = &StateJumpingKickingForward_Exit;
 		stateJumpingKickingForward.update = &StateJumpingKickingForward_Update;
+		stateJumpingKickingForward.sleep = &StateJumpingKickingForward_Sleep;
 		stateJumpingKickingForward.handleInput = &StateJumpingKickingForward_HandleInput;
 		stateJumpingKickingBackward.enter = &StateJumpingKickingBackward_Enter;
 		stateJumpingKickingBackward.exit = &StateJumpingKickingBackward_Exit;
 		stateJumpingKickingBackward.update = &StateJumpingKickingBackward_Update;
+		stateJumpingKickingBackward.sleep = &StateJumpingKickingBackward_Sleep;
 		stateJumpingKickingBackward.handleInput = &StateJumpingKickingBackward_HandleInput;
 		stateJumpingPunchingForward.enter = &StateJumpingPunchingForward_Enter;
 		stateJumpingPunchingForward.exit = &StateJumpingPunchingForward_Exit;
 		stateJumpingPunchingForward.update = &StateJumpingPunchingForward_Update;
+		stateJumpingPunchingForward.sleep = &StateJumpingPunchingForward_Sleep;
 		stateJumpingPunchingForward.handleInput = &StateJumpingPunchingForward_HandleInput;
 		stateJumpingPunchingBackward.enter = &StateJumpingPunchingBackward_Enter;
 		stateJumpingPunchingBackward.exit = &StateJumpingPunchingBackward_Exit;
 		stateJumpingPunchingBackward.update = &StateJumpingPunchingBackward_Update;
+		stateJumpingPunchingBackward.sleep = &StateJumpingPunchingBackward_Sleep;
 		stateJumpingPunchingBackward.handleInput = &StateJumpingPunchingBackward_HandleInput;
 		stateHitLow.enter = &StateHitLow_Enter;
 		stateHitLow.exit = &StateHitLow_Exit;
 		stateHitLow.update = &StateHitLow_Update;
+		stateHitLow.sleep = &StateHitLow_Sleep;
 		stateHitLow.handleInput = &StateHitLow_HandleInput;
 		stateHitHigh.enter = &StateHitHigh_Enter;
 		stateHitHigh.exit = &StateHitHigh_Exit;
 		stateHitHigh.update = &StateHitHigh_Update;
+		stateHitHigh.sleep = &StateHitHigh_Sleep;
 		stateHitHigh.handleInput = &StateHitHigh_HandleInput;
 		stateHitSweep.enter = &StateHitSweep_Enter;
 		stateHitSweep.exit = &StateHitSweep_Exit;
 		stateHitSweep.update = &StateHitSweep_Update;
+		stateHitSweep.sleep = &StateHitSweep_Sleep;
 		stateHitSweep.handleInput = &StateHitSweep_HandleInput;
 		stateGetUp.enter = &StateGetUp_Enter;
 		stateGetUp.exit = &StateGetUp_Exit;
 		stateGetUp.update = &StateGetUp_Update;
+		stateGetUp.sleep = &StateGetUp_Sleep;
 		stateGetUp.handleInput = &StateGetUp_HandleInput;
 		stateHitBack.enter = &StateHitBack_Enter;
 		stateHitBack.exit = &StateHitBack_Exit;
 		stateHitBack.update = &StateHitBack_Update;
+		stateHitBack.sleep = &StateHitBack_Sleep;
 		stateHitBack.handleInput = &StateHitBack_HandleInput;
 		stateHitBackLow.enter = &StateHitBackLow_Enter;
 		stateHitBackLow.exit = &StateHitBackLow_Exit;
 		stateHitBackLow.update = &StateHitBackLow_Update;
+		stateHitBackLow.sleep = &StateHitBackLow_Sleep;
 		stateHitBackLow.handleInput = &StateHitBackLow_HandleInput;
 		stateHitUppercut.enter = &StateHitUppercut_Enter;
 		stateHitUppercut.exit = &StateHitUppercut_Exit;
 		stateHitUppercut.update = &StateHitUppercut_Update;
+		stateHitUppercut.sleep = &StateHitUppercut_Sleep;
 		stateHitUppercut.handleInput = &StateHitUppercut_HandleInput;
 		stateLaydown.enter = &StateLaydown_Enter;
 		stateLaydown.exit = &StateLaydown_Exit;
 		stateLaydown.update = &StateLaydown_Update;
+		stateLaydown.sleep = &StateLaydown_Sleep;
 		stateLaydown.handleInput = &StateLaydown_HandleInput;
 		stateHitDropKick.enter = &StateHitDropKick_Enter;
 		stateHitDropKick.exit = &StateHitDropKick_Exit;
 		stateHitDropKick.update = &StateHitDropKick_Update;
+		stateHitDropKick.sleep = &StateHitDropKick_Sleep;
 		stateHitDropKick.handleInput = &StateHitDropKick_HandleInput;
+		stateHitAir.enter = &StateHitAir_Enter;
+		stateHitAir.exit = &StateHitAir_Exit;
+		stateHitAir.update = &StateHitAir_Update;
+		stateHitAir.sleep = &StateHitAir_Sleep;
+		stateHitAir.handleInput = &StateHitAir_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4017,6 +4059,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
 		stateMachineAdd(&fighter1StateMachine, STATE_LAYDOWN, &stateLaydown);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_AIR, &stateHitAir);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4052,6 +4095,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
 		stateMachineAdd(&fighter2StateMachine, STATE_LAYDOWN, &stateLaydown);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_AIR, &stateHitAir);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
