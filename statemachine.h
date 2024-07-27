@@ -1,5 +1,5 @@
 struct State {
-    int Name;
+    short Name;
     void (*enter)(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
     void (*exit)(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
     void (*update)(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
@@ -10,10 +10,10 @@ struct State {
 struct StateMachine {
     struct State* (states)[STATE_TOTAL_COUNT];
     struct State* currentState;
-    int vars[3];
+    short vars[3];
     bool exitingState;
     bool isSleeping;
-    int sleepTicks;
+    short sleepTicks;
 };
 
 void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state);
@@ -232,3 +232,31 @@ void StateHitAir_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimat
 void StateHitAir_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitAir_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitAir_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitBlocking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlocking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlocking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlocking_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlocking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitDuckingBlocking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDuckingBlocking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDuckingBlocking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDuckingBlocking_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitDuckingBlocking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitBlockingKnockback_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlockingKnockback_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlockingKnockback_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlockingKnockback_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitBlockingKnockback_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+//TODOs
+//Add HIT_BLOCKING state
+//Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
+//Add ImpactFrame(s) to the PunchRepeat High and Low states
+//Add Collision Detection between fighters, push them out if on top of each other
+//Add Projectiles back in using states
+//Fix the camera, once and for all!!
+//Add new background image to Palace Gates
+//Fix flames on Palace Gates

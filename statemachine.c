@@ -1238,7 +1238,7 @@ void StateJumpingKickingForward_Update(struct StateMachine* stateMachine, struct
 void StateJumpingKickingForward_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator->spriteIndex, 2, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateJumpingKickingForward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1897,5 +1897,119 @@ void StateHitAir_Sleep(struct StateMachine* stateMachine, struct Fighter* fighte
 }
 
 void StateHitAir_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT BLOCKING
+
+void StateHitBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    fighterTakeDamage(fighter, fighter->pendingDamage);
+    sfxBlock(fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateHitBlocking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (animationIsComplete(spriteAnimator, fighter->BLOCK_HIT_FRAME_COUNT))
+    {
+        stateMachineGoto(stateMachine, STATE_BLOCKING, fighter, spriteAnimator);
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->blockHitFrames, fighter->BLOCK_HIT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateHitBlocking_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitBlocking_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT DUCKING BLOCKING
+
+void StateHitDuckingBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    fighterTakeDamage(fighter, fighter->pendingDamage);
+    sfxBlock(fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateHitDuckingBlocking_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitDuckingBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (animationIsComplete(spriteAnimator, fighter->BLOCK_DUCK_HIT_FRAME_COUNT))
+    {
+        stateMachineGoto(stateMachine, STATE_BLOCKING, fighter, spriteAnimator);
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->blockDuckHitFrames, fighter->BLOCK_DUCK_HIT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateHitDuckingBlocking_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitDuckingBlocking_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT BLOCKING W/ KNOCKBACK
+
+void StateHitBlockingKnockback_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    fighterTakeDamage(fighter, fighter->pendingDamage);
+    sfxBlock(fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateHitBlockingKnockback_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitBlockingKnockback_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (animationIsComplete(spriteAnimator, fighter->BLOCK_HIT_FRAME_COUNT))
+    {
+        stateMachineGoto(stateMachine, STATE_BLOCKING, fighter, spriteAnimator);
+    }
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_BLOCKING_KNOCKBACK_X_SPEED * -fighter->direction);
+        fighter->lastTicks = rapTicks;
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->blockHitFrames, fighter->BLOCK_HIT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateHitBlockingKnockback_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitBlockingKnockback_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

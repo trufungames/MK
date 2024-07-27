@@ -182,6 +182,15 @@ static State stateHitDropKick = {
 static State stateHitAir = {
 	STATE_HIT_AIR
 };
+static State stateHitBlocking = {
+	STATE_HIT_BLOCKING
+};
+static State stateHitDuckingBlocking = {
+	STATE_HIT_DUCKING_BLOCKING
+};
+static State stateHitBlockingKnockback = {
+	STATE_HIT_BLOCKING_KNOCKBACK
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -4024,6 +4033,21 @@ void basicmain()
 		stateHitAir.update = &StateHitAir_Update;
 		stateHitAir.sleep = &StateHitAir_Sleep;
 		stateHitAir.handleInput = &StateHitAir_HandleInput;
+		stateHitBlocking.enter = &StateHitBlocking_Enter;
+		stateHitBlocking.exit = &StateHitBlocking_Exit;
+		stateHitBlocking.update = &StateHitBlocking_Update;
+		stateHitBlocking.sleep = &StateHitBlocking_Sleep;
+		stateHitBlocking.handleInput = &StateHitBlocking_HandleInput;
+		stateHitDuckingBlocking.enter = &StateHitDuckingBlocking_Enter;
+		stateHitDuckingBlocking.exit = &StateHitDuckingBlocking_Exit;
+		stateHitDuckingBlocking.update = &StateHitDuckingBlocking_Update;
+		stateHitDuckingBlocking.sleep = &StateHitDuckingBlocking_Sleep;
+		stateHitDuckingBlocking.handleInput = &StateHitDuckingBlocking_HandleInput;
+		stateHitBlockingKnockback.enter = &StateHitBlockingKnockback_Enter;
+		stateHitBlockingKnockback.exit = &StateHitBlockingKnockback_Exit;
+		stateHitBlockingKnockback.update = &StateHitBlockingKnockback_Update;
+		stateHitBlockingKnockback.sleep = &StateHitBlockingKnockback_Sleep;
+		stateHitBlockingKnockback.handleInput = &StateHitBlockingKnockback_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4060,6 +4084,9 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_LAYDOWN, &stateLaydown);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_AIR, &stateHitAir);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4096,6 +4123,9 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_LAYDOWN, &stateLaydown);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_AIR, &stateHitAir);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;

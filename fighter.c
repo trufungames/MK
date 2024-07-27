@@ -2543,8 +2543,24 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
     }    
     else if (fighterIsBlocking(stateMachine2, fighter2))
     {
-        //TODO
-        //stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING, fighter2, spriteAnimator2);
+        fighterAddPendingDamage(fighter2, DMG_BLOCKED, false, fighter1, 0);
+
+        if (stateMachine2->currentState->Name == STATE_DUCK_BLOCKING)
+        {
+            stateMachineGoto(stateMachine2, STATE_HIT_DUCKING_BLOCKING, fighter2, spriteAnimator2);
+        }
+        else
+        {
+            if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_FORWARD)
+            {
+                stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING_KNOCKBACK, fighter2, spriteAnimator2);
+            }
+            else
+            {
+                stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING, fighter2, spriteAnimator2);
+            }
+        }
     }
 
     return;
@@ -3208,7 +3224,7 @@ bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fig
 
 bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter)
 {
-    if (stateMachine->currentState->Name == STATE_BLOCKING || stateMachine->currentState->Name == STATE_DUCK_BLOCKING)
+    if ((stateMachine->currentState->Name == STATE_BLOCKING || stateMachine->currentState->Name == STATE_DUCK_BLOCKING))
         return true;
 
     return false;
