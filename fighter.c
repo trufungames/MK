@@ -2551,7 +2551,7 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
         }
         else
         {
-            if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_FORWARD)
+            if (stateMachine1->currentState->Name == STATE_JUMPING_KICKING_FORWARD || stateMachine1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD)
             {
                 stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
                 stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING_KNOCKBACK, fighter2, spriteAnimator2);
