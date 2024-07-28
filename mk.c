@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -147,6 +147,9 @@ static State stateJumpingPunchingForward = {
 };
 static State stateJumpingPunchingBackward = {
 	STATE_JUMPING_PUNCHING_BACKWARD
+};
+static State stateBodyPunching = {
+	STATE_BODY_PUNCHING
 };
 ////////////////////////////////////////////////////////////////////
 // DAMAGE STATES
@@ -3983,6 +3986,14 @@ void basicmain()
 		stateJumpingPunchingBackward.update = &StateJumpingPunchingBackward_Update;
 		stateJumpingPunchingBackward.sleep = &StateJumpingPunchingBackward_Sleep;
 		stateJumpingPunchingBackward.handleInput = &StateJumpingPunchingBackward_HandleInput;
+		stateBodyPunching.enter = &StateBodyPunching_Enter;
+		stateBodyPunching.exit = &StateBodyPunching_Exit;
+		stateBodyPunching.update = &StateBodyPunching_Update;
+		stateBodyPunching.sleep = &StateBodyPunching_Sleep;
+		stateBodyPunching.handleInput = &StateBodyPunching_HandleInput;
+
+		/////////////////////////////
+		// DMG STATES
 		stateHitLow.enter = &StateHitLow_Enter;
 		stateHitLow.exit = &StateHitLow_Exit;
 		stateHitLow.update = &StateHitLow_Update;
@@ -4087,6 +4098,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
+		stateMachineAdd(&fighter1StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4126,6 +4138,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
+		stateMachineAdd(&fighter2StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;

@@ -5769,6 +5769,11 @@ __Z9basicmainv:
 	move.l #__Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+10
 	move.l #__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+14
 	move.l #__Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL28stateJumpingPunchingBackward+18
+	move.l #__Z23StateBodyPunching_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateBodyPunching+2
+	move.l #__Z22StateBodyPunching_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateBodyPunching+6
+	move.l #__Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateBodyPunching+10
+	move.l #__Z23StateBodyPunching_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateBodyPunching+14
+	move.l #__Z29StateBodyPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateBodyPunching+18
 	move.l #__Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+2
 	move.l #__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+6
 	move.l #__Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL11stateHitLow+10
@@ -6025,6 +6030,11 @@ __Z9basicmainv:
 	pea __ZL20fighter1StateMachine
 	jsr (%a2)
 	addq.l #8,%sp
+	move.l #__ZL17stateBodyPunching,(%sp)
+	pea 38.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
 	move.l #__ZL9stateIdle,(%sp)
 	clr.l -(%sp)
 	pea __ZL20fighter2StateMachine
@@ -6212,6 +6222,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL25stateHitBlockingKnockback,(%sp)
 	pea 37.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL17stateBodyPunching,(%sp)
+	pea 38.w
 	pea __ZL20fighter2StateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+464
@@ -10168,6 +10183,10 @@ __ZL28stateJumpingPunchingBackward:
 	.word	24
 	.skip 20
 	.even
+__ZL17stateBodyPunching:
+	.word	38
+	.skip 20
+	.even
 __ZL11stateHitLow:
 	.word	25
 	.skip 20
@@ -10219,8 +10238,8 @@ __ZL23stateHitDuckingBlocking:
 __ZL25stateHitBlockingKnockback:
 	.word	37
 	.skip 20
-.lcomm __ZL20fighter1StateMachine,166
-.lcomm __ZL20fighter2StateMachine,166
+.lcomm __ZL20fighter1StateMachine,170
+.lcomm __ZL20fighter2StateMachine,170
 	.even
 __ZL11fighterCage:
 	.long	1
@@ -24734,8 +24753,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	1
-	.byte	1
+	.byte	0
+	.byte	0
 	.long	163
 	.long	120
 .lcomm __ZL8BLACKPAL,512

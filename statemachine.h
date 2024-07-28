@@ -251,13 +251,20 @@ void StateHitBlockingKnockback_Update(struct StateMachine*, struct Fighter*, str
 void StateHitBlockingKnockback_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitBlockingKnockback_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateBodyPunching_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyPunching_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyPunching_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyPunching_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
 //[ ] Add Body-To-Body states
 //[ ] Add Throw States
 //[ ] Add ImpactFrame(s) to the PunchRepeat High and Low states
-//[ ] Add Collision Detection between fighters, push them out if on top of each other
+//[X] Add Collision Detection between fighters, push them out if on top of each other
 //[ ] Add Projectiles back in using states
 //[ ] Fix flames on Palace Gates
 //[ ] Add new background image to Palace Gates

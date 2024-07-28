@@ -36,6 +36,25 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         stateMachine->isSleeping = false;
     }
 
+    /////////////////////////////////////////////////////
+    // GLOBAL FIGHTER LOGIC - REGARDLESS OF STATE
+    /////////////////////////////////////////////////////
+
+    if (fighter->IsBeingPushed)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * -fighter->direction);
+
+        if (rapTicks >= fighter->touchTicks + 4)
+        {
+            fighter->IsBeingPushed = false;
+            sprite[fighter->spriteIndex].was_hit = -1;
+        }
+    }
+
+    /////////////////////////////////////////////////////
+    // END GLOBAL FIGHTER LOGIC
+    /////////////////////////////////////////////////////
+
     stateMachine->currentState->update(stateMachine, fighter, spriteAnimator);
     fighter->CurrentState = stateMachine->currentState->Name;
 }
@@ -276,7 +295,16 @@ void StateWalkingForward_Exit(struct StateMachine* stateMachine, struct Fighter*
 void StateWalkingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->walkFrames, fighter->WALK_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-    fighterPositionXAdd(fighter, FIGHTER_WALK_SPEED_FORWARD * fighter->direction);
+
+    if (fighter->IsPushing)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * fighter->direction);
+    }
+    else
+    {
+        fighterPositionXAdd(fighter, FIGHTER_WALK_SPEED_FORWARD * fighter->direction);
+    }
+    
     stateMachine->vars[0] += FIGHTER_WALK_SPEED_FORWARD;
 
     if (stateMachine->exitingState && stateMachine->vars[0] >= FIGHTER_WALK_MIN_FORWARD)
@@ -298,6 +326,10 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
     else if (fighter->pad & JAGPAD_UP)
     {
         stateMachineGoto(stateMachine, STATE_JUMPING_FORWARD, fighter, spriteAnimator);
+    }
+    else if ((fighter->pad & JAGPAD_C || fighter->pad & JAGPAD_7) && fighter->IsPushing && fighter->ButtonReleased)
+    {
+        stateMachineGoto(stateMachine, STATE_BODY_PUNCHING, fighter, spriteAnimator);
     }
     else if (fighter->pad & JAGPAD_7 && fighter->ButtonReleased)
     {
@@ -2041,5 +2073,45 @@ void StateHitBlockingKnockback_Sleep(struct StateMachine* stateMachine, struct F
 }
 
 void StateHitBlockingKnockback_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BODY PUNCHING
+// vars[0] = Played Sound
+
+void StateBodyPunching_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    stateMachine->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    stateMachine->vars[0] = 0;
+}
+
+void StateBodyPunching_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateBodyPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameBodyPunch);
+    updateSpriteAnimator(spriteAnimator, *fighter->bodyPunchFrames, fighter->BODY_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+    if (fighter->fighterIndex == KANO && stateMachine->vars[0] == 0 && spriteAnimator->currentFrame == 2)
+    {
+        stateMachine->vars[0] = 1;
+        sfxKanoHeadbutt(fighter->soundHandler, fighter->isPlayer1);
+    }
+
+    if (animationIsComplete(spriteAnimator, fighter->BODY_PUNCH_FRAME_COUNT))
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateBodyPunching_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateBodyPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

@@ -243,7 +243,7 @@
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 38
+#define STATE_TOTAL_COUNT 39
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -283,6 +283,7 @@
 #define STATE_HIT_BLOCKING 35
 #define STATE_HIT_DUCKING_BLOCKING 36
 #define STATE_HIT_BLOCKING_KNOCKBACK 37
+#define STATE_BODY_PUNCHING 38
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

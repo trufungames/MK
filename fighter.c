@@ -278,7 +278,23 @@ void fighterUpdateSpecialPose(float delta, struct Fighter *fighter, struct Sprit
 
 void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
+    
     return;
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //old logic
+
+    if (fighter->IsBeingPushed)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta * -fighter->direction);
+
+        if (rapTicks >= fighter->touchTicks + 4)
+        {
+            fighter->IsBeingPushed = false;
+            sprite[fighter->spriteIndex].was_hit = -1;
+        }
+    }
+    
     if (fighter->ResetTicks)
     {
         fighter->ResetTicks = false;
@@ -599,16 +615,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         return;
     }
 
-    if (fighter->IsBeingPushed)
-    {
-        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta * -fighter->direction);
-
-        if (rapTicks >= fighter->touchTicks + 4)
-        {
-            fighter->IsBeingPushed = false;
-            sprite[fighter->spriteIndex].was_hit = -1;
-        }
-    }
+    
 
     fighterHandleDamage(delta, fighter, animator, walkForward);
     fighterHandleInput(delta, fighter, animator, walkForward);
@@ -2212,7 +2219,7 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
 
                 if (collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
-                    if (fighter1->IsWalking && fighter1->positionX > CAMERA_BOUND_LEFT && fighter1->positionX < CAMERA_BOUND_RIGHT && fighter2->positionX > CAMERA_BOUND_LEFT && fighter2->positionX < CAMERA_BOUND_RIGHT)
+                    if (stateMachine1->currentState->Name == STATE_WALKING_FORWARD)// && fighter1->positionX > CAMERA_BOUND_LEFT && fighter1->positionX < CAMERA_BOUND_RIGHT && fighter2->positionX > CAMERA_BOUND_LEFT && fighter2->positionX < CAMERA_BOUND_RIGHT)
                     {
                         fighter1->IsPushing = true;
                         fighter2->IsBeingPushed = true;
@@ -2234,10 +2241,10 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
                     // }
                 }
                 
-                if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT))
-                {
-                    fighter2->IsBeingPushed = false;
-                }
+                // if (fighter2->IsBeingPushed && (!collisionSprIndex == P1_FIGHTER_PIT && collisionSprIndex2 == P2_FIGHTER_PIT))
+                // {
+                //     fighter2->IsBeingPushed = false;
+                // }
 
                 if (collisionSprIndex == P2_HB_ATTACK && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
@@ -2256,7 +2263,7 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
 
                 if (collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
-                    if (fighter2->IsWalking)
+                    if (stateMachine2->currentState->Name == STATE_WALKING_FORWARD)
                     {
                         fighter2->IsPushing = true;
                         fighter1->IsBeingPushed = true;
@@ -2264,10 +2271,10 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
                     }
                 }
                 
-                if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT))
-                {
-                    fighter1->IsBeingPushed = false;
-                }
+                // if (fighter1->IsBeingPushed && (!collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT))
+                // {
+                //     fighter1->IsBeingPushed = false;
+                // }
             }
             i++;
         }
@@ -2537,6 +2544,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
         else if (stateMachine1->currentState->Name == STATE_JUMP_KICKING)
         {
             fighterAddPendingDamage(fighter2, DMG_JUMPKICK, false, fighter1, POINTS_JUMP_KICK);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_BODY_PUNCHING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_BODY_PUNCH, false, fighter1, POINTS_BODY_TO_BODY_PUNCH);
             stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
             stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
         }
