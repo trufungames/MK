@@ -176,7 +176,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L73:
 	clr.b 218(%a2)
 	clr.b 218(%a3)
-	move.l #12458320,-(%sp)
+	move.l #12454496,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
 	addq.l #6,%d0
@@ -276,7 +276,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L81:
-	move.l #12458320,-(%sp)
+	move.l #12454496,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	pea 192.w
 	clr.l -(%sp)
@@ -375,11 +375,10 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (20,%sp),%sp
 	jra .L51
 .L26:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z13sfxJohnnyCageP12SoundHandlerb
+	jsr __Z13sfxJohnnyCageP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 .L25:
 	moveq #11,%d2
 	cmp.l %d0,%d2
@@ -532,46 +531,40 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	lea (20,%sp),%sp
 	jra .L36
 .L32:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z8sfxSonyaP12SoundHandlerb
+	jsr __Z8sfxSonyaP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L27:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z7sfxKanoP12SoundHandlerb
+	jsr __Z7sfxKanoP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L31:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z10sfxSubzeroP12SoundHandlerb
+	jsr __Z10sfxSubzeroP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L30:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z11sfxScorpionP12SoundHandlerb
+	jsr __Z11sfxScorpionP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L29:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z10sfxLiuKangP12SoundHandlerb
+	jsr __Z10sfxLiuKangP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L28:
-	pea 1.w
 	move.l 8(%fp),-(%sp)
-	jsr __Z9sfxRaidenP12SoundHandlerb
+	jsr __Z9sfxRaidenP12SoundHandler
 	move.l _winner,%d0
-	addq.l #8,%sp
+	addq.l #4,%sp
 	jra .L25
 .L9:
 	pea 1.w
@@ -774,7 +767,7 @@ sprite:
 __ZL13fightAnimator:
 	.long	87
 	.long	1056964608
-	.long	12458320
+	.long	12454496
 	.long	0
 	.word	0
 	.skip 6

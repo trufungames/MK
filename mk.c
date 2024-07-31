@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -151,6 +151,18 @@ static State stateJumpingPunchingBackward = {
 static State stateBodyPunching = {
 	STATE_BODY_PUNCHING
 };
+static State stateBodyKicking = {
+	STATE_BODY_KICKING
+};
+static State stateThrowing = {
+	STATE_THROWING
+};
+static State stateBeingThrown = {
+	STATE_BEING_THROWN
+};
+static State stateTurningAround = {
+	STATE_TURNING_AROUND
+};
 ////////////////////////////////////////////////////////////////////
 // DAMAGE STATES
 ////////////////////////////////////////////////////////////////////
@@ -226,31 +238,25 @@ static SpriteAnimator cageAnimator2 = {
 };
 
 struct ImpactFrame cageImpactFrameLowPunch = {
-	2, 38, 30
-};
-struct ImpactFrame cageImpactFrameLowRepeatPunch = {
-	2, 38, 30
+	2, 38, 30, false, 5
 };
 struct ImpactFrame cageImpactFrameHighPunch = {
-	2, 38, 10
-};
-struct ImpactFrame cageImpactFrameHighRepeatPunch = {
-	2, 38, 10
+	2, 38, 10, false, 5
 };
 struct ImpactFrame cageImpactFrameLowKick = {
-	3, 52, 30
+	3, 52, 30, false, 99
 };
 struct ImpactFrame cageImpactFrameHighKick = {
-	4, 42, 10
+	4, 42, 10, false, 99
 };
 struct ImpactFrame cageImpactFrameUppercut = {
-	3, 20, 30
+	3, 20, 30, false, 99
 };
 struct ImpactFrame cageImpactFrameSweep = {
-	4, 56, 50
+	4, 56, 50, false, 99
 };
 struct ImpactFrame cageImpactFrameRoundhouse = {
-	2, 28, 20
+	2, 28, 20, false, 99
 };
 struct ImpactFrame cageImpactFrameJumpPunch = {
 	1, 26, 60, true
@@ -260,19 +266,19 @@ struct ImpactFrame cageImpactFrameJumpKick = {
 };
 
 struct ImpactFrame cageImpactFrameBodyPunch = {
-	2, 10, 30
+	2, 10, 30, false, 99
 };
 
 struct ImpactFrame cageImpactFrameBodyKick = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 
 struct ImpactFrame cageImpactFrameDuckKick = {
-	2, 48, 20
+	2, 48, 20, false, 99
 };
 
 struct ImpactFrame cageImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame cageGreenBoltFrames[] = {
@@ -758,8 +764,8 @@ static AnimationFrame cageWalkFrames[] = {
 	{ 64, 112, 256, 1024, 0, 0, 6 }
 };
 static AnimationFrame cageTurnFrames[] = {
-	{ 64, 112, 560, 0, 0, 0, 4 },
-	{ 64, 112, 624, 0, 0, 0, 4 }
+	{ 64, 112, 560, 0, 0, 0, 5 },
+	{ 64, 112, 624, 0, 0, 0, 5 }
 };
 static AnimationFrame cageJumpFrames[] = {
 	{ 64, 96, 896, 0, 0, 17, 3 },
@@ -921,25 +927,25 @@ static AnimationFrame cageRoundhouseFrames[] = {
 
 //Liu Kang animation frames
 struct ImpactFrame kangImpactFrameLowPunch = {
-	2, 52, 30
+	2, 52, 30, false, 5
 };
 struct ImpactFrame kangImpactFrameHighPunch = {
-	2, 52, 10
+	2, 52, 10, false, 5
 };
 struct ImpactFrame kangImpactFrameLowKick = {
-	3, 46, 30
+	3, 46, 30, false, 99
 };
 struct ImpactFrame kangImpactFrameHighKick = {
-	4, 40, 10
+	4, 40, 10, false, 99
 };
 struct ImpactFrame kangImpactFrameUppercut = {
-	3, 20, 30
+	3, 20, 30, false, 99
 };
 struct ImpactFrame kangImpactFrameSweep = {
-	4, 50, 20
+	4, 50, 20, false, 99
 };
 struct ImpactFrame kangImpactFrameRoundhouse = {
-	3, 38, 10
+	3, 38, 10, false, 99
 };
 struct ImpactFrame kangImpactFrameJumpPunch = {
 	1, 70, 60, true
@@ -948,15 +954,15 @@ struct ImpactFrame kangImpactFrameJumpKick = {
 	1, 46, 46, true
 };
 struct ImpactFrame kangImpactFrameBodyPunch = {
-	2, 0, 30
+	2, 0, 30, false, 99
 };
 
 struct ImpactFrame kangImpactFrameBodyKick = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 
 struct ImpactFrame kangImpactFrameDuckKick = {
-	2, 35, 30
+	2, 35, 30, false, 99
 };
 
 static SpriteAnimator kangAnimator = {
@@ -968,15 +974,15 @@ static SpriteAnimator kangAnimator2 = {
 };
 
 struct ImpactFrame kangImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame kangThrowFrames[] = {
-	{ 80, 96, 704, 688, 0, 16, 3},
-	{ 80, 80, 784, 688, 0, 32, 3},
-	{ 80, 96, 864, 688, 0, 16, 3},
-	{ 64, 112, 944, 688, 0, 0, 3},
-	{ 64, 128, 0, 752, 0, -16, 3},
+	{ 80, 96, 704, 688, 0, 16, 5},
+	{ 80, 80, 784, 688, 0, 32, 5},
+	{ 80, 96, 864, 688, 0, 16, 5},
+	{ 64, 112, 944, 688, 0, 0, 5},
+	{ 64, 128, 0, 752, 0, -16, 5},
 	{ 64, 112, 64, 768, -5, 0, 6},
 	{ 80, 96, 128, 768, -15, 16, 6},
 	{ 80, 96, 128, 768, -15, 16, 6}
@@ -1165,8 +1171,8 @@ static AnimationFrame kangWalkFrames[] = {
 	{ 48, 112, 848, 0, 10, 0, 6 }
 };
 static AnimationFrame kangTurnFrames[] = {
-	{ 64, 112, 320, 0, 0, 0, 4 },
-	{ 64, 112, 384, 0, 0, 1, 4 }
+	{ 64, 112, 320, 0, 0, 0, 5 },
+	{ 64, 112, 384, 0, 0, 1, 5 }
 };
 static AnimationFrame kangJumpFrames[] = {
 	{ 64, 112, 64, 592, 0, 0, 3 },
@@ -1327,34 +1333,34 @@ static AnimationFrame kangRoundhouseFrames[] = {
 };
 //Raiden animation frames
 struct ImpactFrame raidenImpactFrameLowPunch = {
-	2, 52, 30
+	2, 52, 30, false, 5
 };
 struct ImpactFrame raidenImpactFrameHighPunch = {
-	2, 58, 10
+	2, 58, 10, false, 5
 };
 struct ImpactFrame raidenImpactFrameLowKick = {
-	3, 48, 30
+	3, 48, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameHighKick = {
-	3, 48, 10
+	3, 48, 10, false, 99
 };
 struct ImpactFrame raidenImpactFrameUppercut = {
-	3, 20, 30
+	3, 20, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameSweep = {
-	4, 52, 30
+	4, 52, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameRoundhouse = {
-	2, 42, 10
+	2, 42, 10, false, 99
 };
 struct ImpactFrame raidenImpactFrameBodyPunch = {
-	2, 10, 30
+	2, 10, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameBodyKick = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameDuckKick = {
-	2, 40, 30
+	2, 40, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameJumpPunch = {
 	1, 36, 50, true
@@ -1371,7 +1377,7 @@ static SpriteAnimator raidenAnimator2 = {
 };
 
 struct ImpactFrame raidenImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame raidenThrowFrames[] = {
@@ -1568,8 +1574,8 @@ static AnimationFrame raidenWalkFrames[] = {
 	{ 48, 112, 928, 480, 6, 0, 6 }
 };
 static AnimationFrame raidenTurnFrames[] = {
-	{ 64, 112, 384, 960, 0, 0, 4 },
-	{ 64, 112, 448, 960, 0, 0, 4 }
+	{ 64, 112, 384, 960, 0, 0, 5 },
+	{ 64, 112, 448, 960, 0, 0, 5 }
 };
 static AnimationFrame raidenJumpFrames[] = {
 	{ 64, 112, 64, 224, 0, 0, 3 },
@@ -1730,34 +1736,34 @@ static AnimationFrame raidenRoundhouseFrames[] = {
 };
 //Subzero animation frames
 struct ImpactFrame subzeroImpactFrameLowPunch = {
-	2, 46, 30
+	2, 46, 30, false, 5
 };
 struct ImpactFrame subzeroImpactFrameHighPunch = {
-	2, 46, 10
+	2, 46, 10, false, 5
 };
 struct ImpactFrame subzeroImpactFrameLowKick = {
-	3, 48, 30
+	3, 48, 30, false, 99
 };
 struct ImpactFrame subzeroImpactFrameHighKick = {
-	4, 48, 10
+	4, 48, 10, false, 99
 };
 struct ImpactFrame subzeroImpactFrameUppercut = {
-	3, 34, 30
+	3, 34, 30, false, 99
 };
 struct ImpactFrame subzeroImpactFrameSweep = {
-	4, 54, 20
+	4, 54, 20, false, 99
 };
 struct ImpactFrame subzeroImpactFrameRoundhouse = {
-	2, 52, 10
+	2, 52, 10, false, 99
 };
 struct ImpactFrame subzeroImpactFrameBodyPunch = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 struct ImpactFrame subzeroImpactFrameBodyKick = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 struct ImpactFrame subzeroImpactFrameDuckKick = {
-	2, 48, 20
+	2, 48, 20, false, 99
 };
 struct ImpactFrame subzeroImpactFrameJumpPunch = {
 	1, 70, 60, true
@@ -1774,7 +1780,7 @@ static SpriteAnimator subzeroAnimator2 = {
 };
 
 struct ImpactFrame subzeroImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame subzeroThrowFrames[] = {
@@ -2038,8 +2044,8 @@ static AnimationFrame subzeroWalkFrames[] = {
 	{ 64, 112, 672, 912, 10, -1, 6 }
 };
 static AnimationFrame subzeroTurnFrames[] = {
-	{ 64, 112, 784, 0, 0, 0, 3 },
-	{ 64, 112, 848, 0, 0, 0, 3 }
+	{ 64, 112, 784, 0, 0, 0, 5 },
+	{ 64, 112, 848, 0, 0, 0, 5 }
 };
 static AnimationFrame subzeroJumpFrames[] = {
 	{ 64, 112, 800, 352, 0, 0, 3 },
@@ -2151,34 +2157,34 @@ static AnimationFrame subzeroKickHighFrames[] = {
 
 //Sonya animation frames
 struct ImpactFrame sonyaImpactFrameLowPunch = {
-	2, 48, 30
+	2, 48, 30, false, 5
 };
 struct ImpactFrame sonyaImpactFrameHighPunch = {
-	2, 42, 10
+	2, 42, 10, false, 5
 };
 struct ImpactFrame sonyaImpactFrameLowKick = {
-	3, 52, 30
+	3, 52, 30, false, 99
 };
 struct ImpactFrame sonyaImpactFrameHighKick = {
-	3, 40, 10
+	3, 40, 10, false, 99
 };
 struct ImpactFrame sonyaImpactFrameUppercut = {
-	3, 30, 30
+	3, 30, 30, false, 99
 };
 struct ImpactFrame sonyaImpactFrameSweep = {
-	4, 66, 50
+	4, 66, 50, false, 99
 };
 struct ImpactFrame sonyaImpactFrameRoundhouse = {
-	2, 50, 10
+	2, 50, 10, false, 99
 };
 struct ImpactFrame sonyaImpactFrameBodyPunch = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 struct ImpactFrame sonyaImpactFrameBodyKick = {
-	2, 20, 30
+	2, 20, 30, false, 99
 };
 struct ImpactFrame sonyaImpactFrameDuckKick = {
-	2, 41, 10
+	2, 41, 10, false, 99
 };
 struct ImpactFrame sonyaImpactFrameJumpPunch = {
 	1, 80, 60, true
@@ -2195,7 +2201,7 @@ static SpriteAnimator sonyaAnimator2 = {
 };
 
 struct ImpactFrame sonyaImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame sonyaThrowFrames[] = {
@@ -2440,8 +2446,8 @@ static AnimationFrame sonyaWalkFrames[] = {
 	{ 48, 112, 832, 0, 9, 0, 6 }
 };
 static AnimationFrame sonyaTurnFrames[] = {
-	{ 48, 112, 336, 0, 0, 0, 3 },
-	{ 48, 112, 384, 0, 0, 0, 3 }
+	{ 48, 112, 336, 0, 0, 0, 5 },
+	{ 48, 112, 384, 0, 0, 0, 5 }
 };
 static AnimationFrame sonyaJumpFrames[] = {
 	{ 64, 96, 176, 352, 0, 16, 3 },
@@ -2596,37 +2602,37 @@ static SpriteAnimator kanoAnimator2 = {
 };
 
 struct ImpactFrame kanoImpactFrameLowPunch = {
-	2, 52, 30
+	2, 52, 30, false, 5
 };
 struct ImpactFrame kanoImpactFrameHighPunch = {
-	2, 36, 10
+	2, 36, 10, false, 5
 };
 struct ImpactFrame kanoImpactFrameLowKick = {
-	3, 50, 30
+	3, 50, 30, false, 99
 };
 struct ImpactFrame kanoImpactFrameHighKick = {
-	3, 50, 10
+	3, 50, 10, false, 99
 };
 struct ImpactFrame kanoImpactFrameUppercut = {
-	3, 20, 30
+	3, 20, 30, false, 99
 };
 struct ImpactFrame kanoImpactFrameSweep = {
-	4, 54, 35
+	4, 54, 35, false, 99
 };
 struct ImpactFrame kanoImpactFrameRoundhouse = {
-	2, 52, 10
+	2, 52, 10, false, 99
 };
 
 struct ImpactFrame kanoImpactFrameBodyPunch = {
-	2, 10, 30
+	2, 10, 30, false, 99
 };
 
 struct ImpactFrame kanoImpactFrameBodyKick = {
-	2, 30, 30
+	2, 30, 30, false, 99
 };
 
 struct ImpactFrame kanoImpactFrameDuckKick = {
-	2, 40, 30
+	2, 40, 30, false, 99
 };
 
 struct ImpactFrame kanoImpactFrameJumpPunch = {
@@ -2637,7 +2643,7 @@ struct ImpactFrame kanoImpactFrameJumpKick = {
 };
 
 struct ImpactFrame kanoImpactFrameThrow = {
-	1, 30, 30
+	1, 30, 30, false, 99
 };
 
 static AnimationFrame kanoThrowFrames[] = {
@@ -2834,8 +2840,8 @@ static AnimationFrame kanoWalkFrames[] = {
 	{ 64, 112, 960, 0, 0, 0, 6 }
 };
 static AnimationFrame kanoTurnFrames[] = {
-	{ 48, 112, 192, 112, 0, 0, 4 },
-	{ 48, 112, 240, 112, 0, 0, 4 }
+	{ 48, 112, 192, 112, 0, 0, 5 },
+	{ 48, 112, 240, 112, 0, 0, 5 }
 };
 static AnimationFrame kanoJumpFrames[] = {
 	{ 64, 112, 64, 416, 0, 0, 3 },
@@ -3991,6 +3997,26 @@ void basicmain()
 		stateBodyPunching.update = &StateBodyPunching_Update;
 		stateBodyPunching.sleep = &StateBodyPunching_Sleep;
 		stateBodyPunching.handleInput = &StateBodyPunching_HandleInput;
+		stateBodyKicking.enter = &StateBodyKicking_Enter;
+		stateBodyKicking.exit = &StateBodyKicking_Exit;
+		stateBodyKicking.update = &StateBodyKicking_Update;
+		stateBodyKicking.sleep = &StateBodyKicking_Sleep;
+		stateBodyKicking.handleInput = &StateBodyKicking_HandleInput;
+		stateThrowing.enter = &StateThrowing_Enter;
+		stateThrowing.exit = &StateThrowing_Exit;
+		stateThrowing.update = &StateThrowing_Update;
+		stateThrowing.sleep = &StateThrowing_Sleep;
+		stateThrowing.handleInput = &StateThrowing_HandleInput;
+		stateBeingThrown.enter = &StateBeingThrown_Enter;
+		stateBeingThrown.exit = &StateBeingThrown_Exit;
+		stateBeingThrown.update = &StateBeingThrown_Update;
+		stateBeingThrown.sleep = &StateBeingThrown_Sleep;
+		stateBeingThrown.handleInput = &StateBeingThrown_HandleInput;
+		stateTurningAround.enter = &StateTurningAround_Enter;
+		stateTurningAround.exit = &StateTurningAround_Exit;
+		stateTurningAround.update = &StateTurningAround_Update;
+		stateTurningAround.sleep = &StateTurningAround_Sleep;
+		stateTurningAround.handleInput = &StateTurningAround_HandleInput;
 
 		/////////////////////////////
 		// DMG STATES
@@ -4099,6 +4125,10 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
 		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
 		stateMachineAdd(&fighter1StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
+		stateMachineAdd(&fighter1StateMachine, STATE_BODY_KICKING, &stateBodyKicking);
+		stateMachineAdd(&fighter1StateMachine, STATE_THROWING, &stateThrowing);
+		stateMachineAdd(&fighter1StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
+		stateMachineAdd(&fighter1StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4139,10 +4169,12 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
 		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
 		stateMachineAdd(&fighter2StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
+		stateMachineAdd(&fighter2StateMachine, STATE_BODY_KICKING, &stateBodyKicking);
+		stateMachineAdd(&fighter2StateMachine, STATE_THROWING, &stateThrowing);
+		stateMachineAdd(&fighter2StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
+		stateMachineAdd(&fighter2StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
 
 		fighterCage.spriteAnimator = &cageAnimator;
-		fighterCage.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
-		fighterCage.impactFrameHighRepeatPunch = &cageImpactFrameHighRepeatPunch;
 		fighterCage.projectileAnimator = &lightningAnimator;
 		fighterCage.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -4193,8 +4225,6 @@ void basicmain()
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		fighterCage2.spriteAnimator = &cageAnimator2;
-		fighterCage2.impactFrameLowRepeatPunch = &cageImpactFrameLowRepeatPunch;
-		fighterCage2.impactFrameHighRepeatPunch = &cageImpactFrameHighRepeatPunch;
 		fighterCage2.projectileAnimator = &lightningAnimator;
 		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
@@ -5615,43 +5645,42 @@ void basicmain()
 					p1Selected = p1Cursor;
 					sprite[P1_CURSOR].active = R_is_inactive;
 					myTicks = rapTicks;
-					sfxSelected(&soundHandler);
 
 					switch (p1Cursor)
 					{
 						case 0:
-							sfxJohnnyCage(&soundHandler, true);
+							sfxJohnnyCage(&soundHandler);
 							fighter1Ptr = &fighterCage;							
 							spriteAnimator1Ptr = &cageAnimator;
 							break;
 						case 1:
-							sfxKano(&soundHandler, true);
+							sfxKano(&soundHandler);
 							fighter1Ptr = &fighterKano;
 							spriteAnimator1Ptr = &kanoAnimator;
 							break;
 						case 2:
-							sfxSubzero(&soundHandler, true);
+							sfxSubzero(&soundHandler);
 							fighter1Ptr = &fighterSubzero;
 							spriteAnimator1Ptr = &subzeroAnimator;
 							break;
 						case 3:
-							sfxSonya(&soundHandler, true);
+							sfxSonya(&soundHandler);
 							fighter1Ptr = &fighterSonya;
 							spriteAnimator1Ptr = &sonyaAnimator;
 							break;
 						case 4:
-							sfxRaiden(&soundHandler, true);
+							sfxRaiden(&soundHandler);
 							fighter1Ptr = &fighterRaiden;
 							spriteAnimator1Ptr = &raidenAnimator;
 							sprite[LIGHTNING].active = R_is_inactive;
 							break;
 						case 5:
-							sfxLiuKang(&soundHandler, true);
+							sfxLiuKang(&soundHandler);
 							fighter1Ptr = &fighterKang;
 							spriteAnimator1Ptr = &kangAnimator;
 							break;
 						case 6:
-							sfxScorpion(&soundHandler, true);
+							sfxScorpion(&soundHandler);
 							fighter1Ptr = &fighterScorpion;
 							spriteAnimator1Ptr = &scorpionAnimator;
 							break; 
@@ -5674,43 +5703,42 @@ void basicmain()
 					p2Selected = p2Cursor;
 					sprite[P2_CURSOR].active = R_is_inactive;
 					myTicks = rapTicks;
-					sfxSelected(&soundHandler);
 
 					switch (p2Cursor)
 					{
 						case 0:
-							sfxJohnnyCage(&soundHandler, false);
+							sfxJohnnyCage(&soundHandler);
 							fighter2Ptr = &fighterCage2;
 							spriteAnimator2Ptr = &cageAnimator2;
 							break;
 						case 1:
-							sfxKano(&soundHandler, false);
+							sfxKano(&soundHandler);
 							fighter2Ptr = &fighterKano2;
 							spriteAnimator2Ptr = &kanoAnimator2;
 							break;
 						case 2:
-							sfxSubzero(&soundHandler, false);
+							sfxSubzero(&soundHandler);
 							fighter2Ptr = &fighterSubzero2;
 							spriteAnimator2Ptr = &subzeroAnimator2;
 							break;
 						case 3:
-							sfxSonya(&soundHandler, false);
+							sfxSonya(&soundHandler);
 							fighter2Ptr = &fighterSonya2;
 							spriteAnimator2Ptr = &sonyaAnimator2;
 							break;
 						case 4:
-							sfxRaiden(&soundHandler, false);
+							sfxRaiden(&soundHandler);
 							fighter2Ptr = &fighterRaiden2;
 							spriteAnimator2Ptr = &raidenAnimator2;
 							sprite[LIGHTNING2].active = R_is_inactive;
 							break;
 						case 5:
-							sfxLiuKang(&soundHandler, false);
+							sfxLiuKang(&soundHandler);
 							fighter2Ptr = &fighterKang2;
 							spriteAnimator2Ptr = &kangAnimator2;
 							break;
 						case 6:
-							sfxScorpion(&soundHandler, false);
+							sfxScorpion(&soundHandler);
 							fighter2Ptr = &fighterScorpion2;
 							spriteAnimator2Ptr = &scorpionAnimator2;
 							break;
@@ -5882,8 +5910,8 @@ void basicmain()
 						fighterHarpoonCheck(fighter1Ptr, fighter2Ptr);
 					}
 				}
-				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
-				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
+				fighterTurnCheck(&fighter1StateMachine, fighter1Ptr, &fighter2StateMachine, fighter2Ptr);
+				fighterCloseCheck(&fighter1StateMachine, fighter1Ptr, &fighter2StateMachine, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
 				fighterImpactCheck(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr, &fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
 				fighterButtonCheck(fighter1Ptr);
@@ -6368,25 +6396,25 @@ void switchAttractFMV()
 	switch (fmvIndex)
 	{
 		case 0:
-			sfxJohnnyCage(&soundHandler, true);
+			sfxJohnnyCage(&soundHandler);
 			break;
 		case 1:
-			sfxKano(&soundHandler, true);
+			sfxKano(&soundHandler);
 			break;
 		case 2:
-			sfxRaiden(&soundHandler, true);
+			sfxRaiden(&soundHandler);
 			break;
 		case 3:
-			sfxLiuKang(&soundHandler, true);
+			sfxLiuKang(&soundHandler);
 			break;
 		case 4:
-			sfxScorpion(&soundHandler, true);
+			sfxScorpion(&soundHandler);
 			break;
 		case 5:
-			sfxSubzero(&soundHandler, true);
+			sfxSubzero(&soundHandler);
 			break;
 		case 6:
-			sfxSonya(&soundHandler, true);
+			sfxSonya(&soundHandler);
 			break;
 		default:
 			break;
@@ -6676,32 +6704,17 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_GATES_MOUNTAIN,(int)(int*)imageBuffer320x240);
+                rapUnpack(BMP_GATES_PARALAX,(int)(int*)imageBuffer320x240);
                 rapUnpack(BMP_GATES_BACKGROUND,(int)(int*)imageBuffer);
             }
 
-            sprite[STAGE_GATES_MOUNTAIN].gfxbase=(int)imageBuffer320x240;
-			sprite[STAGE_GATES_MOUNTAIN].active = R_is_inactive;
+            sprite[STAGE_SECONDARY_BACKGROUND].gfxbase=(int)imageBuffer320x240;
+			sprite[STAGE_SECONDARY_BACKGROUND].active = R_is_active;
+			sprite[STAGE_SECONDARY_BACKGROUND].y_ = 0;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
 			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
             sprite[STAGE_PRIMARY_BACKGROUND].active=R_is_active;
-			sprite[STAGE_WARRIOR_BUSH].gfxbase = BMP_GATES_BUSH;
-			sprite[STAGE_WARRIOR_BUSH+1].gfxbase = BMP_GATES_BUSH;
-			sprite[STAGE_WARRIOR_BUSH+2].gfxbase = BMP_GATES_BUSH;
-			sprite[STAGE_WARRIOR_BUSH+3].gfxbase = BMP_GATES_BUSH;
-			sprite[STAGE_WARRIOR_BUSH].width = 48;
-			sprite[STAGE_WARRIOR_BUSH].height = 32;
-			sprite[STAGE_WARRIOR_BUSH].y_ = 110;
-			sprite[STAGE_WARRIOR_BUSH+1].width = 48;
-			sprite[STAGE_WARRIOR_BUSH+1].height = 32;
-			sprite[STAGE_WARRIOR_BUSH+1].y_ = 116;
-			sprite[STAGE_WARRIOR_BUSH+2].width = 48;
-			sprite[STAGE_WARRIOR_BUSH+2].height = 32;
-			sprite[STAGE_WARRIOR_BUSH+2].y_ = 110;
-			sprite[STAGE_WARRIOR_BUSH+3].width = 48;
-			sprite[STAGE_WARRIOR_BUSH+3].height = 32;
-			sprite[STAGE_WARRIOR_BUSH+3].y_ = 108;
 			sprite[STAGE_WARRIOR_BUSH].active = R_is_inactive;
 			sprite[STAGE_WARRIOR_BUSH+1].active = R_is_inactive;
 			sprite[STAGE_WARRIOR_BUSH+2].active = R_is_inactive;
@@ -6712,7 +6725,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_PIT_CLOUDS1].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+1].active = R_is_inactive;
 			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
-			sprite[STAGE_GATES_TEMPLE].active = R_is_active;
+			sprite[STAGE_GATES_TEMPLE].active = R_is_inactive;
 			sprite[STAGE_GATES_TEMPLE].x_ = 110;
 			sprite[STAGE_PIT_CLOUDS1].y_ = 8;
 			sprite[STAGE_PIT_CLOUDS1+1].y_ = 8;
@@ -6727,15 +6740,14 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_PIT_CLOUDS1+7].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES].active = R_is_inactive;
 			sprite[STAGE_GORO_EYES+1].active = R_is_inactive;
-			sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_inactive;
 			
 			sprite[FOREGROUND_PILLAR].x_ = -150;
-			sprite[STAGE_GATES_FLAME].x_ = -25;
-			sprite[STAGE_GATES_FLAME+1].x_ = 499;
+			sprite[STAGE_GATES_FLAME].x_ = -31;
+			sprite[STAGE_GATES_FLAME+1].x_ = 492;
 
             jsfLoadClut((unsigned short *)(void *)(BMP_GATES_BACKGROUND_clut),0,80);
-            jsfLoadClut((unsigned short *)(void *)(BMP_GATES_MOUNTAIN_clut),5,16);
-            jsfLoadClut((unsigned short *)(void *)(BMP_GATES_TEMPLE_clut),6,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_GATES_PARALAX_clut),5,16);
+           // jsfLoadClut((unsigned short *)(void *)(BMP_GATES_TEMPLE_clut),6,16);
 			jsfLoadClut((unsigned short *)(void *)(BMP_WARRIOR_PILLAR_clut),7,16);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FLAME_clut),8,16);
 
@@ -6961,6 +6973,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
             sprite[STAGE_SECONDARY_BACKGROUND].gfxbase=(int)imageBuffer320x240;
             sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_active;
+			sprite[STAGE_SECONDARY_BACKGROUND].y_ = 32;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
 			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
@@ -7449,7 +7462,7 @@ void doSpecial_Cage_GreenBolt(struct Fighter* fighter, struct SpriteAnimator* an
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxCageGreenbolt(fighter->soundHandler, fighter->isPlayer1);
+		sfxCageGreenbolt(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7511,7 +7524,7 @@ void doSpecial_Kano_Knife(struct Fighter* fighter, struct SpriteAnimator* animat
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxKanoKnife(fighter->soundHandler, fighter->isPlayer1);
+		sfxKanoKnife(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7580,7 +7593,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxRaidenLightning(fighter->soundHandler, fighter->isPlayer1);
+		sfxRaidenLightning(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7614,7 +7627,7 @@ void doSpecial_Raiden_Lightning(struct Fighter* fighter, struct SpriteAnimator* 
 		{
 			fighter->HasSetupProjectileEnd = true;
 			fighter->projectileAnimator->currentFrame = 0;
-			sfxRaidenLightningEnd(fighter->soundHandler, fighter->isPlayer1);
+			sfxRaidenLightningEnd(fighter->soundHandler);
 		}
 
 		if (animationIsComplete(fighter->projectileAnimator, 5))
@@ -7649,7 +7662,7 @@ void doSpecial_Kang_Fireball(struct Fighter* fighter, struct SpriteAnimator* ani
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxCageGreenbolt(fighter->soundHandler, fighter->isPlayer1);
+		sfxCageGreenbolt(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7710,7 +7723,7 @@ void doSpecial_Sonya_Rings(struct Fighter* fighter, struct SpriteAnimator* anima
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxSonyaRings(fighter->soundHandler, fighter->isPlayer1);
+		sfxSonyaRings(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7771,7 +7784,7 @@ void doSpecial_Subzero_Freeze(struct Fighter* fighter, struct SpriteAnimator* an
 		sprite[fighter->lightningSpriteIndex].active = R_is_active;
 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
 		fighter->lastTicks = rapTicks;
-		sfxSubzeroFreeze(fighter->soundHandler, fighter->isPlayer1);
+		sfxSubzeroFreeze(fighter->soundHandler);
 	}
 
 	if (!fighter->ProjectileMadeContact)
@@ -7847,7 +7860,7 @@ void doSpecial_Scorpion_Harpoon(struct Fighter* fighter, struct SpriteAnimator* 
 			if (!fighter->HasSetupProjectileMovement)
 			{
 				fighter->HasSetupProjectileMovement = true;
-				sfxScorpionHarpoon(fighter->soundHandler, fighter->isPlayer1);
+				sfxScorpionHarpoon(fighter->soundHandler);
 			}
 			fighter->projectilePositionX += (6 * fighter->direction);
 

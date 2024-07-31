@@ -19,7 +19,7 @@ void impactFrameReset(struct Fighter* fighter)
 
 void impactFrameUpdate(struct SpriteAnimator* animator, struct Fighter* fighter, struct ImpactFrame* impactFrame)
 {
-    if (animator->currentFrame == impactFrame->Frame || impactFrame->IsImpactState)
+    if (animator->currentFrame == impactFrame->Frame || animator->currentFrame == impactFrame->SecondaryFrame || impactFrame->IsImpactState)
     {
         if (fighter->direction == 1)
         {

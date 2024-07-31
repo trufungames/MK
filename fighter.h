@@ -197,9 +197,7 @@ struct Fighter {
     void (*doSpecialMove3)(struct Fighter*, struct SpriteAnimator*);
     void (*doProjectileEnd)(struct Fighter*, struct SpriteAnimator*);
     struct ImpactFrame* impactFrameLowPunch;
-    struct ImpactFrame* impactFrameLowRepeatPunch;
     struct ImpactFrame* impactFrameHighPunch;
-    struct ImpactFrame* impactFrameHighRepeatPunch;
     struct ImpactFrame* impactFrameLowKick;
     struct ImpactFrame* impactFrameHighKick;
     struct ImpactFrame* impactFrameJumpPunch;
@@ -301,11 +299,11 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
 
 void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2);
 
-void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2);
+void fighterTurnCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct StateMachine* stateMachine2, struct Fighter* fighter2);
 
 void fighterUpdateHealthbars(struct Fighter* fighter1, struct Fighter* fighter2);
 
-void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2);
+void fighterCloseCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct StateMachine* stateMachine2, struct Fighter* fighter2);
 
 void fighterAddPendingDamage(struct Fighter* fighter, int damage, bool shakeScreen, struct Fighter* attackingFighter, int points);
 
@@ -364,3 +362,5 @@ void fighterButtonCheck(struct Fighter* fighter);
 bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fighter);
 
 bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
+
+bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);

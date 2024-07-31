@@ -75,10 +75,7 @@ ROM,BMP_GORO_BACKGROUND,gfx_clut_pack,assets\gfx\stage_goro_background.bmp
 ROM,BMP_GORO_PARALAX,gfx_clut_pack,assets\gfx\stage_goro_paralax.bmp
 ROM,BMP_GORO_EYES,gfx_clut,assets\gfx\stage_goro_eyes.bmp
 ROM,BMP_GATES_BACKGROUND,gfx_clut_pack,assets\gfx\stage_gates_background.bmp
-ROM,BMP_GATES_MOUNTAIN,gfx_clut_pack,assets\gfx\stage_gates_mountain.bmp
-ROM,BMP_GATES_TEMPLE,gfx_clut,assets\gfx\stage_gates_temple.bmp
-ROM,BMP_GATES_BUSH,gfx_clut,assets\gfx\stage_gates_bush.bmp
-ROM,BMP_GATES_CLOUD,gfx_clut,assets\gfx\stage_gates_cloud.bmp
+ROM,BMP_GATES_PARALAX,gfx_clut_pack,assets\gfx\stage_gates_paralax.bmp
 ROM,BMP_FLAME,gfx_clut,assets\gfx\flame.bmp
 ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
 ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
@@ -125,7 +122,6 @@ ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
-ROM,p2selected_sam,sfx_raw8000,ASSETS\SFX\p2selected.wav
 ROM,johnnycage_sam,sfx_raw8000,ASSETS\SFX\johnnycage.wav
 ROM,kano_sam,sfx_raw8000,ASSETS\SFX\kano.wav
 ROM,raiden_sam,sfx_raw8000,ASSETS\SFX\raiden.wav

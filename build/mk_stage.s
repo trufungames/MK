@@ -326,7 +326,6 @@ __Z9stageMoveii:
 	tst.w %d0
 	jne .L39
 	move.l sprite,%a0
-	add.w %d1,6920(%a0)
 	add.w %d1,%d1
 	add.w %d1,12488(%a0)
 	add.w %d1,8648(%a0)

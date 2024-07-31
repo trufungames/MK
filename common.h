@@ -220,15 +220,15 @@
 #define MATCH_TIME_FINISH 3*60
 
 //-----------------------------------------------------------------------------------------------------
-#define SOUND_CHANNEL_PLAYER_L 4
-#define SOUND_CHANNEL_PLAYER_R 5
-#define SOUND_CHANNEL_MISC_L 6
-#define SOUND_CHANNEL_MISC_R 7
+#define SOUND_CHANNEL_PRIMARY_L 4
+#define SOUND_CHANNEL_PRIMARY_R 5
+#define SOUND_CHANNEL_SECONDARY_L 6
+#define SOUND_CHANNEL_SECONDARY_R 7
 
 //-----------------------------------------------------------------------------------------------------
-#define FIGHTER_WALK_SPEED_FORWARD 2
-#define FIGHTER_WALK_SPEED_BACKWARD 2
-#define FIGHTER_WALK_PUSH_SPEED 1
+#define FIGHTER_WALK_SPEED_FORWARD 4
+#define FIGHTER_WALK_SPEED_BACKWARD 4
+#define FIGHTER_WALK_PUSH_SPEED 2
 #define FIGHTER_WALK_MIN_FORWARD 32
 #define FIGHTER_WALK_MIN_BACKWARD 28
 #define FIGHTER_JUMP_X_SPEED 7.5f
@@ -241,9 +241,10 @@
 #define FIGHTER_DROPKICK_X_SPEED 5
 #define FIGHTER_HITAIR_X_SPEED 3
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
+#define FIGHTER_THROWN_X_SPEED 10
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 39
+#define STATE_TOTAL_COUNT 43
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -284,6 +285,10 @@
 #define STATE_HIT_DUCKING_BLOCKING 36
 #define STATE_HIT_BLOCKING_KNOCKBACK 37
 #define STATE_BODY_PUNCHING 38
+#define STATE_BODY_KICKING 39
+#define STATE_THROWING 40
+#define STATE_BEING_THROWN 41
+#define STATE_TURNING_AROUND 42
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

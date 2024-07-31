@@ -316,7 +316,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         fighter->IsDoingSpecial1 = false;
         fighter->IsHarpoonReelingIn = true;
         animator->currentFrame = 0;
-        sfxScorpionGetOverHere(fighter->soundHandler, fighter->isPlayer1);
+        sfxScorpionGetOverHere(fighter->soundHandler);
     }
     else if (fighter->DoHarpoonReelingInSequence)
     {
@@ -498,10 +498,10 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
         switch(fighter->fighterIndex)
         {
             case CAGE:
-                sfxCageYeah(fighter->soundHandler, fighter->isPlayer1);
+                sfxCageYeah(fighter->soundHandler);
                 break;
             case KANO:
-                sfxKanoYell(fighter->soundHandler, fighter->isPlayer1);
+                sfxKanoYell(fighter->soundHandler);
                 break;
         }
 
@@ -512,7 +512,7 @@ void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* 
     {
         fighter->DoBlockSequence = false;
         animator->currentFrame = 0;
-        sfxBlock(fighter->soundHandler, fighter->isPlayer1);
+        sfxBlock(fighter->soundHandler);
         fighterTakeDamage(fighter, DMG_BLOCKED);
     }
     else if (fighter->DoThrowSequence)
@@ -660,7 +660,7 @@ void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnim
             {
                 if (fighter->IsHitBackLightKano)
                 {
-                    sfxKanoHeadbutt(fighter->soundHandler, fighter->isPlayer1);
+                    sfxKanoHeadbutt(fighter->soundHandler);
                 }
                 else
                 {
@@ -1163,13 +1163,13 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                 {
                     case SCORPION:
                     case SUBZERO:
-                        sfxThrowNinja(fighter->soundHandler, fighter->isPlayer1);
+                        sfxThrowNinja(fighter->soundHandler);
                         break;
                     case SONYA:
-                        sfxThrowFemale(fighter->soundHandler, fighter->isPlayer1);
+                        sfxThrowFemale(fighter->soundHandler);
                         break;
                     default:
-                        sfxThrowMale(fighter->soundHandler, fighter->isPlayer1);
+                        sfxThrowMale(fighter->soundHandler);
                         break;
                 }
             }
@@ -1462,7 +1462,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
-                            sfxJumpRoll(fighter->soundHandler, fighter->isPlayer1);
+                            sfxJumpRoll(fighter->soundHandler);
                             fighter->PlayedJumpRoll = true;
                         }
 
@@ -1614,7 +1614,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                     {
                         if (!fighter->PlayedJumpRoll && rapTicks > fighter->JumpRollTicks + 10 && !fighter->IsJumpPunching && !fighter->IsJumpDropKicking)
                         {
-                            sfxJumpRoll(fighter->soundHandler, fighter->isPlayer1);
+                            sfxJumpRoll(fighter->soundHandler);
                             fighter->PlayedJumpRoll = true;
                         }
 
@@ -2015,16 +2015,16 @@ void fighterPlayHiya(int fighter, struct SoundHandler* soundHandler, bool isPlay
     switch (fighter)
     {
         case SONYA:
-            sfxHiyaFemale(soundHandler, isPlayer1);
+            sfxHiyaFemale(soundHandler);
             break;
         case SUBZERO:
-            sfxHiyaNinja(soundHandler, isPlayer1);
+            sfxHiyaNinja(soundHandler);
             break;
         case KANG:
-            sfxHiyaKang(soundHandler, isPlayer1);
+            sfxHiyaKang(soundHandler);
             break;
         default:
-            sfxHiyaMale(soundHandler, isPlayer1);
+            sfxHiyaMale(soundHandler);
     }
 }
 
@@ -2033,10 +2033,10 @@ void fighterPlayGroan(int fighter, struct SoundHandler* soundHandler, bool isPla
     switch (fighter)
     {
         case SONYA:
-            sfxGroanFemale(soundHandler, isPlayer1);
+            sfxGroanFemale(soundHandler);
             break;
         default:
-            sfxGroanMale(soundHandler, isPlayer1);
+            sfxGroanMale(soundHandler);
     }
 }
 
@@ -2045,13 +2045,13 @@ void fighterPlayYell(int fighter, struct SoundHandler* soundHandler, bool isPlay
     switch (fighter)
     {
         case SONYA:
-            sfxYellFemale(soundHandler, isPlayer1);
+            sfxYellFemale(soundHandler);
             break;
         case KANG:
-            sfxYellKang(soundHandler, isPlayer1);
+            sfxYellKang(soundHandler);
             break;
         default:
-            sfxYellMale(soundHandler, isPlayer1);
+            sfxYellMale(soundHandler);
     }
 }
 
@@ -2060,14 +2060,14 @@ void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlay
     switch (fighter)
     {
         case SONYA:
-            sfxJumpFemale(soundHandler, isPlayer1);
+            sfxJumpFemale(soundHandler);
             break;
         case SUBZERO:
         case SCORPION:
-            sfxJumpNinja(soundHandler, isPlayer1);
+            sfxJumpNinja(soundHandler);
             break;
         default:
-            sfxJumpMale(soundHandler, isPlayer1);
+            sfxJumpMale(soundHandler);
     }
 }
 
@@ -2475,6 +2475,11 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
             fighterAddPendingDamage(fighter2, DMG_LP, false, fighter1, POINTS_PUNCH);
             stateMachineGoto(stateMachine2, STATE_HIT_LOW, fighter2, spriteAnimator2);
         }
+        else if (stateMachine1->currentState->Name == STATE_LOW_REPEAT_PUNCHING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_LP, false, fighter1, POINTS_PUNCH);
+            stateMachineGoto(stateMachine2, STATE_HIT_LOW, fighter2, spriteAnimator2);
+        }
         else if (stateMachine1->currentState->Name == STATE_LOW_KICKING)
         {
             fighterAddPendingDamage(fighter2, DMG_LK, false, fighter1, POINTS_KICK);
@@ -2485,11 +2490,11 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
             fighterAddPendingDamage(fighter2, DMG_HP, false, fighter1, POINTS_PUNCH);
             stateMachineGoto(stateMachine2, STATE_HIT_HIGH, fighter2, spriteAnimator2);
         }
-        else if (stateMachine1->currentState->Name == STATE_SWEEPING)
+        else if (stateMachine1->currentState->Name == STATE_HIGH_REPEAT_PUNCHING)
         {
-            fighterAddPendingDamage(fighter2, DMG_SWEEP, false, fighter1, POINTS_SWEEP);
-            stateMachineGoto(stateMachine2, STATE_HIT_SWEEP, fighter2, spriteAnimator2);
-        }
+            fighterAddPendingDamage(fighter2, DMG_HP, false, fighter1, POINTS_PUNCH);
+            stateMachineGoto(stateMachine2, STATE_HIT_HIGH, fighter2, spriteAnimator2);
+        }        
         else if (stateMachine1->currentState->Name == STATE_ROUNDHOUSE_KICKING)
         {
             fighterAddPendingDamage(fighter2, DMG_ROUNDHOUSE, false, fighter1, POINTS_ROUNDHOUSE);
@@ -2553,9 +2558,30 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
             stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
             stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, spriteAnimator2);
         }
-    }    
+        else if (stateMachine1->currentState->Name == STATE_BODY_KICKING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_BODY_KICK, false, fighter1, POINTS_BODY_TO_BODY_KICK);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_THROWING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_THROW, false, fighter1, POINTS_THROW);
+            stateMachineGoto(stateMachine2, STATE_BEING_THROWN, fighter2, spriteAnimator2);
+        }
+    }
     else if (fighterIsBlocking(stateMachine2, fighter2))
     {
+        if (!fighterIsDuckBlocking(stateMachine2, fighter2))
+        {
+            if (stateMachine1->currentState->Name == STATE_SWEEPING)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SWEEP, false, fighter1, POINTS_SWEEP);
+                stateMachineGoto(stateMachine2, STATE_HIT_SWEEP, fighter2, spriteAnimator2);
+                return;
+            }
+        }
+
         fighterAddPendingDamage(fighter2, DMG_BLOCKED, false, fighter1, 0);
 
         if (stateMachine2->currentState->Name == STATE_DUCK_BLOCKING)
@@ -2709,47 +2735,52 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
     }
 }
 
-void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterTurnCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct StateMachine* stateMachine2, struct Fighter* fighter2)
 {
     if (fighter1->direction == 1
         && fighter1->positionX > fighter2->positionX + turnOffset
         && !fighter1->IsTurning)
     {
-        fighter1->changedDirection = false;
         fighter1->IsTurning = true;
-        fighter1->justTurned = true;
     }
 
     if (fighter1->direction == -1
         && fighter1->positionX + turnOffset < fighter2->positionX
         && !fighter1->IsTurning)
     {
-        fighter1->changedDirection = false;
         fighter1->IsTurning = true;
-        fighter1->justTurned = true;
     }
 
     if (fighter2->direction == 1
         && fighter2->positionX > fighter1->positionX + turnOffset
         && !fighter2->IsTurning)
     {
-        fighter2->changedDirection = false;
         fighter2->IsTurning = true;
-        fighter2->justTurned = true;
     }
 
     if (fighter2->direction == -1
         && fighter2->positionX + turnOffset < fighter1->positionX
         && !fighter2->IsTurning)
     {
-        fighter2->changedDirection = false;
         fighter2->IsTurning = true;
-        fighter2->justTurned = true;
     }
 }
 
-void fighterCloseCheck(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterCloseCheck(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct StateMachine* stateMachine2, struct Fighter* fighter2)
 {
+    if (stateMachine1->currentState->Name == STATE_THROWING
+        || stateMachine2->currentState->Name == STATE_THROWING
+        || stateMachine1->currentState->Name == STATE_BLOCKING
+        || stateMachine2->currentState->Name == STATE_BLOCKING
+        || stateMachine1->currentState->Name == STATE_DUCK_BLOCKING
+        || stateMachine2->currentState->Name == STATE_DUCK_BLOCKING)
+    {
+        fighter1->IsClose = false;
+        fighter2->IsClose = false;
+        return;
+    }
+        
+
     if (fighter1->direction == 1
         && fighter2->positionX <= fighter1->positionX + FIGHTER_WIDTH + 24)
     {
@@ -3115,7 +3146,7 @@ void fighterFreeze(struct Fighter* fighter)
             jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),15,16);
         }
         
-        sfxSubzeroFreezeEnd(fighter->soundHandler, fighter->isPlayer1);
+        sfxSubzeroFreezeEnd(fighter->soundHandler);
     }
 }
 
@@ -3238,6 +3269,14 @@ bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fig
 bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter)
 {
     if ((stateMachine->currentState->Name == STATE_BLOCKING || stateMachine->currentState->Name == STATE_DUCK_BLOCKING))
+        return true;
+
+    return false;
+}
+
+bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fighter)
+{
+    if (stateMachine->currentState->Name == STATE_DUCK_BLOCKING)
         return true;
 
     return false;

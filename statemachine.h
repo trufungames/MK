@@ -257,15 +257,41 @@ void StateBodyPunching_Update(struct StateMachine*, struct Fighter*, struct Spri
 void StateBodyPunching_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateBodyPunching_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateBodyKicking_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyKicking_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyKicking_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyKicking_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBodyKicking_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateThrowing_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowing_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowing_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowing_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowing_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateBeingThrown_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBeingThrown_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBeingThrown_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBeingThrown_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateBeingThrown_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateTurningAround_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateTurningAround_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateTurningAround_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateTurningAround_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateTurningAround_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
-//[ ] Add Body-To-Body states
-//[ ] Add Throw States
-//[ ] Add ImpactFrame(s) to the PunchRepeat High and Low states
+//[X] Add Body-To-Body states
+//[X] Add ImpactFrame(s) to the PunchRepeat High and Low states
+//[X] Add Throw States
+//[X] Add Turn Around State
 //[X] Add Collision Detection between fighters, push them out if on top of each other
 //[ ] Add Projectiles back in using states
-//[ ] Fix flames on Palace Gates
-//[ ] Add new background image to Palace Gates
+//[X] Fix flames on Palace Gates
+//[x] Add new background image to Palace Gates
+//[X] Fix Sound to use round-robin
 //[ ] Fix the camera, once and for all!!
+//[ ] Fix match progression

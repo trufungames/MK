@@ -30,8 +30,8 @@ sample1:	dc.l	p2cursor_sam		; start of sample
 s1_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
-sample2:	dc.l	p2selected_sam		; start of sample
-			dc.l	p2selected_sam_end	; end of sample
+sample2:	dc.l	p2cursor_sam		; start of sample
+			dc.l	p2cursor_sam_end	; end of sample
 			dc.l	0				; repeat offset
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>

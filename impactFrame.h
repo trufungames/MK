@@ -3,6 +3,7 @@ struct ImpactFrame {
     short RelativePositionX;
     short RelativePositionY;
     bool IsImpactState;
+    short SecondaryFrame;
 };
 
 void impactFrameReset(struct Fighter* fighter);

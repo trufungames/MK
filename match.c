@@ -303,25 +303,25 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 				switch (winner)
 				{
 					case CAGE:
-						sfxJohnnyCage(soundHandler, true);
+						sfxJohnnyCage(soundHandler);
 						break;
 					case KANO:
-						sfxKano(soundHandler, true);
+						sfxKano(soundHandler);
 						break;
 					case RAIDEN:
-						sfxRaiden(soundHandler, true);
+						sfxRaiden(soundHandler);
 						break;
 					case KANG:
-						sfxLiuKang(soundHandler, true);
+						sfxLiuKang(soundHandler);
 						break;
 					case SCORPION:
-						sfxScorpion(soundHandler, true);
+						sfxScorpion(soundHandler);
 						break;
 					case SUBZERO:
-						sfxSubzero(soundHandler, true);
+						sfxSubzero(soundHandler);
 						break;
 					case SONYA:
-						sfxSonya(soundHandler, true);
+						sfxSonya(soundHandler);
 						break;
 					default:
 						break;
