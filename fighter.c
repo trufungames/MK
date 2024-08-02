@@ -276,351 +276,352 @@ void fighterUpdateSpecialPose(float delta, struct Fighter *fighter, struct Sprit
     fighterCastShadow(fighter, false);
 }
 
-void fighterUpdate(float delta, struct Fighter *fighter, struct SpriteAnimator* animator)
+void fighterUpdate(struct StateMachine* stateMachine, struct Fighter *fighter, struct SpriteAnimator* animator)
 {
-    
+    fighterHandleInput(stateMachine, fighter, animator);
+
     return;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //old logic
 
-    if (fighter->IsBeingPushed)
-    {
-        fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta * -fighter->direction);
+    // if (fighter->IsBeingPushed)
+    // {
+    //     fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta * -fighter->direction);
 
-        if (rapTicks >= fighter->touchTicks + 4)
-        {
-            fighter->IsBeingPushed = false;
-            sprite[fighter->spriteIndex].was_hit = -1;
-        }
-    }
+    //     if (rapTicks >= fighter->touchTicks + 4)
+    //     {
+    //         fighter->IsBeingPushed = false;
+    //         sprite[fighter->spriteIndex].was_hit = -1;
+    //     }
+    // }
     
-    if (fighter->ResetTicks)
-    {
-        fighter->ResetTicks = false;
-        fighter->lastTicks = rapTicks;
-        fighter->touchTicks = rapTicks;
-        fighter->dropKickTicks = rapTicks;
-        fighter->JumpRollTicks = rapTicks;
-        animator->lastTick = rapTicks;
-    }
+    // if (fighter->ResetTicks)
+    // {
+    //     fighter->ResetTicks = false;
+    //     fighter->lastTicks = rapTicks;
+    //     fighter->touchTicks = rapTicks;
+    //     fighter->dropKickTicks = rapTicks;
+    //     fighter->JumpRollTicks = rapTicks;
+    //     animator->lastTick = rapTicks;
+    // }
 
-    if (fighter->DoImpaleBloodSequence)
-    {
-        fighter->DoImpaleBloodSequence = false;        
-        bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
-    }
-    else if (fighter->DoHarpoonReelingInSequence && rapTicks >= fighter->lastTicks + 60)
-    {
-        fighter->DoHarpoonReelingInSequence = false;
-        fighter->IsDoingSpecial1 = false;
-        fighter->IsHarpoonReelingIn = true;
-        animator->currentFrame = 0;
-        sfxScorpionGetOverHere(fighter->soundHandler);
-    }
-    else if (fighter->DoHarpoonReelingInSequence)
-    {
-        if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
-        {
-            fighter->projectileAnimator->currentFrame = 0;
-            fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-            fighter->projectileAnimator->base = BMP_PROJECTILES;
-            sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-            sprite[fighter->lightningSpriteIndex].gwidth = 104;
-            sprite[fighter->lightningSpriteIndex].hbox = 16;
-            sprite[fighter->lightningSpriteIndex].vbox = 16;
-            sprite[fighter->lightningSpriteIndex].active = R_is_active;
-            sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
-        }
+    // if (fighter->DoImpaleBloodSequence)
+    // {
+    //     fighter->DoImpaleBloodSequence = false;        
+    //     bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
+    // }
+    // else if (fighter->DoHarpoonReelingInSequence && rapTicks >= fighter->lastTicks + 60)
+    // {
+    //     fighter->DoHarpoonReelingInSequence = false;
+    //     fighter->IsDoingSpecial1 = false;
+    //     fighter->IsHarpoonReelingIn = true;
+    //     animator->currentFrame = 0;
+    //     sfxScorpionGetOverHere(fighter->soundHandler);
+    // }
+    // else if (fighter->DoHarpoonReelingInSequence)
+    // {
+    //     if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+    //     {
+    //         fighter->projectileAnimator->currentFrame = 0;
+    //         fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    //         fighter->projectileAnimator->base = BMP_PROJECTILES;
+    //         sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    //         sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    //         sprite[fighter->lightningSpriteIndex].hbox = 16;
+    //         sprite[fighter->lightningSpriteIndex].vbox = 16;
+    //         sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    //         sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
+    //         jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+    //     }
 
-        if (fighter->HarpoonShakeCount < 8)
-        {
-            fighter->HarpoonOffsetY += 2 * fighter->HarpoonShakeDirection;
-            fighter->HarpoonShakeDirection *= -1;
-            fighter->HarpoonShakeCount++;
-        }
-    }
+    //     if (fighter->HarpoonShakeCount < 8)
+    //     {
+    //         fighter->HarpoonOffsetY += 2 * fighter->HarpoonShakeDirection;
+    //         fighter->HarpoonShakeDirection *= -1;
+    //         fighter->HarpoonShakeCount++;
+    //     }
+    // }
 
-    if (fighter->IsHarpoonReelingIn || fighter->DoHarpoonReelingInSequence)
-    {
-        updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + fighter->HarpoonOffsetY, fighter->direction);
-    }
+    // if (fighter->IsHarpoonReelingIn || fighter->DoHarpoonReelingInSequence)
+    // {
+    //     updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + fighter->HarpoonOffsetY, fighter->direction);
+    // }
 
-    if (fighter->IsSlidingToPositionX)
-    {
-        if (fighter->SlidePositionXTarget > fighter->positionX)
-        {
-            fighterPositionXAdd(fighter, 8);
+    // if (fighter->IsSlidingToPositionX)
+    // {
+    //     if (fighter->SlidePositionXTarget > fighter->positionX)
+    //     {
+    //         fighterPositionXAdd(fighter, 8);
 
-            if (fighter->positionX >= fighter->SlidePositionXTarget)
-            {
-                fighter->IsSlidingToPositionX = false;
-            }
-        }
-        else if (fighter->SlidePositionXTarget < fighter->positionX)
-        {
-            fighterPositionXAdd(fighter, -8);
+    //         if (fighter->positionX >= fighter->SlidePositionXTarget)
+    //         {
+    //             fighter->IsSlidingToPositionX = false;
+    //         }
+    //     }
+    //     else if (fighter->SlidePositionXTarget < fighter->positionX)
+    //     {
+    //         fighterPositionXAdd(fighter, -8);
 
-            if (fighter->positionX <= fighter->SlidePositionXTarget)
-            {
-                fighter->IsSlidingToPositionX = false;
-            }
-        }
-    }
+    //         if (fighter->positionX <= fighter->SlidePositionXTarget)
+    //         {
+    //             fighter->IsSlidingToPositionX = false;
+    //         }
+    //     }
+    // }
 
-    if (fighter->IsFrozen)
-    {
-        if (!fighter->FrozenShakeComplete)
-        {
-            if (rapTicks > fighter->FrozenShakeTicks + 2)
-            {
-                fighter->positionX += (2 * fighter->FrozenShakeDirection);
-                fighter->FrozenShakeDirection *= -1;
-                fighter->FrozenShakeCount++;
-                fighter->FrozenShakeTicks = rapTicks;
-            }
+    // if (fighter->IsFrozen)
+    // {
+    //     if (!fighter->FrozenShakeComplete)
+    //     {
+    //         if (rapTicks > fighter->FrozenShakeTicks + 2)
+    //         {
+    //             fighter->positionX += (2 * fighter->FrozenShakeDirection);
+    //             fighter->FrozenShakeDirection *= -1;
+    //             fighter->FrozenShakeCount++;
+    //             fighter->FrozenShakeTicks = rapTicks;
+    //         }
 
-            if (fighter->FrozenShakeCount >= 6)
-            {
-                fighter->FrozenShakeComplete = true;
-            }
-        }
+    //         if (fighter->FrozenShakeCount >= 6)
+    //         {
+    //             fighter->FrozenShakeComplete = true;
+    //         }
+    //     }
 
-        if (rapTicks > fighter->lastTicks + 60 * 3)
-        {
-            fighterUnfreeze(fighter);
-        }
+    //     if (rapTicks > fighter->lastTicks + 60 * 3)
+    //     {
+    //         fighterUnfreeze(fighter);
+    //     }
 
-        fighterHandleDamage(delta, fighter, animator, walkForward);
-        setAnimationFrame(fighter->spriteIndex, animator, animator->currentAnimationFrame, fighter->positionX, fighter->positionY, fighter->direction);
-        fighterCastShadow(fighter, true);
+    //     fighterHandleDamage(delta, fighter, animator, walkForward);
+    //     setAnimationFrame(fighter->spriteIndex, animator, animator->currentAnimationFrame, fighter->positionX, fighter->positionY, fighter->direction);
+    //     fighterCastShadow(fighter, true);
 
-        if (fighter->IsBeingDamaged)
-        {
-            fighterUnfreeze(fighter);
-        }
-        return;
-    }
-    else if (fighter->IsHitHarpoon)
-    {
-        setAnimationFrame(fighter->spriteIndex, animator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
+    //     if (fighter->IsBeingDamaged)
+    //     {
+    //         fighterUnfreeze(fighter);
+    //     }
+    //     return;
+    // }
+    // else if (fighter->IsHitHarpoon)
+    // {
+    //     setAnimationFrame(fighter->spriteIndex, animator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
 
-        if (!fighter->IsSlidingToPositionX && rapTicks > fighter->lastTicks + 60 && !fighter->IsHarpoonComplete)
-        {
-            fighterSlideToPositionX(fighter, fighter->HarpoonSourceX);
-            fighter->lastTicks = rapTicks;
-            fighter->IsHarpoonComplete = true;
-        }
-        else if (!fighter->IsSlidingToPositionX && fighter->IsHarpoonComplete)
-        {
-            fighter->IsHitHarpoon = false;
-            fighter->IsStunned = true;
-            animator->currentFrame = 0;
-            fighter->lastTicks = rapTicks;
-        }
-        fighterCastShadow(fighter, true);
-        return;
-    }
-    else if (fighter->IsHarpoonReelingIn)
-    {
-        updateSpriteAnimator(animator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        fighterCastShadow(fighter, true);
-        return;
-    }
-    else if (fighter->IsStunned)
-    {
-        if (rapTicks >= fighter->lastTicks + 120 || fighter->IsBeingDamaged)
-        {
-            fighter->IsStunned = false;
-        }
+    //     if (!fighter->IsSlidingToPositionX && rapTicks > fighter->lastTicks + 60 && !fighter->IsHarpoonComplete)
+    //     {
+    //         fighterSlideToPositionX(fighter, fighter->HarpoonSourceX);
+    //         fighter->lastTicks = rapTicks;
+    //         fighter->IsHarpoonComplete = true;
+    //     }
+    //     else if (!fighter->IsSlidingToPositionX && fighter->IsHarpoonComplete)
+    //     {
+    //         fighter->IsHitHarpoon = false;
+    //         fighter->IsStunned = true;
+    //         animator->currentFrame = 0;
+    //         fighter->lastTicks = rapTicks;
+    //     }
+    //     fighterCastShadow(fighter, true);
+    //     return;
+    // }
+    // else if (fighter->IsHarpoonReelingIn)
+    // {
+    //     updateSpriteAnimator(animator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    //     fighterCastShadow(fighter, true);
+    //     return;
+    // }
+    // else if (fighter->IsStunned)
+    // {
+    //     if (rapTicks >= fighter->lastTicks + 120 || fighter->IsBeingDamaged)
+    //     {
+    //         fighter->IsStunned = false;
+    //     }
 
-        fighterHandleDamage(delta, fighter, animator, walkForward);
-        updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-        fighterCastShadow(fighter, true);
-        return;
-    }
+    //     fighterHandleDamage(1, fighter, animator, walkForward);
+    //     updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+    //     fighterCastShadow(fighter, true);
+    //     return;
+    // }
 
-    fighterCastShadow(fighter, true);
+    // fighterCastShadow(fighter, true);
 
-    if (fighter->fighterIndex == RAIDEN)
-    {
-        sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_ - (4 * fighter->direction);
+    // if (fighter->fighterIndex == RAIDEN)
+    // {
+    //     sprite[fighter->lightningSpriteIndex].x_ = sprite[fighter->spriteIndex].x_ - (4 * fighter->direction);
 
-        if ((fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner) || fighter->IsDoingSpecial1)
-        {
-            sprite[fighter->lightningSpriteIndex].active = R_is_active;						
-        }
-        else
-        {
-            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-        }
-    }
-    else
-    {
-        //TODO CLB HACK
-        //sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-    }
+    //     if ((fighter->IsIdle && fighter->IsActive && !fighter->IsDefeated && !fighter->IsWinner) || fighter->IsDoingSpecial1)
+    //     {
+    //         sprite[fighter->lightningSpriteIndex].active = R_is_active;						
+    //     }
+    //     else
+    //     {
+    //         sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    //     }
+    // }
+    // else
+    // {
+    //     //TODO CLB HACK
+    //     //sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    // }
     
-    if (!fighter->IsActive)
-        return;
+    // if (!fighter->IsActive)
+    //     return;
 
-    walkForward = fighter->direction == -1;
+    // walkForward = fighter->direction == -1;
 
-    if (fighter->DoDefeatedSequence && !fighter->IsHitFall && !fighter->IsHitUppercut)
-    {
-        fighter->DoDefeatedSequence = false;
-        fighterSetOnFloor(fighter);
-        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-        animator->currentFrame = 0;
+    // if (fighter->DoDefeatedSequence && !fighter->IsHitFall && !fighter->IsHitUppercut)
+    // {
+    //     fighter->DoDefeatedSequence = false;
+    //     fighterSetOnFloor(fighter);
+    //     sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    //     animator->currentFrame = 0;
         
-        if (fighter->roundsLost >= 1 && !fighter->IsDizzy)
-        {
-            fighterMakeDizzy(fighter);
-        }
-        else
-        {
-            fighter->IsDefeated = true;
-            fighter->IsDizzy = false;
-            fighter->roundsLost++;
-        }
-        return;
-    }
+    //     if (fighter->roundsLost >= 1 && !fighter->IsDizzy)
+    //     {
+    //         fighterMakeDizzy(fighter);
+    //     }
+    //     else
+    //     {
+    //         fighter->IsDefeated = true;
+    //         fighter->IsDizzy = false;
+    //         fighter->roundsLost++;
+    //     }
+    //     return;
+    // }
 
-    if (fighter->DoWinSequence)
-    {
-        fighter->DoWinSequence = false;
-        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-        animator->currentFrame = 0;
-        fighter->IsWinner = true;
-        fighterSetOnFloor(fighter);
+    // if (fighter->DoWinSequence)
+    // {
+    //     fighter->DoWinSequence = false;
+    //     sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    //     animator->currentFrame = 0;
+    //     fighter->IsWinner = true;
+    //     fighterSetOnFloor(fighter);
 
-        switch(fighter->fighterIndex)
-        {
-            case CAGE:
-                sfxCageYeah(fighter->soundHandler);
-                break;
-            case KANO:
-                sfxKanoYell(fighter->soundHandler);
-                break;
-        }
+    //     switch(fighter->fighterIndex)
+    //     {
+    //         case CAGE:
+    //             sfxCageYeah(fighter->soundHandler);
+    //             break;
+    //         case KANO:
+    //             sfxKanoYell(fighter->soundHandler);
+    //             break;
+    //     }
 
-        return;
-    }
+    //     return;
+    // }
     
-    if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
-    {
-        fighter->DoBlockSequence = false;
-        animator->currentFrame = 0;
-        sfxBlock(fighter->soundHandler);
-        fighterTakeDamage(fighter, DMG_BLOCKED);
-    }
-    else if (fighter->DoThrowSequence)
-    {
-        fighter->DoThrowSequence = false;
-        animator->currentFrame = 0;
-        fighter->lastTicks = rapTicks;        
-        fighter->positionX = fighter->ThrowX;
-        fighter->positionY = fighter->ThrowY;
-        fighter->ThrowX = 0;
-        fighter->ThrowY = 0;
-        fighter->IsBeingDamaged = true;
-        fighter->IsBeingThrown = true;
-    }
-    else if (fighter->IsTurning && !fighter->IsJumping && !fighter->IsJumpingRollBackward && !fighter->IsJumpingRollForward && !fighter->IsBeingDamaged && !fighter->IsAttacking)
-    {
-        if (fighter->justTurned)
-        {
-            //we just turned, so reset the animation
-            fighter->justTurned = false;
-            animator->currentFrame = 0;
-        }
+    // if (fighter->DoBlockSequence && rapTicks > fighter->lastTicks + 6)
+    // {
+    //     fighter->DoBlockSequence = false;
+    //     animator->currentFrame = 0;
+    //     sfxBlock(fighter->soundHandler);
+    //     fighterTakeDamage(fighter, DMG_BLOCKED);
+    // }
+    // else if (fighter->DoThrowSequence)
+    // {
+    //     fighter->DoThrowSequence = false;
+    //     animator->currentFrame = 0;
+    //     fighter->lastTicks = rapTicks;        
+    //     fighter->positionX = fighter->ThrowX;
+    //     fighter->positionY = fighter->ThrowY;
+    //     fighter->ThrowX = 0;
+    //     fighter->ThrowY = 0;
+    //     fighter->IsBeingDamaged = true;
+    //     fighter->IsBeingThrown = true;
+    // }
+    // else if (fighter->IsTurning && !fighter->IsJumping && !fighter->IsJumpingRollBackward && !fighter->IsJumpingRollForward && !fighter->IsBeingDamaged && !fighter->IsAttacking)
+    // {
+    //     if (fighter->justTurned)
+    //     {
+    //         //we just turned, so reset the animation
+    //         fighter->justTurned = false;
+    //         animator->currentFrame = 0;
+    //     }
 
-        if (!fighter->changedDirection)
-        {
-            if (animationIsComplete(animator, fighter->TURN_FRAME_COUNT))
-            {
-                fighter->changedDirection = true;
-                fighter->direction *= -1;
+    //     if (!fighter->changedDirection)
+    //     {
+    //         if (animationIsComplete(animator, fighter->TURN_FRAME_COUNT))
+    //         {
+    //             fighter->changedDirection = true;
+    //             fighter->direction *= -1;
                 
-                if (fighter->direction == 1)
-                {
-                    sprite[fighter->spriteIndex].flip = R_is_normal;
-                    sprite[fighter->spriteIndex-1].flip = R_is_normal;
-                    sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
-                }
-                else
-                {
-                    sprite[fighter->spriteIndex].flip = R_is_flipped;
-                    sprite[fighter->spriteIndex-1].flip = R_is_flipped;
-                    sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
-                }
+    //             if (fighter->direction == 1)
+    //             {
+    //                 sprite[fighter->spriteIndex].flip = R_is_normal;
+    //                 sprite[fighter->spriteIndex-1].flip = R_is_normal;
+    //                 sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+    //             }
+    //             else
+    //             {
+    //                 sprite[fighter->spriteIndex].flip = R_is_flipped;
+    //                 sprite[fighter->spriteIndex-1].flip = R_is_flipped;
+    //                 sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+    //             }
                 
-                impactFrameReset(fighter);
-            }
+    //             impactFrameReset(fighter);
+    //         }
 
-            updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        }
-        else
-        {
-            if (animator->currentFrame <= 0)
-            {
-                fighter->IsTurning = false;
-            }
+    //         updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    //     }
+    //     else
+    //     {
+    //         if (animator->currentFrame <= 0)
+    //         {
+    //             fighter->IsTurning = false;
+    //         }
 
-            updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
-        }
-        return;
-    }
+    //         updateSpriteAnimator(animator, *fighter->turnFrames, fighter->TURN_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+    //     }
+    //     return;
+    // }
 
-    if (fighter->IsDefeated)
-    {
-        if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
-        {
-            bgShake(false);
-            sfxThud(fighter->soundHandler);
-            fighter->IsActive = false;
-        }
+    // if (fighter->IsDefeated)
+    // {
+    //     if (animationIsComplete(animator, fighter->HIT_FALL_FRAME_COUNT))
+    //     {
+    //         bgShake(false);
+    //         sfxThud(fighter->soundHandler);
+    //         fighter->IsActive = false;
+    //     }
 
-        updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        return;
-    }
+    //     updateSpriteAnimator(animator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    //     return;
+    // }
 
-    if (fighter->IsDizzy)
-    {
-        if (!fighter->IsBeingDamaged)
-        {
-            updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
-        }
+    // if (fighter->IsDizzy)
+    // {
+    //     if (!fighter->IsBeingDamaged)
+    //     {
+    //         updateSpriteAnimator(animator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+    //     }
 
-        if ((fighter->pendingDamage > 0 || fighter->IsBeingDamaged))
-        {            
-            fighterHandleDamage(delta, fighter, animator, walkForward);
+    //     if ((fighter->pendingDamage > 0 || fighter->IsBeingDamaged))
+    //     {            
+    //         fighterHandleDamage(delta, fighter, animator, walkForward);
             
-            if (!fighter->IsBeingDamaged)
-            {
-                fighter->IsDefeated = true;
-                fighter->IsDizzy = false;
-                fighter->roundsLost++;
-            }
-        }
+    //         if (!fighter->IsBeingDamaged)
+    //         {
+    //             fighter->IsDefeated = true;
+    //             fighter->IsDizzy = false;
+    //             fighter->roundsLost++;
+    //         }
+    //     }
         
-        return;
-    }
+    //     return;
+    // }
     
-    if (fighter->IsWinner)
-    {
-        fighterSetOnFloor(fighter);
-        updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-        return;
-    }
+    // if (fighter->IsWinner)
+    // {
+    //     fighterSetOnFloor(fighter);
+    //     updateSpriteAnimator(animator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    //     return;
+    // }
 
     
 
-    fighterHandleDamage(delta, fighter, animator, walkForward);
-    fighterHandleInput(delta, fighter, animator, walkForward);
-    fighterLockBoundaries(fighter);
-    fighterAlignSpriteAndHitbox(fighter);    
+    // fighterHandleDamage(stateMachine, fighter, animator);
+    // fighterHandleInput(stateMachine, fighter, animator);
+    // fighterLockBoundaries(fighter);
+    // fighterAlignSpriteAndHitbox(fighter);    
 }
 
 void fighterHandleDamage(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward)
@@ -1031,8 +1032,11 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
     }
 }
 
-bool fighterHandleSpecialMoves(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward)
+bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
+    if (fighter->IsBeingDamaged)
+        return false;
+
     if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
     {
         playerinputPush(fighter, JAGPAD_C);
@@ -1041,24 +1045,16 @@ bool fighterHandleSpecialMoves(float delta, struct Fighter* fighter, struct Spri
     //***********************************************************************************
     // SPECIAL MOVES
     //***********************************************************************************
-    if (playerinputContains(fighter, *fighter->special1Inputs, fighter->special1InputCount))
-    {
-        fighter->IsDoingSpecial1 = true;
-        fighter->HasSetupSpecial1 = false;
-        playerinputInit(fighter); //clear the input stack
-        return true;
-    }
-
-    if (fighter->IsDoingSpecial1)
-    {
-        (fighter->doSpecialMove1)(fighter, animator);
+    if (playerinputContains(stateMachine, fighter, *fighter->special1Inputs, fighter->special1InputCount))
+    {   
+        (fighter->doSpecialMove1)(stateMachine, fighter, animator);
         return true;
     }
 
     return false;
 }
 
-void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnimator* animator, bool walkForward)
+void fighterHandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
     return;
     //**************************************
@@ -1075,7 +1071,7 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
         fighter->pad = jsfGetPad(fighter->PAD);
 
         //if we're doing a special move, let's bail
-        if (fighterHandleSpecialMoves(delta, fighter, animator, walkForward))
+        if (fighterHandleSpecialMoves(stateMachine, fighter, animator))
             return;
 
         if ((fighter->pad & JAGPAD_C || fighter->pad & JAGPAD_7) && fighter->IsDucking && fighter->ButtonReleased && fighter->AcceptingInput || fighter->IsUppercutting)
@@ -1705,11 +1701,11 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                         speed = FIGHTER_WALK_SPEED_FORWARD;
                     }
 
-                    fighterPositionXAdd(fighter, -1 * speed * delta);
+                    fighterPositionXAdd(fighter, -1 * speed * 1);
                 }
                 else if (cameraCanMove())
                 {
-                    fighterPositionXAdd(fighter, -1 * FIGHTER_WALK_PUSH_SPEED * delta);
+                    fighterPositionXAdd(fighter, -1 * FIGHTER_WALK_PUSH_SPEED * 1);
                 }
             }
 
@@ -1747,11 +1743,11 @@ void fighterHandleInput(float delta, struct Fighter* fighter, struct SpriteAnima
                         speed = FIGHTER_WALK_SPEED_BACKWARD;
                     }
 
-                    fighterPositionXAdd(fighter, speed * delta);
+                    fighterPositionXAdd(fighter, speed * 1);
                 }
                 else
                 {
-                    fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * delta);
+                    fighterPositionXAdd(fighter, FIGHTER_WALK_PUSH_SPEED * 1);
                 }
             }
 
@@ -2251,14 +2247,14 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
                     fighterHandleImpact(stateMachine2, fighter2, spriteAnimator2, stateMachine1, fighter1, spriteAnimator1);
                 }
 
-                if (fighter1->IsDoingSpecial1 && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
+                if (stateMachine1->currentState->Name == STATE_THROWING_PROJECTILE && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
-                    fighterHandleProjectile(fighter1, fighter2);
+                    fighterHandleProjectile(stateMachine1, fighter1, stateMachine2, fighter2);
                 }
                 
-                if (fighter2->IsDoingSpecial1 && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
+                if (stateMachine2->currentState->Name == STATE_THROWING_PROJECTILE && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
-                    fighterHandleProjectile(fighter2, fighter1);
+                    fighterHandleProjectile(stateMachine2, fighter2, stateMachine1, fighter1);
                 }
 
                 if (collisionSprIndex == P2_FIGHTER_PIT && collisionSprIndex2 == P1_FIGHTER_PIT)
@@ -2281,188 +2277,180 @@ void fighterImpactCheck(struct StateMachine* stateMachine1, struct Fighter* figh
     }
 }
 
-void fighterHandleProjectile(struct Fighter* fighter1, struct Fighter* fighter2)
+void fighterHandleProjectile(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct StateMachine* stateMachine2, struct Fighter* fighter2)
 {
     if (fighter1->fighterIndex == CAGE)
     {
         fighter1->ProjectileMadeContact = true;
 
-        if (!fighter2->IsBlocking)
-        {            
-            if (fighter2->IsJumping)
-            {
-                fighter2->IsHitDropKick = true;                
-            }
-            else
-            {
-                fighter2->IsHitBack = true;
-                fighter2->NoBlood = true;
-            }
-            
+        if (!fighterIsBlocking(stateMachine2, fighter2) && stateMachine2->currentState->Name != STATE_HIT_BLOCKING)
+        {
+            fighter2->NoBlood = true;
             fighterAddPendingDamage(fighter2, DMG_GREENBOLT, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine2, STATE_HIT_BACK, fighter2, fighter2->spriteAnimator);
+            return;
         }
         else
         {
-            fighter2->IsBlockingHit = true;
-            fighter2->DoBlockSequence = true;
-            fighter2->lastTicks = rapTicks;
+            stateMachineGoto(stateMachine2, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+            return;
         }
     }
-    else if (fighter1->fighterIndex == KANO)
-    {
-        fighter1->ProjectileMadeContact = true;
+    // else if (fighter1->fighterIndex == KANO)
+    // {
+    //     fighter1->ProjectileMadeContact = true;
 
-        if (!fighter2->IsBlocking)
-        {            
-            if (fighter2->IsJumping)
-            {
-                fighter2->IsHitDropKick = true;
-            }
-            else
-            {
-                fighter2->IsHitBackLight = true;
-            }
+    //     if (!fighter2->IsBlocking)
+    //     {            
+    //         if (fighter2->IsJumping)
+    //         {
+    //             fighter2->IsHitDropKick = true;
+    //         }
+    //         else
+    //         {
+    //             fighter2->IsHitBackLight = true;
+    //         }
             
-            fighter2->DoImpaleBloodSequence = true;
-            fighter2->NoBlood = true;
-            fighter2->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_KNIFE, false, fighter1, POINTS_PROJECTILE);
-        }
-        else
-        {
-            fighter2->IsBlockingHit = true;
-            fighter2->DoBlockSequence = true;
-            fighter2->lastTicks = rapTicks;
-        }
-    }
-    else if (fighter1->fighterIndex == RAIDEN)
-    {
-        fighter1->ProjectileMadeContact = true;
+    //         fighter2->DoImpaleBloodSequence = true;
+    //         fighter2->NoBlood = true;
+    //         fighter2->lastTicks = rapTicks;
+    //         fighterAddPendingDamage(fighter2, DMG_KNIFE, false, fighter1, POINTS_PROJECTILE);
+    //     }
+    //     else
+    //     {
+    //         fighter2->IsBlockingHit = true;
+    //         fighter2->DoBlockSequence = true;
+    //         fighter2->lastTicks = rapTicks;
+    //     }
+    // }
+    // else if (fighter1->fighterIndex == RAIDEN)
+    // {
+    //     fighter1->ProjectileMadeContact = true;
 
-        if (!fighter2->IsBlocking)
-        {            
-            if (fighter2->IsJumping)
-            {
-                fighter2->IsHitDropKick = true;
-            }
-            else
-            {
-                fighter2->IsHitBackLight = true;
-            }
+    //     if (!fighter2->IsBlocking)
+    //     {            
+    //         if (fighter2->IsJumping)
+    //         {
+    //             fighter2->IsHitDropKick = true;
+    //         }
+    //         else
+    //         {
+    //             fighter2->IsHitBackLight = true;
+    //         }
             
-            fighter2->NoBlood = true;
-            fighter2->lastTicks = rapTicks;
-            fighterAddPendingDamage(fighter2, DMG_LIGHTNING, false, fighter1, POINTS_PROJECTILE);
-        }
-        else
-        {
-            fighter2->IsBlockingHit = true;
-            fighter2->DoBlockSequence = true;
-            fighter2->lastTicks = rapTicks;
-        }
-    }
-    else if (fighter1->fighterIndex == KANG)
-    {
-        fighter1->ProjectileMadeContact = true;
+    //         fighter2->NoBlood = true;
+    //         fighter2->lastTicks = rapTicks;
+    //         fighterAddPendingDamage(fighter2, DMG_LIGHTNING, false, fighter1, POINTS_PROJECTILE);
+    //     }
+    //     else
+    //     {
+    //         fighter2->IsBlockingHit = true;
+    //         fighter2->DoBlockSequence = true;
+    //         fighter2->lastTicks = rapTicks;
+    //     }
+    // }
+    // else if (fighter1->fighterIndex == KANG)
+    // {
+    //     fighter1->ProjectileMadeContact = true;
 
-        if (!fighter2->IsBlocking)
-        {            
-            if (fighter2->IsJumping)
-            {
-                fighter2->IsHitDropKick = true;                
-            }
-            else
-            {
-                fighter2->IsHitBack = true;
-                fighter2->NoBlood = true;
-            }
+    //     if (!fighter2->IsBlocking)
+    //     {            
+    //         if (fighter2->IsJumping)
+    //         {
+    //             fighter2->IsHitDropKick = true;                
+    //         }
+    //         else
+    //         {
+    //             fighter2->IsHitBack = true;
+    //             fighter2->NoBlood = true;
+    //         }
             
-            fighterAddPendingDamage(fighter2, DMG_FIREBALL, false, fighter1, POINTS_PROJECTILE);
-        }
-        else
-        {
-            fighter2->IsBlockingHit = true;
-            fighter2->DoBlockSequence = true;
-            fighter2->lastTicks = rapTicks;
-        }
-    }
-    else if (fighter1->fighterIndex == SONYA)
-    {
-        fighter1->ProjectileMadeContact = true;
+    //         fighterAddPendingDamage(fighter2, DMG_FIREBALL, false, fighter1, POINTS_PROJECTILE);
+    //     }
+    //     else
+    //     {
+    //         fighter2->IsBlockingHit = true;
+    //         fighter2->DoBlockSequence = true;
+    //         fighter2->lastTicks = rapTicks;
+    //     }
+    // }
+    // else if (fighter1->fighterIndex == SONYA)
+    // {
+    //     fighter1->ProjectileMadeContact = true;
 
-        if (!fighter2->IsBlocking)
-        {            
-            if (fighter2->IsJumping)
-            {
-                fighter2->IsHitDropKick = true;                
-            }
-            else
-            {
-                fighter2->IsHitBack = true;
-                fighter2->NoBlood = true;
-            }
+    //     if (!fighter2->IsBlocking)
+    //     {            
+    //         if (fighter2->IsJumping)
+    //         {
+    //             fighter2->IsHitDropKick = true;                
+    //         }
+    //         else
+    //         {
+    //             fighter2->IsHitBack = true;
+    //             fighter2->NoBlood = true;
+    //         }
             
-            fighterAddPendingDamage(fighter2, DMG_RINGS, false, fighter1, POINTS_PROJECTILE);
-        }
-        else
-        {
-            fighter2->IsBlockingHit = true;
-            fighter2->DoBlockSequence = true;
-            fighter2->lastTicks = rapTicks;
-        }
-    }
-    else if (fighter1->fighterIndex == SUBZERO)
-    {
-        if (!fighter1->ProjectileMadeContact)
-        {
-            fighter1->ProjectileMadeContact = true;
+    //         fighterAddPendingDamage(fighter2, DMG_RINGS, false, fighter1, POINTS_PROJECTILE);
+    //     }
+    //     else
+    //     {
+    //         fighter2->IsBlockingHit = true;
+    //         fighter2->DoBlockSequence = true;
+    //         fighter2->lastTicks = rapTicks;
+    //     }
+    // }
+    // else if (fighter1->fighterIndex == SUBZERO)
+    // {
+    //     if (!fighter1->ProjectileMadeContact)
+    //     {
+    //         fighter1->ProjectileMadeContact = true;
 
-            if (fighter2->IsFrozen)
-            {
-                fighterUnfreeze(fighter2);
-                sprite[fighter1->lightningSpriteIndex].active = R_is_inactive;
-                fighterFreeze(fighter1);
-                return;
-            }
+    //         if (fighter2->IsFrozen)
+    //         {
+    //             fighterUnfreeze(fighter2);
+    //             sprite[fighter1->lightningSpriteIndex].active = R_is_inactive;
+    //             fighterFreeze(fighter1);
+    //             return;
+    //         }
 
-            if (!fighter2->IsBlocking)
-            {
-                fighterFreeze(fighter2);
-                fighterAddPendingDamage(fighter2, DMG_FREEZE, false, fighter1, POINTS_PROJECTILE);
-            }
-            else
-            {
-                fighter2->IsBlockingHit = true;
-                fighter2->DoBlockSequence = true;
-                fighter2->lastTicks = rapTicks;
-            }
-        }
-    }
-    else if (fighter1->fighterIndex == SCORPION)
-    {
-        if (!fighter1->ProjectileMadeContact)
-        {
-            fighter1->ProjectileMadeContact = true;
+    //         if (!fighter2->IsBlocking)
+    //         {
+    //             fighterFreeze(fighter2);
+    //             fighterAddPendingDamage(fighter2, DMG_FREEZE, false, fighter1, POINTS_PROJECTILE);
+    //         }
+    //         else
+    //         {
+    //             fighter2->IsBlockingHit = true;
+    //             fighter2->DoBlockSequence = true;
+    //             fighter2->lastTicks = rapTicks;
+    //         }
+    //     }
+    // }
+    // else if (fighter1->fighterIndex == SCORPION)
+    // {
+    //     if (!fighter1->ProjectileMadeContact)
+    //     {
+    //         fighter1->ProjectileMadeContact = true;
 
-            if (!fighter2->IsBlocking)
-            {
-                fighter1->DoHarpoonReelingInSequence = true;                
-                fighter1->lastTicks = rapTicks;
-                fighter1->HarpoonShakeDirection = -1;
-                fighter1->HarpoonOffsetY = 32;
-                fighter1->HarpoonShakeCount = 0;
-                fighterHarpoon(fighter2, fighter1);
-                fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
-            }
-            else
-            {
-                fighter1->HarpoonBlocked = true;
-                fighter2->IsBlockingHit = true;
-                fighter2->DoBlockSequence = true;
-                fighter2->lastTicks = rapTicks;
-            }
-        }
-    }
+    //         if (!fighter2->IsBlocking)
+    //         {
+    //             fighter1->DoHarpoonReelingInSequence = true;                
+    //             fighter1->lastTicks = rapTicks;
+    //             fighter1->HarpoonShakeDirection = -1;
+    //             fighter1->HarpoonOffsetY = 32;
+    //             fighter1->HarpoonShakeCount = 0;
+    //             fighterHarpoon(fighter2, fighter1);
+    //             fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
+    //         }
+    //         else
+    //         {
+    //             fighter1->HarpoonBlocked = true;
+    //             fighter2->IsBlockingHit = true;
+    //             fighter2->DoBlockSequence = true;
+    //             fighter2->lastTicks = rapTicks;
+    //         }
+    //     }
+    // }
 }
 
 void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)

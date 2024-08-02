@@ -7,6 +7,7 @@
 #include "sound.h"
 #include "debug.h"
 #include "blood.h"
+#include "playerinput.h"
 
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
@@ -71,6 +72,8 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         return;
     }
 
+    fighterHandleSpecialMoves(stateMachine, fighter, spriteAnimator);
+
     /////////////////////////////////////////////////////
     // END GLOBAL FIGHTER LOGIC
     /////////////////////////////////////////////////////
@@ -130,6 +133,11 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
 {
     if (fighter->AcceptingInput)
     {
+        fighterCaptureDpadInputs(fighter);
+        //if we're doing a special move, let's bail
+        if (fighterHandleSpecialMoves(stateMachine, fighter, spriteAnimator))
+            return;
+
         if (fighter->pad & JAGPAD_B || fighter->pad & JAGPAD_8)
         {
             stateMachineGoto(stateMachine, STATE_BLOCKING, fighter, spriteAnimator);
@@ -1713,6 +1721,10 @@ void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighter->IsBeingDamaged = true;
     fighterTakeDamage(fighter, fighter->pendingDamage);
     sfxImpact(fighter->soundHandler);
+
+    if (fighter->NoBlood)
+        return;
+
     bloodGlob(fighter->positionX - (40 * fighter->direction), fighter->positionY + 0, fighter->direction);
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
 }
@@ -1720,6 +1732,7 @@ void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fight
 void StateHitBack_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     fighter->IsBeingDamaged = false;
+    fighter->NoBlood = false;
 }
 
 void StateHitBack_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -2436,5 +2449,99 @@ void StateTurningAround_Sleep(struct StateMachine* stateMachine, struct Fighter*
 }
 
 void StateTurningAround_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CAGE SPECIAL GREENBOLT
+// vars[0] = HasSetupProjectileEnd
+// vars[1] = rapTicks
+
+void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    stateMachine->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    stateMachine->vars[0] = 0;
+    stateMachine->vars[1] = rapTicks;
+    fighter->ProjectileMadeContact = false;
+    fighter->projectilePositionX = fighter->positionX;
+    fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    fighter->lastTicks = rapTicks;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16; 
+
+    switch(fighter->fighterIndex)
+    {
+        case CAGE:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),13,16);
+            sfxCageGreenbolt(fighter->soundHandler);
+            break;
+        default:
+            break;
+    }
+}
+
+void StateThrowingProjectile_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    sprite[fighter->lightningSpriteIndex].was_hit = -1;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    playerinputInit(fighter);    
+    fighterResetRaidenLightning(fighter);
+}
+
+void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
+		{
+            if (rapTicks >= stateMachine->vars[1] + 2)
+            {
+                fighter->projectilePositionX += (FIGHTER_PROJECTILE_X_SPEED * fighter->direction);
+                stateMachine->vars[1] = rapTicks;
+            }
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+                return;
+			}
+		}
+
+		updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, fighter->PROJECTILE_FRAME_COUNT, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (stateMachine->vars[0] == 0)
+		{
+			stateMachine->vars[0] = 1;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, fighter->PROJECTILE_END_FRAME_COUNT))
+		{
+			stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, fighter->PROJECTILE_END_FRAME_COUNT, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+
+    if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
+}
+
+void StateThrowingProjectile_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateThrowingProjectile_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

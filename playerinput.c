@@ -26,7 +26,7 @@ void playerinputPush(struct Fighter* fighter, int buttonPressed)
     fighter->playerInputs[0]->Ticks = rapTicks;
 }
 
-int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCount)
+int playerinputContains(struct StateMachine* stateMachine, struct Fighter* fighter, int checkInputs[], int checkCount)
 {
     if (checkCount == 0)
         return false;
@@ -38,7 +38,7 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
     }
 
     //the last input indicates a BLOCK hold
-    if (checkInputs[5] == INPUT_BLK && !fighter->IsBlocking)
+    if (checkInputs[5] == INPUT_BLK && !fighterIsBlocking(stateMachine, fighter))
         return false;
 
     return true;
@@ -51,13 +51,13 @@ void playerinputUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
         if (rapTicks > fighter1->playerInputs[k]->Ticks + PLAYER_INPUT_TIMEOUT)
         {
             fighter1->playerInputs[k]->ButtonPressed = 0;
-            fighter1->playerInputs[k]->Ticks = 0;
+            fighter1->playerInputs[k]->Ticks = rapTicks;
         }
 
         if (rapTicks > fighter2->playerInputs[k]->Ticks + PLAYER_INPUT_TIMEOUT)
         {
             fighter2->playerInputs[k]->ButtonPressed = 0;
-            fighter2->playerInputs[k]->Ticks = 0;
+            fighter2->playerInputs[k]->Ticks = rapTicks;
         }
     }
 }

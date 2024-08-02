@@ -281,6 +281,13 @@ void StateTurningAround_Update(struct StateMachine*, struct Fighter*, struct Spr
 void StateTurningAround_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateTurningAround_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateThrowingProjectile_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowingProjectile_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowingProjectile_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowingProjectile_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateThrowingProjectile_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

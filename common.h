@@ -242,9 +242,10 @@
 #define FIGHTER_HITAIR_X_SPEED 3
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
 #define FIGHTER_THROWN_X_SPEED 10
+#define FIGHTER_PROJECTILE_X_SPEED 12
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 43
+#define STATE_TOTAL_COUNT 44
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -289,6 +290,7 @@
 #define STATE_THROWING 40
 #define STATE_BEING_THROWN 41
 #define STATE_TURNING_AROUND 42
+#define STATE_THROWING_PROJECTILE 43
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
@@ -370,6 +372,9 @@
 #define CAGE_HIT_UPPERCUT_FRAME_COUNT 26
 #define CAGE_HIT_FALL_FRAME_COUNT 7
 #define CAGE_HIT_SWEEP_FRAME_COUNT 6
+#define CAGE_SPECIAL_1_FRAME_COUNT 6
+#define CAGE_PROJECTILE_FRAME_COUNT 8
+#define CAGE_PROJECTILE_END_FRAME_COUNT 5
 
 #define KANG_IDLE_FRAME_COUNT 7
 #define KANG_DIZZY_FRAME_COUNT 7

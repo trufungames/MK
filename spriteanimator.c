@@ -37,7 +37,7 @@ void animateFrame(unsigned int spriteIndex, unsigned int frame, struct Animation
     
     sprite[spriteIndex].y_ = tempY;
 
-    if (direction == -1)// && spriteIndex != P1_PROJECTILE && spriteIndex != P1_PROJECTILE + 1)
+    if (direction == -1 && spriteIndex != P1_PROJECTILE && spriteIndex != P1_PROJECTILE + 1)
     {
         //player 2, so we have to factor the idleFrameWidth into the offset
         sprite[spriteIndex].x_ -= animationFrames[frame].width - idleFrameWidth;
