@@ -920,203 +920,203 @@ Buildlink finished - everything went fine!
 Assembling raptor skeleton... 
  
 Compiling C code to O... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3865:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4963:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4967:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3847:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4944:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4948:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4952:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4959:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4962:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4965:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4968:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4971:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4978:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4981:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4984:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4987:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4990:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4993:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4996:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4999:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5288:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5291:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5294:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5297:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5300:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5303:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5306:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5309:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5906:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4974:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4977:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4980:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5269:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5272:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5275:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5278:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5281:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5284:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5287:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5290:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5901:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6282:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6280:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6282:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6284:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6286:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6288:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6290:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6292:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6294:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6296:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6308:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6306:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6308:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6310:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6312:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6314:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6316:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6318:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6320:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6322:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6328:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6326:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6328:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6330:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6332:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6334:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6336:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6338:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6340:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6342:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6348:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6346:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6348:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6350:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6352:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6354:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6356:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6358:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6360:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6362:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6368:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6366:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6368:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6370:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6372:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6374:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6376:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6378:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6380:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6382:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6388:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6386:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6388:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6390:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6392:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6394:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6396:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6398:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6400:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6402:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6408:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6406:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6408:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6410:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6412:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6414:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6416:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6418:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6420:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6422:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6521:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6519:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6546:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6544:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 Compiling C code to S... 
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3856:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3838:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void basicmain()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3865:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4963:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4967:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:3847:21: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4944:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4948:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4952:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4959:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4962:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4965:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4968:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4971:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4978:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4981:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4984:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4987:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4990:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4993:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4996:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4999:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5288:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5291:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5294:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5297:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5300:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5303:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5306:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5309:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5906:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4974:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4977:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4980:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5269:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5272:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5275:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5278:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5281:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5284:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5287:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5290:24: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:5901:52: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void switchAttractFMV()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6282:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6280:15: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6282:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6284:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6286:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6288:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6290:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6292:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6294:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6296:16: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6308:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6306:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6308:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6310:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6312:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6314:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6316:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6318:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6320:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6322:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6328:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6326:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6328:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6330:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6332:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6334:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6336:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6338:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6340:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6342:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6348:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6346:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6348:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6350:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6352:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6354:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6356:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6358:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6360:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6362:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6368:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6366:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6368:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6370:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6372:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6374:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6376:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6378:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6380:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6382:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6388:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6386:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6388:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6390:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6392:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6394:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6396:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6398:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6400:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6402:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6408:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6406:11: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6408:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6410:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6412:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6414:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6416:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6418:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6420:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6422:12: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initLeaderboard()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6521:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6519:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c: In function 'void initGoroLives()':
-C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6546:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:6544:18: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
  
 Linking things... 
 LOAD MAP
@@ -1151,7 +1151,7 @@ raptor_mtapp G  00020D38   raptor_mtfn G  00020D3C   raptor_vidmode G  00020CB8
 raptor_videnable G  00020CBC   raptor_varmod G  00020CC0   raptor_top_of_bss G  00020D00   
 raptor_trashram G  00020D04   raptor_uvbi_jmp G  00020D08   raptor_poobjl G  00020D0C   
 raptor_probjl G  00020D10   raptor_inittab G  00020D40   RAPTOR_U235init G  00042A5A   
-raptor_samplebank_ptr G  00042D50   __Z9basicmainv G  0002E710   RAPTOR_U235playqueue G  00042B50   
+raptor_samplebank_ptr G  00042D50   __Z9basicmainv G  0002E6EC   RAPTOR_U235playqueue G  00042B50   
 RAPTOR_U235resetqueue G  00042B7C   RAPTOR_Version G  000145A0   RAPTOR_random G  000145BA   
 RAPTOR_Install G  000145CC   RAPTOR_usepartipal G  0001466E   RAPTOR_use8x8fontpal G  0001467C   
 RAPTOR_use8x16fontpal G  0001468A   RAPTOR_use16x16fontpal G  00014698   raptor_font8x8_pal G  000147D8   
@@ -1195,168 +1195,168 @@ RAPTOR_flashcheck G  00019C64   raptor_console_x G  00019C6A   raptor_console_y 
 raptor_console_visible G  00019C7A   raptor_console_monitors G  00019CCA   RAPTOR_console_inverse G  0001FB20   
 RAPTOR_console_update_registers G  0001FB48   RAPTOR_console_update_usermonitors G  0001FBAC   RAPTOR_console_update_textline G  0001FC22   
 raptor_mapindex G  00020CE4   raptor_ang_search G  00020D44   raptor_col_user G  00020D48   
-__Z9bloodInitv G  00020D60   __Z11bloodUpdateP12SoundHandler G  00020D8E   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss G  00036826   
-__Z19animationIsCompleteP14SpriteAnimators G  00036754   ___floatsisf G  0004893E   ___mulsf3 G  000481DE   
+__Z9bloodInitv G  00020D60   __Z11bloodUpdateP12SoundHandler G  00020D8E   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss G  000368B2   
+__Z19animationIsCompleteP14SpriteAnimators G  000367E0   ___floatsisf G  0004893E   ___mulsf3 G  000481DE   
 ___subsf3 G  00047F48   ___fixsfsi G  00048B7A   ___addsf3 G  00047F4E   
-__Z8sfxBloodP12SoundHandler G  00034B44   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb G  00036770   __Z22spriteDelaySetInactiveiiPb G  000369A6   
+__Z8sfxBloodP12SoundHandler G  00034BE4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb G  000367FC   __Z22spriteDelaySetInactiveiiPb G  00036A26   
 __Z10bloodSpraysss G  00022EDA   __Z9bloodGlobsss G  00022F6A   __Z9bloodDropsss G  00022FFA   
 __Z9bloodBallsss G  0002359C   __Z9bloodPoolss G  00023844   __Z11bloodSquirtss G  00023C64   
 __Z15bloodResetTicksv G  00023DFA   __Z11bloodImpalesss G  00023F12   __Z10cameraInitjiiij G  00024100   
-__Z14stageGetHeightv G  00037036   __Z8setFramejssssfj G  00036520   __Z12cameraUpdateP7FighterS0_ G  00024182   
-__Z17fighterShiftRightP7Fighter G  0002696E   __Z16fighterShiftLeftP7Fighter G  0002699A   __Z9stageMoveii G  0003709A   
+__Z14stageGetHeightv G  000370B6   __Z8setFramejssssfj G  000365AC   __Z12cameraUpdateP7FighterS0_ G  00024182   
+__Z17fighterShiftRightP7Fighter G  0002695E   __Z16fighterShiftLeftP7Fighter G  0002698A   __Z9stageMoveii G  0003711A   
 __Z21cameraCheckBoundsLeftP7FighterS0_ G  00024BC2   __Z22cameraCheckBoundsRightP7FighterS0_ G  00024DF2   __Z13cameraCanMovev G  00025026   
 __Z18cameraIsAtLeftWallv G  0002504A   __Z19cameraIsAtRightWallv G  0002505E   __Z10cameraGetXv G  00025076   
 __Z15cameraGetOffsetv G  00025084   __Z16cameraResetTicksv G  00025092   __Z11showMessagePc G  000250C0   
 _jsfDebugMessage G  00048BA0   __Z14showMessageIntPci G  000250DC   ee_printf G  0004BC2C   
 __Z15showMessageBoolPcb G  00025104   __Z14fighterStartUpv G  0002519A   __Z11fighterHideP7Fighter G  000251B2   
 __Z11fighterShowP7Fighter G  000251D6   __Z21fighterMakeSelectableP7Fighterb G  00025302   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_ G  000253A8   
-jsfLoadClut G  0004943E   __Z16impactFrameResetP7Fighter G  00028540   __Z15playerinputInitP7Fighter G  000337E0   
+jsfLoadClut G  0004943E   __Z16impactFrameResetP7Fighter G  00028520   __Z15playerinputInitP7Fighter G  00033800   
 __Z19fighterRestartMatchP7Fighter G  00025728   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025738   __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025782   
 __Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  000257CA   __Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator G  00025812   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  0002581A   
-__Z24fighterCaptureDpadInputsP7Fighter G  00025822   __Z15playerinputPushP7Fighteri G  00033826   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025908   
-__Z19playerinputContainsP12StateMachineP7FighterPii G  0003398E   __Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000259A6   __Z18fighterButtonCheckP7Fighter G  000259AE   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00025A48   __Z11sfxHiyaMaleP12SoundHandler G  00034388   __Z11sfxHiyaKangP12SoundHandler G  00034554   
-__Z13sfxHiyaFemaleP12SoundHandler G  0003446E   __Z12sfxHiyaNinjaP12SoundHandler G  0003463A   __Z16fighterPlayGroaniP12SoundHandlerb G  00025AA4   
-__Z12sfxGroanMaleP12SoundHandler G  00034806   __Z14sfxGroanFemaleP12SoundHandler G  000348EC   __Z15fighterPlayYelliP12SoundHandlerb G  00025ACC   
-__Z11sfxYellMaleP12SoundHandler G  00034FCC   __Z11sfxYellKangP12SoundHandler G  0003513E   __Z13sfxYellFemaleP12SoundHandler G  000350B2   
-__Z15fighterPlayJumpiP12SoundHandlerb G  00025B0E   __Z11sfxJumpMaleP12SoundHandler G  000351CA   __Z12sfxJumpNinjaP12SoundHandler G  000352E2   
-__Z13sfxJumpFemaleP12SoundHandler G  00035256   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B5C   __Z17sfxAnnouncerLaughP12SoundHandler G  00035E2C   
-__Z21sfxAnnouncerExcellentP12SoundHandler G  00035DA0   __Z11sfxCrowdAwwP12SoundHandler G  00035C88   __Z17fighterResetFlagsP7Fighter G  00025BB6   
-__Z16fighterMakeDizzyP7Fighter G  00025D00   __Z20fighterResetFlagsAllP7FighterS0_ G  00025D2E   __Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_ G  00025DFC   
-__Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator G  000371CC   __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  00025E98   __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator G  00037372   
-__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  000263F2   __Z26stageGetFighterHitboxIndexv G  0003702C   rapCollide G  00049890   
-__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_ G  00026766   __Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_ G  0002681C   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000268B8   
-__Z9hudUpdateP7FighterS0_ G  00027884   __Z23fighterAddPendingDamageP7FighteribS0_i G  000268C4   __Z17fighterTakeDamageP7Fighteri G  000268EE   
-__Z16hudUpdateFighterP7Fighter G  000277BA   __Z7bgShakeb G  00036CCC   __Z21fighterLockBoundariesP7Fighter G  000269BE   
-__Z27fighterAlignSpriteAndHitboxP7Fighter G  000269C6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00026A04   __Z17fighterSetOnFloorP7Fighter G  00026A42   
-__Z20fighterHasRoomToMoveP7FighterS0_ G  00026A54   __Z19fighterPositionXAddP7Fighteri G  00026AE0   __Z17fighterCastShadowP7Fighterb G  00026B32   
-__Z25fighterShadowHeightLookupi G  00026DDA   __Z20fighterIsMaxDistanceP7FighterS0_ G  00026E48   __Z17fighterResetTicksP7Fighter G  00026E9A   
-__Z17fighterDrawScoresP7FighterS0_ G  00026EB4   rapUse8x8fontPalette G  00049CDA   rapLocate G  00049984   
-_rapPrint G  00049928   ___udivsi3 G  00047DE0   __Z14fighterLaydownP7FighterP14SpriteAnimator G  00027032   
-__Z12animateFramejjP14AnimationFramefjiiii G  00036380   __Z27fighterResetRaidenLightningP7Fighter G  000270E4   __Z13fighterFreezeP7Fighter G  0002713E   
-__Z19sfxSubzeroFreezeEndP12SoundHandler G  000358E6   __Z15fighterUnfreezeP7Fighter G  000271DA   __Z14fighterHarpoonP7FighterS0_ G  00027226   
-___mulsi3 G  00047DA0   __Z23fighterSlideToPositionXP7Fighteri G  000273FE   __Z19fighterHarpoonCheckP7FighterS0_ G  0002741C   
-__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027596   __Z17fighterIsBlockingP12StateMachineP7Fighter G  000275AA   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  000275D0   
-__Z12hudGetStringbi G  00027610   __Z18hudUpdateHealthbarbi G  00027666   __Z7hudInitv G  0002773C   
-__Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002858C   __Z15leaderboardInitv G  000286A0   __Z10matchResetv G  000286C0   
-rapSetClock G  000499EE   __Z9matchInitv G  0002871C   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00028790   
-__Z12sfxFinishHimP12SoundHandler G  00035F44   __Z12sfxCrowdClapP12SoundHandler G  00035D14   __Z8sfxFightP12SoundHandler G  00033D00   
-__Z13sfxJohnnyCageP12SoundHandler G  00033D8C   __Z8sfxSonyaP12SoundHandler G  000340D4   __Z7sfxKanoP12SoundHandler G  00033E18   
-__Z10sfxSubzeroP12SoundHandler G  00034048   __Z11sfxScorpionP12SoundHandler G  00033FBC   __Z10sfxLiuKangP12SoundHandler G  00033F30   
-__Z9sfxRaidenP12SoundHandler G  00033EA4   __Z7sfxWinsP12SoundHandler G  00035FD0   __Z12sfxFinishHerP12SoundHandler G  00035EB8   
-__Z15matchIsCompletev G  000290A4   __Z20matchGetFighter1Winsv G  000290B2   __Z20matchGetFighter2Winsv G  000290C0   
-__Z15matchResetTicksv G  000290CE   __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator G  00029100   __Z18sfxScorpionHarpoonP12SoundHandler G  00035972   
-__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator G  000294AE   __Z16sfxSubzeroFreezeP12SoundHandler G  0003585A   __Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator G  0002985A   
-__Z13sfxSonyaRingsP12SoundHandler G  000357CE   __Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator G  00029C04   __Z16sfxCageGreenboltP12SoundHandler G  0003562A   
-__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator G  00029F74   __Z18sfxRaidenLightningP12SoundHandler G  00035AE4   __Z21sfxRaidenLightningEndP12SoundHandler G  00035B70   
-__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator G  0002A344   __Z12sfxKanoKnifeP12SoundHandler G  00035742   __Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator G  0002A6DE   
-__Z17initBlackPalettesv G  0002A700   __Z15initAlphaScreenv G  0002A798   rapUnpack G  00048DFA   
-__Z16initTruFunScreenv G  0002A7EE   __Z15initTitleScreenv G  0002A844   __Z14initMenuScreenv G  0002A8B0   
-__Z14musicStageGoroP12SoundHandler G  000362AC   __Z15initAttractModev G  0002A988   __Z16switchAttractFMVv G  0002AFB0   
-rapUse8x16fontPalette G  00049CEC   __Z15initLeaderboardv G  0002B6E8   __Z13initGoroLivesv G  0002B99C   
-__Z15initGoroProfilev G  0002BA0E   __Z11initWinnersv G  0002BA82   __Z14initGameAssetsv G  0002BB7A   
-__Z20switchScreenVsBattleii G  0002BBD4   __Z17stageLoadVsBattlev G  00036D8C   rapSetActiveList G  00049876   
-__Z17switchScreenFightiib G  0002BF84   __Z12bgResetTicksv G  00036D1A   __Z15stageResetTicksv G  00037128   
-__Z8stageGetv G  00036D5A   __Z15musicStageGatesP12SoundHandler G  000361DA   __Z14stageGetStartYv G  00037080   
-__Z14stageGetStartXv G  00037050   rapFadeClut G  00049854   __Z17musicStageWarriorP12SoundHandler G  00036262   
-__Z13musicStagePitP12SoundHandler G  00036224   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  000365F8   __Z16musicStageThroneP12SoundHandler G  000362F6   
-__Z17SetPlayerPalettesv G  0002D9BC   __Z25switchScreenChooseFighterv G  0002DFA2   __Z26setFighterAlternatePaletteii G  0002E21C   
-__Z14setPlayer1NamePc G  0002E274   __Z14setPlayer2NamePci G  0002E2B8   __Z19displayWinnerMedalsv G  0002E314   
-__Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  000373A8   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000373D2   __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000373DA   
-__Z15StateIdle_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037418   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037420   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000378D8   
-__Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000378FE   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037906   __Z19StateBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000379CC   
-__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000379D4   __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037A5E   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037AA8   
-__Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037AB0   __Z18StateDucking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037B76   __Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037B7E   
-__Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037CAC   __Z24StateWalkingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037CD6   __Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037CDE   
-__Z25StateWalkingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037DCC   __Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037DD4   __Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037FDC   
-__Z25StateWalkingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038006   __Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003800E   __Z26StateWalkingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000380DA   
-__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000380E2   __Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003828A   __Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator G  000382D0   
-__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000382D8   __Z18StateJumping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038470   __Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038478   
-__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003854A   __Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038590   __Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038598   
-__Z25StateJumpingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000386D0   __Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000386D8   __Z26StateJumpingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003879E   
-__Z25StateJumpingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  000387E4   __Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000387EC   __Z26StateJumpingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003892E   
-__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038936   __Z23StateDuckBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000389FC   __Z22StateDuckBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038A26   
-__Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038A2E   __Z23StateDuckBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038B90   __Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038B98   
-__Z22StateLowPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038BCE   __Z21StateLowPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038C0E   __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038C16   
-__Z22StateLowPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038D32   __Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038D3A   __Z28StateLowRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038D60   
-__Z27StateLowRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038DA6   __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038DAE   __Z28StateLowRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038EFA   
-__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038F02   __Z23StateHighPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038F28   __Z22StateHighPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038F68   
-__Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038F70   __Z23StateHighPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003908C   __Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039094   
-__Z29StateHighRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  000390CA   __Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039110   __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039118   
-__Z29StateHighRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039264   __Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003926C   __Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000392A2   
-__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000392E6   __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000392EE   __Z21StateLowKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000393DA   
-__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000393E2   __Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000393EA   __Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003942E   
-__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039436   __Z22StateHighKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039522   __Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003952A   
-__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039532   __Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039576   __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003957E   
-__Z28StateRoundhouseKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039628   __Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039630   __Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039638   
-__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003967C   __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039684   __Z23StateUppercutting_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003972E   
-__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039736   __Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003973E   __Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039782   
-__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003978A   __Z22StateDuckKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003983E   __Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039846   
-__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003984E   __Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039890   __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039898   
-__Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039986   __Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000399D0   __Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000399D8   
-__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039A1A   __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039A22   __Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039B10   
-__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039B5A   __Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039B62   __Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039BA6   
-__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039BAE   __Z19StateSweeping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039C58   __Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039C60   
-__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039C68   __Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039CB2   __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039CBA   
-__Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039E00   __Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039E54   __Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039E5C   
-__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039E9E   __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039EA6   __Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039FD4   
-__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A01E   __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A026   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A070   
-__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A078   __Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A1C0   __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A214   
-__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A21C   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A25E   __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A266   
-__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A396   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A3E0   __Z23StateBodyPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BB2A   
-__Z22StateBodyPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BB58   __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BB60   __Z23StateBodyPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BC6C   
-__Z29StateBodyPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BC74   __Z22StateBodyKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BC7C   __Z21StateBodyKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BCAA   
-__Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BCB2   __Z22StateBodyKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BD92   __Z28StateBodyKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BD9A   
-__Z19StateThrowing_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BDA2   __Z18StateThrowing_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BE16   __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BE26   
-__Z19StateThrowing_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BED0   __Z25StateThrowing_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BED8   __Z22StateBeingThrown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BEE0   
-__Z21StateBeingThrown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BF3A   __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BF4A   __Z22StateBeingThrown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C218   
-__Z28StateBeingThrown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C220   __Z24StateTurningAround_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C228   __Z23StateTurningAround_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C252   
-__Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C262   __Z24StateTurningAround_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C3E4   __Z30StateTurningAround_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C3EC   
-__Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C3F4   __Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C4BE   __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C500   
-__Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C77E   __Z35StateThrowingProjectile_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C786   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A3E8   
-__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A496   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A4A6   __Z17StateHitLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A53E   
-__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A546   __Z18StateHitHigh_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A54E   __Z17StateHitHigh_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A624   
-__Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A634   __Z18StateHitHigh_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A6CC   __Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A6D4   
-__Z19StateHitSweep_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A6DC   __Z18StateHitSweep_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A78A   __Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A79A   
-__Z19StateHitSweep_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A84A   __Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A852   __Z16StateGetUp_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A85A   
-__Z15StateGetUp_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A884   __Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A894   __Z16StateGetUp_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A92C   
-__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A934   __Z18StateHitBack_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A93C   __Z17StateHitBack_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AA30   
-__Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AA44   __Z18StateHitBack_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AB94   __Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AB9C   
-__Z21StateHitBackLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003ABA4   __Z20StateHitBackLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AC48   __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AC58   
-__Z21StateHitBackLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003ADA8   __Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003ADB0   __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003ADB8   
-__Z21StateHitUppercut_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AF3C   __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AF4C   __Z22StateHitUppercut_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B158   
-__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B160   __Z18StateLaydown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B168   __Z17StateLaydown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B186   
-__Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B18E   __Z18StateLaydown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B234   __Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B23C   
-__Z22StateHitDropKick_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B244   __Z21StateHitDropKick_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B2A6   __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B2B6   
-__Z22StateHitDropKick_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B4CA   __Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B4D2   __Z17StateHitAir_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B4DA   
-__Z16StateHitAir_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B53C   __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B54C   __Z17StateHitAir_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B722   
-__Z23StateHitAir_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B72A   __Z22StateHitBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B732   __Z21StateHitBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B78C   
-__Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B79C   __Z22StateHitBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B862   __Z28StateHitBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B86A   
-__Z29StateHitDuckingBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B872   __Z28StateHitDuckingBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B8C0   __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B8D0   
-__Z29StateHitDuckingBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B998   __Z35StateHitDuckingBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B9A0   __Z31StateHitBlockingKnockback_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B9A8   
-__Z30StateHitBlockingKnockback_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BA02   __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BA12   __Z31StateHitBlockingKnockback_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BB1A   
-__Z37StateHitBlockingKnockback_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BB22   __Z15stateMachineAddP12StateMachineiP5State G  00037160   rapDebugSetXY G  0004972E   
-jsfGetPadPressed G  00048DCE   _jsfVsync G  000490C6   __Z9sfxTruFunP12SoundHandler G  00034D9C   
-__Z8sfxIntroP12SoundHandler G  000342FC   __Z11sfxP2CursorP12SoundHandler G  000341E4   __Z6bgInitv G  00036A70   
-__Z15spriteDelayInitv G  00036900   __Z9sleepInitv G  00033C80   __Z9stageInitv G  00036D40   
-__Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  0003717E   __Z11sfxP1CursorP12SoundHandler G  00034160   __Z13sfxTitleStartP12SoundHandler G  00034F40   
-__Z10musicTitleP12SoundHandler G  00036174   jsfGetPad G  00048C04   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  0003722E   
-__Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000371B8   __Z10sleepCheckv G  00033C9A   __Z17playerinputUpdateP7FighterS0_ G  00033A16   
-__Z8bgUpdateP7FighterS0_ G  00036AB8   __Z11stageUpdatev G  00036E8A   __Z17spriteDelayUpdatev G  0003694C   
-__Z9musicStopv G  00036340   __Z12stageSetNextv G  00036D6A   __Z16playerinputResetP7FighterS0_ G  00033B38   
-__Z19playerinputGetValueii G  00033BB4   __Z8sleepAddi G  00033CD4   u235PlaySampleFreq G  00049D66   
-__Z7sfxGongP12SoundHandler G  00034270   __Z8sfxBlockP12SoundHandler G  00034720   __Z6sfxHitP12SoundHandler G  000349D2   
-__Z9sfxImpactP12SoundHandler G  00034AB8   __Z8sfxSwingP12SoundHandler G  00034C2A   __Z7sfxThudP12SoundHandler G  00034D10   
-__Z12sfxTitleRiseP12SoundHandler G  00034E28   __Z12sfxTitleThudP12SoundHandler G  00034EB4   __Z12sfxThrowMaleP12SoundHandler G  0003536E   
-__Z14sfxThrowFemaleP12SoundHandler G  000353FA   __Z13sfxThrowNinjaP12SoundHandler G  00035486   __Z11sfxJumpRollP12SoundHandler G  00035512   
-__Z11sfxCageYeahP12SoundHandler G  0003559E   __Z11sfxKanoYellP12SoundHandler G  000356B6   __Z22sfxScorpionGetOverHereP12SoundHandler G  000359FE   
-__Z15sfxKanoHeadbuttP12SoundHandler G  00035BFC   __Z11sfxFlawlessP12SoundHandler G  0003605C   __Z11sfxFatalityP12SoundHandler G  000360E8   
+__Z24fighterCaptureDpadInputsP7Fighter G  00025822   __Z15playerinputPushP7Fighteri G  00033848   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025908   
+__Z19playerinputContainsP7FighterPii G  000339C2   __Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00025996   __Z18fighterButtonCheckP7Fighter G  0002599E   
+__Z15fighterPlayHiyaiP12SoundHandlerb G  00025A38   __Z11sfxHiyaMaleP12SoundHandler G  00034428   __Z11sfxHiyaKangP12SoundHandler G  000345F4   
+__Z13sfxHiyaFemaleP12SoundHandler G  0003450E   __Z12sfxHiyaNinjaP12SoundHandler G  000346DA   __Z16fighterPlayGroaniP12SoundHandlerb G  00025A94   
+__Z12sfxGroanMaleP12SoundHandler G  000348A6   __Z14sfxGroanFemaleP12SoundHandler G  0003498C   __Z15fighterPlayYelliP12SoundHandlerb G  00025ABC   
+__Z11sfxYellMaleP12SoundHandler G  0003506C   __Z11sfxYellKangP12SoundHandler G  000351DE   __Z13sfxYellFemaleP12SoundHandler G  00035152   
+__Z15fighterPlayJumpiP12SoundHandlerb G  00025AFE   __Z11sfxJumpMaleP12SoundHandler G  0003526A   __Z12sfxJumpNinjaP12SoundHandler G  00035382   
+__Z13sfxJumpFemaleP12SoundHandler G  000352F6   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B4C   __Z17sfxAnnouncerLaughP12SoundHandler G  00035ECC   
+__Z21sfxAnnouncerExcellentP12SoundHandler G  00035E40   __Z11sfxCrowdAwwP12SoundHandler G  00035D28   __Z17fighterResetFlagsP7Fighter G  00025BA6   
+__Z16fighterMakeDizzyP7Fighter G  00025CF0   __Z20fighterResetFlagsAllP7FighterS0_ G  00025D1E   __Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_ G  00025DEC   
+__Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator G  0003724C   __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  00025E88   __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator G  000373F2   
+__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  000263E2   __Z26stageGetFighterHitboxIndexv G  000370AC   rapCollide G  00049890   
+__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_ G  00026756   __Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_ G  0002680C   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000268A8   
+__Z9hudUpdateP7FighterS0_ G  00027864   __Z23fighterAddPendingDamageP7FighteribS0_i G  000268B4   __Z17fighterTakeDamageP7Fighteri G  000268DE   
+__Z16hudUpdateFighterP7Fighter G  0002779A   __Z7bgShakeb G  00036D4C   __Z21fighterLockBoundariesP7Fighter G  000269AE   
+__Z27fighterAlignSpriteAndHitboxP7Fighter G  000269B6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000269F4   __Z17fighterSetOnFloorP7Fighter G  00026A32   
+__Z20fighterHasRoomToMoveP7FighterS0_ G  00026A44   __Z19fighterPositionXAddP7Fighteri G  00026AD0   __Z17fighterCastShadowP7Fighterb G  00026B22   
+__Z25fighterShadowHeightLookupi G  00026DCA   __Z20fighterIsMaxDistanceP7FighterS0_ G  00026E38   __Z17fighterResetTicksP7Fighter G  00026E8A   
+__Z17fighterDrawScoresP7FighterS0_ G  00026EA4   rapUse8x8fontPalette G  00049CDA   rapLocate G  00049984   
+_rapPrint G  00049928   ___udivsi3 G  00047DE0   __Z14fighterLaydownP7FighterP14SpriteAnimator G  00027022   
+__Z12animateFramejjP14AnimationFramefjiiii G  00036420   __Z27fighterResetRaidenLightningP7Fighter G  000270D4   __Z13fighterFreezeP7Fighter G  0002712E   
+__Z19sfxSubzeroFreezeEndP12SoundHandler G  00035986   __Z15fighterUnfreezeP7Fighter G  000271CA   __Z14fighterHarpoonP7FighterS0_ G  00027216   
+___mulsi3 G  00047DA0   __Z23fighterSlideToPositionXP7Fighteri G  000273EE   __Z19fighterHarpoonCheckP7FighterS0_ G  0002740C   
+__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027586   __Z17fighterIsBlockingP12StateMachineP7Fighter G  0002759A   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  000275C0   
+__Z12hudGetStringbi G  000275F0   __Z18hudUpdateHealthbarbi G  00027646   __Z7hudInitv G  0002771C   
+__Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002856C   __Z15leaderboardInitv G  00028680   __Z10matchResetv G  000286A0   
+rapSetClock G  000499EE   __Z9matchInitv G  000286FC   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00028770   
+__Z12sfxFinishHimP12SoundHandler G  00035FE4   __Z12sfxCrowdClapP12SoundHandler G  00035DB4   __Z8sfxFightP12SoundHandler G  00033DA0   
+__Z13sfxJohnnyCageP12SoundHandler G  00033E2C   __Z8sfxSonyaP12SoundHandler G  00034174   __Z7sfxKanoP12SoundHandler G  00033EB8   
+__Z10sfxSubzeroP12SoundHandler G  000340E8   __Z11sfxScorpionP12SoundHandler G  0003405C   __Z10sfxLiuKangP12SoundHandler G  00033FD0   
+__Z9sfxRaidenP12SoundHandler G  00033F44   __Z7sfxWinsP12SoundHandler G  00036070   __Z12sfxFinishHerP12SoundHandler G  00035F58   
+__Z15matchIsCompletev G  00029084   __Z20matchGetFighter1Winsv G  00029092   __Z20matchGetFighter2Winsv G  000290A0   
+__Z15matchResetTicksv G  000290AE   __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator G  000290E0   __Z18sfxScorpionHarpoonP12SoundHandler G  00035A12   
+__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator G  0002948E   __Z16sfxSubzeroFreezeP12SoundHandler G  000358FA   __Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator G  0002983A   
+__Z13sfxSonyaRingsP12SoundHandler G  0003586E   __Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator G  00029BE4   __Z16sfxCageGreenboltP12SoundHandler G  000356CA   
+__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator G  00029F54   __Z18sfxRaidenLightningP12SoundHandler G  00035B84   __Z21sfxRaidenLightningEndP12SoundHandler G  00035C10   
+__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator G  0002A324   __Z12sfxKanoKnifeP12SoundHandler G  000357E2   __Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator G  0002A6BE   
+__Z17initBlackPalettesv G  0002A6E0   __Z15initAlphaScreenv G  0002A778   rapUnpack G  00048DFA   
+__Z16initTruFunScreenv G  0002A7CE   __Z15initTitleScreenv G  0002A824   __Z14initMenuScreenv G  0002A890   
+__Z14musicStageGoroP12SoundHandler G  0003634C   __Z15initAttractModev G  0002A968   __Z16switchAttractFMVv G  0002AF90   
+rapUse8x16fontPalette G  00049CEC   __Z15initLeaderboardv G  0002B6C8   __Z13initGoroLivesv G  0002B97C   
+__Z15initGoroProfilev G  0002B9EE   __Z11initWinnersv G  0002BA62   __Z14initGameAssetsv G  0002BB5A   
+__Z20switchScreenVsBattleii G  0002BBB4   __Z17stageLoadVsBattlev G  00036E0C   rapSetActiveList G  00049876   
+__Z17switchScreenFightiib G  0002BF64   __Z12bgResetTicksv G  00036D9A   __Z15stageResetTicksv G  000371A8   
+__Z8stageGetv G  00036DDA   __Z15musicStageGatesP12SoundHandler G  0003627A   __Z14stageGetStartYv G  00037100   
+__Z14stageGetStartXv G  000370D0   rapFadeClut G  00049854   __Z17musicStageWarriorP12SoundHandler G  00036302   
+__Z13musicStagePitP12SoundHandler G  000362C4   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  00036684   __Z16musicStageThroneP12SoundHandler G  00036396   
+__Z17SetPlayerPalettesv G  0002D99C   __Z25switchScreenChooseFighterv G  0002DF82   __Z26setFighterAlternatePaletteii G  0002E1FC   
+__Z14setPlayer1NamePc G  0002E254   __Z14setPlayer2NamePci G  0002E298   __Z19displayWinnerMedalsv G  0002E2F4   
+__Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037428   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037452   __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003745A   
+__Z15StateIdle_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037498   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000374A0   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037958   
+__Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003797E   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037986   __Z19StateBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037A4C   
+__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037A54   __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037ADE   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037B28   
+__Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037B30   __Z18StateDucking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037BF6   __Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037BFE   
+__Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037D2C   __Z24StateWalkingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037D56   __Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037D5E   
+__Z25StateWalkingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037E4C   __Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037E54   __Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003805C   
+__Z25StateWalkingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038086   __Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003808E   __Z26StateWalkingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003815A   
+__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038162   __Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003830A   __Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038350   
+__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038358   __Z18StateJumping_SleepP12StateMachineP7FighterP14SpriteAnimator G  000384F0   __Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000384F8   
+__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  000385CA   __Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038610   __Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038618   
+__Z25StateJumpingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038750   __Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038758   __Z26StateJumpingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003881E   
+__Z25StateJumpingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038864   __Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003886C   __Z26StateJumpingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000389AE   
+__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000389B6   __Z23StateDuckBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038A7C   __Z22StateDuckBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038AA6   
+__Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038AAE   __Z23StateDuckBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038C10   __Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038C18   
+__Z22StateLowPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038C4E   __Z21StateLowPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038C8E   __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038C96   
+__Z22StateLowPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038DB2   __Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038DBA   __Z28StateLowRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038DE0   
+__Z27StateLowRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038E26   __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038E2E   __Z28StateLowRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038F7A   
+__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038F82   __Z23StateHighPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038FA8   __Z22StateHighPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038FE8   
+__Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038FF0   __Z23StateHighPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003910C   __Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039114   
+__Z29StateHighRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003914A   __Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039190   __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039198   
+__Z29StateHighRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  000392E4   __Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000392EC   __Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039322   
+__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039366   __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003936E   __Z21StateLowKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003945A   
+__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039462   __Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003946A   __Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000394AE   
+__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000394B6   __Z22StateHighKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000395A2   __Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000395AA   
+__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000395B2   __Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000395F6   __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000395FE   
+__Z28StateRoundhouseKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000396A8   __Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000396B0   __Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator G  000396B8   
+__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator G  000396FC   __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039704   __Z23StateUppercutting_SleepP12StateMachineP7FighterP14SpriteAnimator G  000397AE   
+__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000397B6   __Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000397BE   __Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039802   
+__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003980A   __Z22StateDuckKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000398BE   __Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000398C6   
+__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  000398CE   __Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039910   __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039918   
+__Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039A06   __Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039A50   __Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039A58   
+__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039A9A   __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039AA2   __Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039B90   
+__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039BDA   __Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039BE2   __Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039C26   
+__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039C2E   __Z19StateSweeping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039CD8   __Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039CE0   
+__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039CE8   __Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039D32   __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039D3A   
+__Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039E80   __Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039ED4   __Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039EDC   
+__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039F1E   __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039F26   __Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A054   
+__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A09E   __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A0A6   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A0F0   
+__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A0F8   __Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A240   __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A294   
+__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A29C   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A2DE   __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A2E6   
+__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A416   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A460   __Z23StateBodyPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BB3C   
+__Z22StateBodyPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BB6A   __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BB72   __Z23StateBodyPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BC7E   
+__Z29StateBodyPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BC86   __Z22StateBodyKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BC8E   __Z21StateBodyKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BCBC   
+__Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BCC4   __Z22StateBodyKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BDA4   __Z28StateBodyKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BDAC   
+__Z19StateThrowing_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BDB4   __Z18StateThrowing_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BE28   __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BE38   
+__Z19StateThrowing_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BEE2   __Z25StateThrowing_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BEEA   __Z22StateBeingThrown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BEF2   
+__Z21StateBeingThrown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BF4C   __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BF5C   __Z22StateBeingThrown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C22A   
+__Z28StateBeingThrown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C232   __Z24StateTurningAround_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C23A   __Z23StateTurningAround_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C264   
+__Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C274   __Z24StateTurningAround_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C3F6   __Z30StateTurningAround_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C3FE   
+__Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C406   __Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C4B8   __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C4FA   
+__Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C778   __Z35StateThrowingProjectile_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C780   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A468   
+__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A516   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A526   __Z17StateHitLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A5BE   
+__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A5C6   __Z18StateHitHigh_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A5CE   __Z17StateHitHigh_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A6A4   
+__Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A6B4   __Z18StateHitHigh_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A74C   __Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A754   
+__Z19StateHitSweep_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A75C   __Z18StateHitSweep_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A80A   __Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A81A   
+__Z19StateHitSweep_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A8CA   __Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A8D2   __Z16StateGetUp_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A8DA   
+__Z15StateGetUp_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A904   __Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A914   __Z16StateGetUp_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A9AC   
+__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A9B4   __Z18StateHitBack_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A9BC   __Z17StateHitBack_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AAB0   
+__Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AAC4   __Z18StateHitBack_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AC14   __Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AC1C   
+__Z21StateHitBackLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003AC24   __Z20StateHitBackLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003ACC8   __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003ACD8   
+__Z21StateHitBackLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AE28   __Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AE30   __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003AE38   
+__Z21StateHitUppercut_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AF4E   __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AF5E   __Z22StateHitUppercut_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B16A   
+__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B172   __Z18StateLaydown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B17A   __Z17StateLaydown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B198   
+__Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B1A0   __Z18StateLaydown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B246   __Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B24E   
+__Z22StateHitDropKick_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B256   __Z21StateHitDropKick_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B2B8   __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B2C8   
+__Z22StateHitDropKick_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B4DC   __Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B4E4   __Z17StateHitAir_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B4EC   
+__Z16StateHitAir_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B54E   __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B55E   __Z17StateHitAir_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B734   
+__Z23StateHitAir_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B73C   __Z22StateHitBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B744   __Z21StateHitBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B79E   
+__Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B7AE   __Z22StateHitBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B874   __Z28StateHitBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B87C   
+__Z29StateHitDuckingBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B884   __Z28StateHitDuckingBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B8D2   __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B8E2   
+__Z29StateHitDuckingBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B9AA   __Z35StateHitDuckingBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B9B2   __Z31StateHitBlockingKnockback_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B9BA   
+__Z30StateHitBlockingKnockback_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BA14   __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BA24   __Z31StateHitBlockingKnockback_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BB2C   
+__Z37StateHitBlockingKnockback_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BB34   __Z15stateMachineAddP12StateMachineiP5State G  000371E0   rapDebugSetXY G  0004972E   
+jsfGetPadPressed G  00048DCE   _jsfVsync G  000490C6   __Z9sfxTruFunP12SoundHandler G  00034E3C   
+__Z8sfxIntroP12SoundHandler G  0003439C   __Z11sfxP2CursorP12SoundHandler G  00034284   __Z6bgInitv G  00036AF0   
+__Z15spriteDelayInitv G  00036980   __Z9sleepInitv G  00033D20   __Z9stageInitv G  00036DC0   
+__Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  000371FE   __Z11sfxP1CursorP12SoundHandler G  00034200   __Z13sfxTitleStartP12SoundHandler G  00034FE0   
+__Z10musicTitleP12SoundHandler G  00036214   jsfGetPad G  00048C04   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  000372AE   
+__Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037238   __Z10sleepCheckv G  00033D3A   __Z17playerinputUpdateP7FighterS0_ G  00033AAA   
+__Z8bgUpdateP7FighterS0_ G  00036B38   __Z11stageUpdatev G  00036F0A   __Z17spriteDelayUpdatev G  000369CC   
+__Z9musicStopv G  000363E0   __Z12stageSetNextv G  00036DEA   __Z16playerinputResetP7FighterS0_ G  00033BD0   
+__Z19playerinputGetValueii G  00033C5C   __Z8sleepAddi G  00033D74   u235PlaySampleFreq G  00049D66   
+__Z7sfxGongP12SoundHandler G  00034310   __Z8sfxBlockP12SoundHandler G  000347C0   __Z6sfxHitP12SoundHandler G  00034A72   
+__Z9sfxImpactP12SoundHandler G  00034B58   __Z8sfxSwingP12SoundHandler G  00034CCA   __Z7sfxThudP12SoundHandler G  00034DB0   
+__Z12sfxTitleRiseP12SoundHandler G  00034EC8   __Z12sfxTitleThudP12SoundHandler G  00034F54   __Z12sfxThrowMaleP12SoundHandler G  0003540E   
+__Z14sfxThrowFemaleP12SoundHandler G  0003549A   __Z13sfxThrowNinjaP12SoundHandler G  00035526   __Z11sfxJumpRollP12SoundHandler G  000355B2   
+__Z11sfxCageYeahP12SoundHandler G  0003563E   __Z11sfxKanoYellP12SoundHandler G  00035756   __Z22sfxScorpionGetOverHereP12SoundHandler G  00035A9E   
+__Z15sfxKanoHeadbuttP12SoundHandler G  00035C9C   __Z11sfxFlawlessP12SoundHandler G  000360FC   __Z11sfxFatalityP12SoundHandler G  00036188   
 __Z14u235StopModulev G  00049F66   __Z11u235Silencev G  00049F88   __Z14u235PlayModuleis G  00049EFC   
-_u235ModuleVol G  00049FF0   __Z16soundNextChannelP12SoundHandler G  00036352   __Z15soundGetChannelP12SoundHandler G  00036364   
-___floatunsisf G  0004892A   ___fixunssfsi G  00048720   __Z12animateFramejjP14AnimationFramefji G  000364F0   
-__Z22getAnimationFrameWidthP14AnimationFrames G  0003673C   __Z6moveUpv G  00036A60   __Z8moveDownv G  00036A68   
-__Z13bgScrollRightf G  00036AA8   __Z12bgScrollLeftf G  00036AB0   __Z10bgScrollUpv G  00036C60   
-__Z12bgScrollDownv G  00036C96   __Z19stageHideShowSpriteii G  00037120   RAPTOR_mt_init G  0003C820   
+_u235ModuleVol G  00049FF0   __Z16soundNextChannelP12SoundHandler G  000363F2   __Z15soundGetChannelP12SoundHandler G  00036404   
+___floatunsisf G  0004892A   ___fixunssfsi G  00048720   __Z12animateFramejjP14AnimationFramefji G  0003657C   
+__Z22getAnimationFrameWidthP14AnimationFrames G  000367C8   __Z6moveUpv G  00036AE0   __Z8moveDownv G  00036AE8   
+__Z13bgScrollRightf G  00036B28   __Z12bgScrollLeftf G  00036B30   __Z10bgScrollUpv G  00036CE0   
+__Z12bgScrollDownv G  00036D16   __Z19stageHideShowSpriteii G  000371A0   RAPTOR_mt_init G  0003C820   
 RAPTOR_mt_load G  0003C86C   RAPTOR_mt_save G  0003C968   raptor_mt_present G  0003E774   
 RAPTOR_MTtrash G  0003E990   RAPTOR_U235SilenceChannels G  000429A0   RAPTOR_U235ChangeReplayFrq G  00042A04   
 RAPTOR_U235setpad1 G  00042A12   RAPTOR_U235setpad2 G  00042A1E   RAPTOR_U235setrot1 G  00042A2A   
@@ -1427,7 +1427,7 @@ __Z10ee_sprintfPcPKcz G  0004BC10   eeUpdateChecksum G  0004BD7A   eeValidateChe
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000576E0   _bloodDirection G  0004BEA0   _bloodSprays G  0004C15A   
+_DATA_E  G  00057800   _bloodDirection G  0004BEA0   _bloodSprays G  0004C15A   
 _bloodGlobObject G  0004C466   _bloodGlobFrames G  0004C47C   sprite   G  0004C578   
 _bloodDrops G  0004C05A   _bloodBalls G  0004C00A   _bloodPools G  0004BFBA   
 _bloodSquirts G  0004BEA2   _bloodDropFrames G  0004C326   _bloodSprayFrames G  0004C4F4   
@@ -1470,45 +1470,45 @@ _kangImpactFrameRoundhouse G  0004CA84   _kangImpactFrameJumpKick G  0004CA70   
 _kangImpactFrameSweep G  0004CA8E   _kangImpactFrameUppercut G  0004CA98   _kangImpactFrameHighKick G  0004CAA2   
 _kangImpactFrameLowKick G  0004CAAC   _kangImpactFrameHighPunch G  0004CAB6   _kangImpactFrameLowPunch G  0004CAC0   
 _p1Cursor G  0004CB5C   _p2Cursor G  0004CB5A   _p1Selected G  0004CB58   
-_p2Selected G  0004CB56   _ticksPerSec G  0004CB50   _shakeDirection G  00057620   
-_ShakeTicks G  00057624   __fpCCR  G  00057680   _xcpt    G  000576A0   
+_p2Selected G  0004CB56   _ticksPerSec G  0004CB50   _shakeDirection G  00057740   
+_ShakeTicks G  00057744   __fpCCR  G  000577A0   _xcpt    G  000577C0   
 
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00122D40   RAPTOR_particle_gfx G  0005B6E0   RAPTOR_sprite_table G  00064CE0   
-_trashram G  0007D580   _bloodStayDelay G  0007D58A   _gravity G  0007D58C   
-_impaled G  0007D584   _impaledTicks G  0007D580   _bloodSpeedRnd G  0007D586   
-_xOffset G  0007D5A8   _backgroundSpriteIndex G  0007D5A4   _cameraX G  0007D5B2   
-_cameraY G  0007D5AE   _backgroundGfxBase G  0007D5A0   _cameraTicks G  0007D5B6   
-_backgroundChangedLeft G  0007D5AD   _backgroundChangedRight G  0007D5AC   _js_r_textbuffer G  00122C00   
-_shadowY G  0007D5C4   _collision G  0007D5CA   _jsfFontSize G  00122C32   
-_jsfFontIndx G  00122C2E   _tempScore G  0007D5C0   _walkForward G  0007D5C8   
-_matchState G  0007D604   _matchTicks G  0007D600   _fightZoomed G  0007D5FE   
-_fightScale G  0007D5FA   _winner  G  0007D5F6   _loser   G  0007D5F2   
-_matchComplete G  0007D5F0   _winsTicks G  0007D5E4   _playedName G  0007D5E2   
-_playedWins G  0007D5E1   _playedCrowd G  0007D5E0   _round   G  0007D608   
-_fighter1Wins G  0007D5EC   _fighter2Wins G  0007D5E8   _fadedIn G  0007D647   
-_fadedOut G  0007D646   _gameStartTicks G  0007D642   _onTruFunScreen G  0007D64E   
-_onTitleScreen G  0007D64D   _menuSelected G  0007D628   _menuChanged G  0007D629   
-_menuIndex G  0007D62A   _menuTicks G  0007D62E   _onMenuScreen G  0007D64C   
-_attractModeTicks G  0007D632   _attractModeIndex G  0007D626   _inAttractMode G  0007D64B   
-_goroProfileShown G  0007D624   _attractSlideIndex G  0007D620   _chooseTicks G  0007D636   
-_onScreenChooseFighter G  0007D64A   _onScreenVsBattle G  0007D649   _lastTicks G  0007D63E   
-_onScreenFight G  0007D648   _p1FlashCount G  0007D63C   _p2FlashCount G  0007D63A   
-_chooseFighterDone G  0007D64F   _k       G  00122A80   _isSleeping G  00122AA8   
-_lastTick G  00122AA4   _totalSleepTicks G  00122AA0   _spriteCount G  00122AE0   
-_sprites G  00122AE4   _LastTicks G  00122B9E   _IsScrollingUp G  00122BA4   
-_IsScrollingDown G  00122BA3   _IsShaking G  00122BA2   _cloudTicks1 G  00122B88   
-_cloudTicks2 G  00122B84   _cloudTicks3 G  00122B80   _bgYOffset G  00122B9A   
-_bgYInc  G  00122B92   _shakeCount G  00122B8E   _scrollUpAfterShake G  00122B8C   
-_bgYStart G  00122B96   zero_left_pad G  00122C18   zero_right_pad G  00122C1C   
-_pad1    G  00122BFC   _pad1Last G  00122BF4   _pad1Prev G  00122BEC   
-_pad2    G  00122BF8   _pad2Last G  00122BF0   _pad2Prev G  00122BE8   
-_plot_colour G  00122C2C   rapAngle_xAdd G  00122BE4   rapAngle_yAdd G  00122BE0   
-_js_r_xpos G  00122C3A   _js_r_ypos G  00122C36   _yt2     G  00122C04   
-_y       G  00122C0C   _errno   G  00122C14   zero_mousex_delta G  00122C20   
-zero_mousey_delta G  00122C24   zero_rotary_delta G  00122C28   
+_BSS_E   G  00122E20   RAPTOR_particle_gfx G  0005B800   RAPTOR_sprite_table G  00064E00   
+_trashram G  0007D6A0   _bloodStayDelay G  0007D6AA   _gravity G  0007D6AC   
+_impaled G  0007D6A4   _impaledTicks G  0007D6A0   _bloodSpeedRnd G  0007D6A6   
+_xOffset G  0007D6C8   _backgroundSpriteIndex G  0007D6C4   _cameraX G  0007D6D2   
+_cameraY G  0007D6CE   _backgroundGfxBase G  0007D6C0   _cameraTicks G  0007D6D6   
+_backgroundChangedLeft G  0007D6CD   _backgroundChangedRight G  0007D6CC   _js_r_textbuffer G  00122CE0   
+_shadowY G  0007D6E4   _collision G  0007D6EA   _jsfFontSize G  00122D12   
+_jsfFontIndx G  00122D0E   _tempScore G  0007D6E0   _walkForward G  0007D6E8   
+_matchState G  0007D724   _matchTicks G  0007D720   _fightZoomed G  0007D71E   
+_fightScale G  0007D71A   _winner  G  0007D716   _loser   G  0007D712   
+_matchComplete G  0007D710   _winsTicks G  0007D704   _playedName G  0007D702   
+_playedWins G  0007D701   _playedCrowd G  0007D700   _round   G  0007D728   
+_fighter1Wins G  0007D70C   _fighter2Wins G  0007D708   _fadedIn G  0007D767   
+_fadedOut G  0007D766   _gameStartTicks G  0007D762   _onTruFunScreen G  0007D76E   
+_onTitleScreen G  0007D76D   _menuSelected G  0007D748   _menuChanged G  0007D749   
+_menuIndex G  0007D74A   _menuTicks G  0007D74E   _onMenuScreen G  0007D76C   
+_attractModeTicks G  0007D752   _attractModeIndex G  0007D746   _inAttractMode G  0007D76B   
+_goroProfileShown G  0007D744   _attractSlideIndex G  0007D740   _chooseTicks G  0007D756   
+_onScreenChooseFighter G  0007D76A   _onScreenVsBattle G  0007D769   _lastTicks G  0007D75E   
+_onScreenFight G  0007D768   _p1FlashCount G  0007D75C   _p2FlashCount G  0007D75A   
+_chooseFighterDone G  0007D76F   _isSleeping G  00122B88   _lastTick G  00122B84   
+_totalSleepTicks G  00122B80   _spriteCount G  00122BC0   _sprites G  00122BC4   
+_LastTicks G  00122C7E   _IsScrollingUp G  00122C84   _IsScrollingDown G  00122C83   
+_IsShaking G  00122C82   _cloudTicks1 G  00122C68   _cloudTicks2 G  00122C64   
+_cloudTicks3 G  00122C60   _bgYOffset G  00122C7A   _bgYInc  G  00122C72   
+_shakeCount G  00122C6E   _scrollUpAfterShake G  00122C6C   _bgYStart G  00122C76   
+zero_left_pad G  00122CF8   zero_right_pad G  00122CFC   _pad1    G  00122CDC   
+_pad1Last G  00122CD4   _pad1Prev G  00122CCC   _pad2    G  00122CD8   
+_pad2Last G  00122CD0   _pad2Prev G  00122CC8   _plot_colour G  00122D0C   
+rapAngle_xAdd G  00122CC4   rapAngle_yAdd G  00122CC0   _js_r_xpos G  00122D1A   
+_js_r_ypos G  00122D16   _yt2     G  00122CE4   _y       G  00122CEC   
+_errno   G  00122CF4   zero_mousex_delta G  00122D00   zero_mousey_delta G  00122D04   
+zero_rotary_delta G  00122D08   
 
 LOAD MAP
 
@@ -1542,7 +1542,7 @@ raptor_mtapp G  00020D38   raptor_mtfn G  00020D3C   raptor_vidmode G  00020CB8
 raptor_videnable G  00020CBC   raptor_varmod G  00020CC0   raptor_top_of_bss G  00020D00   
 raptor_trashram G  00020D04   raptor_uvbi_jmp G  00020D08   raptor_poobjl G  00020D0C   
 raptor_probjl G  00020D10   raptor_inittab G  00020D40   RAPTOR_U235init G  00042A5A   
-raptor_samplebank_ptr G  00042D50   __Z9basicmainv G  0002E710   RAPTOR_U235playqueue G  00042B50   
+raptor_samplebank_ptr G  00042D50   __Z9basicmainv G  0002E6EC   RAPTOR_U235playqueue G  00042B50   
 RAPTOR_U235resetqueue G  00042B7C   RAPTOR_Version G  000145A0   RAPTOR_random G  000145BA   
 RAPTOR_Install G  000145CC   RAPTOR_usepartipal G  0001466E   RAPTOR_use8x8fontpal G  0001467C   
 RAPTOR_use8x16fontpal G  0001468A   RAPTOR_use16x16fontpal G  00014698   raptor_font8x8_pal G  000147D8   
@@ -1586,168 +1586,168 @@ RAPTOR_flashcheck G  00019C64   raptor_console_x G  00019C6A   raptor_console_y 
 raptor_console_visible G  00019C7A   raptor_console_monitors G  00019CCA   RAPTOR_console_inverse G  0001FB20   
 RAPTOR_console_update_registers G  0001FB48   RAPTOR_console_update_usermonitors G  0001FBAC   RAPTOR_console_update_textline G  0001FC22   
 raptor_mapindex G  00020CE4   raptor_ang_search G  00020D44   raptor_col_user G  00020D48   
-__Z9bloodInitv G  00020D60   __Z11bloodUpdateP12SoundHandler G  00020D8E   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss G  00036826   
-__Z19animationIsCompleteP14SpriteAnimators G  00036754   ___floatsisf G  0004893E   ___mulsf3 G  000481DE   
+__Z9bloodInitv G  00020D60   __Z11bloodUpdateP12SoundHandler G  00020D8E   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss G  000368B2   
+__Z19animationIsCompleteP14SpriteAnimators G  000367E0   ___floatsisf G  0004893E   ___mulsf3 G  000481DE   
 ___subsf3 G  00047F48   ___fixsfsi G  00048B7A   ___addsf3 G  00047F4E   
-__Z8sfxBloodP12SoundHandler G  00034B44   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb G  00036770   __Z22spriteDelaySetInactiveiiPb G  000369A6   
+__Z8sfxBloodP12SoundHandler G  00034BE4   __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb G  000367FC   __Z22spriteDelaySetInactiveiiPb G  00036A26   
 __Z10bloodSpraysss G  00022EDA   __Z9bloodGlobsss G  00022F6A   __Z9bloodDropsss G  00022FFA   
 __Z9bloodBallsss G  0002359C   __Z9bloodPoolss G  00023844   __Z11bloodSquirtss G  00023C64   
 __Z15bloodResetTicksv G  00023DFA   __Z11bloodImpalesss G  00023F12   __Z10cameraInitjiiij G  00024100   
-__Z14stageGetHeightv G  00037036   __Z8setFramejssssfj G  00036520   __Z12cameraUpdateP7FighterS0_ G  00024182   
-__Z17fighterShiftRightP7Fighter G  0002696E   __Z16fighterShiftLeftP7Fighter G  0002699A   __Z9stageMoveii G  0003709A   
+__Z14stageGetHeightv G  000370B6   __Z8setFramejssssfj G  000365AC   __Z12cameraUpdateP7FighterS0_ G  00024182   
+__Z17fighterShiftRightP7Fighter G  0002695E   __Z16fighterShiftLeftP7Fighter G  0002698A   __Z9stageMoveii G  0003711A   
 __Z21cameraCheckBoundsLeftP7FighterS0_ G  00024BC2   __Z22cameraCheckBoundsRightP7FighterS0_ G  00024DF2   __Z13cameraCanMovev G  00025026   
 __Z18cameraIsAtLeftWallv G  0002504A   __Z19cameraIsAtRightWallv G  0002505E   __Z10cameraGetXv G  00025076   
 __Z15cameraGetOffsetv G  00025084   __Z16cameraResetTicksv G  00025092   __Z11showMessagePc G  000250C0   
 _jsfDebugMessage G  00048BA0   __Z14showMessageIntPci G  000250DC   ee_printf G  0004BC2C   
 __Z15showMessageBoolPcb G  00025104   __Z14fighterStartUpv G  0002519A   __Z11fighterHideP7Fighter G  000251B2   
 __Z11fighterShowP7Fighter G  000251D6   __Z21fighterMakeSelectableP7Fighterb G  00025302   __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_S4_ G  000253A8   
-jsfLoadClut G  0004943E   __Z16impactFrameResetP7Fighter G  00028540   __Z15playerinputInitP7Fighter G  000337E0   
+jsfLoadClut G  0004943E   __Z16impactFrameResetP7Fighter G  00028520   __Z15playerinputInitP7Fighter G  00033800   
 __Z19fighterRestartMatchP7Fighter G  00025728   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025738   __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025782   
 __Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  000257CA   __Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator G  00025812   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  0002581A   
-__Z24fighterCaptureDpadInputsP7Fighter G  00025822   __Z15playerinputPushP7Fighteri G  00033826   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025908   
-__Z19playerinputContainsP12StateMachineP7FighterPii G  0003398E   __Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000259A6   __Z18fighterButtonCheckP7Fighter G  000259AE   
-__Z15fighterPlayHiyaiP12SoundHandlerb G  00025A48   __Z11sfxHiyaMaleP12SoundHandler G  00034388   __Z11sfxHiyaKangP12SoundHandler G  00034554   
-__Z13sfxHiyaFemaleP12SoundHandler G  0003446E   __Z12sfxHiyaNinjaP12SoundHandler G  0003463A   __Z16fighterPlayGroaniP12SoundHandlerb G  00025AA4   
-__Z12sfxGroanMaleP12SoundHandler G  00034806   __Z14sfxGroanFemaleP12SoundHandler G  000348EC   __Z15fighterPlayYelliP12SoundHandlerb G  00025ACC   
-__Z11sfxYellMaleP12SoundHandler G  00034FCC   __Z11sfxYellKangP12SoundHandler G  0003513E   __Z13sfxYellFemaleP12SoundHandler G  000350B2   
-__Z15fighterPlayJumpiP12SoundHandlerb G  00025B0E   __Z11sfxJumpMaleP12SoundHandler G  000351CA   __Z12sfxJumpNinjaP12SoundHandler G  000352E2   
-__Z13sfxJumpFemaleP12SoundHandler G  00035256   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B5C   __Z17sfxAnnouncerLaughP12SoundHandler G  00035E2C   
-__Z21sfxAnnouncerExcellentP12SoundHandler G  00035DA0   __Z11sfxCrowdAwwP12SoundHandler G  00035C88   __Z17fighterResetFlagsP7Fighter G  00025BB6   
-__Z16fighterMakeDizzyP7Fighter G  00025D00   __Z20fighterResetFlagsAllP7FighterS0_ G  00025D2E   __Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_ G  00025DFC   
-__Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator G  000371CC   __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  00025E98   __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator G  00037372   
-__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  000263F2   __Z26stageGetFighterHitboxIndexv G  0003702C   rapCollide G  00049890   
-__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_ G  00026766   __Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_ G  0002681C   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000268B8   
-__Z9hudUpdateP7FighterS0_ G  00027884   __Z23fighterAddPendingDamageP7FighteribS0_i G  000268C4   __Z17fighterTakeDamageP7Fighteri G  000268EE   
-__Z16hudUpdateFighterP7Fighter G  000277BA   __Z7bgShakeb G  00036CCC   __Z21fighterLockBoundariesP7Fighter G  000269BE   
-__Z27fighterAlignSpriteAndHitboxP7Fighter G  000269C6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  00026A04   __Z17fighterSetOnFloorP7Fighter G  00026A42   
-__Z20fighterHasRoomToMoveP7FighterS0_ G  00026A54   __Z19fighterPositionXAddP7Fighteri G  00026AE0   __Z17fighterCastShadowP7Fighterb G  00026B32   
-__Z25fighterShadowHeightLookupi G  00026DDA   __Z20fighterIsMaxDistanceP7FighterS0_ G  00026E48   __Z17fighterResetTicksP7Fighter G  00026E9A   
-__Z17fighterDrawScoresP7FighterS0_ G  00026EB4   rapUse8x8fontPalette G  00049CDA   rapLocate G  00049984   
-_rapPrint G  00049928   ___udivsi3 G  00047DE0   __Z14fighterLaydownP7FighterP14SpriteAnimator G  00027032   
-__Z12animateFramejjP14AnimationFramefjiiii G  00036380   __Z27fighterResetRaidenLightningP7Fighter G  000270E4   __Z13fighterFreezeP7Fighter G  0002713E   
-__Z19sfxSubzeroFreezeEndP12SoundHandler G  000358E6   __Z15fighterUnfreezeP7Fighter G  000271DA   __Z14fighterHarpoonP7FighterS0_ G  00027226   
-___mulsi3 G  00047DA0   __Z23fighterSlideToPositionXP7Fighteri G  000273FE   __Z19fighterHarpoonCheckP7FighterS0_ G  0002741C   
-__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027596   __Z17fighterIsBlockingP12StateMachineP7Fighter G  000275AA   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  000275D0   
-__Z12hudGetStringbi G  00027610   __Z18hudUpdateHealthbarbi G  00027666   __Z7hudInitv G  0002773C   
-__Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002858C   __Z15leaderboardInitv G  000286A0   __Z10matchResetv G  000286C0   
-rapSetClock G  000499EE   __Z9matchInitv G  0002871C   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00028790   
-__Z12sfxFinishHimP12SoundHandler G  00035F44   __Z12sfxCrowdClapP12SoundHandler G  00035D14   __Z8sfxFightP12SoundHandler G  00033D00   
-__Z13sfxJohnnyCageP12SoundHandler G  00033D8C   __Z8sfxSonyaP12SoundHandler G  000340D4   __Z7sfxKanoP12SoundHandler G  00033E18   
-__Z10sfxSubzeroP12SoundHandler G  00034048   __Z11sfxScorpionP12SoundHandler G  00033FBC   __Z10sfxLiuKangP12SoundHandler G  00033F30   
-__Z9sfxRaidenP12SoundHandler G  00033EA4   __Z7sfxWinsP12SoundHandler G  00035FD0   __Z12sfxFinishHerP12SoundHandler G  00035EB8   
-__Z15matchIsCompletev G  000290A4   __Z20matchGetFighter1Winsv G  000290B2   __Z20matchGetFighter2Winsv G  000290C0   
-__Z15matchResetTicksv G  000290CE   __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator G  00029100   __Z18sfxScorpionHarpoonP12SoundHandler G  00035972   
-__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator G  000294AE   __Z16sfxSubzeroFreezeP12SoundHandler G  0003585A   __Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator G  0002985A   
-__Z13sfxSonyaRingsP12SoundHandler G  000357CE   __Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator G  00029C04   __Z16sfxCageGreenboltP12SoundHandler G  0003562A   
-__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator G  00029F74   __Z18sfxRaidenLightningP12SoundHandler G  00035AE4   __Z21sfxRaidenLightningEndP12SoundHandler G  00035B70   
-__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator G  0002A344   __Z12sfxKanoKnifeP12SoundHandler G  00035742   __Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator G  0002A6DE   
-__Z17initBlackPalettesv G  0002A700   __Z15initAlphaScreenv G  0002A798   rapUnpack G  00048DFA   
-__Z16initTruFunScreenv G  0002A7EE   __Z15initTitleScreenv G  0002A844   __Z14initMenuScreenv G  0002A8B0   
-__Z14musicStageGoroP12SoundHandler G  000362AC   __Z15initAttractModev G  0002A988   __Z16switchAttractFMVv G  0002AFB0   
-rapUse8x16fontPalette G  00049CEC   __Z15initLeaderboardv G  0002B6E8   __Z13initGoroLivesv G  0002B99C   
-__Z15initGoroProfilev G  0002BA0E   __Z11initWinnersv G  0002BA82   __Z14initGameAssetsv G  0002BB7A   
-__Z20switchScreenVsBattleii G  0002BBD4   __Z17stageLoadVsBattlev G  00036D8C   rapSetActiveList G  00049876   
-__Z17switchScreenFightiib G  0002BF84   __Z12bgResetTicksv G  00036D1A   __Z15stageResetTicksv G  00037128   
-__Z8stageGetv G  00036D5A   __Z15musicStageGatesP12SoundHandler G  000361DA   __Z14stageGetStartYv G  00037080   
-__Z14stageGetStartXv G  00037050   rapFadeClut G  00049854   __Z17musicStageWarriorP12SoundHandler G  00036262   
-__Z13musicStagePitP12SoundHandler G  00036224   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  000365F8   __Z16musicStageThroneP12SoundHandler G  000362F6   
-__Z17SetPlayerPalettesv G  0002D9BC   __Z25switchScreenChooseFighterv G  0002DFA2   __Z26setFighterAlternatePaletteii G  0002E21C   
-__Z14setPlayer1NamePc G  0002E274   __Z14setPlayer2NamePci G  0002E2B8   __Z19displayWinnerMedalsv G  0002E314   
-__Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  000373A8   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  000373D2   __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000373DA   
-__Z15StateIdle_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037418   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037420   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000378D8   
-__Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000378FE   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037906   __Z19StateBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000379CC   
-__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000379D4   __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037A5E   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037AA8   
-__Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037AB0   __Z18StateDucking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037B76   __Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037B7E   
-__Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037CAC   __Z24StateWalkingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037CD6   __Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037CDE   
-__Z25StateWalkingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037DCC   __Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037DD4   __Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037FDC   
-__Z25StateWalkingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038006   __Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003800E   __Z26StateWalkingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000380DA   
-__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000380E2   __Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003828A   __Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator G  000382D0   
-__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000382D8   __Z18StateJumping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038470   __Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038478   
-__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003854A   __Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038590   __Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038598   
-__Z25StateJumpingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000386D0   __Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000386D8   __Z26StateJumpingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003879E   
-__Z25StateJumpingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  000387E4   __Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000387EC   __Z26StateJumpingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003892E   
-__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038936   __Z23StateDuckBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000389FC   __Z22StateDuckBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038A26   
-__Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038A2E   __Z23StateDuckBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038B90   __Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038B98   
-__Z22StateLowPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038BCE   __Z21StateLowPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038C0E   __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038C16   
-__Z22StateLowPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038D32   __Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038D3A   __Z28StateLowRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038D60   
-__Z27StateLowRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038DA6   __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038DAE   __Z28StateLowRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038EFA   
-__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038F02   __Z23StateHighPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038F28   __Z22StateHighPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038F68   
-__Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038F70   __Z23StateHighPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003908C   __Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039094   
-__Z29StateHighRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  000390CA   __Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039110   __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039118   
-__Z29StateHighRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039264   __Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003926C   __Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000392A2   
-__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000392E6   __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000392EE   __Z21StateLowKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000393DA   
-__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000393E2   __Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000393EA   __Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003942E   
-__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039436   __Z22StateHighKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039522   __Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003952A   
-__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039532   __Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039576   __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003957E   
-__Z28StateRoundhouseKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039628   __Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039630   __Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039638   
-__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003967C   __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039684   __Z23StateUppercutting_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003972E   
-__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039736   __Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003973E   __Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039782   
-__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003978A   __Z22StateDuckKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003983E   __Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039846   
-__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003984E   __Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039890   __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039898   
-__Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039986   __Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000399D0   __Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000399D8   
-__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039A1A   __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039A22   __Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039B10   
-__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039B5A   __Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039B62   __Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039BA6   
-__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039BAE   __Z19StateSweeping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039C58   __Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039C60   
-__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039C68   __Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039CB2   __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039CBA   
-__Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039E00   __Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039E54   __Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039E5C   
-__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039E9E   __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039EA6   __Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039FD4   
-__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A01E   __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A026   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A070   
-__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A078   __Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A1C0   __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A214   
-__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A21C   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A25E   __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A266   
-__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A396   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A3E0   __Z23StateBodyPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BB2A   
-__Z22StateBodyPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BB58   __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BB60   __Z23StateBodyPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BC6C   
-__Z29StateBodyPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BC74   __Z22StateBodyKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BC7C   __Z21StateBodyKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BCAA   
-__Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BCB2   __Z22StateBodyKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BD92   __Z28StateBodyKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BD9A   
-__Z19StateThrowing_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BDA2   __Z18StateThrowing_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BE16   __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BE26   
-__Z19StateThrowing_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BED0   __Z25StateThrowing_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BED8   __Z22StateBeingThrown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BEE0   
-__Z21StateBeingThrown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BF3A   __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BF4A   __Z22StateBeingThrown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C218   
-__Z28StateBeingThrown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C220   __Z24StateTurningAround_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C228   __Z23StateTurningAround_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C252   
-__Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C262   __Z24StateTurningAround_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C3E4   __Z30StateTurningAround_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C3EC   
-__Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C3F4   __Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C4BE   __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C500   
-__Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C77E   __Z35StateThrowingProjectile_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C786   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A3E8   
-__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A496   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A4A6   __Z17StateHitLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A53E   
-__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A546   __Z18StateHitHigh_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A54E   __Z17StateHitHigh_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A624   
-__Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A634   __Z18StateHitHigh_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A6CC   __Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A6D4   
-__Z19StateHitSweep_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A6DC   __Z18StateHitSweep_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A78A   __Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A79A   
-__Z19StateHitSweep_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A84A   __Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A852   __Z16StateGetUp_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A85A   
-__Z15StateGetUp_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A884   __Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A894   __Z16StateGetUp_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A92C   
-__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A934   __Z18StateHitBack_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A93C   __Z17StateHitBack_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AA30   
-__Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AA44   __Z18StateHitBack_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AB94   __Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AB9C   
-__Z21StateHitBackLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003ABA4   __Z20StateHitBackLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AC48   __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AC58   
-__Z21StateHitBackLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003ADA8   __Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003ADB0   __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003ADB8   
-__Z21StateHitUppercut_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AF3C   __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AF4C   __Z22StateHitUppercut_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B158   
-__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B160   __Z18StateLaydown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B168   __Z17StateLaydown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B186   
-__Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B18E   __Z18StateLaydown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B234   __Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B23C   
-__Z22StateHitDropKick_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B244   __Z21StateHitDropKick_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B2A6   __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B2B6   
-__Z22StateHitDropKick_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B4CA   __Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B4D2   __Z17StateHitAir_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B4DA   
-__Z16StateHitAir_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B53C   __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B54C   __Z17StateHitAir_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B722   
-__Z23StateHitAir_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B72A   __Z22StateHitBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B732   __Z21StateHitBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B78C   
-__Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B79C   __Z22StateHitBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B862   __Z28StateHitBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B86A   
-__Z29StateHitDuckingBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B872   __Z28StateHitDuckingBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B8C0   __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B8D0   
-__Z29StateHitDuckingBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B998   __Z35StateHitDuckingBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B9A0   __Z31StateHitBlockingKnockback_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B9A8   
-__Z30StateHitBlockingKnockback_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BA02   __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BA12   __Z31StateHitBlockingKnockback_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BB1A   
-__Z37StateHitBlockingKnockback_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BB22   __Z15stateMachineAddP12StateMachineiP5State G  00037160   rapDebugSetXY G  0004972E   
-jsfGetPadPressed G  00048DCE   _jsfVsync G  000490C6   __Z9sfxTruFunP12SoundHandler G  00034D9C   
-__Z8sfxIntroP12SoundHandler G  000342FC   __Z11sfxP2CursorP12SoundHandler G  000341E4   __Z6bgInitv G  00036A70   
-__Z15spriteDelayInitv G  00036900   __Z9sleepInitv G  00033C80   __Z9stageInitv G  00036D40   
-__Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  0003717E   __Z11sfxP1CursorP12SoundHandler G  00034160   __Z13sfxTitleStartP12SoundHandler G  00034F40   
-__Z10musicTitleP12SoundHandler G  00036174   jsfGetPad G  00048C04   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  0003722E   
-__Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000371B8   __Z10sleepCheckv G  00033C9A   __Z17playerinputUpdateP7FighterS0_ G  00033A16   
-__Z8bgUpdateP7FighterS0_ G  00036AB8   __Z11stageUpdatev G  00036E8A   __Z17spriteDelayUpdatev G  0003694C   
-__Z9musicStopv G  00036340   __Z12stageSetNextv G  00036D6A   __Z16playerinputResetP7FighterS0_ G  00033B38   
-__Z19playerinputGetValueii G  00033BB4   __Z8sleepAddi G  00033CD4   u235PlaySampleFreq G  00049D66   
-__Z7sfxGongP12SoundHandler G  00034270   __Z8sfxBlockP12SoundHandler G  00034720   __Z6sfxHitP12SoundHandler G  000349D2   
-__Z9sfxImpactP12SoundHandler G  00034AB8   __Z8sfxSwingP12SoundHandler G  00034C2A   __Z7sfxThudP12SoundHandler G  00034D10   
-__Z12sfxTitleRiseP12SoundHandler G  00034E28   __Z12sfxTitleThudP12SoundHandler G  00034EB4   __Z12sfxThrowMaleP12SoundHandler G  0003536E   
-__Z14sfxThrowFemaleP12SoundHandler G  000353FA   __Z13sfxThrowNinjaP12SoundHandler G  00035486   __Z11sfxJumpRollP12SoundHandler G  00035512   
-__Z11sfxCageYeahP12SoundHandler G  0003559E   __Z11sfxKanoYellP12SoundHandler G  000356B6   __Z22sfxScorpionGetOverHereP12SoundHandler G  000359FE   
-__Z15sfxKanoHeadbuttP12SoundHandler G  00035BFC   __Z11sfxFlawlessP12SoundHandler G  0003605C   __Z11sfxFatalityP12SoundHandler G  000360E8   
+__Z24fighterCaptureDpadInputsP7Fighter G  00025822   __Z15playerinputPushP7Fighteri G  00033848   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025908   
+__Z19playerinputContainsP7FighterPii G  000339C2   __Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00025996   __Z18fighterButtonCheckP7Fighter G  0002599E   
+__Z15fighterPlayHiyaiP12SoundHandlerb G  00025A38   __Z11sfxHiyaMaleP12SoundHandler G  00034428   __Z11sfxHiyaKangP12SoundHandler G  000345F4   
+__Z13sfxHiyaFemaleP12SoundHandler G  0003450E   __Z12sfxHiyaNinjaP12SoundHandler G  000346DA   __Z16fighterPlayGroaniP12SoundHandlerb G  00025A94   
+__Z12sfxGroanMaleP12SoundHandler G  000348A6   __Z14sfxGroanFemaleP12SoundHandler G  0003498C   __Z15fighterPlayYelliP12SoundHandlerb G  00025ABC   
+__Z11sfxYellMaleP12SoundHandler G  0003506C   __Z11sfxYellKangP12SoundHandler G  000351DE   __Z13sfxYellFemaleP12SoundHandler G  00035152   
+__Z15fighterPlayJumpiP12SoundHandlerb G  00025AFE   __Z11sfxJumpMaleP12SoundHandler G  0003526A   __Z12sfxJumpNinjaP12SoundHandler G  00035382   
+__Z13sfxJumpFemaleP12SoundHandler G  000352F6   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B4C   __Z17sfxAnnouncerLaughP12SoundHandler G  00035ECC   
+__Z21sfxAnnouncerExcellentP12SoundHandler G  00035E40   __Z11sfxCrowdAwwP12SoundHandler G  00035D28   __Z17fighterResetFlagsP7Fighter G  00025BA6   
+__Z16fighterMakeDizzyP7Fighter G  00025CF0   __Z20fighterResetFlagsAllP7FighterS0_ G  00025D1E   __Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_ G  00025DEC   
+__Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator G  0003724C   __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  00025E88   __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator G  000373F2   
+__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_ G  000263E2   __Z26stageGetFighterHitboxIndexv G  000370AC   rapCollide G  00049890   
+__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_ G  00026756   __Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_ G  0002680C   __Z23fighterUpdateHealthbarsP7FighterS0_ G  000268A8   
+__Z9hudUpdateP7FighterS0_ G  00027864   __Z23fighterAddPendingDamageP7FighteribS0_i G  000268B4   __Z17fighterTakeDamageP7Fighteri G  000268DE   
+__Z16hudUpdateFighterP7Fighter G  0002779A   __Z7bgShakeb G  00036D4C   __Z21fighterLockBoundariesP7Fighter G  000269AE   
+__Z27fighterAlignSpriteAndHitboxP7Fighter G  000269B6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000269F4   __Z17fighterSetOnFloorP7Fighter G  00026A32   
+__Z20fighterHasRoomToMoveP7FighterS0_ G  00026A44   __Z19fighterPositionXAddP7Fighteri G  00026AD0   __Z17fighterCastShadowP7Fighterb G  00026B22   
+__Z25fighterShadowHeightLookupi G  00026DCA   __Z20fighterIsMaxDistanceP7FighterS0_ G  00026E38   __Z17fighterResetTicksP7Fighter G  00026E8A   
+__Z17fighterDrawScoresP7FighterS0_ G  00026EA4   rapUse8x8fontPalette G  00049CDA   rapLocate G  00049984   
+_rapPrint G  00049928   ___udivsi3 G  00047DE0   __Z14fighterLaydownP7FighterP14SpriteAnimator G  00027022   
+__Z12animateFramejjP14AnimationFramefjiiii G  00036420   __Z27fighterResetRaidenLightningP7Fighter G  000270D4   __Z13fighterFreezeP7Fighter G  0002712E   
+__Z19sfxSubzeroFreezeEndP12SoundHandler G  00035986   __Z15fighterUnfreezeP7Fighter G  000271CA   __Z14fighterHarpoonP7FighterS0_ G  00027216   
+___mulsi3 G  00047DA0   __Z23fighterSlideToPositionXP7Fighteri G  000273EE   __Z19fighterHarpoonCheckP7FighterS0_ G  0002740C   
+__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027586   __Z17fighterIsBlockingP12StateMachineP7Fighter G  0002759A   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  000275C0   
+__Z12hudGetStringbi G  000275F0   __Z18hudUpdateHealthbarbi G  00027646   __Z7hudInitv G  0002771C   
+__Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  0002856C   __Z15leaderboardInitv G  00028680   __Z10matchResetv G  000286A0   
+rapSetClock G  000499EE   __Z9matchInitv G  000286FC   __Z11matchUpdateP12SoundHandlerP7FighterS2_ G  00028770   
+__Z12sfxFinishHimP12SoundHandler G  00035FE4   __Z12sfxCrowdClapP12SoundHandler G  00035DB4   __Z8sfxFightP12SoundHandler G  00033DA0   
+__Z13sfxJohnnyCageP12SoundHandler G  00033E2C   __Z8sfxSonyaP12SoundHandler G  00034174   __Z7sfxKanoP12SoundHandler G  00033EB8   
+__Z10sfxSubzeroP12SoundHandler G  000340E8   __Z11sfxScorpionP12SoundHandler G  0003405C   __Z10sfxLiuKangP12SoundHandler G  00033FD0   
+__Z9sfxRaidenP12SoundHandler G  00033F44   __Z7sfxWinsP12SoundHandler G  00036070   __Z12sfxFinishHerP12SoundHandler G  00035F58   
+__Z15matchIsCompletev G  00029084   __Z20matchGetFighter1Winsv G  00029092   __Z20matchGetFighter2Winsv G  000290A0   
+__Z15matchResetTicksv G  000290AE   __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator G  000290E0   __Z18sfxScorpionHarpoonP12SoundHandler G  00035A12   
+__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator G  0002948E   __Z16sfxSubzeroFreezeP12SoundHandler G  000358FA   __Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator G  0002983A   
+__Z13sfxSonyaRingsP12SoundHandler G  0003586E   __Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator G  00029BE4   __Z16sfxCageGreenboltP12SoundHandler G  000356CA   
+__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator G  00029F54   __Z18sfxRaidenLightningP12SoundHandler G  00035B84   __Z21sfxRaidenLightningEndP12SoundHandler G  00035C10   
+__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator G  0002A324   __Z12sfxKanoKnifeP12SoundHandler G  000357E2   __Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator G  0002A6BE   
+__Z17initBlackPalettesv G  0002A6E0   __Z15initAlphaScreenv G  0002A778   rapUnpack G  00048DFA   
+__Z16initTruFunScreenv G  0002A7CE   __Z15initTitleScreenv G  0002A824   __Z14initMenuScreenv G  0002A890   
+__Z14musicStageGoroP12SoundHandler G  0003634C   __Z15initAttractModev G  0002A968   __Z16switchAttractFMVv G  0002AF90   
+rapUse8x16fontPalette G  00049CEC   __Z15initLeaderboardv G  0002B6C8   __Z13initGoroLivesv G  0002B97C   
+__Z15initGoroProfilev G  0002B9EE   __Z11initWinnersv G  0002BA62   __Z14initGameAssetsv G  0002BB5A   
+__Z20switchScreenVsBattleii G  0002BBB4   __Z17stageLoadVsBattlev G  00036E0C   rapSetActiveList G  00049876   
+__Z17switchScreenFightiib G  0002BF64   __Z12bgResetTicksv G  00036D9A   __Z15stageResetTicksv G  000371A8   
+__Z8stageGetv G  00036DDA   __Z15musicStageGatesP12SoundHandler G  0003627A   __Z14stageGetStartYv G  00037100   
+__Z14stageGetStartXv G  000370D0   rapFadeClut G  00049854   __Z17musicStageWarriorP12SoundHandler G  00036302   
+__Z13musicStagePitP12SoundHandler G  000362C4   __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii G  00036684   __Z16musicStageThroneP12SoundHandler G  00036396   
+__Z17SetPlayerPalettesv G  0002D99C   __Z25switchScreenChooseFighterv G  0002DF82   __Z26setFighterAlternatePaletteii G  0002E1FC   
+__Z14setPlayer1NamePc G  0002E254   __Z14setPlayer2NamePci G  0002E298   __Z19displayWinnerMedalsv G  0002E2F4   
+__Z15StateIdle_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037428   __Z14StateIdle_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037452   __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003745A   
+__Z15StateIdle_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037498   __Z21StateIdle_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000374A0   __Z19StateBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037958   
+__Z18StateBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003797E   __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037986   __Z19StateBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037A4C   
+__Z25StateBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037A54   __Z18StateDucking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037ADE   __Z17StateDucking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037B28   
+__Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037B30   __Z18StateDucking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037BF6   __Z24StateDucking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037BFE   
+__Z25StateWalkingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00037D2C   __Z24StateWalkingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00037D56   __Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00037D5E   
+__Z25StateWalkingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00037E4C   __Z31StateWalkingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037E54   __Z26StateWalkingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003805C   
+__Z25StateWalkingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038086   __Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003808E   __Z26StateWalkingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003815A   
+__Z32StateWalkingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038162   __Z18StateJumping_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003830A   __Z17StateJumping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038350   
+__Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038358   __Z18StateJumping_SleepP12StateMachineP7FighterP14SpriteAnimator G  000384F0   __Z24StateJumping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000384F8   
+__Z25StateJumpingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  000385CA   __Z24StateJumpingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038610   __Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038618   
+__Z25StateJumpingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038750   __Z31StateJumpingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038758   __Z26StateJumpingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003881E   
+__Z25StateJumpingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038864   __Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003886C   __Z26StateJumpingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  000389AE   
+__Z32StateJumpingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000389B6   __Z23StateDuckBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038A7C   __Z22StateDuckBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038AA6   
+__Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038AAE   __Z23StateDuckBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038C10   __Z29StateDuckBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038C18   
+__Z22StateLowPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038C4E   __Z21StateLowPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038C8E   __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038C96   
+__Z22StateLowPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038DB2   __Z28StateLowPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038DBA   __Z28StateLowRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038DE0   
+__Z27StateLowRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038E26   __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038E2E   __Z28StateLowRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00038F7A   
+__Z34StateLowRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00038F82   __Z23StateHighPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  00038FA8   __Z22StateHighPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00038FE8   
+__Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00038FF0   __Z23StateHighPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003910C   __Z29StateHighPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039114   
+__Z29StateHighRepeatPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003914A   __Z28StateHighRepeatPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039190   __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039198   
+__Z29StateHighRepeatPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  000392E4   __Z35StateHighRepeatPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000392EC   __Z21StateLowKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039322   
+__Z20StateLowKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039366   __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003936E   __Z21StateLowKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003945A   
+__Z27StateLowKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039462   __Z22StateHighKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003946A   __Z21StateHighKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000394AE   
+__Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000394B6   __Z22StateHighKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000395A2   __Z28StateHighKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000395AA   
+__Z28StateRoundhouseKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000395B2   __Z27StateRoundhouseKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  000395F6   __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  000395FE   
+__Z28StateRoundhouseKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000396A8   __Z34StateRoundhouseKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000396B0   __Z23StateUppercutting_EnterP12StateMachineP7FighterP14SpriteAnimator G  000396B8   
+__Z22StateUppercutting_ExitP12StateMachineP7FighterP14SpriteAnimator G  000396FC   __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039704   __Z23StateUppercutting_SleepP12StateMachineP7FighterP14SpriteAnimator G  000397AE   
+__Z29StateUppercutting_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000397B6   __Z22StateDuckKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  000397BE   __Z21StateDuckKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039802   
+__Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003980A   __Z22StateDuckKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  000398BE   __Z28StateDuckKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  000398C6   
+__Z23StateJumpPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  000398CE   __Z22StateJumpPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039910   __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039918   
+__Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039A06   __Z29StateJumpPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039A50   __Z22StateJumpKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039A58   
+__Z21StateJumpKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039A9A   __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039AA2   __Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039B90   
+__Z28StateJumpKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039BDA   __Z19StateSweeping_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039BE2   __Z18StateSweeping_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039C26   
+__Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039C2E   __Z19StateSweeping_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039CD8   __Z25StateSweeping_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039CE0   
+__Z32StateJumpingKickingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039CE8   __Z31StateJumpingKickingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039D32   __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039D3A   
+__Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  00039E80   __Z38StateJumpingKickingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  00039ED4   __Z33StateJumpingKickingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  00039EDC   
+__Z32StateJumpingKickingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  00039F1E   __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  00039F26   __Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A054   
+__Z39StateJumpingKickingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A09E   __Z33StateJumpingPunchingForward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A0A6   __Z32StateJumpingPunchingForward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A0F0   
+__Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A0F8   __Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A240   __Z39StateJumpingPunchingForward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A294   
+__Z34StateJumpingPunchingBackward_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A29C   __Z33StateJumpingPunchingBackward_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A2DE   __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A2E6   
+__Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A416   __Z40StateJumpingPunchingBackward_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A460   __Z23StateBodyPunching_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BB3C   
+__Z22StateBodyPunching_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BB6A   __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BB72   __Z23StateBodyPunching_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BC7E   
+__Z29StateBodyPunching_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BC86   __Z22StateBodyKicking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BC8E   __Z21StateBodyKicking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BCBC   
+__Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BCC4   __Z22StateBodyKicking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BDA4   __Z28StateBodyKicking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BDAC   
+__Z19StateThrowing_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BDB4   __Z18StateThrowing_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BE28   __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BE38   
+__Z19StateThrowing_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BEE2   __Z25StateThrowing_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BEEA   __Z22StateBeingThrown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003BEF2   
+__Z21StateBeingThrown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BF4C   __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BF5C   __Z22StateBeingThrown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C22A   
+__Z28StateBeingThrown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C232   __Z24StateTurningAround_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C23A   __Z23StateTurningAround_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C264   
+__Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C274   __Z24StateTurningAround_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C3F6   __Z30StateTurningAround_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C3FE   
+__Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003C406   __Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003C4B8   __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003C4FA   
+__Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003C778   __Z35StateThrowingProjectile_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003C780   __Z17StateHitLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A468   
+__Z16StateHitLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A516   __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A526   __Z17StateHitLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A5BE   
+__Z23StateHitLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A5C6   __Z18StateHitHigh_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A5CE   __Z17StateHitHigh_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A6A4   
+__Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A6B4   __Z18StateHitHigh_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A74C   __Z24StateHitHigh_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A754   
+__Z19StateHitSweep_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A75C   __Z18StateHitSweep_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A80A   __Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A81A   
+__Z19StateHitSweep_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A8CA   __Z25StateHitSweep_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A8D2   __Z16StateGetUp_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A8DA   
+__Z15StateGetUp_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003A904   __Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003A914   __Z16StateGetUp_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003A9AC   
+__Z22StateGetUp_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003A9B4   __Z18StateHitBack_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003A9BC   __Z17StateHitBack_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AAB0   
+__Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AAC4   __Z18StateHitBack_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AC14   __Z24StateHitBack_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AC1C   
+__Z21StateHitBackLow_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003AC24   __Z20StateHitBackLow_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003ACC8   __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003ACD8   
+__Z21StateHitBackLow_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003AE28   __Z27StateHitBackLow_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003AE30   __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003AE38   
+__Z21StateHitUppercut_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003AF4E   __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003AF5E   __Z22StateHitUppercut_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B16A   
+__Z28StateHitUppercut_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B172   __Z18StateLaydown_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B17A   __Z17StateLaydown_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B198   
+__Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B1A0   __Z18StateLaydown_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B246   __Z24StateLaydown_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B24E   
+__Z22StateHitDropKick_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B256   __Z21StateHitDropKick_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B2B8   __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B2C8   
+__Z22StateHitDropKick_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B4DC   __Z28StateHitDropKick_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B4E4   __Z17StateHitAir_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B4EC   
+__Z16StateHitAir_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B54E   __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B55E   __Z17StateHitAir_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B734   
+__Z23StateHitAir_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B73C   __Z22StateHitBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B744   __Z21StateHitBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B79E   
+__Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B7AE   __Z22StateHitBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B874   __Z28StateHitBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B87C   
+__Z29StateHitDuckingBlocking_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B884   __Z28StateHitDuckingBlocking_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003B8D2   __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003B8E2   
+__Z29StateHitDuckingBlocking_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003B9AA   __Z35StateHitDuckingBlocking_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003B9B2   __Z31StateHitBlockingKnockback_EnterP12StateMachineP7FighterP14SpriteAnimator G  0003B9BA   
+__Z30StateHitBlockingKnockback_ExitP12StateMachineP7FighterP14SpriteAnimator G  0003BA14   __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator G  0003BA24   __Z31StateHitBlockingKnockback_SleepP12StateMachineP7FighterP14SpriteAnimator G  0003BB2C   
+__Z37StateHitBlockingKnockback_HandleInputP12StateMachineP7FighterP14SpriteAnimator G  0003BB34   __Z15stateMachineAddP12StateMachineiP5State G  000371E0   rapDebugSetXY G  0004972E   
+jsfGetPadPressed G  00048DCE   _jsfVsync G  000490C6   __Z9sfxTruFunP12SoundHandler G  00034E3C   
+__Z8sfxIntroP12SoundHandler G  0003439C   __Z11sfxP2CursorP12SoundHandler G  00034284   __Z6bgInitv G  00036AF0   
+__Z15spriteDelayInitv G  00036980   __Z9sleepInitv G  00033D20   __Z9stageInitv G  00036DC0   
+__Z16stateMachineInitP12StateMachineiP7FighterP14SpriteAnimator G  000371FE   __Z11sfxP1CursorP12SoundHandler G  00034200   __Z13sfxTitleStartP12SoundHandler G  00034FE0   
+__Z10musicTitleP12SoundHandler G  00036214   jsfGetPad G  00048C04   __Z18stateMachineUpdateP12StateMachineP7FighterP14SpriteAnimator G  000372AE   
+__Z23stateMachineHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00037238   __Z10sleepCheckv G  00033D3A   __Z17playerinputUpdateP7FighterS0_ G  00033AAA   
+__Z8bgUpdateP7FighterS0_ G  00036B38   __Z11stageUpdatev G  00036F0A   __Z17spriteDelayUpdatev G  000369CC   
+__Z9musicStopv G  000363E0   __Z12stageSetNextv G  00036DEA   __Z16playerinputResetP7FighterS0_ G  00033BD0   
+__Z19playerinputGetValueii G  00033C5C   __Z8sleepAddi G  00033D74   u235PlaySampleFreq G  00049D66   
+__Z7sfxGongP12SoundHandler G  00034310   __Z8sfxBlockP12SoundHandler G  000347C0   __Z6sfxHitP12SoundHandler G  00034A72   
+__Z9sfxImpactP12SoundHandler G  00034B58   __Z8sfxSwingP12SoundHandler G  00034CCA   __Z7sfxThudP12SoundHandler G  00034DB0   
+__Z12sfxTitleRiseP12SoundHandler G  00034EC8   __Z12sfxTitleThudP12SoundHandler G  00034F54   __Z12sfxThrowMaleP12SoundHandler G  0003540E   
+__Z14sfxThrowFemaleP12SoundHandler G  0003549A   __Z13sfxThrowNinjaP12SoundHandler G  00035526   __Z11sfxJumpRollP12SoundHandler G  000355B2   
+__Z11sfxCageYeahP12SoundHandler G  0003563E   __Z11sfxKanoYellP12SoundHandler G  00035756   __Z22sfxScorpionGetOverHereP12SoundHandler G  00035A9E   
+__Z15sfxKanoHeadbuttP12SoundHandler G  00035C9C   __Z11sfxFlawlessP12SoundHandler G  000360FC   __Z11sfxFatalityP12SoundHandler G  00036188   
 __Z14u235StopModulev G  00049F66   __Z11u235Silencev G  00049F88   __Z14u235PlayModuleis G  00049EFC   
-_u235ModuleVol G  00049FF0   __Z16soundNextChannelP12SoundHandler G  00036352   __Z15soundGetChannelP12SoundHandler G  00036364   
-___floatunsisf G  0004892A   ___fixunssfsi G  00048720   __Z12animateFramejjP14AnimationFramefji G  000364F0   
-__Z22getAnimationFrameWidthP14AnimationFrames G  0003673C   __Z6moveUpv G  00036A60   __Z8moveDownv G  00036A68   
-__Z13bgScrollRightf G  00036AA8   __Z12bgScrollLeftf G  00036AB0   __Z10bgScrollUpv G  00036C60   
-__Z12bgScrollDownv G  00036C96   __Z19stageHideShowSpriteii G  00037120   RAPTOR_mt_init G  0003C820   
+_u235ModuleVol G  00049FF0   __Z16soundNextChannelP12SoundHandler G  000363F2   __Z15soundGetChannelP12SoundHandler G  00036404   
+___floatunsisf G  0004892A   ___fixunssfsi G  00048720   __Z12animateFramejjP14AnimationFramefji G  0003657C   
+__Z22getAnimationFrameWidthP14AnimationFrames G  000367C8   __Z6moveUpv G  00036AE0   __Z8moveDownv G  00036AE8   
+__Z13bgScrollRightf G  00036B28   __Z12bgScrollLeftf G  00036B30   __Z10bgScrollUpv G  00036CE0   
+__Z12bgScrollDownv G  00036D16   __Z19stageHideShowSpriteii G  000371A0   RAPTOR_mt_init G  0003C820   
 RAPTOR_mt_load G  0003C86C   RAPTOR_mt_save G  0003C968   raptor_mt_present G  0003E774   
 RAPTOR_MTtrash G  0003E990   RAPTOR_U235SilenceChannels G  000429A0   RAPTOR_U235ChangeReplayFrq G  00042A04   
 RAPTOR_U235setpad1 G  00042A12   RAPTOR_U235setpad2 G  00042A1E   RAPTOR_U235setrot1 G  00042A2A   
@@ -1818,7 +1818,7 @@ __Z10ee_sprintfPcPKcz G  0004BC10   eeUpdateChecksum G  0004BD7A   eeValidateChe
 
 DATA-SEGMENT RELOCATABLE SYMBOLS
 
-_DATA_E  G  000576E0   _bloodDirection G  0004BEA0   _bloodSprays G  0004C15A   
+_DATA_E  G  00057800   _bloodDirection G  0004BEA0   _bloodSprays G  0004C15A   
 _bloodGlobObject G  0004C466   _bloodGlobFrames G  0004C47C   sprite   G  0004C578   
 _bloodDrops G  0004C05A   _bloodBalls G  0004C00A   _bloodPools G  0004BFBA   
 _bloodSquirts G  0004BEA2   _bloodDropFrames G  0004C326   _bloodSprayFrames G  0004C4F4   
@@ -1861,45 +1861,45 @@ _kangImpactFrameRoundhouse G  0004CA84   _kangImpactFrameJumpKick G  0004CA70   
 _kangImpactFrameSweep G  0004CA8E   _kangImpactFrameUppercut G  0004CA98   _kangImpactFrameHighKick G  0004CAA2   
 _kangImpactFrameLowKick G  0004CAAC   _kangImpactFrameHighPunch G  0004CAB6   _kangImpactFrameLowPunch G  0004CAC0   
 _p1Cursor G  0004CB5C   _p2Cursor G  0004CB5A   _p1Selected G  0004CB58   
-_p2Selected G  0004CB56   _ticksPerSec G  0004CB50   _shakeDirection G  00057620   
-_ShakeTicks G  00057624   __fpCCR  G  00057680   _xcpt    G  000576A0   
+_p2Selected G  0004CB56   _ticksPerSec G  0004CB50   _shakeDirection G  00057740   
+_ShakeTicks G  00057744   __fpCCR  G  000577A0   _xcpt    G  000577C0   
 
 
 BSS-SEGMENT RELOCATABLE SYMBOLS
 
-_BSS_E   G  00122D40   RAPTOR_particle_gfx G  0005B6E0   RAPTOR_sprite_table G  00064CE0   
-_trashram G  0007D580   _bloodStayDelay G  0007D58A   _gravity G  0007D58C   
-_impaled G  0007D584   _impaledTicks G  0007D580   _bloodSpeedRnd G  0007D586   
-_xOffset G  0007D5A8   _backgroundSpriteIndex G  0007D5A4   _cameraX G  0007D5B2   
-_cameraY G  0007D5AE   _backgroundGfxBase G  0007D5A0   _cameraTicks G  0007D5B6   
-_backgroundChangedLeft G  0007D5AD   _backgroundChangedRight G  0007D5AC   _js_r_textbuffer G  00122C00   
-_shadowY G  0007D5C4   _collision G  0007D5CA   _jsfFontSize G  00122C32   
-_jsfFontIndx G  00122C2E   _tempScore G  0007D5C0   _walkForward G  0007D5C8   
-_matchState G  0007D604   _matchTicks G  0007D600   _fightZoomed G  0007D5FE   
-_fightScale G  0007D5FA   _winner  G  0007D5F6   _loser   G  0007D5F2   
-_matchComplete G  0007D5F0   _winsTicks G  0007D5E4   _playedName G  0007D5E2   
-_playedWins G  0007D5E1   _playedCrowd G  0007D5E0   _round   G  0007D608   
-_fighter1Wins G  0007D5EC   _fighter2Wins G  0007D5E8   _fadedIn G  0007D647   
-_fadedOut G  0007D646   _gameStartTicks G  0007D642   _onTruFunScreen G  0007D64E   
-_onTitleScreen G  0007D64D   _menuSelected G  0007D628   _menuChanged G  0007D629   
-_menuIndex G  0007D62A   _menuTicks G  0007D62E   _onMenuScreen G  0007D64C   
-_attractModeTicks G  0007D632   _attractModeIndex G  0007D626   _inAttractMode G  0007D64B   
-_goroProfileShown G  0007D624   _attractSlideIndex G  0007D620   _chooseTicks G  0007D636   
-_onScreenChooseFighter G  0007D64A   _onScreenVsBattle G  0007D649   _lastTicks G  0007D63E   
-_onScreenFight G  0007D648   _p1FlashCount G  0007D63C   _p2FlashCount G  0007D63A   
-_chooseFighterDone G  0007D64F   _k       G  00122A80   _isSleeping G  00122AA8   
-_lastTick G  00122AA4   _totalSleepTicks G  00122AA0   _spriteCount G  00122AE0   
-_sprites G  00122AE4   _LastTicks G  00122B9E   _IsScrollingUp G  00122BA4   
-_IsScrollingDown G  00122BA3   _IsShaking G  00122BA2   _cloudTicks1 G  00122B88   
-_cloudTicks2 G  00122B84   _cloudTicks3 G  00122B80   _bgYOffset G  00122B9A   
-_bgYInc  G  00122B92   _shakeCount G  00122B8E   _scrollUpAfterShake G  00122B8C   
-_bgYStart G  00122B96   zero_left_pad G  00122C18   zero_right_pad G  00122C1C   
-_pad1    G  00122BFC   _pad1Last G  00122BF4   _pad1Prev G  00122BEC   
-_pad2    G  00122BF8   _pad2Last G  00122BF0   _pad2Prev G  00122BE8   
-_plot_colour G  00122C2C   rapAngle_xAdd G  00122BE4   rapAngle_yAdd G  00122BE0   
-_js_r_xpos G  00122C3A   _js_r_ypos G  00122C36   _yt2     G  00122C04   
-_y       G  00122C0C   _errno   G  00122C14   zero_mousex_delta G  00122C20   
-zero_mousey_delta G  00122C24   zero_rotary_delta G  00122C28   
+_BSS_E   G  00122E20   RAPTOR_particle_gfx G  0005B800   RAPTOR_sprite_table G  00064E00   
+_trashram G  0007D6A0   _bloodStayDelay G  0007D6AA   _gravity G  0007D6AC   
+_impaled G  0007D6A4   _impaledTicks G  0007D6A0   _bloodSpeedRnd G  0007D6A6   
+_xOffset G  0007D6C8   _backgroundSpriteIndex G  0007D6C4   _cameraX G  0007D6D2   
+_cameraY G  0007D6CE   _backgroundGfxBase G  0007D6C0   _cameraTicks G  0007D6D6   
+_backgroundChangedLeft G  0007D6CD   _backgroundChangedRight G  0007D6CC   _js_r_textbuffer G  00122CE0   
+_shadowY G  0007D6E4   _collision G  0007D6EA   _jsfFontSize G  00122D12   
+_jsfFontIndx G  00122D0E   _tempScore G  0007D6E0   _walkForward G  0007D6E8   
+_matchState G  0007D724   _matchTicks G  0007D720   _fightZoomed G  0007D71E   
+_fightScale G  0007D71A   _winner  G  0007D716   _loser   G  0007D712   
+_matchComplete G  0007D710   _winsTicks G  0007D704   _playedName G  0007D702   
+_playedWins G  0007D701   _playedCrowd G  0007D700   _round   G  0007D728   
+_fighter1Wins G  0007D70C   _fighter2Wins G  0007D708   _fadedIn G  0007D767   
+_fadedOut G  0007D766   _gameStartTicks G  0007D762   _onTruFunScreen G  0007D76E   
+_onTitleScreen G  0007D76D   _menuSelected G  0007D748   _menuChanged G  0007D749   
+_menuIndex G  0007D74A   _menuTicks G  0007D74E   _onMenuScreen G  0007D76C   
+_attractModeTicks G  0007D752   _attractModeIndex G  0007D746   _inAttractMode G  0007D76B   
+_goroProfileShown G  0007D744   _attractSlideIndex G  0007D740   _chooseTicks G  0007D756   
+_onScreenChooseFighter G  0007D76A   _onScreenVsBattle G  0007D769   _lastTicks G  0007D75E   
+_onScreenFight G  0007D768   _p1FlashCount G  0007D75C   _p2FlashCount G  0007D75A   
+_chooseFighterDone G  0007D76F   _isSleeping G  00122B88   _lastTick G  00122B84   
+_totalSleepTicks G  00122B80   _spriteCount G  00122BC0   _sprites G  00122BC4   
+_LastTicks G  00122C7E   _IsScrollingUp G  00122C84   _IsScrollingDown G  00122C83   
+_IsShaking G  00122C82   _cloudTicks1 G  00122C68   _cloudTicks2 G  00122C64   
+_cloudTicks3 G  00122C60   _bgYOffset G  00122C7A   _bgYInc  G  00122C72   
+_shakeCount G  00122C6E   _scrollUpAfterShake G  00122C6C   _bgYStart G  00122C76   
+zero_left_pad G  00122CF8   zero_right_pad G  00122CFC   _pad1    G  00122CDC   
+_pad1Last G  00122CD4   _pad1Prev G  00122CCC   _pad2    G  00122CD8   
+_pad2Last G  00122CD0   _pad2Prev G  00122CC8   _plot_colour G  00122D0C   
+rapAngle_xAdd G  00122CC4   rapAngle_yAdd G  00122CC0   _js_r_xpos G  00122D1A   
+_js_r_ypos G  00122D16   _yt2     G  00122CE4   _y       G  00122CEC   
+_errno   G  00122CF4   zero_mousex_delta G  00122D00   zero_mousey_delta G  00122D04   
+zero_rotary_delta G  00122D08   
 
  
 Making packed ROM... 

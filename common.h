@@ -188,7 +188,7 @@
 #define FLOOR_LOCATION_Y_FIGHTER 90
 #define HITBOX_WIDTH 32
 #define PLAYER_INPUT_STACK_SIZE 6
-#define PLAYER_INPUT_TIMEOUT 30
+#define PLAYER_INPUT_TIMEOUT 60
 #define HARPOON_MINIMUM_DISTANCE 150
 
 //-----------------------------------------------------------------------------------------------------

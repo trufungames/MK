@@ -231,7 +231,7 @@ __Z16StateIdle_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 12(%a0),%a1
 	move.l %a1,-(%sp)
-	move.l 470(%a0),-(%sp)
+	move.l 490(%a0),-(%sp)
 	move.l 16(%fp),-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -667,7 +667,7 @@ __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	move.w 30(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 506(%a2),-(%sp)
+	move.l 526(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -707,7 +707,7 @@ __Z20StateBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 30(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 506(%a2),-(%sp)
+	move.l 526(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -815,7 +815,7 @@ __Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	move.w 28(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 502(%a2),-(%sp)
+	move.l 522(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -855,7 +855,7 @@ __Z19StateDucking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 28(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 502(%a2),-(%sp)
+	move.l 522(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -1000,7 +1000,7 @@ __Z26StateWalkingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 20(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 486(%a2),-(%sp)
+	move.l 506(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 294(%a2),%d0
@@ -1267,7 +1267,7 @@ __Z27StateWalkingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	move.w 20(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 486(%a2),-(%sp)
+	move.l 506(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 294(%a2),%d0
@@ -1510,7 +1510,7 @@ __Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 494(%a2),-(%sp)
+	move.l 514(%a2),-(%sp)
 	pea 1.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1575,7 +1575,7 @@ __Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 494(%a2),-(%sp)
+	move.l 514(%a2),-(%sp)
 	pea 3.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1590,7 +1590,7 @@ __Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 494(%a2),-(%sp)
+	move.l 514(%a2),-(%sp)
 	clr.l -(%sp)
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1605,7 +1605,7 @@ __Z19StateJumping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 494(%a2),-(%sp)
+	move.l 514(%a2),-(%sp)
 	pea 2.w
 	move.l 4(%a2),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -1732,7 +1732,7 @@ __Z26StateJumpingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 498(%a2),-(%sp)
+	move.l 518(%a2),-(%sp)
 	move.w 180(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l 4(%a2),-(%sp)
@@ -1926,7 +1926,7 @@ __Z27StateJumpingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 48.w
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 498(%a2),-(%sp)
+	move.l 518(%a2),-(%sp)
 	move.w #19,%a0
 	sub.w 180(%a3),%a0
 	move.l %a0,-(%sp)
@@ -2118,7 +2118,7 @@ __Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	move.w 34(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 514(%a2),-(%sp)
+	move.l 534(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2162,7 +2162,7 @@ __Z24StateDuckBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 34(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 514(%a2),-(%sp)
+	move.l 534(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2268,7 +2268,7 @@ __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 410(%a2),-(%sp)
+	move.l 430(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2283,7 +2283,7 @@ __Z23StateLowPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 38(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 522(%a2),-(%sp)
+	move.l 542(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2411,7 +2411,7 @@ __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 16(%fp),%a4
 	tst.b 186(%a3)
 	jne .L286
-	move.l 410(%a2),-(%sp)
+	move.l 430(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2426,7 +2426,7 @@ __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 40(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 526(%a2),-(%sp)
+	move.l 546(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2454,7 +2454,7 @@ __Z29StateLowRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 38(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 522(%a2),-(%sp)
+	move.l 542(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 176(%a3),%a0
@@ -2556,7 +2556,7 @@ __Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 410(%a2),-(%sp)
+	move.l 430(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2571,7 +2571,7 @@ __Z24StateHighPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 42(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 530(%a2),-(%sp)
+	move.l 550(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2705,7 +2705,7 @@ __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 16(%fp),%a4
 	tst.b 186(%a3)
 	jne .L320
-	move.l 414(%a2),-(%sp)
+	move.l 434(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2720,7 +2720,7 @@ __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 44(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 534(%a2),-(%sp)
+	move.l 554(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2748,7 +2748,7 @@ __Z30StateHighRepeatPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 38(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 522(%a2),-(%sp)
+	move.l 542(%a2),-(%sp)
 	move.l %a4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 176(%a3),%a0
@@ -2857,7 +2857,7 @@ __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 418(%a2),-(%sp)
+	move.l 438(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2872,7 +2872,7 @@ __Z22StateLowKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 46(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 538(%a2),-(%sp)
+	move.l 558(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -2974,7 +2974,7 @@ __Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 422(%a2),-(%sp)
+	move.l 442(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -2989,7 +2989,7 @@ __Z23StateHighKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 48(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 542(%a2),-(%sp)
+	move.l 562(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -3091,7 +3091,7 @@ __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 442(%a2),-(%sp)
+	move.l 462(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3106,7 +3106,7 @@ __Z29StateRoundhouseKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 60(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 594(%a2),-(%sp)
+	move.l 614(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -3186,7 +3186,7 @@ __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 434(%a2),-(%sp)
+	move.l 454(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3201,7 +3201,7 @@ __Z24StateUppercutting_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 54(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 558(%a2),-(%sp)
+	move.l 578(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -3281,7 +3281,7 @@ __Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 454(%a2),-(%sp)
+	move.l 474(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3296,7 +3296,7 @@ __Z23StateDuckKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 66(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 606(%a2),-(%sp)
+	move.l 626(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -3376,7 +3376,7 @@ __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 426(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3391,7 +3391,7 @@ __Z24StateJumpPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 50(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 546(%a2),-(%sp)
+	move.l 566(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%a0
@@ -3462,7 +3462,7 @@ __Z23StateJumpPunching_SleepP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 546(%a1),-(%sp)
+	move.l 566(%a1),-(%sp)
 	pea 1.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -3509,7 +3509,7 @@ __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 430(%a2),-(%sp)
+	move.l 450(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3524,7 +3524,7 @@ __Z23StateJumpKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 52(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 550(%a2),-(%sp)
+	move.l 570(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%a0
@@ -3595,7 +3595,7 @@ __Z22StateJumpKicking_SleepP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 550(%a1),-(%sp)
+	move.l 570(%a1),-(%sp)
 	pea 1.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -3643,7 +3643,7 @@ __Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 438(%a2),-(%sp)
+	move.l 458(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3658,7 +3658,7 @@ __Z20StateSweeping_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 58(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 590(%a2),-(%sp)
+	move.l 610(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -3740,7 +3740,7 @@ __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 430(%a2),-(%sp)
+	move.l 450(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3754,7 +3754,7 @@ __Z33StateJumpingKickingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l -(%sp)
 	pea 1.w
 	pea 3.w
-	move.l 554(%a2),-(%sp)
+	move.l 574(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%a0
@@ -3851,7 +3851,7 @@ __Z32StateJumpingKickingForward_SleepP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 554(%a1),-(%sp)
+	move.l 574(%a1),-(%sp)
 	pea 2.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -3900,7 +3900,7 @@ __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 430(%a2),-(%sp)
+	move.l 450(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -3914,7 +3914,7 @@ __Z34StateJumpingKickingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimator
 	clr.l -(%sp)
 	pea 1.w
 	pea 3.w
-	move.l 554(%a2),-(%sp)
+	move.l 574(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 294(%a2),%d0
@@ -4002,7 +4002,7 @@ __Z33StateJumpingKickingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 554(%a1),-(%sp)
+	move.l 574(%a1),-(%sp)
 	pea 1.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4052,7 +4052,7 @@ __Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 426(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -4067,7 +4067,7 @@ __Z34StateJumpingPunchingForward_UpdateP12StateMachineP7FighterP14SpriteAnimator
 	pea 1.w
 	move.w 50(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 546(%a2),-(%sp)
+	move.l 566(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%a0
@@ -4164,7 +4164,7 @@ __Z33StateJumpingPunchingForward_SleepP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 546(%a1),-(%sp)
+	move.l 566(%a1),-(%sp)
 	pea 1.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4213,7 +4213,7 @@ __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimato
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 426(%a2),-(%sp)
+	move.l 446(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -4228,7 +4228,7 @@ __Z35StateJumpingPunchingBackward_UpdateP12StateMachineP7FighterP14SpriteAnimato
 	pea 1.w
 	move.w 50(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 546(%a2),-(%sp)
+	move.l 566(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.l 294(%a2),%d0
@@ -4316,7 +4316,7 @@ __Z34StateJumpingPunchingBackward_SleepP12StateMachineP7FighterP14SpriteAnimator
 	move.l %a2,-(%sp)
 	move.l 8(%a0),-(%sp)
 	move.l 4(%a0),-(%sp)
-	move.l 546(%a1),-(%sp)
+	move.l 566(%a1),-(%sp)
 	pea 1.w
 	move.l (%a0),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -4407,7 +4407,7 @@ __Z18StateHitLow_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 72(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 562(%a2),-(%sp)
+	move.l 582(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -4543,7 +4543,7 @@ __Z19StateHitHigh_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 74(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 566(%a2),-(%sp)
+	move.l 586(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -4666,7 +4666,7 @@ __Z20StateHitSweep_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 82(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 582(%a2),-(%sp)
+	move.l 602(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -4757,7 +4757,7 @@ __Z17StateGetUp_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 56(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 586(%a2),-(%sp)
+	move.l 606(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -4911,7 +4911,7 @@ __Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 76(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 570(%a2),-(%sp)
+	move.l 590(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -4964,7 +4964,7 @@ __Z19StateHitBack_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 76(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 570(%a2),-(%sp)
+	move.l 590(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -5088,7 +5088,7 @@ __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 72(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 562(%a2),-(%sp)
+	move.l 582(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -5141,7 +5141,7 @@ __Z22StateHitBackLow_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 72(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 562(%a2),-(%sp)
+	move.l 582(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -5209,21 +5209,9 @@ __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	clr.l (%sp)
 	jsr __Z7bgShakeb
 	move.w 308(%a2),%d0
-	add.w #-10,%d0
-	move.w %d0,%a0
-	move.l %a0,(%sp)
-	move.w 326(%a2),%d0
-	muls.w #-40,%d0
-	add.w 306(%a2),%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	lea __Z11bloodSquirtss,%a3
-	jsr (%a3)
-	addq.l #8,%sp
-	move.w 308(%a2),%d0
 	add.w #-30,%d0
 	move.w %d0,%a0
-	move.l %a0,-(%sp)
+	move.l %a0,(%sp)
 	move.w 306(%a2),%d0
 	add.w #20,%d0
 	move.w 326(%a2),%d1
@@ -5231,36 +5219,9 @@ __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	add.w %d1,%d0
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	move.w 308(%a2),%d0
-	add.w #-50,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w 306(%a2),%d0
-	add.w #10,%d0
-	move.w 326(%a2),%d1
-	muls.w #-40,%d1
-	add.w %d1,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	jsr (%a3)
+	jsr __Z11bloodSquirtss
 	move.w 326(%a2),%d0
 	addq.l #8,%sp
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w 308(%a2),%d1
-	add.w #-40,%d1
-	move.w %d1,%a0
-	move.l %a0,-(%sp)
-	muls.w #-40,%d0
-	add.w 306(%a2),%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	lea __Z9bloodDropsss,%a3
-	jsr (%a3)
-	move.w 326(%a2),%d0
-	lea (12,%sp),%sp
 	move.w %d0,%d1
 	neg.w %d1
 	move.w %d1,%a0
@@ -5273,6 +5234,7 @@ __Z22StateHitUppercut_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	add.w 306(%a2),%d0
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
+	lea __Z9bloodDropsss,%a3
 	jsr (%a3)
 	move.w 326(%a2),%d0
 	lea (12,%sp),%sp
@@ -5366,7 +5328,7 @@ __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a4),-(%sp)
@@ -5428,7 +5390,7 @@ __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a4),-(%sp)
@@ -5465,7 +5427,7 @@ __Z23StateHitUppercut_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a4),-(%sp)
 	move.l 4(%a4),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a4),-(%sp)
@@ -5521,7 +5483,7 @@ __Z19StateLaydown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 578(%a2),-(%sp)
+	move.l 598(%a2),-(%sp)
 	moveq #0,%d0
 	move.w 80(%a2),%d0
 	move.l %d0,%a0
@@ -5660,7 +5622,7 @@ __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -5739,7 +5701,7 @@ __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -5761,7 +5723,7 @@ __Z23StateHitDropKick_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -5868,7 +5830,7 @@ __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -5934,7 +5896,7 @@ __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -5956,7 +5918,7 @@ __Z18StateHitAir_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 574(%a2),-(%sp)
+	move.l 594(%a2),-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.l (%a3),-(%sp)
@@ -6035,7 +5997,7 @@ __Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 32(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 510(%a2),-(%sp)
+	move.l 530(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6070,7 +6032,7 @@ __Z23StateHitBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 32(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 510(%a2),-(%sp)
+	move.l 530(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6145,7 +6107,7 @@ __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 36(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 518(%a2),-(%sp)
+	move.l 538(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6180,7 +6142,7 @@ __Z30StateHitDuckingBlocking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 36(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 518(%a2),-(%sp)
+	move.l 538(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6262,7 +6224,7 @@ __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 32(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 510(%a2),-(%sp)
+	move.l 530(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6290,7 +6252,7 @@ __Z32StateHitBlockingKnockback_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 32(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 510(%a2),-(%sp)
+	move.l 530(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6363,7 +6325,7 @@ __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 446(%a2),-(%sp)
+	move.l 466(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -6378,7 +6340,7 @@ __Z24StateBodyPunching_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 62(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 598(%a2),-(%sp)
+	move.l 618(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6487,7 +6449,7 @@ __Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a4
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%a3
-	move.l 450(%a2),-(%sp)
+	move.l 470(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -6502,7 +6464,7 @@ __Z23StateBodyKicking_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 64(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 602(%a2),-(%sp)
+	move.l 622(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6621,7 +6583,7 @@ __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
-	move.l 458(%a2),-(%sp)
+	move.l 478(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
@@ -6636,7 +6598,7 @@ __Z20StateThrowing_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 68(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 610(%a2),-(%sp)
+	move.l 630(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6749,7 +6711,7 @@ __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 614(%a2),-(%sp)
+	move.l 634(%a2),-(%sp)
 	pea 5.w
 	move.l (%a3),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -6789,7 +6751,7 @@ __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 614(%a2),-(%sp)
+	move.l 634(%a2),-(%sp)
 	pea 2.w
 	move.l (%a3),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -6855,7 +6817,7 @@ __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 70(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 614(%a2),-(%sp)
+	move.l 634(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -6872,7 +6834,7 @@ __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 614(%a2),-(%sp)
+	move.l 634(%a2),-(%sp)
 	pea 3.w
 	move.l (%a3),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -6906,7 +6868,7 @@ __Z23StateBeingThrown_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 614(%a2),-(%sp)
+	move.l 634(%a2),-(%sp)
 	pea 4.w
 	move.l (%a3),-(%sp)
 	jsr __Z12animateFramejjP14AnimationFramefjiiii
@@ -6988,7 +6950,7 @@ __Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 .L720:
 	move.w 22(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 490(%a2),-(%sp)
+	move.l 510(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -7043,7 +7005,7 @@ __Z25StateTurningAround_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 22(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 490(%a2),-(%sp)
+	move.l 510(%a2),-(%sp)
 	move.l %a3,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
@@ -7127,14 +7089,8 @@ __Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	move.w raptor_ticks,%d1
 	move.w %d1,182(%a0)
 	clr.b 227(%a2)
-	move.w 306(%a2),%d0
-	cmp.w #-1,326(%a2)
-	jeq .L735
-	sub.l %a0,%a0
-.L729:
-	add.w %d0,%a0
-	move.w %a0,310(%a2)
-	move.l 466(%a2),%a0
+	move.w 306(%a2),310(%a2)
+	move.l 486(%a2),%a0
 	clr.w 16(%a0)
 	move.l 90(%a2),%d0
 	move.l %d0,(%a0)
@@ -7155,11 +7111,11 @@ __Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %d0,36(%a0)
 	move.b #1,%d0
 	cmp.l (%a2),%d0
-	jeq .L736
+	jeq .L733
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L736:
+.L733:
 	pea 16.w
 	pea 13.w
 	move.l #12773984,-(%sp)
@@ -7169,9 +7125,6 @@ __Z29StateThrowingProjectile_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra __Z16sfxCageGreenboltP12SoundHandler
-.L735:
-	move.w #48,%a0
-	jra .L729
 	.even
 	.globl	__Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator
 __Z28StateThrowingProjectile_ExitP12StateMachineP7FighterP14SpriteAnimator:
@@ -7204,20 +7157,20 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 12(%fp),%a2
 	move.l 16(%fp),%d2
 	tst.b 227(%a2)
-	jeq .L756
+	jeq .L753
 	tst.w 180(%a3)
-	jne .L749
+	jne .L746
 	move.w #1,180(%a3)
-	move.l 466(%a2),%a0
+	move.l 486(%a2),%a0
 	clr.w 16(%a0)
-.L749:
+.L746:
 	move.w 88(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
 	addq.l #8,%sp
 	tst.b %d0
-	jne .L753
+	jne .L750
 	move.w 326(%a2),%a0
 	move.l %a0,-(%sp)
 	move.w 308(%a2),%a0
@@ -7228,8 +7181,8 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 88(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 642(%a2),-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 662(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
 	move.l 90(%a2),%d0
@@ -7241,26 +7194,26 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	add.l %d0,%a0
 	moveq #-1,%d0
 	cmp.l 4(%a0),%d0
-	jeq .L757
-.L739:
+	jeq .L754
+.L736:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L756:
+.L753:
 	move.w 84(%a2),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z19animationIsCompleteP14SpriteAnimators
 	addq.l #8,%sp
 	tst.b %d0
-	jeq .L741
+	jeq .L738
 	move.w raptor_ticks,%a0
 	move.w 182(%a3),%a4
 	addq.l #1,%a4
 	move.w %a0,%a1
 	move.w 326(%a2),%d0
 	cmp.l %a4,%a1
-	jle .L743
+	jle .L740
 	move.w %d0,%d1
 	add.w %d0,%d1
 	add.w %d0,%d1
@@ -7268,15 +7221,15 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	add.w %d1,%d1
 	add.w %d1,310(%a2)
 	move.w %a0,182(%a3)
-.L743:
+.L740:
 	cmp.w #1,%d0
-	jne .L744
+	jne .L741
 	cmp.w #320,310(%a2)
-	jle .L746
-.L753:
+	jle .L743
+.L750:
 	move.l 176(%a3),%a0
 	tst.w (%a0)
-	jeq .L739
+	jeq .L736
 	move.l %d2,-(%sp)
 	move.l %a2,-(%sp)
 	move.l %a3,-(%sp)
@@ -7292,16 +7245,16 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	movem.l -16(%fp),#7172
 	unlk %fp
 	jmp (%a0)
-.L757:
+.L754:
 	moveq #1,%d0
 	move.l %d0,4(%a0)
 	movem.l -16(%fp),#7172
 	unlk %fp
 	rts
-.L744:
+.L741:
 	cmp.w #-1,%d0
-	jeq .L758
-.L746:
+	jeq .L755
+.L743:
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.w 308(%a2),%a0
@@ -7312,7 +7265,7 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 84(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 622(%a2),-(%sp)
+	move.l 642(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss,%a3
 	jsr (%a3)
@@ -7327,11 +7280,11 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 86(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 638(%a2),-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 658(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	jsr (%a3)
 	lea (32,%sp),%sp
-.L759:
+.L756:
 	move.l 90(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -7341,11 +7294,11 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	add.l %d0,%a0
 	moveq #-1,%d0
 	cmp.l 4(%a0),%d0
-	jne .L739
-	jra .L757
-.L758:
+	jne .L736
+	jra .L754
+.L755:
 	tst.w 310(%a2)
-	jlt .L753
+	jlt .L750
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	move.w 308(%a2),%a0
@@ -7356,7 +7309,7 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 84(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 622(%a2),-(%sp)
+	move.l 642(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss,%a3
 	jsr (%a3)
@@ -7371,12 +7324,12 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 86(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 638(%a2),-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 658(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	jsr (%a3)
 	lea (32,%sp),%sp
-	jra .L759
-.L741:
+	jra .L756
+.L738:
 	move.w 326(%a2),%d0
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
@@ -7388,7 +7341,7 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 84(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 622(%a2),-(%sp)
+	move.l 642(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss,%a3
 	jsr (%a3)
@@ -7403,11 +7356,11 @@ __Z30StateThrowingProjectile_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	pea 1.w
 	move.w 86(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 638(%a2),-(%sp)
-	move.l 466(%a2),-(%sp)
+	move.l 658(%a2),-(%sp)
+	move.l 486(%a2),-(%sp)
 	jsr (%a3)
 	lea (32,%sp),%sp
-	jra .L759
+	jra .L756
 	.even
 	.globl	__Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator
 __Z29StateThrowingProjectile_SleepP12StateMachineP7FighterP14SpriteAnimator:

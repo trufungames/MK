@@ -3,65 +3,65 @@
 	.even
 	.globl	__Z12animateFramejjP14AnimationFramefjiiii
 __Z12animateFramejjP14AnimationFramefjiiii:
-	link.w %fp,#-8
+	link.w %fp,#-4
 	movem.l #16188,-(%sp)
-	move.l 8(%fp),%d2
-	move.l 20(%fp),%d3
-	move.l 32(%fp),%d5
-	move.l 36(%fp),%d4
-	move.l %d2,%d0
-	add.l %d2,%d0
-	add.l %d2,%d0
+	move.l 8(%fp),%d0
+	move.l 20(%fp),%d2
+	move.l 32(%fp),%d4
+	move.l 36(%fp),%d3
+	move.l 40(%fp),%d6
+	move.l %d0,%a2
+	add.l %d0,%a2
+	add.l %a2,%d0
 	lsl.l #6,%d0
 	move.l sprite,%a2
 	add.l %d0,%a2
-	tst.l %d5
-	jne .L3
-	move.w 8(%a2),%d5
-	ext.l %d5
-.L3:
 	tst.l %d4
-	jne .L4
-	move.w 12(%a2),%d4
+	jne .L3
+	move.w 8(%a2),%d4
 	ext.l %d4
+.L3:
+	tst.l %d3
+	jne .L4
+	move.w 12(%a2),%d3
+	ext.l %d3
 .L4:
 	move.l 12(%fp),%d0
 	lsl.l #4,%d0
 	move.l 16(%fp),%a3
 	add.l %d0,%a3
-	move.w (%a3),%d6
+	move.w (%a3),%d5
 	moveq #0,%d0
-	move.w %d6,%d0
+	move.w %d5,%d0
 	move.l %d0,28(%a2)
 	move.w 2(%a3),%d1
 	moveq #0,%d7
 	move.w %d1,%d7
-	move.l %d7,%a0
-	move.l %a0,32(%a2)
+	move.l %d7,32(%a2)
 	lea ___floatsisf,%a4
 	move.l %d0,-(%sp)
 	move.l %d1,-4(%fp)
 	jsr (%a4)
 	lea ___mulsf3,%a5
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a5)
 	addq.l #8,%sp
-	lea ___fixsfsi,%a0
+	move.l #___fixsfsi,%d7
 	move.l %d0,-(%sp)
-	move.l %a0,-8(%fp)
+	move.l %d7,%a0
 	jsr (%a0)
 	move.l %d0,104(%a2)
 	move.l -4(%fp),%d1
-	mulu.w %d6,%d1
+	mulu.w %d5,%d1
 	move.l %d1,(%sp)
 	jsr (%a4)
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a5)
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	lea ___fixsfsi,%a0
+	move.l %d7,%a0
 	jsr (%a0)
 	move.l %d0,48(%a2)
 	moveq #0,%d0
@@ -69,10 +69,10 @@ __Z12animateFramejjP14AnimationFramefjiiii:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a5)
 	addq.l #8,%sp
-	move.l %d0,%d3
+	move.l %d0,%d2
 	moveq #0,%d0
 	move.w 6(%a3),%d0
 	move.l 144(%a2),-(%sp)
@@ -83,56 +83,49 @@ __Z12animateFramejjP14AnimationFramefjiiii:
 	jsr (%a4)
 	lea ___addsf3,%a4
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a4)
 	addq.l #8,%sp
-	move.l %d0,%d3
+	move.l %d0,%d2
 	move.l 24(%fp),-(%sp)
 	jsr ___floatunsisf
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d2,-(%sp)
 	jsr (%a4)
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr ___fixunssfsi
 	addq.l #4,%sp
 	move.l %d0,44(%a2)
-	move.w 42(%fp),%d0
-	muls.w 8(%a3),%d0
-	add.w %d5,%d0
+	move.w 8(%a3),%d0
+	muls.w %d6,%d0
+	add.w %d4,%d0
 	move.w %d0,8(%a2)
 	moveq #0,%d1
 	move.w 10(%a3),%d1
-	add.l %d1,%d4
-	move.l %d4,__ZL5tempY
+	add.l %d1,%d3
+	move.l %d3,__ZL5tempY
 	moveq #7,%d1
-	cmp.l %d4,%d1
+	cmp.l %d3,%d1
 	jlt .L6
-	moveq #8,%d7
-	move.l %d7,__ZL5tempY
-	moveq #8,%d4
+	moveq #8,%d1
+	move.l %d1,__ZL5tempY
+	moveq #8,%d3
 .L6:
-	move.w %d4,12(%a2)
+	move.w %d3,12(%a2)
 	moveq #-1,%d1
-	cmp.l 40(%fp),%d1
+	cmp.l %d6,%d1
 	jeq .L9
-.L1:
-	movem.l -48(%fp),#15612
+	movem.l -44(%fp),#15612
 	unlk %fp
 	rts
 .L9:
-	moveq #59,%d7
-	cmp.l %d2,%d7
-	jeq .L1
-	moveq #60,%d1
-	cmp.l %d2,%d1
-	jeq .L1
-	move.w 30(%fp),%d7
-	sub.w %d6,%d7
-	move.w %d7,%d6
-	add.w %d0,%d6
-	move.w %d6,8(%a2)
-	movem.l -48(%fp),#15612
+	move.w 30(%fp),%a0
+	sub.w %d5,%a0
+	move.w %a0,%d5
+	add.w %d0,%d5
+	move.w %d5,8(%a2)
+	movem.l -44(%fp),#15612
 	unlk %fp
 	rts
 	.even

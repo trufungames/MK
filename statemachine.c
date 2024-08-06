@@ -1839,11 +1839,11 @@ void StateHitUppercut_Enter(struct StateMachine* stateMachine, struct Fighter* f
     fighterTakeDamage(fighter, fighter->pendingDamage);
     sfxImpact(fighter->soundHandler);
     bgShake(false);
-    bloodSquirt(fighter->positionX - (40 * fighter->direction), fighter->positionY - 10);
+    //bloodSquirt(fighter->positionX - (40 * fighter->direction), fighter->positionY - 10);
     bloodSquirt(fighter->positionX - (40 * fighter->direction)+20, fighter->positionY - 30);
-    bloodSquirt(fighter->positionX - (40 * fighter->direction)+10, fighter->positionY - 50);
+    //bloodSquirt(fighter->positionX - (40 * fighter->direction)+10, fighter->positionY - 50);
 
-    bloodDrop(fighter->positionX - (40 * fighter->direction) + (0 * fighter->direction), fighter->positionY - 40, fighter->direction);
+    //bloodDrop(fighter->positionX - (40 * fighter->direction) + (0 * fighter->direction), fighter->positionY - 40, fighter->direction);
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
@@ -2465,7 +2465,7 @@ void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fig
     stateMachine->vars[1] = rapTicks;
     fighter->ProjectileMadeContact = false;
     fighter->projectilePositionX = fighter->positionX;
-    fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+    fighter->projectilePositionX += fighter->direction == -1 ? 0 : 0;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;

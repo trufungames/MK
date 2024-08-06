@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -230,24 +230,6 @@ static AnimationFrame shangTsungClapFrames[] = {
 	{ 64, 48, 0, 384, 0, 0, 4},
 	{ 64, 48, 0, 336, 0, 0, 4},
     { 64, 48, 0, 288, 0, 0, 4}
-};
-
-static PlayerInput player1Inputs[] = {
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0}
-};
-
-static PlayerInput player2Inputs[] = {
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0},
-	{0, 0}
 };
 
 static SpriteAnimator cageAnimator = {
@@ -3867,6 +3849,19 @@ void basicmain()
 	}
 	else
 	{
+		struct PlayerInput p1Input1;
+		struct PlayerInput p1Input2;
+		struct PlayerInput p1Input3;
+		struct PlayerInput p1Input4;
+		struct PlayerInput p1Input5;
+		struct PlayerInput p1Input6;
+		struct PlayerInput p2Input1;
+		struct PlayerInput p2Input2;
+		struct PlayerInput p2Input3;
+		struct PlayerInput p2Input4;
+		struct PlayerInput p2Input5;
+		struct PlayerInput p2Input6;
+
 		bool debugMode = false;
 		pad1 = 0;
 		pad2 = 0;
@@ -4210,7 +4205,6 @@ void basicmain()
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
-		fighterCage.playerInputs = &player1Inputs;
 		fighterCage.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage.projectileEndFrames = &projectileGreenBoltEndFrames;
 		fighterCage.special1Inputs = &specials_Cage_GreenBolt_Inputs;
@@ -4261,7 +4255,6 @@ void basicmain()
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		fighterCage2.spriteAnimator = &cageAnimator2;
 		fighterCage2.projectileAnimator = &lightningAnimator;
-		fighterCage2.playerInputs = &player2Inputs;
 		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
 		fighterCage2.special1Inputs = &specials_Cage_GreenBolt_Inputs;
@@ -4313,7 +4306,6 @@ void basicmain()
 		//Kano
 		fighterKano.spriteAnimator = &kanoAnimator;
 		fighterKano.projectileAnimator = &lightningAnimator;
-		fighterKano.playerInputs = &player1Inputs;
 		fighterKano.projectileFrames = &projectileKnifeFrames;
 		fighterKano.projectileEndFrames = &projectileKnifeEndFrames;
 		fighterKano.special1Inputs = &specials_Kano_Knife_Inputs;
@@ -4363,7 +4355,6 @@ void basicmain()
 		fighterKano.kipUpFrames = &kanoKipUpFrames;
 		fighterKano2.spriteAnimator = &kanoAnimator2;
 		fighterKano2.projectileAnimator = &lightningAnimator;
-		fighterKano2.playerInputs = &player2Inputs;
 		fighterKano2.projectileFrames = &projectileKnifeFrames;
 		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
 		fighterKano2.special1Inputs = &specials_Kano_Knife_Inputs;
@@ -4414,7 +4405,6 @@ void basicmain()
 		//Raide
 		fighterRaiden.spriteAnimator = &raidenAnimator;
 		fighterRaiden.projectileAnimator = &lightningAnimator;
-		fighterRaiden.playerInputs = &player1Inputs;
 		fighterRaiden.projectileFrames = &projectileLightningFrames;
 		fighterRaiden.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden.special1Inputs = &specials_Raiden_Lightning_Inputs;
@@ -4465,7 +4455,6 @@ void basicmain()
 		fighterRaiden2.spriteAnimator = &raidenAnimator2;
 		fighterRaiden2.projectileAnimator = &lightningAnimator;
 		fighterRaiden2.projectileFrames = &projectileLightningFrames;
-		fighterRaiden2.playerInputs = &player2Inputs;
 		fighterRaiden2.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden2.special1Inputs = &specials_Raiden_Lightning_Inputs;
 		fighterRaiden2.special2Inputs = &specials_Raiden_Torpedo_Inputs;
@@ -4515,7 +4504,6 @@ void basicmain()
 		//Liu Kang
 		fighterKang.spriteAnimator = &kangAnimator;
 		fighterKang.projectileAnimator = &lightningAnimator;
-		fighterKang.playerInputs = &player1Inputs;
 		fighterKang.projectileFrames = &projectileFireballFrames;
 		fighterKang.projectileEndFrames = &projectileFireballEndFrames;
 		fighterKang.special1Inputs = &specials_Kang_Fireball_Inputs;
@@ -4566,7 +4554,6 @@ void basicmain()
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
 		fighterKang2.spriteAnimator = &kangAnimator2;
 		fighterKang2.projectileAnimator = &lightningAnimator;
-		fighterKang2.playerInputs = &player2Inputs;
 		fighterKang2.projectileFrames = &projectileFireballFrames;
 		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
 		fighterKang2.special1Inputs = &specials_Kang_Fireball_Inputs;
@@ -4618,7 +4605,6 @@ void basicmain()
 		//Scorpion
 		fighterScorpion.spriteAnimator = &scorpionAnimator;
 		fighterScorpion.projectileAnimator = &lightningAnimator;
-		fighterScorpion.playerInputs = &player1Inputs;
 		fighterScorpion.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion.projectileEndFrames = &projectileHarpoonEndFrames;
 		fighterScorpion.special1Inputs = &specials_Scorpion_Harpoon_Inputs;
@@ -4670,7 +4656,6 @@ void basicmain()
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
 		fighterScorpion2.projectileAnimator = &lightningAnimator;
-		fighterScorpion2.playerInputs = &player2Inputs;
 		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion2.projectileEndFrames = &projectileHarpoonEndFrames;
 		fighterScorpion2.special1Inputs = &specials_Scorpion_Harpoon_Inputs;
@@ -4723,7 +4708,6 @@ void basicmain()
 		//Sub-Zero
 		fighterSubzero.spriteAnimator = &subzeroAnimator;
 		fighterSubzero.projectileAnimator = &lightningAnimator;
-		fighterSubzero.playerInputs = &player1Inputs;
 		fighterSubzero.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero.projectileEndFrames = &projectileFreezeEndFrames;
 		fighterSubzero.special1Inputs = &specials_Subzero_Freeze_Inputs;
@@ -4775,7 +4759,6 @@ void basicmain()
 		fighterSubzero2.spriteAnimator = &subzeroAnimator2;
 		fighterSubzero2.projectileAnimator = &lightningAnimator;
 		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
-		fighterSubzero2.playerInputs = &player2Inputs;
 		fighterSubzero2.projectileEndFrames = &projectileFreezeEndFrames;
 		fighterSubzero2.special1Inputs = &specials_Subzero_Freeze_Inputs;
 		fighterSubzero2.special2Inputs = &specials_Subzero_Slide_Inputs;
@@ -4826,7 +4809,6 @@ void basicmain()
 		//Sonya
 		fighterSonya.spriteAnimator = &sonyaAnimator;
 		fighterSonya.projectileAnimator = &lightningAnimator;
-		fighterSonya.playerInputs = &player1Inputs;
 		fighterSonya.projectileFrames = &projectileRingsFrames;
 		fighterSonya.projectileEndFrames = &projectileRingsEndFrames;
 		fighterSonya.special1Inputs = &specials_Sonya_Rings_Inputs;
@@ -4877,7 +4859,6 @@ void basicmain()
 		fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
 		fighterSonya2.spriteAnimator = &sonyaAnimator2;
 		fighterSonya2.projectileAnimator = &lightningAnimator;
-		fighterSonya2.playerInputs = &player2Inputs;
 		fighterSonya2.projectileFrames = &projectileRingsFrames;
 		fighterSonya2.projectileEndFrames = &projectileRingsEndFrames;
 		fighterSonya2.special1Inputs = &specials_Sonya_Rings_Inputs;
@@ -5735,6 +5716,13 @@ void basicmain()
 					}
 
 					fighter1Ptr->spriteAnimator->currentFrame = 0;
+					fighter1Ptr->input1 = &p1Input1;
+					fighter1Ptr->input2 = &p1Input2;
+					fighter1Ptr->input3 = &p1Input3;
+					fighter1Ptr->input4 = &p1Input4;
+					fighter1Ptr->input5 = &p1Input5;
+					fighter1Ptr->input6 = &p1Input6;
+					playerinputInit(fighter1Ptr);
 				}
 
 				if ((pad2 & JAGPAD_C || pad2 & JAGPAD_B || pad2 & JAGPAD_A || pad2 & JAGPAD_7 || pad2 & JAGPAD_8 || pad2 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p2Selected == -1)
@@ -5793,6 +5781,13 @@ void basicmain()
 					}
 
 					fighter2Ptr->spriteAnimator->currentFrame = 0;
+					fighter2Ptr->input1 = &p2Input1;
+					fighter2Ptr->input2 = &p2Input2;
+					fighter2Ptr->input3 = &p2Input3;
+					fighter2Ptr->input4 = &p2Input4;
+					fighter2Ptr->input5 = &p2Input5;
+					fighter2Ptr->input6 = &p2Input6;
+					playerinputInit(fighter2Ptr);
 				}
 
 				if (p1Selected != -1 && p1FlashCount <= 7)
@@ -5965,37 +5960,40 @@ void basicmain()
 				fighterButtonCheck(fighter1Ptr);
 				fighterButtonCheck(fighter2Ptr);
 				playerinputUpdate(fighter1Ptr, fighter2Ptr);
-				
-				rapUse8x8fontPalette(10);
-				jsfSetFontSize(0);
-				jsfSetFontIndx(1);
-				rapLocate(10, 0);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->playerInputs[0]->ButtonPressed);
-				rapPrint();
-				rapLocate(20, 0);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->playerInputs[1]->ButtonPressed);
-				rapPrint();
-				rapLocate(30, 0);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->playerInputs[2]->ButtonPressed);
-				rapPrint();
-				rapLocate(40, 0);
-				js_r_textbuffer = ee_printf("%d",fighter1Ptr->playerInputs[3]->ButtonPressed);
-				rapPrint();
 
-				rapLocate(180, 0);
-				js_r_textbuffer = ee_printf("%d",fighter2Ptr->playerInputs[0]->ButtonPressed);
-				rapPrint();
-				rapLocate(190, 0);
-				js_r_textbuffer = ee_printf("%d",fighter2Ptr->playerInputs[1]->ButtonPressed);
-				rapPrint();
-				rapLocate(200, 0);
-				js_r_textbuffer = ee_printf("%d",fighter2Ptr->playerInputs[2]->ButtonPressed);
-				rapPrint();
-				rapLocate(210, 0);
-				js_r_textbuffer = ee_printf("%d",fighter2Ptr->playerInputs[3]->ButtonPressed);
-				rapPrint();
+				//fighter1Ptr->playerInputs[1]->ButtonPressed = 9;
+
+				// rapUse8x8fontPalette(10);
+				// jsfSetFontSize(0);
+				// jsfSetFontIndx(1);
+				// rapLocate(10, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter1Ptr->input1->ButtonPressed);
+				// rapPrint();
+				// rapLocate(20, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter1Ptr->input2->ButtonPressed);
+				// rapPrint();
+				// rapLocate(30, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter1Ptr->input3->ButtonPressed);
+				// rapPrint();
+				// rapLocate(40, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter1Ptr->input4->ButtonPressed);
+				// rapPrint();
+
+				// rapLocate(180, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter2Ptr->input1->ButtonPressed);
+				// rapPrint();
+				// rapLocate(190, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter2Ptr->input2->ButtonPressed);
+				// rapPrint();
+				// rapLocate(200, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter2Ptr->input3->ButtonPressed);
+				// rapPrint();
+				// rapLocate(210, 0);
+				// js_r_textbuffer = ee_printf("%d",fighter2Ptr->input4->ButtonPressed);
+				// rapPrint();
 				// jsfVsync(0);
 				// continue;
+
 
 				// //////////////////////////////////////
 				// // Player 1 fighter

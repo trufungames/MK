@@ -1045,8 +1045,8 @@ bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter
     //***********************************************************************************
     // SPECIAL MOVES
     //***********************************************************************************
-    if (playerinputContains(stateMachine, fighter, *fighter->special1Inputs, fighter->special1InputCount))
-    {   
+    if (playerinputContains(fighter, *fighter->special1Inputs, fighter->special1InputCount))
+    {
         (fighter->doSpecialMove1)(stateMachine, fighter, animator);
         return true;
     }

@@ -188,7 +188,12 @@ struct Fighter {
     int jumpIndex;
     int defaultClut;
     int frozenClut;
-    struct PlayerInput (*playerInputs)[PLAYER_INPUT_STACK_SIZE];
+    struct PlayerInput* input1;
+    struct PlayerInput* input2;
+    struct PlayerInput* input3;
+    struct PlayerInput* input4;
+    struct PlayerInput* input5;
+    struct PlayerInput* input6;
     int (*special1Inputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special2Inputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special3Inputs)[PLAYER_INPUT_STACK_SIZE];
