@@ -1040,7 +1040,12 @@ bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter
     if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
     {
         playerinputPush(fighter, JAGPAD_C);
-    }   
+    }
+
+    if (fighter->pad & JAGPAD_A && fighter->ButtonReleased)
+    {
+        playerinputPush(fighter, JAGPAD_A);
+    }
 
     //***********************************************************************************
     // SPECIAL MOVES
@@ -1048,6 +1053,11 @@ bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter
     if (playerinputContains(fighter, *fighter->special1Inputs, fighter->special1InputCount))
     {
         (fighter->doSpecialMove1)(stateMachine, fighter, animator);
+        return true;
+    }
+    else if (playerinputContains(fighter, *fighter->special2Inputs, fighter->special2InputCount))
+    {
+        (fighter->doSpecialMove2)(stateMachine, fighter, animator);
         return true;
     }
 
@@ -2455,7 +2465,6 @@ void fighterHandleProjectile(struct StateMachine* stateMachine1, struct Fighter*
 
 void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct StateMachine* stateMachine2, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)
 {
-    //clb here
     if (!fighterIsBlocking(stateMachine2, fighter2) && fighterCanTakeDamage(stateMachine2, fighter2))
     {
         if (stateMachine1->currentState->Name == STATE_LOW_PUNCHING)
@@ -2556,6 +2565,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
         {
             fighterAddPendingDamage(fighter2, DMG_THROW, false, fighter1, POINTS_THROW);
             stateMachineGoto(stateMachine2, STATE_BEING_THROWN, fighter2, spriteAnimator2);
+        }
+        else if (stateMachine1->currentState->Name == STATE_CAGE_SHADOW_KICK)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SHADOWKICK, false, fighter1, POINTS_PROJECTILE);
+            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
         }
     }
     else if (fighterIsBlocking(stateMachine2, fighter2))

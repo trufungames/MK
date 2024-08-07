@@ -287,6 +287,12 @@ void StateThrowingProjectile_Update(struct StateMachine*, struct Fighter*, struc
 void StateThrowingProjectile_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateThrowingProjectile_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateCageShadowKick_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageShadowKick_Exit(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageShadowKick_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageShadowKick_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageShadowKick_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 
 //TODOs
 //[X] Add HIT_BLOCKING state

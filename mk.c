@@ -209,6 +209,9 @@ static State stateHitDuckingBlocking = {
 static State stateHitBlockingKnockback = {
 	STATE_HIT_BLOCKING_KNOCKBACK
 };
+static State stateCageShadowKick = {
+	STATE_CAGE_SHADOW_KICK
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -862,7 +865,7 @@ static AnimationFrame cageKickLowFrames[] = {
 	{ 64, 112, 0, 320, 0, 0, 4 },
 	{ 48, 112, 64, 320, 14, 0, 4 },
 	{ 64, 96, 880, 288, 15, 16, 4 },
-	{ 96, 96, 0, 432, 13, 16, 8 }, 
+	{ 96, 96, 0, 432, 13, 16, 8 },  //<<-- Shadow Kick Frame
 	{ 64, 96, 880, 288, 15, 16, 4 },
 	{ 48, 112, 64, 320, 14, 0, 4 },
 	{ 64, 112, 0, 320, 0, 0, 4 },
@@ -3047,7 +3050,7 @@ static AnimationFrame lightningFrames[] = {
 };
 
 static int specials_Cage_GreenBolt_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
-static int specials_Cage_ShadowKick_Inputs[] = { INPUT_BACK, INPUT_FORWARD, INPUT_LK, 0, 0, 0 };
+static int specials_Cage_ShadowKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
 static int specials_Kano_Knife_Inputs[] = { INPUT_FORWARD, INPUT_BACK, 0, 0, 0, INPUT_BLK }; //if IsBlocking
 static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK }; //if IsBlocking
@@ -3239,6 +3242,7 @@ void setPlayer1Name(char* name);
 void setPlayer2Name(char* name, int length);
 void displayWinnerMedals();
 void doSpecial_Cage_GreenBolt(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Cage_ShadowKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Raiden_Lightning(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -4112,6 +4116,11 @@ void basicmain()
 		stateHitBlockingKnockback.update = &StateHitBlockingKnockback_Update;
 		stateHitBlockingKnockback.sleep = &StateHitBlockingKnockback_Sleep;
 		stateHitBlockingKnockback.handleInput = &StateHitBlockingKnockback_HandleInput;
+		stateCageShadowKick.enter = &StateCageShadowKick_Enter;
+		stateCageShadowKick.exit = &StateCageShadowKick_Exit;
+		stateCageShadowKick.update = &StateCageShadowKick_Update;
+		stateCageShadowKick.sleep = &StateCageShadowKick_Sleep;
+		stateCageShadowKick.handleInput = &StateCageShadowKick_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4157,6 +4166,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
 		stateMachineAdd(&fighter1StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
 		stateMachineAdd(&fighter1StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
+		stateMachineAdd(&fighter1StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4202,6 +4212,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
 		stateMachineAdd(&fighter2StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
 		stateMachineAdd(&fighter2StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
+		stateMachineAdd(&fighter2StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4215,6 +4226,7 @@ void basicmain()
 		fighterCage.special3InputCount = 1;
 		fighterCage.special1Frames = &cageGreenBoltFrames;
 		fighterCage.doSpecialMove1 = &doSpecial_Cage_GreenBolt;
+		fighterCage.doSpecialMove2 = &doSpecial_Cage_ShadowKick;
 		fighterCage.idleFrames = &cageIdleFrames;
 		fighterCage.dizzyFrames = &cageDizzyFrames;
 		fighterCage.winsFrames = &cageWinsFrames;
@@ -4265,6 +4277,7 @@ void basicmain()
 		fighterCage2.special3InputCount = 1;
 		fighterCage2.special1Frames = &cageGreenBoltFrames;
 		fighterCage2.doSpecialMove1 = &doSpecial_Cage_GreenBolt;
+		fighterCage2.doSpecialMove2 = &doSpecial_Cage_ShadowKick;
 		fighterCage2.idleFrames = &cageIdleFrames;
 		fighterCage2.dizzyFrames = &cageDizzyFrames;
 		fighterCage2.winsFrames = &cageWinsFrames;
@@ -7519,6 +7532,11 @@ void displayWinnerMedals()
 void doSpecial_Cage_GreenBolt(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
+}
+
+void doSpecial_Cage_ShadowKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_CAGE_SHADOW_KICK, fighter, animator);
 }
 
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)

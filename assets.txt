@@ -93,6 +93,7 @@ ROM,BMP_TS_MENU1,gfx_clut,ASSETS\GFX\ts_menu1.BMP
 ROM,BMP_TS_MENU2,gfx_clut,ASSETS\GFX\ts_menu2.BMP
 ROM,BMP_TS_MENU3,gfx_clut,ASSETS\GFX\ts_menu3.BMP
 ROM,BMP_PROJECTILES,gfx_clut,ASSETS\GFX\projectiles.bmp
+ROM,BMP_PAL_CAGE_SHADOW,gfx_clut,ASSETS\GFX\pal_cage_shadow.BMP
 ROM,BMP_PAL_PROJ_CAGE,gfx_clut,ASSETS\GFX\pal_proj_cage.bmp
 ROM,BMP_PAL_PROJ_KANO,gfx_clut,ASSETS\GFX\pal_proj_kano.bmp
 ROM,BMP_PAL_PROJ_RAIDEN,gfx_clut,ASSETS\GFX\pal_proj_raiden.bmp
@@ -191,6 +192,7 @@ ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
 ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
 ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
+ROM,cage_shadowkick_sam,sfx_raw8000,ASSETS\SFX\cage_shadowkick.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

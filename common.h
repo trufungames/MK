@@ -127,6 +127,7 @@
 #define SOUND_SCORPION_COMEHERE 69
 #define SOUND_SCORPION_GETOVERHERE 70
 #define SOUND_CROWD_CLAP 71
+#define SOUND_CAGE_SHADOWKICK 72
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -171,6 +172,7 @@
 #define DMG_RINGS 20
 #define DMG_FREEZE 0
 #define DMG_HARPOON 8
+#define DMG_SHADOWKICK 20
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0
@@ -243,9 +245,12 @@
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
 #define FIGHTER_THROWN_X_SPEED 10
 #define FIGHTER_PROJECTILE_X_SPEED 12
+#define FIGHTER_CAGE_SHADOW_KICK_X_SPEED 16
+#define FIGHTER_CAGE_SHADOW_KICK_TOTAL_DISTANCE 96
+#define FIGHTER_CAGE_SHADOW_KICK_ZIPBACK_X_SPEED 32
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 44
+#define STATE_TOTAL_COUNT 45
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -291,6 +296,7 @@
 #define STATE_BEING_THROWN 41
 #define STATE_TURNING_AROUND 42
 #define STATE_THROWING_PROJECTILE 43
+#define STATE_CAGE_SHADOW_KICK 44
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

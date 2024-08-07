@@ -12,6 +12,9 @@
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short UppercutOffsets[26] = {-20, -20, -16, -14, -13, -10, -9, -6, -4, -3, -2, -1, 0, 0, 0, 2, 3, 4, 6, 9, 12, 13, 14, 20, 22, 24 };
+static AnimationFrame cageShadowKickFrames[] = {
+	{ 96, 96, 0, 736, 0, 16, 6 },
+};
 
 void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state)
 {
@@ -40,6 +43,15 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
     /////////////////////////////////////////////////////
     // GLOBAL FIGHTER LOGIC - REGARDLESS OF STATE
     /////////////////////////////////////////////////////
+
+    if (sprite[fighter->spriteIndex-1].active == R_is_active
+        && sprite[fighter->spriteIndex].active == R_is_active
+        && sprite[fighter->spriteIndex+1].active == R_is_active
+        && sprite[fighter->spriteIndex+2].active == R_is_active)
+    {
+        //both the fighter and the projectile are on screen at once, let's z-sort them
+        //rapSortSprites(fighter->spriteIndex, R_sprite_y, 2, SPRSORT_LOW);
+    }
 
     if (fighter->IsBeingPushed)
     {
@@ -2543,5 +2555,120 @@ void StateThrowingProjectile_Sleep(struct StateMachine* stateMachine, struct Fig
 }
 
 void StateThrowingProjectile_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CAGE SHADOW KICK
+// vars[0] = ticks
+// vars[1] = distance traveled
+// vars[2] = current frame
+
+void StateCageShadowKick_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    stateMachine->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    stateMachine->vars[0] = rapTicks;
+    stateMachine->vars[1] = 0;
+    stateMachine->vars[2] = 0;
+    fighter->ProjectileMadeContact = false;
+    fighter->projectilePositionX = fighter->positionX;
+    
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    fighter->lastTicks = rapTicks;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].x_ = fighter->projectilePositionX;
+    sprite[fighter->lightningSpriteIndex].y_ = fighter->positionY - 1;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    
+    switch(fighter->fighterIndex)
+    {
+        case CAGE:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_CAGE_SHADOW_clut),13,16);
+            sfxCageShadowKick(fighter->soundHandler);
+            break;
+        default:
+            break;
+    }
+}
+
+void StateCageShadowKick_Exit(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    sprite[fighter->lightningSpriteIndex].was_hit = -1;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    playerinputInit(fighter);    
+    fighterResetRaidenLightning(fighter);
+}
+
+void StateCageShadowKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (stateMachine->vars[2] < 3 || stateMachine->vars[2] > 3)
+    {
+        //animate the first 3 frames and the last 3 frames
+        if (rapTicks >= stateMachine->vars[0] + 5)
+        {
+            stateMachine->vars[2]++;
+            stateMachine->vars[0] = rapTicks;
+        }
+
+        if (stateMachine->vars[2] > 6)
+        {
+            //out animation is done, go back to idle
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+    }
+    else if (stateMachine->vars[2] == 3) //leg extended, shadow kick frame
+    {
+        if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+        }
+
+        if (stateMachine->vars[1] < FIGHTER_CAGE_SHADOW_KICK_TOTAL_DISTANCE && rapTicks >= stateMachine->vars[0] + 2 && !fighter->ProjectileMadeContact)
+        {
+            fighterPositionXAdd(fighter, FIGHTER_CAGE_SHADOW_KICK_X_SPEED * fighter->direction);
+            stateMachine->vars[1] += FIGHTER_CAGE_SHADOW_KICK_X_SPEED;
+            stateMachine->vars[0] = rapTicks;
+        }
+        else if (stateMachine->vars[1] >= FIGHTER_CAGE_SHADOW_KICK_TOTAL_DISTANCE || fighter->ProjectileMadeContact)
+        {
+            if (rapTicks >= stateMachine->vars[0] + 2)
+            {
+                //zip the shadow back behind Johnny Cage
+                fighter->projectilePositionX += FIGHTER_CAGE_SHADOW_KICK_ZIPBACK_X_SPEED * fighter->direction;
+
+                if ((fighter->direction == 1 && sprite[fighter->lightningSpriteIndex].x_ > sprite[fighter->spriteIndex].x_)
+                    || (fighter->direction == -1 && sprite[fighter->lightningSpriteIndex].x_ < sprite[fighter->spriteIndex].x_))
+                {
+                    //shadow kick is done, let's animate out and go back to idle
+                    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                    stateMachine->vars[2] = 4;
+                    stateMachine->vars[0] = rapTicks;
+                }
+
+                stateMachine->vars[0] = rapTicks;
+            }
+        }
+    }
+
+    animateFrame(spriteAnimator->spriteIndex, stateMachine->vars[2], *fighter->kickLowFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    updateSpriteAnimator(fighter->projectileAnimator, cageShadowKickFrames, 1, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+}
+
+void StateCageShadowKick_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->ProjectileMadeContact = true;
+}
+
+void StateCageShadowKick_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }
