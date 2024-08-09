@@ -518,17 +518,6 @@ void sfxCageGreenbolt(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_CAGE_GREENBOLT, 8000);
 }
 
-void sfxCageShadowKick(struct SoundHandler* soundHandler)
-{
-	if (!soundHandler->EnableSFX)
-		return;
-
-	soundNextChannel(soundHandler);
-
-	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_CAGE_SHADOWKICK, 8000);
-	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_CAGE_SHADOWKICK, 8000);
-}
-
 void sfxKanoYell(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

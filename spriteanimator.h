@@ -5,7 +5,7 @@ struct AnimationFrame {
     unsigned short y;
     unsigned short offsetX;
     unsigned short offsetY;
-    unsigned int ticks;
+    unsigned short ticks;
 };
 
 void animateFrame(unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth);
@@ -16,7 +16,7 @@ struct SpriteAnimator {
     unsigned int spriteIndex;
     float mulFactor;
     unsigned int base;
-    int lastTick;
+    short lastTick;
     short currentFrame;
     short idleFrameWidth;
     struct AnimationFrame* currentAnimationFrame;

@@ -661,13 +661,4 @@ sample71:	dc.l	crowd_clap_sam		; start of sample
 s71_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
-sample72:	dc.l	cage_shadowkick_sam		; start of sample
-			dc.l	cage_shadowkick_sam_end	; end of sample
-			dc.l	0				; repeat offset
-			dc.l	0				; repeat length
-			dc.w	0				; <NULL>
-			dc.b	0				; fine tune
-s72_vol:		dc.b	255				; volume
-			dc.l	8000			; default play rate
-
 ; END OF FILE.

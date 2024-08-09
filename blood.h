@@ -2,10 +2,10 @@ struct BloodDrop {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
-    int LastTicks;
+    short LastTicks;
     short Direction;
-    int X;
-    int Y;
+    short X;
+    short Y;
     float MomentumY;
     float MomentumX;
 };
@@ -14,7 +14,7 @@ struct BloodBall {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
-    int LastTicks;
+    short LastTicks;
     short Direction;
     float MomentumX;
 };
@@ -29,17 +29,17 @@ struct BloodSquirt {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
-    int X;
-    int Y;
+    short X;
+    short Y;
 };
 
 struct BloodSpray {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
-    int X;
-    int Y;
-    int LastTicks;
+    short X;
+    short Y;
+    short LastTicks;
 };
 
 void bloodInit();

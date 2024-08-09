@@ -192,7 +192,6 @@ ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
 ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
 ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
-ROM,cage_shadowkick_sam,sfx_raw8000,ASSETS\SFX\cage_shadowkick.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

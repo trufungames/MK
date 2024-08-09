@@ -43,6 +43,16 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
     
     switch (checkCount)
     {
+        case 1:
+            if (fighter->input1->ButtonPressed != checkInputs[0])
+                return false;
+            break;
+        case 2:
+            if (fighter->input1->ButtonPressed != checkInputs[0])
+                return false;
+            if (fighter->input2->ButtonPressed != checkInputs[1])
+                return false;
+            break;
         case 3:
             if (fighter->input1->ButtonPressed != checkInputs[0])
                 return false;
@@ -78,7 +88,7 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
     }
 
     //the last input indicates a BLOCK hold
-    if (checkInputs[5] == INPUT_BLK && !fighter->IsBlocking)
+    if (checkInputs[5] == INPUT_BLK && !(fighter->pad & JAGPAD_B || fighter->pad & JAGPAD_8))
         return false;
 
     return true;

@@ -127,7 +127,6 @@
 #define SOUND_SCORPION_COMEHERE 69
 #define SOUND_SCORPION_GETOVERHERE 70
 #define SOUND_CROWD_CLAP 71
-#define SOUND_CAGE_SHADOWKICK 72
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -147,6 +146,7 @@
 #define POINTS_FLAWLESS_DOUBLE 5000
 #define POINTS_FATALITY 1000
 #define POINTS_PROJECTILE 20
+#define POINTS_SPECIAL 50
 
 //-----------------------------------------------------------------------------------------------------
 #define MAX_HEALTH 120
@@ -250,7 +250,7 @@
 #define FIGHTER_CAGE_SHADOW_KICK_ZIPBACK_X_SPEED 32
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 45
+#define STATE_TOTAL_COUNT 47
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -297,6 +297,8 @@
 #define STATE_TURNING_AROUND 42
 #define STATE_THROWING_PROJECTILE 43
 #define STATE_CAGE_SHADOW_KICK 44
+#define STATE_CAGE_NUTPUNCH 45
+#define STATE_HIT_NUTS 46
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
@@ -379,6 +381,8 @@
 #define CAGE_HIT_FALL_FRAME_COUNT 7
 #define CAGE_HIT_SWEEP_FRAME_COUNT 6
 #define CAGE_SPECIAL_1_FRAME_COUNT 6
+#define CAGE_SPECIAL_2_FRAME_COUNT 6
+#define CAGE_SPECIAL_3_FRAME_COUNT 11
 #define CAGE_PROJECTILE_FRAME_COUNT 8
 #define CAGE_PROJECTILE_END_FRAME_COUNT 5
 
