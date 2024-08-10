@@ -215,7 +215,7 @@ struct Fighter {
     struct AnimationFrame (*special3Frames)[11];
     struct AnimationFrame (*projectileFrames)[20];
     struct AnimationFrame (*projectileEndFrames)[5];
-    struct AnimationFrame (*hitNutsFrame)[1];
+    struct AnimationFrame (*hitNutsFrames)[2];
 };
 
 void fighterHide(struct Fighter* fighter);

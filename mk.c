@@ -64,8 +64,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -215,6 +215,9 @@ static State stateCageShadowKick = {
 static State stateCageNutPunch = {
 	STATE_CAGE_NUTPUNCH
 };
+static State stateHitNuts = {
+	STATE_HIT_NUTS
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -290,7 +293,7 @@ struct ImpactFrame cageImpactFrameThrow = {
 	1, 30, 30, false, 99
 };
 struct ImpactFrame cageImpactFrameNutPunch = {
-	5, 30, 30, false, 99
+	5, 40, 20, false, 99
 };
 
 static AnimationFrame cageGreenBoltFrames[] = {
@@ -316,8 +319,9 @@ static AnimationFrame cageNutPunchFrames[] = {
 	{ 96, 96, 688, 752, -16, 16, 4 }
 };
 
-static AnimationFrame kanoHitNutsFrame[] = {
-	{ 64, 64, 816, 832, 0, 48, 6 }
+static AnimationFrame kanoHitNutsFrames[] = {
+	{ 64, 64, 816, 832, 0, 48, 6 },
+	{ 64, 64, 816, 832, 2, 48, 6 }
 };
 
 static AnimationFrame kanoKnifeFrames[] = {
@@ -4108,6 +4112,10 @@ void basicmain()
 		stateCageNutPunch.update = &StateCageNutPunch_Update;
 		stateCageNutPunch.sleep = &StateCageNutPunch_Sleep;
 		stateCageNutPunch.handleInput = &StateCageNutPunch_HandleInput;
+		stateHitNuts.enter = &StateHitNuts_Enter;
+		stateHitNuts.update = &StateHitNuts_Update;
+		stateHitNuts.sleep = &StateHitNuts_Sleep;
+		stateHitNuts.handleInput = &StateHitNuts_HandleInput;
 				
 		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4155,6 +4163,7 @@ void basicmain()
 		stateMachineAdd(&fighter1StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
 		stateMachineAdd(&fighter1StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
 		stateMachineAdd(&fighter1StateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
+		stateMachineAdd(&fighter1StateMachine, STATE_HIT_NUTS, &stateHitNuts);
 
 		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4202,6 +4211,7 @@ void basicmain()
 		stateMachineAdd(&fighter2StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
 		stateMachineAdd(&fighter2StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
 		stateMachineAdd(&fighter2StateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
+		stateMachineAdd(&fighter2StateMachine, STATE_HIT_NUTS, &stateHitNuts);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4318,6 +4328,7 @@ void basicmain()
 		fighterKano.projectileEndFrames = &projectileKnifeEndFrames;
 		fighterKano.special1Inputs = &specials_Kano_Knife_Inputs;
 		fighterKano.special2Inputs = &specials_Kano_CannonBall_Inputs;
+		fighterKano.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKano.special1InputCount = 2;
 		fighterKano.special2InputCount = 4;
 		fighterKano.special3InputCount = 1;
@@ -4360,7 +4371,7 @@ void basicmain()
 		fighterKano.hitUppercutFrames = &kanoHitUppercutFrames;
 		fighterKano.hitFallFrames = &kanoHitFallFrames;
 		fighterKano.hitSweepFrames = &kanoHitSweepFrames;
-		fighterKano.hitNutsFrame = &kanoHitNutsFrame;
+		fighterKano.hitNutsFrames = &kanoHitNutsFrames;
 		fighterKano.kipUpFrames = &kanoKipUpFrames;		
 		fighterKano2.spriteAnimator = &kanoAnimator2;
 		fighterKano2.projectileAnimator = &lightningAnimator;
@@ -4368,6 +4379,7 @@ void basicmain()
 		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
 		fighterKano2.special1Inputs = &specials_Kano_Knife_Inputs;
 		fighterKano2.special2Inputs = &specials_Kano_CannonBall_Inputs;
+		fighterKano2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKano2.special1InputCount = 2;
 		fighterKano2.special2InputCount = 4;
 		fighterKano2.special3InputCount = 1;
@@ -4410,7 +4422,7 @@ void basicmain()
 		fighterKano2.hitUppercutFrames = &kanoHitUppercutFrames;
 		fighterKano2.hitFallFrames = &kanoHitFallFrames;
 		fighterKano2.hitSweepFrames = &kanoHitSweepFrames;
-		fighterKano2.hitNutsFrame = &kanoHitNutsFrame;
+		fighterKano2.hitNutsFrames = &kanoHitNutsFrames;
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
 		//Raide
 		fighterRaiden.spriteAnimator = &raidenAnimator;
@@ -4419,6 +4431,7 @@ void basicmain()
 		fighterRaiden.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden.special1Inputs = &specials_Raiden_Lightning_Inputs;
 		fighterRaiden.special2Inputs = &specials_Raiden_Torpedo_Inputs;
+		fighterRaiden.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterRaiden.special1InputCount = 3;
 		fighterRaiden.special2InputCount = 3;
 		fighterRaiden.special3InputCount = 1;
@@ -4468,6 +4481,7 @@ void basicmain()
 		fighterRaiden2.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden2.special1Inputs = &specials_Raiden_Lightning_Inputs;
 		fighterRaiden2.special2Inputs = &specials_Raiden_Torpedo_Inputs;
+		fighterRaiden2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterRaiden2.special1InputCount = 3;
 		fighterRaiden2.special2InputCount = 3;
 		fighterRaiden2.special3InputCount = 1;

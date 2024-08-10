@@ -2543,11 +2543,12 @@ void StateHitNuts_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     stateMachine->vars[0] = rapTicks;
     stateMachine->vars[1] = 0;
     sfxImpact(fighter->soundHandler);
+    bgShake(false);
 }
 
 void StateHitNuts_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    if (rapTicks >= stateMachine->vars[0] + 30 && stateMachine->vars[1] == 0)
+    if (rapTicks >= stateMachine->vars[0] + 10 && stateMachine->vars[1] == 0)
     {
         stateMachine->vars[1] = 1;
         fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
@@ -2558,7 +2559,7 @@ void StateHitNuts_Update(struct StateMachine* stateMachine, struct Fighter* figh
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
     }
 
-    updateSpriteAnimator(spriteAnimator, *fighter->hitNutsFrame, 1, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    updateSpriteAnimator(spriteAnimator, *fighter->hitNutsFrames, 2, true, true, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateHitNuts_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)

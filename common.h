@@ -172,7 +172,7 @@
 #define DMG_RINGS 20
 #define DMG_FREEZE 0
 #define DMG_HARPOON 8
-#define DMG_SHADOWKICK 20
+#define DMG_SPECIAL_MOVE 20
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_GATES 0

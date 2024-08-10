@@ -5477,6 +5477,10 @@ __Z9basicmainv:
 	move.l #__Z24StateCageNutPunch_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateCageNutPunch+6
 	move.l #__Z23StateCageNutPunch_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateCageNutPunch+10
 	move.l #__Z29StateCageNutPunch_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL17stateCageNutPunch+14
+	move.l #__Z18StateHitNuts_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitNuts+2
+	move.l #__Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitNuts+6
+	move.l #__Z18StateHitNuts_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitNuts+10
+	move.l #__Z24StateHitNuts_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateHitNuts+14
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL20fighter1StateMachine
@@ -5705,6 +5709,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL17stateCageNutPunch,(%sp)
 	pea 45.w
+	pea __ZL20fighter1StateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL12stateHitNuts,(%sp)
+	pea 46.w
 	pea __ZL20fighter1StateMachine
 	jsr (%a2)
 	addq.l #8,%sp
@@ -5937,6 +5946,11 @@ __Z9basicmainv:
 	pea 45.w
 	pea __ZL20fighter2StateMachine
 	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL12stateHitNuts,(%sp)
+	pea 46.w
+	pea __ZL20fighter2StateMachine
+	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+402
 	move.l #__ZL17lightningAnimator,__ZL11fighterCage+406
 	move.l #__ZL25projectileGreenBoltFrames,__ZL11fighterCage+578
@@ -6051,6 +6065,7 @@ __Z9basicmainv:
 	move.l #__ZL24projectileKnifeEndFrames,__ZL11fighterKano+582
 	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL11fighterKano+312
 	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL11fighterKano+316
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL11fighterKano+320
 	move.w #2,__ZL11fighterKano+324
 	move.w #4,__ZL11fighterKano+326
 	move.w #1,__ZL11fighterKano+328
@@ -6093,7 +6108,7 @@ __Z9basicmainv:
 	move.l #__ZL21kanoHitUppercutFrames,__ZL11fighterKano+514
 	move.l #__ZL17kanoHitFallFrames,__ZL11fighterKano+518
 	move.l #__ZL18kanoHitSweepFrames,__ZL11fighterKano+522
-	move.l #__ZL16kanoHitNutsFrame,__ZL11fighterKano+586
+	move.l #__ZL17kanoHitNutsFrames,__ZL11fighterKano+586
 	move.l #__ZL15kanoKipUpFrames,__ZL11fighterKano+526
 	move.l #__ZL13kanoAnimator2,__ZL12fighterKano2+402
 	move.l #__ZL17lightningAnimator,__ZL12fighterKano2+406
@@ -6101,6 +6116,7 @@ __Z9basicmainv:
 	move.l #__ZL24projectileKnifeEndFrames,__ZL12fighterKano2+582
 	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL12fighterKano2+312
 	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL12fighterKano2+316
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL12fighterKano2+320
 	move.w #2,__ZL12fighterKano2+324
 	move.w #4,__ZL12fighterKano2+326
 	move.w #1,__ZL12fighterKano2+328
@@ -6143,7 +6159,7 @@ __Z9basicmainv:
 	move.l #__ZL21kanoHitUppercutFrames,__ZL12fighterKano2+514
 	move.l #__ZL17kanoHitFallFrames,__ZL12fighterKano2+518
 	move.l #__ZL18kanoHitSweepFrames,__ZL12fighterKano2+522
-	move.l #__ZL16kanoHitNutsFrame,__ZL12fighterKano2+586
+	move.l #__ZL17kanoHitNutsFrames,__ZL12fighterKano2+586
 	move.l #__ZL15kanoKipUpFrames,__ZL12fighterKano2+526
 	move.l #__ZL14raidenAnimator,__ZL13fighterRaiden+402
 	move.l #__ZL17lightningAnimator,__ZL13fighterRaiden+406
@@ -6151,6 +6167,7 @@ __Z9basicmainv:
 	move.l #__ZL28projectileLightningEndFrames,__ZL13fighterRaiden+582
 	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL13fighterRaiden+312
 	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL13fighterRaiden+316
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL13fighterRaiden+320
 	move.w #3,__ZL13fighterRaiden+324
 	move.w #3,__ZL13fighterRaiden+326
 	move.w #1,__ZL13fighterRaiden+328
@@ -6200,6 +6217,7 @@ __Z9basicmainv:
 	move.l #__ZL28projectileLightningEndFrames,__ZL14fighterRaiden2+582
 	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL14fighterRaiden2+312
 	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL14fighterRaiden2+316
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterRaiden2+320
 	move.w #3,__ZL14fighterRaiden2+324
 	move.w #3,__ZL14fighterRaiden2+326
 	move.w #1,__ZL14fighterRaiden2+328
@@ -9817,8 +9835,8 @@ _kangImpactFrameLowPunch:
 	.even
 _cageImpactFrameNutPunch:
 	.word	5
-	.word	30
-	.word	30
+	.word	40
+	.word	20
 	.byte	0
 	.skip 1
 	.word	99
@@ -10241,6 +10259,10 @@ __ZL19stateCageShadowKick:
 	.even
 __ZL17stateCageNutPunch:
 	.word	45
+	.skip 16
+	.even
+__ZL12stateHitNuts:
+	.word	46
 	.skip 16
 .lcomm __ZL20fighter1StateMachine,202
 .lcomm __ZL20fighter2StateMachine,202
@@ -12901,6 +12923,7 @@ __ZL31specials_Kano_CannonBall_Inputs:
 	.long	2
 	.long	0
 	.long	7
+.lcomm __ZL28specials_FIGHTER_NONE_Inputs,24
 	.even
 __ZL15kanoKnifeFrames:
 	.word	64
@@ -14875,12 +14898,19 @@ __ZL18kanoHitSweepFrames:
 	.word	90
 	.word	5
 	.even
-__ZL16kanoHitNutsFrame:
+__ZL17kanoHitNutsFrames:
 	.word	64
 	.word	64
 	.word	816
 	.word	832
 	.word	0
+	.word	48
+	.word	6
+	.word	64
+	.word	64
+	.word	816
+	.word	832
+	.word	2
 	.word	48
 	.word	6
 	.even
@@ -17524,7 +17554,6 @@ __ZL31specials_Kang_FlyingKick_Inputs:
 	.long	0
 	.long	0
 	.long	0
-.lcomm __ZL28specials_FIGHTER_NONE_Inputs,24
 	.even
 __ZL18kangFireballFrames:
 	.word	64
@@ -24854,8 +24883,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	0
-	.byte	0
+	.byte	1
+	.byte	1
 	.word	163
 	.word	120
 	.skip 2

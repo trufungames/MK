@@ -1557,9 +1557,17 @@ void fighterHandleImpact(struct StateMachine* stateMachine1, struct Fighter* fig
         }
         else if (stateMachine1->currentState->Name == STATE_CAGE_SHADOW_KICK)
         {
-            fighterAddPendingDamage(fighter2, DMG_SHADOWKICK, false, fighter1, POINTS_SPECIAL);
-            stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
-            stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+            if (stateMachine2->currentState->Name != STATE_DUCKING)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+                stateMachineSleep(stateMachine1, 8, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine2, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+            }
+        }
+        else if (stateMachine1->currentState->Name == STATE_CAGE_NUTPUNCH)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+            stateMachineGoto(stateMachine2, STATE_HIT_NUTS, fighter2, spriteAnimator2);
         }
     }
     else if (fighterIsBlocking(stateMachine2, fighter2))

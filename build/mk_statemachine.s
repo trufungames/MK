@@ -7019,10 +7019,13 @@ __Z18StateHitNuts_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	move.w %d0,246(%a1)
 	move.w %d0,192(%a0)
 	clr.w 194(%a0)
-	move.l 266(%a1),8(%fp)
-	move.l (%sp)+,%a2
+	move.l 266(%a1),-(%sp)
+	jsr __Z9sfxImpactP12SoundHandler
+	addq.l #4,%sp
+	clr.l 8(%fp)
+	move.l -4(%fp),%a2
 	unlk %fp
-	jra __Z9sfxImpactP12SoundHandler
+	jra __Z7bgShakeb
 	.even
 	.globl	__Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator
 __Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator:
@@ -7033,7 +7036,7 @@ __Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 16(%fp),%d2
 	move.w 192(%a3),%a1
 	move.w raptor_ticks,%a0
-	lea (29,%a1),%a4
+	lea (9,%a1),%a4
 	cmp.l %a4,%a0
 	jle .L762
 	tst.w 194(%a3)
@@ -7049,9 +7052,9 @@ __Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.w 250(%a2),%a0
 	move.l %a0,-(%sp)
-	clr.l -(%sp)
 	pea 1.w
 	pea 1.w
+	pea 2.w
 	move.l 586(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
@@ -7077,9 +7080,9 @@ __Z19StateHitNuts_UpdateP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.w 250(%a2),%a0
 	move.l %a0,-(%sp)
-	clr.l -(%sp)
 	pea 1.w
 	pea 1.w
+	pea 2.w
 	move.l 586(%a2),-(%sp)
 	move.l %d2,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
