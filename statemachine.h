@@ -8,19 +8,14 @@ struct State {
 
 struct StateMachine {
     struct State* (states)[STATE_TOTAL_COUNT];
-    struct State* currentState;
-    short vars[3];
-    bool exitingState;
-    bool isSleeping;
-    short sleepTicks;
 };
 
-void stateMachineAdd(struct StateMachine* stateMachine, int name, struct State* state);
-void stateMachineInit(struct StateMachine* stateMachine, int name, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
+void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state);
+void stateMachineInit(struct StateMachine* stateMachine, short name, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 void stateMachineHandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
-void stateMachineGoto(struct StateMachine* stateMachine, int newState, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
-void stateMachineSleep(struct StateMachine* stateMachine, int ticks, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
+void stateMachineGoto(struct StateMachine* stateMachine, short newState, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
+void stateMachineSleep(struct StateMachine* stateMachine, short ticks, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator);
 
 void StateIdle_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateIdle_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
@@ -256,6 +251,11 @@ void StateHitNuts_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnim
 void StateHitNuts_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitNuts_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitNuts_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateKanoCannonBall_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKanoCannonBall_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKanoCannonBall_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKanoCannonBall_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
 
 //TODOs

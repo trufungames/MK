@@ -192,6 +192,8 @@ ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
 ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
 ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
+ROM,kano_cannonball_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball.wav
+ROM,kano_cannonball_start_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball_start.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

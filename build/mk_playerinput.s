@@ -5,22 +5,22 @@
 __Z15playerinputInitP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	move.l 288(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 292(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 296(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 300(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
 	move.l 304(%a0),%a1
 	clr.w (%a1)
 	clr.w 2(%a1)
-	move.l 308(%a0),%a0
+	move.l 308(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 312(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 316(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 320(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 324(%a0),%a0
 	clr.w (%a0)
 	clr.w 2(%a0)
 	unlk %fp
@@ -32,23 +32,23 @@ __Z15playerinputPushP7Fighteri:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%d0
+	move.l 324(%a0),%a2
+	move.l 320(%a0),%a1
+	move.w (%a1),(%a2)
+	move.w 2(%a1),2(%a2)
+	move.l 316(%a0),%a2
+	move.w (%a2),(%a1)
+	move.w 2(%a2),2(%a1)
+	move.l 312(%a0),%a1
+	move.w (%a1),(%a2)
+	move.w 2(%a1),2(%a2)
 	move.l 308(%a0),%a2
+	move.w (%a2),(%a1)
+	move.w 2(%a2),2(%a1)
 	move.l 304(%a0),%a1
 	move.w (%a1),(%a2)
 	move.w 2(%a1),2(%a2)
-	move.l 300(%a0),%a2
-	move.w (%a2),(%a1)
-	move.w 2(%a2),2(%a1)
-	move.l 296(%a0),%a1
-	move.w (%a1),(%a2)
-	move.w 2(%a1),2(%a2)
-	move.l 292(%a0),%a2
-	move.w (%a2),(%a1)
-	move.w 2(%a2),2(%a1)
-	move.l 288(%a0),%a1
-	move.w (%a1),(%a2)
-	move.w 2(%a1),2(%a2)
-	move.w 270(%a0),%d1
+	move.w 272(%a0),%d1
 	cmp.l JAGPAD_UP.l,%d0
 	jeq .L6
 	cmp.l JAGPAD_DOWN.l,%d0
@@ -171,23 +171,23 @@ __Z19playerinputContainsP7FighterPii:
 	unlk %fp
 	rts
 .L28:
-	move.l 288(%a1),%a2
+	move.l 304(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l (%a0),%a2
 	jne .L45
-	move.l 292(%a1),%a2
+	move.l 308(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 4(%a0),%a2
 	jne .L45
-	move.l 296(%a1),%a2
+	move.l 312(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 8(%a0),%a2
 	jne .L45
-	move.l 300(%a1),%a2
+	move.l 316(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 12(%a0),%a2
 	jne .L45
-	move.l 304(%a1),%a2
+	move.l 320(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 16(%a0),%a2
 	jeq .L23
@@ -209,52 +209,52 @@ __Z19playerinputContainsP7FighterPii:
 	.word .L27-.L29
 	.word .L28-.L29
 .L27:
-	move.l 288(%a1),%a2
+	move.l 304(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l (%a0),%a2
 	jne .L45
-	move.l 292(%a1),%a2
+	move.l 308(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 4(%a0),%a2
 	jne .L45
-	move.l 296(%a1),%a2
+	move.l 312(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 8(%a0),%a2
 	jne .L45
-	move.l 300(%a1),%a2
+	move.l 316(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 12(%a0),%a2
 	jeq .L23
 	moveq #0,%d0
 	jra .L55
 .L26:
-	move.l 288(%a1),%a2
+	move.l 304(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l (%a0),%a2
 	jne .L45
-	move.l 292(%a1),%a2
+	move.l 308(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 4(%a0),%a2
 	jne .L45
-	move.l 296(%a1),%a2
+	move.l 312(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 8(%a0),%a2
 	jeq .L23
 	moveq #0,%d0
 	jra .L55
 .L25:
-	move.l 288(%a1),%a2
+	move.l 304(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l (%a0),%a2
 	jne .L45
-	move.l 292(%a1),%a2
+	move.l 308(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l 4(%a0),%a2
 	jeq .L23
 	moveq #0,%d0
 	jra .L55
 .L24:
-	move.l 288(%a1),%a2
+	move.l 304(%a1),%a2
 	move.w (%a2),%a2
 	cmp.l (%a0),%a2
 	jeq .L23
@@ -281,7 +281,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	move.l 8(%fp),%a2
 	move.l 12(%fp),%a1
 	move.w raptor_ticks,%a0
-	move.l 308(%a2),%a3
+	move.l 324(%a2),%a3
 	move.w 2(%a3),%a4
 	lea (60,%a4),%a4
 	cmp.l %a0,%a4
@@ -289,7 +289,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a3)
 	clr.w 2(%a3)
 .L58:
-	move.l 304(%a2),%a3
+	move.l 320(%a2),%a3
 	move.w 2(%a3),%a4
 	lea (60,%a4),%a4
 	cmp.l %a0,%a4
@@ -297,7 +297,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a3)
 	clr.w 2(%a3)
 .L59:
-	move.l 300(%a2),%a3
+	move.l 316(%a2),%a3
 	move.w 2(%a3),%a4
 	lea (60,%a4),%a4
 	cmp.l %a0,%a4
@@ -305,7 +305,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a3)
 	clr.w 2(%a3)
 .L60:
-	move.l 296(%a2),%a3
+	move.l 312(%a2),%a3
 	move.w 2(%a3),%a4
 	lea (60,%a4),%a4
 	cmp.l %a0,%a4
@@ -313,7 +313,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a3)
 	clr.w 2(%a3)
 .L61:
-	move.l 292(%a2),%a3
+	move.l 308(%a2),%a3
 	move.w 2(%a3),%a4
 	lea (60,%a4),%a4
 	cmp.l %a0,%a4
@@ -321,7 +321,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a3)
 	clr.w 2(%a3)
 .L62:
-	move.l 288(%a2),%a2
+	move.l 304(%a2),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -329,7 +329,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L63:
-	move.l 308(%a1),%a2
+	move.l 324(%a1),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -337,7 +337,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L64:
-	move.l 304(%a1),%a2
+	move.l 320(%a1),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -345,7 +345,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L65:
-	move.l 300(%a1),%a2
+	move.l 316(%a1),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -353,7 +353,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L66:
-	move.l 296(%a1),%a2
+	move.l 312(%a1),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -361,7 +361,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L67:
-	move.l 292(%a1),%a2
+	move.l 308(%a1),%a2
 	move.w 2(%a2),%a3
 	lea (60,%a3),%a3
 	cmp.l %a0,%a3
@@ -369,7 +369,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	clr.w (%a2)
 	clr.w 2(%a2)
 .L68:
-	move.l 288(%a1),%a1
+	move.l 304(%a1),%a1
 	move.w 2(%a1),%a2
 	lea (60,%a2),%a2
 	cmp.l %a0,%a2
@@ -387,40 +387,40 @@ __Z16playerinputResetP7FighterS0_:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a1
 	move.l 12(%fp),%a0
-	move.l 288(%a1),%a2
-	clr.w (%a2)
-	clr.w 2(%a2)
-	move.l 292(%a1),%a2
-	clr.w (%a2)
-	clr.w 2(%a2)
-	move.l 296(%a1),%a2
-	clr.w (%a2)
-	clr.w 2(%a2)
-	move.l 300(%a1),%a2
-	clr.w (%a2)
-	clr.w 2(%a2)
 	move.l 304(%a1),%a2
 	clr.w (%a2)
 	clr.w 2(%a2)
-	move.l 308(%a1),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 288(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 292(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 296(%a0),%a1
-	clr.w (%a1)
-	clr.w 2(%a1)
-	move.l 300(%a0),%a1
+	move.l 308(%a1),%a2
+	clr.w (%a2)
+	clr.w 2(%a2)
+	move.l 312(%a1),%a2
+	clr.w (%a2)
+	clr.w 2(%a2)
+	move.l 316(%a1),%a2
+	clr.w (%a2)
+	clr.w 2(%a2)
+	move.l 320(%a1),%a2
+	clr.w (%a2)
+	clr.w 2(%a2)
+	move.l 324(%a1),%a1
 	clr.w (%a1)
 	clr.w 2(%a1)
 	move.l 304(%a0),%a1
 	clr.w (%a1)
 	clr.w 2(%a1)
-	move.l 308(%a0),%a0
+	move.l 308(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 312(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 316(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 320(%a0),%a1
+	clr.w (%a1)
+	clr.w 2(%a1)
+	move.l 324(%a0),%a0
 	clr.w (%a0)
 	clr.w 2(%a0)
 	move.l (%sp)+,%a2

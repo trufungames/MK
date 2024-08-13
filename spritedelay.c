@@ -14,12 +14,9 @@ struct SpriteDelay sprites[] = {
     { 0, 0, false }
 };
 
-int spriteCount = 0;
-
 void spriteDelayInit()
 {
-    spriteCount = 10;
-    for (int i = 0; i < spriteCount; i++)
+    for (int i = 0; i < 10; i++)
     {
         sprites[i].inUse = false;
     }
@@ -27,7 +24,7 @@ void spriteDelayInit()
 
 void spriteDelayUpdate()
 {
-    for (int i = 0; i < spriteCount; i++)
+    for (int i = 0; i < 10; i++)
     {
         if (sprites[i].inUse && rapTicks >= sprites[i].ticks)
         {
@@ -40,7 +37,7 @@ void spriteDelayUpdate()
 
 void spriteDelaySetInactive(int spriteIndex, int ticks, bool* inUseFlag)
 {
-    for (int i = 0; i < spriteCount; i++)
+    for (int i = 0; i < 10; i++)
     {
         if (!sprites[i].inUse)
         {

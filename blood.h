@@ -17,6 +17,8 @@ struct BloodBall {
     short LastTicks;
     short Direction;
     float MomentumX;
+    short X;
+    short Y;
 };
 
 struct BloodPool {

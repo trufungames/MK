@@ -98,11 +98,11 @@ SpriteAnimator bloodBall4Animator = {
 };
 
 AnimationFrame bloodBallFrames[] = {
-	{ 32, 32, 352, 80, 0, 0, 6 },
-	{ 32, 32, 16, 128, 0, 0, 6 },
-	{ 32, 32, 64, 128, 0, 0, 6 },
-	{ 32, 32, 112, 128, 0, 0, 6 },
-    { 32, 32, 112, 128, 0, 0, 6 }
+	{ 32, 16, 0, 64, -8, 0, 6 },
+	{ 16, 32, 0, 80, 0, 0, 6 },
+	{ 16, 32, 16, 80, 0, 0, 6 },
+	{ 16, 32, 32, 80, 0, 0, 6 },
+    { 16, 32, 32, 80, 0, 0, 6 }
 };
 
 SpriteAnimator bloodPool1Animator = {
@@ -212,14 +212,12 @@ BloodSquirt bloodSquirts[] = {
 
 short bloodDirection = 1;
 float gravity = 0.0f;
-short bloodStayDelay = 0;
 int bloodSpeedRnd = 0;
 bool impaled = false;
 int impaledTicks = 0;
 
 void bloodInit()
 {
-    bloodStayDelay = 180;
     gravity = 2.0f;
     bloodDirection = 1;
     impaled = false;
@@ -326,12 +324,12 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodBalls[i].InUse)
         {
-            updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false);
+            updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false, bloodBalls[i].X, bloodBalls[i].Y, 1);
 
             if (rapTicks >= bloodBalls[i].LastTicks + FIGHTER_BLOOD_TICKS)
             {
-                sprite[bloodBalls[i].SpriteIndex].x_ -= bloodBalls[i].MomentumX * bloodBalls[i].Direction;
-                sprite[bloodBalls[i].SpriteIndex].y_ += 7.0f;
+                bloodBalls[i].X -= bloodBalls[i].MomentumX * bloodBalls[i].Direction;
+                bloodBalls[i].Y += 7.0f;
 
                 if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
@@ -436,6 +434,8 @@ void bloodBall(short x, short y, short direction)
             bloodBalls[i].InUse = true;
             bloodBalls[i].Direction = direction;
             bloodBalls[i].LastTicks = rapTicks;
+            bloodBalls[i].X = x;
+            bloodBalls[i].Y = y;
             sprite[bloodBalls[i].SpriteIndex].x_ = x;
             sprite[bloodBalls[i].SpriteIndex].y_ = y;
             sprite[bloodBalls[i].SpriteIndex].flip = direction == -1 ? R_is_flipped : R_is_normal;
@@ -458,7 +458,7 @@ void bloodPool(short x, short y)
             sprite[bloodPools[i].SpriteIndex].y_ = y;
             sprite[bloodPools[i].SpriteIndex].active = R_is_active;
             bloodPools[i].Animator->currentFrame = 0;
-            spriteDelaySetInactive(bloodPools[i].SpriteIndex, rapTicks+bloodStayDelay, &bloodPools[i].InUse);
+            spriteDelaySetInactive(bloodPools[i].SpriteIndex, rapTicks + BLOOD_STAY_DELAY, &bloodPools[i].InUse);
             break;
         }
     }
@@ -505,12 +505,12 @@ void bloodImpale(short x, short y, short direction)
     {
         bloodGlob(x - 20, y + 20, direction * -1);
         bloodSpray(x - 10, y, direction * -1);
-        bloodSpray(x - 15, y + 10, direction * -1);
-        bloodDrop(x + (20 * direction), y + 20, direction * -1);
+        //bloodSpray(x - 15, y + 10, direction * -1);
+        //bloodDrop(x + (20 * direction), y + 20, direction * -1);
         bloodDrop(x + (22 * direction), y + 25, direction * -1);
         bloodDrop(x + (18 * direction), y + 15, direction * -1);
-        bloodBall(x + (18 * direction), y + 20, direction * -1);
-        bloodBall(x + (22 * direction), y + 25, direction * -1);
+        //bloodBall(x + (18 * direction), y + 20, direction * -1);
+        //bloodBall(x + (22 * direction), y + 25, direction * -1);
         bloodBall(x + (20 * direction), y + 10, direction * -1);
         bloodBall(x + (16 * direction), y + 5, direction * -1);
 

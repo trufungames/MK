@@ -1,11 +1,11 @@
 #NO_APP
 	.text
 	.even
-__Z17fighterCastShadowP7Fighterb.constprop.1:
+__Z17fighterCastShadowP7Fighterb.constprop.0:
 	link.w %fp,#0
 	move.l sprite,%a1
 	move.l 8(%fp),%a0
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%d1
 	subq.l #1,%d1
 	move.l %d1,%a0
@@ -42,7 +42,7 @@ __Z14fighterStartUpv:
 __Z11fighterHideP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -57,11 +57,10 @@ __Z11fighterHideP7Fighter:
 __Z11fighterShowP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	moveq #7,%d0
-	cmp.l (%a0),%d0
-	jcc .L16
+	cmp.w #7,(%a0)
+	jls .L16
 .L5:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -73,7 +72,8 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L16:
-	move.l (%a0),%d0
+	moveq #0,%d0
+	move.w (%a0),%d0
 	add.l %d0,%d0
 	move.w .L13(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
@@ -87,7 +87,7 @@ __Z11fighterShowP7Fighter:
 	.word .L11-.L13
 	.word .L12-.L13
 .L11:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -100,7 +100,7 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L6:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -113,7 +113,7 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L7:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -126,7 +126,7 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L8:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -139,7 +139,7 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L9:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -152,7 +152,7 @@ __Z11fighterShowP7Fighter:
 	unlk %fp
 	rts
 .L12:
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%a0
 	add.l %d0,%a0
 	add.l %a0,%d0
@@ -173,7 +173,7 @@ __Z21fighterMakeSelectableP7Fighterb:
 	clr.l 206(%a0)
 	move.b #1,210(%a0)
 	move.l sprite,%a2
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d0,%d1
@@ -191,7 +191,7 @@ __Z21fighterMakeSelectableP7Fighterb:
 	lsl.l #6,%d0
 	moveq #-1,%d1
 	move.l %d1,24(%a2,%d0.l)
-	move.w #-1,270(%a0)
+	move.w #-1,272(%a0)
 	move.w #256,%d0
 	move.w #106,12(%a1)
 	move.w %d0,250(%a0)
@@ -210,7 +210,7 @@ __Z21fighterMakeSelectableP7Fighterb:
 	lsl.l #6,%d0
 	moveq #1,%d1
 	move.l %d1,24(%a2,%d0.l)
-	move.w #1,270(%a0)
+	move.w #1,272(%a0)
 	moveq #14,%d0
 	move.w #106,12(%a1)
 	move.w %d0,250(%a0)
@@ -230,20 +230,20 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	clr.b 104(%a2)
 	clr.b 174(%a2)
 	clr.b 175(%a2)
-	move.l 16(%fp),266(%a2)
-	move.l 20(%fp),346(%a2)
-	move.l 24(%fp),350(%a2)
-	move.l 28(%fp),354(%a2)
-	move.l 32(%fp),358(%a2)
-	move.l 36(%fp),370(%a2)
-	move.l 40(%fp),374(%a2)
-	move.l 44(%fp),362(%a2)
-	move.l 48(%fp),366(%a2)
-	move.l 52(%fp),378(%a2)
-	move.l 56(%fp),382(%a2)
-	move.l 60(%fp),386(%a2)
-	move.l 64(%fp),390(%a2)
-	move.l 68(%fp),394(%a2)
+	move.l 16(%fp),268(%a2)
+	move.l 20(%fp),362(%a2)
+	move.l 24(%fp),366(%a2)
+	move.l 28(%fp),370(%a2)
+	move.l 32(%fp),374(%a2)
+	move.l 36(%fp),386(%a2)
+	move.l 40(%fp),390(%a2)
+	move.l 44(%fp),378(%a2)
+	move.l 48(%fp),382(%a2)
+	move.l 52(%fp),394(%a2)
+	move.l 56(%fp),398(%a2)
+	move.l 60(%fp),402(%a2)
+	move.l 64(%fp),406(%a2)
+	move.l 68(%fp),410(%a2)
 	clr.l 202(%a2)
 	clr.w 248(%a2)
 	clr.w 106(%a2)
@@ -282,16 +282,16 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.l %d0,184(%a2)
 	moveq #20,%d1
 	move.l %d1,188(%a2)
-	move.b %d2,274(%a2)
+	move.b %d2,276(%a2)
 	move.b #120,%d0
-	move.l %d0,256(%a2)
-	clr.l 260(%a2)
-	clr.b 264(%a2)
-	clr.b 272(%a2)
-	clr.b 273(%a2)
-	move.b #1,278(%a2)
+	move.l %d0,258(%a2)
+	clr.l 262(%a2)
+	clr.b 266(%a2)
+	clr.b 274(%a2)
+	clr.b 275(%a2)
+	move.b #1,280(%a2)
 	move.l sprite,%a0
-	move.l 4(%a2),%d0
+	move.l 2(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d0,%d1
@@ -304,7 +304,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	moveq #64,%d1
 	move.l %d1,198(%a2)
 	moveq #62,%d2
-	move.l %d2,94(%a2)
+	move.l %d2,92(%a2)
 	move.b #2,%d1
 	move.l %d1,212(%a2)
 	move.w #210,250(%a2)
@@ -318,12 +318,12 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	lsl.l #6,%d0
 	lea (%a0,%d0.l),%a1
 	move.l %d2,24(%a1)
-	move.w #-1,270(%a2)
+	move.w #-1,272(%a2)
 	move.l #11904,%d0
 	move.b #62,%d1
 	moveq #1,%d2
 	move.l %d2,4(%a1)
-	move.l 406(%a2),%a1
+	move.l 422(%a2),%a1
 	clr.w 14(%a1)
 	move.l %d1,(%a1)
 	move.l #12001392,8(%a1)
@@ -349,7 +349,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	moveq #63,%d2
 	move.l %d2,198(%a2)
 	move.b #59,%d1
-	move.l %d1,94(%a2)
+	move.l %d1,92(%a2)
 	move.b #1,%d2
 	move.l %d2,212(%a2)
 	move.w #50,250(%a2)
@@ -362,11 +362,11 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	lsl.l #6,%d0
 	lea (%a0,%d0.l),%a1
 	move.l %d2,24(%a1)
-	move.w #1,270(%a2)
+	move.w #1,272(%a2)
 	move.l #11328,%d0
 	moveq #1,%d2
 	move.l %d2,4(%a1)
-	move.l 406(%a2),%a1
+	move.l 422(%a2),%a1
 	clr.w 14(%a1)
 	move.l %d1,(%a1)
 	move.l #12001392,8(%a1)
@@ -393,7 +393,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 __Z19fighterRestartMatchP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
-	clr.w 276(%a0)
+	clr.w 278(%a0)
 	unlk %fp
 	rts
 	.even
@@ -402,7 +402,7 @@ __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l 12(%fp),%a2
-	move.w 270(%a2),%a0
+	move.w 272(%a2),%a0
 	move.l %a0,-(%sp)
 	move.w 252(%a2),%a0
 	move.l %a0,-(%sp)
@@ -410,7 +410,7 @@ __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame:
 	move.l %a0,-(%sp)
 	pea 1.w
 	pea 1.w
-	move.w 12(%a2),%a0
+	move.w 10(%a2),%a0
 	move.l %a0,-(%sp)
 	move.l 20(%fp),-(%sp)
 	move.l 16(%fp),-(%sp)
@@ -419,14 +419,38 @@ __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame:
 	move.l %a2,8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
-	jra (__Z17fighterCastShadowP7Fighterb.constprop.1)
+	jra (__Z17fighterCastShadowP7Fighterb.constprop.0)
 	.even
 	.globl	__Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame
 __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame:
 	link.w %fp,#0
 	move.l %a2,-(%sp)
 	move.l 12(%fp),%a2
-	move.w 270(%a2),%a0
+	move.w 272(%a2),%a0
+	move.l %a0,-(%sp)
+	move.w 252(%a2),%a0
+	move.l %a0,-(%sp)
+	move.w 250(%a2),%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	move.w 14(%a2),%a0
+	move.l %a0,-(%sp)
+	move.l 20(%fp),-(%sp)
+	move.l 16(%fp),-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	move.l %a2,8(%fp)
+	move.l -4(%fp),%a2
+	unlk %fp
+	jra (__Z17fighterCastShadowP7Fighterb.constprop.0)
+	.even
+	.globl	__Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame
+__Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame:
+	link.w %fp,#0
+	move.l %a2,-(%sp)
+	move.l 12(%fp),%a2
+	move.w 272(%a2),%a0
 	move.l %a0,-(%sp)
 	move.w 252(%a2),%a0
 	move.l %a0,-(%sp)
@@ -443,31 +467,7 @@ __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame:
 	move.l %a2,8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
-	jra (__Z17fighterCastShadowP7Fighterb.constprop.1)
-	.even
-	.globl	__Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame
-__Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame:
-	link.w %fp,#0
-	move.l %a2,-(%sp)
-	move.l 12(%fp),%a2
-	move.w 270(%a2),%a0
-	move.l %a0,-(%sp)
-	move.w 252(%a2),%a0
-	move.l %a0,-(%sp)
-	move.w 250(%a2),%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	move.w 18(%a2),%a0
-	move.l %a0,-(%sp)
-	move.l 20(%fp),-(%sp)
-	move.l 16(%fp),-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	move.l %a2,8(%fp)
-	move.l -4(%fp),%a2
-	unlk %fp
-	jra (__Z17fighterCastShadowP7Fighterb.constprop.1)
+	jra (__Z17fighterCastShadowP7Fighterb.constprop.0)
 	.even
 	.globl	__Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator
 __Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator:
@@ -586,9 +586,9 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	tst.b 101(%a2)
 	jne .L57
 .L50:
-	move.w 324(%a2),%a0
+	move.w 340(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 312(%a2),-(%sp)
+	move.l 328(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	lea __Z19playerinputContainsP7FighterPii,%a3
 	jsr (%a3)
@@ -596,17 +596,17 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	tst.l %d0
 	jne .L58
 .L51:
-	move.w 326(%a2),%a0
+	move.w 342(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 316(%a2),-(%sp)
+	move.l 332(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	tst.l %d0
 	jne .L59
-	move.w 328(%a2),%a0
+	move.w 344(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 320(%a2),-(%sp)
+	move.l 336(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -621,7 +621,7 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %d3,-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
-	move.l 330(%a2),%a0
+	move.l 346(%a2),%a0
 	jsr (%a0)
 	lea (12,%sp),%sp
 	moveq #1,%d0
@@ -632,7 +632,7 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %d3,-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
-	move.l 338(%a2),%a0
+	move.l 354(%a2),%a0
 	jsr (%a0)
 	lea (12,%sp),%sp
 	moveq #1,%d0
@@ -654,9 +654,9 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	jsr __Z15playerinputPushP7Fighteri
 	addq.l #8,%sp
-	move.w 324(%a2),%a0
+	move.w 340(%a2),%a0
 	move.l %a0,-(%sp)
-	move.l 312(%a2),-(%sp)
+	move.l 328(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	lea __Z19playerinputContainsP7FighterPii,%a3
 	jsr (%a3)
@@ -668,7 +668,7 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	move.l %d3,-(%sp)
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
-	move.l 334(%a2),%a0
+	move.l 350(%a2),%a0
 	jsr (%a0)
 	lea (12,%sp),%sp
 	moveq #1,%d0
@@ -875,7 +875,7 @@ __Z16fighterMakeDizzyP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	move.l sprite,%a1
-	move.l 94(%a0),%d0
+	move.l 92(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -889,7 +889,7 @@ __Z16fighterMakeDizzyP7Fighter:
 	lsl.l #6,%d0
 	moveq #-1,%d1
 	move.l %d1,112(%a1,%d0.l)
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -909,15 +909,15 @@ __Z16fighterMakeDizzyP7Fighter:
 	clr.b 172(%a0)
 	clr.b 173(%a0)
 	clr.b 181(%a0)
-	clr.b 264(%a0)
-	clr.b 272(%a0)
-	clr.b 273(%a0)
-	move.b #1,278(%a0)
+	clr.b 266(%a0)
+	clr.b 274(%a0)
+	clr.b 275(%a0)
+	move.b #1,280(%a0)
 	clr.b 161(%a0)
 	clr.b 162(%a0)
 	clr.b 163(%a0)
 	move.b #1,143(%a0)
-	clr.l 260(%a0)
+	clr.l 262(%a0)
 	move.w raptor_ticks,246(%a0)
 	unlk %fp
 	rts
@@ -929,7 +929,7 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	move.l 8(%fp),%a3
 	move.l 12(%fp),%a2
 	move.l sprite,%a0
-	move.l 94(%a3),%d0
+	move.l 92(%a3),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -943,7 +943,7 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	lsl.l #6,%d0
 	moveq #-1,%d1
 	move.l %d1,112(%a0,%d0.l)
-	move.l 4(%a3),%d0
+	move.l 2(%a3),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -963,14 +963,14 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	clr.b 172(%a3)
 	clr.b 173(%a3)
 	clr.b 181(%a3)
-	clr.b 264(%a3)
-	clr.b 272(%a3)
-	clr.b 273(%a3)
-	move.b #1,278(%a3)
+	clr.b 266(%a3)
+	clr.b 274(%a3)
+	clr.b 275(%a3)
+	move.b #1,280(%a3)
 	clr.b 161(%a3)
 	clr.b 162(%a3)
 	clr.b 163(%a3)
-	move.l 94(%a2),%d0
+	move.l 92(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -984,7 +984,7 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	lsl.l #6,%d0
 	moveq #-1,%d1
 	move.l %d1,112(%a0,%d0.l)
-	move.l 4(%a2),%d0
+	move.l 2(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1004,10 +1004,10 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	clr.b 172(%a2)
 	clr.b 173(%a2)
 	clr.b 181(%a2)
-	clr.b 264(%a2)
-	clr.b 272(%a2)
-	clr.b 273(%a2)
-	move.b #1,278(%a2)
+	clr.b 266(%a2)
+	clr.b 274(%a2)
+	clr.b 275(%a2)
+	move.b #1,280(%a2)
 	clr.b 161(%a2)
 	clr.b 162(%a2)
 	clr.b 163(%a2)
@@ -1016,9 +1016,9 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	jsr (%a4)
 	move.l %a2,(%sp)
 	jsr (%a4)
-	move.l 406(%a3),%a0
+	move.l 422(%a3),%a0
 	clr.w 14(%a0)
-	move.l 94(%a3),%d0
+	move.l 92(%a3),%d0
 	move.l %d0,(%a0)
 	move.l #12001392,8(%a0)
 	move.l %d0,%d1
@@ -1035,9 +1035,9 @@ __Z20fighterResetFlagsAllP7FighterS0_:
 	move.l #12108912,-(%sp)
 	lea jsfLoadClut,%a3
 	jsr (%a3)
-	move.l 406(%a2),%a0
+	move.l 422(%a2),%a0
 	clr.w 14(%a0)
-	move.l 94(%a2),%d0
+	move.l 92(%a2),%d0
 	move.l %d0,(%a0)
 	move.l #12001392,8(%a0)
 	move.l %d0,%d1
@@ -1064,7 +1064,7 @@ __Z17fighterResetFlagsP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	move.l sprite,%a1
-	move.l 94(%a0),%d0
+	move.l 92(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1078,7 +1078,7 @@ __Z17fighterResetFlagsP7Fighter:
 	lsl.l #6,%d0
 	moveq #-1,%d1
 	move.l %d1,112(%a1,%d0.l)
-	move.l 4(%a0),%d0
+	move.l 2(%a0),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1098,490 +1098,514 @@ __Z17fighterResetFlagsP7Fighter:
 	clr.b 172(%a0)
 	clr.b 173(%a0)
 	clr.b 181(%a0)
-	clr.b 264(%a0)
-	clr.b 272(%a0)
-	clr.b 273(%a0)
-	move.b #1,278(%a0)
+	clr.b 266(%a0)
+	clr.b 274(%a0)
+	clr.b 275(%a0)
+	move.b #1,280(%a0)
 	clr.b 161(%a0)
 	clr.b 162(%a0)
 	clr.b 163(%a0)
 	unlk %fp
 	rts
 	.even
-	.globl	__Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_
-__Z23fighterHandleProjectileP12StateMachineP7FighterS0_S2_:
+	.globl	__Z23fighterHandleProjectileP12StateMachineP7FighterS2_
+__Z23fighterHandleProjectileP12StateMachineP7FighterS2_:
 	link.w %fp,#0
-	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	move.l 12(%fp),%a0
-	move.l 16(%fp),%a2
-	move.l 20(%fp),%a1
-	moveq #1,%d0
-	cmp.l (%a0),%d0
-	jeq .L121
-	move.l (%sp)+,%a2
-	move.l (%sp)+,%a3
+	move.l 8(%fp),%d1
+	move.l 12(%fp),%a1
+	move.l 16(%fp),%a0
+	move.w (%a1),%d0
+	cmp.w #1,%d0
+	jeq .L127
+	cmp.w #2,%d0
+	jeq .L128
+	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L121:
-	move.b #1,183(%a0)
-	move.l 188(%a2),%a3
-	move.w (%a3),%d0
+.L128:
+	move.b #1,183(%a1)
+	move.l 296(%a0),%a2
+	move.w (%a2),%d0
 	cmp.w #1,%d0
-	jeq .L115
+	jeq .L118
 	cmp.w #8,%d0
-	jeq .L115
+	jeq .L118
 	cmp.w #35,%d0
-	jeq .L115
-	move.b #1,103(%a1)
+	jeq .L118
+	move.b #1,174(%a0)
+	move.b #1,103(%a0)
 	moveq #20,%d0
-	move.l %d0,260(%a1)
-	clr.b 264(%a1)
-	add.l %d0,206(%a0)
-	move.b #1,210(%a0)
-	move.l 402(%a1),20(%fp)
-	move.l %a1,16(%fp)
-	move.b #29,%d0
-	move.l %d0,12(%fp)
-	move.l %a2,8(%fp)
-	move.l (%sp)+,%a2
-	move.l (%sp)+,%a3
+	move.l %d0,262(%a0)
+	clr.b 266(%a0)
+	add.l %d0,206(%a1)
+	move.b #1,210(%a1)
+	move.l 418(%a0),-(%sp)
+	move.l %a0,-(%sp)
+	pea 29.w
+	move.l %d1,-(%sp)
+	jsr __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+	lea (16,%sp),%sp
+.L129:
+	move.l -4(%fp),%a2
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L115:
-	move.l 402(%a1),20(%fp)
-	move.l %a1,16(%fp)
-	moveq #35,%d0
-	move.l %d0,12(%fp)
-	move.l %a2,8(%fp)
-	move.l (%sp)+,%a2
-	move.l (%sp)+,%a3
+	rts
+.L127:
+	move.b #1,183(%a1)
+	move.l 296(%a0),%a2
+	move.w (%a2),%d0
+	cmp.w #1,%d0
+	jeq .L118
+	cmp.w #8,%d0
+	jne .L122
+.L118:
+	move.l 418(%a0),-(%sp)
+	move.l %a0,-(%sp)
+	pea 35.w
+	move.l %d1,-(%sp)
+	jsr __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+	lea (16,%sp),%sp
+	move.l -4(%fp),%a2
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
+	rts
+.L122:
+	cmp.w #35,%d0
+	jeq .L118
+	move.b #1,103(%a0)
+	moveq #20,%d0
+	move.l %d0,262(%a0)
+	clr.b 266(%a0)
+	add.l %d0,206(%a1)
+	move.b #1,210(%a1)
+	move.l 418(%a0),-(%sp)
+	move.l %a0,-(%sp)
+	pea 29.w
+	move.l %d1,-(%sp)
+	jsr __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+	lea (16,%sp),%sp
+	jra .L129
 	.even
-	.globl	__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_
-__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_:
+	.globl	__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_
+__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_:
 	link.w %fp,#0
-	movem.l #12344,-(%sp)
-	move.l 8(%fp),%a4
+	movem.l #14368,-(%sp)
+	move.l 8(%fp),%d2
 	move.l 12(%fp),%a0
-	move.l 16(%fp),%d3
-	move.l 20(%fp),%a3
-	move.l 24(%fp),%a2
-	move.l 28(%fp),%d2
-	move.l 188(%a3),%a1
+	move.l 16(%fp),%d4
+	move.l 20(%fp),%a2
+	move.l 24(%fp),%d3
+	move.l 296(%a2),%a1
 	move.w (%a1),%d1
 	cmp.w #1,%d1
-	jeq .L124
+	jeq .L132
 	cmp.w #8,%d1
-	jeq .L164
+	jeq .L172
 	tst.b 138(%a2)
-	jne .L123
-	move.l 188(%a4),%a1
+	jne .L131
+	move.l 296(%a0),%a1
 	move.w (%a1),%d0
 	cmp.w #9,%d0
-	jeq .L157
-	cmp.w #10,%d0
-	jeq .L157
-	cmp.w #13,%d0
 	jeq .L165
-	cmp.w #11,%d0
-	jeq .L158
-	cmp.w #12,%d0
-	jeq .L158
-	cmp.w #15,%d0
-	jeq .L166
-	cmp.w #14,%d0
-	jeq .L167
-	cmp.w #17,%d0
-	jeq .L168
-	cmp.w #16,%d0
-	jeq .L169
-	cmp.w #21,%d0
-	jeq .L170
-	cmp.w #22,%d0
-	jeq .L171
-	cmp.w #23,%d0
-	jeq .L162
-	cmp.w #24,%d0
-	jeq .L172
-	cmp.w #18,%d0
-	jeq .L162
-	cmp.w #19,%d0
+	cmp.w #10,%d0
+	jeq .L165
+	cmp.w #13,%d0
 	jeq .L173
-	cmp.w #38,%d0
+	cmp.w #11,%d0
+	jeq .L166
+	cmp.w #12,%d0
+	jeq .L166
+	cmp.w #15,%d0
 	jeq .L174
-	cmp.w #39,%d0
+	cmp.w #14,%d0
 	jeq .L175
-	cmp.w #40,%d0
+	cmp.w #17,%d0
 	jeq .L176
-	cmp.w #44,%d0
+	cmp.w #16,%d0
 	jeq .L177
-	cmp.w #45,%d0
+	cmp.w #21,%d0
 	jeq .L178
-.L123:
-	movem.l -20(%fp),#7180
+	cmp.w #22,%d0
+	jeq .L179
+	cmp.w #23,%d0
+	jeq .L170
+	cmp.w #24,%d0
+	jeq .L180
+	cmp.w #18,%d0
+	jeq .L170
+	cmp.w #19,%d0
+	jeq .L181
+	cmp.w #38,%d0
+	jeq .L182
+	cmp.w #39,%d0
+	jeq .L183
+	cmp.w #40,%d0
+	jeq .L184
+	cmp.w #44,%d0
+	jeq .L185
+	cmp.w #45,%d0
+	jeq .L186
+.L131:
+	movem.l -16(%fp),#1052
 	unlk %fp
 	rts
-.L124:
-	move.l 188(%a4),%a1
+.L132:
+	move.l 296(%a0),%a1
 	move.w (%a1),%d0
 	cmp.w #20,%d0
-	jeq .L179
+	jeq .L187
 	moveq #4,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	move.b #1,210(%a0)
 	cmp.w #21,%d0
-	jeq .L147
+	jeq .L155
 	cmp.w #23,%d0
-	jeq .L147
-	move.l %d2,20(%fp)
+	jeq .L155
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #35,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L147:
-	move.l %d3,-(%sp)
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L155:
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #37,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L164:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L172:
 	moveq #4,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #36,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L157:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L165:
 	moveq #8,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	addq.l #5,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #25,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L158:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L166:
 	moveq #8,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	addq.l #5,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #26,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L179:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L187:
 	moveq #16,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #10,%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	move.b #27,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L170:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L178:
 	moveq #24,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #33,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L178:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L186:
 	moveq #20,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #50,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	move.b #46,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L165:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L173:
 	moveq #20,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #25,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L162:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L170:
 	moveq #20,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #10,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #29,%d0
-.L182:
+.L190:
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L166:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L174:
 	moveq #24,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	move.b #29,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L167:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L175:
 	moveq #20,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #29,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L177:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L185:
 	cmp.w #2,%d1
-	jeq .L123
+	jeq .L131
 	moveq #20,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #50,%d0
-.L161:
+.L169:
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #33,%d1
-.L180:
+.L188:
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L168:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L176:
 	moveq #8,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	addq.l #5,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #30,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L169:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L177:
 	moveq #32,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 50.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #31,%d1
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L171:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L179:
 	moveq #24,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #33,%d1
-	jra .L180
-.L172:
+	jra .L188
+.L180:
 	moveq #20,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #10,%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #29,%d1
-.L181:
+.L189:
 	move.l %d1,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
-.L173:
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+.L181:
 	moveq #16,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #29,%d1
-	jra .L181
-.L174:
+	jra .L189
+.L182:
 	moveq #16,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #20,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	move.l %a0,-(%sp)
 	pea 8.w
-	move.l %a4,-(%sp)
-	jsr __Z17stateMachineSleepP12StateMachineiP7FighterP14SpriteAnimator
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	moveq #29,%d0
-	jra .L182
-.L175:
+	jra .L190
+.L183:
 	moveq #16,%d1
-	move.l %d1,260(%a2)
-	clr.b 264(%a2)
+	move.l %d1,262(%a2)
+	clr.b 266(%a2)
 	moveq #50,%d0
-	jra .L161
-.L176:
+	jra .L169
+.L184:
 	moveq #32,%d0
-	move.l %d0,260(%a2)
-	clr.b 264(%a2)
+	move.l %d0,262(%a2)
+	clr.b 266(%a2)
 	moveq #50,%d1
 	add.l %d1,206(%a0)
 	move.b #1,210(%a0)
-	move.l %d2,20(%fp)
+	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
 	move.b #41,%d0
 	move.l %d0,12(%fp)
-	move.l %a3,8(%fp)
-	movem.l -20(%fp),#7180
+	move.l %d2,8(%fp)
+	movem.l -16(%fp),#1052
 	unlk %fp
-	jra __Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator
+	jra __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
 	.even
-	.globl	__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_
-__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_:
+	.globl	__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_
+__Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_:
 	link.w %fp,#0
-	movem.l #16188,-(%sp)
-	move.l 8(%fp),%a5
+	movem.l #15932,-(%sp)
+	move.l 8(%fp),%d4
 	move.l 12(%fp),%a3
-	move.l 20(%fp),%a4
-	move.l 24(%fp),%a2
+	move.l 20(%fp),%a2
 	tst.b 139(%a3)
-	jeq .L185
-	move.l 4(%a2),%d0
+	jeq .L193
+	move.l 2(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1590,73 +1614,67 @@ __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_:
 	moveq #-1,%d1
 	cmp.l 112(%a0,%d0.l),%d1
 	jeq .L213
-.L185:
+.L193:
 	tst.b 139(%a2)
-	jeq .L186
-	move.l 4(%a3),%d0
+	jeq .L194
+	move.l 2(%a3),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
 	lsl.l #6,%d0
 	move.l sprite,%a0
-	moveq #-1,%d7
-	cmp.l 112(%a0,%d0.l),%d7
+	moveq #-1,%d6
+	cmp.l 112(%a0,%d0.l),%d6
 	jeq .L214
-.L186:
-	move.l #__Z26stageGetFighterHitboxIndexv,%d2
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l %d0,%d5
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l %d0,%d4
-	move.l %d2,%a0
-	jsr (%a0)
+.L194:
+	lea __Z26stageGetFighterHitboxIndexv,%a4
+	jsr (%a4)
 	move.l %d0,%d3
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l %d5,%a0
-	pea 12(%a0)
-	move.l %d4,-(%sp)
+	jsr (%a4)
+	move.l %d0,%d2
+	jsr (%a4)
+	move.l %d0,%a5
+	jsr (%a4)
 	move.l %d3,%a0
 	pea 12(%a0)
+	move.l %d2,-(%sp)
+	pea 12(%a5)
 	move.l %d0,-(%sp)
 	jsr rapCollide
 	move.l %d0,_collision
 	lea (16,%sp),%sp
-	jlt .L184
+	jlt .L192
 	move.l colliders,%d0
-	moveq #0,%d4
-	move.l #__Z16stateMachineGotoP12StateMachineiP7FighterP14SpriteAnimator,%d6
-	move.l #__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_,%d5
-	move.l %d0,%a0
-	add.l %d4,%a0
+	sub.l %a4,%a4
+	move.l #__Z23fighterHandleProjectileP12StateMachineP7FighterS2_,%d5
+	lea __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_,%a5
+	lea (%a4,%d0.l),%a0
 	move.l 4(%a0),%a1
 	move.l (%a0),%a0
 	cmp.w #0,%a1
-	jlt .L189
+	jlt .L197
 .L220:
 	cmp.w #0,%a0
-	jlt .L184
+	jlt .L192
 	move.l 188(%a1),%d2
 	move.l 188(%a0),%d3
-	move.l 94(%a3),%d0
+	move.l 92(%a3),%d0
 	cmp.l %d2,%d0
-	jeq .L190
-	cmp.l 94(%a2),%d2
-	jeq .L190
+	jeq .L198
+	cmp.l 92(%a2),%d2
+	jeq .L198
 	move.l %d2,%d1
 	add.l %d2,%d1
 	add.l %d2,%d1
 	lsl.l #6,%d1
 	move.l sprite,%a0
-	moveq #-1,%d7
-	move.l %d7,112(%a0,%d1.l)
-.L190:
+	moveq #-1,%d6
+	move.l %d6,112(%a0,%d1.l)
+.L198:
 	cmp.l %d0,%d3
-	jeq .L191
-	cmp.l 94(%a2),%d3
-	jeq .L191
+	jeq .L199
+	cmp.l 92(%a2),%d3
+	jeq .L199
 	move.l %d3,%d0
 	add.l %d3,%d0
 	add.l %d3,%d0
@@ -1664,223 +1682,156 @@ __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS0_S2_S4_:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,112(%a0,%d0.l)
-.L191:
-	moveq #63,%d7
-	cmp.l %d2,%d7
+.L199:
+	moveq #63,%d6
+	cmp.l %d2,%d6
 	jeq .L215
-	moveq #58,%d0
-	cmp.l %d2,%d0
+	moveq #58,%d1
+	cmp.l %d2,%d1
 	jeq .L216
-	moveq #64,%d7
-	cmp.l %d2,%d7
-	jne .L193
-	moveq #58,%d0
-	cmp.l %d3,%d0
-	jeq .L199
-.L193:
-	move.l 188(%a5),%a0
+	moveq #64,%d0
+	cmp.l %d2,%d0
+	jne .L201
+	moveq #58,%d1
+	cmp.l %d3,%d1
+	jeq .L207
+.L201:
+	move.l 296(%a3),%a0
 	move.w (%a0),%d0
-.L198:
+.L206:
 	cmp.w #43,%d0
 	jeq .L217
-.L200:
-	move.l 188(%a4),%a0
+.L208:
+	move.l 296(%a2),%a0
 	cmp.w #43,(%a0)
 	jeq .L218
-.L203:
+.L209:
 	moveq #61,%d0
 	cmp.l %d2,%d0
 	jeq .L219
-.L206:
+.L210:
 	move.l colliders,%d0
-.L207:
-	addq.l #8,%d4
-	move.l %d0,%a0
-	add.l %d4,%a0
+.L211:
+	addq.l #8,%a4
+	lea (%a4,%d0.l),%a0
 	move.l 4(%a0),%a1
 	move.l (%a0),%a0
 	cmp.w #0,%a1
 	jge .L220
-.L189:
+.L197:
 	cmp.w #0,%a0
-	jge .L207
-.L184:
-	movem.l -40(%fp),#15612
+	jge .L211
+.L192:
+	movem.l -36(%fp),#15484
 	unlk %fp
 	rts
 .L219:
 	moveq #58,%d1
 	cmp.l %d3,%d1
-	jne .L206
-	move.l 188(%a4),%a0
+	jne .L210
+	move.l 296(%a2),%a0
 	cmp.w #3,(%a0)
-	jne .L206
+	jne .L210
 	move.b #1,139(%a2)
 	move.b #1,160(%a3)
 	move.w raptor_ticks,248(%a3)
 	move.l colliders,%d0
-	jra .L207
+	jra .L211
 .L218:
-	cmp.l 94(%a2),%d2
-	jne .L203
+	cmp.l 92(%a2),%d2
+	jne .L209
 	moveq #58,%d0
 	cmp.l %d3,%d0
-	jne .L203
-	moveq #1,%d1
-	cmp.l (%a2),%d1
-	jne .L203
-	move.b #1,183(%a2)
-	move.l 188(%a5),%a0
-	move.w (%a0),%d0
-	cmp.w #1,%d0
-	jeq .L204
-	cmp.w #8,%d0
-	jeq .L204
-	cmp.w #35,%d0
-	jeq .L204
-	move.b #1,103(%a3)
-	moveq #20,%d7
-	move.l %d7,260(%a3)
-	clr.b 264(%a3)
-	add.l %d7,206(%a2)
-	move.b #1,210(%a2)
-	move.l 402(%a3),-(%sp)
+	jne .L209
 	move.l %a3,-(%sp)
-	pea 29.w
-	move.l %a5,-(%sp)
-	move.l %d6,%a0
+	move.l %a2,-(%sp)
+	move.l %d4,-(%sp)
+	move.l %d5,%a0
 	jsr (%a0)
-	lea (16,%sp),%sp
+	lea (12,%sp),%sp
 	moveq #61,%d0
 	cmp.l %d2,%d0
-	jne .L206
+	jne .L210
 	jra .L219
 .L217:
-	cmp.l 94(%a3),%d2
-	jne .L200
-	moveq #61,%d0
-	cmp.l %d3,%d0
-	jne .L200
-	moveq #1,%d1
-	cmp.l (%a3),%d1
-	jne .L200
-	move.b #1,183(%a3)
-	move.l 188(%a4),%a0
-	move.w (%a0),%d0
-	cmp.w #1,%d0
-	jeq .L201
-	cmp.w #8,%d0
-	jeq .L201
-	cmp.w #35,%d0
-	jeq .L201
-	move.b #1,103(%a2)
-	moveq #20,%d7
-	move.l %d7,260(%a2)
-	clr.b 264(%a2)
-	add.l %d7,206(%a3)
-	move.b #1,210(%a3)
-	move.l 402(%a2),-(%sp)
+	cmp.l 92(%a3),%d2
+	jne .L208
+	moveq #61,%d6
+	cmp.l %d3,%d6
+	jne .L208
 	move.l %a2,-(%sp)
-	pea 29.w
-	move.l %a4,-(%sp)
-	move.l %d6,%a0
+	move.l %a3,-(%sp)
+	move.l %d4,-(%sp)
+	move.l %d5,%a0
 	jsr (%a0)
-	lea (16,%sp),%sp
-	move.l 188(%a4),%a0
+	lea (12,%sp),%sp
+	move.l 296(%a2),%a0
 	cmp.w #43,(%a0)
-	jne .L203
+	jne .L209
 	jra .L218
 .L216:
-	moveq #61,%d1
-	move.l 188(%a5),%a0
+	moveq #61,%d6
+	move.l 296(%a3),%a0
 	move.w (%a0),%d0
-	cmp.l %d3,%d1
-	jne .L198
+	cmp.l %d3,%d6
+	jne .L206
 	cmp.w #3,%d0
-	jne .L198
+	jne .L206
 	move.b #1,139(%a3)
 	move.b #1,160(%a2)
 	move.w raptor_ticks,248(%a2)
-	move.l 188(%a4),%a0
+	move.l 296(%a2),%a0
 	cmp.w #43,(%a0)
-	jne .L203
+	jne .L209
 	jra .L218
 .L215:
 	moveq #61,%d0
 	cmp.l %d3,%d0
-	jne .L193
-	move.l 28(%fp),-(%sp)
+	jne .L201
+	move.l 24(%fp),-(%sp)
 	move.l %a2,-(%sp)
-	move.l %a4,-(%sp)
 	move.l 16(%fp),-(%sp)
 	move.l %a3,-(%sp)
-	move.l %a5,-(%sp)
-	move.l %d5,%a0
-	jsr (%a0)
-	lea (24,%sp),%sp
-	move.l 188(%a5),%a0
+	move.l %d4,-(%sp)
+	jsr (%a5)
+	lea (20,%sp),%sp
+	move.l 296(%a3),%a0
 	move.w (%a0),%d0
-	jra .L198
-.L199:
+	jra .L206
+.L207:
 	move.l 16(%fp),-(%sp)
 	move.l %a3,-(%sp)
-	move.l %a5,-(%sp)
-	move.l 28(%fp),-(%sp)
+	move.l 24(%fp),-(%sp)
 	move.l %a2,-(%sp)
-	move.l %a4,-(%sp)
-	move.l %d5,%a0
-	jsr (%a0)
-	move.l 188(%a5),%a0
+	move.l %d4,-(%sp)
+	jsr (%a5)
+	move.l 296(%a3),%a0
 	move.w (%a0),%d0
-	lea (24,%sp),%sp
+	lea (20,%sp),%sp
 	cmp.w #43,%d0
-	jne .L200
+	jne .L208
 	jra .L217
 .L214:
 	clr.b 139(%a2)
-	jra .L186
+	jra .L194
 .L213:
 	clr.b 139(%a3)
-	jra .L185
-.L204:
-	move.l 402(%a3),-(%sp)
-	move.l %a3,-(%sp)
-	pea 35.w
-	move.l %a5,-(%sp)
-	move.l %d6,%a0
-	jsr (%a0)
-	lea (16,%sp),%sp
-	moveq #61,%d0
-	cmp.l %d2,%d0
-	jne .L206
-	jra .L219
-.L201:
-	move.l 402(%a2),-(%sp)
-	move.l %a2,-(%sp)
-	pea 35.w
-	move.l %a4,-(%sp)
-	move.l %d6,%a0
-	jsr (%a0)
-	lea (16,%sp),%sp
-	move.l 188(%a4),%a0
-	cmp.w #43,(%a0)
-	jne .L203
-	jra .L218
+	jra .L193
 	.even
-	.globl	__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_
-__Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_:
+	.globl	__Z16fighterTurnCheckP7FighterS0_
+__Z16fighterTurnCheckP7FighterS0_:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	move.l 12(%fp),%a1
-	move.l 20(%fp),%a0
-	move.w 270(%a1),%d0
+	move.l 8(%fp),%a1
+	move.l 12(%fp),%a0
+	move.w 272(%a1),%d0
 	cmp.w #1,%d0
 	jeq .L236
 	cmp.w #-1,%d0
 	jeq .L237
 .L225:
-	move.w 270(%a0),%d0
+	move.w 272(%a0),%d0
 	cmp.w #1,%d0
 	jeq .L238
 .L226:
@@ -1910,7 +1861,7 @@ __Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_:
 	jne .L225
 .L239:
 	move.b #1,140(%a1)
-	move.w 270(%a0),%d0
+	move.w 272(%a0),%d0
 	cmp.w #1,%d0
 	jne .L226
 .L238:
@@ -1933,20 +1884,18 @@ __Z16fighterTurnCheckP12StateMachineP7FighterS0_S2_:
 	jne .L225
 	jra .L239
 	.even
-	.globl	__Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_
-__Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_:
+	.globl	__Z17fighterCloseCheckP7FighterS0_
+__Z17fighterCloseCheckP7FighterS0_:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	move.l 12(%fp),%a0
-	move.l 20(%fp),%a1
-	move.l 8(%fp),%a2
-	move.l 188(%a2),%a2
+	move.l 8(%fp),%a0
+	move.l 12(%fp),%a1
+	move.l 296(%a0),%a2
 	move.w (%a2),%d0
 	cmp.w #40,%d0
 	jeq .L246
-	move.l 16(%fp),%a2
-	move.l 188(%a2),%a2
+	move.l 296(%a1),%a2
 	move.w (%a2),%d1
 	cmp.w #40,%d1
 	jeq .L246
@@ -1958,7 +1907,7 @@ __Z17fighterCloseCheckP12StateMachineP7FighterS0_S2_:
 	jeq .L246
 	cmp.w #8,%d1
 	jeq .L246
-	move.w 270(%a0),%d0
+	move.w 272(%a0),%d0
 	cmp.w #1,%d0
 	jeq .L249
 	cmp.w #-1,%d0
@@ -2000,8 +1949,8 @@ __Z23fighterAddPendingDamageP7FighteribS0_i:
 	link.w %fp,#0
 	move.l 8(%fp),%a1
 	move.l 20(%fp),%a0
-	move.l 12(%fp),260(%a1)
-	move.b 19(%fp),264(%a1)
+	move.l 12(%fp),262(%a1)
+	move.b 19(%fp),266(%a1)
 	move.l 24(%fp),%d0
 	add.l %d0,206(%a0)
 	move.b #1,210(%a0)
@@ -2017,11 +1966,11 @@ __Z17fighterTakeDamageP7Fighteri:
 	move.l 12(%fp),%d2
 	tst.b 143(%a2)
 	jne .L253
-	tst.b 264(%a2)
+	tst.b 266(%a2)
 	jne .L258
-	move.l 256(%a2),%d0
+	move.l 258(%a2),%d0
 	sub.l %d2,%d0
-	move.l %d0,256(%a2)
+	move.l %d0,258(%a2)
 	jle .L259
 .L256:
 	move.l %a2,8(%fp)
@@ -2035,16 +1984,16 @@ __Z17fighterTakeDamageP7Fighteri:
 	unlk %fp
 	rts
 .L258:
-	clr.b 264(%a2)
+	clr.b 266(%a2)
 	clr.l -(%sp)
 	jsr __Z7bgShakeb
 	addq.l #4,%sp
-	move.l 256(%a2),%d0
+	move.l 258(%a2),%d0
 	sub.l %d2,%d0
-	move.l %d0,256(%a2)
+	move.l %d0,258(%a2)
 	jgt .L256
 .L259:
-	clr.l 256(%a2)
+	clr.l 258(%a2)
 	move.b #1,171(%a2)
 	move.l %a2,8(%fp)
 	move.l -8(%fp),%d2
@@ -2088,14 +2037,14 @@ __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb:
 	tst.b 19(%fp)
 	jne .L269
 	moveq #16,%d0
-	move.l %d0,4(%a1)
+	move.l %d0,2(%a1)
 	move.l %d0,(%a0)
 	move.w raptor_ticks,12(%a0)
 	unlk %fp
 	rts
 .L269:
 	moveq #14,%d0
-	move.l %d0,4(%a1)
+	move.l %d0,2(%a1)
 	move.l %d0,(%a0)
 	move.w raptor_ticks,12(%a0)
 	unlk %fp
@@ -2177,7 +2126,7 @@ __Z17fighterCastShadowP7Fighterb:
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%a2
 	move.l sprite,%a1
-	move.l 4(%a2),%d0
+	move.l 2(%a2),%d0
 	move.l %d0,%d1
 	subq.l #1,%d1
 	move.l %d1,%a0
@@ -2484,15 +2433,15 @@ __Z20fighterIsMaxDistanceP7FighterS0_:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%a1
-	cmp.w #1,270(%a0)
+	cmp.w #1,272(%a0)
 	jeq .L355
 	move.w 250(%a0),%a2
 	sub.w 250(%a1),%a2
 	cmp.w #259,%a2
 	jgt .L353
 .L351:
-	clr.b 279(%a0)
-	clr.b 279(%a1)
+	clr.b 281(%a0)
+	clr.b 281(%a1)
 	move.l (%sp)+,%a2
 	unlk %fp
 	rts
@@ -2502,8 +2451,8 @@ __Z20fighterIsMaxDistanceP7FighterS0_:
 	cmp.w #259,%a2
 	jle .L351
 .L353:
-	move.b #1,279(%a0)
-	move.b #1,279(%a1)
+	move.b #1,281(%a0)
+	move.b #1,281(%a1)
 	move.l (%sp)+,%a2
 	unlk %fp
 	rts
@@ -2633,7 +2582,7 @@ __Z14fighterLaydownP7FighterP14SpriteAnimator:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	move.l 12(%fp),%a3
-	move.w 270(%a2),%a0
+	move.w 272(%a2),%a0
 	move.l %a0,-(%sp)
 	move.w 252(%a2),%a0
 	move.l %a0,-(%sp)
@@ -2643,9 +2592,9 @@ __Z14fighterLaydownP7FighterP14SpriteAnimator:
 	move.l %a0,-(%sp)
 	move.l 8(%a3),-(%sp)
 	move.l 4(%a3),-(%sp)
-	move.l 518(%a2),-(%sp)
+	move.l 534(%a2),-(%sp)
 	moveq #0,%d0
-	move.w 80(%a2),%d0
+	move.w 78(%a2),%d0
 	move.l %d0,%a0
 	pea -1(%a0)
 	move.l (%a3),-(%sp)
@@ -2669,9 +2618,9 @@ __Z14fighterLaydownP7FighterP14SpriteAnimator:
 __Z27fighterResetRaidenLightningP7Fighter:
 	link.w %fp,#0
 	move.l 8(%fp),%a1
-	move.l 406(%a1),%a0
+	move.l 422(%a1),%a0
 	clr.w 14(%a0)
-	move.l 94(%a1),%d0
+	move.l 92(%a1),%d0
 	move.l %d0,(%a0)
 	move.l #12001392,8(%a0)
 	move.l %d0,%d1
@@ -2708,24 +2657,24 @@ __Z13fighterFreezeP7Fighter:
 	move.l %a0,156(%a2)
 	move.w %d0,246(%a2)
 	move.b #1,104(%a2)
-	tst.b 274(%a2)
+	tst.b 276(%a2)
 	jeq .L378
 	pea 16.w
 	pea 14.w
-	move.l 284(%a2),-(%sp)
+	move.l 286(%a2),-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
-	move.l 266(%a2),8(%fp)
+	move.l 268(%a2),8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra __Z19sfxSubzeroFreezeEndP12SoundHandler
 .L378:
 	pea 16.w
 	pea 15.w
-	move.l 284(%a2),-(%sp)
+	move.l 286(%a2),-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
-	move.l 266(%a2),8(%fp)
+	move.l 268(%a2),8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra __Z19sfxSubzeroFreezeEndP12SoundHandler
@@ -2740,11 +2689,11 @@ __Z15fighterUnfreezeP7Fighter:
 	move.l 8(%fp),%a0
 	clr.b 146(%a0)
 	move.b #1,180(%a0)
-	tst.b 274(%a0)
+	tst.b 276(%a0)
 	jne .L386
 	pea 16.w
 	pea 15.w
-	move.l 280(%a0),-(%sp)
+	move.l 282(%a0),-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
 	unlk %fp
@@ -2752,7 +2701,7 @@ __Z15fighterUnfreezeP7Fighter:
 .L386:
 	pea 16.w
 	pea 14.w
-	move.l 280(%a0),-(%sp)
+	move.l 282(%a0),-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
 	unlk %fp
@@ -2761,7 +2710,8 @@ __Z15fighterUnfreezeP7Fighter:
 	.globl	__Z14fighterHarpoonP7FighterS0_
 __Z14fighterHarpoonP7FighterS0_:
 	link.w %fp,#0
-	movem.l #8240,-(%sp)
+	move.l %a3,-(%sp)
+	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	move.l 12(%fp),%a3
 	tst.b 125(%a2)
@@ -2769,7 +2719,7 @@ __Z14fighterHarpoonP7FighterS0_:
 	move.b #1,125(%a2)
 	clr.b 110(%a2)
 	move.b #1,174(%a2)
-	move.w 270(%a2),%d1
+	move.w 272(%a2),%d1
 	move.w 250(%a2),%a0
 	cmp.w #-1,%d1
 	jeq .L402
@@ -2780,34 +2730,32 @@ __Z14fighterHarpoonP7FighterS0_:
 .L391:
 	cmp.w #149,%d0
 	jgt .L392
-	move.w #150,%d2
-	sub.w %d0,%d2
-	move.w %d2,%d0
-	move.w %d2,106(%a2)
+	move.w #150,%a1
+	sub.w %d0,%a1
+	move.w %a1,%d0
+	move.w %a1,106(%a2)
 	tst.b 132(%a2)
 	jeq .L403
 .L393:
-	move.l 266(%a2),%d1
-	move.l (%a2),%d0
-	moveq #4,%d2
-	cmp.l %d0,%d2
+	move.l 268(%a2),%d1
+	move.w (%a2),%d0
+	cmp.w #4,%d0
 	jeq .L395
 .L406:
-	move.b #7,%d2
-	cmp.l %d0,%d2
+	cmp.w #7,%d0
 	jeq .L404
 	move.l %d1,-(%sp)
 	jsr __Z11sfxYellMaleP12SoundHandler
 	addq.l #4,%sp
 .L397:
-	cmp.w #-1,270(%a2)
+	cmp.w #-1,272(%a2)
 	jeq .L405
 .L398:
-	move.w 250(%a3),%d0
-	add.w #-48,%d0
-	move.w %d0,108(%a2)
+	move.w 250(%a3),%d1
+	add.w #-48,%d1
+	move.w %d1,108(%a2)
 	move.w raptor_ticks,246(%a2)
-	move.l 94(%a3),%d0
+	move.l 92(%a3),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d0,%d1
@@ -2816,7 +2764,7 @@ __Z14fighterHarpoonP7FighterS0_:
 	add.l %d1,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0)
-	move.l 406(%a3),%a1
+	move.l 422(%a3),%a1
 	clr.w 14(%a1)
 	move.l %d0,(%a1)
 	move.l #12001392,8(%a1)
@@ -2828,28 +2776,28 @@ __Z14fighterHarpoonP7FighterS0_:
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
 .L388:
-	movem.l -12(%fp),#3076
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
 	unlk %fp
 	rts
 .L392:
 	clr.w 106(%a2)
-	move.l 266(%a2),%d1
-	move.l (%a2),%d0
-	moveq #4,%d2
-	cmp.l %d0,%d2
+	move.l 268(%a2),%d1
+	move.w (%a2),%d0
+	cmp.w #4,%d0
 	jne .L406
 .L395:
 	move.l %d1,-(%sp)
 	jsr __Z11sfxYellKangP12SoundHandler
 	addq.l #4,%sp
-	cmp.w #-1,270(%a2)
+	cmp.w #-1,272(%a2)
 	jne .L398
 .L405:
-	move.w 250(%a3),%a1
-	lea (48,%a1),%a1
-	move.w %a1,108(%a2)
+	move.w 250(%a3),%d0
+	add.w #48,%d0
+	move.w %d0,108(%a2)
 	move.w raptor_ticks,246(%a2)
-	move.l 94(%a3),%d0
+	move.l 92(%a3),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d0,%d1
@@ -2858,7 +2806,7 @@ __Z14fighterHarpoonP7FighterS0_:
 	add.l %d1,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0)
-	move.l 406(%a3),%a1
+	move.l 422(%a3),%a1
 	clr.w 14(%a1)
 	move.l %d0,(%a1)
 	move.l #12001392,8(%a1)
@@ -2912,7 +2860,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	tst.b 132(%a0)
 	jeq .L420
 .L414:
-	cmp.w #-1,270(%a0)
+	cmp.w #-1,272(%a0)
 	jeq .L421
 .L416:
 	move.w 250(%a0),%d3
@@ -2938,7 +2886,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	tst.b %d2
 	jne .L422
 .L418:
-	move.l 94(%a2),%d1
+	move.l 92(%a2),%d1
 	move.l %d1,%a0
 	add.l %d1,%a0
 	add.l %a0,%d1
@@ -2946,7 +2894,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	move.l sprite,%a0
 	lea (-96,%a1),%a1
 	move.l %a1,88(%a0,%d1.l)
-	move.w 270(%a2),%d1
+	move.w 272(%a2),%d1
 	lsl.w #5,%d1
 	add.w %d1,%d0
 	move.w %d0,114(%a2)
@@ -2955,7 +2903,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	unlk %fp
 	rts
 .L422:
-	move.l 94(%a2),%d0
+	move.l 92(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -2969,9 +2917,9 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	tst.b 110(%a0)
 	jeq .L414
 	clr.b 112(%a2)
-	move.l 406(%a2),%a0
+	move.l 422(%a2),%a0
 	clr.w 14(%a0)
-	move.l 94(%a2),%d0
+	move.l 92(%a2),%d0
 	move.l %d0,(%a0)
 	move.l #12001392,8(%a0)
 	move.l %d0,%d1
@@ -2986,7 +2934,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 	pea 13.w
 	move.l #12108912,-(%sp)
 	jsr jsfLoadClut
-	move.l 94(%a2),%d0
+	move.l 92(%a2),%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -3001,7 +2949,7 @@ __Z19fighterHarpoonCheckP7FighterS0_:
 .L413:
 	tst.b 111(%a2)
 	jeq .L412
-	cmp.w #-1,270(%a0)
+	cmp.w #-1,272(%a0)
 	jne .L416
 .L421:
 	move.w 250(%a2),%d3
@@ -3040,8 +2988,8 @@ __Z20fighterCanTakeDamageP12StateMachineP7Fighter:
 	.globl	__Z17fighterIsBlockingP12StateMachineP7Fighter
 __Z17fighterIsBlockingP12StateMachineP7Fighter:
 	link.w %fp,#0
-	move.l 8(%fp),%a0
-	move.l 188(%a0),%a0
+	move.l 12(%fp),%a0
+	move.l 296(%a0),%a0
 	move.w (%a0),%d0
 	cmp.w #1,%d0
 	jeq .L429
@@ -3058,8 +3006,8 @@ __Z17fighterIsBlockingP12StateMachineP7Fighter:
 	.globl	__Z21fighterIsDuckBlockingP12StateMachineP7Fighter
 __Z21fighterIsDuckBlockingP12StateMachineP7Fighter:
 	link.w %fp,#0
-	move.l 8(%fp),%a0
-	move.l 188(%a0),%a0
+	move.l 12(%fp),%a0
+	move.l 296(%a0),%a0
 	cmp.w #8,(%a0)
 	seq %d0
 	neg.b %d0

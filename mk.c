@@ -70,8 +70,7 @@ static SoundHandler soundHandler = {
 	120   //music volume
 };
 
-static StateMachine fighter1StateMachine = {};
-static StateMachine fighter2StateMachine = {};
+static StateMachine fighterStateMachine = {};
 
 static State stateIdle = {
 	STATE_IDLE
@@ -324,14 +323,39 @@ static AnimationFrame kanoHitNutsFrames[] = {
 	{ 64, 64, 816, 832, 2, 48, 6 }
 };
 
-static AnimationFrame kanoKnifeFrames[] = {
-	{ 64, 80, 0, 912, 0, 32, 4 },
-	{ 80, 112, 64, 912, -19, 0, 4 },
-	{ 80, 112, 144, 912, -14, 0, 4 },
-	{ 48, 112, 240, 864, 1, 0, 4 },
-	{ 80, 96, 304, 832, -1, 16, 4 },
-	{ 80, 96, 304, 832, -1, 16, 4 }
+static AnimationFrame raidenHitNutsFrames[] = {
+	{ 64, 96, 80, 416, 0, 16, 6 },
+	{ 64, 96, 80, 416, 2, 16, 6 }
 };
+
+static AnimationFrame kangHitNutsFrames[] = {
+	{ 64, 80, 480, 832, 0, 32, 6 },
+	{ 64, 80, 480, 832, 2, 32, 6 }
+};
+
+static AnimationFrame subzeroHitNutsFrames[] = {
+	{ 48, 80, 0, 816, 0, 32, 6 },
+	{ 48, 80, 0, 816, 2, 32, 6 }
+};
+
+static AnimationFrame kanoKnifeFrames[] = {
+	{ 64, 80, 0, 912, 0, 32, 5 },
+	{ 80, 112, 64, 912, -19, 0, 5 },
+	{ 80, 112, 144, 912, -14, 0, 5 },
+	{ 48, 112, 240, 864, 1, 0, 5 },
+	{ 80, 96, 304, 832, -1, 16, 5 },
+	{ 80, 96, 304, 832, -1, 16, 5 }
+};
+
+static AnimationFrame kanoCannonBallFrames[] = {
+	{ 48, 64, 288, 352, 0, 0, 3 },
+	{ 48, 64, 336, 368, 0, 0, 3 },
+	{ 64, 48, 384, 384, -12, 4, 3 },
+	{ 64, 48, 448, 384, -12, 4, 3 },
+	{ 48, 64, 512, 416, 0, -18, 3 },
+	{ 48, 64, 560, 416, 0, -18, 3 },
+	{ 64, 48, 608, 416, 0, 0, 3 }
+}
 
 static AnimationFrame raidenLightningFrames[] = {
 	{ 64, 112, 512, 944, 0, 0, 4 },
@@ -407,15 +431,23 @@ static AnimationFrame projectileGreenBoltFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame projectileKnifeFrames[] = {
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
-	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 5 },
 	{ 48, 32, 48, 48, 38, 21, 2 },
 	{ 32, 32, 32, 80, 36, 16, 2 },
 	{ 32, 32, 64, 80, 36, 16, 2 },
@@ -430,7 +462,15 @@ static AnimationFrame projectileKnifeFrames[] = {
 	{ 32, 32, 160, 48, 18, 24, 2 },
 	{ 32, 32, 0, 48, 16, 9, 2 },
 	{ 32, 32, 96, 48, 23, 4, 2 },
-	{ 32, 32, 128, 64, 32, 4, 2 }
+	{ 32, 32, 128, 64, 32, 4, 2 },
+	{ 32, 32, 32, 80, 36, 16, 2 },
+	{ 32, 32, 64, 80, 36, 16, 2 },
+	{ 32, 32, 96, 80, 22, 22, 2 },
+	{ 32, 32, 160, 48, 18, 24, 2 },
+	{ 32, 32, 0, 48, 16, 9, 2 },
+	{ 32, 32, 96, 48, 23, 4, 2 },
+	{ 32, 32, 128, 64, 32, 4, 2 },
+	{ 32, 32, 32, 80, 36, 16, 2 },
 };
 
 static AnimationFrame projectileLightningFrames[] = {
@@ -453,7 +493,15 @@ static AnimationFrame projectileLightningFrames[] = {
 	{ 32, 32, 64, 144, 0, 24, 2 },
 	{ 80, 16, 0, 112, 0, 24, 2 },
 	{ 48, 16, 64, 128, 0, 24, 2 },
-	{ 64, 16, 0, 128, 0, 24, 2 }
+	{ 64, 16, 0, 128, 0, 24, 2 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame projectileFireballFrames[] = {
@@ -466,6 +514,14 @@ static AnimationFrame projectileFireballFrames[] = {
 	{ 48, 16, 112, 176, 16, 16, 4 },
 	{ 80, 16, 128, 144, 0, 24, 4 },
 	{ 48, 16, 160, 176, 16, 32, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
@@ -499,6 +555,14 @@ static AnimationFrame projectileRingsFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
@@ -513,6 +577,14 @@ static AnimationFrame projectileFreezeFrames[] = {
 	{ 64, 32, 48, 368, 64, 28, 4},
 	{ 48, 16, 0, 496, 64, 34, 4},
 	{ 48, 16, 0, 496, 64, 34, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
@@ -545,6 +617,14 @@ static AnimationFrame projectileHarpoonFrames[] = {
 	{ 208, 32, 0, 400, -112, 16, 4},	
 	{ 208, 32, 0, 432, -112, 16, 4},
 	{ 208, 32, 0, 464, -112, 16, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
@@ -3359,7 +3439,12 @@ static Fighter fighterKano = {
 	KANO_HIT_BACK_FRAME_COUNT,
 	KANO_HIT_UPPERCUT_FRAME_COUNT,
 	KANO_HIT_FALL_FRAME_COUNT,
-	KANO_HIT_SWEEP_FRAME_COUNT
+	KANO_HIT_SWEEP_FRAME_COUNT,
+	KANO_SPECIAL_1_FRAME_COUNT,
+	KANO_SPECIAL_2_FRAME_COUNT,
+	KANO_SPECIAL_3_FRAME_COUNT,
+	KANO_PROJECTILE_FRAME_COUNT,
+	KANO_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterCage = {
@@ -3648,7 +3733,12 @@ static Fighter fighterKano2 = {
 	KANO_HIT_BACK_FRAME_COUNT,
 	KANO_HIT_UPPERCUT_FRAME_COUNT,
 	KANO_HIT_FALL_FRAME_COUNT,
-	KANO_HIT_SWEEP_FRAME_COUNT
+	KANO_HIT_SWEEP_FRAME_COUNT,
+	KANO_SPECIAL_1_FRAME_COUNT,
+	KANO_SPECIAL_2_FRAME_COUNT,
+	KANO_SPECIAL_3_FRAME_COUNT,
+	KANO_PROJECTILE_FRAME_COUNT,
+	KANO_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterCage2 = {
@@ -3689,6 +3779,7 @@ static Fighter fighterCage2 = {
 	CAGE_HIT_UPPERCUT_FRAME_COUNT,
 	CAGE_HIT_FALL_FRAME_COUNT,
 	CAGE_HIT_SWEEP_FRAME_COUNT,
+	CAGE_SPECIAL_1_FRAME_COUNT,
 	CAGE_SPECIAL_2_FRAME_COUNT,
 	CAGE_SPECIAL_3_FRAME_COUNT,
 	CAGE_PROJECTILE_FRAME_COUNT,
@@ -4117,101 +4208,53 @@ void basicmain()
 		stateHitNuts.sleep = &StateHitNuts_Sleep;
 		stateHitNuts.handleInput = &StateHitNuts_HandleInput;
 				
-		stateMachineAdd(&fighter1StateMachine, STATE_IDLE, &stateIdle);
-		stateMachineAdd(&fighter1StateMachine, STATE_BLOCKING, &stateBlocking);
-		stateMachineAdd(&fighter1StateMachine, STATE_DUCKING, &stateDucking);
-		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
-		stateMachineAdd(&fighter1StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING, &stateJumping);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
-		stateMachineAdd(&fighter1StateMachine, STATE_DUCK_BLOCKING, &stateDuckBlocking);
-		stateMachineAdd(&fighter1StateMachine, STATE_LOW_PUNCHING, &stateLowPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_PUNCHING, &stateHighPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_REPEAT_PUNCHING, &stateHighRepeatPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_LOW_KICKING, &stateLowKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIGH_KICKING, &stateHighKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_ROUNDHOUSE_KICKING, &stateRoundhouseKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_UPPERCUTTING, &stateUppercutting);
-		stateMachineAdd(&fighter1StateMachine, STATE_DUCK_KICKING, &stateDuckKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMP_PUNCHING, &stateJumpPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMP_KICKING, &stateJumpKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_SWEEPING, &stateSweeping);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_KICKING_FORWARD, &stateJumpingKickingForward);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
-		stateMachineAdd(&fighter1StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_LOW, &stateHitLow);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_HIGH, &stateHitHigh);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_SWEEP, &stateHitSweep);
-		stateMachineAdd(&fighter1StateMachine, STATE_GETUP, &stateGetUp);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BACK, &stateHitBack);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
-		stateMachineAdd(&fighter1StateMachine, STATE_LAYDOWN, &stateLaydown);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_AIR, &stateHitAir);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
-		stateMachineAdd(&fighter1StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
-		stateMachineAdd(&fighter1StateMachine, STATE_BODY_KICKING, &stateBodyKicking);
-		stateMachineAdd(&fighter1StateMachine, STATE_THROWING, &stateThrowing);
-		stateMachineAdd(&fighter1StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
-		stateMachineAdd(&fighter1StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
-		stateMachineAdd(&fighter1StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
-		stateMachineAdd(&fighter1StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
-		stateMachineAdd(&fighter1StateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
-		stateMachineAdd(&fighter1StateMachine, STATE_HIT_NUTS, &stateHitNuts);
-
-		stateMachineAdd(&fighter2StateMachine, STATE_IDLE, &stateIdle);
-		stateMachineAdd(&fighter2StateMachine, STATE_BLOCKING, &stateBlocking);
-		stateMachineAdd(&fighter2StateMachine, STATE_DUCKING, &stateDucking);
-		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
-		stateMachineAdd(&fighter2StateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING, &stateJumping);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
-		stateMachineAdd(&fighter2StateMachine, STATE_DUCK_BLOCKING, &stateDuckBlocking);
-		stateMachineAdd(&fighter2StateMachine, STATE_LOW_PUNCHING, &stateLowPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_PUNCHING, &stateHighPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_REPEAT_PUNCHING, &stateHighRepeatPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_LOW_KICKING, &stateLowKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIGH_KICKING, &stateHighKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_ROUNDHOUSE_KICKING, &stateRoundhouseKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_UPPERCUTTING, &stateUppercutting);
-		stateMachineAdd(&fighter2StateMachine, STATE_DUCK_KICKING, &stateDuckKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMP_PUNCHING, &stateJumpPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMP_KICKING, &stateJumpKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_SWEEPING, &stateSweeping);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_KICKING_FORWARD, &stateJumpingKickingForward);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
-		stateMachineAdd(&fighter2StateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_LOW, &stateHitLow);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_HIGH, &stateHitHigh);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_SWEEP, &stateHitSweep);
-		stateMachineAdd(&fighter2StateMachine, STATE_GETUP, &stateGetUp);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BACK, &stateHitBack);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
-		stateMachineAdd(&fighter2StateMachine, STATE_LAYDOWN, &stateLaydown);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_AIR, &stateHitAir);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
-		stateMachineAdd(&fighter2StateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
-		stateMachineAdd(&fighter2StateMachine, STATE_BODY_KICKING, &stateBodyKicking);
-		stateMachineAdd(&fighter2StateMachine, STATE_THROWING, &stateThrowing);
-		stateMachineAdd(&fighter2StateMachine, STATE_BEING_THROWN, &stateBeingThrown);
-		stateMachineAdd(&fighter2StateMachine, STATE_TURNING_AROUND, &stateTurningAround);
-		stateMachineAdd(&fighter2StateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
-		stateMachineAdd(&fighter2StateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
-		stateMachineAdd(&fighter2StateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
-		stateMachineAdd(&fighter2StateMachine, STATE_HIT_NUTS, &stateHitNuts);
+		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
+		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
+		stateMachineAdd(&fighterStateMachine, STATE_DUCKING, &stateDucking);
+		stateMachineAdd(&fighterStateMachine, STATE_WALKING_FORWARD, &stateWalkingForward);
+		stateMachineAdd(&fighterStateMachine, STATE_WALKING_BACKWARD, &stateWalkingBackward);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING, &stateJumping);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_FORWARD, &stateJumpingForward);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_BACKWARD, &stateJumpingBackward);
+		stateMachineAdd(&fighterStateMachine, STATE_DUCK_BLOCKING, &stateDuckBlocking);
+		stateMachineAdd(&fighterStateMachine, STATE_LOW_PUNCHING, &stateLowPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_LOW_REPEAT_PUNCHING, &stateLowRepeatPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_HIGH_PUNCHING, &stateHighPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_HIGH_REPEAT_PUNCHING, &stateHighRepeatPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_LOW_KICKING, &stateLowKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_HIGH_KICKING, &stateHighKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_ROUNDHOUSE_KICKING, &stateRoundhouseKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_UPPERCUTTING, &stateUppercutting);
+		stateMachineAdd(&fighterStateMachine, STATE_DUCK_KICKING, &stateDuckKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMP_PUNCHING, &stateJumpPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMP_KICKING, &stateJumpKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_SWEEPING, &stateSweeping);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_KICKING_FORWARD, &stateJumpingKickingForward);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_KICKING_BACKWARD, &stateJumpingKickingBackward);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_PUNCHING_FORWARD, &stateJumpingPunchingForward);
+		stateMachineAdd(&fighterStateMachine, STATE_JUMPING_PUNCHING_BACKWARD, &stateJumpingPunchingBackward);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_LOW, &stateHitLow);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_HIGH, &stateHitHigh);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_SWEEP, &stateHitSweep);
+		stateMachineAdd(&fighterStateMachine, STATE_GETUP, &stateGetUp);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_BACK, &stateHitBack);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_BACK_LOW, &stateHitBackLow);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_UPPERCUT, &stateHitUppercut);
+		stateMachineAdd(&fighterStateMachine, STATE_LAYDOWN, &stateLaydown);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_DROPKICK, &stateHitDropKick);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_AIR, &stateHitAir);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_BLOCKING, &stateHitBlocking);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_DUCKING_BLOCKING, &stateHitDuckingBlocking);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_BLOCKING_KNOCKBACK, &stateHitBlockingKnockback);
+		stateMachineAdd(&fighterStateMachine, STATE_BODY_PUNCHING, &stateBodyPunching);
+		stateMachineAdd(&fighterStateMachine, STATE_BODY_KICKING, &stateBodyKicking);
+		stateMachineAdd(&fighterStateMachine, STATE_THROWING, &stateThrowing);
+		stateMachineAdd(&fighterStateMachine, STATE_BEING_THROWN, &stateBeingThrown);
+		stateMachineAdd(&fighterStateMachine, STATE_TURNING_AROUND, &stateTurningAround);
+		stateMachineAdd(&fighterStateMachine, STATE_THROWING_PROJECTILE, &stateThrowingProjectile);
+		stateMachineAdd(&fighterStateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
+		stateMachineAdd(&fighterStateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_NUTS, &stateHitNuts);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4424,7 +4467,7 @@ void basicmain()
 		fighterKano2.hitSweepFrames = &kanoHitSweepFrames;
 		fighterKano2.hitNutsFrames = &kanoHitNutsFrames;
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
-		//Raide
+		//Raiden
 		fighterRaiden.spriteAnimator = &raidenAnimator;
 		fighterRaiden.projectileAnimator = &lightningAnimator;
 		fighterRaiden.projectileFrames = &projectileLightningFrames;
@@ -4434,7 +4477,7 @@ void basicmain()
 		fighterRaiden.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterRaiden.special1InputCount = 3;
 		fighterRaiden.special2InputCount = 3;
-		fighterRaiden.special3InputCount = 1;
+		fighterRaiden.special3InputCount = 0;
 		fighterRaiden.special1Frames = &raidenLightningFrames;
 		fighterRaiden.doSpecialMove1 = &doSpecial_Raiden_Lightning;
 		fighterRaiden.idleFrames = &raidenIdleFrames;
@@ -4475,6 +4518,7 @@ void basicmain()
 		fighterRaiden.hitUppercutFrames = &raidenHitUppercutFrames;
 		fighterRaiden.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
+		fighterRaiden.hitNutsFrames = &raidenHitNutsFrames;
 		fighterRaiden2.spriteAnimator = &raidenAnimator2;
 		fighterRaiden2.projectileAnimator = &lightningAnimator;
 		fighterRaiden2.projectileFrames = &projectileLightningFrames;
@@ -4484,7 +4528,7 @@ void basicmain()
 		fighterRaiden2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterRaiden2.special1InputCount = 3;
 		fighterRaiden2.special2InputCount = 3;
-		fighterRaiden2.special3InputCount = 1;
+		fighterRaiden2.special3InputCount = 0;
 		fighterRaiden2.special1Frames = &raidenLightningFrames;
 		fighterRaiden2.doSpecialMove1 = &doSpecial_Raiden_Lightning;
 		fighterRaiden2.idleFrames = &raidenIdleFrames;
@@ -4525,6 +4569,7 @@ void basicmain()
 		fighterRaiden2.hitUppercutFrames = &raidenHitUppercutFrames;
 		fighterRaiden2.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden2.hitSweepFrames = &raidenHitSweepFrames;
+		fighterRaiden2.hitNutsFrames = &raidenHitNutsFrames;
 		//Liu Kang
 		fighterKang.spriteAnimator = &kangAnimator;
 		fighterKang.projectileAnimator = &lightningAnimator;
@@ -4576,6 +4621,7 @@ void basicmain()
 		fighterKang.hitUppercutFrames = &kangHitUppercutFrames;
 		fighterKang.hitFallFrames = &kangHitFallFrames;
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
+		fighterKang.hitNutsFrames = &kangHitNutsFrames;
 		fighterKang2.spriteAnimator = &kangAnimator2;
 		fighterKang2.projectileAnimator = &lightningAnimator;
 		fighterKang2.projectileFrames = &projectileFireballFrames;
@@ -4626,6 +4672,7 @@ void basicmain()
 		fighterKang2.hitUppercutFrames = &kangHitUppercutFrames;
 		fighterKang2.hitFallFrames = &kangHitFallFrames;
 		fighterKang2.hitSweepFrames = &kangHitSweepFrames;
+		fighterKang2.hitNutsFrames = &kangHitNutsFrames;
 		//Scorpion
 		fighterScorpion.spriteAnimator = &scorpionAnimator;
 		fighterScorpion.projectileAnimator = &lightningAnimator;
@@ -4678,6 +4725,7 @@ void basicmain()
 		fighterScorpion.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterScorpion.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterScorpion.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
 		fighterScorpion2.projectileAnimator = &lightningAnimator;
 		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
@@ -4729,6 +4777,7 @@ void basicmain()
 		fighterScorpion2.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterScorpion2.hitFallFrames = &subzeroHitFallFrames;
 		fighterScorpion2.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterScorpion2.hitNutsFrames = &subzeroHitNutsFrames;
 		//Sub-Zero
 		fighterSubzero.spriteAnimator = &subzeroAnimator;
 		fighterSubzero.projectileAnimator = &lightningAnimator;
@@ -4780,6 +4829,7 @@ void basicmain()
 		fighterSubzero.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterSubzero.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterSubzero.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterSubzero2.spriteAnimator = &subzeroAnimator2;
 		fighterSubzero2.projectileAnimator = &lightningAnimator;
 		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
@@ -4830,6 +4880,7 @@ void basicmain()
 		fighterSubzero2.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterSubzero2.hitFallFrames = &subzeroHitFallFrames;
 		fighterSubzero2.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterSubzero2.hitNutsFrames = &subzeroHitNutsFrames;
 		//Sonya
 		fighterSonya.spriteAnimator = &sonyaAnimator;
 		fighterSonya.projectileAnimator = &lightningAnimator;
@@ -5864,6 +5915,9 @@ void basicmain()
 						jsfVsync(0);
 					}
 					
+					fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;
+					fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
+
 					musicStop();
 					stageSetNext();
 					switchScreenVsBattle(p1Cursor, p2Cursor);				
@@ -5892,8 +5946,8 @@ void basicmain()
 					fighterRestartMatch(fighter1Ptr);
 					fighterRestartMatch(fighter2Ptr);
 					switchScreenFight(p1Cursor, p2Cursor, true);
-					stateMachineInit(&fighter1StateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
-					stateMachineInit(&fighter2StateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 					displayWinnerMedals();
 				}
 			}
@@ -5905,8 +5959,8 @@ void basicmain()
 				pad1=jsfGetPad(LEFT_PAD);
 				pad2=jsfGetPad(RIGHT_PAD);
 
-				stateMachineUpdate(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr);
-				stateMachineUpdate(&fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
+				stateMachineUpdate(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr);
+				stateMachineUpdate(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr);
 
 				fighterCastShadow(fighter1Ptr, false);
 				fighterCastShadow(fighter2Ptr, false);
@@ -5914,8 +5968,8 @@ void basicmain()
 				fighter1Ptr->pad = jsfGetPad(fighter1Ptr->PAD);
 				fighter2Ptr->pad = jsfGetPad(fighter2Ptr->PAD);
 
-				stateMachineHandleInput(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr);
-				stateMachineHandleInput(&fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
+				stateMachineHandleInput(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr);
+				stateMachineHandleInput(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr);
 
 				//clb uncomment here once things above work...
 				displayWinnerMedals();
@@ -5951,8 +6005,8 @@ void basicmain()
 					spriteDelayInit();
 					sleepInit();
 					matchReset();
-					stateMachineInit(&fighter1StateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
-					stateMachineInit(&fighter2StateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 					fighterResetFlagsAll(fighter1Ptr, fighter2Ptr);
 					switchScreenFight(p1Cursor, p2Cursor, false);
 				}
@@ -5977,10 +6031,10 @@ void basicmain()
 						fighterHarpoonCheck(fighter1Ptr, fighter2Ptr);
 					}
 				}
-				fighterTurnCheck(&fighter1StateMachine, fighter1Ptr, &fighter2StateMachine, fighter2Ptr);
-				fighterCloseCheck(&fighter1StateMachine, fighter1Ptr, &fighter2StateMachine, fighter2Ptr);
+				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
+				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
-				fighterImpactCheck(&fighter1StateMachine, fighter1Ptr, spriteAnimator1Ptr, &fighter2StateMachine, fighter2Ptr, spriteAnimator2Ptr);
+				fighterImpactCheck(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr, fighter2Ptr, spriteAnimator2Ptr);
 				fighterButtonCheck(fighter1Ptr);
 				fighterButtonCheck(fighter2Ptr);
 				playerinputUpdate(fighter1Ptr, fighter2Ptr);
@@ -7557,6 +7611,9 @@ void doSpecial_Cage_NutPunch(struct StateMachine* stateMachine, struct Fighter* 
 
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
+	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
+	return;
+
 	if (!fighter->HasSetupSpecial1)
 	{
 		fighter->HasSetupSpecial1 = true;

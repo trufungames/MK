@@ -39,6 +39,8 @@ void sfxCageYeah(struct SoundHandler* soundHandler);
 void sfxCageGreenbolt(struct SoundHandler* soundHandler);
 void sfxKanoYell(struct SoundHandler* soundHandler);
 void sfxKanoKnife(struct SoundHandler* soundHandler);
+void sfxKanoCannonBallStart(struct SoundHandler* soundHandler);
+void sfxKanoCannonBall(struct SoundHandler* soundHandler);
 void sfxSonyaRings(struct SoundHandler* soundHandler);
 void sfxSubzeroFreeze(struct SoundHandler* soundHandler);
 void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler);

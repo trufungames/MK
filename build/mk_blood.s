@@ -4,7 +4,6 @@
 	.globl	__Z9bloodInitv
 __Z9bloodInitv:
 	link.w %fp,#0
-	move.w #180,_bloodStayDelay
 	move.l #0x40000000,_gravity
 	move.w #1,_bloodDirection
 	clr.b _impaled
@@ -97,13 +96,13 @@ __Z11bloodUpdateP12SoundHandler:
 	tst.b _bloodBalls+8
 	jne .L104
 .L23:
-	tst.b _bloodBalls+26
+	tst.b _bloodBalls+30
 	jne .L105
 .L29:
-	tst.b _bloodBalls+44
+	tst.b _bloodBalls+52
 	jne .L106
 .L35:
-	tst.b _bloodBalls+62
+	tst.b _bloodBalls+74
 	jne .L107
 .L41:
 	tst.b _bloodPools+8
@@ -619,8 +618,13 @@ __Z11bloodUpdateP12SoundHandler:
 	jeq .L46
 	jra .L109
 .L107:
+	pea 1.w
+	move.w _bloodBalls+86,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodBalls+84,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
-	cmp.w #-1,_bloodBalls+66.l
+	cmp.w #-1,_bloodBalls+78.l
 	seq %d0
 	ext.w %d0
 	ext.l %d0
@@ -628,31 +632,24 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d0,-(%sp)
 	pea 5.w
 	pea _bloodBallFrames
-	move.l _bloodBalls+58,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
+	move.l _bloodBalls+70,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%d2
-	move.w _bloodBalls+64,%a1
+	move.w _bloodBalls+76,%a1
 	addq.l #2,%a1
 	move.w %d2,%a0
-	lea (20,%sp),%sp
+	lea (32,%sp),%sp
 	cmp.l %a1,%a0
 	jle .L41
-	move.l _bloodBalls+54,%d0
-	move.l %d0,%a2
-	add.l %d0,%a2
-	add.l %a2,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a2
-	add.l %d0,%a2
-	lea ___floatsisf,%a3
-	move.w 8(%a2),%a0
+	lea ___floatsisf,%a2
+	move.w _bloodBalls+84,%a0
 	move.l %a0,-(%sp)
-	jsr (%a3)
+	jsr (%a2)
 	move.l %d0,%d3
-	move.w _bloodBalls+66,%a0
+	move.w _bloodBalls+78,%a0
 	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l _bloodBalls+68,(%sp)
+	jsr (%a2)
+	move.l _bloodBalls+80,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
@@ -660,31 +657,42 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d3,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
-	lea ___fixsfsi,%a4
+	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,8(%a2)
-	move.w 12(%a2),%a0
-	move.l %a0,(%sp)
 	jsr (%a3)
+	move.w %d0,_bloodBalls+84
+	move.w _bloodBalls+86,%a0
+	move.l %a0,(%sp)
+	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___addsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	jsr (%a4)
+	jsr (%a3)
 	addq.l #4,%sp
-	move.w %d0,12(%a2)
-	cmp.w #182,%d0
+	move.w %d0,_bloodBalls+86
+	move.l _bloodBalls+66,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	cmp.w #182,12(%a0,%d0.l)
 	jgt .L124
-	move.w %d2,_bloodBalls+64
+	move.w %d2,_bloodBalls+76
 .L126:
 	tst.b _bloodPools+8
 	jeq .L45
 	jra .L108
 .L106:
+	pea 1.w
+	move.w _bloodBalls+64,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodBalls+62,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
-	cmp.w #-1,_bloodBalls+48.l
+	cmp.w #-1,_bloodBalls+56.l
 	seq %d0
 	ext.w %d0
 	ext.l %d0
@@ -692,31 +700,24 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d0,-(%sp)
 	pea 5.w
 	pea _bloodBallFrames
-	move.l _bloodBalls+40,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
+	move.l _bloodBalls+48,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%d2
-	move.w _bloodBalls+46,%a1
+	move.w _bloodBalls+54,%a1
 	addq.l #2,%a1
 	move.w %d2,%a0
-	lea (20,%sp),%sp
+	lea (32,%sp),%sp
 	cmp.l %a1,%a0
 	jle .L35
-	move.l _bloodBalls+36,%d0
-	move.l %d0,%a2
-	add.l %d0,%a2
-	add.l %a2,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a2
-	add.l %d0,%a2
-	lea ___floatsisf,%a3
-	move.w 8(%a2),%a0
+	lea ___floatsisf,%a2
+	move.w _bloodBalls+62,%a0
 	move.l %a0,-(%sp)
-	jsr (%a3)
+	jsr (%a2)
 	move.l %d0,%d3
-	move.w _bloodBalls+48,%a0
+	move.w _bloodBalls+56,%a0
 	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l _bloodBalls+50,(%sp)
+	jsr (%a2)
+	move.l _bloodBalls+58,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
@@ -724,31 +725,42 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d3,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
-	lea ___fixsfsi,%a4
+	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,8(%a2)
-	move.w 12(%a2),%a0
-	move.l %a0,(%sp)
 	jsr (%a3)
+	move.w %d0,_bloodBalls+62
+	move.w _bloodBalls+64,%a0
+	move.l %a0,(%sp)
+	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___addsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	jsr (%a4)
+	jsr (%a3)
 	addq.l #4,%sp
-	move.w %d0,12(%a2)
-	cmp.w #182,%d0
+	move.w %d0,_bloodBalls+64
+	move.l _bloodBalls+44,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	cmp.w #182,12(%a0,%d0.l)
 	jgt .L36
-	move.w %d2,_bloodBalls+46
+	move.w %d2,_bloodBalls+54
 .L129:
-	tst.b _bloodBalls+62
+	tst.b _bloodBalls+74
 	jeq .L41
 	jra .L107
 .L105:
+	pea 1.w
+	move.w _bloodBalls+42,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodBalls+40,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
-	cmp.w #-1,_bloodBalls+30.l
+	cmp.w #-1,_bloodBalls+34.l
 	seq %d0
 	ext.w %d0
 	ext.l %d0
@@ -756,31 +768,24 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d0,-(%sp)
 	pea 5.w
 	pea _bloodBallFrames
-	move.l _bloodBalls+22,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
+	move.l _bloodBalls+26,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%d2
-	move.w _bloodBalls+28,%a1
+	move.w _bloodBalls+32,%a1
 	addq.l #2,%a1
 	move.w %d2,%a0
-	lea (20,%sp),%sp
+	lea (32,%sp),%sp
 	cmp.l %a1,%a0
 	jle .L29
-	move.l _bloodBalls+18,%d0
-	move.l %d0,%a2
-	add.l %d0,%a2
-	add.l %a2,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a2
-	add.l %d0,%a2
-	lea ___floatsisf,%a3
-	move.w 8(%a2),%a0
+	lea ___floatsisf,%a2
+	move.w _bloodBalls+40,%a0
 	move.l %a0,-(%sp)
-	jsr (%a3)
+	jsr (%a2)
 	move.l %d0,%d3
-	move.w _bloodBalls+30,%a0
+	move.w _bloodBalls+34,%a0
 	move.l %a0,(%sp)
-	jsr (%a3)
-	move.l _bloodBalls+32,(%sp)
+	jsr (%a2)
+	move.l _bloodBalls+36,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
@@ -788,29 +793,40 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d3,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
-	lea ___fixsfsi,%a4
+	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,8(%a2)
-	move.w 12(%a2),%a0
-	move.l %a0,(%sp)
 	jsr (%a3)
+	move.w %d0,_bloodBalls+40
+	move.w _bloodBalls+42,%a0
+	move.l %a0,(%sp)
+	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___addsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	jsr (%a4)
+	jsr (%a3)
 	addq.l #4,%sp
-	move.w %d0,12(%a2)
-	cmp.w #182,%d0
+	move.w %d0,_bloodBalls+42
+	move.l _bloodBalls+22,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	cmp.w #182,12(%a0,%d0.l)
 	jgt .L30
-	move.w %d2,_bloodBalls+28
+	move.w %d2,_bloodBalls+32
 .L135:
-	tst.b _bloodBalls+44
+	tst.b _bloodBalls+52
 	jeq .L35
 	jra .L106
 .L104:
+	pea 1.w
+	move.w _bloodBalls+20,%a0
+	move.l %a0,-(%sp)
+	move.w _bloodBalls+18,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	cmp.w #-1,_bloodBalls+12.l
 	seq %d0
@@ -821,29 +837,22 @@ __Z11bloodUpdateP12SoundHandler:
 	pea 5.w
 	pea _bloodBallFrames
 	move.l _bloodBalls+4,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbb
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	move.w raptor_ticks,%d2
 	move.w _bloodBalls+10,%a1
 	addq.l #2,%a1
 	move.w %d2,%a0
-	lea (20,%sp),%sp
+	lea (32,%sp),%sp
 	cmp.l %a1,%a0
 	jle .L23
-	move.l _bloodBalls,%d0
-	move.l %d0,%a2
-	add.l %d0,%a2
-	add.l %a2,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a2
-	add.l %d0,%a2
-	lea ___floatsisf,%a3
-	move.w 8(%a2),%a0
+	lea ___floatsisf,%a2
+	move.w _bloodBalls+18,%a0
 	move.l %a0,-(%sp)
-	jsr (%a3)
+	jsr (%a2)
 	move.l %d0,%d3
 	move.w _bloodBalls+12,%a0
 	move.l %a0,(%sp)
-	jsr (%a3)
+	jsr (%a2)
 	move.l _bloodBalls+14,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
@@ -852,32 +861,38 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %d3,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
-	lea ___fixsfsi,%a4
+	lea ___fixsfsi,%a3
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,8(%a2)
-	move.w 12(%a2),%a0
-	move.l %a0,(%sp)
 	jsr (%a3)
+	move.w %d0,_bloodBalls+18
+	move.w _bloodBalls+20,%a0
+	move.l %a0,(%sp)
+	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___addsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	jsr (%a4)
+	jsr (%a3)
 	addq.l #4,%sp
-	move.w %d0,12(%a2)
-	cmp.w #182,%d0
+	move.w %d0,_bloodBalls+20
+	move.l _bloodBalls,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	cmp.w #182,12(%a0,%d0.l)
 	jgt .L24
 	move.w %d2,_bloodBalls+10
 .L132:
-	tst.b _bloodBalls+26
+	tst.b _bloodBalls+30
 	jeq .L29
 	jra .L105
 .L124:
 	jsr RAPTOR_random
 	move.l sprite,%a0
-	move.l _bloodBalls+54,%d1
+	move.l _bloodBalls+66,%d1
 	move.l %d1,%a1
 	add.l %d1,%a1
 	add.l %a1,%d1
@@ -901,7 +916,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jeq .L125
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+54,%d0
+	move.l _bloodBalls+66,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -909,16 +924,16 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+62
+	clr.b _bloodBalls+74
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 .L137:
-	move.w %d2,_bloodBalls+64
+	move.w %d2,_bloodBalls+76
 	jra .L126
 .L36:
 	jsr RAPTOR_random
 	move.l sprite,%a0
-	move.l _bloodBalls+36,%d1
+	move.l _bloodBalls+44,%d1
 	move.l %d1,%a1
 	add.l %d1,%a1
 	add.l %a1,%d1
@@ -942,7 +957,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jeq .L128
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+36,%d0
+	move.l _bloodBalls+44,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -950,11 +965,11 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+44
+	clr.b _bloodBalls+52
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 .L140:
-	move.w %d2,_bloodBalls+46
+	move.w %d2,_bloodBalls+54
 	jra .L129
 .L24:
 	jsr RAPTOR_random
@@ -1000,7 +1015,7 @@ __Z11bloodUpdateP12SoundHandler:
 .L30:
 	jsr RAPTOR_random
 	move.l sprite,%a0
-	move.l _bloodBalls+18,%d1
+	move.l _bloodBalls+22,%d1
 	move.l %d1,%a1
 	add.l %d1,%a1
 	add.l %a1,%d1
@@ -1024,7 +1039,7 @@ __Z11bloodUpdateP12SoundHandler:
 	jeq .L134
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+18,%d0
+	move.l _bloodBalls+22,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1032,11 +1047,11 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+26
+	clr.b _bloodBalls+30
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 .L138:
-	move.w %d2,_bloodBalls+28
+	move.w %d2,_bloodBalls+32
 	jra .L135
 .L122:
 	move.w #7,%a1
@@ -1067,9 +1082,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1117,16 +1131,15 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
 .L145:
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+54,%d0
+	move.l _bloodBalls+66,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1134,7 +1147,7 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+62
+	clr.b _bloodBalls+74
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 	jra .L137
@@ -1167,16 +1180,15 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
 .L143:
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+18,%d0
+	move.l _bloodBalls+22,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1184,7 +1196,7 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+26
+	clr.b _bloodBalls+30
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 	jra .L138
@@ -1217,9 +1229,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1267,16 +1278,15 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
 .L142:
 	move.l 8(%fp),-(%sp)
 	jsr __Z8sfxBloodP12SoundHandler
-	move.l _bloodBalls+36,%d0
+	move.l _bloodBalls+44,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -1284,7 +1294,7 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+44
+	clr.b _bloodBalls+52
 	move.w raptor_ticks,%d2
 	addq.l #4,%sp
 	jra .L140
@@ -1317,9 +1327,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1353,9 +1362,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1389,9 +1397,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1425,9 +1432,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1461,9 +1467,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1497,9 +1502,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1533,9 +1537,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d5
 	move.l %d5,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l -4(%fp),-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1568,9 +1571,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1603,9 +1605,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1638,9 +1639,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1673,9 +1673,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1708,9 +1707,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1743,9 +1741,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1778,9 +1775,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1813,9 +1809,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1848,9 +1843,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1883,9 +1877,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1918,9 +1911,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1956,9 +1948,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -1991,9 +1982,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2026,9 +2016,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2061,9 +2050,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2096,9 +2084,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2131,9 +2118,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2166,9 +2152,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a2
-	move.w _bloodStayDelay,%a0
-	pea (%a2,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %a1,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2204,9 +2189,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2242,9 +2226,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2277,9 +2260,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2312,9 +2294,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2347,9 +2328,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2382,9 +2362,8 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d2,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -2552,7 +2531,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2613,7 +2592,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2671,7 +2650,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2729,7 +2708,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2787,7 +2766,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2845,7 +2824,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2903,7 +2882,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2961,7 +2940,7 @@ __Z9bloodDropsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr (%a3)
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -2970,34 +2949,37 @@ __Z9bloodDropsss:
 	.globl	__Z9bloodBallsss
 __Z9bloodBallsss:
 	link.w %fp,#0
-	movem.l #12336,-(%sp)
+	movem.l #8240,-(%sp)
 	move.w 10(%fp),%a0
 	move.w 14(%fp),%d1
 	move.w 18(%fp),%d0
 	tst.b _bloodBalls+8
 	jeq .L179
-	tst.b _bloodBalls+26
+	tst.b _bloodBalls+30
 	jeq .L180
-	tst.b _bloodBalls+44
+	tst.b _bloodBalls+52
 	jeq .L181
-	tst.b _bloodBalls+62
+	tst.b _bloodBalls+74
 	jeq .L184
-	movem.l -16(%fp),#3084
+	movem.l -12(%fp),#3076
 	unlk %fp
 	rts
 .L184:
-	moveq #3,%d2
-	move.l %d2,%d3
-	lsl.l #3,%d3
-	add.l %d3,%d2
-	move.l %d2,%a1
-	add.l %d2,%a1
+	move.w #3,%a1
+	lea (%a1,%a1.l),%a2
+	add.l %a1,%a2
+	add.l %a2,%a2
+	add.l %a2,%a2
+	sub.l %a1,%a2
+	lea (%a2,%a2.l),%a1
 	lea _bloodBalls+8,%a2
 	move.b #1,(%a1,%a2.l)
 	move.l %a1,%a2
 	add.l #_bloodBalls,%a2
 	move.w %d0,12(%a2)
 	move.w raptor_ticks,10(%a2)
+	move.w %a0,18(%a2)
+	move.w %d1,20(%a2)
 	lea _bloodBalls,%a3
 	move.l (%a3,%a1.l),%a1
 	move.l %a1,%d2
@@ -3024,27 +3006,30 @@ __Z9bloodBallsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr ___floatsisf
 	addq.l #4,%sp
 	move.l %d0,(%a2)
 .L185:
-	movem.l -16(%fp),#3084
+	movem.l -12(%fp),#3076
 	unlk %fp
 	rts
 .L179:
-	moveq #0,%d2
-	move.l %d2,%d3
-	lsl.l #3,%d3
-	add.l %d3,%d2
-	move.l %d2,%a1
-	add.l %d2,%a1
+	sub.l %a1,%a1
+	lea (%a1,%a1.l),%a2
+	add.l %a1,%a2
+	add.l %a2,%a2
+	add.l %a2,%a2
+	sub.l %a1,%a2
+	lea (%a2,%a2.l),%a1
 	lea _bloodBalls+8,%a2
 	move.b #1,(%a1,%a2.l)
 	move.l %a1,%a2
 	add.l #_bloodBalls,%a2
 	move.w %d0,12(%a2)
 	move.w raptor_ticks,10(%a2)
+	move.w %a0,18(%a2)
+	move.w %d1,20(%a2)
 	lea _bloodBalls,%a3
 	move.l (%a3,%a1.l),%a1
 	move.l %a1,%d2
@@ -3071,24 +3056,27 @@ __Z9bloodBallsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr ___floatsisf
 	addq.l #4,%sp
 	move.l %d0,(%a2)
 	jra .L185
 .L180:
-	moveq #1,%d2
-	move.l %d2,%d3
-	lsl.l #3,%d3
-	add.l %d3,%d2
-	move.l %d2,%a1
-	add.l %d2,%a1
+	move.w #1,%a1
+	lea (%a1,%a1.l),%a2
+	add.l %a1,%a2
+	add.l %a2,%a2
+	add.l %a2,%a2
+	sub.l %a1,%a2
+	lea (%a2,%a2.l),%a1
 	lea _bloodBalls+8,%a2
 	move.b #1,(%a1,%a2.l)
 	move.l %a1,%a2
 	add.l #_bloodBalls,%a2
 	move.w %d0,12(%a2)
 	move.w raptor_ticks,10(%a2)
+	move.w %a0,18(%a2)
+	move.w %d1,20(%a2)
 	lea _bloodBalls,%a3
 	move.l (%a3,%a1.l),%a1
 	move.l %a1,%d2
@@ -3115,24 +3103,27 @@ __Z9bloodBallsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr ___floatsisf
 	addq.l #4,%sp
 	move.l %d0,(%a2)
 	jra .L185
 .L181:
-	moveq #2,%d2
-	move.l %d2,%d3
-	lsl.l #3,%d3
-	add.l %d3,%d2
-	move.l %d2,%a1
-	add.l %d2,%a1
+	move.w #2,%a1
+	lea (%a1,%a1.l),%a2
+	add.l %a1,%a2
+	add.l %a2,%a2
+	add.l %a2,%a2
+	sub.l %a1,%a2
+	lea (%a2,%a2.l),%a1
 	lea _bloodBalls+8,%a2
 	move.b #1,(%a1,%a2.l)
 	move.l %a1,%a2
 	add.l #_bloodBalls,%a2
 	move.w %d0,12(%a2)
 	move.w raptor_ticks,10(%a2)
+	move.w %a0,18(%a2)
+	move.w %d1,20(%a2)
 	lea _bloodBalls,%a3
 	move.l (%a3,%a1.l),%a1
 	move.l %a1,%d2
@@ -3159,7 +3150,7 @@ __Z9bloodBallsss:
 	moveq #2,%d1
 	and.l %d1,%d0
 	move.l %d0,%a0
-	pea 6(%a0)
+	pea 4(%a0)
 	jsr ___floatsisf
 	addq.l #4,%sp
 	move.l %d0,(%a2)
@@ -3219,9 +3210,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3257,9 +3247,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3291,9 +3280,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3325,9 +3313,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3359,9 +3346,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3393,9 +3379,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3427,9 +3412,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3461,9 +3445,8 @@ __Z9bloodPoolss:
 	clr.w 14(%a0)
 	add.l #_bloodPools+8,%d1
 	move.l %d1,-(%sp)
-	move.w raptor_ticks,%a1
-	move.w _bloodStayDelay,%a0
-	pea (%a1,%a0.l)
+	move.w raptor_ticks,%a0
+	pea 120(%a0)
 	move.l %d0,-(%sp)
 	jsr __Z22spriteDelaySetInactiveiiPb
 	lea (12,%sp),%sp
@@ -3653,109 +3636,102 @@ __Z15bloodResetTicksv:
 	.even
 	.globl	__Z11bloodImpalesss
 __Z11bloodImpalesss:
-	link.w %fp,#-4
-	movem.l #16188,-(%sp)
+	link.w %fp,#0
+	movem.l #15408,-(%sp)
 	move.l 8(%fp),%d3
 	move.l 12(%fp),%d0
 	move.l 16(%fp),%d2
-	move.w %d0,%d1
+	move.w %d0,%a0
 	tst.b _impaled
-	jeq .L223
-	movem.l -44(%fp),#15612
+	jeq .L221
+	movem.l -24(%fp),#3132
 	unlk %fp
 	rts
-.L223:
-	move.w %d2,%d5
-	neg.w %d5
-	move.w %d5,%a2
+.L221:
+	move.w %d2,%d1
+	neg.w %d1
+	move.w %d1,%a2
 	move.w %d0,%d4
-	add.w #20,%d0
-	move.w %d0,%a4
 	tst.b _bloodGlobObject+8
 	jne .L214
-	move.w %d3,%a1
-	lea (-20,%a1),%a1
+	move.w %d0,%a3
+	lea (20,%a3),%a3
+	move.w %d3,%d5
+	add.w #-20,%d5
 	move.b #1,_bloodGlobObject+8
-	move.w %d5,_bloodDirection
-	move.w %a1,_bloodGlobObject+10
-	move.w %d0,_bloodGlobObject+12
+	move.w %d1,_bloodDirection
+	move.w %d5,_bloodGlobObject+10
+	move.w %a3,_bloodGlobObject+12
 	move.w raptor_ticks,_bloodGlobObject+14
-	move.l _bloodGlobObject,%a0
-	move.l %a0,%d6
-	add.l %a0,%d6
-	add.l %a0,%d6
-	lsl.l #6,%d6
-	move.l sprite,%a0
-	add.l %d6,%a0
-	move.w %a1,8(%a0)
-	move.w %d0,12(%a0)
-	cmp.w #1,%d5
+	move.l _bloodGlobObject,%d0
+	move.l %d0,%a1
+	add.l %d0,%a1
+	add.l %a1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a1
+	add.l %d0,%a1
+	move.w %d5,8(%a1)
+	move.w %a3,12(%a1)
+	cmp.w #1,%d1
 	seq %d0
 	ext.w %d0
 	ext.l %d0
-	moveq #1,%d6
-	or.l %d0,%d6
-	move.l %d6,24(%a0)
+	moveq #1,%d5
+	or.l %d0,%d5
+	move.l %d5,24(%a1)
 	moveq #1,%d0
-	move.l %d0,4(%a0)
-	move.l _bloodGlobObject+4,%a0
-	clr.w 14(%a0)
+	move.l %d0,4(%a1)
+	move.l _bloodGlobObject+4,%a1
+	clr.w 14(%a1)
 .L214:
 	tst.b _bloodSprays+8
-	jne .L221
-	move.w %d3,%a1
-	lea (-10,%a1),%a1
-	move.w %a1,_bloodSprays+10
-	move.w %d1,_bloodSprays+12
+	jne .L216
+	move.w %d3,%a3
+	lea (-10,%a3),%a3
+	move.w %a3,_bloodSprays+10
+	move.w %a0,_bloodSprays+12
 	move.b #1,_bloodSprays+8
-	move.w %d5,_bloodDirection
+	move.w %d1,_bloodDirection
 	move.l _bloodSprays,%d0
-	move.l %d0,%a0
-	add.l %d0,%a0
-	add.l %a0,%d0
+	move.l %d0,%a1
+	add.l %d0,%a1
+	add.l %a1,%d0
 	lsl.l #6,%d0
-	move.l sprite,%a0
-	add.l %d0,%a0
-	move.w %a1,8(%a0)
-	move.w %d1,12(%a0)
-	cmp.w #1,%d5
+	move.l sprite,%a1
+	add.l %d0,%a1
+	move.w %a3,8(%a1)
+	move.w %a0,12(%a1)
+	cmp.w #1,%d1
 	seq %d0
 	ext.w %d0
 	ext.l %d0
 	moveq #1,%d1
 	or.l %d0,%d1
-	move.l %d1,24(%a0)
-	moveq #1,%d6
-	move.l %d6,4(%a0)
+	move.l %d1,24(%a1)
+	moveq #1,%d5
+	move.l %d5,4(%a1)
 	move.l _bloodSprays+4,%a0
 	clr.w 14(%a0)
 	move.w raptor_ticks,_bloodSprays+14
-.L221:
-	move.w %d4,%d7
-	add.w #10,%d7
-	ext.l %d7
-	move.w %d2,%d0
-	muls.w #20,%d0
-	add.w %d3,%d0
-	move.w %d0,%a5
+.L216:
 	move.l %a2,-(%sp)
-	move.l %a4,-(%sp)
-	move.l %a5,-(%sp)
-	lea __Z9bloodDropsss,%a3
-	jsr (%a3)
-	move.w %d4,%d6
-	add.w #25,%d6
-	ext.l %d6
+	move.w %d4,%d0
+	add.w #25,%d0
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	move.w %d2,%d0
 	muls.w #22,%d0
 	add.w %d3,%d0
-	move.w %d0,%d5
-	ext.l %d5
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
+	lea __Z9bloodDropsss,%a3
+	jsr (%a3)
 	addq.l #8,%sp
 	move.l %a2,(%sp)
-	move.l %d6,-(%sp)
-	move.l %d5,-(%sp)
-	jsr (%a3)
+	move.w %d4,%d0
+	add.w #15,%d0
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
 	move.w %d2,%d0
 	add.w %d2,%d0
 	move.w %d0,%d1
@@ -3763,31 +3739,20 @@ __Z11bloodImpalesss:
 	add.w %d1,%d0
 	add.w %d3,%d0
 	move.w %d0,%a0
+	move.l %a0,-(%sp)
+	jsr (%a3)
 	addq.l #8,%sp
 	move.l %a2,(%sp)
 	move.w %d4,%d0
-	add.w #15,%d0
-	move.w %d0,%a1
-	move.l %a1,-(%sp)
+	add.w #10,%d0
+	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	move.l %a0,-4(%fp)
-	jsr (%a3)
-	addq.l #8,%sp
-	move.l %a2,(%sp)
-	move.l %a4,-(%sp)
-	move.l -4(%fp),%a0
+	move.w %d2,%d0
+	muls.w #20,%d0
+	add.w %d3,%d0
+	move.w %d0,%a0
 	move.l %a0,-(%sp)
 	lea __Z9bloodBallsss,%a3
-	jsr (%a3)
-	addq.l #8,%sp
-	move.l %a2,(%sp)
-	move.l %d6,-(%sp)
-	move.l %d5,-(%sp)
-	jsr (%a3)
-	addq.l #8,%sp
-	move.l %a2,(%sp)
-	move.l %d7,-(%sp)
-	move.l %a5,-(%sp)
 	jsr (%a3)
 	addq.l #8,%sp
 	move.l %a2,(%sp)
@@ -3796,14 +3761,14 @@ __Z11bloodImpalesss:
 	move.l %a0,-(%sp)
 	lsl.w #4,%d2
 	add.w %d3,%d2
-	move.w %d2,%a1
-	move.l %a1,-(%sp)
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
 	jsr (%a3)
 	move.b #1,_impaled
 	move.w raptor_ticks,%a0
 	move.l %a0,_impaledTicks
 	lea (12,%sp),%sp
-	movem.l -44(%fp),#15612
+	movem.l -24(%fp),#3132
 	unlk %fp
 	rts
 	.globl	_impaledTicks
@@ -3818,10 +3783,6 @@ _impaled:
 	.even
 _bloodSpeedRnd:
 	.skip 4
-	.globl	_bloodStayDelay
-	.even
-_bloodStayDelay:
-	.skip 2
 	.globl	_gravity
 	.even
 _gravity:
@@ -3982,28 +3943,28 @@ _bloodBalls:
 	.skip 1
 	.word	0
 	.word	0
-	.skip 4
+	.skip 8
 	.long	84
 	.long	_bloodBall2Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
-	.skip 4
+	.skip 8
 	.long	85
 	.long	_bloodBall3Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
-	.skip 4
+	.skip 8
 	.long	86
 	.long	_bloodBall4Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
-	.skip 4
+	.skip 8
 	.globl	_bloodDrops
 	.even
 _bloodDrops:
@@ -4188,37 +4149,37 @@ _bloodPool1Animator:
 	.even
 _bloodBallFrames:
 	.word	32
+	.word	16
+	.word	0
+	.word	64
+	.word	-8
+	.word	0
+	.word	6
+	.word	16
 	.word	32
-	.word	352
+	.word	0
 	.word	80
 	.word	0
 	.word	0
 	.word	6
-	.word	32
+	.word	16
 	.word	32
 	.word	16
-	.word	128
+	.word	80
 	.word	0
 	.word	0
 	.word	6
+	.word	16
 	.word	32
 	.word	32
-	.word	64
-	.word	128
+	.word	80
 	.word	0
 	.word	0
 	.word	6
+	.word	16
 	.word	32
 	.word	32
-	.word	112
-	.word	128
-	.word	0
-	.word	0
-	.word	6
-	.word	32
-	.word	32
-	.word	112
-	.word	128
+	.word	80
 	.word	0
 	.word	0
 	.word	6
