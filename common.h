@@ -192,7 +192,7 @@
 #define FLOOR_LOCATION_Y_FIGHTER 90
 #define HITBOX_WIDTH 32
 #define PLAYER_INPUT_STACK_SIZE 6
-#define PLAYER_INPUT_TIMEOUT 60
+#define PLAYER_INPUT_TIMEOUT 30
 #define HARPOON_MINIMUM_DISTANCE 150
 
 //-----------------------------------------------------------------------------------------------------
@@ -248,12 +248,13 @@
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
 #define FIGHTER_THROWN_X_SPEED 10
 #define FIGHTER_PROJECTILE_X_SPEED 12
+#define FIGHTER_KANO_CANNONBALL_X_SPEED 12
 #define FIGHTER_CAGE_SHADOW_KICK_X_SPEED 16
 #define FIGHTER_CAGE_SHADOW_KICK_TOTAL_DISTANCE 96
 #define FIGHTER_CAGE_SHADOW_KICK_ZIPBACK_X_SPEED 32
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 47
+#define STATE_TOTAL_COUNT 48
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -302,6 +303,7 @@
 #define STATE_CAGE_SHADOW_KICK 44
 #define STATE_CAGE_NUTPUNCH 45
 #define STATE_HIT_NUTS 46
+#define STATE_KANO_CANNONBALL 47
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
@@ -345,7 +347,7 @@
 #define KANO_HIT_UPPERCUT_FRAME_COUNT 26
 #define KANO_HIT_FALL_FRAME_COUNT 7
 #define KANO_HIT_SWEEP_FRAME_COUNT 6
-#define KANO_SPECIAL_1_FRAME_COUNT 8
+#define KANO_SPECIAL_1_FRAME_COUNT 6
 #define KANO_SPECIAL_2_FRAME_COUNT 7
 #define KANO_SPECIAL_3_FRAME_COUNT 0
 #define KANO_PROJECTILE_FRAME_COUNT 28

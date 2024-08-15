@@ -217,6 +217,10 @@ static State stateCageNutPunch = {
 static State stateHitNuts = {
 	STATE_HIT_NUTS
 };
+static State stateKanoCannonBall = {
+	STATE_KANO_CANNONBALL
+};
+
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -348,14 +352,14 @@ static AnimationFrame kanoKnifeFrames[] = {
 };
 
 static AnimationFrame kanoCannonBallFrames[] = {
-	{ 48, 64, 288, 352, 0, 0, 3 },
-	{ 48, 64, 336, 368, 0, 0, 3 },
-	{ 64, 48, 384, 384, -12, 4, 3 },
-	{ 64, 48, 448, 384, -12, 4, 3 },
-	{ 48, 64, 512, 416, 0, -18, 3 },
-	{ 48, 64, 560, 416, 0, -18, 3 },
-	{ 64, 48, 608, 416, 0, 0, 3 }
-}
+	{ 48, 64, 288, 352, 0, 0, 2 },
+	{ 48, 64, 336, 368, 0, 0, 2 },
+	{ 64, 48, 384, 384, -12, 4, 2 },
+	{ 64, 48, 448, 384, -12, 4, 2 },
+	{ 48, 64, 512, 416, 0, -18, 2 },
+	{ 48, 64, 560, 416, 0, -18, 2 },
+	{ 64, 48, 608, 416, 0, 0, 2 }
+};
 
 static AnimationFrame raidenLightningFrames[] = {
 	{ 64, 112, 512, 944, 0, 0, 4 },
@@ -3161,7 +3165,7 @@ static int specials_Cage_GreenBolt_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_B
 static int specials_Cage_ShadowKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
 static int specials_Kano_Knife_Inputs[] = { INPUT_FORWARD, INPUT_BACK, 0, 0, 0, INPUT_BLK }; //if IsBlocking
-static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK }; //if IsBlocking
+static int specials_Kano_CannonBall_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, INPUT_BLK };
 static int specials_FIGHTER_NONE_Inputs[] = { 0, 0, 0, 0, 0, 0 };
 static int specials_Raiden_Lightning_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
 static int specials_Raiden_Torpedo_Inputs[] = { INPUT_FORWARD, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
@@ -3353,6 +3357,7 @@ void doSpecial_Cage_GreenBolt(struct StateMachine* stateMachine, struct Fighter*
 void doSpecial_Cage_ShadowKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Cage_NutPunch(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Kano_CannonBall(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Raiden_Lightning(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -4140,9 +4145,6 @@ void basicmain()
 		stateThrowingProjectile.update = &StateThrowingProjectile_Update;
 		stateThrowingProjectile.sleep = &StateThrowingProjectile_Sleep;
 		stateThrowingProjectile.handleInput = &StateThrowingProjectile_HandleInput;
-
-		/////////////////////////////
-		// DMG STATES
 		stateHitLow.enter = &StateHitLow_Enter;
 		stateHitLow.update = &StateHitLow_Update;
 		stateHitLow.sleep = &StateHitLow_Sleep;
@@ -4207,6 +4209,10 @@ void basicmain()
 		stateHitNuts.update = &StateHitNuts_Update;
 		stateHitNuts.sleep = &StateHitNuts_Sleep;
 		stateHitNuts.handleInput = &StateHitNuts_HandleInput;
+		stateKanoCannonBall.enter = &StateKanoCannonBall_Enter;
+		stateKanoCannonBall.update = &StateKanoCannonBall_Update;
+		stateKanoCannonBall.sleep = &StateKanoCannonBall_Sleep;
+		stateKanoCannonBall.handleInput = &StateKanoCannonBall_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4255,6 +4261,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_CAGE_SHADOW_KICK, &stateCageShadowKick);
 		stateMachineAdd(&fighterStateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_NUTS, &stateHitNuts);
+		stateMachineAdd(&fighterStateMachine, STATE_KANO_CANNONBALL, &stateKanoCannonBall);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4373,10 +4380,12 @@ void basicmain()
 		fighterKano.special2Inputs = &specials_Kano_CannonBall_Inputs;
 		fighterKano.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKano.special1InputCount = 2;
-		fighterKano.special2InputCount = 4;
+		fighterKano.special2InputCount = 3;
 		fighterKano.special3InputCount = 1;
 		fighterKano.special1Frames = &kanoKnifeFrames;
+		fighterKano.special2Frames = &kanoCannonBallFrames;
 		fighterKano.doSpecialMove1 = &doSpecial_Kano_Knife;
+		fighterKano.doSpecialMove2 = &doSpecial_Kano_CannonBall;
 		fighterKano.idleFrames = &kanoIdleFrames;
 		fighterKano.dizzyFrames = &kanoDizzyFrames;
 		fighterKano.winsFrames = &kanoWinsFrames;
@@ -4427,7 +4436,9 @@ void basicmain()
 		fighterKano2.special2InputCount = 4;
 		fighterKano2.special3InputCount = 1;
 		fighterKano2.special1Frames = &kanoKnifeFrames;
+		fighterKano.special2Frames = &kanoCannonBallFrames;
 		fighterKano2.doSpecialMove1 = &doSpecial_Kano_Knife;
+		fighterKano2.doSpecialMove2 = &doSpecial_Kano_CannonBall;
 		fighterKano2.idleFrames = &kanoIdleFrames;
 		fighterKano2.dizzyFrames = &kanoDizzyFrames;
 		fighterKano2.winsFrames = &kanoWinsFrames;
@@ -7612,72 +7623,11 @@ void doSpecial_Cage_NutPunch(struct StateMachine* stateMachine, struct Fighter* 
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
-	return;
+}
 
-	if (!fighter->HasSetupSpecial1)
-	{
-		fighter->HasSetupSpecial1 = true;
-		fighter->HasSetupProjectileEnd = false;
-		fighter->ProjectileMadeContact = false;
-		fighter->HasSetupProjectileMovement = false;
-		animator->currentFrame = 0;
-		fighter->projectilePositionX = fighter->positionX;
-		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-		fighter->projectileAnimator->currentFrame = 0;
-		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-		fighter->projectileAnimator->base = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 104;
-		sprite[fighter->lightningSpriteIndex].hbox = 16;
-		sprite[fighter->lightningSpriteIndex].vbox = 16;
-		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),13,16);
-		fighter->lastTicks = rapTicks;
-		sfxKanoKnife(fighter->soundHandler);
-	}
-
-	if (!fighter->ProjectileMadeContact)
-	{
-		if (animationIsComplete(animator, 6))
-		{
-			if (!fighter->HasSetupProjectileMovement)
-			{
-				fighter->HasSetupProjectileMovement = true;
-				fighter->projectilePositionX += (16 * fighter->direction);
-			}
-
-			fighter->projectilePositionX += (8 * fighter->direction);
-
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320
-				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-			{
-				fighter->IsDoingSpecial1 = false;
-				playerinputInit(fighter);
-				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			}
-		}
-
-		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
-	else
-	{
-		if (!fighter->HasSetupProjectileEnd)
-		{
-			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-		}
-
-		if (animationIsComplete(fighter->projectileAnimator, 5))
-		{
-			sprite[fighter->lightningSpriteIndex].was_hit = -1;
-			fighter->IsDoingSpecial1 = false;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			fighterResetRaidenLightning(fighter);
-		}
-
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
+void doSpecial_Kano_CannonBall(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_KANO_CANNONBALL, fighter, animator);
 }
 
 void doSpecial_Raiden_Lightning(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)

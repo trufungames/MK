@@ -129,17 +129,19 @@ void stateMachineSleep(struct StateMachine* stateMachine, short ticks, struct Fi
 
 void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-   spriteAnimator->currentFrame = 0;
-   spriteAnimator->lastTick = rapTicks;
-   fighter->exitingState = false;
-   fighter->vars[0] = 0;
-   sprite[fighter->HB_ATTACK].x_ = fighter->positionX + 12;
-   sprite[fighter->HB_ATTACK].y_ = fighter->positionY + 160;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->exitingState = false;
+    fighter->vars[0] = 0;
+    sprite[fighter->HB_ATTACK].x_ = fighter->positionX + 12;
+    sprite[fighter->HB_ATTACK].y_ = fighter->positionY + 160;
 }
 
 void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->idleFrames, fighter->IDLE_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+    fighterSetOnFloor(fighter);
 }
 
 void StateIdle_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -367,6 +369,8 @@ void StateWalkingForward_Update(struct StateMachine* stateMachine, struct Fighte
         fighter->lastTicks = rapTicks;
     }
 
+    fighterSetOnFloor(fighter);
+
     if (fighter->exitingState && fighter->vars[0] >= FIGHTER_WALK_MIN_FORWARD)
     {
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
@@ -438,6 +442,9 @@ void StateWalkingBackward_Update(struct StateMachine* stateMachine, struct Fight
 
         fighter->lastTicks = rapTicks;
     }
+
+    fighterSetOnFloor(fighter);
+
     if (fighter->exitingState && fighter->vars[0] >= FIGHTER_WALK_MIN_BACKWARD)
     {
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
@@ -2346,7 +2353,7 @@ void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fi
 {
     if (!fighter->ProjectileMadeContact)
 	{
-		if (animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT) || fighter->fighterIndex == KANO && animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT - 2))
+		if (animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
 		{
             if (fighter->fighterIndex == KANO && fighter->vars[2] == 0)
             {
@@ -2393,6 +2400,7 @@ void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fi
             return;
 		}
 
+        updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, fighter->PROJECTILE_END_FRAME_COUNT, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
 	}
 
@@ -2627,5 +2635,74 @@ void StateHitNuts_Sleep(struct StateMachine* stateMachine, struct Fighter* fight
 }
 
 void StateHitNuts_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// KANO CANNON BALL
+// vars[0] = rapTicks
+// vars[1] = charged forward
+// vars[2] = jump index
+
+void StateKanoCannonBall_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = rapTicks;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    sfxKanoCannonBallStart(fighter->soundHandler);
+}
+
+void StateKanoCannonBall_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+    
+    if ((rapTicks >= fighter->vars[0] + (3 * 60) || (!(fighter->pad & JAGPAD_B) && !(fighter->pad & JAGPAD_8))) && fighter->vars[1] == 0)
+    {
+        fighter->vars[1] = 1;
+        sfxKanoCannonBall(fighter->soundHandler);
+    }
+
+    if (fighter->vars[1] == 1 && !fighter->MadeContact)
+    {
+        //Kano's CannonBall is charging forward
+        fighterPositionXAdd(fighter, FIGHTER_KANO_CANNONBALL_X_SPEED * fighter->direction);
+    }
+
+    if (fighter->MadeContact)
+    {
+        //Made Contact - follow the jump pattern along the Y to bounce up, then land back in IDLE
+        if (rapTicks >= fighter->lastTicks + 2)
+        {
+            fighter->positionY += JumpOffsets[fighter->vars[2]];
+            fighter->vars[2]++;
+            fighter->lastTicks = rapTicks;
+        }
+
+        if (fighter->vars[2] > 19)
+        {
+            //landed
+            fighterSetOnFloor(fighter);
+            impactFrameReset(fighter);
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+    }
+
+    //TODO if we passed the other fighter, go idle and turn around
+    updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateKanoCannonBall_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateKanoCannonBall_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

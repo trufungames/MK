@@ -261,15 +261,16 @@ __Z19playerinputContainsP7FighterPii:
 	moveq #0,%d0
 	jra .L55
 .L54:
-	move.l 202(%a1),%d0
-	move.l %d0,%d1
-	and.l JAGPAD_B,%d1
-	jne .L47
-	and.l JAGPAD_8,%d0
-	sne %d0
+	tst.l 202(%a1)
+	seq %d0
 	ext.w %d0
 	ext.l %d0
 	neg.l %d0
+	and.l JAGPAD_B,%d0
+	jeq .L47
+	moveq #1,%d0
+	and.l JAGPAD_8,%d0
+	eor.w #1,%d0
 	move.l (%sp)+,%a2
 	unlk %fp
 	rts
@@ -283,7 +284,7 @@ __Z17playerinputUpdateP7FighterS0_:
 	move.w raptor_ticks,%a0
 	move.l 324(%a2),%a3
 	move.w 2(%a3),%a4
-	lea (60,%a4),%a4
+	lea (30,%a4),%a4
 	cmp.l %a0,%a4
 	jge .L58
 	clr.w (%a3)
@@ -291,7 +292,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L58:
 	move.l 320(%a2),%a3
 	move.w 2(%a3),%a4
-	lea (60,%a4),%a4
+	lea (30,%a4),%a4
 	cmp.l %a0,%a4
 	jge .L59
 	clr.w (%a3)
@@ -299,7 +300,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L59:
 	move.l 316(%a2),%a3
 	move.w 2(%a3),%a4
-	lea (60,%a4),%a4
+	lea (30,%a4),%a4
 	cmp.l %a0,%a4
 	jge .L60
 	clr.w (%a3)
@@ -307,7 +308,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L60:
 	move.l 312(%a2),%a3
 	move.w 2(%a3),%a4
-	lea (60,%a4),%a4
+	lea (30,%a4),%a4
 	cmp.l %a0,%a4
 	jge .L61
 	clr.w (%a3)
@@ -315,7 +316,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L61:
 	move.l 308(%a2),%a3
 	move.w 2(%a3),%a4
-	lea (60,%a4),%a4
+	lea (30,%a4),%a4
 	cmp.l %a0,%a4
 	jge .L62
 	clr.w (%a3)
@@ -323,7 +324,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L62:
 	move.l 304(%a2),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L63
 	clr.w (%a2)
@@ -331,7 +332,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L63:
 	move.l 324(%a1),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L64
 	clr.w (%a2)
@@ -339,7 +340,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L64:
 	move.l 320(%a1),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L65
 	clr.w (%a2)
@@ -347,7 +348,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L65:
 	move.l 316(%a1),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L66
 	clr.w (%a2)
@@ -355,7 +356,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L66:
 	move.l 312(%a1),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L67
 	clr.w (%a2)
@@ -363,7 +364,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L67:
 	move.l 308(%a1),%a2
 	move.w 2(%a2),%a3
-	lea (60,%a3),%a3
+	lea (30,%a3),%a3
 	cmp.l %a0,%a3
 	jge .L68
 	clr.w (%a2)
@@ -371,7 +372,7 @@ __Z17playerinputUpdateP7FighterS0_:
 .L68:
 	move.l 304(%a1),%a1
 	move.w 2(%a1),%a2
-	lea (60,%a2),%a2
+	lea (30,%a2),%a2
 	cmp.l %a0,%a2
 	jge .L57
 	clr.w (%a1)

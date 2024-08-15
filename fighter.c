@@ -1585,6 +1585,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
             stateMachineGoto(stateMachine, STATE_HIT_NUTS, fighter2, spriteAnimator2);
         }
+        else if (fighter1->currentState->Name == STATE_KANO_CANNONBALL)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+            stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+            stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
     }
     else if (fighterIsBlocking(stateMachine, fighter2))
     {
