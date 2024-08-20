@@ -9,6 +9,7 @@
 #include "blood.h"
 #include "playerinput.h"
 #include "stage.h"
+#include "camera.h"
 
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
@@ -30,7 +31,7 @@ void stateMachineInit(struct StateMachine* stateMachine, short name, struct Figh
     fighter->exitingState = false;
 }
 
-void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->isSleeping && rapTicks < fighter->sleepTicks)
     {
@@ -99,7 +100,7 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
     // END GLOBAL FIGHTER LOGIC
     /////////////////////////////////////////////////////
 
-    fighter->currentState->update(stateMachine, fighter, spriteAnimator);
+    fighter->currentState->update(stateMachine, fighter, spriteAnimator, opponent);
 }
 
 void stateMachineHandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -113,6 +114,7 @@ void stateMachineGoto(struct StateMachine* stateMachine, short newState, struct 
     if (fighter->currentState->Name == newState)
         return;
 
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     fighter->currentState = stateMachine->states[newState];
     fighter->currentState->enter(stateMachine, fighter, spriteAnimator);
 }
@@ -126,6 +128,7 @@ void stateMachineSleep(struct StateMachine* stateMachine, short ticks, struct Fi
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IDLE
 // vars[0]  = has turned
+// vars[1] = rapTicks (raiden's zap sound)
 
 void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -134,14 +137,37 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
     fighter->vars[0] = 0;
+    fighter->vars[1] = rapTicks;
     sprite[fighter->HB_ATTACK].x_ = fighter->positionX + 12;
     sprite[fighter->HB_ATTACK].y_ = fighter->positionY + 160;
+
+    if (fighter->fighterIndex == RAIDEN)
+    {
+        sfxRaidenIdleZap(fighter->soundHandler);
+        fighterResetRaidenLightning(fighter);
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
+        sprite[fighter->lightningSpriteIndex].x_ = fighter->direction == 1 ? fighter->positionX - 4 : fighter->positionX - 12;
+        sprite[fighter->lightningSpriteIndex].y_ = fighter->positionY;
+    }
 }
 
-void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
+    if (fighter->fighterIndex == RAIDEN && rapTicks >= fighter->vars[1] + 120)
+    {
+        sfxRaidenIdleZap(fighter->soundHandler);
+        fighter->vars[1] = rapTicks;
+    }
+
     updateSpriteAnimator(spriteAnimator, *fighter->idleFrames, fighter->IDLE_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
     fighterSetOnFloor(fighter);
+
+    if (fighter->fighterIndex == RAIDEN)
+    {
+        sprite[fighter->lightningSpriteIndex].x_ = fighter->direction == 1 ? fighter->positionX - 4 : fighter->positionX - 12;
+        sprite[fighter->lightningSpriteIndex].y_ = fighter->positionY;
+        updateSpriteAnimator(fighter->projectileAnimator, *fighter->lightningFrames, 30, true, true);
+    }
 }
 
 void StateIdle_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -240,7 +266,7 @@ void StateBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     fighter->lastTicks = rapTicks;
 }
 
-void StateBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->exitingState)
     {
@@ -293,7 +319,7 @@ void StateDucking_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighter->lastTicks = rapTicks;
 }
 
-void StateDucking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateDucking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->exitingState)
     {
@@ -349,7 +375,7 @@ void StateWalkingForward_Enter(struct StateMachine* stateMachine, struct Fighter
     fighter->lastTicks = rapTicks;
 }
 
-void StateWalkingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateWalkingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->walkFrames, fighter->WALK_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -431,7 +457,7 @@ void StateWalkingBackward_Enter(struct StateMachine* stateMachine, struct Fighte
     fighter->lastTicks = rapTicks;
 }
 
-void StateWalkingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateWalkingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->walkFrames, fighter->WALK_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -496,7 +522,7 @@ void StateJumping_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     //updateSpriteAnimator(spriteAnimator, *fighter->jumpFrames, fighter->JUMP_FRAME_COUNT, false, true, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -564,7 +590,7 @@ void StateJumpingForward_Enter(struct StateMachine* stateMachine, struct Fighter
     fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     animateFrame(fighter->spriteIndex, fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     
@@ -621,7 +647,7 @@ void StateJumpingBackward_Enter(struct StateMachine* stateMachine, struct Fighte
     fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     animateFrame(fighter->spriteIndex, 19 - fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     
@@ -677,7 +703,7 @@ void StateDuckBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* 
     fighter->lastTicks = rapTicks;
 }
 
-void StateDuckBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateDuckBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->exitingState)
     {
@@ -738,7 +764,7 @@ void StateLowPunching_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxSwing(fighter->soundHandler);
 }
 
-void StateLowPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateLowPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameLowPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->punchLowFrames, fighter->LOW_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -791,7 +817,7 @@ void StateLowRepeatPunching_Enter(struct StateMachine* stateMachine, struct Figh
     sfxSwing(fighter->soundHandler);
 }
 
-void StateLowRepeatPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateLowRepeatPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->exitingState)
     {
@@ -854,7 +880,7 @@ void StateHighPunching_Enter(struct StateMachine* stateMachine, struct Fighter* 
     sfxSwing(fighter->soundHandler);
 }
 
-void StateHighPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHighPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameLowPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->punchHighFrames, fighter->HIGH_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -907,7 +933,7 @@ void StateHighRepeatPunching_Enter(struct StateMachine* stateMachine, struct Fig
     sfxSwing(fighter->soundHandler);
 }
 
-void StateHighRepeatPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHighRepeatPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->exitingState)
     {
@@ -970,7 +996,7 @@ void StateLowKicking_Enter(struct StateMachine* stateMachine, struct Fighter* fi
     sfxSwing(fighter->soundHandler);
 }
 
-void StateLowKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateLowKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameLowKick);
     updateSpriteAnimator(spriteAnimator, *fighter->kickLowFrames, fighter->LOW_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1011,7 +1037,7 @@ void StateHighKicking_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxSwing(fighter->soundHandler);
 }
 
-void StateHighKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHighKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameHighKick);
     updateSpriteAnimator(spriteAnimator, *fighter->kickHighFrames, fighter->HIGH_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1052,7 +1078,7 @@ void StateRoundhouseKicking_Enter(struct StateMachine* stateMachine, struct Figh
     sfxSwing(fighter->soundHandler);
 }
 
-void StateRoundhouseKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateRoundhouseKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameRoundhouse);
     updateSpriteAnimator(spriteAnimator, *fighter->roundhouseFrames, fighter->ROUNDHOUSE_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1087,7 +1113,7 @@ void StateUppercutting_Enter(struct StateMachine* stateMachine, struct Fighter* 
     sfxSwing(fighter->soundHandler);
 }
 
-void StateUppercutting_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateUppercutting_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameUppercut);
     updateSpriteAnimator(spriteAnimator, *fighter->uppercutFrames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1122,7 +1148,7 @@ void StateDuckKicking_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxSwing(fighter->soundHandler);
 }
 
-void StateDuckKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateDuckKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameDuckKick);
     updateSpriteAnimator(spriteAnimator, *fighter->duckKickFrames, fighter->DUCK_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1154,7 +1180,7 @@ void StateJumpPunching_Enter(struct StateMachine* stateMachine, struct Fighter* 
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpPunchFrames, fighter->JUMP_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1197,7 +1223,7 @@ void StateJumpKicking_Enter(struct StateMachine* stateMachine, struct Fighter* f
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpKickFrames, fighter->JUMP_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1244,7 +1270,7 @@ void StateSweeping_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     sfxSwing(fighter->soundHandler);
 }
 
-void StateSweeping_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateSweeping_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameSweep);
     updateSpriteAnimator(spriteAnimator, *fighter->sweepFrames, fighter->SWEEP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1279,7 +1305,7 @@ void StateJumpingKickingForward_Enter(struct StateMachine* stateMachine, struct 
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingKickingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingKickingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpDropKickFrames, 3, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1332,7 +1358,7 @@ void StateJumpingKickingBackward_Enter(struct StateMachine* stateMachine, struct
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingKickingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingKickingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpDropKickFrames, 3, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1379,7 +1405,7 @@ void StateJumpingPunchingForward_Enter(struct StateMachine* stateMachine, struct
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingPunchingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingPunchingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpPunchFrames, fighter->JUMP_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1431,7 +1457,7 @@ void StateJumpingPunchingBackward_Enter(struct StateMachine* stateMachine, struc
     fighterPlayHiya(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
 }
 
-void StateJumpingPunchingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateJumpingPunchingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->jumpPunchFrames, fighter->JUMP_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -1483,7 +1509,7 @@ void StateHitLow_Enter(struct StateMachine* stateMachine, struct Fighter* fighte
     fighterTakeDamage(fighter, fighter->pendingDamage);    
 }
 
-void StateHitLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->hitLowFrames, fighter->HIT_LOW_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -1523,7 +1549,7 @@ void StateHitHigh_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     bloodSpray(fighter->positionX - (10 * fighter->direction), fighter->positionY - 10, fighter->direction);
 }
 
-void StateHitHigh_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitHigh_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->hitHighFrames, fighter->HIT_HIGH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -1562,7 +1588,7 @@ void StateHitSweep_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     fighterTakeDamage(fighter, fighter->pendingDamage);
 }
 
-void StateHitSweep_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitSweep_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->hitSweepFrames, fighter->HIT_SWEEP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -1592,9 +1618,14 @@ void StateGetUp_Enter(struct StateMachine* stateMachine, struct Fighter* fighter
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
     fighter->lastTicks = rapTicks;
+
+    if (fighter->fighterIndex == RAIDEN)
+    {
+        sfxRaidenTeleport(fighter->soundHandler);
+    }
 }
 
-void StateGetUp_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateGetUp_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     updateSpriteAnimator(spriteAnimator, *fighter->kipUpFrames, fighter->KIPUP_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -1641,7 +1672,7 @@ void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
 }
 
-void StateHitBack_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitBack_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (spriteAnimator->currentFrame == 2 && fighter->vars[0] == 0)
     {
@@ -1694,7 +1725,7 @@ void StateHitBackLow_Enter(struct StateMachine* stateMachine, struct Fighter* fi
     sfxImpact(fighter->soundHandler);
 }
 
-void StateHitBackLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitBackLow_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (spriteAnimator->currentFrame == 1 && fighter->vars[0] == 0)
     {
@@ -1753,7 +1784,7 @@ void StateHitUppercut_Enter(struct StateMachine* stateMachine, struct Fighter* f
     bloodDrop(fighter->positionX - (40 * fighter->direction) + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
 }
 
-void StateHitUppercut_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitUppercut_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->vars[0] == 1 && fighter->vars[1] == 0)
     {
@@ -1803,7 +1834,7 @@ void StateLaydown_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighter->lastTicks = rapTicks;
 }
 
-void StateLaydown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateLaydown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     animateFrame(spriteAnimator->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
@@ -1841,7 +1872,7 @@ void StateHitDropKick_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxImpact(fighter->soundHandler);
 }
 
-void StateHitDropKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitDropKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (spriteAnimator->currentFrame == 1 && fighter->vars[1] == 0)
     {
@@ -1901,7 +1932,7 @@ void StateHitAir_Enter(struct StateMachine* stateMachine, struct Fighter* fighte
     sfxImpact(fighter->soundHandler);
 }
 
-void StateHitAir_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitAir_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (spriteAnimator->currentFrame == 1 && fighter->vars[1] == 0)
     {
@@ -1953,7 +1984,7 @@ void StateHitBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxBlock(fighter->soundHandler);
 }
 
-void StateHitBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (rapTicks >= fighter->vars[0] + 10)
     {
@@ -1986,7 +2017,7 @@ void StateHitDuckingBlocking_Enter(struct StateMachine* stateMachine, struct Fig
     sfxBlock(fighter->soundHandler);
 }
 
-void StateHitDuckingBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitDuckingBlocking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (animationIsComplete(spriteAnimator, fighter->BLOCK_DUCK_HIT_FRAME_COUNT))
     {
@@ -2020,7 +2051,7 @@ void StateHitBlockingKnockback_Enter(struct StateMachine* stateMachine, struct F
     sfxBlock(fighter->soundHandler);
 }
 
-void StateHitBlockingKnockback_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitBlockingKnockback_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     //if (animationIsComplete(spriteAnimator, fighter->BLOCK_HIT_FRAME_COUNT))
     if (rapTicks >= fighter->vars[0] + 20)
@@ -2058,7 +2089,7 @@ void StateBodyPunching_Enter(struct StateMachine* stateMachine, struct Fighter* 
     fighter->vars[0] = 0;
 }
 
-void StateBodyPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateBodyPunching_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameBodyPunch);
     updateSpriteAnimator(spriteAnimator, *fighter->bodyPunchFrames, fighter->BODY_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -2102,7 +2133,7 @@ void StateBodyKicking_Enter(struct StateMachine* stateMachine, struct Fighter* f
     fighter->vars[0] = 0;
 }
 
-void StateBodyKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateBodyKicking_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameBodyKick);
     updateSpriteAnimator(spriteAnimator, *fighter->bodyKickFrames, fighter->BODY_KICK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -2152,7 +2183,7 @@ void StateThrowing_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     }
 }
 
-void StateThrowing_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateThrowing_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameThrow);
     updateSpriteAnimator(spriteAnimator, *fighter->throwFrames, fighter->THROW_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -2190,7 +2221,7 @@ void StateBeingThrown_Enter(struct StateMachine* stateMachine, struct Fighter* f
     fighterPositionXAdd(fighter, 32 * fighter->direction);
 }
 
-void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (spriteAnimator->currentFrame < 2)
     {
@@ -2258,7 +2289,7 @@ void StateTurningAround_Enter(struct StateMachine* stateMachine, struct Fighter*
     fighter->lastTicks = rapTicks;
 }
 
-void StateTurningAround_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateTurningAround_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->vars[0] == 0)
     {
@@ -2324,7 +2355,13 @@ void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fig
     fighter->ProjectileMadeContact = false;
     fighter->projectilePositionX = fighter->positionX;
     fighter->projectilePositionX += fighter->direction == -1 ? 0 : 0;
-    fighter->projectilePositionY = fighter->positionY - 8 ;
+    fighter->projectilePositionY = fighter->positionY;
+
+    if (fighter->fighterIndex == KANO || fighter->fighterIndex == CAGE)
+    {
+        fighter->projectilePositionY -= 8;
+    }
+
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -2344,21 +2381,35 @@ void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fig
             jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),13,16);
             sfxKanoKnife(fighter->soundHandler);
             break;
+        case RAIDEN:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
+            sfxRaidenLightning(fighter->soundHandler);
+            break;
+        case KANG:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),13,16);
+            sfxCageGreenbolt(fighter->soundHandler);
+            break;
         default:
             break;
     }
 }
 
-void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (!fighter->ProjectileMadeContact)
 	{
-		if (animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
+		if (fighter->fighterIndex != RAIDEN && animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT)
+            || fighter->fighterIndex == RAIDEN && animationIsComplete(fighter->projectileAnimator, 8))
 		{
             if (fighter->fighterIndex == KANO && fighter->vars[2] == 0)
             {
                 fighter->vars[2] = 1;
                 fighter->projectilePositionX += 16 * fighter->direction;
+            }
+            else if (fighter->fighterIndex == RAIDEN && fighter->vars[2] == 0)
+            {
+                fighter->vars[2] = 1;
+                fighter->projectilePositionX += 64 * fighter->direction;
             }
 
             if (rapTicks >= fighter->vars[1] + 2)
@@ -2455,7 +2506,7 @@ void StateCageShadowKick_Enter(struct StateMachine* stateMachine, struct Fighter
     }
 }
 
-void StateCageShadowKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateCageShadowKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     //using impactFrameJumpKick because it's always ON.
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
@@ -2542,7 +2593,7 @@ void StateCageNutPunch_Enter(struct StateMachine* stateMachine, struct Fighter* 
     fighter->vars[1] = 0;
 }
 
-void StateCageNutPunch_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateCageNutPunch_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->opponentIndex == CAGE || fighter->opponentIndex == SONYA)
     {
@@ -2613,7 +2664,7 @@ void StateHitNuts_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     bgShake(false);
 }
 
-void StateHitNuts_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateHitNuts_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (rapTicks >= fighter->vars[0] + 10 && fighter->vars[1] == 0)
     {
@@ -2657,7 +2708,7 @@ void StateKanoCannonBall_Enter(struct StateMachine* stateMachine, struct Fighter
     sfxKanoCannonBallStart(fighter->soundHandler);
 }
 
-void StateKanoCannonBall_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+void StateKanoCannonBall_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     //using impactFrameJumpKick because it's always ON.
     impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
@@ -2694,7 +2745,6 @@ void StateKanoCannonBall_Update(struct StateMachine* stateMachine, struct Fighte
         }
     }
 
-    //TODO if we passed the other fighter, go idle and turn around
     updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
@@ -2704,5 +2754,200 @@ void StateKanoCannonBall_Sleep(struct StateMachine* stateMachine, struct Fighter
 }
 
 void StateKanoCannonBall_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// RAIDEN TORPEDO
+// vars[0] = made contact
+// vars[1] = jump index
+// vars[2] = distance traveled
+
+void StateRaidenTorpedo_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+
+    sfxRaidenTorpedo(fighter->soundHandler);
+}
+
+void StateRaidenTorpedo_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (animationIsComplete(spriteAnimator, fighter->SPECIAL_2_FRAME_COUNT) && fighter->vars[0] == 0)
+    {
+        //Raiden is torpedo-ing forward
+        fighterPositionXAdd(fighter, FIGHTER_RAIDEN_TORPEDO_X_SPEED * fighter->direction);
+        fighter->vars[2] += FIGHTER_RAIDEN_TORPEDO_X_SPEED;
+    }
+
+    if (fighter->vars[2] >= FIGHTER_RAIDEN_TORPEDO_MAX_DISTANCE
+         || fighter->direction == 1 && cameraFighterIsAtBoundsRight(fighter)
+         || fighter->direction == -1 && cameraFighterIsAtBoundsLeft(fighter)
+         || fighter->vars[0] == 1)
+    {
+        if (fighter->vars[0] == 0)
+        {
+            fighter->vars[0] = 1;
+            sfxImpact(fighter->soundHandler);
+            bgShake(false);
+        }
+        //We've reached the end of this Torpedo move, follow the jump pattern along the Y to bounce up, then land back in IDLE
+        if (rapTicks >= fighter->lastTicks + 2)
+        {
+            fighterPositionXAdd(fighter, FIGHTER_RAIDEN_TORPEDO_DONE_X_SPEED * fighter->direction * -1);
+            fighter->positionY += JumpOffsets[fighter->vars[1]];
+            fighter->vars[1]++;
+            fighter->lastTicks = rapTicks;
+        }
+
+        if (fighter->vars[1] > 19)
+        {
+            //landed
+            fighterSetOnFloor(fighter);
+            impactFrameReset(fighter);
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+    }
+
+    if (fighter->vars[0] == 0 && !fighter->MadeContact)
+    {
+        updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        updateSpriteAnimator(spriteAnimator, *fighter->special2EndFrames, 7, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+}
+
+void StateRaidenTorpedo_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->vars[0] = 1;
+}
+
+void StateRaidenTorpedo_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT TORPEDO
+
+void StateHitTorpedo_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+}
+
+void StateHitTorpedo_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{    
+    if ((fighter->direction == 1 && !cameraFighterIsAtBoundsLeft(fighter))
+        || (fighter->direction == -1 && !cameraFighterIsAtBoundsRight(fighter)))
+    {
+        //Fighter is being knocked back by Raiden's torpedo
+        fighterPositionXAdd(fighter, FIGHTER_RAIDEN_TORPEDO_X_SPEED * fighter->direction * -1);
+    }
+
+    setAnimationFrame(fighter->spriteIndex, spriteAnimator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateHitTorpedo_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateHitTorpedo_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// RAIDEN TELEPORT
+// vars[0] = teleported
+
+void StateRaidenTeleport_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = fighter->SPECIAL_3_FRAME_COUNT - 1;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    sfxRaidenTeleport(fighter->soundHandler);
+}
+
+void StateRaidenTeleport_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (spriteAnimator->currentFrame == 0 && fighter->vars[0] == 0)
+    {
+        if (fighter->direction == 1)
+        {
+            if (!cameraFighterIsAtBoundsRight(opponent))
+            {
+                fighter->positionX = opponent->positionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                //Turn Raiden Around
+                fighter->direction *= -1;
+                sprite[fighter->spriteIndex].flip = R_is_flipped;
+                sprite[fighter->spriteIndex-1].flip = R_is_flipped;
+                sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+                impactFrameReset(fighter);                
+            }
+            else
+            {
+                fighter->positionX = opponent->positionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+            }
+        }
+        else if (fighter->direction == -1)
+        {
+            if (!cameraFighterIsAtBoundsLeft(opponent))
+            {
+                fighter->positionX = opponent->positionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                //Turn Raiden Around
+                fighter->direction *= -1;
+                sprite[fighter->spriteIndex].flip = R_is_normal;
+                sprite[fighter->spriteIndex-1].flip = R_is_normal;
+                sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+                impactFrameReset(fighter);
+            }
+            else
+            {
+                fighter->positionX = opponent->positionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+            }
+        }
+        
+        
+        fighter->vars[0] = 1;
+    }
+    else if (animationIsComplete(spriteAnimator, fighter->SPECIAL_3_FRAME_COUNT) && fighter->vars[0] == 1)
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    if (fighter->vars[0] == 0)
+    {
+        updateSpriteAnimator(spriteAnimator, *fighter->special3Frames, fighter->SPECIAL_3_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        updateSpriteAnimator(spriteAnimator, *fighter->special3Frames, fighter->SPECIAL_3_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+}
+
+void StateRaidenTeleport_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateRaidenTeleport_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

@@ -118,6 +118,7 @@ ROM,BMP_FMV_SUBZERO,gfx_clut_pack,ASSETS\GFX\fmv_subzero.BMP
 ROM,BMP_FMV_SONYA,gfx_clut_pack,ASSETS\GFX\fmv_sonya.BMP
 ROM,BMP_ATTRACT_LEADERBOARD,gfx_clut_pack,ASSETS\GFX\attract_leaderboard.BMP
 ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
+ROM,BMP_ATTRACT_SHANGTSUNG,gfx_clut_pack,ASSETS\GFX\attract_shangtsung.BMP
 ROM,BMP_ATTRACT_WINNERS,gfx_clut_pack,ASSETS\GFX\attract_winners.BMP
 ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
 
@@ -194,6 +195,9 @@ ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
 ROM,kano_cannonball_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball.wav
 ROM,kano_cannonball_start_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball_start.wav
+ROM,raiden_teleport_sam,sfx_raw8000,ASSETS\SFX\raiden_teleport.wav
+ROM,raiden_torpedo_sam,sfx_raw8000,ASSETS\SFX\raiden_torpedo.wav
+ROM,raiden_idle_zap_sam,sfx_raw8000,ASSETS\SFX\raiden_idle_zap.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

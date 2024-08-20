@@ -53,7 +53,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jge .L20
 	cmp.w #10,250(%a4)
 	jgt .L20
-	cmp.w #278,250(%a2)
+	cmp.w #259,250(%a2)
 	jgt .L20
 	move.l %a2,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -263,7 +263,7 @@ __Z12cameraUpdateP7FighterS0_:
 .L7:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.w #280,250(%a2)
+	cmp.w #261,250(%a2)
 	jle .L6
 	cmp.w #10,250(%a4)
 	jle .L6
@@ -530,7 +530,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jge .L17
 	cmp.w #10,250(%a2)
 	jgt .L17
-	cmp.w #278,250(%a4)
+	cmp.w #259,250(%a4)
 	jgt .L17
 	move.l %a4,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -740,7 +740,7 @@ __Z12cameraUpdateP7FighterS0_:
 .L5:
 	cmp.l _cameraXMax.l,%d0
 	jge .L6
-	cmp.w #280,250(%a4)
+	cmp.w #261,250(%a4)
 	jle .L6
 	cmp.w #10,250(%a2)
 	jle .L6
@@ -932,7 +932,7 @@ __Z21cameraCheckBoundsLeftP7FighterS0_:
 	jge .L32
 	cmp.w #10,250(%a2)
 	jgt .L32
-	cmp.w #278,250(%a0)
+	cmp.w #259,250(%a0)
 	jgt .L32
 	move.l %a0,-(%sp)
 	lea __Z17fighterShiftRightP7Fighter,%a3
@@ -1123,7 +1123,7 @@ __Z22cameraCheckBoundsRightP7FighterS0_:
 	move.l _cameraX,%d0
 	cmp.l _cameraXMax.l,%d0
 	jge .L39
-	cmp.w #280,250(%a2)
+	cmp.w #261,250(%a2)
 	jle .L39
 	cmp.w #10,250(%a0)
 	jle .L39
@@ -1363,6 +1363,40 @@ __Z16cameraResetTicksv:
 	link.w %fp,#0
 	move.w raptor_ticks,%a0
 	move.l %a0,_cameraTicks
+	unlk %fp
+	rts
+	.even
+	.globl	__Z28cameraFighterIsAtBoundsRightP7Fighter
+__Z28cameraFighterIsAtBoundsRightP7Fighter:
+	link.w %fp,#0
+	move.l _cameraX,%d0
+	cmp.l _cameraXMax.l,%d0
+	jlt .L54
+	move.l 8(%fp),%a0
+	cmp.w #261,250(%a0)
+	sgt %d0
+	neg.b %d0
+	unlk %fp
+	rts
+.L54:
+	clr.b %d0
+	unlk %fp
+	rts
+	.even
+	.globl	__Z27cameraFighterIsAtBoundsLeftP7Fighter
+__Z27cameraFighterIsAtBoundsLeftP7Fighter:
+	link.w %fp,#0
+	moveq #10,%d0
+	cmp.l _cameraX.l,%d0
+	jlt .L59
+	move.l 8(%fp),%a0
+	cmp.w #10,250(%a0)
+	sle %d0
+	neg.b %d0
+	unlk %fp
+	rts
+.L59:
+	clr.b %d0
 	unlk %fp
 	rts
 	.globl	_backgroundGfxBase

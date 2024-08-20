@@ -146,3 +146,13 @@ void cameraResetTicks()
 {
     cameraTicks = rapTicks;
 }
+
+bool cameraFighterIsAtBoundsRight(struct Fighter* fighter)
+{
+    return cameraIsAtRightWall() && fighter->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT;
+}
+
+bool cameraFighterIsAtBoundsLeft(struct Fighter* fighter)
+{
+    return cameraIsAtLeftWall() && fighter->positionX <= CAMERA_BOUND_LEFT;
+}

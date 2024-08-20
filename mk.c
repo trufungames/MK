@@ -56,10 +56,11 @@ bool menuSelected = false;
 short attractModeIndex = 0;
 bool goroProfileShown = false;
 //0 = Leaderboard
-//1 = FMV profile
-//2 = GORO LIVES!
-//3 = GORO PROFILE
-//4 = Winners don't use drugs!
+//1 = SHANG TSUNG ISLAND
+//2 = FMV profile
+//3 = GORO LIVES!
+//4 = GORO PROFILE
+//5 = Winners don't use drugs!
 int fmvIndex = 6;
 int attractSlideIndex = 0;
 
@@ -220,7 +221,15 @@ static State stateHitNuts = {
 static State stateKanoCannonBall = {
 	STATE_KANO_CANNONBALL
 };
-
+static State stateRaidenTorpedo = {
+	STATE_RAIDEN_TORPEDO
+};
+static State stateHitTorpedo = {
+	STATE_HIT_TORPEDO
+};
+static State stateRaidenTeleport = {
+	STATE_RAIDEN_TELEPORT
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -368,6 +377,26 @@ static AnimationFrame raidenLightningFrames[] = {
 	{ 64, 96, 704, 992, 0, 16, 4 },
 	{ 64, 96, 704, 992, 0, 16, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame raidenTorpedoFrames[] = {
+	{ 80, 96, 640, 336, -4, 16, 6 },
+	{ 64, 96, 720, 400, 0, 16, 6 },
+	{ 96, 96, 784, 400, 32, 16, 6 },
+	{ 144, 32, 880, 448, 32, 32, 6 },
+	{ 144, 32, 880, 448, 32, 32, 30 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame raidenTorpedoEndFrames[] = {
+	{ 48, 64, 320, 208, 0, 0, 2 },
+	{ 64, 64, 368, 176, 0, 0, 2 },
+	{ 64, 48, 432, 176, -13, 0, 2 },
+	{ 64, 64, 496, 176, -12, 0, 2 },
+	{ 48, 64, 560, 144, 0, 0, 2 },
+	{ 48, 64, 608, 160, -6, 0, 2 },
+	{ 64, 48, 656, 176, 0, 0, 2 }
 };
 
 static AnimationFrame kangFireballFrames[] = {
@@ -1831,6 +1860,19 @@ static AnimationFrame raidenKipUpFrames[] = {
 	{ 64, 96, 704, 0, 0, 16, 5 },
 	{ 64, 112, 768, 0, 0, 0, 5 },
 	{ 64, 112, 832, 0, 0, 0, 5 }
+};
+static AnimationFrame raidenTeleportFrames[] = {
+	{ 64, 64, 576, 0, 0, 56, 5 },
+	{ 64, 80, 640, 0, 0, 32, 5 },
+	{ 64, 96, 704, 0, 0, 16, 5 },
+	{ 64, 112, 768, 0, 0, 0, 5 },
+	{ 64, 112, 832, 0, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 static AnimationFrame raidenSweepFrames[] = {
 	{ 64, 112, 896, 0, 0, 0, 5 },
@@ -3341,6 +3383,7 @@ void initMenuScreen();
 void initAttractMode();
 void switchAttractFMV();
 void initLeaderboard();
+void initShangTsungIsland();
 void initGoroLives();
 void initGoroProfile();
 void initWinners();
@@ -3359,6 +3402,8 @@ void doSpecial_Cage_NutPunch(struct StateMachine* stateMachine, struct Fighter* 
 void doSpecial_Kano_Knife(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kano_CannonBall(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Raiden_Lightning(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Raiden_Torpedo(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Raiden_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -3534,7 +3579,12 @@ static Fighter fighterKang = {
 	KANG_HIT_BACK_FRAME_COUNT,
 	KANG_HIT_UPPERCUT_FRAME_COUNT,
 	KANG_HIT_FALL_FRAME_COUNT,
-	KANG_HIT_SWEEP_FRAME_COUNT
+	KANG_HIT_SWEEP_FRAME_COUNT,
+	KANG_SPECIAL_1_FRAME_COUNT,
+	KANG_SPECIAL_2_FRAME_COUNT,
+	KANG_SPECIAL_3_FRAME_COUNT,
+	KANG_PROJECTILE_FRAME_COUNT,
+	KANG_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterRaiden = {
@@ -3574,7 +3624,12 @@ static Fighter fighterRaiden = {
 	RAIDEN_HIT_BACK_FRAME_COUNT,
 	RAIDEN_HIT_UPPERCUT_FRAME_COUNT,
 	RAIDEN_HIT_FALL_FRAME_COUNT,
-	RAIDEN_HIT_SWEEP_FRAME_COUNT
+	RAIDEN_HIT_SWEEP_FRAME_COUNT,
+	RAIDEN_SPECIAL_1_FRAME_COUNT,
+	RAIDEN_SPECIAL_2_FRAME_COUNT,
+	RAIDEN_SPECIAL_3_FRAME_COUNT,
+	RAIDEN_PROJECTILE_FRAME_COUNT,
+	RAIDEN_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterSubzero = {
@@ -3828,7 +3883,12 @@ static Fighter fighterKang2 = {
 	KANG_HIT_BACK_FRAME_COUNT,
 	KANG_HIT_UPPERCUT_FRAME_COUNT,
 	KANG_HIT_FALL_FRAME_COUNT,
-	KANG_HIT_SWEEP_FRAME_COUNT
+	KANG_HIT_SWEEP_FRAME_COUNT,
+	KANG_SPECIAL_1_FRAME_COUNT,
+	KANG_SPECIAL_2_FRAME_COUNT,
+	KANG_SPECIAL_3_FRAME_COUNT,
+	KANG_PROJECTILE_FRAME_COUNT,
+	KANG_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterRaiden2 = {
@@ -3868,7 +3928,12 @@ static Fighter fighterRaiden2 = {
 	RAIDEN_HIT_BACK_FRAME_COUNT,
 	RAIDEN_HIT_UPPERCUT_FRAME_COUNT,
 	RAIDEN_HIT_FALL_FRAME_COUNT,
-	RAIDEN_HIT_SWEEP_FRAME_COUNT
+	RAIDEN_HIT_SWEEP_FRAME_COUNT,
+	RAIDEN_SPECIAL_1_FRAME_COUNT,
+	RAIDEN_SPECIAL_2_FRAME_COUNT,
+	RAIDEN_SPECIAL_3_FRAME_COUNT,
+	RAIDEN_PROJECTILE_FRAME_COUNT,
+	RAIDEN_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterSubzero2 = {
@@ -4213,6 +4278,18 @@ void basicmain()
 		stateKanoCannonBall.update = &StateKanoCannonBall_Update;
 		stateKanoCannonBall.sleep = &StateKanoCannonBall_Sleep;
 		stateKanoCannonBall.handleInput = &StateKanoCannonBall_HandleInput;
+		stateRaidenTorpedo.enter = &StateRaidenTorpedo_Enter;
+		stateRaidenTorpedo.update = &StateRaidenTorpedo_Update;
+		stateRaidenTorpedo.sleep = &StateRaidenTorpedo_Sleep;
+		stateRaidenTorpedo.handleInput = &StateRaidenTorpedo_HandleInput;
+		stateHitTorpedo.enter = &StateHitTorpedo_Enter;
+		stateHitTorpedo.update = &StateHitTorpedo_Update;
+		stateHitTorpedo.sleep = &StateHitTorpedo_Sleep;
+		stateHitTorpedo.handleInput = &StateHitTorpedo_HandleInput;
+		stateRaidenTeleport.enter = &StateRaidenTeleport_Enter;
+		stateRaidenTeleport.update = &StateRaidenTeleport_Update;
+		stateRaidenTeleport.sleep = &StateRaidenTeleport_Sleep;
+		stateRaidenTeleport.handleInput = &StateRaidenTeleport_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4262,6 +4339,9 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_CAGE_NUTPUNCH, &stateCageNutPunch);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_NUTS, &stateHitNuts);
 		stateMachineAdd(&fighterStateMachine, STATE_KANO_CANNONBALL, &stateKanoCannonBall);
+		stateMachineAdd(&fighterStateMachine, STATE_RAIDEN_TORPEDO, &stateRaidenTorpedo);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_TORPEDO, &stateHitTorpedo);
+		stateMachineAdd(&fighterStateMachine, STATE_RAIDEN_TELEPORT, &stateRaidenTeleport);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4318,7 +4398,7 @@ void basicmain()
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		fighterCage2.spriteAnimator = &cageAnimator2;
-		fighterCage2.projectileAnimator = &lightningAnimator;
+		fighterCage2.projectileAnimator = &lightning2Animator;
 		fighterCage2.projectileFrames = &projectileGreenBoltFrames;
 		fighterCage2.projectileEndFrames = &projectileGreenBoltEndFrames;
 		fighterCage2.special1Inputs = &specials_Cage_GreenBolt_Inputs;
@@ -4426,7 +4506,7 @@ void basicmain()
 		fighterKano.hitNutsFrames = &kanoHitNutsFrames;
 		fighterKano.kipUpFrames = &kanoKipUpFrames;		
 		fighterKano2.spriteAnimator = &kanoAnimator2;
-		fighterKano2.projectileAnimator = &lightningAnimator;
+		fighterKano2.projectileAnimator = &lightning2Animator;
 		fighterKano2.projectileFrames = &projectileKnifeFrames;
 		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
 		fighterKano2.special1Inputs = &specials_Kano_Knife_Inputs;
@@ -4479,18 +4559,24 @@ void basicmain()
 		fighterKano2.hitNutsFrames = &kanoHitNutsFrames;
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
 		//Raiden
+		fighterRaiden.lightningFrames = &lightningFrames;
 		fighterRaiden.spriteAnimator = &raidenAnimator;
 		fighterRaiden.projectileAnimator = &lightningAnimator;
 		fighterRaiden.projectileFrames = &projectileLightningFrames;
 		fighterRaiden.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden.special1Inputs = &specials_Raiden_Lightning_Inputs;
 		fighterRaiden.special2Inputs = &specials_Raiden_Torpedo_Inputs;
-		fighterRaiden.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterRaiden.special3Inputs = &specials_Raiden_Teleport_Inputs;
 		fighterRaiden.special1InputCount = 3;
 		fighterRaiden.special2InputCount = 3;
-		fighterRaiden.special3InputCount = 0;
+		fighterRaiden.special3InputCount = 2;
 		fighterRaiden.special1Frames = &raidenLightningFrames;
+		fighterRaiden.special2Frames = &raidenTorpedoFrames;
+		fighterRaiden.special2EndFrames = &raidenTorpedoEndFrames;
+		fighterRaiden.special3Frames = &raidenTeleportFrames;
 		fighterRaiden.doSpecialMove1 = &doSpecial_Raiden_Lightning;
+		fighterRaiden.doSpecialMove2 = &doSpecial_Raiden_Torpedo;
+		fighterRaiden.doSpecialMove3 = &doSpecial_Raiden_Teleport;
 		fighterRaiden.idleFrames = &raidenIdleFrames;
 		fighterRaiden.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden.winsFrames = &raidenWinsFrames;
@@ -4530,18 +4616,24 @@ void basicmain()
 		fighterRaiden.hitFallFrames = &raidenHitFallFrames;
 		fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
 		fighterRaiden.hitNutsFrames = &raidenHitNutsFrames;
+		fighterRaiden2.lightningFrames = &lightningFrames;
 		fighterRaiden2.spriteAnimator = &raidenAnimator2;
-		fighterRaiden2.projectileAnimator = &lightningAnimator;
+		fighterRaiden2.projectileAnimator = &lightning2Animator;
 		fighterRaiden2.projectileFrames = &projectileLightningFrames;
 		fighterRaiden2.projectileEndFrames = &projectileLightningEndFrames;
 		fighterRaiden2.special1Inputs = &specials_Raiden_Lightning_Inputs;
 		fighterRaiden2.special2Inputs = &specials_Raiden_Torpedo_Inputs;
-		fighterRaiden2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterRaiden2.special3Inputs = &specials_Raiden_Teleport_Inputs;
 		fighterRaiden2.special1InputCount = 3;
 		fighterRaiden2.special2InputCount = 3;
-		fighterRaiden2.special3InputCount = 0;
+		fighterRaiden2.special3InputCount = 2;
 		fighterRaiden2.special1Frames = &raidenLightningFrames;
+		fighterRaiden2.special2Frames = &raidenTorpedoFrames;
+		fighterRaiden2.special2EndFrames = &raidenTorpedoEndFrames;
+		fighterRaiden2.special3Frames = &raidenTeleportFrames;
 		fighterRaiden2.doSpecialMove1 = &doSpecial_Raiden_Lightning;
+		fighterRaiden2.doSpecialMove2 = &doSpecial_Raiden_Torpedo;
+		fighterRaiden2.doSpecialMove3 = &doSpecial_Raiden_Teleport;
 		fighterRaiden2.idleFrames = &raidenIdleFrames;
 		fighterRaiden2.dizzyFrames = &raidenDizzyFrames;
 		fighterRaiden2.winsFrames = &raidenWinsFrames;
@@ -4634,7 +4726,7 @@ void basicmain()
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
 		fighterKang.hitNutsFrames = &kangHitNutsFrames;
 		fighterKang2.spriteAnimator = &kangAnimator2;
-		fighterKang2.projectileAnimator = &lightningAnimator;
+		fighterKang2.projectileAnimator = &lightning2Animator;
 		fighterKang2.projectileFrames = &projectileFireballFrames;
 		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
 		fighterKang2.special1Inputs = &specials_Kang_Fireball_Inputs;
@@ -4738,7 +4830,7 @@ void basicmain()
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterScorpion.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
-		fighterScorpion2.projectileAnimator = &lightningAnimator;
+		fighterScorpion2.projectileAnimator = &lightning2Animator;
 		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion2.projectileEndFrames = &projectileHarpoonEndFrames;
 		fighterScorpion2.special1Inputs = &specials_Scorpion_Harpoon_Inputs;
@@ -4842,7 +4934,7 @@ void basicmain()
 		fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterSubzero.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterSubzero2.spriteAnimator = &subzeroAnimator2;
-		fighterSubzero2.projectileAnimator = &lightningAnimator;
+		fighterSubzero2.projectileAnimator = &lightning2Animator;
 		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero2.projectileEndFrames = &projectileFreezeEndFrames;
 		fighterSubzero2.special1Inputs = &specials_Subzero_Freeze_Inputs;
@@ -4944,7 +5036,7 @@ void basicmain()
 		fighterSonya.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
 		fighterSonya2.spriteAnimator = &sonyaAnimator2;
-		fighterSonya2.projectileAnimator = &lightningAnimator;
+		fighterSonya2.projectileAnimator = &lightning2Animator;
 		fighterSonya2.projectileFrames = &projectileRingsFrames;
 		fighterSonya2.projectileEndFrames = &projectileRingsEndFrames;
 		fighterSonya2.special1Inputs = &specials_Sonya_Rings_Inputs;
@@ -5266,7 +5358,7 @@ void basicmain()
 					initMenuScreen();
 				}
 
-				if (rapTicks > attractModeTicks + 400)
+				if (rapTicks > attractModeTicks + 500)
 				{
 					attractModeTicks = rapTicks;
 					attractModeIndex++;
@@ -5284,25 +5376,30 @@ void basicmain()
 					}
 					//swap screens
 					//0 = Leaderboard
-					//1 = FMV profile
-					//2 = GORO LIVES!
-					//3 = GORO PROFILE
-					//4 = Winners don't use drugs!
+					//1 = Shang Tsung Island
+					//2 = FMV profile
+					//3 = GORO LIVES!
+					//4 = GORO PROFILE
+					//5 = Winners don't use drugs!
 					switch (attractModeIndex)
 					{
 						case 0:
 							initLeaderboard();
 							break;
 						case 1:
-							switchAttractFMV();
+							initShangTsungIsland();
+							sfxAnnouncerLaugh(&soundHandler);
 							break;
 						case 2:
-							initGoroLives();
+							switchAttractFMV();
 							break;
 						case 3:
-							initGoroProfile();
+							initGoroLives();
 							break;
 						case 4:
+							initGoroProfile();
+							break;
+						case 5:
 							initWinners();
 							break;
 						default:
@@ -5312,7 +5409,7 @@ void basicmain()
 
 				switch (attractModeIndex)
 				{
-					case 1:
+					case 2:
 						switch (fmvIndex)
 						{
 							case 0:
@@ -5338,7 +5435,7 @@ void basicmain()
 								break;
 						}
 						break;
-					case 3:
+					case 4:
 						if (!goroProfileShown && rapTicks > gameStartTicks + 120)
 						{
 							goroProfileShown = true;
@@ -5970,8 +6067,8 @@ void basicmain()
 				pad1=jsfGetPad(LEFT_PAD);
 				pad2=jsfGetPad(RIGHT_PAD);
 
-				stateMachineUpdate(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr);
-				stateMachineUpdate(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr);
+				stateMachineUpdate(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr, fighter2Ptr);
+				stateMachineUpdate(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr, fighter1Ptr);
 
 				fighterCastShadow(fighter1Ptr, false);
 				fighterCastShadow(fighter2Ptr, false);
@@ -6045,6 +6142,7 @@ void basicmain()
 				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
 				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
+				fighterTorpedoCheck(&fighterStateMachine, fighter1Ptr, fighter2Ptr);
 				fighterImpactCheck(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr, fighter2Ptr, spriteAnimator2Ptr);
 				fighterButtonCheck(fighter1Ptr);
 				fighterButtonCheck(fighter2Ptr);
@@ -6380,7 +6478,7 @@ void switchAttractFMV()
 	int line5Offset = 24;
 	char* line6 = "DRAGON FIST AND DRAGON FIST II AS WELL";
 	int line6Offset = 0;
-	char* line7 = "AS THE AWARE WINNING SUDDEN VIOLENCE.";
+	char* line7 = "AS THE AWARD WINNING SUDDEN VIOLENCE.";
 	int line7Offset = 4;
 
 	switch (fmvIndex)
@@ -6652,6 +6750,51 @@ void initGoroProfile()
 	fadedOut = false;
 	gameStartTicks = rapTicks;
 	goroProfileShown = false;
+}
+
+void initShangTsungIsland()
+{
+	rapParticleClear();
+	rapUnpack(BMP_ATTRACT_SHANGTSUNG,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND].active=R_is_active;
+	sprite[BACKGROUND16].active=R_is_inactive;
+	sprite[FMV].active = R_is_inactive;
+	jsfLoadClut((unsigned short *)(void *)(BMP_ATTRACT_SHANGTSUNG_clut),0,240);
+
+	rapUse8x8fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(0);
+	rapLocate(36, 149);
+	js_r_textbuffer="THE IMPERIAL COURT OF IMMORTALS";
+	rapPrint();
+	rapLocate(28, 159);
+	js_r_textbuffer="INVITES WARRIORS OF ALL STYLES TO";
+	rapPrint();
+	rapLocate(56, 169);
+	js_r_textbuffer="COMPETE IN A TOURNAMENT OF";
+	rapPrint();
+	rapLocate(36, 179);
+	js_r_textbuffer="             . THE CONTEST WILL";
+	rapPrint();
+	rapLocate(40, 189);
+	js_r_textbuffer="BE HELD ON THE ISLAND FORTRESS";
+	rapPrint();
+	rapLocate(44, 199);
+	js_r_textbuffer="OF SHANG TSUNG LOCATED IN THE";
+	rapPrint();
+	rapLocate(68, 209);
+	js_r_textbuffer="CENTER OF THE DEAD SEA.";
+	rapPrint();
+	jsfSetFontIndx(1);
+	rapLocate(36, 179);
+	js_r_textbuffer="MORTAL KOMBAT";
+	rapPrint();
+
+
+	fadedIn = false;
+	fadedOut = false;
+	gameStartTicks = rapTicks;
 }
 
 void initWinners()
@@ -7632,76 +7775,24 @@ void doSpecial_Kano_CannonBall(struct StateMachine* stateMachine, struct Fighter
 
 void doSpecial_Raiden_Lightning(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-	if (!fighter->HasSetupSpecial1)
-	{
-		fighter->HasSetupSpecial1 = true;
-		fighter->HasSetupProjectileEnd = false;
-		fighter->HasSetupProjectileMovement = false;
-		fighter->ProjectileMadeContact = false;
-		animator->currentFrame = 0;
-		fighter->projectilePositionX = fighter->positionX;
-		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-		fighter->projectileAnimator->currentFrame = 0;
-		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-		fighter->projectileAnimator->base = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 104;
-		sprite[fighter->lightningSpriteIndex].hbox = 16;
-		sprite[fighter->lightningSpriteIndex].vbox = 16;
-		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
-		fighter->lastTicks = rapTicks;
-		sfxRaidenLightning(fighter->soundHandler);
-	}
+	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
+}
 
-	if (!fighter->ProjectileMadeContact)
-	{
-		if (animationIsComplete(fighter->projectileAnimator, 8))
-		{
-			if (!fighter->HasSetupProjectileMovement)
-			{
-				fighter->HasSetupProjectileMovement = true;
-				fighter->projectilePositionX += (64 * fighter->direction);
-			}
-			
-			fighter->projectilePositionX += (8 * fighter->direction);
+void doSpecial_Raiden_Torpedo(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_RAIDEN_TORPEDO, fighter, animator);
+}
 
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320
-				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-			{
-				fighter->IsDoingSpecial1 = false;
-				playerinputInit(fighter);
-				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-				fighterResetRaidenLightning(fighter);
-			}
-		}
-
-		updateSpriteAnimator(animator, *fighter->special1Frames, 5, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 20, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
-	else
-	{
-		if (!fighter->HasSetupProjectileEnd)
-		{
-			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-			sfxRaidenLightningEnd(fighter->soundHandler);
-		}
-
-		if (animationIsComplete(fighter->projectileAnimator, 5))
-		{
-			sprite[fighter->lightningSpriteIndex].was_hit = -1;
-			fighter->IsDoingSpecial1 = false;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			fighterResetRaidenLightning(fighter);
-		}
-
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
+void doSpecial_Raiden_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_RAIDEN_TELEPORT, fighter, animator);
 }
 
 void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
+	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
+	return;
+
 	if (!fighter->HasSetupSpecial1)
 	{
 		fighter->HasSetupSpecial1 = true;

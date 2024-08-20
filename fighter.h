@@ -219,10 +219,12 @@ struct Fighter {
     struct AnimationFrame (*special1Frames)[6];
     struct AnimationFrame (*special1EndFrames)[6];
     struct AnimationFrame (*special2Frames)[7];
+    struct AnimationFrame (*special2EndFrames)[7];
     struct AnimationFrame (*special3Frames)[11];
     struct AnimationFrame (*projectileFrames)[28];
     struct AnimationFrame (*projectileEndFrames)[5];
     struct AnimationFrame (*hitNutsFrames)[2];
+    struct AnimationFrame (*lightningFrames)[30];
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -306,6 +308,8 @@ void fighterResetFlagsAll(struct Fighter* fighter1, struct Fighter* fighter2);
 int fighterShadowHeightLookup(int height);
 
 void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2);
+
+void fighterTorpedoCheck(struct StateMachine* stateMachine, struct Fighter* fighter1, struct Fighter* fighter2);
 
 void fighterResetTicks(struct Fighter* fighter);
 

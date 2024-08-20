@@ -1311,59 +1311,40 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
             return;
         }
     }
-    // else if (fighter1->fighterIndex == KANO)
-    // {
-    //     fighter1->ProjectileMadeContact = true;
+    else if (fighter1->fighterIndex == RAIDEN)
+    {
+        fighter1->ProjectileMadeContact = true;
 
-    //     if (!fighter2->IsBlocking)
-    //     {            
-    //         if (fighter2->IsJumping)
-    //         {
-    //             fighter2->IsHitDropKick = true;
-    //         }
-    //         else
-    //         {
-    //             fighter2->IsHitBackLight = true;
-    //         }
-            
-    //         fighter2->DoImpaleBloodSequence = true;
-    //         fighter2->NoBlood = true;
-    //         fighter2->lastTicks = rapTicks;
-    //         fighterAddPendingDamage(fighter2, DMG_KNIFE, false, fighter1, POINTS_PROJECTILE);
-    //     }
-    //     else
-    //     {
-    //         fighter2->IsBlockingHit = true;
-    //         fighter2->DoBlockSequence = true;
-    //         fighter2->lastTicks = rapTicks;
-    //     }
-    // }
-    // else if (fighter1->fighterIndex == RAIDEN)
-    // {
-    //     fighter1->ProjectileMadeContact = true;
+        if (!fighterIsBlocking(stateMachine, fighter2) && fighter2->currentState->Name != STATE_HIT_BLOCKING)
+        {
+            fighter2->NoBlood = true;
+            fighterAddPendingDamage(fighter2, DMG_LIGHTNING, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine, STATE_HIT_BACK, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+        else
+        {
+            stateMachineGoto(stateMachine, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+    }
+    else if (fighter1->fighterIndex == KANG)
+    {
+        fighter1->ProjectileMadeContact = true;
 
-    //     if (!fighter2->IsBlocking)
-    //     {            
-    //         if (fighter2->IsJumping)
-    //         {
-    //             fighter2->IsHitDropKick = true;
-    //         }
-    //         else
-    //         {
-    //             fighter2->IsHitBackLight = true;
-    //         }
-            
-    //         fighter2->NoBlood = true;
-    //         fighter2->lastTicks = rapTicks;
-    //         fighterAddPendingDamage(fighter2, DMG_LIGHTNING, false, fighter1, POINTS_PROJECTILE);
-    //     }
-    //     else
-    //     {
-    //         fighter2->IsBlockingHit = true;
-    //         fighter2->DoBlockSequence = true;
-    //         fighter2->lastTicks = rapTicks;
-    //     }
-    // }
+        if (!fighterIsBlocking(stateMachine, fighter2) && fighter2->currentState->Name != STATE_HIT_BLOCKING)
+        {
+            fighter2->NoBlood = true;
+            fighterAddPendingDamage(fighter2, DMG_FIREBALL, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine, STATE_HIT_BACK, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+        else
+        {
+            stateMachineGoto(stateMachine, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+    }
     // else if (fighter1->fighterIndex == KANG)
     // {
     //     fighter1->ProjectileMadeContact = true;
@@ -1587,9 +1568,17 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
         }
         else if (fighter1->currentState->Name == STATE_KANO_CANNONBALL)
         {
+            if (fighter2->currentState->Name != STATE_DUCKING)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+                stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+            }
+        }
+        else if (fighter1->currentState->Name == STATE_RAIDEN_TORPEDO)
+        {
             fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
-            stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
-            stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+            stateMachineGoto(stateMachine, STATE_HIT_TORPEDO, fighter2, spriteAnimator2);
         }
     }
     else if (fighterIsBlocking(stateMachine, fighter2))
@@ -1608,11 +1597,18 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
 
         if (fighter2->currentState->Name == STATE_DUCK_BLOCKING)
         {
+            if (fighter1->currentState->Name == STATE_RAIDEN_TORPEDO)
+            {
+                stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+            }
+
             stateMachineGoto(stateMachine, STATE_HIT_DUCKING_BLOCKING, fighter2, spriteAnimator2);
         }
         else
         {
-            if (fighter1->currentState->Name == STATE_JUMPING_KICKING_FORWARD || fighter1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD)
+            if (fighter1->currentState->Name == STATE_JUMPING_KICKING_FORWARD
+                || fighter1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD
+                || fighter1->currentState->Name == STATE_RAIDEN_TORPEDO)
             {
                 stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
                 stateMachineGoto(stateMachine, STATE_HIT_BLOCKING_KNOCKBACK, fighter2, spriteAnimator2);
@@ -1927,6 +1923,21 @@ void fighterIsMaxDistance(struct Fighter* fighter1, struct Fighter* fighter2)
 
     fighter1->isMaxDistance = false;
     fighter2->isMaxDistance = false;
+}
+
+void fighterTorpedoCheck(struct StateMachine* stateMachine, struct Fighter* fighter1, struct Fighter* fighter2)
+{
+    if (fighter1->fighterIndex != RAIDEN && fighter2->fighterIndex != RAIDEN)
+        return;  //Raiden's not here, gtfo
+    
+    if (fighter1->fighterIndex == RAIDEN && fighter1->currentState->Name == STATE_RAIDEN_TORPEDO && fighter1->vars[0] == 1 && fighter2->currentState->Name == STATE_HIT_TORPEDO)
+    {
+        stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, fighter2->spriteAnimator);
+    }
+    else if (fighter2->fighterIndex == RAIDEN && fighter2->currentState->Name == STATE_RAIDEN_TORPEDO && fighter2->vars[0] == 1 && fighter1->currentState->Name == STATE_HIT_TORPEDO)
+    {
+        stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter1, fighter1->spriteAnimator);
+    }
 }
 
 void fighterResetTicks(struct Fighter* fighter)

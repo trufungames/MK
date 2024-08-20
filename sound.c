@@ -647,6 +647,39 @@ void sfxRaidenLightningEnd(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_LIGHTNING_END, 8000);
 }
 
+void sfxRaidenTeleport(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_RAIDEN_TELEPORT, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_TELEPORT, 8000);
+}
+
+void sfxRaidenTorpedo(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_RAIDEN_TORPEDO, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_TORPEDO, 8000);
+}
+
+void sfxRaidenIdleZap(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_RAIDEN_IDLE_ZAP, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_IDLE_ZAP, 8000);
+}
+
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

@@ -679,4 +679,31 @@ sample73:	dc.l	kano_cannonball_sam		; start of sample
 s73_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample74:	dc.l	raiden_teleport_sam		; start of sample
+			dc.l	raiden_teleport_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s74_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample75:	dc.l	raiden_torpedo_sam		; start of sample
+			dc.l	raiden_torpedo_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s75_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample76:	dc.l	raiden_idle_zap_sam		; start of sample
+			dc.l	raiden_idle_zap_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s76_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

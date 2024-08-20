@@ -8,3 +8,5 @@ bool cameraIsAtRightWall();
 int cameraGetX();
 void cameraResetTicks();
 int cameraGetOffset();
+bool cameraFighterIsAtBoundsRight(struct Fighter* fighter);
+bool cameraFighterIsAtBoundsLeft(struct Fighter* fighter);

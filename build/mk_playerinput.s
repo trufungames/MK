@@ -261,16 +261,15 @@ __Z19playerinputContainsP7FighterPii:
 	moveq #0,%d0
 	jra .L55
 .L54:
-	tst.l 202(%a1)
-	seq %d0
+	move.l 202(%a1),%d0
+	move.l %d0,%d1
+	and.l JAGPAD_B,%d1
+	jne .L47
+	and.l JAGPAD_8,%d0
+	sne %d0
 	ext.w %d0
 	ext.l %d0
 	neg.l %d0
-	and.l JAGPAD_B,%d0
-	jeq .L47
-	moveq #1,%d0
-	and.l JAGPAD_8,%d0
-	eor.w #1,%d0
 	move.l (%sp)+,%a2
 	unlk %fp
 	rts

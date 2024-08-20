@@ -88,7 +88,7 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
     }
 
     //the last input indicates a BLOCK hold
-    if (checkInputs[5] == INPUT_BLK && !fighter->pad & JAGPAD_B && !fighter->pad & JAGPAD_8)
+    if (checkInputs[5] == INPUT_BLK && !(fighter->pad & JAGPAD_B) && !(fighter->pad & JAGPAD_8))
         return false;
 
     return true;
