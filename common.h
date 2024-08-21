@@ -132,6 +132,7 @@
 #define SOUND_RAIDEN_TELEPORT 74
 #define SOUND_RAIDEN_TORPEDO 75
 #define SOUND_RAIDEN_IDLE_ZAP 76
+#define SOUND_KANG_FLYINGKICK 77
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -259,9 +260,10 @@
 #define FIGHTER_RAIDEN_TORPEDO_MAX_DISTANCE 200
 #define FIGHTER_RAIDEN_TORPEDO_DONE_X_SPEED 3
 #define FIGHTER_RAIDEN_TELEPORT_DISTANCE 20
+#define FIGHTER_KANG_FLYING_KICK_X_SPEED 14
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 51
+#define STATE_TOTAL_COUNT 52
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -314,6 +316,7 @@
 #define STATE_RAIDEN_TORPEDO 48
 #define STATE_HIT_TORPEDO 49
 #define STATE_RAIDEN_TELEPORT 50
+#define STATE_KANG_FLYING_KICK 51
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

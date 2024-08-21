@@ -2446,7 +2446,7 @@ void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fi
             sprite[fighter->lightningSpriteIndex].was_hit = -1;
             sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
             playerinputInit(fighter);    
-            fighterResetRaidenLightning(fighter);
+            //fighterResetRaidenLightning(fighter);
 			stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
             return;
 		}
@@ -2949,5 +2949,58 @@ void StateRaidenTeleport_Sleep(struct StateMachine* stateMachine, struct Fighter
 }
 
 void StateRaidenTeleport_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LIU KANG FLYING KICK
+// vars[0] = jump index
+
+void StateKangFlyingKick_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    fighter->vars[0] = 0;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    sfxKangFlyingKick(fighter->soundHandler);
+}
+
+void StateKangFlyingKick_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        if (!fighter->MadeContact)
+        {
+            fighterPositionXAdd(fighter, FIGHTER_KANG_FLYING_KICK_X_SPEED * fighter->direction);
+        }
+
+        fighter->positionY += JumpOffsets[fighter->vars[0]] > -4 ? JumpOffsets[fighter->vars[0]] : -4;
+        fighter->vars[0]++;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (fighter->vars[0] > 19)
+    {
+        //landed
+        impactFrameReset(fighter);
+        fighterSetOnFloor(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->jumpDropKickFrames, 3, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateKangFlyingKick_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateKangFlyingKick_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

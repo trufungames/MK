@@ -680,6 +680,17 @@ void sfxRaidenIdleZap(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_IDLE_ZAP, 8000);
 }
 
+void sfxKangFlyingKick(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KANG_FLYINGKICK, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KANG_FLYINGKICK, 8000);
+}
+
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

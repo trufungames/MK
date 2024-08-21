@@ -706,4 +706,14 @@ sample76:	dc.l	raiden_idle_zap_sam		; start of sample
 s76_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample77:	dc.l	kang_flyingkick_sam		; start of sample
+			dc.l	kang_flyingkick_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s77_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+
 ; END OF FILE.

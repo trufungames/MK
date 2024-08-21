@@ -51,6 +51,7 @@ void sfxRaidenLightningEnd(struct SoundHandler* soundHandler);
 void sfxRaidenTeleport(struct SoundHandler* soundHandler);
 void sfxRaidenTorpedo(struct SoundHandler* soundHandler);
 void sfxRaidenIdleZap(struct SoundHandler* soundHandler);
+void sfxKangFlyingKick(struct SoundHandler* soundHandler);
 void sfxKanoHeadbutt(struct SoundHandler* soundHandler);
 void sfxHit(struct SoundHandler* soundHandler);
 void sfxImpact(struct SoundHandler* soundHandler);

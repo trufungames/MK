@@ -1580,6 +1580,15 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
             stateMachineGoto(stateMachine, STATE_HIT_TORPEDO, fighter2, spriteAnimator2);
         }
+        else if (fighter1->currentState->Name == STATE_KANG_FLYING_KICK)
+        {
+            if (fighter2->currentState->Name != STATE_DUCKING)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+                stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+            }
+        }
     }
     else if (fighterIsBlocking(stateMachine, fighter2))
     {
@@ -1627,28 +1636,32 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
     if (fighter1->direction == 1
         && fighter1->positionX > fighter2->positionX + turnOffset
-        && !fighter1->IsTurning)
+        && !fighter1->IsTurning
+        && fighter1->currentState->Name != STATE_KANG_FLYING_KICK)
     {
         fighter1->IsTurning = true;
     }
 
     if (fighter1->direction == -1
         && fighter1->positionX + turnOffset < fighter2->positionX
-        && !fighter1->IsTurning)
+        && !fighter1->IsTurning
+        && fighter1->currentState->Name != STATE_KANG_FLYING_KICK)
     {
         fighter1->IsTurning = true;
     }
 
     if (fighter2->direction == 1
         && fighter2->positionX > fighter1->positionX + turnOffset
-        && !fighter2->IsTurning)
+        && !fighter2->IsTurning
+        && fighter2->currentState->Name != STATE_KANG_FLYING_KICK)
     {
         fighter2->IsTurning = true;
     }
 
     if (fighter2->direction == -1
         && fighter2->positionX + turnOffset < fighter1->positionX
-        && !fighter2->IsTurning)
+        && !fighter2->IsTurning
+        && fighter2->currentState->Name != STATE_KANG_FLYING_KICK)
     {
         fighter2->IsTurning = true;
     }

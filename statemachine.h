@@ -272,6 +272,11 @@ void StateRaidenTeleport_Update(struct StateMachine*, struct Fighter*, struct Sp
 void StateRaidenTeleport_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateRaidenTeleport_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateKangFlyingKick_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKangFlyingKick_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateKangFlyingKick_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKangFlyingKick_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
@@ -280,7 +285,7 @@ void StateRaidenTeleport_HandleInput(struct StateMachine*, struct Fighter*, stru
 //[X] Add Throw States
 //[X] Add Turn Around State
 //[X] Add Collision Detection between fighters, push them out if on top of each other
-//[ ] Add Projectiles back in using states
+//[x] Add Projectiles back in using states
 //[X] Fix flames on Palace Gates
 //[x] Add new background image to Palace Gates
 //[X] Fix Sound to use round-robin
