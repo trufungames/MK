@@ -142,9 +142,6 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
-    fighter->IsDoingSpecial1 = false;
-    fighter->IsDoingSpecial2 = false;
-    fighter->IsDoingSpecial3 = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
     fighter->DoThrowSequence = false;
@@ -1164,9 +1161,6 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->justTurned = false;
     fighter->changedDirection = false;
     fighter->hasRoomToMove = true;
-    fighter->IsDoingSpecial1 = false;
-    fighter->IsDoingSpecial2 = false;
-    fighter->IsDoingSpecial3 = false;
 }
 
 void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)
@@ -1244,12 +1238,12 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                     fighterHandleImpact(stateMachine, fighter2, spriteAnimator2, fighter1, spriteAnimator1);
                 }
 
-                if (fighter1->currentState->Name == STATE_THROWING_PROJECTILE && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
+                if ((fighter1->currentState->Name == STATE_THROWING_PROJECTILE || fighter1->currentState->Name == STATE_SCORPION_HARPOON) && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter1, fighter2);
                 }
                 
-                if (fighter2->currentState->Name == STATE_THROWING_PROJECTILE && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
+                if ((fighter2->currentState->Name == STATE_THROWING_PROJECTILE || fighter2->currentState->Name == STATE_SCORPION_HARPOON) && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter2, fighter1);
                 }
@@ -1345,31 +1339,26 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
             return;
         }
     }
-    // else if (fighter1->fighterIndex == KANG)
-    // {
-    //     fighter1->ProjectileMadeContact = true;
+    else if (fighter1->fighterIndex == SCORPION)
+    {
+        fighter1->ProjectileMadeContact = true;
 
-    //     if (!fighter2->IsBlocking)
-    //     {            
-    //         if (fighter2->IsJumping)
-    //         {
-    //             fighter2->IsHitDropKick = true;                
-    //         }
-    //         else
-    //         {
-    //             fighter2->IsHitBack = true;
-    //             fighter2->NoBlood = true;
-    //         }
-            
-    //         fighterAddPendingDamage(fighter2, DMG_FIREBALL, false, fighter1, POINTS_PROJECTILE);
-    //     }
-    //     else
-    //     {
-    //         fighter2->IsBlockingHit = true;
-    //         fighter2->DoBlockSequence = true;
-    //         fighter2->lastTicks = rapTicks;
-    //     }
-    // }
+        if (!fighterIsBlocking(stateMachine, fighter2))
+        {
+            fighter1->HarpoonShakeDirection = -1;
+            fighter1->HarpoonOffsetY = 32;
+            fighter1->HarpoonShakeCount = 0;
+            //fighterHarpoon(fighter2, fighter1);
+            fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine, STATE_HIT_HARPOON, fighter2, fighter2->spriteAnimator);
+            stateMachineGoto(stateMachine, STATE_SCORPION_REELING_IN, fighter1, fighter1->spriteAnimator);
+        }
+        else
+        {
+            fighter1->HarpoonBlocked = true;
+        }
+    }
+    
     // else if (fighter1->fighterIndex == SONYA)
     // {
     //     fighter1->ProjectileMadeContact = true;
@@ -2073,7 +2062,6 @@ void fighterHarpoon(struct Fighter* fighter1, struct Fighter* scorpion)
     {
         fighter1->IsHitHarpoon = true;
         fighter1->IsHarpoonComplete = false;
-        fighter1->DoImpaleBloodSequence = true;
 
         //calculate distance between the two fighters
         if (fighter1->direction == -1)
@@ -2096,7 +2084,7 @@ void fighterHarpoon(struct Fighter* fighter1, struct Fighter* scorpion)
             fighter1->HarpoonKnockbackDistance = 0;
         }
 
-        fighterPlayYell(fighter1->fighterIndex, fighter1->soundHandler, fighter1->isPlayer1);
+        //fighterPlayYell(fighter1->fighterIndex, fighter1->soundHandler, fighter1->isPlayer1);
 
         if (fighter1->direction == -1)
         {

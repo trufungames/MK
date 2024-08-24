@@ -2423,8 +2423,7 @@ void StateThrowingProjectile_Update(struct StateMachine* stateMachine, struct Fi
 			{
                 sprite[fighter->lightningSpriteIndex].was_hit = -1;
                 sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-                playerinputInit(fighter);    
-                fighterResetRaidenLightning(fighter);
+                playerinputInit(fighter);
 				stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
                 return;
 			}
@@ -3002,5 +3001,358 @@ void StateKangFlyingKick_Sleep(struct StateMachine* stateMachine, struct Fighter
 }
 
 void StateKangFlyingKick_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SCORPION HARPOON
+// vars[0] = HasSetupProjectileMovement
+// vars[1] = HasSetupProjectileEnd
+// vars[2] = HarpoonFlashDirection
+
+void StateScorpionHarpoon_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->HarpoonBlocked = false;
+    fighter->ProjectileMadeContact = false;
+    fighter->HarpoonFlashCount = 0;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 1;
+    fighter->projectilePositionX = fighter->positionX;
+    fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
+    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+    sfxScorpionHarpoon(fighter->soundHandler);
+    fighter->lastTicks = rapTicks;
+}
+
+void StateScorpionHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
+		{
+			if (!fighter->vars[0] == 0)
+			{
+				fighter->vars[0] = 1;
+				sfxScorpionHarpoon(fighter->soundHandler);
+			}
+
+			fighter->projectilePositionX += (6 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				sprite[fighter->lightningSpriteIndex].was_hit = -1;
+                sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                playerinputInit(fighter);    
+				stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+                return;
+			}
+		}
+
+		updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else if (fighter->HarpoonBlocked)
+	{
+		if (!fighter->vars[1] == 0)
+		{
+			fighter->vars[1] = 1;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (fighter->vars[2] == -1)
+		{
+			jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+		}
+		else
+		{
+			jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
+		}
+
+		fighter->vars[2] *= -1;
+		fighter->HarpoonFlashCount++;
+
+		if (fighter->HarpoonFlashCount > 8)
+		{
+            sprite[fighter->lightningSpriteIndex].was_hit = -1;
+            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+            playerinputInit(fighter);    
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+		}
+	}
+}
+
+void StateScorpionHarpoon_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateScorpionHarpoon_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT HARPOON
+// vars[0] = set HarpoonKnockbackDistance
+// vars[1] = rapTicks, so has waited 60 ticks
+// vars[2] = set final reeling distance
+
+void StateHitHarpoon_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighterTakeDamage(fighter, fighter->pendingDamage);
+    bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
+    fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+    fighter->vars[0] = 0;
+    fighter->vars[1] = rapTicks;
+    fighter->vars[2] = 0;
+}
+
+void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0)
+    {
+        fighter->vars[0] = 1;
+        if (fighter->direction == -1)
+        {
+            fighter->HarpoonKnockbackDistance = fighter->positionX - opponent->positionX + FIGHTER_WIDTH;
+        }
+        else
+        {
+            fighter->HarpoonKnockbackDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
+        }
+
+        if (fighter->HarpoonKnockbackDistance < HARPOON_MINIMUM_DISTANCE)
+        {   
+            fighter->HarpoonKnockbackDistance = HARPOON_MINIMUM_DISTANCE - fighter->HarpoonKnockbackDistance;
+            fighterSlideToPositionX(fighter, fighter->positionX + (fighter->HarpoonKnockbackDistance * fighter->direction * -1));
+        }
+        else
+        {
+            //this fighter is being harpooned far away, so no need to knockback
+            fighter->HarpoonKnockbackDistance = 0;
+        }
+
+        if (fighter->direction == -1)
+        {
+            fighter->HarpoonSourceX = opponent->positionX + FIGHTER_WIDTH;
+        }
+        else
+        {
+            fighter->HarpoonSourceX = opponent->positionX - FIGHTER_WIDTH;
+        }
+
+        fighter->lastTicks = rapTicks;
+
+        sprite[opponent->lightningSpriteIndex].active = R_is_inactive;
+    }
+    
+    if (fighter->HarpoonKnockbackDistance > 0 && fighter->IsSlidingToPositionX && fighter->vars[2] == 0)
+    {
+        if (fighter->SlidePositionXTarget > fighter->positionX)
+        {
+            fighterPositionXAdd(fighter, 8);
+
+            if (fighter->positionX >= fighter->SlidePositionXTarget)
+            {
+                fighter->IsSlidingToPositionX = false;
+            }
+        }
+        else if (fighter->SlidePositionXTarget < fighter->positionX)
+        {
+            fighterPositionXAdd(fighter, -8);
+
+            if (fighter->positionX <= fighter->SlidePositionXTarget)
+            {
+                fighter->IsSlidingToPositionX = false;
+            }
+        }
+        fighter->vars[1] = rapTicks;
+    }
+    else if (rapTicks >= fighter->vars[1] + 60)
+    {
+        if (fighter->vars[2] == 0)
+        {
+            fighter->vars[2] = 1;
+            fighterSlideToPositionX(fighter, fighter->HarpoonSourceX);
+        }
+
+        if (fighter->IsSlidingToPositionX && rapTicks >= fighter->lastTicks + 2)
+        {
+            if (fighter->SlidePositionXTarget > fighter->positionX)
+            {
+                fighterPositionXAdd(fighter, 8);
+
+                if (fighter->positionX >= fighter->SlidePositionXTarget)
+                {
+                    fighter->IsSlidingToPositionX = false;
+                }
+            }
+            else if (fighter->SlidePositionXTarget < fighter->positionX)
+            {
+                fighterPositionXAdd(fighter, -8);
+
+                if (fighter->positionX <= fighter->SlidePositionXTarget)
+                {
+                    fighter->IsSlidingToPositionX = false;
+                }
+            }
+
+            if (fighter->direction == -1)
+            {
+                opponent->HarpoonDistance = fighter->positionX - opponent->positionX + FIGHTER_WIDTH;
+                opponent->HarpoonCenterX = opponent->positionX + (opponent->HarpoonDistance / 2) - ((opponent->HarpoonDistance - 64) / 2);
+            }
+            else
+            {
+                opponent->HarpoonDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
+                opponent->HarpoonCenterX = fighter->positionX + (opponent->HarpoonDistance / 2) + ((opponent->HarpoonDistance - 64) / 2);
+            }
+
+            if (opponent->IsHarpoonReelingIn)
+            {
+                sprite[opponent->lightningSpriteIndex].scale_x = opponent->HarpoonDistance - 64;                
+            }
+            else
+            {
+                sprite[opponent->lightningSpriteIndex].scale_x = opponent->HarpoonDistance - 96;
+                opponent->HarpoonCenterX += (32 * opponent->direction);
+            }
+
+            sprite[opponent->lightningSpriteIndex].scale_y = 32;
+
+            if (fighter->IsSlidingToPositionX == false)
+            {
+                stateMachineGoto(stateMachine, STATE_STUNNED, fighter, spriteAnimator);
+                return;
+            }
+
+            fighter->lastTicks = rapTicks;
+        }
+    }
+
+    setAnimationFrame(fighter->spriteIndex, spriteAnimator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateHitHarpoon_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitHarpoon_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SCORPION REELING IN
+// vars[0] = Played sound
+// vars[1] = HarpoonShakeCount
+
+void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->HarpoonShakeDirection = 1;
+    fighter->HarpoonOffsetY = 32;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+}
+
+void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[1] < 8 && rapTicks >= fighter->lastTicks + 2)
+    {
+        fighter->HarpoonOffsetY += 2 * fighter->HarpoonShakeDirection;
+        fighter->HarpoonShakeDirection *= -1;
+        fighter->vars[1]++;
+        fighter->lastTicks = rapTicks;
+    }
+    else if (fighter->vars[1] == 8)
+    {
+        if (fighter->vars[0] == 0)
+        {
+            fighter->vars[0] = 1;
+            sfxScorpionGetOverHere(fighter->soundHandler);
+        }
+        
+        if (opponent->currentState->Name == STATE_STUNNED)
+        {
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+        updateSpriteAnimator(spriteAnimator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+
+    if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    }
+    updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + fighter->HarpoonOffsetY, fighter->direction);
+}
+
+void StateScorpionReelingIn_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateScorpionReelingIn_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// STUNNED
+// vars[0] = rapTicks
+
+void StateStunned_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = rapTicks;
+    fighter->lastTicks = rapTicks;
+}
+
+void StateStunned_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (rapTicks >= fighter->vars[0] + 120)
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateStunned_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateStunned_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

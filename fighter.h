@@ -65,7 +65,6 @@ struct Fighter {
     bool IsBlocking;
     bool IsHitHarpoon;
     bool HarpoonBlocked;
-    short HarpoonFlashDirection;
     short HarpoonFlashCount;
     bool IsSlidingToPositionX;
     int SlidePositionXTarget;
@@ -83,14 +82,6 @@ struct Fighter {
     int FrozenShakeCount;
     int FrozenShakeTicks;
     bool IsBeingPushed;
-    bool IsDoingSpecial1;
-    bool IsDoingSpecial2;
-    bool IsDoingSpecial3;
-    bool HasSetupSpecial1;
-    bool HasSetupSpecial2;
-    bool HasSetupSpecial3;
-    bool HasSetupProjectileMovement;
-    bool HasSetupProjectileEnd;
     bool DoBlockSequence;
     bool DoUppercutSequence;
     bool DoDefeatedSequence;

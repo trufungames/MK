@@ -263,7 +263,7 @@
 #define FIGHTER_KANG_FLYING_KICK_X_SPEED 14
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 52
+#define STATE_TOTAL_COUNT 56
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -317,11 +317,20 @@
 #define STATE_HIT_TORPEDO 49
 #define STATE_RAIDEN_TELEPORT 50
 #define STATE_KANG_FLYING_KICK 51
+#define STATE_SCORPION_HARPOON 52
+#define STATE_HIT_HARPOON 53
+#define STATE_SCORPION_REELING_IN 54
+#define STATE_STUNNED 55
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
 #define SCORPION_WALK_FRAME_COUNT 9
 #define SCORPION_SPECIAL_FRAME_COUNT 6
+#define SCORPION_SPECIAL_1_FRAME_COUNT 4
+#define SCORPION_SPECIAL_2_FRAME_COUNT 7
+#define SCORPION_SPECIAL_3_FRAME_COUNT 0
+#define SCORPION_PROJECTILE_FRAME_COUNT 19
+#define SCORPION_PROJECTILE_END_FRAME_COUNT 5
 
 #define KANO_IDLE_FRAME_COUNT 7
 #define KANO_DIZZY_FRAME_COUNT 7

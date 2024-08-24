@@ -277,6 +277,26 @@ void StateKangFlyingKick_Update(struct StateMachine*, struct Fighter*, struct Sp
 void StateKangFlyingKick_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateKangFlyingKick_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateScorpionHarpoon_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionHarpoon_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateScorpionHarpoon_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionHarpoon_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitHarpoon_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitHarpoon_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitHarpoon_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitHarpoon_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateScorpionReelingIn_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionReelingIn_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateScorpionReelingIn_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionReelingIn_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateStunned_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateStunned_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateStunned_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateStunned_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

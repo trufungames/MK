@@ -233,6 +233,18 @@ static State stateRaidenTeleport = {
 static State stateKangFlyingKick = {
 	STATE_KANG_FLYING_KICK
 };
+static State stateScorpionHarpoon = {
+	STATE_SCORPION_HARPOON
+};
+static State stateHitHarpoon = {
+	STATE_HIT_HARPOON
+};
+static State stateScorpionReelingIn = {
+	STATE_SCORPION_REELING_IN
+};
+static State stateStunned = {
+	STATE_STUNNED
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -3453,7 +3465,12 @@ static Fighter fighterScorpion = {
 	SUBZERO_HIT_BACK_FRAME_COUNT,
 	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
 	SUBZERO_HIT_FALL_FRAME_COUNT,
-	SUBZERO_HIT_SWEEP_FRAME_COUNT
+	SUBZERO_HIT_SWEEP_FRAME_COUNT,
+	SCORPION_SPECIAL_1_FRAME_COUNT,
+	SCORPION_SPECIAL_2_FRAME_COUNT,
+	SCORPION_SPECIAL_3_FRAME_COUNT,
+	SCORPION_PROJECTILE_FRAME_COUNT,
+	SCORPION_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterKano = {
@@ -3726,7 +3743,6 @@ static Fighter fighterScorpion2 = {
 	SUBZERO_WINS_FRAME_COUNT,
 	SCORPION_SPECIAL_FRAME_COUNT,
 	SCORPION_WALK_FRAME_COUNT,
-	SCORPION_SPECIAL_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
 	SUBZERO_JUMP_ROLL_FRAME_COUNT,
@@ -3757,7 +3773,12 @@ static Fighter fighterScorpion2 = {
 	SUBZERO_HIT_BACK_FRAME_COUNT,
 	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
 	SUBZERO_HIT_FALL_FRAME_COUNT,
-	SUBZERO_HIT_SWEEP_FRAME_COUNT
+	SUBZERO_HIT_SWEEP_FRAME_COUNT,
+	SCORPION_SPECIAL_1_FRAME_COUNT,
+	SCORPION_SPECIAL_2_FRAME_COUNT,
+	SCORPION_SPECIAL_3_FRAME_COUNT,
+	SCORPION_PROJECTILE_FRAME_COUNT,
+	SCORPION_PROJECTILE_END_FRAME_COUNT
 };
 
 static Fighter fighterKano2 = {
@@ -4298,6 +4319,22 @@ void basicmain()
 		stateKangFlyingKick.update = &StateKangFlyingKick_Update;
 		stateKangFlyingKick.sleep = &StateKangFlyingKick_Sleep;
 		stateKangFlyingKick.handleInput = &StateKangFlyingKick_HandleInput;
+		stateScorpionHarpoon.enter = &StateScorpionHarpoon_Enter;
+		stateScorpionHarpoon.update = &StateScorpionHarpoon_Update;
+		stateScorpionHarpoon.sleep = &StateScorpionHarpoon_Sleep;
+		stateScorpionHarpoon.handleInput = &StateScorpionHarpoon_HandleInput;
+		stateHitHarpoon.enter = &StateHitHarpoon_Enter;
+		stateHitHarpoon.update = &StateHitHarpoon_Update;
+		stateHitHarpoon.sleep = &StateHitHarpoon_Sleep;
+		stateHitHarpoon.handleInput = &StateHitHarpoon_HandleInput;
+		stateScorpionReelingIn.enter = &StateScorpionReelingIn_Enter;
+		stateScorpionReelingIn.update = &StateScorpionReelingIn_Update;
+		stateScorpionReelingIn.sleep = &StateScorpionReelingIn_Sleep;
+		stateScorpionReelingIn.handleInput = &StateScorpionReelingIn_HandleInput;
+		stateStunned.enter = &StateStunned_Enter;
+		stateStunned.update = &StateStunned_Update;
+		stateStunned.sleep = &StateStunned_Sleep;
+		stateStunned.handleInput = &StateStunned_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4351,6 +4388,10 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_TORPEDO, &stateHitTorpedo);
 		stateMachineAdd(&fighterStateMachine, STATE_RAIDEN_TELEPORT, &stateRaidenTeleport);
 		stateMachineAdd(&fighterStateMachine, STATE_KANG_FLYING_KICK, &stateKangFlyingKick);
+		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_HARPOON, &stateScorpionHarpoon);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_HARPOON, &stateHitHarpoon);
+		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_REELING_IN, &stateScorpionReelingIn);
+		stateMachineAdd(&fighterStateMachine, STATE_STUNNED, &stateStunned);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -7811,201 +7852,204 @@ void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter
 
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-	if (!fighter->HasSetupSpecial1)
-	{
-		fighter->HasSetupSpecial1 = true;
-		fighter->HasSetupProjectileEnd = false;
-		fighter->ProjectileMadeContact = false;
-		animator->currentFrame = 0;
-		fighter->projectilePositionX = fighter->positionX;
-		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-		fighter->projectileAnimator->currentFrame = 0;
-		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-		fighter->projectileAnimator->base = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 104;
-		sprite[fighter->lightningSpriteIndex].hbox = 16;
-		sprite[fighter->lightningSpriteIndex].vbox = 16;
-		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
-		fighter->lastTicks = rapTicks;
-		sfxSonyaRings(fighter->soundHandler);
-	}
+	// if (!fighter->HasSetupSpecial1)
+	// {
+	// 	fighter->HasSetupSpecial1 = true;
+	// 	fighter->HasSetupProjectileEnd = false;
+	// 	fighter->ProjectileMadeContact = false;
+	// 	animator->currentFrame = 0;
+	// 	fighter->projectilePositionX = fighter->positionX;
+	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+	// 	fighter->projectileAnimator->currentFrame = 0;
+	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
+	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
+	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
+	// 	fighter->lastTicks = rapTicks;
+	// 	sfxSonyaRings(fighter->soundHandler);
+	// }
 
-	if (!fighter->ProjectileMadeContact)
-	{
-		if (animationIsComplete(animator, 4))
-		{
-			fighter->projectilePositionX += (8 * fighter->direction);
+	// if (!fighter->ProjectileMadeContact)
+	// {
+	// 	if (animationIsComplete(animator, 4))
+	// 	{
+	// 		fighter->projectilePositionX += (8 * fighter->direction);
 
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320
-				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-			{
-				fighter->IsDoingSpecial1 = false;
-				playerinputInit(fighter);
-				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			}
-		}
+	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
+	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+	// 		{
+	// 			fighter->IsDoingSpecial1 = false;
+	// 			playerinputInit(fighter);
+	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 		}
+	// 	}
 
-		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
-	else
-	{
-		if (!fighter->HasSetupProjectileEnd)
-		{
-			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-		}
+	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	// }
+	// else
+	// {
+	// 	if (!fighter->HasSetupProjectileEnd)
+	// 	{
+	// 		fighter->HasSetupProjectileEnd = true;
+	// 		fighter->projectileAnimator->currentFrame = 0;
+	// 	}
 
-		if (animationIsComplete(fighter->projectileAnimator, 5))
-		{
-			sprite[fighter->lightningSpriteIndex].was_hit = -1;
-			fighter->IsDoingSpecial1 = false;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			fighterResetRaidenLightning(fighter);
-		}
+	// 	if (animationIsComplete(fighter->projectileAnimator, 5))
+	// 	{
+	// 		sprite[fighter->lightningSpriteIndex].was_hit = -1;
+	// 		fighter->IsDoingSpecial1 = false;
+	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 		fighterResetRaidenLightning(fighter);
+	// 	}
 
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
+	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	// }
 }
 
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-	if (!fighter->HasSetupSpecial1)
-	{
-		fighter->HasSetupSpecial1 = true;
-		fighter->HasSetupProjectileEnd = false;
-		fighter->ProjectileMadeContact = false;
-		animator->currentFrame = 0;
-		fighter->projectilePositionX = fighter->positionX;
-		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-		fighter->projectileAnimator->currentFrame = 0;
-		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-		fighter->projectileAnimator->base = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 104;
-		sprite[fighter->lightningSpriteIndex].hbox = 16;
-		sprite[fighter->lightningSpriteIndex].vbox = 16;
-		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
-		fighter->lastTicks = rapTicks;
-		sfxSubzeroFreeze(fighter->soundHandler);
-	}
+	// if (!fighter->HasSetupSpecial1)
+	// {
+	// 	fighter->HasSetupSpecial1 = true;
+	// 	fighter->HasSetupProjectileEnd = false;
+	// 	fighter->ProjectileMadeContact = false;
+	// 	animator->currentFrame = 0;
+	// 	fighter->projectilePositionX = fighter->positionX;
+	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+	// 	fighter->projectileAnimator->currentFrame = 0;
+	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
+	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
+	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
+	// 	fighter->lastTicks = rapTicks;
+	// 	sfxSubzeroFreeze(fighter->soundHandler);
+	// }
 
-	if (!fighter->ProjectileMadeContact)
-	{
-		if (animationIsComplete(fighter->projectileAnimator, 9))
-		{
-			fighter->projectilePositionX += (8 * fighter->direction);
+	// if (!fighter->ProjectileMadeContact)
+	// {
+	// 	if (animationIsComplete(fighter->projectileAnimator, 9))
+	// 	{
+	// 		fighter->projectilePositionX += (8 * fighter->direction);
 
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320
-				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-			{
-				fighter->IsDoingSpecial1 = false;
-				playerinputInit(fighter);
-				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			}
-		}
+	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
+	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+	// 		{
+	// 			fighter->IsDoingSpecial1 = false;
+	// 			playerinputInit(fighter);
+	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 		}
+	// 	}
 
-		updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
-	else
-	{
-		if (!fighter->HasSetupProjectileEnd)
-		{
-			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-		}
+	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	// }
+	// else
+	// {
+	// 	if (!fighter->HasSetupProjectileEnd)
+	// 	{
+	// 		fighter->HasSetupProjectileEnd = true;
+	// 		fighter->projectileAnimator->currentFrame = 0;
+	// 	}
 
-		if (animationIsComplete(fighter->projectileAnimator, 5))
-		{
-			sprite[fighter->lightningSpriteIndex].was_hit = -1;
-			fighter->IsDoingSpecial1 = false;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			fighterResetRaidenLightning(fighter);
-		}
+	// 	if (animationIsComplete(fighter->projectileAnimator, 5))
+	// 	{
+	// 		sprite[fighter->lightningSpriteIndex].was_hit = -1;
+	// 		fighter->IsDoingSpecial1 = false;
+	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 		fighterResetRaidenLightning(fighter);
+	// 	}
 
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
+	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	// }
 }
 
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-	if (!fighter->HasSetupSpecial1)
-	{
-		fighter->HarpoonBlocked = false;
-		fighter->HasSetupSpecial1 = true;
-		fighter->HasSetupProjectileEnd = false;
-		fighter->IsHarpoonReelingIn = false;
-		fighter->ProjectileMadeContact = false;
-		fighter->HasSetupProjectileMovement = false;
-		fighter->HarpoonFlashCount = 0;
-		fighter->HarpoonFlashDirection = -1;
-		animator->currentFrame = 0;
-		fighter->projectilePositionX = fighter->positionX;
-		fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-		fighter->projectileAnimator->currentFrame = 0;
-		fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-		fighter->projectileAnimator->base = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-		sprite[fighter->lightningSpriteIndex].gwidth = 104;
-		sprite[fighter->lightningSpriteIndex].hbox = 16;
-		sprite[fighter->lightningSpriteIndex].vbox = 16;
-		sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
-		sprite[fighter->lightningSpriteIndex].active = R_is_active;
-		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
-		fighter->lastTicks = rapTicks;
-	}
+	stateMachineGoto(stateMachine, STATE_SCORPION_HARPOON, fighter, fighter->spriteAnimator);
+	return;
 
-	if (!fighter->ProjectileMadeContact)
-	{
-		if (animationIsComplete(animator, 4))
-		{
-			if (!fighter->HasSetupProjectileMovement)
-			{
-				fighter->HasSetupProjectileMovement = true;
-				sfxScorpionHarpoon(fighter->soundHandler);
-			}
-			fighter->projectilePositionX += (6 * fighter->direction);
+	// if (!fighter->HasSetupSpecial1)
+	// {
+	// 	fighter->HarpoonBlocked = false;
+	// 	fighter->HasSetupSpecial1 = true;
+	// 	fighter->HasSetupProjectileEnd = false;
+	// 	fighter->IsHarpoonReelingIn = false;
+	// 	fighter->ProjectileMadeContact = false;
+	// 	fighter->HasSetupProjectileMovement = false;
+	// 	fighter->HarpoonFlashCount = 0;
+	// 	fighter->HarpoonFlashDirection = -1;
+	// 	animator->currentFrame = 0;
+	// 	fighter->projectilePositionX = fighter->positionX;
+	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
+	// 	fighter->projectileAnimator->currentFrame = 0;
+	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
+	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
+	// 	sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
+	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
+	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+	// 	fighter->lastTicks = rapTicks;
+	// }
 
-			if (fighter->direction == 1 && fighter->projectilePositionX > 320
-				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-			{
-				fighter->IsDoingSpecial1 = false;
-				playerinputInit(fighter);
-				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-			}
-		}
+	// if (!fighter->ProjectileMadeContact)
+	// {
+	// 	if (animationIsComplete(animator, 4))
+	// 	{
+	// 		if (!fighter->HasSetupProjectileMovement)
+	// 		{
+	// 			fighter->HasSetupProjectileMovement = true;
+	// 			sfxScorpionHarpoon(fighter->soundHandler);
+	// 		}
+	// 		fighter->projectilePositionX += (6 * fighter->direction);
 
-		updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	}
-	else if (fighter->HarpoonBlocked)
-	{
-		if (!fighter->HasSetupProjectileEnd)
-		{
-			fighter->HasSetupProjectileEnd = true;
-			fighter->projectileAnimator->currentFrame = 0;
-		}
+	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
+	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+	// 		{
+	// 			fighter->IsDoingSpecial1 = false;
+	// 			playerinputInit(fighter);
+	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 		}
+	// 	}
 
-		if (fighter->HarpoonFlashDirection == -1)
-		{
-			jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
-		}
-		else
-		{
-			jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
-		}
+	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	// }
+	// else if (fighter->HarpoonBlocked)
+	// {
+	// 	if (!fighter->HasSetupProjectileEnd)
+	// 	{
+	// 		fighter->HasSetupProjectileEnd = true;
+	// 		fighter->projectileAnimator->currentFrame = 0;
+	// 	}
 
-		fighter->HarpoonFlashDirection *= -1;
-		fighter->HarpoonFlashCount++;
+	// 	if (fighter->HarpoonFlashDirection == -1)
+	// 	{
+	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+	// 	}
+	// 	else
+	// 	{
+	// 		jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
+	// 	}
 
-		if (fighter->HarpoonFlashCount > 8)
-		{
-			fighter->IsDoingSpecial1 = false;
-			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-		}
-	}
+	// 	fighter->HarpoonFlashDirection *= -1;
+	// 	fighter->HarpoonFlashCount++;
+
+	// 	if (fighter->HarpoonFlashCount > 8)
+	// 	{
+	// 		fighter->IsDoingSpecial1 = false;
+	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+	// 	}
+	// }
 }

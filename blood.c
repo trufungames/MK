@@ -309,7 +309,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
                 if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
                     bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
-                    sfxBlood(soundHandler);
+                    //sfxBlood(soundHandler);
                     sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
                     bloodDrops[i].InUse  = false;
                 }
@@ -334,7 +334,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
                 if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
                     bloodPool(sprite[bloodBalls[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
-                    sfxBlood(soundHandler);
+                    //sfxBlood(soundHandler);
                     sprite[bloodBalls[i].SpriteIndex].active = R_is_inactive;
                     bloodBalls[i].InUse  = false;
                 }

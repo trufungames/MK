@@ -103,18 +103,18 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
 	jle .L52
-	tst.b 143(%a2)
+	tst.b 141(%a2)
 	jeq .L53
-	move.b #1,171(%a2)
+	move.b #1,161(%a2)
 	moveq #2,%d0
 	move.l %d0,_matchState
 .L52:
-	tst.b 145(%a2)
+	tst.b 143(%a2)
 	jne .L78
 .L54:
-	tst.b 145(%a3)
+	tst.b 143(%a3)
 	jeq .L69
-	tst.b 142(%a3)
+	tst.b 140(%a3)
 	jne .L69
 	moveq #2,%d0
 	move.l %d0,_matchState
@@ -124,7 +124,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L13:
-	tst.b 145(%a3)
+	tst.b 143(%a3)
 	jeq .L79
 	move.w (%a2),%a0
 	move.l %a0,_winner
@@ -136,13 +136,13 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #2,%d1
 	cmp.l %d0,%d1
 	jlt .L14
-	move.b #1,172(%a2)
+	move.b #1,162(%a2)
 .L14:
 	cmp.w #0,%a0
 	jne .L80
-	tst.b 143(%a2)
+	tst.b 141(%a2)
 	jne .L17
-	tst.b 143(%a3)
+	tst.b 141(%a3)
 	jne .L17
 .L69:
 	moveq #1,%d0
@@ -175,8 +175,8 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L73:
-	clr.b 180(%a2)
-	clr.b 180(%a3)
+	clr.b 170(%a2)
+	clr.b 170(%a3)
 	move.l #12454496,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
@@ -234,7 +234,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	.word .L31-.L33
 	.word .L32-.L33
 .L75:
-	tst.b 145(%a2)
+	tst.b 143(%a2)
 	jeq .L13
 	move.w (%a3),%a0
 	move.l %a0,_winner
@@ -245,7 +245,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	move.l %d0,_fighter2Wins
 	cmp.l %d0,%d1
 	jlt .L14
-	move.b #1,172(%a3)
+	move.b #1,162(%a3)
 	jra .L14
 .L77:
 	moveq #7,%d0
@@ -309,11 +309,11 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	moveq #4,%d0
 	move.l %d0,_matchState
 	addq.l #4,%sp
-	tst.b 143(%a2)
+	tst.b 141(%a2)
 	jeq .L18
 	move.w (%a2),%a1
 	move.l %a1,_loser
-	move.b #1,180(%a3)
+	move.b #1,170(%a3)
 .L19:
 	move.l sprite,%a0
 	move.w #8,16712(%a0)
@@ -333,7 +333,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L78:
-	tst.b 142(%a2)
+	tst.b 140(%a2)
 	jne .L54
 	moveq #2,%d0
 	move.l %d0,_matchState
@@ -619,7 +619,7 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	unlk %fp
 	rts
 .L18:
-	tst.b 143(%a3)
+	tst.b 141(%a3)
 	jne .L20
 	move.l _loser,%a1
 	jra .L19
@@ -641,12 +641,12 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 	addq.l #4,%sp
 	jra .L25
 .L53:
-	tst.b 143(%a3)
+	tst.b 141(%a3)
 	jeq .L52
-	move.b #1,171(%a3)
+	move.b #1,161(%a3)
 	moveq #2,%d1
 	move.l %d1,_matchState
-	tst.b 145(%a2)
+	tst.b 143(%a2)
 	jeq .L54
 	jra .L78
 .L84:
@@ -660,13 +660,13 @@ __Z11matchUpdateP12SoundHandlerP7FighterS2_:
 .L20:
 	move.w (%a3),%a1
 	move.l %a1,_loser
-	move.b #1,180(%a2)
+	move.b #1,170(%a2)
 	jra .L19
 .L11:
 	moveq #-1,%d1
 	move.l %d1,16708(%a0)
-	move.b #1,180(%a2)
-	move.b #1,180(%a3)
+	move.b #1,170(%a2)
+	move.b #1,170(%a3)
 	moveq #2,%d0
 	move.l %d0,_matchState
 	move.w #4,raptor_clock_mode
