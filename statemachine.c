@@ -3032,6 +3032,7 @@ void StateScorpionHarpoon_Enter(struct StateMachine* stateMachine, struct Fighte
     sprite[fighter->lightningSpriteIndex].vbox = 16;
     sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->lightningSpriteIndex].x_ = fighter->projectilePositionX;
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
     sfxScorpionHarpoon(fighter->soundHandler);
     fighter->lastTicks = rapTicks;
@@ -3214,29 +3215,6 @@ void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* f
                 }
             }
 
-            if (fighter->direction == -1)
-            {
-                opponent->HarpoonDistance = fighter->positionX - opponent->positionX + FIGHTER_WIDTH;
-                opponent->HarpoonCenterX = opponent->positionX + (opponent->HarpoonDistance / 2) - ((opponent->HarpoonDistance - 64) / 2);
-            }
-            else
-            {
-                opponent->HarpoonDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
-                opponent->HarpoonCenterX = fighter->positionX + (opponent->HarpoonDistance / 2) + ((opponent->HarpoonDistance - 64) / 2);
-            }
-
-            if (opponent->IsHarpoonReelingIn)
-            {
-                sprite[opponent->lightningSpriteIndex].scale_x = opponent->HarpoonDistance - 64;                
-            }
-            else
-            {
-                sprite[opponent->lightningSpriteIndex].scale_x = opponent->HarpoonDistance - 96;
-                opponent->HarpoonCenterX += (32 * opponent->direction);
-            }
-
-            sprite[opponent->lightningSpriteIndex].scale_y = 32;
-
             if (fighter->IsSlidingToPositionX == false)
             {
                 stateMachineGoto(stateMachine, STATE_STUNNED, fighter, spriteAnimator);
@@ -3262,7 +3240,7 @@ void StateHitHarpoon_HandleInput(struct StateMachine* stateMachine, struct Fight
 // SCORPION REELING IN
 // vars[0] = Played sound
 // vars[1] = HarpoonShakeCount
-
+// vars[2] = rapTicks update scale
 void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     fighter->exitingState = false;
@@ -3271,6 +3249,7 @@ void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Figh
     fighter->lastTicks = rapTicks;
     fighter->vars[0] = 0;
     fighter->vars[1] = 0;
+    fighter->vars[2] = rapTicks;
     fighter->HarpoonShakeDirection = 1;
     fighter->HarpoonOffsetY = 32;
     fighter->projectileAnimator->currentFrame = 0;
@@ -3287,6 +3266,13 @@ void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Figh
 
 void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
+    if (rapTicks >= fighter->vars[2] + 2)
+    {
+        //sprite[fighter->lightningSpriteIndex].scale_x = fighter->HarpoonDistance - 64;
+        //sprite[fighter->lightningSpriteIndex].scale_y = 32;
+        fighter->vars[2] = rapTicks;
+    }
+
     if (fighter->vars[1] < 8 && rapTicks >= fighter->lastTicks + 2)
     {
         fighter->HarpoonOffsetY += 2 * fighter->HarpoonShakeDirection;
@@ -3301,7 +3287,7 @@ void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fig
             fighter->vars[0] = 1;
             sfxScorpionGetOverHere(fighter->soundHandler);
         }
-        
+
         if (opponent->currentState->Name == STATE_STUNNED)
         {
             stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
@@ -3314,6 +3300,29 @@ void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fig
     {
         sprite[fighter->lightningSpriteIndex].active = R_is_active;
     }
+
+    if (fighter->direction == -1)
+    {
+        fighter->HarpoonDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
+        //fighter->HarpoonCenterX = opponent->positionX + (FIGHTER_WIDTH / 2) - 8;// - FIGHTER_WIDTH + (fighter->HarpoonDistance / 2);// + ((fighter->HarpoonDistance - 32) / 2);
+
+        fighter->HarpoonCenterX = fighter->positionX + (fighter->HarpoonDistance / 2) - ((fighter->HarpoonDistance - 64) / 2) - FIGHTER_WIDTH - 16;
+    }
+    else
+    {
+        fighter->HarpoonDistance = fighter->positionX - opponent->positionX + FIGHTER_WIDTH;
+        fighter->HarpoonCenterX = fighter->positionX + (FIGHTER_WIDTH / 2) + 8;// + (fighter->HarpoonDistance / 2);// + ((fighter->HarpoonDistance - 64) / 2);
+    }
+
+    if (fighter->HarpoonDistance < 0)
+    {
+        fighter->HarpoonDistance *= -1;
+    }
+
+    sprite[fighter->lightningSpriteIndex].scale_x = fighter->HarpoonDistance + (fighter->direction == 1 ? 48 : 50);
+    sprite[fighter->lightningSpriteIndex].scale_y = 32;
+    //fighter->HarpoonCenterX += (32 * fighter->direction);
+
     updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + fighter->HarpoonOffsetY, fighter->direction);
 }
 
