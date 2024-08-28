@@ -434,7 +434,7 @@ __Z16switchAttractFMVv:
 	jsr RAPTOR_particle_clear
 	clr.w __ZL11fmvAnimator+14
 	pea __ZL18imageBuffer320x240
-	move.l #12784672,-(%sp)
+	move.l #12784720,-(%sp)
 	lea rapUnpack,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -481,7 +481,7 @@ __Z16switchAttractFMVv:
 	move.l %d1,1540(%a0)
 	pea 16.w
 	pea 8.w
-	move.l #12794064,-(%sp)
+	move.l #12794112,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	moveq #15,%d1
@@ -583,12 +583,12 @@ __Z16switchAttractFMVv:
 	.word .L34-.L35
 .L33:
 	pea __ZL14imageBufferFMV
-	move.l #12973232,-(%sp)
+	move.l #12973280,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12995056,-(%sp)
+	move.l #12995104,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -663,12 +663,12 @@ __Z16switchAttractFMVv:
 	rts
 .L34:
 	pea __ZL14imageBufferFMV
-	move.l #12995568,-(%sp)
+	move.l #12995616,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #13013600,-(%sp)
+	move.l #13013648,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -695,12 +695,12 @@ __Z16switchAttractFMVv:
 	jra .L27
 .L28:
 	pea __ZL14imageBufferFMV
-	move.l #12794096,-(%sp)
+	move.l #12794144,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12836784,-(%sp)
+	move.l #12836832,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -726,12 +726,12 @@ __Z16switchAttractFMVv:
 	jra .L27
 .L29:
 	pea __ZL14imageBufferFMV
-	move.l #12837296,-(%sp)
+	move.l #12837344,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12865696,-(%sp)
+	move.l #12865744,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -758,12 +758,12 @@ __Z16switchAttractFMVv:
 	jra .L27
 .L30:
 	pea __ZL14imageBufferFMV
-	move.l #12866208,-(%sp)
+	move.l #12866256,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12911664,-(%sp)
+	move.l #12911712,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -790,12 +790,12 @@ __Z16switchAttractFMVv:
 	jra .L27
 .L31:
 	pea __ZL14imageBufferFMV
-	move.l #12912176,-(%sp)
+	move.l #12912224,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12945264,-(%sp)
+	move.l #12945312,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -822,12 +822,12 @@ __Z16switchAttractFMVv:
 	jra .L27
 .L32:
 	pea __ZL14imageBufferFMV
-	move.l #12945776,-(%sp)
+	move.l #12945824,-(%sp)
 	jsr (%a2)
 	addq.l #8,%sp
 	pea 128.w
 	clr.l -(%sp)
-	move.l #12972720,-(%sp)
+	move.l #12972768,-(%sp)
 	lea jsfLoadClut,%a2
 	jsr (%a2)
 	move.l sprite,%a0
@@ -882,7 +882,7 @@ __Z15initLeaderboardv:
 	movem.l #56,-(%sp)
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #13014112,-(%sp)
+	move.l #13014160,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,428(%a0)
@@ -902,7 +902,7 @@ __Z15initLeaderboardv:
 	addq.l #8,%sp
 	pea 16.w
 	pea 8.w
-	move.l #13020688,-(%sp)
+	move.l #13020736,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #15,%d0
@@ -1089,7 +1089,7 @@ __Z15initGoroProfilev:
 	link.w %fp,#0
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #13020720,-(%sp)
+	move.l #13020768,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
@@ -1101,7 +1101,7 @@ __Z15initGoroProfilev:
 	addq.l #8,%sp
 	pea 240.w
 	clr.l -(%sp)
-	move.l #13069552,-(%sp)
+	move.l #13069600,-(%sp)
 	jsr jsfLoadClut
 	clr.b _fadedIn
 	clr.b _fadedOut
@@ -1134,7 +1134,7 @@ __Z20initShangTsungIslandv:
 	move.l %a2,-(%sp)
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #13070064,-(%sp)
+	move.l #13070112,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
@@ -1146,7 +1146,7 @@ __Z20initShangTsungIslandv:
 	addq.l #8,%sp
 	pea 240.w
 	clr.l -(%sp)
-	move.l #13092688,-(%sp)
+	move.l #13092736,-(%sp)
 	jsr jsfLoadClut
 	addq.l #8,%sp
 	moveq #15,%d1
@@ -1227,7 +1227,7 @@ __Z11initWinnersv:
 	clr.l _attractSlideIndex
 .L55:
 	pea __ZL18imageBuffer320x240
-	move.l #13093200,-(%sp)
+	move.l #13093248,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,428(%a0)
@@ -1240,7 +1240,7 @@ __Z11initWinnersv:
 	addq.l #8,%sp
 	pea 16.w
 	pea 8.w
-	move.l #13100784,-(%sp)
+	move.l #13100832,-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
 .L57:
@@ -1256,7 +1256,7 @@ __Z11initWinnersv:
 	cmp.l %d0,%d1
 	jne .L57
 	pea __ZL18imageBuffer320x240
-	move.l #13100816,-(%sp)
+	move.l #13100864,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
@@ -1267,7 +1267,7 @@ __Z11initWinnersv:
 	addq.l #8,%sp
 	pea 256.w
 	clr.l -(%sp)
-	move.l #13145536,-(%sp)
+	move.l #13145584,-(%sp)
 	jsr jsfLoadClut
 	lea (12,%sp),%sp
 	clr.b _fadedIn
@@ -5802,7 +5802,7 @@ __Z9basicmainv:
 .L225:
 	jsr RAPTOR_particle_clear
 	pea __ZL18imageBuffer320x240
-	move.l #13020720,-(%sp)
+	move.l #13020768,-(%sp)
 	jsr rapUnpack
 	move.l sprite,%a0
 	move.l #__ZL18imageBuffer320x240,236(%a0)
@@ -5814,7 +5814,7 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	pea 240.w
 	clr.l -(%sp)
-	move.l #13069552,-(%sp)
+	move.l #13069600,-(%sp)
 	jsr jsfLoadClut
 	clr.b _fadedIn
 	clr.b _fadedOut

@@ -1578,6 +1578,15 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
                 stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
             }
         }
+        else if (fighter1->currentState->Name == STATE_SCORPION_TELEPORT)
+        {
+            if (fighter2->currentState->Name != STATE_DUCKING)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+                stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine, STATE_HIT_HIGH, fighter2, spriteAnimator2);
+            }
+        }
     }
     else if (fighterIsBlocking(stateMachine, fighter2))
     {
@@ -1606,7 +1615,8 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
         {
             if (fighter1->currentState->Name == STATE_JUMPING_KICKING_FORWARD
                 || fighter1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD
-                || fighter1->currentState->Name == STATE_RAIDEN_TORPEDO)
+                || fighter1->currentState->Name == STATE_RAIDEN_TORPEDO
+                || fighter1->currentState->Name == STATE_SCORPION_TELEPORT)
             {
                 stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
                 stateMachineGoto(stateMachine, STATE_HIT_BLOCKING_KNOCKBACK, fighter2, spriteAnimator2);

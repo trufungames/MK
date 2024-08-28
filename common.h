@@ -261,7 +261,7 @@
 #define FIGHTER_RAIDEN_TORPEDO_DONE_X_SPEED 3
 #define FIGHTER_RAIDEN_TELEPORT_DISTANCE 20
 #define FIGHTER_KANG_FLYING_KICK_X_SPEED 14
-#define FIGHTER_SCORPION_TELEPORT_X_SPEED 13
+#define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
 
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 57

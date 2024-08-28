@@ -3815,7 +3815,7 @@ __Z10musicTitleP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13676496,-(%sp)
+	move.l #13676544,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%d0
@@ -3849,7 +3849,7 @@ __Z15musicStageGatesP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13766432,-(%sp)
+	move.l #13766480,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3870,7 +3870,7 @@ __Z13musicStagePitP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13823648,-(%sp)
+	move.l #13823696,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	moveq #60,%d0
@@ -3892,7 +3892,7 @@ __Z17musicStageWarriorP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13882400,-(%sp)
+	move.l #13882448,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3915,7 +3915,7 @@ __Z14musicStageGoroP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13927616,-(%sp)
+	move.l #13927664,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3938,7 +3938,7 @@ __Z16musicStageThroneP12SoundHandler:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13970624,-(%sp)
+	move.l #13970672,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
