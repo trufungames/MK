@@ -261,9 +261,10 @@
 #define FIGHTER_RAIDEN_TORPEDO_DONE_X_SPEED 3
 #define FIGHTER_RAIDEN_TELEPORT_DISTANCE 20
 #define FIGHTER_KANG_FLYING_KICK_X_SPEED 14
+#define FIGHTER_SCORPION_TELEPORT_X_SPEED 13
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 56
+#define STATE_TOTAL_COUNT 57
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -321,6 +322,7 @@
 #define STATE_HIT_HARPOON 53
 #define STATE_SCORPION_REELING_IN 54
 #define STATE_STUNNED 55
+#define STATE_SCORPION_TELEPORT 56
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

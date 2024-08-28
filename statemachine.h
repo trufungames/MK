@@ -297,6 +297,11 @@ void StateStunned_Update(struct StateMachine*, struct Fighter*, struct SpriteAni
 void StateStunned_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateStunned_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateScorpionTeleport_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionTeleport_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateScorpionTeleport_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionTeleport_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

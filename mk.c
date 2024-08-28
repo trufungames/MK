@@ -65,8 +65,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -244,6 +244,9 @@ static State stateScorpionReelingIn = {
 };
 static State stateStunned = {
 	STATE_STUNNED
+};
+static State stateScorpionTeleport = {
+	STATE_SCORPION_TELEPORT
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -3424,6 +3427,7 @@ void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -4335,6 +4339,10 @@ void basicmain()
 		stateStunned.update = &StateStunned_Update;
 		stateStunned.sleep = &StateStunned_Sleep;
 		stateStunned.handleInput = &StateStunned_HandleInput;
+		stateScorpionTeleport.enter = &StateScorpionTeleport_Enter;
+		stateScorpionTeleport.update = &StateScorpionTeleport_Update;
+		stateScorpionTeleport.sleep = &StateScorpionTeleport_Sleep;
+		stateScorpionTeleport.handleInput = &StateScorpionTeleport_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4392,6 +4400,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_HARPOON, &stateHitHarpoon);
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_REELING_IN, &stateScorpionReelingIn);
 		stateMachineAdd(&fighterStateMachine, STATE_STUNNED, &stateStunned);
+		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_TELEPORT, &stateScorpionTeleport);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4842,6 +4851,7 @@ void basicmain()
 		fighterScorpion.special1Frames = &scorpionHarpoonFrames;
 		fighterScorpion.special1EndFrames = &scorpionHarpoonEndFrames;
 		fighterScorpion.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
+		fighterScorpion.doSpecialMove2 = &doSpecial_Scorpion_Teleport;
 		fighterScorpion.idleFrames = &scorpionIdleFrames;
 		fighterScorpion.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion.winsFrames = &subzeroWinsFrames;
@@ -4894,6 +4904,7 @@ void basicmain()
 		fighterScorpion2.special1Frames = &scorpionHarpoonFrames;
 		fighterScorpion2.special1EndFrames = &scorpionHarpoonEndFrames;
 		fighterScorpion2.doSpecialMove1 = &doSpecial_Scorpion_Harpoon;
+		fighterScorpion2.doSpecialMove2 = &doSpecial_Scorpion_Teleport;
 		fighterScorpion2.idleFrames = &scorpionIdleFrames;
 		fighterScorpion2.dizzyFrames = &subzeroDizzyFrames;
 		fighterScorpion2.winsFrames = &subzeroWinsFrames;
@@ -7975,81 +7986,9 @@ void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter*
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SCORPION_HARPOON, fighter, fighter->spriteAnimator);
-	return;
+}
 
-	// if (!fighter->HasSetupSpecial1)
-	// {
-	// 	fighter->HarpoonBlocked = false;
-	// 	fighter->HasSetupSpecial1 = true;
-	// 	fighter->HasSetupProjectileEnd = false;
-	// 	fighter->IsHarpoonReelingIn = false;
-	// 	fighter->ProjectileMadeContact = false;
-	// 	fighter->HasSetupProjectileMovement = false;
-	// 	fighter->HarpoonFlashCount = 0;
-	// 	fighter->HarpoonFlashDirection = -1;
-	// 	animator->currentFrame = 0;
-	// 	fighter->projectilePositionX = fighter->positionX;
-	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-	// 	fighter->projectileAnimator->currentFrame = 0;
-	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
-	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
-	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
-	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
-	// 	fighter->lastTicks = rapTicks;
-	// }
-
-	// if (!fighter->ProjectileMadeContact)
-	// {
-	// 	if (animationIsComplete(animator, 4))
-	// 	{
-	// 		if (!fighter->HasSetupProjectileMovement)
-	// 		{
-	// 			fighter->HasSetupProjectileMovement = true;
-	// 			sfxScorpionHarpoon(fighter->soundHandler);
-	// 		}
-	// 		fighter->projectilePositionX += (6 * fighter->direction);
-
-	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
-	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-	// 		{
-	// 			fighter->IsDoingSpecial1 = false;
-	// 			playerinputInit(fighter);
-	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 		}
-	// 	}
-
-	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	// }
-	// else if (fighter->HarpoonBlocked)
-	// {
-	// 	if (!fighter->HasSetupProjectileEnd)
-	// 	{
-	// 		fighter->HasSetupProjectileEnd = true;
-	// 		fighter->projectileAnimator->currentFrame = 0;
-	// 	}
-
-	// 	if (fighter->HarpoonFlashDirection == -1)
-	// 	{
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
-	// 	}
-	// 	else
-	// 	{
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
-	// 	}
-
-	// 	fighter->HarpoonFlashDirection *= -1;
-	// 	fighter->HarpoonFlashCount++;
-
-	// 	if (fighter->HarpoonFlashCount > 8)
-	// 	{
-	// 		fighter->IsDoingSpecial1 = false;
-	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 	}
-	// }
+void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SCORPION_TELEPORT, fighter, fighter->spriteAnimator);
 }

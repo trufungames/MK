@@ -3306,7 +3306,7 @@ void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fig
         fighter->HarpoonDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
         //fighter->HarpoonCenterX = opponent->positionX + (FIGHTER_WIDTH / 2) - 8;// - FIGHTER_WIDTH + (fighter->HarpoonDistance / 2);// + ((fighter->HarpoonDistance - 32) / 2);
 
-        fighter->HarpoonCenterX = fighter->positionX + (fighter->HarpoonDistance / 2) - ((fighter->HarpoonDistance - 64) / 2) - FIGHTER_WIDTH - 16;
+        fighter->HarpoonCenterX = fighter->positionX + (fighter->HarpoonDistance / 2) - ((fighter->HarpoonDistance - 64) / 2) - FIGHTER_WIDTH - 32;
     }
     else
     {
@@ -3363,5 +3363,89 @@ void StateStunned_Sleep(struct StateMachine* stateMachine, struct Fighter* fight
 }
 
 void StateStunned_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SCORPION TELEPORT
+// vars[0] = jump index
+// vars[1] = teleported
+
+void StateScorpionTeleport_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 1;
+    fighter->lastTicks = rapTicks;
+    //Turn Scorpion Around
+    sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+    sprite[fighter->spriteIndex-1].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+    fighter->direction *= -1;
+}
+
+void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        if (!fighter->MadeContact)
+        {
+            //this already does our boundary check to make sure we aren't going past the stage boundaries...
+            fighterPositionXAdd(fighter, FIGHTER_SCORPION_TELEPORT_X_SPEED * fighter->direction);
+        }
+
+        fighter->positionY += JumpOffsets[fighter->vars[0]] > -4 ? JumpOffsets[fighter->vars[0]] : -4;
+        fighter->vars[0]++;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (fighter->vars[0] > 19)
+    {
+        //landed
+        impactFrameReset(fighter);
+        fighterSetOnFloor(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    if (fighter->vars[1] == 0)
+    {
+        if (fighter->direction == -1 && fighter->positionX <= CAMERA_BOUND_LEFT)
+        {
+            //we've hit the LEFT camera bound, so let's teleport to the other side
+            fighter->positionX = CAMERA_BOUND_RIGHT - FIGHTER_WIDTH;
+
+            //Turn Scorpion Around
+            sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+            sprite[fighter->spriteIndex-1].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+            fighter->direction *= -1;
+            fighter->vars[1] = 1;
+        }
+        else if (fighter->direction == 1 && fighter->positionX >= CAMERA_BOUND_RIGHT)
+        {
+            //we've hit the RIGHT camera bound, so let's teleport to the other side
+            fighter->positionX = CAMERA_BOUND_LEFT + FIGHTER_WIDTH;
+
+            //Turn Scorpion Around
+            sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+            sprite[fighter->spriteIndex-1].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
+            fighter->direction *= -1;
+            fighter->vars[1] = 1;
+        }
+    }    
+
+    updateSpriteAnimator(spriteAnimator, *fighter->jumpPunchFrames, fighter->JUMP_PUNCH_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateScorpionTeleport_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateScorpionTeleport_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }
