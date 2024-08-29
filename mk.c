@@ -65,8 +65,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };

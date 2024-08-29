@@ -1426,9 +1426,15 @@ __Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_:
 	moveq #10,%d0
 	add.l %d0,196(%a0)
 	move.b #1,200(%a0)
+	move.l %d3,-(%sp)
+	move.l %a2,-(%sp)
+	pea 1.w
+	move.l %d2,-(%sp)
+	jsr __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator
+	lea (16,%sp),%sp
 	move.l %d3,20(%fp)
 	move.l %a2,16(%fp)
-	move.b #27,%d1
+	moveq #27,%d1
 	move.l %d1,12(%fp)
 	move.l %d2,8(%fp)
 	movem.l -16(%fp),#1052

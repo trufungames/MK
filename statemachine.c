@@ -2290,6 +2290,7 @@ void StateTurningAround_Enter(struct StateMachine* stateMachine, struct Fighter*
     fighter->vars[0] = 0;
     spriteAnimator->currentFrame = 0;
     fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = false;
 }
 
 void StateTurningAround_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -2336,6 +2337,31 @@ void StateTurningAround_Update(struct StateMachine* stateMachine, struct Fighter
 
 void StateTurningAround_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    if (!animationIsComplete(spriteAnimator, fighter->TURN_FRAME_COUNT))
+    {
+        //turn the fighter around
+        fighter->vars[0] = 1;
+        fighter->direction *= -1;
+                
+        if (fighter->direction == 1)
+        {
+            sprite[fighter->spriteIndex].flip = R_is_normal;
+            sprite[fighter->spriteIndex-1].flip = R_is_normal;
+            sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+        }
+        else
+        {
+            sprite[fighter->spriteIndex].flip = R_is_flipped;
+            sprite[fighter->spriteIndex-1].flip = R_is_flipped;
+            sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+        }
+        
+        impactFrameReset(fighter);            
+    }
+
+    fighter->IsBeingDamaged = false;
+    fighter->IsTurning = false;
+    stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
 }
 
 void StateTurningAround_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -3387,7 +3413,7 @@ void StateScorpionTeleport_Enter(struct StateMachine* stateMachine, struct Fight
     sprite[fighter->spriteIndex-1].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
     sprite[fighter->lightningSpriteIndex].flip = fighter->direction == -1 ? R_is_flipped : R_is_normal;
     fighter->direction *= -1;
-    fighter->projectilePositionX = fighter->positionX;
+    fighter->projectilePositionX = fighter->positionX - (16 * fighter->direction);
     fighter->projectilePositionY = fighter->positionY;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
@@ -3396,10 +3422,12 @@ void StateScorpionTeleport_Enter(struct StateMachine* stateMachine, struct Fight
     sprite[fighter->lightningSpriteIndex].gwidth = 104;
     sprite[fighter->lightningSpriteIndex].hbox = 16;
     sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectilePositionX;
     sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_SCORPION_TELEPORT_clut),13,16);
+    sfxSwing(fighter->soundHandler);
 }
 
 void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3418,6 +3446,15 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         fighter->positionY += JumpOffsets[fighter->vars[0]] > -4 ? JumpOffsets[fighter->vars[0]] : -4;
         fighter->vars[0]++;
         fighter->lastTicks = rapTicks;
+
+        if (fighter->vars[0] == 6 || fighter->vars[0] == 10)
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+        }
+        else if (fighter->vars[0] == 8)
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+        }
     }
 
     if (fighter->vars[0] > 14)
@@ -3434,7 +3471,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         if (fighter->direction == -1 && fighter->positionX <= CAMERA_BOUND_LEFT)
         {
             //we've hit the LEFT camera bound, so let's teleport to the other side
-            fighter->positionX = CAMERA_BOUND_RIGHT - 1;
+            fighter->positionX = CAMERA_BOUND_RIGHT - 1 + FIGHTER_WIDTH;
 
             // //Turn Scorpion Around
             // sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
@@ -3445,7 +3482,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         else if (fighter->direction == 1 && fighter->positionX >= CAMERA_BOUND_RIGHT)
         {
             //we've hit the RIGHT camera bound, so let's teleport to the other side
-            fighter->positionX = CAMERA_BOUND_LEFT + 1;
+            fighter->positionX = CAMERA_BOUND_LEFT + 1 - FIGHTER_WIDTH;
 
             // //Turn Scorpion Around
             // sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;

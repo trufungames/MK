@@ -1595,6 +1595,7 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             if (fighter1->currentState->Name == STATE_SWEEPING)
             {
                 fighterAddPendingDamage(fighter2, DMG_SWEEP, false, fighter1, POINTS_SWEEP);
+                stateMachineSleep(stateMachine, 1, fighter2, spriteAnimator2);
                 stateMachineGoto(stateMachine, STATE_HIT_SWEEP, fighter2, spriteAnimator2);
                 return;
             }

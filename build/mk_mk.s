@@ -24295,8 +24295,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	0
-	.byte	0
+	.byte	1
+	.byte	1
 	.word	163
 	.word	120
 	.skip 2
