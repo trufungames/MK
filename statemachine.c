@@ -3059,6 +3059,7 @@ void StateScorpionHarpoon_Enter(struct StateMachine* stateMachine, struct Fighte
     sprite[fighter->lightningSpriteIndex].gwidth = 104;
     sprite[fighter->lightningSpriteIndex].hbox = 16;
     sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].flip = fighter->direction == -1 ? R_is_flipped : R_is_normal;
     sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectilePositionX;
@@ -3427,7 +3428,7 @@ void StateScorpionTeleport_Enter(struct StateMachine* stateMachine, struct Fight
     sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_SCORPION_TELEPORT_clut),13,16);
-    sfxSwing(fighter->soundHandler);
+    sfxScorpionTeleport(fighter->soundHandler);
 }
 
 void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3472,6 +3473,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         {
             //we've hit the LEFT camera bound, so let's teleport to the other side
             fighter->positionX = CAMERA_BOUND_RIGHT - 1 + FIGHTER_WIDTH;
+            opponent->IsTurning = true;
 
             // //Turn Scorpion Around
             // sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
@@ -3483,6 +3485,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         {
             //we've hit the RIGHT camera bound, so let's teleport to the other side
             fighter->positionX = CAMERA_BOUND_LEFT + 1 - FIGHTER_WIDTH;
+            opponent->IsTurning = true;
 
             // //Turn Scorpion Around
             // sprite[fighter->spriteIndex].flip = fighter->direction == 1 ? R_is_flipped : R_is_normal;
@@ -3502,5 +3505,36 @@ void StateScorpionTeleport_Sleep(struct StateMachine* stateMachine, struct Fight
 }
 
 void StateScorpionTeleport_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SUBZERO FREEZE
+
+void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->HarpoonBlocked = false;
+    fighter->ProjectileMadeContact = false;
+    fighter->HarpoonFlashCount = 0;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    //TODO projectile stuffs
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
+    sfxScorpionHarpoon(fighter->soundHandler);
+    fighter->lastTicks = rapTicks;
+}
+
+void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+}
+
+void StateSubzeroFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateSubzeroFreeze_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

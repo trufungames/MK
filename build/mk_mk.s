@@ -7,12 +7,6 @@ __Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator:
 	unlk %fp
 	rts
 	.even
-	.globl	__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator
-__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator:
-	link.w %fp,#0
-	unlk %fp
-	rts
-	.even
 	.globl	__Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator
 __Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
@@ -33,6 +27,18 @@ __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 408(%a0),-(%sp)
 	move.l %a0,-(%sp)
 	pea 52.w
+	move.l 8(%fp),-(%sp)
+	jsr __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
+	lea (16,%sp),%sp
+	unlk %fp
+	rts
+	.even
+	.globl	__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator
+__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator:
+	link.w %fp,#0
+	move.l 16(%fp),-(%sp)
+	move.l 12(%fp),-(%sp)
+	pea 57.w
 	move.l 8(%fp),-(%sp)
 	jsr __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator
 	lea (16,%sp),%sp
@@ -4059,6 +4065,10 @@ __Z9basicmainv:
 	move.l #__Z28StateScorpionTeleport_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL21stateScorpionTeleport+6
 	move.l #__Z27StateScorpionTeleport_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL21stateScorpionTeleport+10
 	move.l #__Z33StateScorpionTeleport_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL21stateScorpionTeleport+14
+	move.l #__Z24StateSubzeroFreeze_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL18stateSubzeroFreeze+2
+	move.l #__Z25StateSubzeroFreeze_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL18stateSubzeroFreeze+6
+	move.l #__Z24StateSubzeroFreeze_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL18stateSubzeroFreeze+10
+	move.l #__Z30StateSubzeroFreeze_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL18stateSubzeroFreeze+14
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
@@ -4342,6 +4352,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL21stateScorpionTeleport,(%sp)
 	pea 56.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL18stateSubzeroFreeze,(%sp)
+	pea 57.w
 	pea __ZL19fighterStateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+408
@@ -8737,7 +8752,11 @@ __ZL12stateStunned:
 __ZL21stateScorpionTeleport:
 	.word	56
 	.skip 16
-.lcomm __ZL19fighterStateMachine,228
+	.even
+__ZL18stateSubzeroFreeze:
+	.word	57
+	.skip 16
+.lcomm __ZL19fighterStateMachine,232
 	.even
 __ZL11fighterCage:
 	.word	1

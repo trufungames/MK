@@ -715,5 +715,14 @@ sample77:	dc.l	kang_flyingkick_sam		; start of sample
 s77_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample78:	dc.l	scorpion_teleport_sam		; start of sample
+			dc.l	scorpion_teleport_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s78_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 
 ; END OF FILE.

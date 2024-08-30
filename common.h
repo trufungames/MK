@@ -133,6 +133,7 @@
 #define SOUND_RAIDEN_TORPEDO 75
 #define SOUND_RAIDEN_IDLE_ZAP 76
 #define SOUND_KANG_FLYINGKICK 77
+#define SOUND_SCORPION_TELEPORT 78
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -264,7 +265,7 @@
 #define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 57
+#define STATE_TOTAL_COUNT 58
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -323,6 +324,7 @@
 #define STATE_SCORPION_REELING_IN 54
 #define STATE_STUNNED 55
 #define STATE_SCORPION_TELEPORT 56
+#define STATE_SUBZERO_FREEZE 57
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

@@ -248,6 +248,9 @@ static State stateStunned = {
 static State stateScorpionTeleport = {
 	STATE_SCORPION_TELEPORT
 };
+static State stateSubzeroFreeze = {
+	STATE_SUBZERO_FREEZE
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -4343,6 +4346,10 @@ void basicmain()
 		stateScorpionTeleport.update = &StateScorpionTeleport_Update;
 		stateScorpionTeleport.sleep = &StateScorpionTeleport_Sleep;
 		stateScorpionTeleport.handleInput = &StateScorpionTeleport_HandleInput;
+		stateSubzeroFreeze.enter = &StateSubzeroFreeze_Enter;
+		stateSubzeroFreeze.update = &StateSubzeroFreeze_Update;
+		stateSubzeroFreeze.sleep = &StateSubzeroFreeze_Sleep;
+		stateSubzeroFreeze.handleInput = &StateSubzeroFreeze_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4401,6 +4408,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_REELING_IN, &stateScorpionReelingIn);
 		stateMachineAdd(&fighterStateMachine, STATE_STUNNED, &stateStunned);
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_TELEPORT, &stateScorpionTeleport);
+		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FREEZE, &stateSubzeroFreeze);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -7924,6 +7932,8 @@ void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fi
 
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
+	stateMachineGoto(stateMachine, STATE_SUBZERO_FREEZE, fighter, animator);
+	return;
 	// if (!fighter->HasSetupSpecial1)
 	// {
 	// 	fighter->HasSetupSpecial1 = true;

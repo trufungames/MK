@@ -606,6 +606,17 @@ void sfxScorpionHarpoon(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SCORPION_HARPOON, 8000);
 }
 
+void sfxScorpionTeleport(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SCORPION_TELEPORT, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SCORPION_TELEPORT, 8000);
+}
+
 void sfxScorpionGetOverHere(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

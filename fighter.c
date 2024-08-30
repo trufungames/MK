@@ -1584,7 +1584,7 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             {
                 fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
                 stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
-                stateMachineGoto(stateMachine, STATE_HIT_HIGH, fighter2, spriteAnimator2);
+                stateMachineGoto(stateMachine, STATE_HIT_BACK, fighter2, spriteAnimator2);
             }
         }
     }
@@ -1638,7 +1638,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->positionX > fighter2->positionX + turnOffset
         && !fighter1->IsTurning
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
-        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
     {
         fighter1->IsTurning = true;
     }
@@ -1647,7 +1648,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->positionX + turnOffset < fighter2->positionX
         && !fighter1->IsTurning
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
-        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
     {
         fighter1->IsTurning = true;
     }
@@ -1656,7 +1658,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->positionX > fighter1->positionX + turnOffset
         && !fighter2->IsTurning
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
-        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
     {
         fighter2->IsTurning = true;
     }
@@ -1665,7 +1668,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->positionX + turnOffset < fighter1->positionX
         && !fighter2->IsTurning
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
-        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
     {
         fighter2->IsTurning = true;
     }

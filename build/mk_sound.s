@@ -2882,6 +2882,58 @@ __Z18sfxScorpionHarpoonP12SoundHandler:
 	lea (12,%sp),%sp
 	jra .L512
 	.even
+	.globl	__Z19sfxScorpionTeleportP12SoundHandler
+__Z19sfxScorpionTeleportP12SoundHandler:
+	link.w %fp,#0
+	move.l %a3,-(%sp)
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a2
+	tst.b (%a2)
+	jeq .L521
+	move.b 6(%a2),%d0
+	eor.b #1,%d0
+	move.b %d0,6(%a2)
+	jeq .L525
+	moveq #4,%d0
+	pea 8000.w
+	pea 78.w
+	move.l %d0,-(%sp)
+	lea u235PlaySampleFreq,%a3
+	jsr (%a3)
+	lea (12,%sp),%sp
+	tst.b 6(%a2)
+	jeq .L526
+.L528:
+	moveq #5,%d0
+	pea 8000.w
+	pea 78.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+.L521:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L525:
+	moveq #6,%d0
+	pea 8000.w
+	pea 78.w
+	move.l %d0,-(%sp)
+	lea u235PlaySampleFreq,%a3
+	jsr (%a3)
+	lea (12,%sp),%sp
+	tst.b 6(%a2)
+	jne .L528
+.L526:
+	moveq #7,%d0
+	pea 8000.w
+	pea 78.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+	jra .L521
+	.even
 	.globl	__Z22sfxScorpionGetOverHereP12SoundHandler
 __Z22sfxScorpionGetOverHereP12SoundHandler:
 	link.w %fp,#0
@@ -2889,140 +2941,88 @@ __Z22sfxScorpionGetOverHereP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b (%a2)
-	jne .L533
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L533:
-	eor.b #1,6(%a2)
-	jsr RAPTOR_random
-	btst #0,%d0
-	jeq .L523
-	tst.b 6(%a2)
-	jeq .L528
-	moveq #4,%d0
-.L524:
-	pea 8000.w
-	pea 69.w
-	move.l %d0,-(%sp)
-	lea u235PlaySampleFreq,%a3
-	jsr (%a3)
-	lea (12,%sp),%sp
-	tst.b 6(%a2)
-	jne .L534
-	moveq #7,%d0
-	pea 8000.w
-	pea 69.w
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	lea (12,%sp),%sp
-.L536:
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L523:
-	tst.b 6(%a2)
-	jeq .L530
-	moveq #4,%d0
-.L526:
-	pea 8000.w
-	pea 70.w
-	move.l %d0,-(%sp)
-	lea u235PlaySampleFreq,%a3
-	jsr (%a3)
-	lea (12,%sp),%sp
-	tst.b 6(%a2)
-	jeq .L531
-	moveq #5,%d0
-	pea 8000.w
-	pea 70.w
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	lea (12,%sp),%sp
-.L535:
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L531:
-	moveq #7,%d0
-	pea 8000.w
-	pea 70.w
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	lea (12,%sp),%sp
-	jra .L535
-.L530:
-	moveq #6,%d0
-	jra .L526
-.L528:
-	moveq #6,%d0
-	jra .L524
-.L534:
-	moveq #5,%d0
-	pea 8000.w
-	pea 69.w
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	lea (12,%sp),%sp
-	jra .L536
-	.even
-	.globl	__Z18sfxRaidenLightningP12SoundHandler
-__Z18sfxRaidenLightningP12SoundHandler:
-	link.w %fp,#0
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	move.l 8(%fp),%a2
-	tst.b (%a2)
-	jeq .L538
-	move.b 6(%a2),%d0
-	eor.b #1,%d0
-	move.b %d0,6(%a2)
-	jeq .L542
-	moveq #4,%d0
-	pea 8000.w
-	pea 63.w
-	move.l %d0,-(%sp)
-	lea u235PlaySampleFreq,%a3
-	jsr (%a3)
-	lea (12,%sp),%sp
-	tst.b 6(%a2)
-	jeq .L543
-.L545:
-	moveq #5,%d0
-	pea 8000.w
-	pea 63.w
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	lea (12,%sp),%sp
-.L538:
+	jne .L542
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
 .L542:
-	moveq #6,%d0
+	eor.b #1,6(%a2)
+	jsr RAPTOR_random
+	btst #0,%d0
+	jeq .L532
+	tst.b 6(%a2)
+	jeq .L537
+	moveq #4,%d0
+.L533:
 	pea 8000.w
-	pea 63.w
+	pea 69.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
 	lea (12,%sp),%sp
 	tst.b 6(%a2)
-	jne .L545
-.L543:
+	jne .L543
 	moveq #7,%d0
 	pea 8000.w
-	pea 63.w
+	pea 69.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
-	jra .L538
+.L545:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L532:
+	tst.b 6(%a2)
+	jeq .L539
+	moveq #4,%d0
+.L535:
+	pea 8000.w
+	pea 70.w
+	move.l %d0,-(%sp)
+	lea u235PlaySampleFreq,%a3
+	jsr (%a3)
+	lea (12,%sp),%sp
+	tst.b 6(%a2)
+	jeq .L540
+	moveq #5,%d0
+	pea 8000.w
+	pea 70.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+.L544:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L540:
+	moveq #7,%d0
+	pea 8000.w
+	pea 70.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+	jra .L544
+.L539:
+	moveq #6,%d0
+	jra .L535
+.L537:
+	moveq #6,%d0
+	jra .L533
+.L543:
+	moveq #5,%d0
+	pea 8000.w
+	pea 69.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+	jra .L545
 	.even
-	.globl	__Z21sfxRaidenLightningEndP12SoundHandler
-__Z21sfxRaidenLightningEndP12SoundHandler:
+	.globl	__Z18sfxRaidenLightningP12SoundHandler
+__Z18sfxRaidenLightningP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3035,7 +3035,7 @@ __Z21sfxRaidenLightningEndP12SoundHandler:
 	jeq .L551
 	moveq #4,%d0
 	pea 8000.w
-	pea 64.w
+	pea 63.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3045,7 +3045,7 @@ __Z21sfxRaidenLightningEndP12SoundHandler:
 .L554:
 	moveq #5,%d0
 	pea 8000.w
-	pea 64.w
+	pea 63.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3057,7 +3057,7 @@ __Z21sfxRaidenLightningEndP12SoundHandler:
 .L551:
 	moveq #6,%d0
 	pea 8000.w
-	pea 64.w
+	pea 63.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3067,14 +3067,14 @@ __Z21sfxRaidenLightningEndP12SoundHandler:
 .L552:
 	moveq #7,%d0
 	pea 8000.w
-	pea 64.w
+	pea 63.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L547
 	.even
-	.globl	__Z17sfxRaidenTeleportP12SoundHandler
-__Z17sfxRaidenTeleportP12SoundHandler:
+	.globl	__Z21sfxRaidenLightningEndP12SoundHandler
+__Z21sfxRaidenLightningEndP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3087,7 +3087,7 @@ __Z17sfxRaidenTeleportP12SoundHandler:
 	jeq .L560
 	moveq #4,%d0
 	pea 8000.w
-	pea 74.w
+	pea 64.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3097,7 +3097,7 @@ __Z17sfxRaidenTeleportP12SoundHandler:
 .L563:
 	moveq #5,%d0
 	pea 8000.w
-	pea 74.w
+	pea 64.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3109,7 +3109,7 @@ __Z17sfxRaidenTeleportP12SoundHandler:
 .L560:
 	moveq #6,%d0
 	pea 8000.w
-	pea 74.w
+	pea 64.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3119,14 +3119,14 @@ __Z17sfxRaidenTeleportP12SoundHandler:
 .L561:
 	moveq #7,%d0
 	pea 8000.w
-	pea 74.w
+	pea 64.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L556
 	.even
-	.globl	__Z16sfxRaidenTorpedoP12SoundHandler
-__Z16sfxRaidenTorpedoP12SoundHandler:
+	.globl	__Z17sfxRaidenTeleportP12SoundHandler
+__Z17sfxRaidenTeleportP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3139,7 +3139,7 @@ __Z16sfxRaidenTorpedoP12SoundHandler:
 	jeq .L569
 	moveq #4,%d0
 	pea 8000.w
-	pea 75.w
+	pea 74.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3149,7 +3149,7 @@ __Z16sfxRaidenTorpedoP12SoundHandler:
 .L572:
 	moveq #5,%d0
 	pea 8000.w
-	pea 75.w
+	pea 74.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3161,7 +3161,7 @@ __Z16sfxRaidenTorpedoP12SoundHandler:
 .L569:
 	moveq #6,%d0
 	pea 8000.w
-	pea 75.w
+	pea 74.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3171,14 +3171,14 @@ __Z16sfxRaidenTorpedoP12SoundHandler:
 .L570:
 	moveq #7,%d0
 	pea 8000.w
-	pea 75.w
+	pea 74.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L565
 	.even
-	.globl	__Z16sfxRaidenIdleZapP12SoundHandler
-__Z16sfxRaidenIdleZapP12SoundHandler:
+	.globl	__Z16sfxRaidenTorpedoP12SoundHandler
+__Z16sfxRaidenTorpedoP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3191,7 +3191,7 @@ __Z16sfxRaidenIdleZapP12SoundHandler:
 	jeq .L578
 	moveq #4,%d0
 	pea 8000.w
-	pea 76.w
+	pea 75.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3201,7 +3201,7 @@ __Z16sfxRaidenIdleZapP12SoundHandler:
 .L581:
 	moveq #5,%d0
 	pea 8000.w
-	pea 76.w
+	pea 75.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3213,7 +3213,7 @@ __Z16sfxRaidenIdleZapP12SoundHandler:
 .L578:
 	moveq #6,%d0
 	pea 8000.w
-	pea 76.w
+	pea 75.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3223,14 +3223,14 @@ __Z16sfxRaidenIdleZapP12SoundHandler:
 .L579:
 	moveq #7,%d0
 	pea 8000.w
-	pea 76.w
+	pea 75.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L574
 	.even
-	.globl	__Z17sfxKangFlyingKickP12SoundHandler
-__Z17sfxKangFlyingKickP12SoundHandler:
+	.globl	__Z16sfxRaidenIdleZapP12SoundHandler
+__Z16sfxRaidenIdleZapP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3243,7 +3243,7 @@ __Z17sfxKangFlyingKickP12SoundHandler:
 	jeq .L587
 	moveq #4,%d0
 	pea 8000.w
-	pea 77.w
+	pea 76.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3253,7 +3253,7 @@ __Z17sfxKangFlyingKickP12SoundHandler:
 .L590:
 	moveq #5,%d0
 	pea 8000.w
-	pea 77.w
+	pea 76.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3265,7 +3265,7 @@ __Z17sfxKangFlyingKickP12SoundHandler:
 .L587:
 	moveq #6,%d0
 	pea 8000.w
-	pea 77.w
+	pea 76.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3275,14 +3275,14 @@ __Z17sfxKangFlyingKickP12SoundHandler:
 .L588:
 	moveq #7,%d0
 	pea 8000.w
-	pea 77.w
+	pea 76.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L583
 	.even
-	.globl	__Z15sfxKanoHeadbuttP12SoundHandler
-__Z15sfxKanoHeadbuttP12SoundHandler:
+	.globl	__Z17sfxKangFlyingKickP12SoundHandler
+__Z17sfxKangFlyingKickP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3295,7 +3295,7 @@ __Z15sfxKanoHeadbuttP12SoundHandler:
 	jeq .L596
 	moveq #4,%d0
 	pea 8000.w
-	pea 53.w
+	pea 77.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3305,7 +3305,7 @@ __Z15sfxKanoHeadbuttP12SoundHandler:
 .L599:
 	moveq #5,%d0
 	pea 8000.w
-	pea 53.w
+	pea 77.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3317,7 +3317,7 @@ __Z15sfxKanoHeadbuttP12SoundHandler:
 .L596:
 	moveq #6,%d0
 	pea 8000.w
-	pea 53.w
+	pea 77.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3327,14 +3327,14 @@ __Z15sfxKanoHeadbuttP12SoundHandler:
 .L597:
 	moveq #7,%d0
 	pea 8000.w
-	pea 53.w
+	pea 77.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L592
 	.even
-	.globl	__Z11sfxCrowdAwwP12SoundHandler
-__Z11sfxCrowdAwwP12SoundHandler:
+	.globl	__Z15sfxKanoHeadbuttP12SoundHandler
+__Z15sfxKanoHeadbuttP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3347,7 +3347,7 @@ __Z11sfxCrowdAwwP12SoundHandler:
 	jeq .L605
 	moveq #4,%d0
 	pea 8000.w
-	pea 43.w
+	pea 53.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3357,7 +3357,7 @@ __Z11sfxCrowdAwwP12SoundHandler:
 .L608:
 	moveq #5,%d0
 	pea 8000.w
-	pea 43.w
+	pea 53.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3369,7 +3369,7 @@ __Z11sfxCrowdAwwP12SoundHandler:
 .L605:
 	moveq #6,%d0
 	pea 8000.w
-	pea 43.w
+	pea 53.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3379,14 +3379,14 @@ __Z11sfxCrowdAwwP12SoundHandler:
 .L606:
 	moveq #7,%d0
 	pea 8000.w
-	pea 43.w
+	pea 53.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L601
 	.even
-	.globl	__Z12sfxCrowdClapP12SoundHandler
-__Z12sfxCrowdClapP12SoundHandler:
+	.globl	__Z11sfxCrowdAwwP12SoundHandler
+__Z11sfxCrowdAwwP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3399,7 +3399,7 @@ __Z12sfxCrowdClapP12SoundHandler:
 	jeq .L614
 	moveq #4,%d0
 	pea 8000.w
-	pea 71.w
+	pea 43.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3409,7 +3409,7 @@ __Z12sfxCrowdClapP12SoundHandler:
 .L617:
 	moveq #5,%d0
 	pea 8000.w
-	pea 71.w
+	pea 43.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3421,7 +3421,7 @@ __Z12sfxCrowdClapP12SoundHandler:
 .L614:
 	moveq #6,%d0
 	pea 8000.w
-	pea 71.w
+	pea 43.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3431,14 +3431,14 @@ __Z12sfxCrowdClapP12SoundHandler:
 .L615:
 	moveq #7,%d0
 	pea 8000.w
-	pea 71.w
+	pea 43.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L610
 	.even
-	.globl	__Z21sfxAnnouncerExcellentP12SoundHandler
-__Z21sfxAnnouncerExcellentP12SoundHandler:
+	.globl	__Z12sfxCrowdClapP12SoundHandler
+__Z12sfxCrowdClapP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3451,7 +3451,7 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 	jeq .L623
 	moveq #4,%d0
 	pea 8000.w
-	pea 44.w
+	pea 71.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3461,7 +3461,7 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 .L626:
 	moveq #5,%d0
 	pea 8000.w
-	pea 44.w
+	pea 71.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3473,7 +3473,7 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 .L623:
 	moveq #6,%d0
 	pea 8000.w
-	pea 44.w
+	pea 71.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3483,14 +3483,14 @@ __Z21sfxAnnouncerExcellentP12SoundHandler:
 .L624:
 	moveq #7,%d0
 	pea 8000.w
-	pea 44.w
+	pea 71.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L619
 	.even
-	.globl	__Z17sfxAnnouncerLaughP12SoundHandler
-__Z17sfxAnnouncerLaughP12SoundHandler:
+	.globl	__Z21sfxAnnouncerExcellentP12SoundHandler
+__Z21sfxAnnouncerExcellentP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3503,7 +3503,7 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 	jeq .L632
 	moveq #4,%d0
 	pea 8000.w
-	pea 45.w
+	pea 44.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3513,7 +3513,7 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 .L635:
 	moveq #5,%d0
 	pea 8000.w
-	pea 45.w
+	pea 44.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3525,7 +3525,7 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 .L632:
 	moveq #6,%d0
 	pea 8000.w
-	pea 45.w
+	pea 44.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3535,14 +3535,14 @@ __Z17sfxAnnouncerLaughP12SoundHandler:
 .L633:
 	moveq #7,%d0
 	pea 8000.w
-	pea 45.w
+	pea 44.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L628
 	.even
-	.globl	__Z12sfxFinishHerP12SoundHandler
-__Z12sfxFinishHerP12SoundHandler:
+	.globl	__Z17sfxAnnouncerLaughP12SoundHandler
+__Z17sfxAnnouncerLaughP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3555,7 +3555,7 @@ __Z12sfxFinishHerP12SoundHandler:
 	jeq .L641
 	moveq #4,%d0
 	pea 8000.w
-	pea 46.w
+	pea 45.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3565,7 +3565,7 @@ __Z12sfxFinishHerP12SoundHandler:
 .L644:
 	moveq #5,%d0
 	pea 8000.w
-	pea 46.w
+	pea 45.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3577,7 +3577,7 @@ __Z12sfxFinishHerP12SoundHandler:
 .L641:
 	moveq #6,%d0
 	pea 8000.w
-	pea 46.w
+	pea 45.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3587,14 +3587,14 @@ __Z12sfxFinishHerP12SoundHandler:
 .L642:
 	moveq #7,%d0
 	pea 8000.w
-	pea 46.w
+	pea 45.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L637
 	.even
-	.globl	__Z12sfxFinishHimP12SoundHandler
-__Z12sfxFinishHimP12SoundHandler:
+	.globl	__Z12sfxFinishHerP12SoundHandler
+__Z12sfxFinishHerP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3607,7 +3607,7 @@ __Z12sfxFinishHimP12SoundHandler:
 	jeq .L650
 	moveq #4,%d0
 	pea 8000.w
-	pea 47.w
+	pea 46.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3617,7 +3617,7 @@ __Z12sfxFinishHimP12SoundHandler:
 .L653:
 	moveq #5,%d0
 	pea 8000.w
-	pea 47.w
+	pea 46.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3629,7 +3629,7 @@ __Z12sfxFinishHimP12SoundHandler:
 .L650:
 	moveq #6,%d0
 	pea 8000.w
-	pea 47.w
+	pea 46.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3639,14 +3639,14 @@ __Z12sfxFinishHimP12SoundHandler:
 .L651:
 	moveq #7,%d0
 	pea 8000.w
-	pea 47.w
+	pea 46.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L646
 	.even
-	.globl	__Z7sfxWinsP12SoundHandler
-__Z7sfxWinsP12SoundHandler:
+	.globl	__Z12sfxFinishHimP12SoundHandler
+__Z12sfxFinishHimP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3659,7 +3659,7 @@ __Z7sfxWinsP12SoundHandler:
 	jeq .L659
 	moveq #4,%d0
 	pea 8000.w
-	pea 48.w
+	pea 47.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3669,7 +3669,7 @@ __Z7sfxWinsP12SoundHandler:
 .L662:
 	moveq #5,%d0
 	pea 8000.w
-	pea 48.w
+	pea 47.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3681,7 +3681,7 @@ __Z7sfxWinsP12SoundHandler:
 .L659:
 	moveq #6,%d0
 	pea 8000.w
-	pea 48.w
+	pea 47.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3691,14 +3691,14 @@ __Z7sfxWinsP12SoundHandler:
 .L660:
 	moveq #7,%d0
 	pea 8000.w
-	pea 48.w
+	pea 47.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L655
 	.even
-	.globl	__Z11sfxFlawlessP12SoundHandler
-__Z11sfxFlawlessP12SoundHandler:
+	.globl	__Z7sfxWinsP12SoundHandler
+__Z7sfxWinsP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3711,7 +3711,7 @@ __Z11sfxFlawlessP12SoundHandler:
 	jeq .L668
 	moveq #4,%d0
 	pea 8000.w
-	pea 49.w
+	pea 48.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3721,7 +3721,7 @@ __Z11sfxFlawlessP12SoundHandler:
 .L671:
 	moveq #5,%d0
 	pea 8000.w
-	pea 49.w
+	pea 48.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3733,7 +3733,7 @@ __Z11sfxFlawlessP12SoundHandler:
 .L668:
 	moveq #6,%d0
 	pea 8000.w
-	pea 49.w
+	pea 48.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3743,14 +3743,14 @@ __Z11sfxFlawlessP12SoundHandler:
 .L669:
 	moveq #7,%d0
 	pea 8000.w
-	pea 49.w
+	pea 48.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L664
 	.even
-	.globl	__Z11sfxFatalityP12SoundHandler
-__Z11sfxFatalityP12SoundHandler:
+	.globl	__Z11sfxFlawlessP12SoundHandler
+__Z11sfxFlawlessP12SoundHandler:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
@@ -3763,7 +3763,7 @@ __Z11sfxFatalityP12SoundHandler:
 	jeq .L677
 	moveq #4,%d0
 	pea 8000.w
-	pea 50.w
+	pea 49.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3773,7 +3773,7 @@ __Z11sfxFatalityP12SoundHandler:
 .L680:
 	moveq #5,%d0
 	pea 8000.w
-	pea 50.w
+	pea 49.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
@@ -3785,7 +3785,7 @@ __Z11sfxFatalityP12SoundHandler:
 .L677:
 	moveq #6,%d0
 	pea 8000.w
-	pea 50.w
+	pea 49.w
 	move.l %d0,-(%sp)
 	lea u235PlaySampleFreq,%a3
 	jsr (%a3)
@@ -3795,11 +3795,63 @@ __Z11sfxFatalityP12SoundHandler:
 .L678:
 	moveq #7,%d0
 	pea 8000.w
-	pea 50.w
+	pea 49.w
 	move.l %d0,-(%sp)
 	jsr (%a3)
 	lea (12,%sp),%sp
 	jra .L673
+	.even
+	.globl	__Z11sfxFatalityP12SoundHandler
+__Z11sfxFatalityP12SoundHandler:
+	link.w %fp,#0
+	move.l %a3,-(%sp)
+	move.l %a2,-(%sp)
+	move.l 8(%fp),%a2
+	tst.b (%a2)
+	jeq .L682
+	move.b 6(%a2),%d0
+	eor.b #1,%d0
+	move.b %d0,6(%a2)
+	jeq .L686
+	moveq #4,%d0
+	pea 8000.w
+	pea 50.w
+	move.l %d0,-(%sp)
+	lea u235PlaySampleFreq,%a3
+	jsr (%a3)
+	lea (12,%sp),%sp
+	tst.b 6(%a2)
+	jeq .L687
+.L689:
+	moveq #5,%d0
+	pea 8000.w
+	pea 50.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+.L682:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L686:
+	moveq #6,%d0
+	pea 8000.w
+	pea 50.w
+	move.l %d0,-(%sp)
+	lea u235PlaySampleFreq,%a3
+	jsr (%a3)
+	lea (12,%sp),%sp
+	tst.b 6(%a2)
+	jne .L689
+.L687:
+	moveq #7,%d0
+	pea 8000.w
+	pea 50.w
+	move.l %d0,-(%sp)
+	jsr (%a3)
+	lea (12,%sp),%sp
+	jra .L682
 	.even
 	.globl	__Z10musicTitleP12SoundHandler
 __Z10musicTitleP12SoundHandler:
@@ -3807,26 +3859,26 @@ __Z10musicTitleP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L686
+	jne .L695
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L686:
+.L695:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13676544,-(%sp)
+	move.l #13678032,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%d0
-	jlt .L687
+	jlt .L696
 	asr.w #2,%d0
 	move.w %d0,%a0
 	move.l %a0,8(%fp)
 	move.l -4(%fp),%a2
 	unlk %fp
 	jra _u235ModuleVol
-.L687:
+.L696:
 	addq.w #3,%d0
 	asr.w #2,%d0
 	move.w %d0,%a0
@@ -3841,15 +3893,15 @@ __Z15musicStageGatesP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L692
+	jne .L701
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L692:
+.L701:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13766480,-(%sp)
+	move.l #13767968,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3863,14 +3915,14 @@ __Z13musicStagePitP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b 1(%a0)
-	jne .L697
+	jne .L706
 	unlk %fp
 	rts
-.L697:
+.L706:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13823696,-(%sp)
+	move.l #13825184,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	moveq #60,%d0
@@ -3884,15 +3936,15 @@ __Z17musicStageWarriorP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L702
+	jne .L711
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L702:
+.L711:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13882448,-(%sp)
+	move.l #13883936,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3907,15 +3959,15 @@ __Z14musicStageGoroP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L707
+	jne .L716
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L707:
+.L716:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13927664,-(%sp)
+	move.l #13929152,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3930,15 +3982,15 @@ __Z16musicStageThroneP12SoundHandler:
 	move.l %a2,-(%sp)
 	move.l 8(%fp),%a2
 	tst.b 1(%a2)
-	jne .L712
+	jne .L721
 	move.l -4(%fp),%a2
 	unlk %fp
 	rts
-.L712:
+.L721:
 	jsr __Z14u235StopModulev
 	jsr __Z11u235Silencev
 	pea 1.w
-	move.l #13970672,-(%sp)
+	move.l #13972160,-(%sp)
 	jsr __Z14u235PlayModuleis
 	addq.l #8,%sp
 	move.w 4(%a2),%a2
@@ -3967,11 +4019,11 @@ __Z15soundGetChannelP12SoundHandler:
 	link.w %fp,#0
 	move.l 8(%fp),%a0
 	tst.b 6(%a0)
-	jne .L720
+	jne .L729
 	moveq #6,%d0
 	unlk %fp
 	rts
-.L720:
+.L729:
 	moveq #4,%d0
 	unlk %fp
 	rts

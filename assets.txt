@@ -200,6 +200,7 @@ ROM,raiden_teleport_sam,sfx_raw8000,ASSETS\SFX\raiden_teleport.wav
 ROM,raiden_torpedo_sam,sfx_raw8000,ASSETS\SFX\raiden_torpedo.wav
 ROM,raiden_idle_zap_sam,sfx_raw8000,ASSETS\SFX\raiden_idle_zap.wav
 ROM,kang_flyingkick_sam,sfx_raw8000,ASSETS\SFX\kang_flyingkick.wav
+ROM,scorpion_teleport_sam,sfx_raw8000,ASSETS\SFX\scorpion_teleport.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
