@@ -265,7 +265,7 @@
 #define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 58
+#define STATE_TOTAL_COUNT 59
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -325,6 +325,7 @@
 #define STATE_STUNNED 55
 #define STATE_SCORPION_TELEPORT 56
 #define STATE_SUBZERO_FREEZE 57
+#define STATE_HIT_FREEZE 58
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

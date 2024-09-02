@@ -251,6 +251,9 @@ static State stateScorpionTeleport = {
 static State stateSubzeroFreeze = {
 	STATE_SUBZERO_FREEZE
 };
+static State stateHitFreeze = {
+	STATE_HIT_FREEZE
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -4350,6 +4353,10 @@ void basicmain()
 		stateSubzeroFreeze.update = &StateSubzeroFreeze_Update;
 		stateSubzeroFreeze.sleep = &StateSubzeroFreeze_Sleep;
 		stateSubzeroFreeze.handleInput = &StateSubzeroFreeze_HandleInput;
+		stateHitFreeze.enter = &StateHitFreeze_Enter;
+		stateHitFreeze.update = &StateHitFreeze_Update;
+		stateHitFreeze.sleep = &StateHitFreeze_Sleep;
+		stateHitFreeze.handleInput = &StateHitFreeze_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4409,6 +4416,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_STUNNED, &stateStunned);
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_TELEPORT, &stateScorpionTeleport);
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FREEZE, &stateSubzeroFreeze);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_FREEZE, &stateHitFreeze);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;

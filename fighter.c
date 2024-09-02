@@ -1238,12 +1238,12 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                     fighterHandleImpact(stateMachine, fighter2, spriteAnimator2, fighter1, spriteAnimator1);
                 }
 
-                if ((fighter1->currentState->Name == STATE_THROWING_PROJECTILE || fighter1->currentState->Name == STATE_SCORPION_HARPOON) && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
+                if ((fighter1->currentState->Name == STATE_THROWING_PROJECTILE || fighter1->currentState->Name == STATE_SCORPION_HARPOON || fighter1->currentState->Name == STATE_SUBZERO_FREEZE) && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter1, fighter2);
                 }
                 
-                if ((fighter2->currentState->Name == STATE_THROWING_PROJECTILE || fighter2->currentState->Name == STATE_SCORPION_HARPOON) && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
+                if ((fighter2->currentState->Name == STATE_THROWING_PROJECTILE || fighter2->currentState->Name == STATE_SCORPION_HARPOON || fighter2->currentState->Name == STATE_SUBZERO_FREEZE) && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter2, fighter1);
                 }
@@ -1356,6 +1356,34 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
         else
         {
             fighter1->HarpoonBlocked = true;
+        }
+    }
+    else if (fighter1->fighterIndex == SUBZERO)
+    {
+        if (!fighter1->ProjectileMadeContact)
+        {
+            fighter1->ProjectileMadeContact = true;
+
+            if (fighter2->IsFrozen)
+            {
+                //unfreeze the opponent, freeze Sub-Zero
+                stateMachineSleep(stateMachine, 8, fighter2, fighter2->spriteAnimator);
+                stateMachineGoto(stateMachine, STATE_IDLE, fighter2, fighter2->spriteAnimator);
+                stateMachineGoto(stateMachine, STATE_HIT_FREEZE, fighter1, fighter1->spriteAnimator);
+                return;
+            }
+
+            if (!fighterIsBlocking(stateMachine, fighter2))
+            {
+                fighterAddPendingDamage(fighter2, DMG_FREEZE, false, fighter1, POINTS_PROJECTILE);
+                stateMachineGoto(stateMachine, STATE_HIT_FREEZE, fighter2, fighter2->spriteAnimator);
+                return;
+            }
+            else
+            {
+                stateMachineGoto(stateMachine, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+                return;
+            }
         }
     }
     

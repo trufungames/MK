@@ -152,6 +152,10 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
         sprite[fighter->lightningSpriteIndex].x_ = fighter->direction == 1 ? fighter->positionX - 4 : fighter->positionX - 12;
         sprite[fighter->lightningSpriteIndex].y_ = fighter->positionY;
     }
+    else
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    }
 }
 
 void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3515,9 +3519,6 @@ void StateScorpionTeleport_HandleInput(struct StateMachine* stateMachine, struct
 void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     fighter->exitingState = false;
-    fighter->HarpoonBlocked = false;
-    fighter->ProjectileMadeContact = false;
-    fighter->HarpoonFlashCount = 0;
     fighter->vars[0] = 0;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
@@ -3558,7 +3559,7 @@ void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter
 		}
 
 		updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
 	}
 	else
 	{
@@ -3578,14 +3579,84 @@ void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter
             return;
 		}
 
-		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
     }
 }
 
 void StateSubzeroFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterUnfreeze(fighter);
 }
 
 void StateSubzeroFreeze_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT FREEZE
+// vars[0] = FrozenShakeComplete
+// vars[1] = FrozenShakeDirection
+// vars[2] = FrozenShakeCount
+
+void StateHitFreeze_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 1;
+    fighter->vars[2] = 0;
+    fighter->exitingState = false;
+    fighter->lastTicks = rapTicks;
+    fighter->IsFrozen = true;
+    fighter->IsFrozen = true;
+    fighter->AcceptingInput = false;
+    fighter->FrozenShakeTicks = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->NoSound = true;
+
+    if (fighter->isPlayer1)
+    {
+        jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),14,16);
+    }
+    else
+    {
+        jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),15,16);
+    }
+    
+    sfxSubzeroFreezeEnd(fighter->soundHandler);
+    fighterTakeDamage(fighter, fighter->pendingDamage);    
+}
+
+void StateHitFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0)
+    {
+        if (rapTicks > fighter->FrozenShakeTicks + 2)
+        {
+            fighter->positionX += (2 * fighter->vars[1]);
+            fighter->vars[1] *= -1;
+            fighter->vars[2]++;
+            fighter->FrozenShakeTicks = rapTicks;
+        }
+
+        if (fighter->vars[2] >= 6)
+        {
+            fighter->vars[0] = 1;
+        }
+    }
+
+    if (rapTicks > fighter->lastTicks + 60 * 3)
+    {
+        fighterUnfreeze(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+}
+
+void StateHitFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitFreeze_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

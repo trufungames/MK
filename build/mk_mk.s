@@ -4069,6 +4069,10 @@ __Z9basicmainv:
 	move.l #__Z25StateSubzeroFreeze_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL18stateSubzeroFreeze+6
 	move.l #__Z24StateSubzeroFreeze_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL18stateSubzeroFreeze+10
 	move.l #__Z30StateSubzeroFreeze_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL18stateSubzeroFreeze+14
+	move.l #__Z20StateHitFreeze_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateHitFreeze+2
+	move.l #__Z21StateHitFreeze_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL14stateHitFreeze+6
+	move.l #__Z20StateHitFreeze_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateHitFreeze+10
+	move.l #__Z26StateHitFreeze_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateHitFreeze+14
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
@@ -4357,6 +4361,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL18stateSubzeroFreeze,(%sp)
 	pea 57.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL14stateHitFreeze,(%sp)
+	pea 58.w
 	pea __ZL19fighterStateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+408
@@ -8756,7 +8765,11 @@ __ZL21stateScorpionTeleport:
 __ZL18stateSubzeroFreeze:
 	.word	57
 	.skip 16
-.lcomm __ZL19fighterStateMachine,232
+	.even
+__ZL14stateHitFreeze:
+	.word	58
+	.skip 16
+.lcomm __ZL19fighterStateMachine,236
 	.even
 __ZL11fighterCage:
 	.word	1
