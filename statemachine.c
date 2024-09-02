@@ -3510,6 +3510,7 @@ void StateScorpionTeleport_HandleInput(struct StateMachine* stateMachine, struct
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SUBZERO FREEZE
+// vars[0] = HasSetupProjectileEnd
 
 void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -3517,18 +3518,68 @@ void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter*
     fighter->HarpoonBlocked = false;
     fighter->ProjectileMadeContact = false;
     fighter->HarpoonFlashCount = 0;
+    fighter->vars[0] = 0;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
-    //TODO projectile stuffs
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
-    sfxScorpionHarpoon(fighter->soundHandler);
+    fighter->ProjectileMadeContact = false;
+    fighter->projectilePositionX = fighter->positionX;
+    fighter->projectilePositionX += fighter->direction == -1 ? 0 : 0;
+    fighter->projectilePositionY = fighter->positionY;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
     fighter->lastTicks = rapTicks;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16; 
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
+    sfxSubzeroFreeze(fighter->soundHandler);
+    fighter->lastTicks = rapTicks;
+    sprite[fighter->lightningSpriteIndex].active = R_is_active;
 }
 
 void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-    updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 19, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+    if (!fighter->ProjectileMadeContact)
+	{
+		if (animationIsComplete(fighter->projectileAnimator, 9))
+		{
+			fighter->projectilePositionX += (8 * fighter->direction);
+
+			if (fighter->direction == 1 && fighter->projectilePositionX > 320
+				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
+			{
+				playerinputInit(fighter);
+				sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+                return;
+			}
+		}
+
+		updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+	}
+	else
+	{
+		if (fighter->vars[0] == 0)
+		{
+            //reset the projectileAnimator for the ending animation
+			fighter->vars[0] = 1;
+			fighter->projectileAnimator->currentFrame = 0;
+		}
+
+		if (animationIsComplete(fighter->projectileAnimator, 5))
+		{
+			sprite[fighter->lightningSpriteIndex].was_hit = -1;
+			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+			fighterResetRaidenLightning(fighter);
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+		}
+
+		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
+    }
 }
 
 void StateSubzeroFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
