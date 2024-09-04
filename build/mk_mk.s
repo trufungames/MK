@@ -4073,6 +4073,10 @@ __Z9basicmainv:
 	move.l #__Z21StateHitFreeze_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL14stateHitFreeze+6
 	move.l #__Z20StateHitFreeze_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateHitFreeze+10
 	move.l #__Z26StateHitFreeze_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateHitFreeze+14
+	move.l #__Z19StateIdleFall_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIdleFall+2
+	move.l #__Z20StateIdleFall_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL13stateIdleFall+6
+	move.l #__Z19StateIdleFall_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIdleFall+10
+	move.l #__Z25StateIdleFall_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIdleFall+14
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
@@ -4366,6 +4370,11 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL14stateHitFreeze,(%sp)
 	pea 58.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL13stateIdleFall,(%sp)
+	pea 59.w
 	pea __ZL19fighterStateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+408
@@ -6324,6 +6333,8 @@ __Z9basicmainv:
 	move.l %d5,%a0
 	move.w (%a0),96(%a1)
 	move.w (%a1),96(%a0)
+	move.l %d5,604(%a1)
+	move.l %d4,604(%a0)
 	jsr __Z9musicStopv
 	jsr __Z12stageSetNextv
 	move.w _p2Cursor,%a1
@@ -8769,7 +8780,11 @@ __ZL18stateSubzeroFreeze:
 __ZL14stateHitFreeze:
 	.word	58
 	.skip 16
-.lcomm __ZL19fighterStateMachine,236
+	.even
+__ZL13stateIdleFall:
+	.word	59
+	.skip 16
+.lcomm __ZL19fighterStateMachine,240
 	.even
 __ZL11fighterCage:
 	.word	1
@@ -8816,7 +8831,7 @@ __ZL11fighterCage:
 	.word	11
 	.word	8
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL12cageAnimator:
 	.long	14
@@ -11228,7 +11243,7 @@ __ZL12fighterCage2:
 	.word	11
 	.word	8
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL13cageAnimator2:
 	.long	16
@@ -11292,7 +11307,7 @@ __ZL11fighterKano:
 	.word	0
 	.word	28
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL12kanoAnimator:
 	.long	14
@@ -13677,7 +13692,7 @@ __ZL12fighterKano2:
 	.word	0
 	.word	28
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL13kanoAnimator2:
 	.long	16
@@ -13733,7 +13748,7 @@ __ZL13fighterRaiden:
 	.word	5
 	.word	20
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL15lightningFrames:
 	.word	64
@@ -16467,7 +16482,7 @@ __ZL14fighterRaiden2:
 	.word	5
 	.word	20
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL15raidenAnimator2:
 	.long	16
@@ -16523,7 +16538,7 @@ __ZL11fighterKang:
 	.word	0
 	.word	9
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL12kangAnimator:
 	.long	14
@@ -18856,7 +18871,7 @@ __ZL12fighterKang2:
 	.word	0
 	.word	9
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL13kangAnimator2:
 	.long	16
@@ -18912,7 +18927,7 @@ __ZL15fighterScorpion:
 	.word	0
 	.word	19
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL16scorpionAnimator:
 	.long	14
@@ -21289,7 +21304,7 @@ __ZL16fighterScorpion2:
 	.word	0
 	.word	19
 	.word	5
-	.skip 512
+	.skip 516
 	.even
 __ZL17scorpionAnimator2:
 	.long	16
@@ -21340,7 +21355,7 @@ __ZL14fighterSubzero:
 	.word	26
 	.word	7
 	.word	6
-	.skip 522
+	.skip 526
 	.even
 __ZL15subzeroAnimator:
 	.long	14
@@ -21944,7 +21959,7 @@ __ZL15fighterSubzero2:
 	.word	26
 	.word	7
 	.word	6
-	.skip 522
+	.skip 526
 	.even
 __ZL16subzeroAnimator2:
 	.long	16
@@ -21995,7 +22010,7 @@ __ZL12fighterSonya:
 	.word	26
 	.word	7
 	.word	6
-	.skip 522
+	.skip 526
 	.even
 __ZL13sonyaAnimator:
 	.long	14
@@ -24315,7 +24330,7 @@ __ZL13fighterSonya2:
 	.word	26
 	.word	7
 	.word	6
-	.skip 522
+	.skip 526
 	.even
 __ZL14sonyaAnimator2:
 	.long	16
@@ -24327,8 +24342,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	1
-	.byte	1
+	.byte	0
+	.byte	0
 	.word	163
 	.word	120
 	.skip 2

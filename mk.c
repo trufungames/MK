@@ -65,8 +65,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -253,6 +253,9 @@ static State stateSubzeroFreeze = {
 };
 static State stateHitFreeze = {
 	STATE_HIT_FREEZE
+};
+static State stateIdleFall = {
+	STATE_IDLE_FALL
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -4357,6 +4360,10 @@ void basicmain()
 		stateHitFreeze.update = &StateHitFreeze_Update;
 		stateHitFreeze.sleep = &StateHitFreeze_Sleep;
 		stateHitFreeze.handleInput = &StateHitFreeze_HandleInput;
+		stateIdleFall.enter = &StateIdleFall_Enter;
+		stateIdleFall.update = &StateIdleFall_Update;
+		stateIdleFall.sleep = &StateIdleFall_Sleep;
+		stateIdleFall.handleInput = &StateIdleFall_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4417,6 +4424,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_TELEPORT, &stateScorpionTeleport);
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FREEZE, &stateSubzeroFreeze);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_FREEZE, &stateHitFreeze);
+		stateMachineAdd(&fighterStateMachine, STATE_IDLE_FALL, &stateIdleFall);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -6104,6 +6112,9 @@ void basicmain()
 					
 					fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;
 					fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
+
+					fighter1Ptr->Opponent = fighter2Ptr;
+					fighter2Ptr->Opponent = fighter1Ptr;
 
 					musicStop();
 					stageSetNext();

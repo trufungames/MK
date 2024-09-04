@@ -156,6 +156,12 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
     {
         sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     }
+
+    if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE_FALL, fighter, spriteAnimator);
+        return;
+    }
 }
 
 void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -535,19 +541,19 @@ void StateJumping_Update(struct StateMachine* stateMachine, struct Fighter* figh
 
     if (fighter->vars[0] == 0 || fighter->vars[0] == 1)
     {
-        animateFrame(fighter->spriteIndex, 0, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, fighter->spriteIndex, 0, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     }
     else if (fighter->vars[0] == 18)
     {
-        animateFrame(fighter->spriteIndex, 2, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, fighter->spriteIndex, 2, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     }
     else if (fighter->vars[0] == 19)
     {
-        animateFrame(fighter->spriteIndex, 3, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, fighter->spriteIndex, 3, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     }
     else
     {
-        animateFrame(fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     }
 
     if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
@@ -599,7 +605,7 @@ void StateJumpingForward_Enter(struct StateMachine* stateMachine, struct Fighter
 
 void StateJumpingForward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    animateFrame(fighter->spriteIndex, fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, fighter->spriteIndex, fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     
     if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
     {
@@ -656,7 +662,7 @@ void StateJumpingBackward_Enter(struct StateMachine* stateMachine, struct Fighte
 
 void StateJumpingBackward_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    animateFrame(fighter->spriteIndex, 19 - fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, fighter->spriteIndex, 19 - fighter->vars[0], *fighter->jumpRollFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
     
     if (rapTicks >= fighter->lastTicks + 2 && !fighter->MadeContact)
     {
@@ -1211,7 +1217,7 @@ void StateJumpPunching_Update(struct StateMachine* stateMachine, struct Fighter*
 void StateJumpPunching_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateJumpPunching_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1254,7 +1260,7 @@ void StateJumpKicking_Update(struct StateMachine* stateMachine, struct Fighter* 
 void StateJumpKicking_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 1, *fighter->jumpKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateJumpKicking_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1342,7 +1348,7 @@ void StateJumpingKickingForward_Update(struct StateMachine* stateMachine, struct
 void StateJumpingKickingForward_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 2, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 2, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
     //stop moving forward
     fighter->vars[1] = 1;
@@ -1390,7 +1396,7 @@ void StateJumpingKickingBackward_Update(struct StateMachine* stateMachine, struc
 void StateJumpingKickingBackward_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 1, *fighter->jumpDropKickFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateJumpingKickingBackward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1441,7 +1447,7 @@ void StateJumpingPunchingForward_Update(struct StateMachine* stateMachine, struc
 void StateJumpingPunchingForward_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);    
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);    
 
     //drop to the floor
     fighter->vars[1] = 1;
@@ -1489,7 +1495,7 @@ void StateJumpingPunchingBackward_Update(struct StateMachine* stateMachine, stru
 void StateJumpingPunchingBackward_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     //show key frame
-    animateFrame(spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateJumpingPunchingBackward_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1501,6 +1507,7 @@ void StateJumpingPunchingBackward_HandleInput(struct StateMachine* stateMachine,
 
 void StateHitLow_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
     {
         stateMachineGoto(stateMachine, STATE_HIT_AIR, fighter, spriteAnimator);
@@ -1540,6 +1547,8 @@ void StateHitLow_HandleInput(struct StateMachine* stateMachine, struct Fighter* 
 
 void StateHitHigh_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
+
     if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
     {
         stateMachineGoto(stateMachine, STATE_HIT_AIR, fighter, spriteAnimator);
@@ -1580,6 +1589,7 @@ void StateHitHigh_HandleInput(struct StateMachine* stateMachine, struct Fighter*
 
 void StateHitSweep_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
     {
         stateMachineGoto(stateMachine, STATE_HIT_AIR, fighter, spriteAnimator);
@@ -1657,6 +1667,7 @@ void StateGetUp_HandleInput(struct StateMachine* stateMachine, struct Fighter* f
 
 void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
     {
         stateMachineGoto(stateMachine, STATE_HIT_AIR, fighter, spriteAnimator);
@@ -1716,6 +1727,7 @@ void StateHitBack_HandleInput(struct StateMachine* stateMachine, struct Fighter*
 
 void StateHitBackLow_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     if (fighter->positionY < FLOOR_LOCATION_Y_FIGHTER)
     {
         stateMachineGoto(stateMachine, STATE_HIT_AIR, fighter, spriteAnimator);
@@ -1770,6 +1782,7 @@ void StateHitBackLow_HandleInput(struct StateMachine* stateMachine, struct Fight
 
 void StateHitUppercut_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -1819,7 +1832,7 @@ void StateHitUppercut_Update(struct StateMachine* stateMachine, struct Fighter* 
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
-        animateFrame(spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
         fighter->lastTicks = rapTicks;
     }
 }
@@ -1843,7 +1856,7 @@ void StateLaydown_Enter(struct StateMachine* stateMachine, struct Fighter* fight
 
 void StateLaydown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    animateFrame(spriteAnimator->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
     if (rapTicks >= fighter->lastTicks + 20)
     {
@@ -1867,6 +1880,7 @@ void StateLaydown_HandleInput(struct StateMachine* stateMachine, struct Fighter*
 
 void StateHitDropKick_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -1907,7 +1921,7 @@ void StateHitDropKick_Update(struct StateMachine* stateMachine, struct Fighter* 
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
-        animateFrame(spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
         fighter->lastTicks = rapTicks;
     }
 }
@@ -1927,6 +1941,7 @@ void StateHitDropKick_HandleInput(struct StateMachine* stateMachine, struct Figh
 
 void StateHitAir_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -1962,7 +1977,7 @@ void StateHitAir_Update(struct StateMachine* stateMachine, struct Fighter* fight
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
-        animateFrame(spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->vars[0], *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
         fighter->lastTicks = rapTicks;
     }
 }
@@ -1981,6 +1996,7 @@ void StateHitAir_HandleInput(struct StateMachine* stateMachine, struct Fighter* 
 
 void StateHitBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -2015,6 +2031,7 @@ void StateHitBlocking_HandleInput(struct StateMachine* stateMachine, struct Figh
 
 void StateHitDuckingBlocking_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -2048,6 +2065,7 @@ void StateHitDuckingBlocking_HandleInput(struct StateMachine* stateMachine, stru
 // vars[0]  = TICKS
 void StateHitBlockingKnockback_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -2242,19 +2260,19 @@ void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* 
         {
             if (fighter->vars[0] < 22)
             {
-                animateFrame(spriteAnimator->spriteIndex, 2, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 2, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
             }
             else if (fighter->vars[0] == 22)
             {
-                animateFrame(spriteAnimator->spriteIndex, 3, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 3, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
             }
             else if (fighter->vars[0] == 23)
             {
-                animateFrame(spriteAnimator->spriteIndex, 4, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 4, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
             }
             else if (fighter->vars[0] >= 24)
             {
-                animateFrame(spriteAnimator->spriteIndex, 5, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 5, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
             }
 
             fighterPositionXAdd(fighter, FIGHTER_THROWN_X_SPEED * fighter->direction);
@@ -2306,21 +2324,7 @@ void StateTurningAround_Update(struct StateMachine* stateMachine, struct Fighter
         {
             //turn the fighter around
             fighter->vars[0] = 1;
-            fighter->direction *= -1;
-                    
-            if (fighter->direction == 1)
-            {
-                sprite[fighter->spriteIndex].flip = R_is_normal;
-                sprite[fighter->spriteIndex-1].flip = R_is_normal;
-                sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
-            }
-            else
-            {
-                sprite[fighter->spriteIndex].flip = R_is_flipped;
-                sprite[fighter->spriteIndex-1].flip = R_is_flipped;
-                sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
-            }
-            
+            fighterTurnInstantly(fighter);
             impactFrameReset(fighter);            
         }
 
@@ -2597,7 +2601,7 @@ void StateCageShadowKick_Update(struct StateMachine* stateMachine, struct Fighte
         }
     }
 
-    animateFrame(spriteAnimator->spriteIndex, fighter->vars[2], *fighter->kickLowFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->vars[2], *fighter->kickLowFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
     updateSpriteAnimator(fighter->projectileAnimator, cageShadowKickFrames, 1, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
 }
 
@@ -2629,7 +2633,7 @@ void StateCageNutPunch_Update(struct StateMachine* stateMachine, struct Fighter*
 {
     if (fighter->opponentIndex == CAGE || fighter->opponentIndex == SONYA)
     {
-        animateFrame(spriteAnimator->spriteIndex, fighter->vars[0], *fighter->special3Frames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+        animateFrame(spriteAnimator, spriteAnimator->spriteIndex, fighter->vars[0], *fighter->special3Frames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
         if (rapTicks >= fighter->lastTicks + 4)
         {
@@ -2686,6 +2690,7 @@ void StateCageNutPunch_HandleInput(struct StateMachine* stateMachine, struct Fig
 
 void StateHitNuts_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     fighter->exitingState = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
@@ -2875,6 +2880,7 @@ void StateRaidenTorpedo_HandleInput(struct StateMachine* stateMachine, struct Fi
 
 void StateHitTorpedo_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     fighter->exitingState = false;
     fighter->MadeContact = false;
     spriteAnimator->currentFrame = 0;
@@ -3147,6 +3153,7 @@ void StateScorpionHarpoon_HandleInput(struct StateMachine* stateMachine, struct 
 
 void StateHitHarpoon_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     fighter->exitingState = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
@@ -3649,8 +3656,9 @@ void StateHitFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fi
     {
         fighterUnfreeze(fighter);
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
-        return;
     }
+
+    setAnimationFrame(fighter->spriteIndex, spriteAnimator, spriteAnimator->currentAnimationFrame, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateHitFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -3659,4 +3667,42 @@ void StateHitFreeze_Sleep(struct StateMachine* stateMachine, struct Fighter* fig
 
 void StateHitFreeze_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// IDLE FALLING
+
+void StateIdleFall_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    fighter->IsBeingDamaged = false;
+    fighter->exitingState = false;
+    fighter->lastTicks = rapTicks;
+}
+
+void StateIdleFall_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+        animateFrame(spriteAnimator, fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+ 
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        fighter->positionY += FIGHTER_FALL_Y_SPEED;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (fighter->positionY >= FLOOR_LOCATION_Y_FIGHTER)
+    {
+        //landed
+        impactFrameReset(fighter);
+        fighterSetOnFloor(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+    }
+}
+
+void StateIdleFall_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateIdleFall_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
 }

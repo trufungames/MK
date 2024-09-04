@@ -312,7 +312,14 @@ void StateHitFreeze_Update(struct StateMachine*, struct Fighter*, struct SpriteA
 void StateHitFreeze_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitFreeze_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateIdleFall_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIdleFall_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateIdleFall_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIdleFall_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+
 //TODOs
+//[ ] make sure Freeze works...and test jumping over frozen player...turning
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
 //[X] Add Body-To-Body states

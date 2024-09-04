@@ -1368,6 +1368,7 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
             {
                 //unfreeze the opponent, freeze Sub-Zero
                 stateMachineSleep(stateMachine, 8, fighter2, fighter2->spriteAnimator);
+                fighterUnfreeze(fighter2);
                 stateMachineGoto(stateMachine, STATE_IDLE, fighter2, fighter2->spriteAnimator);
                 stateMachineGoto(stateMachine, STATE_HIT_FREEZE, fighter1, fighter1->spriteAnimator);
                 return;
@@ -1615,6 +1616,17 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
                 stateMachineGoto(stateMachine, STATE_HIT_BACK, fighter2, spriteAnimator2);
             }
         }
+        else if (fighter1->currentState->Name == STATE_SWEEPING)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SWEEP, false, fighter1, POINTS_SWEEP);
+            stateMachineSleep(stateMachine, 1, fighter2, spriteAnimator2);
+            stateMachineGoto(stateMachine, STATE_HIT_SWEEP, fighter2, spriteAnimator2);
+        }
+
+        if (fighter2->IsFrozen)
+        {
+            fighterUnfreeze(fighter2);
+        }
     }
     else if (fighterIsBlocking(stateMachine, fighter2))
     {
@@ -1665,6 +1677,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     if (fighter1->direction == 1
         && fighter1->positionX > fighter2->positionX + turnOffset
         && !fighter1->IsTurning
+        && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
@@ -1675,6 +1688,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     if (fighter1->direction == -1
         && fighter1->positionX + turnOffset < fighter2->positionX
         && !fighter1->IsTurning
+        && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
@@ -1685,6 +1699,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     if (fighter2->direction == 1
         && fighter2->positionX > fighter1->positionX + turnOffset
         && !fighter2->IsTurning
+        && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
@@ -1695,6 +1710,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     if (fighter2->direction == -1
         && fighter2->positionX + turnOffset < fighter1->positionX
         && !fighter2->IsTurning
+        && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
@@ -2042,7 +2058,7 @@ void fighterDrawScores(struct Fighter* fighter1, struct Fighter* fighter2)
 
 void fighterLaydown(struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-    animateFrame(animator->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(animator, animator->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 
     if (rapTicks >= fighter->lastTicks + 20)
     {
@@ -2217,4 +2233,37 @@ bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fi
         return true;
 
     return false;
+}
+
+void fighterFaceOpponent(struct Fighter* fighter)
+{
+    if (fighter->direction == 1
+        && fighter->positionX > fighter->Opponent->positionX + turnOffset)
+    {
+        fighterTurnInstantly(fighter);
+    }
+
+    if (fighter->direction == -1
+        && fighter->positionX + turnOffset < fighter->Opponent->positionX)
+    {
+        fighterTurnInstantly(fighter);
+    }
+}
+
+void fighterTurnInstantly(struct Fighter* fighter)
+{
+    fighter->direction *= -1;
+                    
+    if (fighter->direction == 1)
+    {
+        sprite[fighter->spriteIndex].flip = R_is_normal;
+        sprite[fighter->spriteIndex-1].flip = R_is_normal;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+    }
+    else
+    {
+        sprite[fighter->spriteIndex].flip = R_is_flipped;
+        sprite[fighter->spriteIndex-1].flip = R_is_flipped;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+    }
 }

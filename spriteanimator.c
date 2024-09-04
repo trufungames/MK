@@ -4,12 +4,14 @@
 
 static int tempY = 0;
 
-void animateFrame(unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth)
+void animateFrame(struct SpriteAnimator *animator, unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth)
 {
-    animateFrame(spriteIndex, frame, animationFrames, mulFactor, base, idleFrameWidth, 0, 0, 1);
+    animateFrame(animator, spriteIndex, frame, animationFrames, mulFactor, base, idleFrameWidth, 0, 0, 1);
 }
 
-void animateFrame(unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth, int positionX, int positionY, int direction) {
+void animateFrame(struct SpriteAnimator *animator, unsigned int spriteIndex, unsigned int frame, struct AnimationFrame animationFrames[], float mulFactor, unsigned int base, int idleFrameWidth, int positionX, int positionY, int direction)
+{
+    animator->currentAnimationFrame = &animationFrames[animator->currentFrame];
 
     if (positionX == 0)
     {
@@ -93,9 +95,8 @@ void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame
 
 void updateSpriteAnimator(struct SpriteAnimator *animator, struct AnimationFrame animationFrames[], short totalFrames, bool playForward, bool loop, short positionX, short positionY, short direction)
 {
-    animator->currentAnimationFrame = &animationFrames[animator->currentFrame];
     //animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, animator->idleFrameWidth, positionX, positionY, direction);
-    animateFrame(animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, FIGHTER_WIDTH, positionX, positionY, direction);
+    animateFrame(animator, animator->spriteIndex, animator->currentFrame, animationFrames, animator->mulFactor, animator->base, FIGHTER_WIDTH, positionX, positionY, direction);
 
     if (rapTicks >= animator->lastTick + animationFrames[animator->currentFrame].ticks)
     {

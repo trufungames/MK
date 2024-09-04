@@ -216,6 +216,7 @@ struct Fighter {
     struct AnimationFrame (*projectileEndFrames)[5];
     struct AnimationFrame (*hitNutsFrames)[2];
     struct AnimationFrame (*lightningFrames)[30];
+    struct Fighter* Opponent;
 };
 
 void fighterHide(struct Fighter* fighter);
@@ -327,3 +328,7 @@ bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fig
 bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
 
 bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
+
+void fighterFaceOpponent(struct Fighter* fighter);
+
+void fighterTurnInstantly(struct Fighter* fighter);

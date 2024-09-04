@@ -247,7 +247,7 @@
 #define FIGHTER_BLOOD_TICKS 3
 #define FIGHTER_BLOOD_DROP_MOMENTUM_Y -10
 #define FIGHTER_BLOOD_SPEED_X 4
-#define FIGHTER_FALL_Y_SPEED 4
+#define FIGHTER_FALL_Y_SPEED 12
 #define FIGHTER_DROPKICK_X_SPEED 5
 #define FIGHTER_HITAIR_X_SPEED 3
 #define FIGHTER_BLOCKING_KNOCKBACK_X_SPEED 2
@@ -265,7 +265,7 @@
 #define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 59
+#define STATE_TOTAL_COUNT 60
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -326,6 +326,7 @@
 #define STATE_SCORPION_TELEPORT 56
 #define STATE_SUBZERO_FREEZE 57
 #define STATE_HIT_FREEZE 58
+#define STATE_IDLE_FALL 59
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
