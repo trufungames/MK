@@ -10934,6 +10934,120 @@ __Z25StateIdleFall_HandleInputP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
 	unlk %fp
 	rts
+	.even
+	.globl	__Z23StateSubzeroSlide_EnterP12StateMachineP7FighterP14SpriteAnimator
+__Z23StateSubzeroSlide_EnterP12StateMachineP7FighterP14SpriteAnimator:
+	link.w %fp,#0
+	move.l 12(%fp),%a0
+	move.l 16(%fp),%a1
+	clr.b 290(%a0)
+	clr.b 172(%a0)
+	clr.w 280(%a0)
+	clr.w 14(%a1)
+	move.w raptor_ticks,%d0
+	move.w %d0,12(%a1)
+	move.w %d0,236(%a0)
+	move.l 258(%a0),8(%fp)
+	unlk %fp
+	jra __Z8sfxSwingP12SoundHandler
+	.even
+	.globl	__Z24StateSubzeroSlide_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_
+__Z24StateSubzeroSlide_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_:
+	link.w %fp,#0
+	movem.l #8240,-(%sp)
+	move.l 8(%fp),%a3
+	move.l 12(%fp),%a2
+	move.l 16(%fp),%d2
+	move.l 372(%a2),-(%sp)
+	move.l %a2,-(%sp)
+	move.l %d2,-(%sp)
+	jsr __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame
+	move.w raptor_ticks,%d1
+	move.w 236(%a2),%a1
+	addq.l #1,%a1
+	move.w %d1,%a0
+	lea (12,%sp),%sp
+	move.b 172(%a2),%d0
+	cmp.l %a1,%a0
+	jle .L1122
+	tst.b %d0
+	jeq .L1128
+	add.w #14,280(%a2)
+	move.w %d1,236(%a2)
+.L1122:
+	tst.b %d0
+	jne .L1124
+	cmp.w #269,280(%a2)
+	jle .L1125
+.L1124:
+	move.l 286(%a2),%a0
+	tst.w (%a0)
+	jeq .L1120
+	move.l 92(%a2),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l (%a3),%a0
+	move.l %a0,286(%a2)
+	move.l %d2,16(%fp)
+	move.l %a2,12(%fp)
+	move.l %a3,8(%fp)
+	move.l 2(%a0),%a0
+	movem.l -12(%fp),#3076
+	unlk %fp
+	jmp (%a0)
+.L1125:
+	move.w 262(%a2),%a0
+	move.l %a0,-(%sp)
+	move.w 242(%a2),%a0
+	move.l %a0,-(%sp)
+	move.w 240(%a2),%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 2.w
+	move.l 576(%a2),-(%sp)
+	move.l %d2,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+.L1120:
+	movem.l -12(%fp),#3076
+	unlk %fp
+	rts
+.L1128:
+	move.w 262(%a2),%a0
+	move.l %a0,%d0
+	add.l %a0,%d0
+	move.l %d0,%d1
+	lsl.l #3,%d1
+	sub.l %d0,%d1
+	move.l %d1,-(%sp)
+	move.l %a2,-(%sp)
+	jsr __Z19fighterPositionXAddP7Fighteri
+	move.w raptor_ticks,%d1
+	move.b 172(%a2),%d0
+	addq.l #8,%sp
+	add.w #14,280(%a2)
+	move.w %d1,236(%a2)
+	jra .L1122
+	.even
+	.globl	__Z23StateSubzeroSlide_SleepP12StateMachineP7FighterP14SpriteAnimator
+__Z23StateSubzeroSlide_SleepP12StateMachineP7FighterP14SpriteAnimator:
+	link.w %fp,#0
+	move.l 12(%fp),%a0
+	move.b #1,172(%a0)
+	unlk %fp
+	rts
+	.even
+	.globl	__Z29StateSubzeroSlide_HandleInputP12StateMachineP7FighterP14SpriteAnimator
+__Z29StateSubzeroSlide_HandleInputP12StateMachineP7FighterP14SpriteAnimator:
+	link.w %fp,#0
+	unlk %fp
+	rts
 	.globl	colliders
 	.data
 	.even

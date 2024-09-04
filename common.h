@@ -263,9 +263,11 @@
 #define FIGHTER_RAIDEN_TELEPORT_DISTANCE 20
 #define FIGHTER_KANG_FLYING_KICK_X_SPEED 14
 #define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
+#define FIGHTER_SUBZERO_SLIDE_X_SPEED 14
+#define FIGHTER_SUBZERO_SLIDE_TOTAL_DISTANCE 270
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 60
+#define STATE_TOTAL_COUNT 61
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -327,6 +329,7 @@
 #define STATE_SUBZERO_FREEZE 57
 #define STATE_HIT_FREEZE 58
 #define STATE_IDLE_FALL 59
+#define STATE_SUBZERO_SLIDE 60
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

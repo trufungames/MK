@@ -3706,3 +3706,52 @@ void StateIdleFall_Sleep(struct StateMachine* stateMachine, struct Fighter* figh
 void StateIdleFall_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SUBZERO SLIDE
+// vars[0] = distance traveled
+
+void StateSubzeroSlide_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    fighter->vars[0] = 0;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    sfxSwing(fighter->soundHandler);
+}
+
+void StateSubzeroSlide_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        if (!fighter->MadeContact)
+        {
+            fighterPositionXAdd(fighter, FIGHTER_SUBZERO_SLIDE_X_SPEED * fighter->direction);
+        }
+
+        fighter->vars[0] += FIGHTER_SUBZERO_SLIDE_X_SPEED;
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (fighter->MadeContact || fighter->vars[0] >= FIGHTER_SUBZERO_SLIDE_TOTAL_DISTANCE)
+    {
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, 2, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateSubzeroSlide_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateSubzeroSlide_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}

@@ -257,6 +257,9 @@ static State stateHitFreeze = {
 static State stateIdleFall = {
 	STATE_IDLE_FALL
 };
+static State stateSubzeroSlide = {
+	STATE_SUBZERO_SLIDE
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -451,6 +454,16 @@ static AnimationFrame subzeroFreezeFrames[] = {
 	{ 80, 96, 448, 1008, 0, 16, 4 },
 	{ 80, 96, 448, 1008, 0, 16, 4 },
 	{ 80, 96, 448, 1008, 0, 16, 4 }
+};
+
+static AnimationFrame subzeroSlideFrames[] = {
+	{ 80, 96, 464, 752, 0, 16, 6 },
+	{ 96, 64, 544, 768, 0, 48, 36 },
+	{ 0, 0, 0, 0, 0, 0, 4 },	
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
 };
 
 static AnimationFrame scorpionHarpoonFrames[] = {
@@ -3245,7 +3258,7 @@ static int specials_Sonya_Rings_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0
 static int specials_Sonya_LegGrab_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_DOWN, INPUT_BLK };
 static int specials_Sonya_SquareFlight_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Subzero_Freeze_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
-static int specials_Subzero_Slide_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_BACK, INPUT_BLK };
+static int specials_Subzero_Slide_Inputs[] = { INPUT_LK, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Scorpion_Harpoon_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Scorpion_Teleport_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_DOWN, 0, 0, 0 };
 
@@ -3435,6 +3448,7 @@ void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* 
 void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
@@ -4364,6 +4378,10 @@ void basicmain()
 		stateIdleFall.update = &StateIdleFall_Update;
 		stateIdleFall.sleep = &StateIdleFall_Sleep;
 		stateIdleFall.handleInput = &StateIdleFall_HandleInput;
+		stateSubzeroSlide.enter = &StateSubzeroSlide_Enter;
+		stateSubzeroSlide.update = &StateSubzeroSlide_Update;
+		stateSubzeroSlide.sleep = &StateSubzeroSlide_Sleep;
+		stateSubzeroSlide.handleInput = &StateSubzeroSlide_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4425,6 +4443,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FREEZE, &stateSubzeroFreeze);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_FREEZE, &stateHitFreeze);
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE_FALL, &stateIdleFall);
+		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_SLIDE, &stateSubzeroSlide);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -4980,7 +4999,9 @@ void basicmain()
 		fighterSubzero.special2InputCount = 3;
 		fighterSubzero.special3InputCount = 0;
 		fighterSubzero.special1Frames = &subzeroFreezeFrames;
+		fighterSubzero.special2Frames = &subzeroSlideFrames;
 		fighterSubzero.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterSubzero.doSpecialMove2 = &doSpecial_Subzero_Slide;
 		fighterSubzero.idleFrames = &subzeroIdleFrames;
 		fighterSubzero.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero.winsFrames = &subzeroWinsFrames;
@@ -5031,7 +5052,9 @@ void basicmain()
 		fighterSubzero2.special2InputCount = 3;
 		fighterSubzero2.special3InputCount = 0;
 		fighterSubzero2.special1Frames = &subzeroFreezeFrames;
+		fighterSubzero2.special2Frames = &subzeroSlideFrames;
 		fighterSubzero2.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterSubzero2.doSpecialMove2 = &doSpecial_Subzero_Slide;
 		fighterSubzero2.idleFrames = &subzeroIdleFrames;
 		fighterSubzero2.dizzyFrames = &subzeroDizzyFrames;
 		fighterSubzero2.winsFrames = &subzeroWinsFrames;
@@ -7952,64 +7975,11 @@ void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fi
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SUBZERO_FREEZE, fighter, animator);
-	return;
-	// if (!fighter->HasSetupSpecial1)
-	// {
-	// 	fighter->HasSetupSpecial1 = true;
-	// 	fighter->HasSetupProjectileEnd = false;
-	// 	fighter->ProjectileMadeContact = false;
-	// 	animator->currentFrame = 0;
-	// 	fighter->projectilePositionX = fighter->positionX;
-	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-	// 	fighter->projectileAnimator->currentFrame = 0;
-	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
-	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
-	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
-	// 	fighter->lastTicks = rapTicks;
-	// 	sfxSubzeroFreeze(fighter->soundHandler);
-	// }
+}
 
-	// if (!fighter->ProjectileMadeContact)
-	// {
-	// 	if (animationIsComplete(fighter->projectileAnimator, 9))
-	// 	{
-	// 		fighter->projectilePositionX += (8 * fighter->direction);
-
-	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
-	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-	// 		{
-	// 			fighter->IsDoingSpecial1 = false;
-	// 			playerinputInit(fighter);
-	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 		}
-	// 	}
-
-	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	// }
-	// else
-	// {
-	// 	if (!fighter->HasSetupProjectileEnd)
-	// 	{
-	// 		fighter->HasSetupProjectileEnd = true;
-	// 		fighter->projectileAnimator->currentFrame = 0;
-	// 	}
-
-	// 	if (animationIsComplete(fighter->projectileAnimator, 5))
-	// 	{
-	// 		sprite[fighter->lightningSpriteIndex].was_hit = -1;
-	// 		fighter->IsDoingSpecial1 = false;
-	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 		fighterResetRaidenLightning(fighter);
-	// 	}
-
-	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	// }
+void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SUBZERO_SLIDE, fighter, animator);
 }
 
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
