@@ -975,7 +975,7 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
 
 bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-    if (fighter->IsBeingDamaged)
+    if (fighter->IsBeingDamaged || fighter->IsFrozen)
         return false;
 
     if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)

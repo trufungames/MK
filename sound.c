@@ -595,6 +595,17 @@ void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SUBZERO_FREEZE_END, 8000);
 }
 
+void sfxSubzeroSlide(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SUBZERO_SLIDE, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SUBZERO_SLIDE, 8000);
+}
+
 void sfxScorpionHarpoon(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

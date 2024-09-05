@@ -83,6 +83,49 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
             if (fighter->input5->ButtonPressed != checkInputs[4])
                 return false;
             break;
+        case 13:
+            //this checks 3 buttons that have to all be ON at once
+            break;
+        case 14:
+            //this checks 4 buttons that have to all be ON at once
+            if (checkInputs[0] == INPUT_LK
+                || checkInputs[1] == INPUT_LK
+                || checkInputs[2] == INPUT_LK
+                || checkInputs[3] == INPUT_LK)
+                {
+                    if (!(fighter->pad & JAGPAD_A))
+                        return false;
+                }
+            
+            if (checkInputs[0] == INPUT_LP
+                || checkInputs[1] == INPUT_LP
+                || checkInputs[2] == INPUT_LP
+                || checkInputs[3] == INPUT_LP)
+                {
+                    if (!(fighter->pad & JAGPAD_C))
+                        return false;
+                }
+
+            if (checkInputs[0] == INPUT_BLK
+                || checkInputs[1] == INPUT_BLK
+                || checkInputs[2] == INPUT_BLK
+                || checkInputs[3] == INPUT_BLK)
+                {
+                    if (!(fighter->pad & JAGPAD_B) && !(fighter->pad & JAGPAD_8))
+                        return false;
+                }
+
+            if (checkInputs[0] == INPUT_BACK
+                || checkInputs[1] == INPUT_BACK
+                || checkInputs[2] == INPUT_BACK
+                || checkInputs[3] == INPUT_BACK)
+                {
+                    if (fighter->direction == 1 && !(fighter->pad & JAGPAD_LEFT))
+                        return false;
+                    else if (fighter->direction == -1 && !(fighter->pad & JAGPAD_RIGHT))
+                        return false;
+                }
+            break;
             default:
                 break;
     }

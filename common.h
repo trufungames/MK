@@ -134,6 +134,7 @@
 #define SOUND_RAIDEN_IDLE_ZAP 76
 #define SOUND_KANG_FLYINGKICK 77
 #define SOUND_SCORPION_TELEPORT 78
+#define SOUND_SUBZERO_SLIDE 79
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10

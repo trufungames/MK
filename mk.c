@@ -65,8 +65,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -3258,7 +3258,7 @@ static int specials_Sonya_Rings_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0
 static int specials_Sonya_LegGrab_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_DOWN, INPUT_BLK };
 static int specials_Sonya_SquareFlight_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Subzero_Freeze_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
-static int specials_Subzero_Slide_Inputs[] = { INPUT_LK, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
+static int specials_Subzero_Slide_Inputs[] = { INPUT_LK, INPUT_BLK, INPUT_LP, INPUT_BACK, 0, 0 };
 static int specials_Scorpion_Harpoon_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Scorpion_Teleport_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_DOWN, 0, 0, 0 };
 
@@ -4996,7 +4996,7 @@ void basicmain()
 		fighterSubzero.special2Inputs = &specials_Subzero_Slide_Inputs;
 		fighterSubzero.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterSubzero.special1InputCount = 3;
-		fighterSubzero.special2InputCount = 3;
+		fighterSubzero.special2InputCount = 14;
 		fighterSubzero.special3InputCount = 0;
 		fighterSubzero.special1Frames = &subzeroFreezeFrames;
 		fighterSubzero.special2Frames = &subzeroSlideFrames;
@@ -5049,7 +5049,7 @@ void basicmain()
 		fighterSubzero2.special2Inputs = &specials_Subzero_Slide_Inputs;
 		fighterSubzero2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterSubzero2.special1InputCount = 3;
-		fighterSubzero2.special2InputCount = 3;
+		fighterSubzero2.special2InputCount = 14;
 		fighterSubzero2.special3InputCount = 0;
 		fighterSubzero2.special1Frames = &subzeroFreezeFrames;
 		fighterSubzero2.special2Frames = &subzeroSlideFrames;

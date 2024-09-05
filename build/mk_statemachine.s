@@ -10949,7 +10949,7 @@ __Z23StateSubzeroSlide_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	move.w %d0,236(%a0)
 	move.l 258(%a0),8(%fp)
 	unlk %fp
-	jra __Z8sfxSwingP12SoundHandler
+	jra __Z15sfxSubzeroSlideP12SoundHandler
 	.even
 	.globl	__Z24StateSubzeroSlide_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_
 __Z24StateSubzeroSlide_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_:

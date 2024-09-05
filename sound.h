@@ -44,6 +44,7 @@ void sfxKanoCannonBall(struct SoundHandler* soundHandler);
 void sfxSonyaRings(struct SoundHandler* soundHandler);
 void sfxSubzeroFreeze(struct SoundHandler* soundHandler);
 void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler);
+void sfxSubzeroSlide(struct SoundHandler* soundHandler);
 void sfxScorpionHarpoon(struct SoundHandler* soundHandler);
 void sfxScorpionTeleport(struct SoundHandler* soundHandler);
 void sfxScorpionGetOverHere(struct SoundHandler* soundHandler);

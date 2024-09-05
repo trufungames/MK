@@ -3719,7 +3719,7 @@ void StateSubzeroSlide_Enter(struct StateMachine* stateMachine, struct Fighter* 
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
-    sfxSwing(fighter->soundHandler);
+    sfxSubzeroSlide(fighter->soundHandler);
 }
 
 void StateSubzeroSlide_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)

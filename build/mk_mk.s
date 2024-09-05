@@ -4942,7 +4942,7 @@ __Z9basicmainv:
 	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL14fighterSubzero+322
 	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterSubzero+326
 	move.w #3,__ZL14fighterSubzero+330
-	move.w #3,__ZL14fighterSubzero+332
+	move.w #14,__ZL14fighterSubzero+332
 	clr.w __ZL14fighterSubzero+334
 	move.l #__ZL19subzeroFreezeFrames,__ZL14fighterSubzero+568
 	move.l #__ZL18subzeroSlideFrames,__ZL14fighterSubzero+576
@@ -4995,7 +4995,7 @@ __Z9basicmainv:
 	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL15fighterSubzero2+322
 	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL15fighterSubzero2+326
 	move.w #3,__ZL15fighterSubzero2+330
-	move.w #3,__ZL15fighterSubzero2+332
+	move.w #14,__ZL15fighterSubzero2+332
 	clr.w __ZL15fighterSubzero2+334
 	move.l #__ZL19subzeroFreezeFrames,__ZL15fighterSubzero2+568
 	move.l #__ZL18subzeroSlideFrames,__ZL15fighterSubzero2+576
@@ -21640,9 +21640,9 @@ __ZL30specials_Subzero_Freeze_Inputs:
 	.even
 __ZL29specials_Subzero_Slide_Inputs:
 	.long	9
+	.long	7
+	.long	6
 	.long	1
-	.long	1
-	.long	0
 	.long	0
 	.long	0
 	.even
@@ -24422,8 +24422,8 @@ __ZL14sonyaAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	0
-	.byte	0
+	.byte	1
+	.byte	1
 	.word	163
 	.word	120
 	.skip 2
