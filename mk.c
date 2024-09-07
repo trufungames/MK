@@ -266,6 +266,9 @@ static State stateSonyaLegGrab = {
 static State stateHitLegGrab = {
 	STATE_HIT_LEG_GRAB
 };
+static State stateSonyaSquareFlight = {
+	STATE_SONYA_SQUARE_FLIGHT
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -3464,6 +3467,7 @@ void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* 
 void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_LegGrab(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Sonya_SquareFlight(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -4417,6 +4421,10 @@ void basicmain()
 		stateHitLegGrab.update = &StateHitLegGrab_Update;
 		stateHitLegGrab.sleep = &StateHitLegGrab_Sleep;
 		stateHitLegGrab.handleInput = &StateHitLegGrab_HandleInput;
+		stateSonyaSquareFlight.enter = &StateSonyaSquareFlight_Enter;
+		stateSonyaSquareFlight.update = &StateSonyaSquareFlight_Update;
+		stateSonyaSquareFlight.sleep = &StateSonyaSquareFlight_Sleep;
+		stateSonyaSquareFlight.handleInput = &StateSonyaSquareFlight_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4481,6 +4489,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_SLIDE, &stateSubzeroSlide);
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_LEG_GRAB, &stateSonyaLegGrab);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_LEG_GRAB, &stateHitLegGrab);
+		stateMachineAdd(&fighterStateMachine, STATE_SONYA_SQUARE_FLIGHT, &stateSonyaSquareFlight);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -5141,11 +5150,12 @@ void basicmain()
 		fighterSonya.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
 		fighterSonya.special1InputCount = 3;
 		fighterSonya.special2InputCount = 14;
-		fighterSonya.special3InputCount = 0;
+		fighterSonya.special3InputCount = 3;
 		fighterSonya.special1Frames = &sonyaRingsFrames;
 		fighterSonya.special2Frames = &sonyaLegGrabFrames;
 		fighterSonya.doSpecialMove1 = &doSpecial_Sonya_Rings;
 		fighterSonya.doSpecialMove2 = &doSpecial_Sonya_LegGrab;
+		fighterSonya.doSpecialMove3 = &doSpecial_Sonya_SquareFlight;
 		fighterSonya.idleFrames = &sonyaIdleFrames;
 		fighterSonya.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya.winsFrames = &sonyaWinsFrames;
@@ -5193,11 +5203,12 @@ void basicmain()
 		fighterSonya2.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
 		fighterSonya2.special1InputCount = 3;
 		fighterSonya2.special2InputCount = 14;
-		fighterSonya2.special3InputCount = 0;
+		fighterSonya2.special3InputCount = 3;
 		fighterSonya2.special1Frames = &sonyaRingsFrames;
 		fighterSonya2.special2Frames = &sonyaLegGrabFrames;
 		fighterSonya2.doSpecialMove1 = &doSpecial_Sonya_Rings;
 		fighterSonya2.doSpecialMove2 = &doSpecial_Sonya_LegGrab;
+		fighterSonya2.doSpecialMove3 = &doSpecial_Sonya_SquareFlight;
 		fighterSonya2.idleFrames = &sonyaIdleFrames;
 		fighterSonya2.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya2.winsFrames = &sonyaWinsFrames;
@@ -7960,6 +7971,11 @@ void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fi
 void doSpecial_Sonya_LegGrab(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SONYA_LEG_GRAB, fighter, animator);
+}
+
+void doSpecial_Sonya_SquareFlight(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SONYA_SQUARE_FLIGHT, fighter, animator);
 }
 
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)

@@ -3835,11 +3835,10 @@ void StateHitLegGrab_Enter(struct StateMachine* stateMachine, struct Fighter* fi
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
     fighter->vars[0] = 0;
-    fighter->vars[1] = 8; //start at index 8 of the throw index
+    fighter->vars[1] = 6; //start at index 8 of the throw index
     fighter->vars[2] = 0;
     fighter->lastTicks = rapTicks;
     fighter->IsBeingDamaged = true;
-    //TODO calculate the diff between fighter and opponent so they "snap" to the right X location
     if (fighter->direction == -1)
     {
         fighter->positionX = fighter->Opponent->positionX + (FIGHTER_WIDTH * 2) + 16;
@@ -3938,4 +3937,113 @@ void StateHitLegGrab_Sleep(struct StateMachine* stateMachine, struct Fighter* fi
 
 void StateHitLegGrab_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sonya Square Flight
+// vars[0] == JumpIndex (for the JumpOffset array)
+// vars[1] = current state: 0 rising, 1 charging, 2 falling
+// vars[2] == distance traveled
+
+void StateSonyaSquareFlight_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    fighter->vars[0] = 0;  //reset JumpIndex back to 0
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    fighter->lastTicks = rapTicks;
+    fighterPlayJump(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateSonyaSquareFlight_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        if (fighter->vars[1] == 0)
+        {
+            //rising
+            if (fighter->vars[0] == 0 || fighter->vars[0] == 1)
+            {
+                animateFrame(spriteAnimator, fighter->spriteIndex, 0, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+            else
+            {
+                animateFrame(spriteAnimator, fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+
+            if (fighter->vars[0] == 7)
+            {
+                fighter->vars[1] = 1; //start charging forward!
+                sfxSubzeroSlide(fighter->soundHandler);
+            }
+
+            fighter->positionY += JumpOffsets[fighter->vars[0]];
+            fighter->vars[0]++;            
+        }
+        else if (fighter->vars[1] == 1)
+        {
+            //charging
+            //using impactFrameJumpKick because it's always ON.
+            impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+            if (fighter->vars[2] <= FIGHTER_SONYA_SQUARE_FLIGHT_TOTAL_DISTANCE && !fighter->MadeContact)
+            {
+                fighterPositionXAdd(fighter, FIGHTER_SONYA_SQUARE_FLIGHT_X_SPEED * fighter->direction);
+                fighter->vars[2] += FIGHTER_SONYA_SQUARE_FLIGHT_X_SPEED;
+            }
+            else
+            {
+                fighter->vars[1] = 2;  //start falling
+                fighter->vars[0] = 10;
+            }
+
+            animateFrame(spriteAnimator, fighter->spriteIndex, 1, *fighter->jumpPunchFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+        }
+        else
+        {
+            //falling
+            if (fighter->vars[0] == 18)
+            {
+                animateFrame(spriteAnimator, fighter->spriteIndex, 2, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+            else if (fighter->vars[0] == 19)
+            {
+                animateFrame(spriteAnimator, fighter->spriteIndex, 3, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+            else
+            {
+                animateFrame(spriteAnimator, fighter->spriteIndex, 1, *fighter->jumpFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+
+            fighter->positionY += JumpOffsets[fighter->vars[0]];
+
+            if (fighter->MadeContact)
+            {
+                fighterPositionXAdd(fighter, -2 * fighter->direction);
+            }
+
+            fighter->vars[0]++;
+
+            if (fighter->vars[0] > 19)
+            {
+                //landed
+                impactFrameReset(fighter);
+                fighterSetOnFloor(fighter);
+                stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            }
+        }
+
+        fighter->lastTicks = rapTicks;
+    }
+}
+
+void StateSonyaSquareFlight_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = 1;
+}
+
+void StateSonyaSquareFlight_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
 }

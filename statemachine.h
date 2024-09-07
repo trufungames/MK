@@ -332,6 +332,11 @@ void StateHitLegGrab_Update(struct StateMachine*, struct Fighter*, struct Sprite
 void StateHitLegGrab_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitLegGrab_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateSonyaSquareFlight_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateSonyaSquareFlight_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateSonyaSquareFlight_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateSonyaSquareFlight_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

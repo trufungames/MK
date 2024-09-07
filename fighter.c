@@ -1573,6 +1573,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator2);
             stateMachineGoto(stateMachine, STATE_HIT_LEG_GRAB, fighter2, spriteAnimator2);
         }
+        else if (fighter1->currentState->Name == STATE_SONYA_SQUARE_FLIGHT)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+            stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator2);
+            stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
+        }
 
         if (fighter2->IsFrozen)
         {
@@ -1637,7 +1643,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
     {
         fighter1->IsTurning = true;
     }
@@ -1652,7 +1659,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
     {
         fighter1->IsTurning = true;
     }
@@ -1667,7 +1675,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
     {
         fighter2->IsTurning = true;
     }
@@ -1682,7 +1691,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
     {
         fighter2->IsTurning = true;
     }
