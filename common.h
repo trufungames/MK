@@ -266,9 +266,11 @@
 #define FIGHTER_SCORPION_TELEPORT_X_SPEED 10
 #define FIGHTER_SUBZERO_SLIDE_X_SPEED 14
 #define FIGHTER_SUBZERO_SLIDE_TOTAL_DISTANCE 270
+#define FIGHTER_HIT_LEG_GRAB_X_SPEED 12
+#define FIGHTER_HIT_LEG_GRAB_BOUNCE_X_SPEED 3
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 61
+#define STATE_TOTAL_COUNT 63
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -331,6 +333,8 @@
 #define STATE_HIT_FREEZE 58
 #define STATE_IDLE_FALL 59
 #define STATE_SUBZERO_SLIDE 60
+#define STATE_SONYA_LEG_GRAB 61
+#define STATE_HIT_LEG_GRAB 62
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
@@ -589,6 +593,11 @@
 #define SONYA_HIT_UPPERCUT_FRAME_COUNT 26
 #define SONYA_HIT_FALL_FRAME_COUNT 7
 #define SONYA_HIT_SWEEP_FRAME_COUNT 6
+#define SONYA_SPECIAL_1_FRAME_COUNT 4
+#define SONYA_SPECIAL_2_FRAME_COUNT 7
+#define SONYA_SPECIAL_3_FRAME_COUNT 4
+#define SONYA_PROJECTILE_FRAME_COUNT 8
+#define SONYA_PROJECTILE_END_FRAME_COUNT 5
 
 #define TOTAL_BLOOD_COUNT 8
 #define TOTAL_BLOOD_SQUIRT_COUNT 4

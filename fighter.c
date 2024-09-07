@@ -1387,84 +1387,23 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
             }
         }
     }
-    
-    // else if (fighter1->fighterIndex == SONYA)
-    // {
-    //     fighter1->ProjectileMadeContact = true;
+    else if (fighter1->fighterIndex == SONYA)
+    {
+        fighter1->ProjectileMadeContact = true;
 
-    //     if (!fighter2->IsBlocking)
-    //     {            
-    //         if (fighter2->IsJumping)
-    //         {
-    //             fighter2->IsHitDropKick = true;                
-    //         }
-    //         else
-    //         {
-    //             fighter2->IsHitBack = true;
-    //             fighter2->NoBlood = true;
-    //         }
-            
-    //         fighterAddPendingDamage(fighter2, DMG_RINGS, false, fighter1, POINTS_PROJECTILE);
-    //     }
-    //     else
-    //     {
-    //         fighter2->IsBlockingHit = true;
-    //         fighter2->DoBlockSequence = true;
-    //         fighter2->lastTicks = rapTicks;
-    //     }
-    // }
-    // else if (fighter1->fighterIndex == SUBZERO)
-    // {
-    //     if (!fighter1->ProjectileMadeContact)
-    //     {
-    //         fighter1->ProjectileMadeContact = true;
-
-    //         if (fighter2->IsFrozen)
-    //         {
-    //             fighterUnfreeze(fighter2);
-    //             sprite[fighter1->lightningSpriteIndex].active = R_is_inactive;
-    //             fighterFreeze(fighter1);
-    //             return;
-    //         }
-
-    //         if (!fighter2->IsBlocking)
-    //         {
-    //             fighterFreeze(fighter2);
-    //             fighterAddPendingDamage(fighter2, DMG_FREEZE, false, fighter1, POINTS_PROJECTILE);
-    //         }
-    //         else
-    //         {
-    //             fighter2->IsBlockingHit = true;
-    //             fighter2->DoBlockSequence = true;
-    //             fighter2->lastTicks = rapTicks;
-    //         }
-    //     }
-    // }
-    // else if (fighter1->fighterIndex == SCORPION)
-    // {
-    //     if (!fighter1->ProjectileMadeContact)
-    //     {
-    //         fighter1->ProjectileMadeContact = true;
-
-    //         if (!fighter2->IsBlocking)
-    //         {
-    //             fighter1->DoHarpoonReelingInSequence = true;                
-    //             fighter1->lastTicks = rapTicks;
-    //             fighter1->HarpoonShakeDirection = -1;
-    //             fighter1->HarpoonOffsetY = 32;
-    //             fighter1->HarpoonShakeCount = 0;
-    //             fighterHarpoon(fighter2, fighter1);
-    //             fighterAddPendingDamage(fighter2, DMG_HARPOON, false, fighter1, POINTS_PROJECTILE);
-    //         }
-    //         else
-    //         {
-    //             fighter1->HarpoonBlocked = true;
-    //             fighter2->IsBlockingHit = true;
-    //             fighter2->DoBlockSequence = true;
-    //             fighter2->lastTicks = rapTicks;
-    //         }
-    //     }
-    // }
+        if (!fighterIsBlocking(stateMachine, fighter2) && fighter2->currentState->Name != STATE_HIT_BLOCKING)
+        {
+            fighter2->NoBlood = true;
+            fighterAddPendingDamage(fighter2, DMG_RINGS, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine, STATE_HIT_BACK, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+        else
+        {
+            stateMachineGoto(stateMachine, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+    }
 }
 
 void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)
@@ -1628,6 +1567,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator2);
             stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
         }
+        else if (fighter1->currentState->Name == STATE_SONYA_LEG_GRAB)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+            stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator2);
+            stateMachineGoto(stateMachine, STATE_HIT_LEG_GRAB, fighter2, spriteAnimator2);
+        }
 
         if (fighter2->IsFrozen)
         {
@@ -1664,7 +1609,8 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
                 || fighter1->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD
                 || fighter1->currentState->Name == STATE_RAIDEN_TORPEDO
                 || fighter1->currentState->Name == STATE_SCORPION_TELEPORT
-                || fighter1->currentState->Name == STATE_SUBZERO_SLIDE)
+                || fighter1->currentState->Name == STATE_SUBZERO_SLIDE
+                || fighter1->currentState->Name == STATE_SONYA_LEG_GRAB)
             {
                 stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
                 stateMachineGoto(stateMachine, STATE_HIT_BLOCKING_KNOCKBACK, fighter2, spriteAnimator2);
@@ -1687,7 +1633,11 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
-        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
     {
         fighter1->IsTurning = true;
     }
@@ -1698,7 +1648,11 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
-        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
     {
         fighter1->IsTurning = true;
     }
@@ -1709,7 +1663,11 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
-        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
     {
         fighter2->IsTurning = true;
     }
@@ -1720,7 +1678,11 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
         && fighter2->currentState->Name != STATE_SCORPION_TELEPORT
-        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT)
+        && fighter1->currentState->Name != STATE_SCORPION_TELEPORT
+        && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
+        && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
+        && fighter2->currentState->Name != STATE_HIT_LEG_GRAB)
     {
         fighter2->IsTurning = true;
     }

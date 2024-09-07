@@ -1948,7 +1948,7 @@ raptor_init_table:
 ; BRANCH Object 21
 	dc.l    -3                                ; BRANCH object
     dc.l    BR_more
-    dc.l    220
+    dc.l    224
     dc.l    7
     dc.l    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 

@@ -20,6 +20,9 @@ static AnimationFrame cageShadowKickFrames[] = {
 static AnimationFrame scorpionTeleportFrames[] = {
 	{ 64, 96, 96, 736, 0, 16, 6 },
 };
+static struct ImpactFrame sonyaImpactLegGrab = {
+	5, 0, 30, false, 99
+};
 
 void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state)
 {
@@ -2426,6 +2429,10 @@ void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fig
             jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),13,16);
             sfxCageGreenbolt(fighter->soundHandler);
             break;
+            case SONYA:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
+            sfxSonyaRings(fighter->soundHandler);
+            break;
         default:
             break;
     }
@@ -3753,5 +3760,182 @@ void StateSubzeroSlide_Sleep(struct StateMachine* stateMachine, struct Fighter* 
 }
 
 void StateSubzeroSlide_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SONYA LEG GRAB
+// vars[0] = played sound
+// vars[1] = direction
+
+void StateSonyaLegGrab_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;    
+}
+
+void StateSonyaLegGrab_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //check for impact on the 5th frame of the leg grab animation
+    impactFrameUpdate(spriteAnimator, fighter, &sonyaImpactLegGrab);
+
+    if (fighter->vars[0] == 0 && spriteAnimator->currentFrame == 2)
+    {
+        fighter->vars[0] = 1;
+        sfxSwing(fighter->soundHandler);
+    }
+
+    if (fighter->vars[1] == 0)
+    {
+        //animate forwards
+        if (animationIsComplete(spriteAnimator, fighter->SPECIAL_2_FRAME_COUNT))
+        {
+            fighter->vars[1] = 1;
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        //animate backwards
+        if (spriteAnimator->currentFrame == 0)
+        {
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, false, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+}
+
+void StateSonyaLegGrab_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+}
+
+void StateSonyaLegGrab_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT LEG GRAB
+// vars[0] = stun ended
+// vars[1] = thrown index
+// vars[2] = did second bounce
+
+void StateHitLegGrab_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighterFaceOpponent(fighter);
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->exitingState = false;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 8; //start at index 8 of the throw index
+    fighter->vars[2] = 0;
+    fighter->lastTicks = rapTicks;
+    fighter->IsBeingDamaged = true;
+    //TODO calculate the diff between fighter and opponent so they "snap" to the right X location
+    if (fighter->direction == -1)
+    {
+        fighter->positionX = fighter->Opponent->positionX + (FIGHTER_WIDTH * 2) + 16;
+    }
+    else if (fighter->direction == 1)
+    {
+        fighter->positionX = fighter->Opponent->positionX - (FIGHTER_WIDTH * 2) - 16;
+    }
+    fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+}
+
+void StateHitLegGrab_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0)
+    {
+        if (rapTicks >= fighter->lastTicks + 30)
+        {
+            fighter->vars[0] = 1;
+        }
+
+        //they're stunned because they were just caught by the leg grab
+        setAnimationFrame(fighter->spriteIndex, spriteAnimator, fighter->hitUppercutFrames[0], fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        //throw 'em
+        if (rapTicks >= fighter->lastTicks + 2)
+        {
+            if (fighter->vars[2] == 0)
+            {
+                if (fighter->vars[1] < 22)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 2, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+                else if (fighter->vars[1] == 22)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 3, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+                else if (fighter->vars[1] == 23)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 4, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+                else if (fighter->vars[1] >= 24)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 5, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+
+                fighterPositionXAdd(fighter, FIGHTER_HIT_LEG_GRAB_X_SPEED * fighter->direction);
+                fighter->positionY += UppercutOffsets[fighter->vars[1]];
+                fighter->vars[1]++;
+
+                if (fighter->vars[1] == 25)
+                {
+                    fighterTakeDamage(fighter, fighter->pendingDamage);
+                    fighterSetOnFloor(fighter);
+                    bgShake(false);
+                    sfxThud(fighter->soundHandler);
+                    fighter->vars[2] = 1;  //start the second bounce
+                    fighter->vars[1] = 10;
+                }
+            }
+            else
+            {
+                if (fighter->vars[1] <= 23)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 4, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+                else if (fighter->vars[1] >= 24)
+                {
+                    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 5, *fighter->beingThrownFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+                }
+
+                fighterPositionXAdd(fighter, FIGHTER_HIT_LEG_GRAB_BOUNCE_X_SPEED * fighter->direction);
+                fighter->positionY += UppercutOffsets[fighter->vars[1]];
+                fighter->vars[1]++;
+
+                if (fighter->vars[1] == 25)
+                {
+                    fighterTakeDamage(fighter, fighter->pendingDamage);
+                    fighterSetOnFloor(fighter);
+                    bgShake(false);
+                    sfxThud(fighter->soundHandler);
+                    fighter->IsBeingDamaged = false;
+                    stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+                }
+            }
+            
+            fighter->lastTicks = rapTicks;
+        }
+    }
+}
+
+void StateHitLegGrab_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitLegGrab_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

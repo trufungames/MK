@@ -260,6 +260,12 @@ static State stateIdleFall = {
 static State stateSubzeroSlide = {
 	STATE_SUBZERO_SLIDE
 };
+static State stateSonyaLegGrab = {
+	STATE_SONYA_LEG_GRAB
+};
+static State stateHitLegGrab = {
+	STATE_HIT_LEG_GRAB
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -464,6 +470,16 @@ static AnimationFrame subzeroSlideFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame sonyaLegGrabFrames[] = {
+	{ 64, 96, 352, 768, 13, 16, 4 },
+	{ 80, 64, 416, 736, 14, 48, 4 },
+	{ 80, 128, 496, 720, 19, -16, 4 },
+	{ 64, 128, 576, 720, 37, -16, 4 },
+	{ 48, 128, 640, 720, 76, -16, 4 },
+	{ 80, 80, 688, 704, 78, 32, 16 },
+	{ 80, 80, 688, 704, 78, 32, 4 }
 };
 
 static AnimationFrame scorpionHarpoonFrames[] = {
@@ -3255,7 +3271,7 @@ static int specials_Raiden_Teleport_Inputs[] = { INPUT_UP, INPUT_DOWN, 0, 0, 0, 
 static int specials_Kang_Fireball_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Kang_FlyingKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Sonya_Rings_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
-static int specials_Sonya_LegGrab_Inputs[] = { 0, 0, INPUT_LK, INPUT_LP, INPUT_DOWN, INPUT_BLK };
+static int specials_Sonya_LegGrab_Inputs[] = { INPUT_LK, INPUT_BLK, INPUT_LP, INPUT_DOWN, 0, 0 };
 static int specials_Sonya_SquareFlight_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
 static int specials_Subzero_Freeze_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, 0, 0, 0 };
 static int specials_Subzero_Slide_Inputs[] = { INPUT_LK, INPUT_BLK, INPUT_LP, INPUT_BACK, 0, 0 };
@@ -3447,6 +3463,7 @@ void doSpecial_Raiden_Teleport(struct StateMachine* stateMachine, struct Fighter
 void doSpecial_Kang_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Sonya_LegGrab(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
@@ -3757,7 +3774,12 @@ static Fighter fighterSonya = {
 	SONYA_HIT_BACK_FRAME_COUNT,
 	SONYA_HIT_UPPERCUT_FRAME_COUNT,
 	SONYA_HIT_FALL_FRAME_COUNT,
-	SONYA_HIT_SWEEP_FRAME_COUNT
+	SONYA_HIT_SWEEP_FRAME_COUNT,
+	SONYA_SPECIAL_1_FRAME_COUNT,
+	SONYA_SPECIAL_2_FRAME_COUNT,
+	SONYA_SPECIAL_3_FRAME_COUNT,
+	SONYA_PROJECTILE_FRAME_COUNT,
+	SONYA_PROJECTILE_END_FRAME_COUNT
 };
 
 ///////////////////////////////
@@ -4065,7 +4087,12 @@ static Fighter fighterSonya2 = {
 	SONYA_HIT_BACK_FRAME_COUNT,
 	SONYA_HIT_UPPERCUT_FRAME_COUNT,
 	SONYA_HIT_FALL_FRAME_COUNT,
-	SONYA_HIT_SWEEP_FRAME_COUNT
+	SONYA_HIT_SWEEP_FRAME_COUNT,
+	SONYA_SPECIAL_1_FRAME_COUNT,
+	SONYA_SPECIAL_2_FRAME_COUNT,
+	SONYA_SPECIAL_3_FRAME_COUNT,
+	SONYA_PROJECTILE_FRAME_COUNT,
+	SONYA_PROJECTILE_END_FRAME_COUNT
 };
 
 static LeaderboardEntry leaderboard[] = {
@@ -4382,6 +4409,14 @@ void basicmain()
 		stateSubzeroSlide.update = &StateSubzeroSlide_Update;
 		stateSubzeroSlide.sleep = &StateSubzeroSlide_Sleep;
 		stateSubzeroSlide.handleInput = &StateSubzeroSlide_HandleInput;
+		stateSonyaLegGrab.enter = &StateSonyaLegGrab_Enter;
+		stateSonyaLegGrab.update = &StateSonyaLegGrab_Update;
+		stateSonyaLegGrab.sleep = &StateSonyaLegGrab_Sleep;
+		stateSonyaLegGrab.handleInput = &StateSonyaLegGrab_HandleInput;
+		stateHitLegGrab.enter = &StateHitLegGrab_Enter;
+		stateHitLegGrab.update = &StateHitLegGrab_Update;
+		stateHitLegGrab.sleep = &StateHitLegGrab_Sleep;
+		stateHitLegGrab.handleInput = &StateHitLegGrab_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4444,6 +4479,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_FREEZE, &stateHitFreeze);
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE_FALL, &stateIdleFall);
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_SLIDE, &stateSubzeroSlide);
+		stateMachineAdd(&fighterStateMachine, STATE_SONYA_LEG_GRAB, &stateSonyaLegGrab);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_LEG_GRAB, &stateHitLegGrab);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -5103,10 +5140,12 @@ void basicmain()
 		fighterSonya.special2Inputs = &specials_Sonya_LegGrab_Inputs;
 		fighterSonya.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
 		fighterSonya.special1InputCount = 3;
-		fighterSonya.special2InputCount = 3;
+		fighterSonya.special2InputCount = 14;
 		fighterSonya.special3InputCount = 0;
 		fighterSonya.special1Frames = &sonyaRingsFrames;
+		fighterSonya.special2Frames = &sonyaLegGrabFrames;
 		fighterSonya.doSpecialMove1 = &doSpecial_Sonya_Rings;
+		fighterSonya.doSpecialMove2 = &doSpecial_Sonya_LegGrab;
 		fighterSonya.idleFrames = &sonyaIdleFrames;
 		fighterSonya.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya.winsFrames = &sonyaWinsFrames;
@@ -5153,10 +5192,12 @@ void basicmain()
 		fighterSonya2.special2Inputs = &specials_Sonya_LegGrab_Inputs;
 		fighterSonya2.special3Inputs = &specials_Sonya_SquareFlight_Inputs;
 		fighterSonya2.special1InputCount = 3;
-		fighterSonya2.special2InputCount = 3;
+		fighterSonya2.special2InputCount = 14;
 		fighterSonya2.special3InputCount = 0;
 		fighterSonya2.special1Frames = &sonyaRingsFrames;
+		fighterSonya2.special2Frames = &sonyaLegGrabFrames;
 		fighterSonya2.doSpecialMove1 = &doSpecial_Sonya_Rings;
+		fighterSonya2.doSpecialMove2 = &doSpecial_Sonya_LegGrab;
 		fighterSonya2.idleFrames = &sonyaIdleFrames;
 		fighterSonya2.dizzyFrames = &sonyaDizzyFrames;
 		fighterSonya2.winsFrames = &sonyaWinsFrames;
@@ -7913,63 +7954,12 @@ void doSpecial_Kang_FlyingKick(struct StateMachine* stateMachine, struct Fighter
 
 void doSpecial_Sonya_Rings(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
-	// if (!fighter->HasSetupSpecial1)
-	// {
-	// 	fighter->HasSetupSpecial1 = true;
-	// 	fighter->HasSetupProjectileEnd = false;
-	// 	fighter->ProjectileMadeContact = false;
-	// 	animator->currentFrame = 0;
-	// 	fighter->projectilePositionX = fighter->positionX;
-	// 	fighter->projectilePositionX += fighter->direction == -1 ? FIGHTER_WIDTH : 0;
-	// 	fighter->projectileAnimator->currentFrame = 0;
-	// 	fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
-	// 	fighter->projectileAnimator->base = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
-	// 	sprite[fighter->lightningSpriteIndex].gwidth = 104;
-	// 	sprite[fighter->lightningSpriteIndex].hbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].vbox = 16;
-	// 	sprite[fighter->lightningSpriteIndex].active = R_is_active;
-	// 	jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
-	// 	fighter->lastTicks = rapTicks;
-	// 	sfxSonyaRings(fighter->soundHandler);
-	// }
+	stateMachineGoto(stateMachine, STATE_THROWING_PROJECTILE, fighter, animator);
+}
 
-	// if (!fighter->ProjectileMadeContact)
-	// {
-	// 	if (animationIsComplete(animator, 4))
-	// 	{
-	// 		fighter->projectilePositionX += (8 * fighter->direction);
-
-	// 		if (fighter->direction == 1 && fighter->projectilePositionX > 320
-	// 			|| fighter->direction == -1 && fighter->projectilePositionX < 0)
-	// 		{
-	// 			fighter->IsDoingSpecial1 = false;
-	// 			playerinputInit(fighter);
-	// 			sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 		}
-	// 	}
-
-	// 	updateSpriteAnimator(animator, *fighter->special1Frames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 8, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	// }
-	// else
-	// {
-	// 	if (!fighter->HasSetupProjectileEnd)
-	// 	{
-	// 		fighter->HasSetupProjectileEnd = true;
-	// 		fighter->projectileAnimator->currentFrame = 0;
-	// 	}
-
-	// 	if (animationIsComplete(fighter->projectileAnimator, 5))
-	// 	{
-	// 		sprite[fighter->lightningSpriteIndex].was_hit = -1;
-	// 		fighter->IsDoingSpecial1 = false;
-	// 		sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-	// 		fighterResetRaidenLightning(fighter);
-	// 	}
-
-	// 	updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 5, true, false, fighter->projectilePositionX, fighter->positionY, fighter->direction);
-	// }
+void doSpecial_Sonya_LegGrab(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SONYA_LEG_GRAB, fighter, animator);
 }
 
 void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)

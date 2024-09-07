@@ -125,6 +125,15 @@ int playerinputContains(struct Fighter* fighter, int checkInputs[], int checkCou
                     else if (fighter->direction == -1 && !(fighter->pad & JAGPAD_RIGHT))
                         return false;
                 }
+            
+            if (checkInputs[0] == INPUT_DOWN
+                || checkInputs[1] == INPUT_DOWN
+                || checkInputs[2] == INPUT_DOWN
+                || checkInputs[3] == INPUT_DOWN)
+                {
+                    if (!(fighter->pad & JAGPAD_DOWN))
+                        return false;
+                }
             break;
             default:
                 break;
