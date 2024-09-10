@@ -42,6 +42,7 @@ bool onScreenVsBattle = false;
 bool onScreenFight = false;
 bool fadedIn = false;
 bool fadedOut = false;
+bool kasumiUnlocked = false;
 short gameStartTicks = rapTicks;
 short ticksPerSec = 60;
 short lastTicks = 0;
@@ -2785,6 +2786,15 @@ static SpriteAnimator scorpionAnimator2 = {
 	P2_FIGHTER, 0.5f, BMPSUBZERO, 0, 0, 48
 };
 
+//Kasumi animation frames
+static SpriteAnimator kasumiAnimator = {
+	P1_FIGHTER, 0.5f, BMPSUBZERO, 0, 0, 48
+};
+
+static SpriteAnimator kasumiAnimator2 = {
+	P2_FIGHTER, 0.5f, BMPSUBZERO, 0, 0, 48
+};
+
 static AnimationFrame scorpionIdleFrames[] = {
 	{ 64, 112, 0, 0, 0, 0, 6 },
 	{ 64, 112, 64, 0, 0, 0, 6 },
@@ -3262,6 +3272,7 @@ static AnimationFrame lightningFrames[] = {
 	{ 64, 112, 576, 224, 0, 0, 4 }
 };
 
+static int secrets_Unlock_Kasumi_Inputs[] = { INPUT_ZERO, INPUT_ZERO, INPUT_ZERO, 0, 0, 0 };
 static int specials_Cage_GreenBolt_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 static int specials_Cage_ShadowKick_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 static int specials_Cage_NutPunch_Inputs[] = { INPUT_LP, 0, 0, 0, 0, INPUT_BLK };
@@ -3786,6 +3797,46 @@ static Fighter fighterSonya = {
 	SONYA_PROJECTILE_END_FRAME_COUNT
 };
 
+static Fighter fighterKasumi = {
+	KASUMI, P1_FIGHTER, BMPSUBZERO,
+	SUBZERO_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
+	SUBZERO_WINS_FRAME_COUNT,
+	SUBZERO_SPECIAL_FRAME_COUNT,
+	SUBZERO_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
+	SUBZERO_JUMP_FRAME_COUNT,
+	SUBZERO_JUMP_ROLL_FRAME_COUNT,
+	SUBZERO_DUCK_FRAME_COUNT,
+	SUBZERO_BLOCK_FRAME_COUNT,
+	SUBZERO_BLOCK_HIT_FRAME_COUNT,
+	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
+	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
+	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
+	SUBZERO_HIGH_PUNCH_REPEAT_FRAME_COUNT,
+	SUBZERO_LOW_KICK_FRAME_COUNT,
+	SUBZERO_HIGH_KICK_FRAME_COUNT,
+	SUBZERO_JUMP_PUNCH_FRAME_COUNT,
+	SUBZERO_JUMP_KICK_FRAME_COUNT,
+	SUBZERO_UPPERCUT_FRAME_COUNT,
+	SUBZERO_KIPUP_FRAME_COUNT,
+	SUBZERO_SWEEP_FRAME_COUNT,
+	SUBZERO_ROUNDHOUSE_FRAME_COUNT,
+	SUBZERO_BODY_PUNCH_FRAME_COUNT,
+	SUBZERO_BODY_KICK_FRAME_COUNT,
+	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
+	SUBZERO_HIT_LOW_FRAME_COUNT,
+	SUBZERO_HIT_HIGH_FRAME_COUNT,
+	SUBZERO_HIT_BACK_FRAME_COUNT,
+	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
+	SUBZERO_HIT_FALL_FRAME_COUNT,
+	SUBZERO_HIT_SWEEP_FRAME_COUNT
+};
+
 ///////////////////////////////
 // Player 2 Fighters
 ///////////////////////////////
@@ -4099,6 +4150,46 @@ static Fighter fighterSonya2 = {
 	SONYA_PROJECTILE_END_FRAME_COUNT
 };
 
+static Fighter fighterKasumi2 = {
+	KASUMI, P2_FIGHTER, BMPSUBZERO,
+	SUBZERO_IDLE_FRAME_COUNT,
+	SUBZERO_DIZZY_FRAME_COUNT,
+	SUBZERO_WINS_FRAME_COUNT,
+	SUBZERO_SPECIAL_FRAME_COUNT,
+	SUBZERO_WALK_FRAME_COUNT,
+	SUBZERO_TURN_FRAME_COUNT,
+	SUBZERO_JUMP_FRAME_COUNT,
+	SUBZERO_JUMP_ROLL_FRAME_COUNT,
+	SUBZERO_DUCK_FRAME_COUNT,
+	SUBZERO_BLOCK_FRAME_COUNT,
+	SUBZERO_BLOCK_HIT_FRAME_COUNT,
+	SUBZERO_BLOCK_DUCK_FRAME_COUNT,
+	SUBZERO_BLOCK_DUCK_HIT_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_FRAME_COUNT,
+	SUBZERO_LOW_PUNCH_REPEAT_FRAME_COUNT,
+	SUBZERO_HIGH_PUNCH_FRAME_COUNT,
+	SUBZERO_HIGH_PUNCH_REPEAT_FRAME_COUNT,
+	SUBZERO_LOW_KICK_FRAME_COUNT,
+	SUBZERO_HIGH_KICK_FRAME_COUNT,
+	SUBZERO_JUMP_PUNCH_FRAME_COUNT,
+	SUBZERO_JUMP_KICK_FRAME_COUNT,
+	SUBZERO_UPPERCUT_FRAME_COUNT,
+	SUBZERO_KIPUP_FRAME_COUNT,
+	SUBZERO_SWEEP_FRAME_COUNT,
+	SUBZERO_ROUNDHOUSE_FRAME_COUNT,
+	SUBZERO_BODY_PUNCH_FRAME_COUNT,
+	SUBZERO_BODY_KICK_FRAME_COUNT,
+	SUBZERO_DUCK_KICK_FRAME_COUNT,
+	SUBZERO_THROW_FRAME_COUNT,
+	SUBZERO_BEING_THROWN_FRAME_COUNT,
+	SUBZERO_HIT_LOW_FRAME_COUNT,
+	SUBZERO_HIT_HIGH_FRAME_COUNT,
+	SUBZERO_HIT_BACK_FRAME_COUNT,
+	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
+	SUBZERO_HIT_FALL_FRAME_COUNT,
+	SUBZERO_HIT_SWEEP_FRAME_COUNT
+};
+
 static LeaderboardEntry leaderboard[] = {
 	{ "GAV", 16, 3356790 },
 	{ "GNT", 10, 2023570 },
@@ -4168,6 +4259,12 @@ void basicmain()
 		fmvIndex = 6;
 		goroProfileShown = false;
 		attractSlideIndex = 0;
+		kasumiUnlocked = false;
+		bool titleShakeTicks = rapTicks;
+		bool titleShaking = false;
+		bool titleShakeCount = 0;
+		bool titleShakeDirection = 1;
+		bool titleShakeYInc = 0;
 
 		stateIdle.enter = &StateIdle_Enter;
 		stateIdle.update = &StateIdle_Update;
@@ -5247,6 +5344,113 @@ void basicmain()
 		fighterSonya2.hitUppercutFrames = &sonyaHitUppercutFrames;
 		fighterSonya2.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya2.hitSweepFrames = &sonyaHitSweepFrames;
+		//Kasumi
+		fighterKasumi.spriteAnimator = &subzeroAnimator;
+		fighterKasumi.projectileAnimator = &lightningAnimator;
+		fighterKasumi.projectileFrames = &projectileFreezeFrames;
+		fighterKasumi.projectileEndFrames = &projectileFreezeEndFrames;
+		fighterKasumi.special1Inputs = &specials_Subzero_Freeze_Inputs;
+		fighterKasumi.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterKasumi.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterKasumi.special1InputCount = 3;
+		fighterKasumi.special2InputCount = 14;
+		fighterKasumi.special3InputCount = 0;
+		fighterKasumi.special1Frames = &subzeroFreezeFrames;
+		fighterKasumi.special2Frames = &subzeroSlideFrames;
+		fighterKasumi.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterKasumi.doSpecialMove2 = &doSpecial_Subzero_Slide;
+		fighterKasumi.idleFrames = &subzeroIdleFrames;
+		fighterKasumi.dizzyFrames = &subzeroDizzyFrames;
+		fighterKasumi.winsFrames = &subzeroWinsFrames;
+		fighterKasumi.specialFrames = &subzeroSpecialFrames;
+		fighterKasumi.walkFrames = &subzeroWalkFrames;
+		fighterKasumi.turnFrames = &subzeroTurnFrames;
+		fighterKasumi.jumpFrames = &subzeroJumpFrames;
+		fighterKasumi.jumpRollFrames = &subzeroJumpRollFrames;
+		fighterKasumi.duckFrames = &subzeroDuckFrames;
+		fighterKasumi.blockFrames = &subzeroBlockFrames;
+		fighterKasumi.blockHitFrames = &subzeroBlockHitFrames;
+		fighterKasumi.blockDuckFrames = &subzeroBlockDuckFrames;
+		fighterKasumi.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+		fighterKasumi.punchLowFrames = &subzeroPunchLowFrames;
+		fighterKasumi.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
+		fighterKasumi.punchHighFrames = &subzeroPunchHighFrames;
+		fighterKasumi.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
+		fighterKasumi.kickLowFrames = &subzeroKickLowFrames;
+		fighterKasumi.kickHighFrames = &subzeroKickHighFrames;
+		fighterKasumi.jumpPunchFrames = &subzeroJumpPunchFrames;
+		fighterKasumi.jumpKickFrames = &subzeroJumpKickFrames;
+		fighterKasumi.jumpDropKickFrames = &subzeroJumpDropKickFrames;
+		fighterKasumi.uppercutFrames = &subzeroUppercutFrames;
+		fighterKasumi.kipUpFrames = &subzeroKipUpFrames;
+		fighterKasumi.sweepFrames = &subzeroSweepFrames;
+		fighterKasumi.roundhouseFrames = &subzeroRoundhouseFrames;
+		fighterKasumi.bodyPunchFrames = &subzeroBodyPunchFrames;
+		fighterKasumi.bodyKickFrames = &subzeroBodyKickFrames;
+		fighterKasumi.duckKickFrames = &subzeroDuckKickFrames;
+		fighterKasumi.throwFrames = &subzeroThrowFrames;
+		fighterKasumi.beingThrownFrames = &subzeroBeingThrownFrames;
+		fighterKasumi.beingThrownLowFrames = &subzeroBeingThrownLowFrames;
+		fighterKasumi.hitLowFrames = &subzeroHitLowFrames;
+		fighterKasumi.hitHighFrames = &subzeroHitHighFrames;
+		fighterKasumi.hitBackFrames = &subzeroHitBackFrames;
+		fighterKasumi.hitUppercutFrames = &subzeroHitUppercutFrames;
+		fighterKasumi.hitFallFrames = &subzeroHitFallFrames;
+		fighterKasumi.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterKasumi.hitNutsFrames = &subzeroHitNutsFrames;
+		fighterKasumi2.spriteAnimator = &subzeroAnimator2;
+		fighterKasumi2.projectileAnimator = &lightning2Animator;
+		fighterKasumi2.projectileFrames = &projectileFreezeFrames;
+		fighterKasumi2.projectileEndFrames = &projectileFreezeEndFrames;
+		fighterKasumi2.special1Inputs = &specials_Subzero_Freeze_Inputs;
+		fighterKasumi2.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterKasumi2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
+		fighterKasumi2.special1InputCount = 3;
+		fighterKasumi2.special2InputCount = 14;
+		fighterKasumi2.special3InputCount = 0;
+		fighterKasumi2.special1Frames = &subzeroFreezeFrames;
+		fighterKasumi2.special2Frames = &subzeroSlideFrames;
+		fighterKasumi2.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterKasumi2.doSpecialMove2 = &doSpecial_Subzero_Slide;
+		fighterKasumi2.idleFrames = &subzeroIdleFrames;
+		fighterKasumi2.dizzyFrames = &subzeroDizzyFrames;
+		fighterKasumi2.winsFrames = &subzeroWinsFrames;
+		fighterKasumi2.specialFrames = &subzeroSpecialFrames;
+		fighterKasumi2.turnFrames = &subzeroTurnFrames;
+		fighterKasumi2.walkFrames = &subzeroWalkFrames;
+		fighterKasumi2.jumpFrames = &subzeroJumpFrames;
+		fighterKasumi2.jumpRollFrames = &subzeroJumpRollFrames;
+		fighterKasumi2.duckFrames = &subzeroDuckFrames;
+		fighterKasumi2.blockFrames = &subzeroBlockFrames;
+		fighterKasumi2.blockHitFrames = &subzeroBlockHitFrames;
+		fighterKasumi2.blockDuckFrames = &subzeroBlockDuckFrames;
+		fighterKasumi2.blockDuckHitFrames = &subzeroBlockDuckHitFrames;
+		fighterKasumi2.punchLowFrames = &subzeroPunchLowFrames;
+		fighterKasumi2.punchLowRepeatFrames = &subzeroPunchLowRepeatFrames;
+		fighterKasumi2.punchHighFrames = &subzeroPunchHighFrames;
+		fighterKasumi2.punchHighRepeatFrames = &subzeroPunchHighRepeatFrames;
+		fighterKasumi2.kickLowFrames = &subzeroKickLowFrames;
+		fighterKasumi2.kickHighFrames = &subzeroKickHighFrames;
+		fighterKasumi2.jumpPunchFrames = &subzeroJumpPunchFrames;
+		fighterKasumi2.jumpKickFrames = &subzeroJumpKickFrames;
+		fighterKasumi2.jumpDropKickFrames = &subzeroJumpDropKickFrames;
+		fighterKasumi2.uppercutFrames = &subzeroUppercutFrames;
+		fighterKasumi2.kipUpFrames = &subzeroKipUpFrames;
+		fighterKasumi2.sweepFrames = &subzeroSweepFrames;
+		fighterKasumi2.roundhouseFrames = &subzeroRoundhouseFrames;
+		fighterKasumi2.bodyPunchFrames = &subzeroBodyPunchFrames;
+		fighterKasumi2.bodyKickFrames = &subzeroBodyKickFrames;
+		fighterKasumi2.duckKickFrames = &subzeroDuckKickFrames;
+		fighterKasumi2.throwFrames = &subzeroThrowFrames;
+		fighterKasumi2.beingThrownFrames = &subzeroBeingThrownFrames;
+		fighterKasumi2.beingThrownLowFrames = &subzeroBeingThrownLowFrames;
+		fighterKasumi2.hitLowFrames = &subzeroHitLowFrames;
+		fighterKasumi2.hitHighFrames = &subzeroHitHighFrames;
+		fighterKasumi2.hitBackFrames = &subzeroHitBackFrames;
+		fighterKasumi2.hitUppercutFrames = &subzeroHitUppercutFrames;
+		fighterKasumi2.hitFallFrames = &subzeroHitFallFrames;
+		fighterKasumi2.hitSweepFrames = &subzeroHitSweepFrames;
+		fighterKasumi2.hitNutsFrames = &subzeroHitNutsFrames;
 
 		unsigned short bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
 		*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
@@ -5646,6 +5850,81 @@ void basicmain()
 				pad1 = jsfGetPadPressed(LEFT_PAD);
 				pad2 = jsfGetPadPressed(RIGHT_PAD);
 
+				fighterCage.pad = jsfGetPad(LEFT_PAD);
+				fighterCage2.pad = jsfGetPad(RIGHT_PAD);
+
+				if (fighterCage.ButtonReleased)
+				{
+					if ((fighterCage.pad & JAGPAD_HASH))
+					{
+						playerinputPush(&fighterCage, JAGPAD_HASH);
+						fighterCage.ButtonReleased = false;
+					}
+					else if ((fighterCage.pad & JAGPAD_0))
+					{
+						playerinputPush(&fighterCage, JAGPAD_0);
+						fighterCage.ButtonReleased = false;
+					}
+					else if ((fighterCage.pad & JAGPAD_STAR))
+					{
+						playerinputPush(&fighterCage, JAGPAD_STAR);
+						fighterCage.ButtonReleased = false;
+					}
+				}								
+
+				if (fighterCage2.ButtonReleased)
+				{
+					if ((fighterCage2.pad & JAGPAD_HASH))
+					{
+						playerinputPush(&fighterCage2, JAGPAD_HASH);
+						fighterCage2.ButtonReleased = false;
+					}
+					else if ((fighterCage2.pad & JAGPAD_0))
+					{
+						playerinputPush(&fighterCage2, JAGPAD_0);
+						fighterCage2.ButtonReleased = false;
+					}
+					else if ((fighterCage2.pad & JAGPAD_STAR))
+					{
+						playerinputPush(&fighterCage2, JAGPAD_STAR);
+						fighterCage2.ButtonReleased = false;
+					}
+				}
+
+				fighterButtonCheck(&fighterCage);
+				fighterButtonCheck(&fighterCage2);
+				playerinputUpdate(&fighterCage, &fighterCage2);
+
+				if (!kasumiUnlocked && (playerinputContains(&fighterCage, secrets_Unlock_Kasumi_Inputs, 3) || playerinputContains(&fighterCage2, secrets_Unlock_Kasumi_Inputs, 3)))
+				{
+					kasumiUnlocked = true;
+					sprite[CHOOSE_KASUMI].active = R_is_active;
+					sfxAnnouncerExcellent(&soundHandler);
+					titleShaking = true;
+					titleShakeCount = 0;
+					titleShakeDirection = 1;
+					titleShakeYInc = titleShakeDirection * 8;
+					titleShakeTicks = rapTicks;
+				}
+
+				if (titleShaking && rapTicks >= titleShakeTicks + 2)
+				{
+					titleShakeDirection *= -1;
+					titleShakeYInc = titleShakeDirection * 8;
+					sprite[BACKGROUND].y_ += titleShakeYInc;
+					sprite[CHOOSE_KASUMI].y_ += titleShakeYInc;
+					titleShakeCount++;
+					titleShakeTicks = rapTicks;					
+
+					if (titleShakeCount > 6)
+					{
+						titleShaking = false;
+						titleShakeYInc = 0;
+						sprite[BACKGROUND].y_ = 0;
+						sprite[CHOOSE_KASUMI].y_ = 40;
+					}
+				}
+
 				bool p1CursorChanged = false;
 
 				if (p1Selected == -1)
@@ -5653,38 +5932,65 @@ void basicmain()
 					if (pad1 & JAGPAD_LEFT)
 					{
 						p1CursorChanged = true;
-						p1Cursor--;
-
-						if (p1Cursor < 0)
-							p1Cursor = 3;
-						else if (p1Cursor == 3)
-							p1Cursor = 6;
+						
+						if (kasumiUnlocked && p1Cursor == 2)
+							p1Cursor = 7;
+						else if (kasumiUnlocked && p1Cursor == 7)
+							p1Cursor = 1;
+						else
+						{
+							p1Cursor--;
+							if (p1Cursor < 0)
+								p1Cursor = 3;
+							else if (p1Cursor == 3)
+								p1Cursor = 6;
+						}
 					}
 					else if (pad1 & JAGPAD_RIGHT)
 					{
 						p1CursorChanged = true;
-						p1Cursor++;
 
-						if (p1Cursor == 4)
-							p1Cursor = 0;
-						else if (p1Cursor == 7)
-							p1Cursor = 4;
+						if (kasumiUnlocked && p1Cursor == 1)
+							p1Cursor = 7;
+						else if (kasumiUnlocked && p1Cursor == 7)
+							p1Cursor = 2;
+						else
+						{
+							p1Cursor++;
+
+							if (p1Cursor == 4)
+								p1Cursor = 0;
+							else if (p1Cursor == 7)
+								p1Cursor = 4;
+						}
 					}
 					else if (pad1 & JAGPAD_UP)
 					{
 						p1CursorChanged = true;
-						if (p1Cursor == 4)
-							p1Cursor = 1;
-						else if (p1Cursor == 6)
-							p1Cursor = 2;
+
+						if (kasumiUnlocked && p1Cursor == 5)
+							p1Cursor = 7;
+						else
+						{
+							if (p1Cursor == 4)
+								p1Cursor = 1;
+							else if (p1Cursor == 6)
+								p1Cursor = 2;
+						}
 					}
 					else if (pad1 & JAGPAD_DOWN)
 					{
 						p1CursorChanged = true;
-						if (p1Cursor == 1)
-							p1Cursor = 4;
-						else if (p1Cursor == 2)
-							p1Cursor = 6;
+
+						if (kasumiUnlocked && p1Cursor == 7)
+							p1Cursor = 5;
+						else
+						{
+							if (p1Cursor == 1)
+								p1Cursor = 4;
+							else if (p1Cursor == 2)
+								p1Cursor = 6;
+						}
 					}
 				}
 
@@ -5824,6 +6130,24 @@ void basicmain()
 							fighterUpdateIdle(delta, &fighterScorpion, &scorpionAnimator, scorpionIdleFrames);
 						}
 						break;
+					case 7:
+						//Kasumi
+						if (p1Selected > -1)
+						{
+							if (p1SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKasumi, &kasumiAnimator, subzeroSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKasumi, &kasumiAnimator, subzeroWinsFrames);
+							}
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKasumi, &kasumiAnimator, subzeroIdleFrames);
+						}
+						break;
 				}
 
 				bool p2CursorChanged = false;
@@ -5833,38 +6157,63 @@ void basicmain()
 					if (pad2 & JAGPAD_LEFT)
 					{
 						p2CursorChanged = true;
-						p2Cursor--;
-
-						if (p2Cursor < 0)
-							p2Cursor = 3;
-						else if (p2Cursor == 3)
-							p2Cursor = 6;
+						
+						if (kasumiUnlocked && p2Cursor == 2)
+							p2Cursor = 7;
+						else if (kasumiUnlocked && p2Cursor == 7)
+							p2Cursor = 1;
+						else
+						{
+							p2Cursor--;
+							if (p2Cursor < 0)
+								p2Cursor = 3;
+							else if (p2Cursor == 3)
+								p2Cursor = 6;
+						}
 					}
 					else if (pad2 & JAGPAD_RIGHT)
 					{
 						p2CursorChanged = true;
-						p2Cursor++;
 
-						if (p2Cursor == 4)
-							p2Cursor = 0;
-						else if (p2Cursor == 7)
-							p2Cursor = 4;
+						if (kasumiUnlocked && p2Cursor == 1)
+							p2Cursor = 7;
+						else if (kasumiUnlocked && p2Cursor == 7)
+							p2Cursor = 2;
+						else
+						{
+							p2Cursor++;
+
+							if (p2Cursor == 4)
+								p2Cursor = 0;
+							else if (p2Cursor == 7)
+								p2Cursor = 4;
+						}
 					}
 					else if (pad2 & JAGPAD_UP)
 					{
 						p2CursorChanged = true;
-						if (p2Cursor == 4)
-							p2Cursor = 1;
-						else if (p2Cursor == 6)
-							p2Cursor = 2;
+						if (kasumiUnlocked && p2Cursor == 5)
+							p2Cursor = 7;
+						else
+						{
+							if (p2Cursor == 4)
+								p2Cursor = 1;
+							else if (p2Cursor == 6)
+								p2Cursor = 2;
+						}
 					}
 					else if (pad2 & JAGPAD_DOWN)
 					{
 						p2CursorChanged = true;
-						if (p2Cursor == 1)
-							p2Cursor = 4;
-						else if (p2Cursor == 2)
-							p2Cursor = 6;
+						if (kasumiUnlocked && p2Cursor == 7)
+							p2Cursor = 5;
+						else
+						{
+							if (p2Cursor == 1)
+								p2Cursor = 4;
+							else if (p2Cursor == 2)
+								p2Cursor = 6;
+						}
 					}
 				}
 
@@ -6003,6 +6352,23 @@ void basicmain()
 							fighterUpdateIdle(delta, &fighterScorpion2, &scorpionAnimator2, scorpionIdleFrames);
 						}
 						break;
+					case 7:
+						//Kasumi
+						if (p2Selected > -1)
+						{
+							if (p2SelectedSpecial)
+							{
+								fighterUpdateSpecialPose(delta, &fighterKasumi2, &kasumiAnimator2, subzeroSpecialFrames);
+							}
+							else
+							{
+								fighterUpdateVictoryPose(delta, &fighterKasumi2, &kasumiAnimator2, subzeroWinsFrames);
+							}
+						}
+						else
+						{
+							fighterUpdateIdle(delta, &fighterKasumi2, &kasumiAnimator2, subzeroIdleFrames);
+						}
 				}
 
 				if ((pad1 & JAGPAD_C || pad1 & JAGPAD_B || pad1 & JAGPAD_A || pad1 & JAGPAD_7 || pad1 & JAGPAD_8 || pad1 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p1Selected == -1)
@@ -6057,6 +6423,11 @@ void basicmain()
 							sfxScorpion(&soundHandler);
 							fighter1Ptr = &fighterScorpion;
 							spriteAnimator1Ptr = &scorpionAnimator;
+							break;
+						case 7:
+							sfxKasumi(&soundHandler);
+							fighter1Ptr = &fighterKasumi;
+							spriteAnimator1Ptr = &kasumiAnimator;
 							break; 
 					}
 
@@ -6123,6 +6494,11 @@ void basicmain()
 							fighter2Ptr = &fighterScorpion2;
 							spriteAnimator2Ptr = &scorpionAnimator2;
 							break;
+						case 7:
+							sfxKasumi(&soundHandler);
+							fighter2Ptr = &fighterKasumi2;
+							spriteAnimator2Ptr = &kasumiAnimator2;
+							break; 
 					}
 
 					fighter2Ptr->spriteAnimator->currentFrame = 0;
@@ -7019,6 +7395,8 @@ void switchScreenChooseFighter()
 	bloodResetTicks();
 	matchResetTicks();
 	rapParticleClear();
+	playerinputInit(&fighterCage);
+	playerinputInit(&fighterCage2);
 	fighterResetSpriteIndex(&fighterCage, &cageAnimator, true);
 	fighterResetSpriteIndex(&fighterKano, &kanoAnimator, true);
 	fighterResetSpriteIndex(&fighterRaiden, &raidenAnimator, true);
@@ -7026,6 +7404,7 @@ void switchScreenChooseFighter()
 	fighterResetSpriteIndex(&fighterScorpion, &scorpionAnimator, true);
 	fighterResetSpriteIndex(&fighterSubzero, &subzeroAnimator, true);
 	fighterResetSpriteIndex(&fighterSonya, &sonyaAnimator, true);
+	fighterResetSpriteIndex(&fighterKasumi, &kasumiAnimator, true);
 	fighterResetSpriteIndex(&fighterCage2, &cageAnimator2, false);
 	fighterResetSpriteIndex(&fighterKano2, &kanoAnimator2, false);
 	fighterResetSpriteIndex(&fighterRaiden2, &raidenAnimator2, false);
@@ -7033,6 +7412,7 @@ void switchScreenChooseFighter()
 	fighterResetSpriteIndex(&fighterScorpion2, &scorpionAnimator2, false);
 	fighterResetSpriteIndex(&fighterSubzero2, &subzeroAnimator2, false);
 	fighterResetSpriteIndex(&fighterSonya2, &sonyaAnimator2, false);
+	fighterResetSpriteIndex(&fighterKasumi2, &kasumiAnimator2, false);
 	lightningAnimator.lastTick = rapTicks;
 	lightning2Animator.lastTick = rapTicks;
 	lightningAnimator.spriteIndex = LIGHTNING;
@@ -7052,6 +7432,11 @@ void switchScreenChooseFighter()
 	sprite[P1_CURSOR].active = R_is_active;
 	sprite[P2_CURSOR].active = R_is_active;
 
+	if (kasumiUnlocked)
+	{
+		sprite[CHOOSE_KASUMI].active = R_is_active;
+	}
+	
 	onTitleScreen = false;
 	onMenuScreen = false;
 	onScreenChooseFighter = true;
@@ -7064,6 +7449,7 @@ void switchScreenChooseFighter()
 	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
 	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
+	
 	SetPlayerPalettes();
 	fadedIn = false;
 	fadedOut = false;
@@ -7111,6 +7497,10 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),4,16);
 			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
 			break;
+		case 7:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
+			break;
 	}
 
 	switch (p2Cursor)
@@ -7142,6 +7532,10 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 		case 6:
 			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),5,16);
 			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
+			break;
+		case 7:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
 			break;
 	}
 
@@ -7569,6 +7963,17 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterShow(&fighterScorpion);
 			setPlayer1Name((char*)"SCORPION");
 			break;
+		case 7:
+			//Kasumi
+			jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),14,16);
+			fighterKasumi.defaultClut = PAL_KASUMI_clut;
+			fighterKasumi.frozenClut = BMP_PAL_FROZEN_SCORPION_clut;
+			fighterKasumi.spriteIndex = P1_FIGHTER_PIT;
+			kasumiAnimator.spriteIndex = P1_FIGHTER_PIT;
+			fighterInitialize(&fighterKasumi, true, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
+			fighterShow(&fighterKasumi);
+			setPlayer1Name((char*)"KASUMI");
+			break;
 	}
 
 	switch (p2Cursor)
@@ -7651,6 +8056,17 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			fighterInitialize(&fighterScorpion2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
 			fighterShow(&fighterScorpion2);
 			setPlayer2Name((char*)"SCORPION", 8);
+			break;
+		case 7:
+			//Kasumi
+			jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),15,16);
+			fighterKasumi2.defaultClut = PAL_KASUMI_clut;
+			fighterKasumi2.frozenClut = BMP_PAL_FROZEN_SCORPION_clut;
+			fighterKasumi2.spriteIndex = P2_FIGHTER_PIT;
+			kasumiAnimator2.spriteIndex = P2_FIGHTER_PIT;
+			fighterInitialize(&fighterKasumi2, false, &soundHandler, &subzeroImpactFrameLowPunch, &subzeroImpactFrameHighPunch, &subzeroImpactFrameLowKick, &subzeroImpactFrameHighKick, &subzeroImpactFrameUppercut, &subzeroImpactFrameSweep, &subzeroImpactFrameJumpPunch, &subzeroImpactFrameJumpKick, &subzeroImpactFrameRoundhouse, &subzeroImpactFrameBodyPunch, &subzeroImpactFrameBodyKick, &subzeroImpactFrameDuckKick, &subzeroImpactFrameThrow);
+			fighterShow(&fighterKasumi2);
+			setPlayer2Name((char*)"KASUMI", 7);
 			break;
 	}
 
@@ -7745,6 +8161,16 @@ void SetPlayerPalettes()
 			sprite[P1_FLASH].x_ = 189;
 			sprite[P1_FLASH].y_ = 120;
 			break;
+		case 7:
+			//Kasumi
+			jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),14,16);
+			fighterMakeSelectable(&fighterKasumi, true);
+			fighterShow(&fighterKasumi);
+			sprite[P1_CURSOR].x_ = 129;
+			sprite[P1_CURSOR].y_ = 42;
+			sprite[P1_FLASH].x_ = 129;
+			sprite[P1_FLASH].y_ = 46;
+			break;
 	}
 
 	switch (p2Cursor)
@@ -7819,6 +8245,16 @@ void SetPlayerPalettes()
 			sprite[P2_CURSOR].y_ = 116;
 			sprite[P2_FLASH].x_ = 189;
 			sprite[P2_FLASH].y_ = 120;
+			break;
+		case 7:
+			//Kasumi
+			jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),15,16);
+			fighterMakeSelectable(&fighterKasumi2, false);
+			fighterShow(&fighterKasumi2);
+			sprite[P2_CURSOR].x_ = 129;
+			sprite[P2_CURSOR].y_ = 42;
+			sprite[P2_FLASH].x_ = 129;
+			sprite[P2_FLASH].y_ = 46;
 			break;
 	}
 

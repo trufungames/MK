@@ -52,6 +52,7 @@ ROM,BMPSONYA,gfx_clut,ASSETS\GFX\sonya.BMP
 ROM,BMPKANO,gfx_clut,ASSETS\GFX\kano.BMP
 ROM,PAL_SCORPION,gfx_clut,ASSETS\GFX\pal_scorpion.BMP
 ROM,PAL_REPTILE,gfx_clut,ASSETS\GFX\pal_reptile.BMP
+ROM,PAL_KASUMI,gfx_clut,ASSETS\GFX\pal_kasumi.BMP
 ROM,BMP_LIGHTNING,gfx_clut,ASSETS\GFX\lightning.BMP
 ROM,BMP_PT_CAGE,gfx_clut,ASSETS\GFX\pt_cage.BMP
 ROM,BMP_PT_KANO,gfx_clut,ASSETS\GFX\pt_kano.BMP
@@ -60,6 +61,7 @@ ROM,BMP_PT_RAIDEN,gfx_clut,ASSETS\GFX\pt_raiden.BMP
 ROM,BMP_PT_SCORPION,gfx_clut,ASSETS\GFX\pt_scorpion.BMP
 ROM,BMP_PT_SONYA,gfx_clut,ASSETS\GFX\pt_sonya.BMP
 ROM,BMP_PT_SUBZERO,gfx_clut,ASSETS\GFX\pt_subzero.BMP
+ROM,BMP_PT_KASUMI,gfx_clut,ASSETS\GFX\pt_kasumi.BMP
 ROM,BMP_PIT_BACKGROUND,gfx_clut_pack,assets\gfx\stage_pit_background.bmp
 ROM,BMP_PIT_SPIKES,gfx_clut,assets\gfx\stage_pit_spikes.bmp
 ROM,BMP_PIT_MOON,gfx_clut_pack,assets\gfx\stage_pit_moon.bmp
@@ -89,6 +91,7 @@ ROM,BMP_TESTYOURMIGHT_STONE,gfx_clut,ASSETS\GFX\testyourmight_stone.BMP
 ROM,BMP_TS_BACKGROUND,gfx_clut_pack,ASSETS\GFX\ts_background.BMP
 ROM,BMP_TS_FIGHTERS1,gfx_noclut,ASSETS\GFX\ts_fighters1.BMP
 ROM,BMP_TS_FIGHTERS2,gfx_noclut,ASSETS\GFX\ts_fighters2.BMP
+ROM,BMP_CHOOSE_KASUMI,gfx_noclut,ASSETS\GFX\choose_kasumi.BMP
 ROM,BMP_TS_MENU1,gfx_clut,ASSETS\GFX\ts_menu1.BMP
 ROM,BMP_TS_MENU2,gfx_clut,ASSETS\GFX\ts_menu2.BMP
 ROM,BMP_TS_MENU3,gfx_clut,ASSETS\GFX\ts_menu3.BMP
@@ -133,6 +136,7 @@ ROM,raiden_lightning_end_sam,sfx_raw8000,ASSETS\SFX\raiden_lightning_end.wav
 ROM,liukang_sam,sfx_raw8000,ASSETS\SFX\liukang.wav
 ROM,scorpion_sam,sfx_raw8000,ASSETS\SFX\scorpion.wav
 ROM,subzero_sam,sfx_raw8000,ASSETS\SFX\subzero.wav
+ROM,kasumi_sam,sfx_raw8000,ASSETS\SFX\kasumi.wav
 ROM,sonya_sam,sfx_raw8000,ASSETS\SFX\sonya.wav
 ROM,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
 ROM,gong_sam,sfx_raw8000,ASSETS\SFX\gong.wav

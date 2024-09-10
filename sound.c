@@ -82,6 +82,16 @@ void sfxSonya(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SONYA, 8000);
 }
 
+void sfxKasumi(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KASUMI, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KASUMI, 8000);
+}
+
 void sfxP1Cursor(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

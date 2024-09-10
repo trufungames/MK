@@ -237,6 +237,12 @@ int playerinputGetValue(int jagpadValue, int direction)
         return INPUT_LK;
     else if (jagpadValue == (int)JAGPAD_9)
         return INPUT_HK;
+    else if (jagpadValue == (int)JAGPAD_0)
+        return INPUT_ZERO;
+    else if (jagpadValue == (int)JAGPAD_HASH)
+        return INPUT_HASH;
+    else if (jagpadValue == (int)JAGPAD_STAR)
+        return INPUT_STAR;
 
     return 0;
 }

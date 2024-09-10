@@ -4,7 +4,8 @@
 
 #define BACKGROUND 1
 #define BACKGROUND16 BACKGROUND + 1
-#define FMV BACKGROUND16 + 1
+#define CHOOSE_KASUMI BACKGROUND16 + 1
+#define FMV CHOOSE_KASUMI + 1
 #define TITLE_FIGHTERS FMV + 1
 #define TITLE_STONE TITLE_FIGHTERS + 4
 #define P2_FLASH TITLE_STONE + 1
@@ -135,6 +136,7 @@
 #define SOUND_KANG_FLYINGKICK 77
 #define SOUND_SCORPION_TELEPORT 78
 #define SOUND_SUBZERO_SLIDE 79
+#define SOUND_KASUMI 80
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -223,6 +225,10 @@
 #define INPUT_BLK 7
 #define INPUT_HK 8
 #define INPUT_LK 9
+#define INPUT_HASH 10
+#define INPUT_ZERO 11
+#define INPUT_STAR 12
+
 //-----------------------------------------------------------------------------------------------------
 #define CHOOSE_FIGHTER_TIME_TOTAL 30*60
 #define MATCH_TIME_TOTAL 99*60

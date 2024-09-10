@@ -54,7 +54,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8535856,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8534416,4652(%a0)
+	move.l #8534416,4844(%a0)
 	lea (12,%sp),%sp
 .L7:
 	unlk %fp
@@ -65,7 +65,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8534384,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8532944,4652(%a0)
+	move.l #8532944,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -75,7 +75,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8529968,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8528528,4652(%a0)
+	move.l #8528528,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -85,7 +85,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8532912,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8531472,4652(%a0)
+	move.l #8531472,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -95,7 +95,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8531440,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8530000,4652(%a0)
+	move.l #8530000,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -118,7 +118,7 @@ __Z11stageUpdatev:
 	jle .L20
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 5384(%a3),%a0
+	move.w 5576(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -130,8 +130,8 @@ __Z11stageUpdatev:
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
 	jsr (%a4)
-	move.w %d0,5384(%a3)
-	move.w 5576(%a3),%a0
+	move.w %d0,5576(%a3)
+	move.w 5768(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -142,7 +142,7 @@ __Z11stageUpdatev:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	addq.l #4,%sp
-	move.w %d0,5576(%a3)
+	move.w %d0,5768(%a3)
 	move.l %a2,__ZL11cloudTicks1
 .L20:
 	move.l __ZL11cloudTicks2,%d0
@@ -151,7 +151,7 @@ __Z11stageUpdatev:
 	jge .L21
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 5768(%a3),%a0
+	move.w 5960(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -162,17 +162,6 @@ __Z11stageUpdatev:
 	addq.l #8,%sp
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,5768(%a3)
-	move.w 5960(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,5960(%a3)
 	move.w 6152(%a3),%a0
@@ -185,8 +174,19 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	addq.l #4,%sp
 	move.w %d0,6152(%a3)
+	move.w 6344(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.w %d0,6344(%a3)
 	move.l %a2,__ZL11cloudTicks2
 .L21:
 	move.l __ZL11cloudTicks3,%d0
@@ -195,7 +195,7 @@ __Z11stageUpdatev:
 	jge .L17
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 6344(%a3),%a0
+	move.w 6536(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -206,17 +206,6 @@ __Z11stageUpdatev:
 	addq.l #8,%sp
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,6344(%a3)
-	move.w 6536(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,6536(%a3)
 	move.w 6728(%a3),%a0
@@ -229,8 +218,19 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	addq.l #4,%sp
 	move.w %d0,6728(%a3)
+	move.w 6920(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.w %d0,6920(%a3)
 	move.l %a2,__ZL11cloudTicks3
 	movem.l -20(%fp),#15364
 	unlk %fp
@@ -302,24 +302,24 @@ __Z9stageMoveii:
 .L43:
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,12872(%a0)
+	add.w %d1,13064(%a0)
 	unlk %fp
 	rts
 .L48:
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,9032(%a0)
+	add.w %d1,9224(%a0)
 	unlk %fp
 	rts
 .L42:
 	move.l sprite,%a0
-	add.w %d1,7112(%a0)
 	add.w %d1,7304(%a0)
 	add.w %d1,7496(%a0)
 	add.w %d1,7688(%a0)
+	add.w %d1,7880(%a0)
 	add.w %d1,%d1
-	add.w %d1,12488(%a0)
 	add.w %d1,12680(%a0)
+	add.w %d1,12872(%a0)
 	unlk %fp
 	rts
 .L47:
@@ -327,9 +327,9 @@ __Z9stageMoveii:
 	jne .L39
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,12488(%a0)
-	add.w %d1,8648(%a0)
+	add.w %d1,12680(%a0)
 	add.w %d1,8840(%a0)
+	add.w %d1,9032(%a0)
 	unlk %fp
 	rts
 	.even

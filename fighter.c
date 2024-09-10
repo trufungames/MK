@@ -1022,7 +1022,10 @@ void fighterButtonCheck(struct Fighter* fighter)
         && !(fighter->pad & JAGPAD_A)
         && !(fighter->pad & JAGPAD_B)
         && !(fighter->pad & JAGPAD_8)
-        && !(fighter->pad & JAGPAD_7))
+        && !(fighter->pad & JAGPAD_7)
+        && !(fighter->pad & JAGPAD_0)
+        && !(fighter->pad & JAGPAD_HASH)
+        && !(fighter->pad & JAGPAD_STAR))
     {
         fighter->ButtonReleased = true;
     }

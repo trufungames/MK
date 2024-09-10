@@ -14,6 +14,7 @@ void sfxLiuKang(struct SoundHandler* soundHandler);
 void sfxScorpion(struct SoundHandler* soundHandler);
 void sfxSubzero(struct SoundHandler* soundHandler);
 void sfxSonya(struct SoundHandler* soundHandler);
+void sfxKasumi(struct SoundHandler* soundHandler);
 void sfxP1Cursor(struct SoundHandler* soundHandler);
 void sfxP2Cursor(struct SoundHandler* soundHandler);
 void sfxGong(struct SoundHandler* soundHandler);
