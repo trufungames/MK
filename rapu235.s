@@ -742,6 +742,14 @@ sample80:	dc.l	kasumi_sam		; start of sample
 s80_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample81:	dc.l	shownomercy_sam		; start of sample
+			dc.l	shownomercy_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s81_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
 
 
 ; END OF FILE.

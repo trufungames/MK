@@ -43,6 +43,10 @@ bool onScreenFight = false;
 bool fadedIn = false;
 bool fadedOut = false;
 bool kasumiUnlocked = false;
+short titleShakeTicks = rapTicks;
+bool titleShaking = false;
+short titleShakeCount = 0;
+short titleShakeDirection = 1;
 short gameStartTicks = rapTicks;
 short ticksPerSec = 60;
 short lastTicks = 0;
@@ -4259,12 +4263,6 @@ void basicmain()
 		fmvIndex = 6;
 		goroProfileShown = false;
 		attractSlideIndex = 0;
-		kasumiUnlocked = false;
-		bool titleShakeTicks = rapTicks;
-		bool titleShaking = false;
-		bool titleShakeCount = 0;
-		bool titleShakeDirection = 1;
-		bool titleShakeYInc = 0;
 
 		stateIdle.enter = &StateIdle_Enter;
 		stateIdle.update = &StateIdle_Update;
@@ -5345,7 +5343,7 @@ void basicmain()
 		fighterSonya2.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya2.hitSweepFrames = &sonyaHitSweepFrames;
 		//Kasumi
-		fighterKasumi.spriteAnimator = &subzeroAnimator;
+		fighterKasumi.spriteAnimator = &kasumiAnimator;
 		fighterKasumi.projectileAnimator = &lightningAnimator;
 		fighterKasumi.projectileFrames = &projectileFreezeFrames;
 		fighterKasumi.projectileEndFrames = &projectileFreezeEndFrames;
@@ -5398,7 +5396,7 @@ void basicmain()
 		fighterKasumi.hitFallFrames = &subzeroHitFallFrames;
 		fighterKasumi.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterKasumi.hitNutsFrames = &subzeroHitNutsFrames;
-		fighterKasumi2.spriteAnimator = &subzeroAnimator2;
+		fighterKasumi2.spriteAnimator = &kasumiAnimator2;
 		fighterKasumi2.projectileAnimator = &lightning2Animator;
 		fighterKasumi2.projectileFrames = &projectileFreezeFrames;
 		fighterKasumi2.projectileEndFrames = &projectileFreezeEndFrames;
@@ -5899,27 +5897,25 @@ void basicmain()
 				{
 					kasumiUnlocked = true;
 					sprite[CHOOSE_KASUMI].active = R_is_active;
-					sfxAnnouncerExcellent(&soundHandler);
+					sfxThud(&soundHandler);
 					titleShaking = true;
 					titleShakeCount = 0;
 					titleShakeDirection = 1;
-					titleShakeYInc = titleShakeDirection * 8;
 					titleShakeTicks = rapTicks;
 				}
 
 				if (titleShaking && rapTicks >= titleShakeTicks + 2)
 				{
-					titleShakeDirection *= -1;
-					titleShakeYInc = titleShakeDirection * 8;
-					sprite[BACKGROUND].y_ += titleShakeYInc;
-					sprite[CHOOSE_KASUMI].y_ += titleShakeYInc;
+					titleShakeDirection = titleShakeDirection * -1;
+					sprite[BACKGROUND].y_ += (titleShakeDirection * 8);
+					sprite[CHOOSE_KASUMI].y_ += (titleShakeDirection * 8);
 					titleShakeCount++;
-					titleShakeTicks = rapTicks;					
+					titleShakeTicks = rapTicks;
 
-					if (titleShakeCount > 6)
+					if (titleShakeCount > 8)
 					{
+						sfxAnnouncerShowNoMercy(&soundHandler);
 						titleShaking = false;
-						titleShakeYInc = 0;
 						sprite[BACKGROUND].y_ = 0;
 						sprite[CHOOSE_KASUMI].y_ = 40;
 					}
@@ -6555,6 +6551,8 @@ void basicmain()
 				
 				if (chooseFighterDone && rapTicks > myTicks + 120)
 				{
+					sprite[CHOOSE_KASUMI].active = R_is_inactive;
+					
 					for (int i = 0; i < 60; i++)
 					{
 						rapFadeClut(0,256,BLACKPAL);

@@ -137,6 +137,7 @@
 #define SOUND_SCORPION_TELEPORT 78
 #define SOUND_SUBZERO_SLIDE 79
 #define SOUND_KASUMI 80
+#define SOUND_SHOWNOMERCY 81
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10

@@ -69,6 +69,7 @@ void sfxCrowdAww(struct SoundHandler* soundHandler);
 void sfxCrowdClap(struct SoundHandler* soundHandler);
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler);
 void sfxAnnouncerLaugh(struct SoundHandler* soundHandler);
+void sfxAnnouncerShowNoMercy(struct SoundHandler* soundHandler);
 void sfxFinishHer(struct SoundHandler* soundHandler);
 void sfxFinishHim(struct SoundHandler* soundHandler);
 void sfxWins(struct SoundHandler* soundHandler);
