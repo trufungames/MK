@@ -734,6 +734,17 @@ void sfxKanoHeadbutt(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KANO_HEADBUTT, 8000);
 }
 
+void sfxKasumiFireball(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KASUMI_FIREBALL, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KASUMI_FIREBALL, 8000);
+}
+
 void sfxCrowdAww(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

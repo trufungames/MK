@@ -138,6 +138,7 @@
 #define SOUND_SUBZERO_SLIDE 79
 #define SOUND_KASUMI 80
 #define SOUND_SHOWNOMERCY 81
+#define SOUND_KASUMI_FIREBALL 82
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -279,7 +280,7 @@
 #define FIGHTER_SONYA_SQUARE_FLIGHT_X_SPEED 14
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 64
+#define STATE_TOTAL_COUNT 65
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -345,6 +346,7 @@
 #define STATE_SONYA_LEG_GRAB 61
 #define STATE_HIT_LEG_GRAB 62
 #define STATE_SONYA_SQUARE_FLIGHT 63
+#define STATE_KASUMI_FIREBALL 64
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
@@ -527,6 +529,13 @@
 #define RAIDEN_SPECIAL_3_FRAME_COUNT 5
 #define RAIDEN_PROJECTILE_FRAME_COUNT 20
 #define RAIDEN_PROJECTILE_END_FRAME_COUNT 5
+
+#define KASUMI_SPECIAL_FRAME_COUNT 4
+#define KASUMI_SPECIAL_1_FRAME_COUNT 6
+#define KASUMI_SPECIAL_2_FRAME_COUNT 7
+#define KASUMI_SPECIAL_3_FRAME_COUNT 0
+#define KASUMI_PROJECTILE_FRAME_COUNT 7
+#define KASUMI_PROJECTILE_END_FRAME_COUNT 0
 
 #define SUBZERO_IDLE_FRAME_COUNT 12
 #define SUBZERO_DIZZY_FRAME_COUNT 7

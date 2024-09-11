@@ -274,6 +274,9 @@ static State stateHitLegGrab = {
 static State stateSonyaSquareFlight = {
 	STATE_SONYA_SQUARE_FLIGHT
 };
+static State stateKasumiFireball = {
+	STATE_KASUMI_FIREBALL
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -508,6 +511,15 @@ static AnimationFrame scorpionHarpoonEndFrames[] = {
 	{ 64, 112, 256, 1008, 0, 0, 5 }
 };
 
+static AnimationFrame kasumiFireballFrames[] = {
+	{ 48, 96, 672, 1024, 0, 16, 8 },
+	{ 48, 112, 624, 1024, 0, 0, 8 },
+	{ 48, 128, 576, 1024, 0, -16, 8 },
+	{ 48, 128, 576, 1024, 0, -16, 8 },
+	{ 48, 112, 528, 960, 0, 0, 4 },
+	{ 48, 112, 528, 960, 0, 0, 4 }
+};
+
 static AnimationFrame projectileGreenBoltFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
@@ -641,6 +653,37 @@ static AnimationFrame projectileRingsFrames[] = {
 	{ 48, 32, 48, 544, 40, 16, 4},
 	{ 48, 32, 48, 544, 40, 16, 4},
 	{ 48, 32, 48, 544, 40, 16, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 6 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 },
+	{ 0, 0, 0, 0, 0, 0, 4 }
+};
+
+static AnimationFrame projectileKasumiFireballFrames[] = {
+	{ 48, 64, 96, 912, 10, 80, 4},
+	{ 64, 80, 144, 912, 4, 64, 4},
+	{ 80, 144, 96, 992, 0, 0, 4},
+	{ 32, 160, 0, 960, 22, -16, 4},
+	{ 32, 128, 32, 960, 24, 0, 4},
+	{ 32, 128, 64, 976, 24, 0, 4},
+	{ 32, 128, 64, 976, 24, 0, 4},
+	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 4 },
 	{ 0, 0, 0, 0, 0, 0, 6 },
@@ -2256,6 +2299,23 @@ static AnimationFrame scorpionSpecialFrames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
+static AnimationFrame kasumiSpecialFrames[] = {
+	{ 48, 96, 672, 1024, 0, 16, 8 },
+	{ 48, 112, 624, 1024, 0, 0, 8 },
+	{ 48, 128, 576, 1024, 0, -16, 8 },
+	{ 48, 112, 528, 960, 0, 0, 8 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame subzeroWalkFrames[] = {
 	{ 64, 112, 256, 896, 0, -1, 6 },
 	{ 48, 112, 320, 912, 9, -1, 6 },
@@ -3295,6 +3355,8 @@ static int specials_Subzero_Freeze_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_D
 static int specials_Subzero_Slide_Inputs[] = { INPUT_LK, INPUT_BLK, INPUT_LP, INPUT_BACK, 0, 0 };
 static int specials_Scorpion_Harpoon_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 static int specials_Scorpion_Teleport_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_DOWN, 0, 0, 0 };
+static int specials_Kasumi_Fireball_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
+static int specials_Kasumi_Roll_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -3487,6 +3549,7 @@ void doSpecial_Subzero_Freeze(struct StateMachine* stateMachine, struct Fighter*
 void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Kasumi_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -3806,7 +3869,7 @@ static Fighter fighterKasumi = {
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
-	SUBZERO_SPECIAL_FRAME_COUNT,
+	KASUMI_SPECIAL_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
@@ -3838,7 +3901,12 @@ static Fighter fighterKasumi = {
 	SUBZERO_HIT_BACK_FRAME_COUNT,
 	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
 	SUBZERO_HIT_FALL_FRAME_COUNT,
-	SUBZERO_HIT_SWEEP_FRAME_COUNT
+	SUBZERO_HIT_SWEEP_FRAME_COUNT,
+	KASUMI_SPECIAL_1_FRAME_COUNT,
+	KASUMI_SPECIAL_2_FRAME_COUNT,
+	KASUMI_SPECIAL_3_FRAME_COUNT,
+	KASUMI_PROJECTILE_FRAME_COUNT,
+	KASUMI_PROJECTILE_END_FRAME_COUNT
 };
 
 ///////////////////////////////
@@ -4159,7 +4227,7 @@ static Fighter fighterKasumi2 = {
 	SUBZERO_IDLE_FRAME_COUNT,
 	SUBZERO_DIZZY_FRAME_COUNT,
 	SUBZERO_WINS_FRAME_COUNT,
-	SUBZERO_SPECIAL_FRAME_COUNT,
+	KASUMI_SPECIAL_FRAME_COUNT,
 	SUBZERO_WALK_FRAME_COUNT,
 	SUBZERO_TURN_FRAME_COUNT,
 	SUBZERO_JUMP_FRAME_COUNT,
@@ -4191,7 +4259,12 @@ static Fighter fighterKasumi2 = {
 	SUBZERO_HIT_BACK_FRAME_COUNT,
 	SUBZERO_HIT_UPPERCUT_FRAME_COUNT,
 	SUBZERO_HIT_FALL_FRAME_COUNT,
-	SUBZERO_HIT_SWEEP_FRAME_COUNT
+	SUBZERO_HIT_SWEEP_FRAME_COUNT,
+	KASUMI_SPECIAL_1_FRAME_COUNT,
+	KASUMI_SPECIAL_2_FRAME_COUNT,
+	KASUMI_SPECIAL_3_FRAME_COUNT,
+	KASUMI_PROJECTILE_FRAME_COUNT,
+	KASUMI_PROJECTILE_END_FRAME_COUNT
 };
 
 static LeaderboardEntry leaderboard[] = {
@@ -4520,6 +4593,10 @@ void basicmain()
 		stateSonyaSquareFlight.update = &StateSonyaSquareFlight_Update;
 		stateSonyaSquareFlight.sleep = &StateSonyaSquareFlight_Sleep;
 		stateSonyaSquareFlight.handleInput = &StateSonyaSquareFlight_HandleInput;
+		stateKasumiFireball.enter = &StateKasumiFireball_Enter;
+		stateKasumiFireball.update = &StateKasumiFireball_Update;
+		stateKasumiFireball.sleep = &StateKasumiFireball_Sleep;
+		stateKasumiFireball.handleInput = &StateKasumiFireball_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4585,6 +4662,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_LEG_GRAB, &stateSonyaLegGrab);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_LEG_GRAB, &stateHitLegGrab);
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_SQUARE_FLIGHT, &stateSonyaSquareFlight);
+		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_FIREBALL, &stateKasumiFireball);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -5345,22 +5423,22 @@ void basicmain()
 		//Kasumi
 		fighterKasumi.spriteAnimator = &kasumiAnimator;
 		fighterKasumi.projectileAnimator = &lightningAnimator;
-		fighterKasumi.projectileFrames = &projectileFreezeFrames;
+		fighterKasumi.projectileFrames = &projectileKasumiFireballFrames;
 		fighterKasumi.projectileEndFrames = &projectileFreezeEndFrames;
-		fighterKasumi.special1Inputs = &specials_Subzero_Freeze_Inputs;
-		fighterKasumi.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterKasumi.special1Inputs = &specials_Kasumi_Fireball_Inputs;
+		fighterKasumi.special2Inputs = &specials_Kasumi_Roll_Inputs;
 		fighterKasumi.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKasumi.special1InputCount = 3;
-		fighterKasumi.special2InputCount = 14;
+		fighterKasumi.special2InputCount = 3;
 		fighterKasumi.special3InputCount = 0;
-		fighterKasumi.special1Frames = &subzeroFreezeFrames;
+		fighterKasumi.special1Frames = &kasumiFireballFrames;
 		fighterKasumi.special2Frames = &subzeroSlideFrames;
-		fighterKasumi.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterKasumi.doSpecialMove1 = &doSpecial_Kasumi_Fireball;
 		fighterKasumi.doSpecialMove2 = &doSpecial_Subzero_Slide;
 		fighterKasumi.idleFrames = &subzeroIdleFrames;
 		fighterKasumi.dizzyFrames = &subzeroDizzyFrames;
 		fighterKasumi.winsFrames = &subzeroWinsFrames;
-		fighterKasumi.specialFrames = &subzeroSpecialFrames;
+		fighterKasumi.specialFrames = &kasumiSpecialFrames;
 		fighterKasumi.walkFrames = &subzeroWalkFrames;
 		fighterKasumi.turnFrames = &subzeroTurnFrames;
 		fighterKasumi.jumpFrames = &subzeroJumpFrames;
@@ -5395,27 +5473,27 @@ void basicmain()
 		fighterKasumi.hitUppercutFrames = &subzeroHitUppercutFrames;
 		fighterKasumi.hitFallFrames = &subzeroHitFallFrames;
 		fighterKasumi.hitSweepFrames = &subzeroHitSweepFrames;
-		fighterKasumi.hitNutsFrames = &subzeroHitNutsFrames;
-		fighterKasumi2.spriteAnimator = &kasumiAnimator2;
-		fighterKasumi2.projectileAnimator = &lightning2Animator;
-		fighterKasumi2.projectileFrames = &projectileFreezeFrames;
+		fighterKasumi.hitNutsFrames = &subzeroHitNutsFrames;		
+		fighterKasumi2.spriteAnimator = &kasumiAnimator;
+		fighterKasumi2.projectileAnimator = &lightningAnimator;
+		fighterKasumi2.projectileFrames = &projectileKasumiFireballFrames;
 		fighterKasumi2.projectileEndFrames = &projectileFreezeEndFrames;
-		fighterKasumi2.special1Inputs = &specials_Subzero_Freeze_Inputs;
-		fighterKasumi2.special2Inputs = &specials_Subzero_Slide_Inputs;
+		fighterKasumi2.special1Inputs = &specials_Kasumi_Fireball_Inputs;
+		fighterKasumi2.special2Inputs = &specials_Kasumi_Roll_Inputs;
 		fighterKasumi2.special3Inputs = &specials_FIGHTER_NONE_Inputs;
 		fighterKasumi2.special1InputCount = 3;
-		fighterKasumi2.special2InputCount = 14;
+		fighterKasumi2.special2InputCount = 3;
 		fighterKasumi2.special3InputCount = 0;
-		fighterKasumi2.special1Frames = &subzeroFreezeFrames;
+		fighterKasumi2.special1Frames = &kasumiFireballFrames;
 		fighterKasumi2.special2Frames = &subzeroSlideFrames;
-		fighterKasumi2.doSpecialMove1 = &doSpecial_Subzero_Freeze;
+		fighterKasumi2.doSpecialMove1 = &doSpecial_Kasumi_Fireball;
 		fighterKasumi2.doSpecialMove2 = &doSpecial_Subzero_Slide;
 		fighterKasumi2.idleFrames = &subzeroIdleFrames;
 		fighterKasumi2.dizzyFrames = &subzeroDizzyFrames;
 		fighterKasumi2.winsFrames = &subzeroWinsFrames;
-		fighterKasumi2.specialFrames = &subzeroSpecialFrames;
-		fighterKasumi2.turnFrames = &subzeroTurnFrames;
+		fighterKasumi2.specialFrames = &kasumiSpecialFrames;
 		fighterKasumi2.walkFrames = &subzeroWalkFrames;
+		fighterKasumi2.turnFrames = &subzeroTurnFrames;
 		fighterKasumi2.jumpFrames = &subzeroJumpFrames;
 		fighterKasumi2.jumpRollFrames = &subzeroJumpRollFrames;
 		fighterKasumi2.duckFrames = &subzeroDuckFrames;
@@ -6132,7 +6210,7 @@ void basicmain()
 						{
 							if (p1SelectedSpecial)
 							{
-								fighterUpdateSpecialPose(delta, &fighterKasumi, &kasumiAnimator, subzeroSpecialFrames);
+								fighterUpdateSpecialPose(delta, &fighterKasumi, &kasumiAnimator, kasumiSpecialFrames);
 							}
 							else
 							{
@@ -6354,7 +6432,7 @@ void basicmain()
 						{
 							if (p2SelectedSpecial)
 							{
-								fighterUpdateSpecialPose(delta, &fighterKasumi2, &kasumiAnimator2, subzeroSpecialFrames);
+								fighterUpdateSpecialPose(delta, &fighterKasumi2, &kasumiAnimator2, kasumiSpecialFrames);
 							}
 							else
 							{
@@ -8430,4 +8508,9 @@ void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighte
 void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SCORPION_TELEPORT, fighter, fighter->spriteAnimator);
+}
+
+void doSpecial_Kasumi_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_KASUMI_FIREBALL, fighter, fighter->spriteAnimator);
 }

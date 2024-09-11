@@ -4047,3 +4047,36 @@ void StateSonyaSquareFlight_Sleep(struct StateMachine* stateMachine, struct Figh
 void StateSonyaSquareFlight_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Kasumi Fireball
+// vars[0] = played sound
+
+void StateKasumiFireball_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    spriteAnimator->currentFrame = 0;
+    fighter->exitingState = false;
+    fighter->vars[0] = 0;
+    fighter->lastTicks = rapTicks;
+}
+
+void StateKasumiFireball_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0 && animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
+    {
+        sfxKasumiFireball(fighter->soundHandler);
+        //TODO ignite fireball
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateKasumiFireball_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateKasumiFireball_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}

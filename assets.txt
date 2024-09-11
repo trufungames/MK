@@ -104,6 +104,7 @@ ROM,BMP_PAL_PROJ_KANG,gfx_clut,ASSETS\GFX\pal_proj_kang.bmp
 ROM,BMP_PAL_PROJ_SONYA,gfx_clut,ASSETS\GFX\pal_proj_sonya.bmp
 ROM,BMP_PAL_PROJ_SUBZERO,gfx_clut,ASSETS\GFX\pal_proj_subzero.bmp
 ROM,BMP_PAL_PROJ_SCORPION,gfx_clut,ASSETS\GFX\pal_proj_scorpion.bmp
+ROM,BMP_PAL_PROJ_KASUMI,gfx_clut,ASSETS\GFX\pal_proj_kasumi.bmp
 ROM,BMP_PAL_FROZEN_SCORPION,gfx_clut,ASSETS\GFX\pal_frozen_scorpion.bmp
 ROM,BMP_PAL_FROZEN_CAGE,gfx_clut,ASSETS\GFX\pal_frozen_cage.bmp
 ROM,BMP_PAL_FROZEN_KANO,gfx_clut,ASSETS\GFX\pal_frozen_kano.bmp
@@ -207,6 +208,7 @@ ROM,kang_flyingkick_sam,sfx_raw8000,ASSETS\SFX\kang_flyingkick.wav
 ROM,scorpion_teleport_sam,sfx_raw8000,ASSETS\SFX\scorpion_teleport.wav
 ROM,subzero_slide_sam,sfx_raw8000,ASSETS\SFX\subzero_slide.wav
 ROM,shownomercy_sam,sfx_raw8000,ASSETS\SFX\shownomercy.wav
+ROM,kasumi_fireball_sam,sfx_raw8000,ASSETS\SFX\kasumi_fireball.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
