@@ -280,6 +280,9 @@
 #define FIGHTER_SONYA_SQUARE_FLIGHT_X_SPEED 14
 #define FIGHTER_KASUMI_ROLL_X_SPEED 8
 #define FIGHTER_KASUMI_ROLL_BLOCKED_X_SPEED 3
+#define FIGHTER_MAX_DISTANCE_FROM_OPPONENT 230
+#define FIGHTER_MIN_WORLD_POSITION_X 10
+#define FIGHTER_MAX_WORLD_POSITION_X 688
 
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 66

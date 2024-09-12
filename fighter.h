@@ -120,8 +120,10 @@ struct Fighter {
     short positionY;
     short projectilePositionX;
     short projectilePositionY;
-    int hitPoints;
-    int pendingDamage;
+    short worldPositionX;
+    short worldPositionY;
+    short hitPoints;
+    short pendingDamage;
     bool shakeScreen;
     struct SoundHandler* soundHandler;
     short direction;

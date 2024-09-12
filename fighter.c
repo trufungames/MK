@@ -169,7 +169,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_ATTACK = P1_HB_ATTACK;
         fighter->lightningSpriteIndex = P1_PROJECTILE;
         fighter->PAD = LEFT_PAD;
-        fighter->positionX = 50;
+        fighter->worldPositionX = 50 + stageGetStartX();
         sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex-1].flip = R_is_normal;
@@ -180,7 +180,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_ATTACK = P2_HB_ATTACK;
         fighter->lightningSpriteIndex = P2_PROJECTILE;
         fighter->PAD = RIGHT_PAD;
-        fighter->positionX = 210;
+        fighter->worldPositionX = 210 + stageGetStartX();
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex-1].flip = R_is_flipped;
@@ -1925,13 +1925,21 @@ bool fighterHasRoomToMove(struct Fighter* fighter, struct Fighter* otherFighter)
 
 void fighterPositionXAdd(struct Fighter* fighter, int xAdd)
 {
-    // if ((fighter->direction == 1 || fighter->direction != 1 && fighter->IsBeingThrown) && xAdd < 0 && !fighter->hasRoomToMove)
-    //     return;
+    if (fighter->direction == 1
+        && fighter->Opponent->worldPositionX - fighter->worldPositionX >= FIGHTER_MAX_DISTANCE_FROM_OPPONENT
+        && xAdd < 0)
+        return;
+    else if (fighter->direction == -1
+        && fighter->worldPositionX - fighter->Opponent->worldPositionX >= FIGHTER_MAX_DISTANCE_FROM_OPPONENT
+        && xAdd > 0)
+        return;
 
-    // if ((fighter->direction != 1 || fighter->direction == 1 && fighter->IsBeingThrown) && xAdd > 0 && !fighter->hasRoomToMove)
-    //     return;
-    
-    fighter->positionX += xAdd;    
+    fighter->worldPositionX += xAdd;
+
+    if (fighter->worldPositionX < FIGHTER_MIN_WORLD_POSITION_X)
+        fighter->worldPositionX = FIGHTER_MIN_WORLD_POSITION_X;
+    else if (fighter->worldPositionX > FIGHTER_MAX_WORLD_POSITION_X)
+        fighter->worldPositionX = FIGHTER_MAX_WORLD_POSITION_X;
 }
 
 void fighterCastShadow(struct Fighter* fighter, bool includeY)

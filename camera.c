@@ -32,43 +32,78 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
     if (rapTicks > cameraTicks + 0)
     {
-        backgroundChangedLeft = false;
-        backgroundChangedRight = false;
+        fighter1->positionX = fighter1->worldPositionX - cameraX;
+        fighter2->positionX = fighter2->worldPositionX - cameraX;
 
-        //update the background every other frame
-        if (fighter1->direction == 1)
+        if (fighter1->positionX < CAMERA_BOUND_LEFT
+            || fighter2->positionX < CAMERA_BOUND_LEFT)
         {
-            if (cameraCheckBoundsLeft(fighter1, fighter2)) backgroundChangedLeft = true;
-            if (cameraCheckBoundsRight(fighter1, fighter2)) backgroundChangedRight = true;
+            //Pan the camera to the LEFT
+            xOffset += 2;
+            stageMove(1, xOffset);
         }
-        else
+        else if (fighter1->positionX > CAMERA_BOUND_RIGHT
+            || fighter2->positionX > CAMERA_BOUND_RIGHT)
         {
-            if (cameraCheckBoundsLeft(fighter2, fighter1)) backgroundChangedLeft = true;
-            if (cameraCheckBoundsRight(fighter2, fighter1)) backgroundChangedRight = true;
+            //Pan the camera to the RIGHT    
+            xOffset -= 2;
+            stageMove(-1, xOffset);
         }
 
-        if (backgroundChangedLeft || backgroundChangedRight)
+        if (xOffset <= -16)
         {
-            xOffset += backgroundChangedLeft ? 2 : -2;
-            stageMove(backgroundChangedLeft ? 1 : -1, xOffset);
-
-            if (xOffset <= -16)
-            {
-                //Camera headed RIGHT
-                cameraX += 4;
-                setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
-                xOffset = -8;                
-            }
-            else if (xOffset >= 0)
-            {
-                //Camera headed LEFT
-                cameraX -= 4;
-                setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
-                xOffset = -8;
-            }
-
-            sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;            
+            //Camera headed RIGHT
+            cameraX += 4;
+            setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+            xOffset = -8;                
         }
+        else if (xOffset >= 0)
+        {
+            //Camera headed LEFT
+            cameraX -= 4;
+            setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+            xOffset = -8;
+        }
+
+        sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;
+
+        // backgroundChangedLeft = false;
+        // backgroundChangedRight = false;
+
+        // //update the background every other frame
+        // if (fighter1->direction == 1)
+        // {
+        //     if (cameraCheckBoundsLeft(fighter1, fighter2)) backgroundChangedLeft = true;
+        //     if (cameraCheckBoundsRight(fighter1, fighter2)) backgroundChangedRight = true;
+        // }
+        // else
+        // {
+        //     if (cameraCheckBoundsLeft(fighter2, fighter1)) backgroundChangedLeft = true;
+        //     if (cameraCheckBoundsRight(fighter2, fighter1)) backgroundChangedRight = true;
+        // }
+
+        // if (backgroundChangedLeft || backgroundChangedRight)
+        // {
+        //     xOffset += backgroundChangedLeft ? 2 : -2;
+        //     stageMove(backgroundChangedLeft ? 1 : -1, xOffset);
+
+        //     if (xOffset <= -16)
+        //     {
+        //         //Camera headed RIGHT
+        //         cameraX += 4;
+        //         setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+        //         xOffset = -8;                
+        //     }
+        //     else if (xOffset >= 0)
+        //     {
+        //         //Camera headed LEFT
+        //         cameraX -= 4;
+        //         setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
+        //         xOffset = -8;
+        //     }
+
+        //     sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;            
+        //}
         
         cameraTicks = rapTicks;
     }

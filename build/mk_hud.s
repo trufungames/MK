@@ -142,73 +142,71 @@ __Z7hudInitv:
 	.globl	__Z16hudUpdateFighterP7Fighter
 __Z16hudUpdateFighterP7Fighter:
 	link.w %fp,#0
-	move.l %d3,-(%sp)
+	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%a0
-	move.l 248(%a0),%d2
-	move.b 266(%a0),%d3
+	move.w 252(%a0),%a2
+	move.b 266(%a0),%d2
 	pea 10.w
 	jsr rapUse8x8fontPalette
 	clr.l _jsfFontSize
 	moveq #1,%d0
 	move.l %d0,_jsfFontIndx
 	addq.l #4,%sp
-	tst.b %d3
+	tst.b %d2
 	jeq .L19
 	pea 20.w
 	pea 26.w
 	jsr rapLocate
-	subq.l #2,%d2
+	subq.l #2,%a2
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a2,%d0
 	jcc .L20
 .L23:
 	move.l #.LC0,%d0
 	move.l %d0,_js_r_textbuffer
 	move.l -8(%fp),%d2
-	move.l -4(%fp),%d3
+	move.l -4(%fp),%a2
 	unlk %fp
 	jra _rapPrint
 .L19:
 	pea 20.w
 	pea 180.w
 	jsr rapLocate
-	subq.l #2,%d2
+	subq.l #2,%a2
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a2,%d0
 	jcs .L23
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.4,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a2,%a2
+	move.l %a2,%a0
+	add.l #_CSWTCH.4,%a0
+	move.l (%a0,%a2.l),%d0
 	move.l %d0,_js_r_textbuffer
 	move.l -8(%fp),%d2
-	move.l -4(%fp),%d3
+	move.l -4(%fp),%a2
 	unlk %fp
 	jra _rapPrint
 .L20:
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.2,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a2,%a2
+	move.l %a2,%a0
+	add.l #_CSWTCH.2,%a0
+	move.l (%a0,%a2.l),%d0
 	move.l %d0,_js_r_textbuffer
 	move.l -8(%fp),%d2
-	move.l -4(%fp),%d3
+	move.l -4(%fp),%a2
 	unlk %fp
 	jra _rapPrint
 	.even
 	.globl	__Z9hudUpdateP7FighterS0_
 __Z9hudUpdateP7FighterS0_:
 	link.w %fp,#0
-	movem.l #12344,-(%sp)
+	movem.l #8252,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%a4
-	move.l 248(%a0),%d2
-	move.b 266(%a0),%d3
+	move.w 252(%a0),%a5
+	move.b 266(%a0),%d2
 	pea 10.w
 	lea rapUse8x8fontPalette,%a3
 	jsr (%a3)
@@ -216,48 +214,47 @@ __Z9hudUpdateP7FighterS0_:
 	moveq #1,%d0
 	move.l %d0,_jsfFontIndx
 	addq.l #4,%sp
-	tst.b %d3
+	tst.b %d2
 	jeq .L27
 	pea 20.w
 	pea 26.w
 	lea rapLocate,%a2
 	jsr (%a2)
-	subq.l #2,%d2
+	subq.l #2,%a5
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a5,%d0
 	jcc .L28
 .L35:
 	move.l #.LC0,%d0
 .L29:
 	move.l %d0,_js_r_textbuffer
 	jsr _rapPrint
-	move.l 248(%a4),%d2
-	move.b 266(%a4),%d3
+	move.w 252(%a4),%a5
+	move.b 266(%a4),%d2
 	pea 10.w
 	jsr (%a3)
 	clr.l _jsfFontSize
 	moveq #1,%d0
 	move.l %d0,_jsfFontIndx
 	addq.l #4,%sp
-	tst.b %d3
+	tst.b %d2
 	jeq .L31
 .L38:
 	pea 20.w
 	pea 26.w
 	jsr (%a2)
-	subq.l #2,%d2
+	subq.l #2,%a5
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a5,%d0
 	jcs .L36
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.2,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a5,%a5
+	move.l %a5,%a0
+	add.l #_CSWTCH.2,%a0
+	move.l (%a0,%a5.l),%d0
 	move.l %d0,_js_r_textbuffer
-	movem.l -20(%fp),#7180
+	movem.l -20(%fp),#15364
 	unlk %fp
 	jra _rapPrint
 .L27:
@@ -265,57 +262,54 @@ __Z9hudUpdateP7FighterS0_:
 	pea 180.w
 	lea rapLocate,%a2
 	jsr (%a2)
-	subq.l #2,%d2
+	subq.l #2,%a5
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a5,%d0
 	jcs .L35
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.4,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a5,%a5
+	move.l %a5,%a0
+	add.l #_CSWTCH.4,%a0
+	move.l (%a0,%a5.l),%d0
 	move.l %d0,_js_r_textbuffer
 	jsr _rapPrint
-	move.l 248(%a4),%d2
-	move.b 266(%a4),%d3
+	move.w 252(%a4),%a5
+	move.b 266(%a4),%d2
 	pea 10.w
 	jsr (%a3)
 	clr.l _jsfFontSize
 	moveq #1,%d0
 	move.l %d0,_jsfFontIndx
 	addq.l #4,%sp
-	tst.b %d3
+	tst.b %d2
 	jne .L38
 .L31:
 	pea 20.w
 	pea 180.w
 	jsr (%a2)
-	subq.l #2,%d2
+	subq.l #2,%a5
 	addq.l #8,%sp
 	moveq #118,%d0
-	cmp.l %d2,%d0
+	cmp.l %a5,%d0
 	jcs .L36
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.4,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a5,%a5
+	move.l %a5,%a0
+	add.l #_CSWTCH.4,%a0
+	move.l (%a0,%a5.l),%d0
 	move.l %d0,_js_r_textbuffer
-	movem.l -20(%fp),#7180
+	movem.l -20(%fp),#15364
 	unlk %fp
 	jra _rapPrint
 .L28:
-	move.l %d2,%a0
-	add.l %d2,%a0
-	move.l %a0,%a1
-	add.l #_CSWTCH.2,%a1
-	move.l (%a1,%a0.l),%d0
+	add.l %a5,%a5
+	move.l %a5,%a0
+	add.l #_CSWTCH.2,%a0
+	move.l (%a0,%a5.l),%d0
 	jra .L29
 .L36:
 	move.l #.LC0,%d0
 	move.l %d0,_js_r_textbuffer
-	movem.l -20(%fp),#7180
+	movem.l -20(%fp),#15364
 	unlk %fp
 	jra _rapPrint
 	.globl	colliders
