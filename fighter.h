@@ -64,6 +64,7 @@ struct Fighter {
     short HarpoonShakeCount;
     bool IsBlocking;
     bool IsHitHarpoon;
+    bool IsBeingTripped;
     bool HarpoonBlocked;
     short HarpoonFlashCount;
     bool IsSlidingToPositionX;
@@ -328,6 +329,8 @@ bool fighterCanTakeDamage(struct StateMachine* stateMachine, struct Fighter* fig
 bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
 
 bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fighter);
+
+bool fighterIsJumping(struct StateMachine* stateMachine, struct Fighter* fighter);
 
 void fighterFaceOpponent(struct Fighter* fighter);
 

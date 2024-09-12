@@ -2237,7 +2237,7 @@ void StateThrowing_HandleInput(struct StateMachine* stateMachine, struct Fighter
 
 void StateBeingThrown_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    spriteAnimator->currentFrame = 0;
+    spriteAnimator->currentFrame = fighter->IsBeingTripped ? 2 : 0; //if they're being tripped, skip a couple frames
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
     fighter->vars[0] = 8;  //start animation as they are falling
@@ -2289,7 +2289,9 @@ void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* 
                 bgShake(false);
                 sfxThud(fighter->soundHandler);
                 fighter->IsBeingDamaged = false;
+                fighter->IsBeingTripped = false;
                 stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+                return;
             }
             
             fighter->lastTicks = rapTicks;
@@ -4064,10 +4066,34 @@ void StateKasumiFireball_Update(struct StateMachine* stateMachine, struct Fighte
 {
     if (fighter->vars[0] == 0 && animationIsComplete(spriteAnimator, fighter->SPECIAL_1_FRAME_COUNT))
     {
+        fighter->vars[0] = 1;
+        fighter->projectilePositionX = fighter->Opponent->positionX + (fighter->Opponent->direction * 16);
+        fighter->projectilePositionY = fighter->positionY - 32;
+        fighter->projectileAnimator->currentFrame = 0;
+        fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+        fighter->projectileAnimator->base = BMP_PROJECTILES;
+        fighter->lastTicks = rapTicks;
+        sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+        sprite[fighter->lightningSpriteIndex].gwidth = 104;
+        sprite[fighter->lightningSpriteIndex].hbox = 16;
+        sprite[fighter->lightningSpriteIndex].vbox = 16;
+        
+        jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),13,16);
         sfxKasumiFireball(fighter->soundHandler);
-        //TODO ignite fireball
-        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
-        return;
+    }
+    else if (fighter->vars[0] == 1)
+    {
+        if (animationIsComplete(fighter->projectileAnimator, fighter->PROJECTILE_FRAME_COUNT))
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+
+        if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+
+        updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, fighter->PROJECTILE_FRAME_COUNT, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
     }
 
     updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, fighter->SPECIAL_1_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
@@ -4079,4 +4105,80 @@ void StateKasumiFireball_Sleep(struct StateMachine* stateMachine, struct Fighter
 
 void StateKasumiFireball_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// KASUMI ROLL
+// vars[0] = tripped the opponent
+// vars[1] = jump index for blocked roll
+
+void StateKasumiRoll_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    fighter->MadeContact = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->lastTicks = rapTicks;
+    fighter->positionY = fighter->positionY + 64;
+    sfxKanoCannonBallStart(fighter->soundHandler);
+}
+
+void StateKasumiRoll_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    //using impactFrameJumpKick because it's always ON.
+    impactFrameUpdate(spriteAnimator, fighter, fighter->impactFrameJumpKick);
+
+    if (fighter->vars[0] == 0 && !fighter->MadeContact)
+    {
+        fighterPositionXAdd(fighter, FIGHTER_KASUMI_ROLL_X_SPEED * fighter->direction);
+
+        if ((fighter->direction == -1 && fighter->positionX <= CAMERA_BOUND_LEFT)
+            || (fighter->direction == 1 && fighter->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT))
+        {
+            fighter->vars[0] = 1;
+        }
+    }
+    else if (!fighter->MadeContact)
+    {
+        //landed
+        fighterSetOnFloor(fighter);
+        impactFrameReset(fighter);
+        stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+        return;    }
+
+    else if (fighter->MadeContact)
+    {
+        //Made Contact - follow the jump pattern along the Y to bounce up, then land back in IDLE
+        if (rapTicks >= fighter->lastTicks + 2)
+        {
+            fighterPositionXAdd(fighter, FIGHTER_KASUMI_ROLL_BLOCKED_X_SPEED * fighter->direction * -1);
+            fighter->positionY += JumpOffsets[fighter->vars[1]];
+            fighter->vars[1]++;
+            fighter->lastTicks = rapTicks;
+        }
+
+        if (fighter->vars[1] > 19)
+        {
+            //landed
+            fighterSetOnFloor(fighter);
+            impactFrameReset(fighter);
+            stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
+            return;
+        }
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->special2Frames, fighter->SPECIAL_2_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateKasumiRoll_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->MadeContact = true;
+    fighter->lastTicks = rapTicks;
+    fighterSetOnFloor(fighter);
+}
+
+void StateKasumiRoll_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
 }

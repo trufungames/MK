@@ -135,6 +135,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->airAttackPerformed = false;
     fighter->IsClose = false;
     fighter->IsHitHarpoon = false;
+    fighter->IsBeingTripped = false;
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
@@ -1241,12 +1242,12 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                     fighterHandleImpact(stateMachine, fighter2, spriteAnimator2, fighter1, spriteAnimator1);
                 }
 
-                if ((fighter1->currentState->Name == STATE_THROWING_PROJECTILE || fighter1->currentState->Name == STATE_SCORPION_HARPOON || fighter1->currentState->Name == STATE_SUBZERO_FREEZE) && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
+                if ((fighter1->currentState->Name == STATE_THROWING_PROJECTILE || fighter1->currentState->Name == STATE_SCORPION_HARPOON || fighter1->currentState->Name == STATE_SUBZERO_FREEZE || fighter1->currentState->Name == STATE_KASUMI_FIREBALL) && collisionSprIndex == fighter1->lightningSpriteIndex && collisionSprIndex2 == P2_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter1, fighter2);
                 }
                 
-                if ((fighter2->currentState->Name == STATE_THROWING_PROJECTILE || fighter2->currentState->Name == STATE_SCORPION_HARPOON || fighter2->currentState->Name == STATE_SUBZERO_FREEZE) && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
+                if ((fighter2->currentState->Name == STATE_THROWING_PROJECTILE || fighter2->currentState->Name == STATE_SCORPION_HARPOON || fighter2->currentState->Name == STATE_SUBZERO_FREEZE || fighter2->currentState->Name == STATE_KASUMI_FIREBALL) && collisionSprIndex == fighter2->lightningSpriteIndex && collisionSprIndex2 == P1_FIGHTER_PIT)
                 {
                     fighterHandleProjectile(stateMachine, fighter2, fighter1);
                 }
@@ -1404,6 +1405,17 @@ void fighterHandleProjectile(struct StateMachine* stateMachine, struct Fighter* 
         else
         {
             stateMachineGoto(stateMachine, STATE_HIT_BLOCKING, fighter2, fighter2->spriteAnimator);
+            return;
+        }
+    }
+    else if (fighter1->fighterIndex == KASUMI)
+    {
+        fighter1->ProjectileMadeContact = true;
+
+        if (!fighterIsJumping(stateMachine, fighter2))
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_PROJECTILE);
+            stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, fighter2->spriteAnimator);
             return;
         }
     }
@@ -1582,6 +1594,12 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
             stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator2);
             stateMachineGoto(stateMachine, STATE_HIT_DROPKICK, fighter2, spriteAnimator2);
         }
+        else if (fighter1->currentState->Name == STATE_KASUMI_ROLL)
+        {
+            fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+            fighter2->IsBeingTripped = true;
+            stateMachineGoto(stateMachine, STATE_BEING_THROWN, fighter2, spriteAnimator2);
+        }
 
         if (fighter2->IsFrozen)
         {
@@ -1599,18 +1617,27 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
                 stateMachineGoto(stateMachine, STATE_HIT_SWEEP, fighter2, spriteAnimator2);
                 return;
             }
+            else if (fighter1->currentState->Name == STATE_KASUMI_ROLL)
+            {
+                fighterAddPendingDamage(fighter2, DMG_SPECIAL_MOVE, false, fighter1, POINTS_SPECIAL);
+                fighter2->IsBeingTripped = true;
+                stateMachineGoto(stateMachine, STATE_BEING_THROWN, fighter2, spriteAnimator2);
+                return;
+            }
         }
 
         fighterAddPendingDamage(fighter2, DMG_BLOCKED, false, fighter1, 0);
 
         if (fighter2->currentState->Name == STATE_DUCK_BLOCKING)
         {
-            if (fighter1->currentState->Name == STATE_RAIDEN_TORPEDO)
+            if (fighter1->currentState->Name == STATE_RAIDEN_TORPEDO
+                || fighter1->currentState->Name == STATE_KASUMI_ROLL)
             {
-                stateMachineSleep(stateMachine, 8, fighter1, spriteAnimator1);
+                stateMachineSleep(stateMachine, 1, fighter1, spriteAnimator1);
             }
 
             stateMachineGoto(stateMachine, STATE_HIT_DUCKING_BLOCKING, fighter2, spriteAnimator2);
+            return;
         }
         else
         {
@@ -1647,7 +1674,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
+        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
+        && fighter1->currentState->Name != STATE_KASUMI_ROLL)
     {
         fighter1->IsTurning = true;
     }
@@ -1663,7 +1691,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
+        && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
+        && fighter1->currentState->Name != STATE_KASUMI_ROLL)
     {
         fighter1->IsTurning = true;
     }
@@ -1679,7 +1708,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
+        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
+        && fighter2->currentState->Name != STATE_KASUMI_ROLL)
     {
         fighter2->IsTurning = true;
     }
@@ -1695,7 +1725,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
-        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT)
+        && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
+        && fighter2->currentState->Name != STATE_KASUMI_ROLL)
     {
         fighter2->IsTurning = true;
     }
@@ -2212,6 +2243,22 @@ bool fighterIsBlocking(struct StateMachine* stateMachine, struct Fighter* fighte
 bool fighterIsDuckBlocking(struct StateMachine* stateMachine, struct Fighter* fighter)
 {
     if (fighter->currentState->Name == STATE_DUCK_BLOCKING)
+        return true;
+
+    return false;
+}
+
+bool fighterIsJumping(struct StateMachine* stateMachine, struct Fighter* fighter)
+{
+    if (fighter->currentState->Name == STATE_JUMPING
+        || fighter->currentState->Name == STATE_JUMP_KICKING
+        || fighter->currentState->Name == STATE_JUMP_PUNCHING
+        || fighter->currentState->Name == STATE_JUMPING_BACKWARD
+        || fighter->currentState->Name == STATE_JUMPING_FORWARD
+        || fighter->currentState->Name == STATE_JUMPING_KICKING_BACKWARD
+        || fighter->currentState->Name == STATE_JUMPING_KICKING_FORWARD
+        || fighter->currentState->Name == STATE_JUMPING_PUNCHING_BACKWARD
+        || fighter->currentState->Name == STATE_JUMPING_PUNCHING_FORWARD)
         return true;
 
     return false;

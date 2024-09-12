@@ -277,6 +277,9 @@ static State stateSonyaSquareFlight = {
 static State stateKasumiFireball = {
 	STATE_KASUMI_FIREBALL
 };
+static State stateKasumiRoll = {
+	STATE_KASUMI_ROLL
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -512,12 +515,22 @@ static AnimationFrame scorpionHarpoonEndFrames[] = {
 };
 
 static AnimationFrame kasumiFireballFrames[] = {
-	{ 48, 96, 672, 1024, 0, 16, 8 },
-	{ 48, 112, 624, 1024, 0, 0, 8 },
+	{ 48, 96, 672, 1024, 0, 16, 5 },
+	{ 48, 112, 624, 1024, 0, 0, 5 },
+	{ 48, 128, 576, 1024, 0, -16, 5 },
 	{ 48, 128, 576, 1024, 0, -16, 8 },
-	{ 48, 128, 576, 1024, 0, -16, 8 },
-	{ 48, 112, 528, 960, 0, 0, 4 },
-	{ 48, 112, 528, 960, 0, 0, 4 }
+	{ 48, 112, 528, 960, 0, 0, 5 },
+	{ 48, 112, 528, 960, 0, 0, 5 }
+};
+
+static AnimationFrame kasumiRollFrames[] = {
+	{ 48, 48, 528, 448, 0, 0, 2 },
+	{ 48, 48, 576, 448, 0, 0, 2 },
+	{ 48, 48, 624, 448, 0, 0, 2 },
+	{ 48, 48, 672, 464, 0, 0, 2 },
+	{ 48, 48, 720, 464, 0, 0, 2 },
+	{ 48, 48, 768, 464, 0, 0, 2 },
+	{ 48, 48, 816, 464, 0, 0, 2 }
 };
 
 static AnimationFrame projectileGreenBoltFrames[] = {
@@ -3550,6 +3563,7 @@ void doSpecial_Subzero_Slide(struct StateMachine* stateMachine, struct Fighter* 
 void doSpecial_Scorpion_Harpoon(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doSpecial_Kasumi_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doSpecial_Kasumi_Roll(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -4597,6 +4611,10 @@ void basicmain()
 		stateKasumiFireball.update = &StateKasumiFireball_Update;
 		stateKasumiFireball.sleep = &StateKasumiFireball_Sleep;
 		stateKasumiFireball.handleInput = &StateKasumiFireball_HandleInput;
+		stateKasumiRoll.enter = &StateKasumiRoll_Enter;
+		stateKasumiRoll.update = &StateKasumiRoll_Update;
+		stateKasumiRoll.sleep = &StateKasumiRoll_Sleep;
+		stateKasumiRoll.handleInput = &StateKasumiRoll_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4663,6 +4681,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_LEG_GRAB, &stateHitLegGrab);
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_SQUARE_FLIGHT, &stateSonyaSquareFlight);
 		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_FIREBALL, &stateKasumiFireball);
+		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_ROLL, &stateKasumiRoll);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -5432,9 +5451,9 @@ void basicmain()
 		fighterKasumi.special2InputCount = 3;
 		fighterKasumi.special3InputCount = 0;
 		fighterKasumi.special1Frames = &kasumiFireballFrames;
-		fighterKasumi.special2Frames = &subzeroSlideFrames;
+		fighterKasumi.special2Frames = &kasumiRollFrames;
 		fighterKasumi.doSpecialMove1 = &doSpecial_Kasumi_Fireball;
-		fighterKasumi.doSpecialMove2 = &doSpecial_Subzero_Slide;
+		fighterKasumi.doSpecialMove2 = &doSpecial_Kasumi_Roll;
 		fighterKasumi.idleFrames = &subzeroIdleFrames;
 		fighterKasumi.dizzyFrames = &subzeroDizzyFrames;
 		fighterKasumi.winsFrames = &subzeroWinsFrames;
@@ -5485,9 +5504,9 @@ void basicmain()
 		fighterKasumi2.special2InputCount = 3;
 		fighterKasumi2.special3InputCount = 0;
 		fighterKasumi2.special1Frames = &kasumiFireballFrames;
-		fighterKasumi2.special2Frames = &subzeroSlideFrames;
+		fighterKasumi2.special2Frames = &kasumiRollFrames;
 		fighterKasumi2.doSpecialMove1 = &doSpecial_Kasumi_Fireball;
-		fighterKasumi2.doSpecialMove2 = &doSpecial_Subzero_Slide;
+		fighterKasumi2.doSpecialMove2 = &doSpecial_Kasumi_Roll;
 		fighterKasumi2.idleFrames = &subzeroIdleFrames;
 		fighterKasumi2.dizzyFrames = &subzeroDizzyFrames;
 		fighterKasumi2.winsFrames = &subzeroWinsFrames;
@@ -8513,4 +8532,9 @@ void doSpecial_Scorpion_Teleport(struct StateMachine* stateMachine, struct Fight
 void doSpecial_Kasumi_Fireball(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_KASUMI_FIREBALL, fighter, fighter->spriteAnimator);
+}
+
+void doSpecial_Kasumi_Roll(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_KASUMI_ROLL, fighter, fighter->spriteAnimator);
 }

@@ -278,9 +278,11 @@
 #define FIGHTER_HIT_LEG_GRAB_BOUNCE_X_SPEED 3
 #define FIGHTER_SONYA_SQUARE_FLIGHT_TOTAL_DISTANCE 230
 #define FIGHTER_SONYA_SQUARE_FLIGHT_X_SPEED 14
+#define FIGHTER_KASUMI_ROLL_X_SPEED 8
+#define FIGHTER_KASUMI_ROLL_BLOCKED_X_SPEED 3
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 65
+#define STATE_TOTAL_COUNT 66
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -347,6 +349,7 @@
 #define STATE_HIT_LEG_GRAB 62
 #define STATE_SONYA_SQUARE_FLIGHT 63
 #define STATE_KASUMI_FIREBALL 64
+#define STATE_KASUMI_ROLL 65
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

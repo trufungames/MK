@@ -342,6 +342,11 @@ void StateKasumiFireball_Update(struct StateMachine*, struct Fighter*, struct Sp
 void StateKasumiFireball_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateKasumiFireball_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateKasumiRoll_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKasumiRoll_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateKasumiRoll_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKasumiRoll_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
