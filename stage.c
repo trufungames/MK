@@ -150,19 +150,19 @@ int stageGetStartX()
     switch (currentStage)
     {
         case STAGE_GATES:
-            return 80;
+            return 180;
         case STAGE_WARRIOR:
-            return 113;
+            return 226;
         case STAGE_PIT:
-            return 130;
+            return 260;
         case STAGE_PIT_BOTTOM:
-            return 130;
+            return 260;
         case STAGE_THRONE:
-            return 113;
+            return 226;
         case STAGE_GORO:
-            return 70;
+            return 140;
         default:
-            return 120;
+            return 160;
     }
 }
 

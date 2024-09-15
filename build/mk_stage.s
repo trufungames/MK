@@ -258,19 +258,18 @@ __Z14stageGetHeightv:
 	.globl	__Z14stageGetStartXv
 __Z14stageGetStartXv:
 	link.w %fp,#0
-	move.w __ZL12currentStage,%d0
-	cmp.w #5,%d0
-	jhi .L33
-	and.l #65535,%d0
-	move.l %d0,%a0
-	add.l %d0,%a0
+	move.w __ZL12currentStage,%d1
+	moveq #95,%d0
+	not.b %d0
+	cmp.w #5,%d1
+	jhi .L32
+	and.l #65535,%d1
+	move.l %d1,%a0
+	add.l %d1,%a0
 	move.l %a0,%a1
 	add.l #_CSWTCH.22,%a1
 	move.l (%a1,%a0.l),%d0
-	unlk %fp
-	rts
-.L33:
-	moveq #120,%d0
+.L32:
 	unlk %fp
 	rts
 	.even
@@ -366,9 +365,9 @@ __ZL12currentStage:
 	.text
 	.even
 _CSWTCH.22:
-	.long	80
-	.long	113
-	.long	130
-	.long	130
-	.long	113
-	.long	70
+	.long	180
+	.long	226
+	.long	260
+	.long	260
+	.long	226
+	.long	140

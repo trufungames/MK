@@ -303,7 +303,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	moveq #2,%d0
 	move.l %d0,202(%a2)
 	jsr __Z14stageGetStartXv
-	add.w #210,%d0
+	add.w #240,%d0
 	move.w %d0,248(%a2)
 	move.l sprite,%a1
 	move.l 92(%a2),%d0
@@ -358,7 +358,7 @@ __Z17fighterInitializeP7FighterbP12SoundHandlerP11ImpactFrameS4_S4_S4_S4_S4_S4_S
 	move.l %d1,92(%a2)
 	move.l %d3,202(%a2)
 	jsr __Z14stageGetStartXv
-	add.w #50,%d0
+	add.w #100,%d0
 	move.w %d0,248(%a2)
 	move.l sprite,%a1
 	move.l 92(%a2),%d0
@@ -2341,7 +2341,7 @@ __Z17fighterShiftRightP7Fighter:
 	move.w %d0,%a1
 	move.l 604(%a0),%a2
 	sub.w 248(%a2),%a1
-	cmp.w #229,%a1
+	cmp.w #279,%a1
 	jle .L368
 	move.l (%sp)+,%a2
 	unlk %fp
@@ -2374,7 +2374,7 @@ __Z16fighterShiftLeftP7Fighter:
 	move.l 604(%a0),%a1
 	move.w 248(%a1),%a1
 	sub.w %d0,%a1
-	cmp.w #229,%a1
+	cmp.w #279,%a1
 	jle .L377
 	unlk %fp
 	rts
@@ -2502,7 +2502,7 @@ __Z19fighterPositionXAddP7Fighteri:
 	move.w %d0,%a2
 	move.l 604(%a0),%a3
 	sub.w 248(%a3),%a2
-	cmp.w #229,%a2
+	cmp.w #279,%a2
 	jle .L411
 	cmp.w #0,%a1
 	jle .L411
@@ -2520,7 +2520,7 @@ __Z19fighterPositionXAddP7Fighteri:
 	move.l 604(%a0),%a2
 	move.w 248(%a2),%a2
 	sub.w %d0,%a2
-	cmp.w #229,%a2
+	cmp.w #279,%a2
 	jle .L411
 	cmp.w #0,%a1
 	jge .L411

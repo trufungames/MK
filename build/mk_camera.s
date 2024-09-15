@@ -5,22 +5,24 @@
 __Z10cameraInitjiiij:
 	link.w %fp,#0
 	movem.l #14336,-(%sp)
-	move.l 12(%fp),%d2
-	move.l 16(%fp),%d3
-	move.l 24(%fp),%d4
-	moveq #-8,%d0
-	move.l %d0,_xOffset
+	move.l 12(%fp),%d0
+	move.l 16(%fp),%d2
+	move.l 24(%fp),%d3
+	moveq #-8,%d1
+	move.l %d1,_xOffset
 	move.l 8(%fp),_backgroundSpriteIndex
-	move.l %d2,_cameraX
-	move.l %d3,_cameraY
+	move.l %d0,_cameraX
+	move.l %d2,_cameraY
+	move.w %d0,%d4
+	move.w %d0,_targetCameraX
 	move.l 20(%fp),_cameraXMax
-	move.l %d4,_backgroundGfxBase
+	move.l %d3,_backgroundGfxBase
 	jsr __Z14stageGetHeightv
-	move.l %d4,-(%sp)
+	move.l %d3,-(%sp)
 	move.l #0x3f800000,-(%sp)
-	move.w %d3,%a0
-	move.l %a0,-(%sp)
 	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	move.w %d4,%a0
 	move.l %a0,-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
@@ -34,61 +36,110 @@ __Z10cameraInitjiiij:
 	unlk %fp
 	rts
 .LC0:
-	.ascii "Camera X\0"
+	.ascii "world x\0"
 .LC1:
-	.ascii "Offset X\0"
+	.ascii "camera x\0"
+.LC2:
+	.ascii "a\0"
+.LC3:
+	.ascii "b\0"
+.LC4:
+	.ascii "c\0"
+.LC5:
+	.ascii "d\0"
 	.even
 	.globl	__Z12cameraUpdateP7FighterS0_
 __Z12cameraUpdateP7FighterS0_:
 	link.w %fp,#0
-	movem.l #8240,-(%sp)
-	move.w raptor_ticks,%a0
-	move.l _cameraTicks,%d0
-	addq.l #1,%d0
-	cmp.l %a0,%d0
-	jlt .L13
-	movem.l -12(%fp),#3076
-	unlk %fp
-	rts
-.L13:
+	movem.l #12344,-(%sp)
+	move.l 8(%fp),%a2
+	move.l 12(%fp),%a3
 	clr.l -(%sp)
-	pea 50.w
-	move.l _cameraX,-(%sp)
+	pea 20.w
+	move.w 248(%a2),%a0
+	move.l %a0,-(%sp)
 	pea .LC0
-	lea __Z15printMessageIntPciii,%a2
-	jsr (%a2)
+	lea __Z15printMessageIntPciii,%a4
+	jsr (%a4)
 	lea (16,%sp),%sp
-	pea 12.w
-	pea 50.w
-	move.l _xOffset,-(%sp)
+	pea 10.w
+	pea 20.w
+	move.l _cameraX,-(%sp)
 	pea .LC1
-	jsr (%a2)
-	move.w _panDirection,%d1
-	move.w %d1,%d2
-	ext.l %d2
-	move.l %d2,%d0
-	neg.l %d0
-	add.l %d0,%d0
-	move.l %d0,%a0
-	add.l %d0,%a0
-	add.l _xOffset,%a0
-	move.l %a0,_xOffset
-	lea (15,%a0),%a1
+	jsr (%a4)
+	move.w 248(%a2),%a1
+	move.l _cameraX,%d0
+	move.w _xOffset+2,%a0
+	move.w %a0,%d2
+	add.w %a1,%d2
+	sub.w %d0,%d2
+	move.w %d2,240(%a2)
+	move.w 248(%a3),%d2
+	add.w %d2,%a0
+	sub.w %d0,%a0
+	move.w %a0,240(%a3)
+	move.w raptor_ticks,%a0
+	move.l _cameraTicks,%d1
+	addq.l #1,%d1
 	lea (16,%sp),%sp
-	moveq #14,%d0
-	cmp.l %a1,%d0
-	jcc .L4
-	moveq #-8,%d0
-	move.l %d0,_xOffset
-	lsl.l #3,%d2
-	add.l _cameraX,%d2
-	move.l %d2,_cameraX
+	cmp.l %a0,%d1
+	jge .L2
+	move.w 262(%a2),%d1
 	cmp.w #1,%d1
-	jeq .L14
+	jeq .L31
+.L4:
+	move.w 262(%a3),%d3
+	cmp.w #1,%d3
+	jeq .L32
+.L6:
 	cmp.w #-1,%d1
+	jeq .L33
+.L7:
+	cmp.w #-1,%d3
 	jeq .L8
+.L26:
+	move.w _targetCameraX,%a0
+.L5:
+	move.w %a0,%a0
+	cmp.l %a0,%d0
+	jge .L10
+	move.w #1,_panDirection
+	move.l %a0,%a1
+	sub.l %d0,%a1
+	moveq #3,%d1
+	cmp.l %a1,%d1
+	jlt .L25
+	move.w %d0,_targetCameraX
+	move.w %d0,%a0
+	moveq #8,%d2
+	move.w #4,%a3
+	move.w #-8,%a1
+	move.b #1,%d1
+	cmp.l %a0,%d0
+	jeq .L13
 .L11:
-	move.w %d2,%a3
+	add.l _xOffset,%a1
+	move.l %a1,_xOffset
+	lea (15,%a1),%a2
+	moveq #14,%d3
+	cmp.l %a2,%d3
+	jcc .L14
+	moveq #-8,%d3
+	move.l %d3,_xOffset
+	cmp.w #1,%d1
+	jeq .L34
+	cmp.w #-1,%d1
+	jeq .L35
+.L17:
+	add.l %a3,%d0
+	move.l %d0,_cameraX
+.L18:
+	cmp.w #1,%d1
+	jeq .L36
+	cmp.w #-1,%d1
+	jeq .L22
+.L29:
+	move.w %d0,%a3
 	move.l _backgroundGfxBase,%d2
 	move.w _cameraY+2,%a2
 	jsr __Z14stageGetHeightv
@@ -101,19 +152,138 @@ __Z12cameraUpdateP7FighterS0_:
 	pea 352.w
 	move.l _backgroundSpriteIndex,-(%sp)
 	jsr __Z8setFramejssssfj
-	move.l _xOffset,%a0
+	move.l _xOffset,%a1
 	lea (28,%sp),%sp
-.L4:
-	move.l sprite,%a1
-	move.w %a0,8648(%a1)
-	move.w raptor_ticks,%a0
-	move.l %a0,_cameraTicks
-	movem.l -12(%fp),#3076
+.L14:
+	move.l sprite,%a0
+	move.w %a1,8648(%a0)
+.L13:
+	move.w raptor_ticks,%a1
+	move.l %a1,_cameraTicks
+.L2:
+	movem.l -20(%fp),#7180
 	unlk %fp
 	rts
-.L14:
-	cmp.l #688,%d2
-	jle .L11
+.L10:
+	move.w #-1,_panDirection
+	move.l %d0,%d1
+	sub.l %a0,%d1
+	moveq #3,%d2
+	cmp.l %d1,%d2
+	jlt .L27
+	move.w %d0,_targetCameraX
+	move.w %d0,%a0
+.L27:
+	moveq #-8,%d2
+	move.w #-4,%a3
+	move.w #8,%a1
+	moveq #-1,%d1
+	cmp.l %a0,%d0
+	jne .L11
+	jra .L13
+.L31:
+	move.w %a1,%a0
+	lea (-15,%a0),%a0
+	cmp.l %d0,%a0
+	jgt .L4
+	pea .LC2
+	jsr __Z11showMessagePc
+	move.w 248(%a2),%a0
+	lea (-16,%a0),%a0
+	move.w %a0,_targetCameraX
+	move.l _cameraX,%d0
+	addq.l #4,%sp
+	jra .L5
+.L32:
+	move.w %d2,%a0
+	lea (-15,%a0),%a0
+	cmp.l %d0,%a0
+	jgt .L6
+	pea .LC3
+	jsr __Z11showMessagePc
+	move.w 248(%a3),%a0
+	lea (-16,%a0),%a0
+	move.w %a0,_targetCameraX
+	move.l _cameraX,%d0
+	addq.l #4,%sp
+	jra .L5
+.L25:
+	moveq #1,%d1
+	move.w #-8,%a1
+	moveq #8,%d2
+	move.w #4,%a3
+	jra .L11
+.L33:
+	move.w %a1,%a1
+	move.l %d0,%d1
+	add.l #304,%d1
+	cmp.l %a1,%d1
+	jge .L7
+	pea .LC4
+	jsr __Z11showMessagePc
+	move.w 248(%a2),%a0
+	lea (-304,%a0),%a0
+	move.w %a0,_targetCameraX
+	move.l _cameraX,%d0
+	addq.l #4,%sp
+	jra .L5
+.L8:
+	move.w %d2,%a0
+	move.l %d0,%d1
+	add.l #304,%d1
+	cmp.l %a0,%d1
+	jge .L26
+	pea .LC5
+	jsr __Z11showMessagePc
+	move.w 248(%a3),%a0
+	lea (-304,%a0),%a0
+	move.w %a0,_targetCameraX
+	move.l _cameraX,%d0
+	addq.l #4,%sp
+	jra .L5
+.L34:
+	sub.l %d0,%a0
+	moveq #8,%d3
+	cmp.l %a0,%d3
+	jge .L17
+	add.l %d2,%d0
+	move.l %d0,_cameraX
+	jra .L18
+.L35:
+	move.l %d0,%a1
+	sub.l %a0,%a1
+	moveq #8,%d3
+	cmp.l %a1,%d3
+	jge .L17
+	add.l %d2,%d0
+	move.l %d0,_cameraX
+	jra .L18
+.L22:
+	moveq #9,%d1
+	cmp.l %d0,%d1
+	jlt .L29
+	move.w #1,_panDirection
+	moveq #10,%d2
+	move.l %d2,_cameraX
+	move.w #10,%a3
+	move.l _backgroundGfxBase,%d2
+	move.w _cameraY+2,%a2
+	jsr __Z14stageGetHeightv
+	move.l %d2,-(%sp)
+	move.l #0x3f800000,-(%sp)
+	move.l %a2,-(%sp)
+	move.l %a3,-(%sp)
+	move.w %d0,%a0
+	move.l %a0,-(%sp)
+	pea 352.w
+	move.l _backgroundSpriteIndex,-(%sp)
+	jsr __Z8setFramejssssfj
+	move.l _xOffset,%a1
+	lea (28,%sp),%sp
+	jra .L14
+.L36:
+	cmp.l #688,%d0
+	jle .L29
 	move.w #-1,_panDirection
 	move.l #688,_cameraX
 	move.w #688,%a3
@@ -129,32 +299,9 @@ __Z12cameraUpdateP7FighterS0_:
 	pea 352.w
 	move.l _backgroundSpriteIndex,-(%sp)
 	jsr __Z8setFramejssssfj
-	move.l _xOffset,%a0
+	move.l _xOffset,%a1
 	lea (28,%sp),%sp
-	jra .L4
-.L8:
-	moveq #9,%d0
-	cmp.l %d2,%d0
-	jlt .L11
-	move.w #1,_panDirection
-	moveq #10,%d0
-	move.l %d0,_cameraX
-	move.w #10,%a3
-	move.l _backgroundGfxBase,%d2
-	move.w _cameraY+2,%a2
-	jsr __Z14stageGetHeightv
-	move.l %d2,-(%sp)
-	move.l #0x3f800000,-(%sp)
-	move.l %a2,-(%sp)
-	move.l %a3,-(%sp)
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	pea 352.w
-	move.l _backgroundSpriteIndex,-(%sp)
-	jsr __Z8setFramejssssfj
-	move.l _xOffset,%a0
-	lea (28,%sp),%sp
-	jra .L4
+	jra .L14
 	.even
 	.globl	__Z21cameraCheckBoundsLeftP7FighterS0_
 __Z21cameraCheckBoundsLeftP7FighterS0_:
@@ -176,13 +323,13 @@ __Z13cameraCanMovev:
 	move.l _cameraX,%d0
 	moveq #10,%d1
 	cmp.l %d0,%d1
-	jge .L20
+	jge .L42
 	cmp.l _cameraXMax.l,%d0
 	slt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L20:
+.L42:
 	clr.b %d0
 	unlk %fp
 	rts
@@ -234,14 +381,14 @@ __Z28cameraFighterIsAtBoundsRightP7Fighter:
 	link.w %fp,#0
 	move.l _cameraX,%d0
 	cmp.l _cameraXMax.l,%d0
-	jlt .L30
+	jlt .L52
 	move.l 8(%fp),%a0
 	cmp.w #261,240(%a0)
 	sgt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L30:
+.L52:
 	clr.b %d0
 	unlk %fp
 	rts
@@ -251,19 +398,23 @@ __Z27cameraFighterIsAtBoundsLeftP7Fighter:
 	link.w %fp,#0
 	moveq #10,%d0
 	cmp.l _cameraX.l,%d0
-	jlt .L35
+	jlt .L57
 	move.l 8(%fp),%a0
 	cmp.w #10,240(%a0)
 	sle %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L35:
+.L57:
 	clr.b %d0
 	unlk %fp
 	rts
-	.globl	_backgroundGfxBase
+	.globl	_targetCameraX
 	.bss
+	.even
+_targetCameraX:
+	.skip 2
+	.globl	_backgroundGfxBase
 	.even
 _backgroundGfxBase:
 	.skip 4

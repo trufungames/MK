@@ -16,6 +16,7 @@ bool movingCamera = false;
 short panDirection = 1;
 unsigned int backgroundSpriteIndex;
 unsigned int backgroundGfxBase;
+short targetCameraX = 0;
 
 void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsigned int gfxBase)
 {
@@ -23,6 +24,7 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
     backgroundSpriteIndex = spriteIndex;
     cameraX = startX;
     cameraY = startY;
+    targetCameraX = cameraX;
     cameraXMax = xMax;
     backgroundGfxBase = gfxBase;
 
@@ -32,34 +34,76 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
+    //printMessageInt("world x", fighter1->worldPositionX, 20, 0);
+    //printMessageInt("camera x", cameraX, 20, 10);
+    fighter1->positionX = fighter1->worldPositionX - cameraX + xOffset;
+    fighter2->positionX = fighter2->worldPositionX - cameraX + xOffset;
+    
     if (rapTicks > cameraTicks + 1)
     {
-        printMessageInt("Camera X", cameraX, 50, 0);
-        printMessageInt("Offset X", xOffset, 50, 12);
-
-        xOffset -= panDirection * 4;
-
-        if (xOffset >= 0
-            || xOffset <= -16)
+        if (fighter1->direction == 1 && fighter1->worldPositionX - 16 < cameraX)
         {
-            xOffset = -8;
-            cameraX += panDirection * 8;
-
-            if (panDirection == 1 && cameraX > FIGHTER_MAX_WORLD_POSITION_X)
-            {
-                panDirection *= -1;
-                cameraX = FIGHTER_MAX_WORLD_POSITION_X;
-            }
-            else if (panDirection == -1 && cameraX < FIGHTER_MIN_WORLD_POSITION_X)
-            {
-                panDirection *= -1;
-                cameraX = FIGHTER_MIN_WORLD_POSITION_X;
-            }       
-
-            setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+            targetCameraX = fighter1->worldPositionX - 16;
+        }
+        else if (fighter2->direction == 1 && fighter2->worldPositionX - 16 < cameraX)
+        {
+            targetCameraX = fighter2->worldPositionX - 16;
+        }
+        else if (fighter1->direction == -1 && fighter1->worldPositionX > (cameraX + 304))
+        {
+            targetCameraX = fighter1->worldPositionX - 304;
+        }
+        else if (fighter2->direction == -1 && fighter2->worldPositionX > (cameraX + 304))
+        {
+            targetCameraX = fighter2->worldPositionX - 304;
         }
 
-        sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
+        panDirection = cameraX < targetCameraX ? 1 : -1;
+
+        if (panDirection == 1 && targetCameraX - cameraX < 4)
+        {
+            targetCameraX = cameraX;
+        }
+        else if (panDirection == -1 && cameraX - targetCameraX < 4)
+        {
+            targetCameraX = cameraX;
+        }
+
+        if (cameraX != targetCameraX)
+        {
+            xOffset -= panDirection * 8;
+
+            if (xOffset >= 0
+                || xOffset <= -16)
+            {
+                xOffset = -8;
+
+                if ((panDirection == 1 && targetCameraX - cameraX > 8)
+                    || (panDirection == -1 && cameraX - targetCameraX > 8))
+                {
+                    cameraX += panDirection * 8;
+                }
+                else
+                {
+                    cameraX += panDirection * 4;
+                }
+
+                if (panDirection == 1 && cameraX > FIGHTER_MAX_WORLD_POSITION_X)
+                {
+                    panDirection *= -1;
+                    cameraX = FIGHTER_MAX_WORLD_POSITION_X;
+                }
+                else if (panDirection == -1 && cameraX < FIGHTER_MIN_WORLD_POSITION_X)
+                {
+                    panDirection *= -1;
+                    cameraX = FIGHTER_MIN_WORLD_POSITION_X;
+                }       
+
+                setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+            }
+
+            sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
+        }
 
         // fighter1->positionX = fighter1->worldPositionX - cameraX;// + xOffset;
         // fighter2->positionX = fighter2->worldPositionX - cameraX;// + xOffset;
