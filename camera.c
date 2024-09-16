@@ -20,7 +20,7 @@ short targetCameraX = 0;
 
 void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsigned int gfxBase)
 {
-    xOffset = -8;
+    xOffset = 0;
     backgroundSpriteIndex = spriteIndex;
     cameraX = startX;
     cameraY = startY;
@@ -34,10 +34,11 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    //printMessageInt("world x", fighter1->worldPositionX, 20, 0);
-    //printMessageInt("camera x", cameraX, 20, 10);
-    fighter1->positionX = fighter1->worldPositionX - cameraX + xOffset;
-    fighter2->positionX = fighter2->worldPositionX - cameraX + xOffset;
+    printMessageInt("camera x", cameraX, 20, 0);
+    printMessageInt("offset x", xOffset, 20, 10);
+
+    fighter1->positionX = fighter1->worldPositionX - cameraGetX();
+    fighter2->positionX = fighter2->worldPositionX - cameraGetX();
     
     if (rapTicks > cameraTicks + 1)
     {
@@ -49,34 +50,34 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
         {
             targetCameraX = fighter2->worldPositionX - 16;
         }
-        else if (fighter1->direction == -1 && fighter1->worldPositionX > (cameraX + 304))
+        else if (fighter1->direction == -1 && fighter1->worldPositionX > (cameraX + 284))
         {
-            targetCameraX = fighter1->worldPositionX - 304;
+            targetCameraX = fighter1->worldPositionX - 284;
         }
-        else if (fighter2->direction == -1 && fighter2->worldPositionX > (cameraX + 304))
+        else if (fighter2->direction == -1 && fighter2->worldPositionX > (cameraX + 284))
         {
-            targetCameraX = fighter2->worldPositionX - 304;
+            targetCameraX = fighter2->worldPositionX - 284;
         }
 
         panDirection = cameraX < targetCameraX ? 1 : -1;
 
-        if (panDirection == 1 && targetCameraX - cameraX < 4)
+        if (panDirection == 1 && targetCameraX - cameraX < 8)
         {
             targetCameraX = cameraX;
         }
-        else if (panDirection == -1 && cameraX - targetCameraX < 4)
+        else if (panDirection == -1 && cameraX - targetCameraX < 8)
         {
             targetCameraX = cameraX;
         }
 
         if (cameraX != targetCameraX)
         {
-            xOffset -= panDirection * 8;
+            // xOffset -= panDirection * 8;
 
-            if (xOffset >= 0
-                || xOffset <= -16)
-            {
-                xOffset = -8;
+            // if (xOffset >= 0
+            //     || xOffset <= -16)
+            // {
+            //     xOffset = -8;
 
                 if ((panDirection == 1 && targetCameraX - cameraX > 8)
                     || (panDirection == -1 && cameraX - targetCameraX > 8))
@@ -85,7 +86,7 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                 }
                 else
                 {
-                    cameraX += panDirection * 4;
+                    cameraX += panDirection * 8;
                 }
 
                 if (panDirection == 1 && cameraX > FIGHTER_MAX_WORLD_POSITION_X)
@@ -100,94 +101,11 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                 }       
 
                 setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-            }
+            //}
 
             sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
+            stagePositionAssets();
         }
-
-        // fighter1->positionX = fighter1->worldPositionX - cameraX;// + xOffset;
-        // fighter2->positionX = fighter2->worldPositionX - cameraX;// + xOffset;
-
-        // printMessageInt("Camera X", cameraX, 50, 0);
-        // printMessageInt("Wld X", fighter1->worldPositionX, 50, 12);
-
-        // if (!movingCamera && (fighter1->positionX < CAMERA_BOUND_LEFT
-        //     || fighter2->positionX < CAMERA_BOUND_LEFT))
-        // {
-        //     //Pan the camera to the LEFT
-        //     cameraX -= 1;
-        //     setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-        //     stageMove(1, xOffset);
-        //     sprite[STAGE_PRIMARY_BACKGROUND].x_ = 0;
-        // }
-        // else if (!movingCamera && (fighter1->positionX > CAMERA_BOUND_RIGHT
-        //     || fighter2->positionX > CAMERA_BOUND_RIGHT))
-        // {
-        //     //Pan the camera to the RIGHT    
-        //     cameraX += 1;
-        //     setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-        //     stageMove(1, xOffset);
-        //     sprite[STAGE_PRIMARY_BACKGROUND].x_ = 0;
-        // }
-        // else
-        // {
-        //     movingCamera = false;
-        // }
-
-        // if (xOffset <= -16)
-        // {
-        //     //Camera headed RIGHT
-        //     cameraX += 4;
-        //     setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-        //     xOffset = -8;
-        // }
-        // else if (xOffset >= 0)
-        // {
-        //     //Camera headed LEFT
-        //     cameraX -= 4;
-        //     setFrame(backgroundSpriteIndex, 336, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-        //     xOffset = -8;
-        // }
-
-        //sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;
-
-        // backgroundChangedLeft = false;
-        // backgroundChangedRight = false;
-
-        // //update the background every other frame
-        // if (fighter1->direction == 1)
-        // {
-        //     if (cameraCheckBoundsLeft(fighter1, fighter2)) backgroundChangedLeft = true;
-        //     if (cameraCheckBoundsRight(fighter1, fighter2)) backgroundChangedRight = true;
-        // }
-        // else
-        // {
-        //     if (cameraCheckBoundsLeft(fighter2, fighter1)) backgroundChangedLeft = true;
-        //     if (cameraCheckBoundsRight(fighter2, fighter1)) backgroundChangedRight = true;
-        // }
-
-        // if (backgroundChangedLeft || backgroundChangedRight)
-        // {
-        //     xOffset += backgroundChangedLeft ? 2 : -2;
-        //     stageMove(backgroundChangedLeft ? 1 : -1, xOffset);
-
-        //     if (xOffset <= -16)
-        //     {
-        //         //Camera headed RIGHT
-        //         cameraX += 4;
-        //         setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
-        //         xOffset = -8;                
-        //     }
-        //     else if (xOffset >= 0)
-        //     {
-        //         //Camera headed LEFT
-        //         cameraX -= 4;
-        //         setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 2.0f, backgroundGfxBase);
-        //         xOffset = -8;
-        //     }
-
-        //     sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset;            
-        //}
         
         cameraTicks = rapTicks;
     }
@@ -255,7 +173,7 @@ bool cameraIsAtRightWall()
 
 int cameraGetX()
 {
-    return cameraX;
+    return cameraX + xOffset;
 }
 
 int cameraGetOffset()

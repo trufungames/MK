@@ -41,6 +41,7 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
 {
     if (fighter->isSleeping && rapTicks < fighter->sleepTicks)
     {
+        fighter->currentState->sleep(stateMachine, fighter, spriteAnimator);
         return;
     }
     else if (fighter->isSleeping)
@@ -99,7 +100,7 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
     if (fighter->DoImpaleBloodSequence)
     {
         fighter->DoImpaleBloodSequence = false;        
-        bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
+        bloodImpale(fighter->worldPositionX, fighter->positionY, fighter->direction);
     }
 
     /////////////////////////////////////////////////////
@@ -1142,6 +1143,7 @@ void StateUppercutting_Update(struct StateMachine* stateMachine, struct Fighter*
 
 void StateUppercutting_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    updateSpriteAnimator(spriteAnimator, *fighter->uppercutFrames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateUppercutting_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -1565,7 +1567,7 @@ void StateHitHigh_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     fighter->IsBeingDamaged = true;
     fighterPlayGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
     fighterTakeDamage(fighter, fighter->pendingDamage);    
-    bloodSpray(fighter->positionX - (10 * fighter->direction), fighter->positionY - 10, fighter->direction);
+    bloodSpray(fighter->worldPositionX - (10 * fighter->direction), fighter->positionY - 10, fighter->direction);
 }
 
 void StateHitHigh_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -1689,8 +1691,8 @@ void StateHitBack_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     if (fighter->NoBlood)
         return;
 
-    bloodGlob(fighter->positionX - (40 * fighter->direction), fighter->positionY + 0, fighter->direction);
-    bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
+    bloodGlob(fighter->worldPositionX - (40 * fighter->direction), fighter->positionY + 0, fighter->direction);
+    bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (40 * fighter->direction), fighter->positionY - 30, fighter->direction);
 }
 
 void StateHitBack_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -1798,13 +1800,13 @@ void StateHitUppercut_Enter(struct StateMachine* stateMachine, struct Fighter* f
     sfxImpact(fighter->soundHandler);
     bgShake(false);
     //bloodSquirt(fighter->positionX - (40 * fighter->direction), fighter->positionY - 10);
-    bloodSquirt(fighter->positionX - (40 * fighter->direction)+20, fighter->positionY - 30);
+    bloodSquirt(fighter->worldPositionX - (20 * fighter->direction), fighter->positionY - 30);
     //bloodSquirt(fighter->positionX - (40 * fighter->direction)+10, fighter->positionY - 50);
 
     //bloodDrop(fighter->positionX - (40 * fighter->direction) + (0 * fighter->direction), fighter->positionY - 40, fighter->direction);
-    bloodDrop(fighter->positionX - (40 * fighter->direction) + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
-    bloodDrop(fighter->positionX - (40 * fighter->direction) + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
-    bloodDrop(fighter->positionX - (40 * fighter->direction) + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
+    bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
+    bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
+    bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
 }
 
 void StateHitUppercut_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3168,7 +3170,7 @@ void StateHitHarpoon_Enter(struct StateMachine* stateMachine, struct Fighter* fi
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
     fighterTakeDamage(fighter, fighter->pendingDamage);
-    bloodImpale(fighter->positionX, fighter->positionY, fighter->direction);
+    bloodImpale(fighter->worldPositionX, fighter->positionY, fighter->direction);
     fighterPlayYell(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
     fighter->vars[0] = 0;
     fighter->vars[1] = rapTicks;

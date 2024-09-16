@@ -267,7 +267,7 @@ __Z14stageGetStartXv:
 	move.l %d1,%a0
 	add.l %d1,%a0
 	move.l %a0,%a1
-	add.l #_CSWTCH.22,%a1
+	add.l #_CSWTCH.24,%a1
 	move.l (%a1,%a0.l),%d0
 .L32:
 	unlk %fp
@@ -347,6 +347,35 @@ __Z15stageResetTicksv:
 	move.l %a0,__ZL11cloudTicks3
 	unlk %fp
 	rts
+	.even
+	.globl	__Z19stagePositionAssetsv
+__Z19stagePositionAssetsv:
+	link.w %fp,#0
+	move.l %a3,-(%sp)
+	move.l %a2,-(%sp)
+	tst.w __ZL12currentStage
+	jne .L52
+	move.l sprite,%a3
+	lea __Z10cameraGetXv,%a2
+	jsr (%a2)
+	moveq #10,%d1
+	sub.w %d0,%d1
+	move.w %d1,12680(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #138,%d1
+	sub.w %d0,%d1
+	move.w %d1,8840(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #662,%d1
+	sub.w %d0,%d1
+	move.w %d1,9032(%a3)
+.L52:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
 	.globl	colliders
 	.data
 	.even
@@ -364,8 +393,8 @@ __ZL12currentStage:
 	.word	5
 	.text
 	.even
-_CSWTCH.22:
-	.long	180
+_CSWTCH.24:
+	.long	192
 	.long	226
 	.long	260
 	.long	260

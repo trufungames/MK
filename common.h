@@ -282,7 +282,12 @@
 #define FIGHTER_KASUMI_ROLL_BLOCKED_X_SPEED 3
 #define FIGHTER_MAX_DISTANCE_FROM_OPPONENT 280
 #define FIGHTER_MIN_WORLD_POSITION_X 10
-#define FIGHTER_MAX_WORLD_POSITION_X 688
+#define FIGHTER_MAX_WORLD_POSITION_X 716
+
+//-----------------------------------------------------------------------------------------------------
+#define STAGE_PALACEGATES_FLAME1_X 138
+#define STAGE_PALACEGATES_FLAME2_X 662
+#define STAGE_PALACEGATES_PILLAR_X 10
 
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 66

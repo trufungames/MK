@@ -25,6 +25,8 @@ struct BloodPool {
     unsigned int SpriteIndex;
     struct SpriteAnimator* Animator;
     bool InUse;
+    short X;
+    short Y;
 };
 
 struct BloodSquirt {

@@ -3,6 +3,7 @@
 #include "sound.h"
 #include "spriteanimator.h"
 #include "blood.h"
+#include "camera.h"
 #include "spritedelay.h"
 
 SpriteAnimator bloodSpray1Animator = {
@@ -245,7 +246,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
             bloodSprays[0].LastTicks = rapTicks;
         }
 
-        updateSpriteAnimator(bloodSprays[0].Animator, bloodSprayFrames, 5, true, false, bloodSprays[0].X, bloodSprays[0].Y, bloodDirection);
+        updateSpriteAnimator(bloodSprays[0].Animator, bloodSprayFrames, 5, true, false, bloodSprays[0].X - cameraGetX(), bloodSprays[0].Y, bloodDirection);
 
         if (bloodSprays[0].Animator->currentFrame == 3 && !bloodSprays[1].InUse)
         {
@@ -254,7 +255,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
             bloodSprays[1].X = bloodSprays[0].X - (12 * bloodDirection);
             bloodSprays[1].Y = bloodSprays[0].Y - (4 * bloodDirection);
 
-            sprite[bloodSprays[1].SpriteIndex].x_ = bloodSprays[1].X;
+            sprite[bloodSprays[1].SpriteIndex].x_ = bloodSprays[1].X - cameraGetX();
             sprite[bloodSprays[1].SpriteIndex].y_ = bloodSprays[1].Y;
             sprite[bloodSprays[1].SpriteIndex].flip = bloodDirection == 1 ? R_is_flipped : R_is_normal;
             sprite[bloodSprays[1].SpriteIndex].active = R_is_active;
@@ -270,7 +271,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
             bloodSprays[1].LastTicks = rapTicks;
         }
 
-        updateSpriteAnimator(bloodSprays[1].Animator, bloodSprayFrames, 5, true, false, bloodSprays[1].X, bloodSprays[1].Y, bloodDirection);
+        updateSpriteAnimator(bloodSprays[1].Animator, bloodSprayFrames, 5, true, false, bloodSprays[1].X - cameraGetX(), bloodSprays[1].Y, bloodDirection);
 
         if (animationIsComplete(bloodSprays[1].Animator, 5))
         {
@@ -287,7 +288,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
             bloodGlobObject.LastTicks = rapTicks;
         }
 
-        updateSpriteAnimator(bloodGlobObject.Animator, bloodGlobFrames, 6, true, false, bloodGlobObject.X, bloodGlobObject.Y, bloodDirection);
+        updateSpriteAnimator(bloodGlobObject.Animator, bloodGlobFrames, 6, true, false, bloodGlobObject.X - cameraGetX(), bloodGlobObject.Y, bloodDirection);
         if (animationIsComplete(bloodGlobObject.Animator, 6))
         {
             bloodGlobObject.InUse = false;
@@ -299,7 +300,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodDrops[i].InUse)
         {
-            updateSpriteAnimator(bloodDrops[i].Animator, bloodDropFrames, 8, bloodDrops[i].Direction == -1 ? true : false, true, bloodDrops[i].X, bloodDrops[i].Y, bloodDrops[i].Direction);
+            updateSpriteAnimator(bloodDrops[i].Animator, bloodDropFrames, 8, bloodDrops[i].Direction == -1 ? true : false, true, bloodDrops[i].X - cameraGetX(), bloodDrops[i].Y, bloodDrops[i].Direction);
 
             if (rapTicks >= bloodDrops[i].LastTicks + FIGHTER_BLOOD_TICKS)
             {
@@ -308,7 +309,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
 
                 if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
-                    bloodPool(sprite[bloodDrops[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                    bloodPool(bloodDrops[i].X, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                     //sfxBlood(soundHandler);
                     sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
                     bloodDrops[i].InUse  = false;
@@ -324,7 +325,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodBalls[i].InUse)
         {
-            updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false, bloodBalls[i].X, bloodBalls[i].Y, 1);
+            updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false, bloodBalls[i].X - cameraGetX(), bloodBalls[i].Y, 1);
 
             if (rapTicks >= bloodBalls[i].LastTicks + FIGHTER_BLOOD_TICKS)
             {
@@ -333,7 +334,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
 
                 if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
-                    bloodPool(sprite[bloodBalls[i].SpriteIndex].x_, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                    bloodPool(bloodBalls[i].X, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                     //sfxBlood(soundHandler);
                     sprite[bloodBalls[i].SpriteIndex].active = R_is_inactive;
                     bloodBalls[i].InUse  = false;
@@ -348,7 +349,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodPools[i].InUse)
         {
-            updateSpriteAnimator(bloodPools[i].Animator, bloodPoolFrames, 3, true, false);     
+            updateSpriteAnimator(bloodPools[i].Animator, bloodPoolFrames, 3, true, false, bloodPools[i].X - cameraGetX(), bloodPools[i].Y, 1);     
         }
     }
 
@@ -356,7 +357,7 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodSquirts[i].InUse)
         {
-            updateSpriteAnimator(bloodSquirts[i].Animator, bloodSquirtFrames, 6, true, false, bloodSquirts[i].X, bloodSquirts[i].Y, 1);     
+            updateSpriteAnimator(bloodSquirts[i].Animator, bloodSquirtFrames, 6, true, false, bloodSquirts[i].X - cameraGetX(), bloodSquirts[i].Y, 1);     
 
             if (animationIsComplete(bloodSquirts[i].Animator, 6))
             {
@@ -375,7 +376,7 @@ void bloodSpray(short x, short y, short direction)
         bloodSprays[0].Y = y;
         bloodSprays[0].InUse = true;
         bloodDirection = direction;
-        sprite[bloodSprays[0].SpriteIndex].x_ = x;
+        sprite[bloodSprays[0].SpriteIndex].x_ = x - cameraGetX();
         sprite[bloodSprays[0].SpriteIndex].y_ = y;
         sprite[bloodSprays[0].SpriteIndex].flip = direction == 1 ? R_is_flipped : R_is_normal;
         sprite[bloodSprays[0].SpriteIndex].active = R_is_active;
@@ -393,7 +394,7 @@ void bloodGlob(short x, short y, short direction)
         bloodGlobObject.X = x;
         bloodGlobObject.Y = y;
         bloodGlobObject.LastTicks = rapTicks;
-        sprite[bloodGlobObject.SpriteIndex].x_ = x;
+        sprite[bloodGlobObject.SpriteIndex].x_ = x - cameraGetX();
         sprite[bloodGlobObject.SpriteIndex].y_ = y;
         sprite[bloodGlobObject.SpriteIndex].flip = direction == 1 ? R_is_flipped : R_is_normal;
         sprite[bloodGlobObject.SpriteIndex].active = R_is_active;
@@ -413,7 +414,7 @@ void bloodDrop(short x, short y, short direction)
             bloodDrops[i].Direction = direction;
             bloodDrops[i].X = x;
             bloodDrops[i].Y = y;
-            sprite[bloodDrops[i].SpriteIndex].x_ = bloodDrops[i].X;
+            sprite[bloodDrops[i].SpriteIndex].x_ = bloodDrops[i].X - cameraGetX();
             sprite[bloodDrops[i].SpriteIndex].y_ = bloodDrops[i].Y;
             sprite[bloodDrops[i].SpriteIndex].flip = direction == 1 ? R_is_flipped : R_is_normal;
             sprite[bloodDrops[i].SpriteIndex].active = R_is_active;
@@ -436,7 +437,7 @@ void bloodBall(short x, short y, short direction)
             bloodBalls[i].LastTicks = rapTicks;
             bloodBalls[i].X = x;
             bloodBalls[i].Y = y;
-            sprite[bloodBalls[i].SpriteIndex].x_ = x;
+            sprite[bloodBalls[i].SpriteIndex].x_ = x - cameraGetX();
             sprite[bloodBalls[i].SpriteIndex].y_ = y;
             sprite[bloodBalls[i].SpriteIndex].flip = direction == -1 ? R_is_flipped : R_is_normal;
             sprite[bloodBalls[i].SpriteIndex].active = R_is_active;
@@ -454,7 +455,9 @@ void bloodPool(short x, short y)
         if (!bloodPools[i].InUse)
         {
             bloodPools[i].InUse = true;
-            sprite[bloodPools[i].SpriteIndex].x_ = x;
+            bloodPools[i].X = x;
+            bloodPools[i].Y = y;
+            sprite[bloodPools[i].SpriteIndex].x_ = x - cameraGetX();
             sprite[bloodPools[i].SpriteIndex].y_ = y;
             sprite[bloodPools[i].SpriteIndex].active = R_is_active;
             bloodPools[i].Animator->currentFrame = 0;

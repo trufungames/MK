@@ -1,5 +1,6 @@
 #include "common.h"
 #include "stage.h"
+#include "camera.h"
 
 static short currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
@@ -150,7 +151,7 @@ int stageGetStartX()
     switch (currentStage)
     {
         case STAGE_GATES:
-            return 180;
+            return 192;
         case STAGE_WARRIOR:
             return 226;
         case STAGE_PIT:
@@ -231,4 +232,18 @@ void stageResetTicks()
     cloudTicks1 = rapTicks;
     cloudTicks2 = rapTicks;
     cloudTicks3 = rapTicks;
+}
+
+void stagePositionAssets()
+{
+    switch (currentStage)
+    {
+        case STAGE_GATES:
+            sprite[FOREGROUND_PILLAR].x_ = STAGE_PALACEGATES_PILLAR_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME].x_ = STAGE_PALACEGATES_FLAME1_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME+1].x_ = STAGE_PALACEGATES_FLAME2_X - cameraGetX();
+            break;
+        default:
+            break;
+    }
 }

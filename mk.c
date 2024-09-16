@@ -70,8 +70,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -1160,7 +1160,7 @@ static AnimationFrame cageUppercutFrames[] = {
 	{ 80, 64, 944, 288, 0, 48, 4 },
 	{ 80, 96, 96, 416, 0, 16, 4 },
 	{ 64, 112, 176, 368, 15, 2, 4 },
-	{ 48, 128, 240, 352, 21, -14, 12 },
+	{ 48, 128, 240, 352, 21, -14, 50 },
 	{ 64, 112, 288, 368, 4, 0, 4 },
 	{ 64, 112, 288, 368, 4, 0, 4 }
 };
@@ -1567,7 +1567,7 @@ static AnimationFrame kangUppercutFrames[] = {
 	{ 64, 96, 0, 224, 0, 16, 4 },
 	{ 80, 112, 64, 224, 4, 0, 4 },
 	{ 80, 112, 144, 224, 8, 2, 4 },
-	{ 48, 128, 224, 224, 18, -13, 12 },
+	{ 48, 128, 224, 224, 18, -13, 50 },
 	{ 64, 112, 272, 224, 0, 0, 4 },
 	{ 64, 112, 272, 224, 0, 0, 4 }
 };
@@ -1970,7 +1970,7 @@ static AnimationFrame raidenUppercutFrames[] = {
 	{ 64, 80, 192, 592, 0, 32, 4 },
 	{ 64, 96, 256, 592, 1, 16, 4 },
 	{ 80, 112, 320, 608, 1, 0, 4 },
-	{ 48, 112, 400, 576, 18, 0, 12 },
+	{ 48, 112, 400, 576, 18, 0, 50 },
 	{ 64, 96, 448, 592, 8, 16, 4 },
 	{ 64, 96, 448, 592, 8, 16, 4 }
 };
@@ -2207,7 +2207,7 @@ static AnimationFrame subzeroUppercutFrames[] = {
 	{ 64, 112, 528, 112, 0, 0, 4 },
 	{ 80, 112, 592, 112, 5, 0, 4 },	
 	{ 48, 128, 672, 112, 6, -16, 4 },
-	{ 48, 128, 784, 112, 2, -16, 12 },
+	{ 48, 128, 784, 112, 2, -16, 50 },
 	{ 64, 112, 720, 112, 0, 0, 4 },
 	{ 64, 112, 720, 112, 0, 0, 4 }
 };
@@ -2643,7 +2643,7 @@ static AnimationFrame sonyaUppercutFrames[] = {
 	{ 48, 80, 0, 112, 0, 32, 4 },
 	{ 80, 80, 48, 112, 0, 32, 4 },
 	{ 80, 112, 128, 112, 0, 0, 4 },
-	{ 48, 128, 208, 112, 6, -16, 12 },
+	{ 48, 128, 208, 112, 6, -16, 50 },
 	{ 48, 112, 256, 112, 0, 0, 4 },
 	{ 48, 112, 256, 112, 0, 0, 4 }
 };
@@ -3275,7 +3275,7 @@ static AnimationFrame kanoUppercutFrames[] = {
 	{ 64, 112, 800, 224, -9, 0, 4 },
 	{ 48, 112, 864, 224, 3, 1, 4 },
 	{ 80, 112, 912, 224, 6, 3, 4 },
-	{ 64, 128, 0, 320, 12, -14, 12 },
+	{ 64, 128, 0, 320, 12, -14, 50 },
 	{ 64, 112, 64, 304, -9, 0, 4 },
 	{ 64, 112, 64, 304, -9, 0, 4 }
 };
@@ -6761,8 +6761,8 @@ void basicmain()
 					continue;
 				}
 				
-				fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
-				fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);  
+				//fighter1Ptr->hasRoomToMove = fighterHasRoomToMove(fighter1Ptr, fighter2Ptr);
+				//fighter2Ptr->hasRoomToMove = fighterHasRoomToMove(fighter2Ptr, fighter1Ptr);  
 
 				if (fighter1Ptr->fighterIndex == SCORPION || fighter2Ptr->fighterIndex == SCORPION)
 				{
@@ -6777,7 +6777,7 @@ void basicmain()
 				}
 				fighterTurnCheck(fighter1Ptr, fighter2Ptr);
 				fighterCloseCheck(fighter1Ptr, fighter2Ptr);
-				fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
+				//fighterIsMaxDistance(fighter1Ptr, fighter2Ptr);
 				fighterTorpedoCheck(&fighterStateMachine, fighter1Ptr, fighter2Ptr);
 				fighterImpactCheck(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr, fighter2Ptr, spriteAnimator2Ptr);
 				fighterButtonCheck(fighter1Ptr);

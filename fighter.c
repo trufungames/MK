@@ -169,7 +169,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_ATTACK = P1_HB_ATTACK;
         fighter->lightningSpriteIndex = P1_PROJECTILE;
         fighter->PAD = LEFT_PAD;
-        fighter->worldPositionX = 100 + stageGetStartX();
+        fighter->worldPositionX = 70 + stageGetStartX();
         sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex].flip = R_is_normal;
         sprite[fighter->spriteIndex-1].flip = R_is_normal;
@@ -180,7 +180,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
         fighter->HB_ATTACK = P2_HB_ATTACK;
         fighter->lightningSpriteIndex = P2_PROJECTILE;
         fighter->PAD = RIGHT_PAD;
-        fighter->worldPositionX = 240 + stageGetStartX();
+        fighter->worldPositionX = 220 + stageGetStartX();
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex].flip = R_is_flipped;
         sprite[fighter->spriteIndex-1].flip = R_is_flipped;
