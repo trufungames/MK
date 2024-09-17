@@ -34,8 +34,8 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    printMessageInt("camera x", cameraX, 20, 0);
-    printMessageInt("offset x", xOffset, 20, 10);
+    //printMessageInt("camera x", cameraX, 20, 0);
+    //printMessageInt("offset x", xOffset, 20, 10);
 
     fighter1->positionX = fighter1->worldPositionX - cameraGetX();
     fighter2->positionX = fighter2->worldPositionX - cameraGetX();

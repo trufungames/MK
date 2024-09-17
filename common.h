@@ -281,7 +281,7 @@
 #define FIGHTER_KASUMI_ROLL_X_SPEED 8
 #define FIGHTER_KASUMI_ROLL_BLOCKED_X_SPEED 3
 #define FIGHTER_MAX_DISTANCE_FROM_OPPONENT 280
-#define FIGHTER_MIN_WORLD_POSITION_X 10
+#define FIGHTER_MIN_WORLD_POSITION_X 16
 #define FIGHTER_MAX_WORLD_POSITION_X 716
 
 //-----------------------------------------------------------------------------------------------------
@@ -290,7 +290,7 @@
 #define STAGE_PALACEGATES_PILLAR_X 10
 
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 66
+#define STATE_TOTAL_COUNT 69
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -358,6 +358,9 @@
 #define STATE_SONYA_SQUARE_FLIGHT 63
 #define STATE_KASUMI_FIREBALL 64
 #define STATE_KASUMI_ROLL 65
+#define STATE_IS_LOSER 66
+#define STATE_IS_WINNER 67
+#define STATE_FINISH_HIM 68
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

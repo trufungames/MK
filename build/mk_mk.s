@@ -4357,6 +4357,18 @@ __Z9basicmainv:
 	move.l #__Z22StateKasumiRoll_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL15stateKasumiRoll+6
 	move.l #__Z21StateKasumiRoll_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateKasumiRoll+10
 	move.l #__Z27StateKasumiRoll_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL15stateKasumiRoll+14
+	move.l #__Z18StateIsLoser_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateIsLoser+2
+	move.l #__Z19StateIsLoser_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL12stateIsLoser+6
+	move.l #__Z18StateIsLoser_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateIsLoser+10
+	move.l #__Z24StateIsLoser_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL12stateIsLoser+14
+	move.l #__Z19StateIsWinner_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIsWinner+2
+	move.l #__Z20StateIsWinner_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL13stateIsWinner+6
+	move.l #__Z19StateIsWinner_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIsWinner+10
+	move.l #__Z25StateIsWinner_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL13stateIsWinner+14
+	move.l #__Z20StateFinishHim_EnterP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateFinishHim+2
+	move.l #__Z21StateFinishHim_UpdateP12StateMachineP7FighterP14SpriteAnimatorS2_,__ZL14stateFinishHim+6
+	move.l #__Z20StateFinishHim_SleepP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateFinishHim+10
+	move.l #__Z26StateFinishHim_HandleInputP12StateMachineP7FighterP14SpriteAnimator,__ZL14stateFinishHim+14
 	pea __ZL9stateIdle
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
@@ -4685,6 +4697,21 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l #__ZL15stateKasumiRoll,(%sp)
 	pea 65.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL12stateIsLoser,(%sp)
+	pea 66.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL13stateIsWinner,(%sp)
+	pea 67.w
+	pea __ZL19fighterStateMachine
+	jsr (%a2)
+	addq.l #8,%sp
+	move.l #__ZL14stateFinishHim,(%sp)
+	pea 68.w
 	pea __ZL19fighterStateMachine
 	jsr (%a2)
 	move.l #__ZL12cageAnimator,__ZL11fighterCage+408
@@ -6399,9 +6426,10 @@ __Z9basicmainv:
 	jne .L455
 	move.l %d6,-(%sp)
 	move.l %d5,-(%sp)
+	pea __ZL19fighterStateMachine
 	pea __ZL12soundHandler
-	jsr __Z11matchUpdateP12SoundHandlerP7FighterS2_
-	lea (12,%sp),%sp
+	jsr __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_
+	lea (16,%sp),%sp
 	tst.b %d0
 	jne .L382
 .L456:
@@ -6435,9 +6463,10 @@ __Z9basicmainv:
 	addq.l #8,%sp
 	move.l %d6,-(%sp)
 	move.l %d5,-(%sp)
+	pea __ZL19fighterStateMachine
 	pea __ZL12soundHandler
-	jsr __Z11matchUpdateP12SoundHandlerP7FighterS2_
-	lea (12,%sp),%sp
+	jsr __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_
+	lea (16,%sp),%sp
 	tst.b %d0
 	jeq .L456
 .L382:
@@ -7495,7 +7524,18 @@ __Z9basicmainv:
 	jsr __Z15spriteDelayInitv
 	jsr __Z9sleepInitv
 	jsr __Z10matchResetv
-	move.l -60(%fp),-(%sp)
+	move.l %d6,-(%sp)
+	move.l %d5,-(%sp)
+	jsr __Z20fighterResetFlagsAllP7FighterS0_
+	addq.l #4,%sp
+	clr.l (%sp)
+	move.w _p2Cursor,%a0
+	move.l %a0,-(%sp)
+	move.w _p1Cursor,%a1
+	move.l %a1,-(%sp)
+	jsr __Z17switchScreenFightiib
+	addq.l #8,%sp
+	move.l -60(%fp),(%sp)
 	move.l %d5,-(%sp)
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
@@ -7506,18 +7546,7 @@ __Z9basicmainv:
 	clr.l -(%sp)
 	pea __ZL19fighterStateMachine
 	jsr __Z16stateMachineInitP12StateMachinesP7FighterP14SpriteAnimator
-	lea (12,%sp),%sp
-	move.l %d6,(%sp)
-	move.l %d5,-(%sp)
-	jsr __Z20fighterResetFlagsAllP7FighterS0_
-	addq.l #4,%sp
-	clr.l (%sp)
-	move.w _p2Cursor,%a0
-	move.l %a0,-(%sp)
-	move.w _p1Cursor,%a1
-	move.l %a1,-(%sp)
-	jsr __Z17switchScreenFightiib
-	lea (12,%sp),%sp
+	lea (16,%sp),%sp
 	jra .L385
 .L294:
 	pea __ZL17subzeroWinsFrames
@@ -9801,7 +9830,19 @@ __ZL19stateKasumiFireball:
 __ZL15stateKasumiRoll:
 	.word	65
 	.skip 16
-.lcomm __ZL19fighterStateMachine,264
+	.even
+__ZL12stateIsLoser:
+	.word	66
+	.skip 16
+	.even
+__ZL13stateIsWinner:
+	.word	67
+	.skip 16
+	.even
+__ZL14stateFinishHim:
+	.word	68
+	.skip 16
+.lcomm __ZL19fighterStateMachine,276
 	.even
 __ZL11fighterCage:
 	.word	1

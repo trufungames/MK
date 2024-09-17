@@ -347,6 +347,21 @@ void StateKasumiRoll_Update(struct StateMachine*, struct Fighter*, struct Sprite
 void StateKasumiRoll_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateKasumiRoll_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateIsLoser_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIsLoser_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateIsLoser_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIsLoser_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateIsWinner_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIsWinner_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateIsWinner_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateIsWinner_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateFinishHim_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateFinishHim_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateFinishHim_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateFinishHim_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

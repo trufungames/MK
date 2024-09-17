@@ -75,6 +75,7 @@ struct Fighter {
     bool IsClose;
     bool IsActive;
     bool IsDizzy;
+    bool IsFinishHim;
     bool IsStunned;
     bool IsDefeated;
     bool IsFrozen;

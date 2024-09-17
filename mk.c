@@ -280,6 +280,15 @@ static State stateKasumiFireball = {
 static State stateKasumiRoll = {
 	STATE_KASUMI_ROLL
 };
+static State stateIsLoser = {
+	STATE_IS_LOSER
+};
+static State stateIsWinner = {
+	STATE_IS_WINNER
+};
+static State stateFinishHim = {
+	STATE_FINISH_HIM
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -4615,6 +4624,18 @@ void basicmain()
 		stateKasumiRoll.update = &StateKasumiRoll_Update;
 		stateKasumiRoll.sleep = &StateKasumiRoll_Sleep;
 		stateKasumiRoll.handleInput = &StateKasumiRoll_HandleInput;
+		stateIsLoser.enter = &StateIsLoser_Enter;
+		stateIsLoser.update = &StateIsLoser_Update;
+		stateIsLoser.sleep = &StateIsLoser_Sleep;
+		stateIsLoser.handleInput = &StateIsLoser_HandleInput;
+		stateIsWinner.enter = &StateIsWinner_Enter;
+		stateIsWinner.update = &StateIsWinner_Update;
+		stateIsWinner.sleep = &StateIsWinner_Sleep;
+		stateIsWinner.handleInput = &StateIsWinner_HandleInput;
+		stateFinishHim.enter = &StateFinishHim_Enter;
+		stateFinishHim.update = &StateFinishHim_Update;
+		stateFinishHim.sleep = &StateFinishHim_Sleep;
+		stateFinishHim.handleInput = &StateFinishHim_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4682,6 +4703,9 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_SQUARE_FLIGHT, &stateSonyaSquareFlight);
 		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_FIREBALL, &stateKasumiFireball);
 		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_ROLL, &stateKasumiRoll);
+		stateMachineAdd(&fighterStateMachine, STATE_IS_LOSER, &stateIsLoser);
+		stateMachineAdd(&fighterStateMachine, STATE_IS_WINNER, &stateIsWinner);
+		stateMachineAdd(&fighterStateMachine, STATE_FINISH_HIM, &stateFinishHim);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.projectileAnimator = &lightningAnimator;
@@ -6715,7 +6739,6 @@ void basicmain()
 				stateMachineHandleInput(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr);
 				stateMachineHandleInput(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr);
 
-				//clb uncomment here once things above work...
 				displayWinnerMedals();
 
 				if (pad1 & JAGPAD_5)
@@ -6724,7 +6747,7 @@ void basicmain()
 				}
 
 				//match progression
-				if (!matchUpdate(&soundHandler, fighter1Ptr, fighter2Ptr))
+				if (!matchUpdate(&soundHandler, &fighterStateMachine, fighter1Ptr, fighter2Ptr))
 				{
 					for (int i = 0; i < 90; i++)
 					{
@@ -6749,10 +6772,10 @@ void basicmain()
 					spriteDelayInit();
 					sleepInit();
 					matchReset();
-					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
-					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 					fighterResetFlagsAll(fighter1Ptr, fighter2Ptr);
 					switchScreenFight(p1Cursor, p2Cursor, false);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
 				}
 
 				if (sleepCheck())

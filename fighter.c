@@ -139,6 +139,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
+    fighter->IsFinishHim = false;
     fighter->IsStunned = false;
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
@@ -1154,6 +1155,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDefeated = false;
+    fighter->IsFinishHim = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
     fighter->IsStunned = false;
@@ -1664,7 +1666,7 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
 void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
 {
     if (fighter1->direction == 1
-        && fighter1->positionX > fighter2->positionX + turnOffset
+        && fighter1->worldPositionX > fighter2->worldPositionX + turnOffset
         && !fighter1->IsTurning
         && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
@@ -1681,7 +1683,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     }
 
     if (fighter1->direction == -1
-        && fighter1->positionX + turnOffset < fighter2->positionX
+        && fighter1->worldPositionX + turnOffset < fighter2->worldPositionX
         && !fighter1->IsTurning
         && !fighter1->IsFrozen
         && fighter1->currentState->Name != STATE_KANG_FLYING_KICK
@@ -1698,7 +1700,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     }
 
     if (fighter2->direction == 1
-        && fighter2->positionX > fighter1->positionX + turnOffset
+        && fighter2->worldPositionX > fighter1->worldPositionX + turnOffset
         && !fighter2->IsTurning
         && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
@@ -1715,7 +1717,7 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
     }
 
     if (fighter2->direction == -1
-        && fighter2->positionX + turnOffset < fighter1->positionX
+        && fighter2->worldPositionX + turnOffset < fighter1->worldPositionX
         && !fighter2->IsTurning
         && !fighter2->IsFrozen
         && fighter2->currentState->Name != STATE_KANG_FLYING_KICK
@@ -1796,11 +1798,11 @@ void fighterTakeDamage(struct Fighter* fighter, int damage)
 
     fighter->hitPoints -= damage;
 
-    if (fighter->hitPoints <= 0)
-    {
-        fighter->hitPoints = 0;
-        fighter->DoDefeatedSequence = true;
-    }
+    // if (fighter->hitPoints <= 0)
+    // {
+    //     fighter->hitPoints = 0;
+    //     fighter->DoDefeatedSequence = true;
+    // }
 
     hudUpdateFighter(fighter);
 }

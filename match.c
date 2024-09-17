@@ -5,6 +5,7 @@
 #include "stage.h"
 #include "spriteanimator.h"
 #include "spritemovements.h"
+#include "statemachine.h"
 #include "debug.h"
 
 int round = 0;
@@ -125,7 +126,7 @@ void matchInit()
     matchReset();
 }
 
-bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, struct Fighter* fighter2)
+bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMachine, struct Fighter* fighter1, struct Fighter* fighter2)
 {
 	//rapUse8x16fontPalette(10);
 	jsfSetFontIndx(1);
@@ -217,7 +218,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
     }
 	else if (matchState == 2)
 	{		
-		if (fighter1->IsDefeated)
+		if (fighter1->currentState->Name == STATE_IS_LOSER)
 		{
 			winner = fighter2->fighterIndex;
 			loser = fighter1->fighterIndex;
@@ -226,10 +227,10 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 
 			if (fighter2Wins <= 2)
 			{
-				fighter2->DoWinSequence = true;
+				stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter2, fighter2->spriteAnimator);
 			}
 		}
-		else if (fighter2->IsDefeated)
+		else if (fighter2->currentState->Name == STATE_IS_LOSER)
 		{
 			winner = fighter1->fighterIndex;
 			loser = fighter2->fighterIndex;
@@ -238,7 +239,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 
 			if (fighter1Wins <= 2)
 			{
-				fighter1->DoWinSequence = true;
+				stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter1, fighter1->spriteAnimator);
 			}
 		}
 
@@ -252,7 +253,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			matchTicks = rapTicks;
 			winsTicks = rapTicks;
 		}
-		else if (fighter1->IsDizzy || fighter2->IsDizzy)
+		else if (fighter1->currentState->Name == STATE_FINISH_HIM || fighter2->currentState->Name == STATE_FINISH_HIM)
 		{
 			rapClockMode = Clock_Freeze;
 			fighterResetFlagsAll(fighter1, fighter2);
@@ -260,12 +261,12 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 			fighterSetOnFloor(fighter2);
 			matchState = 4;  //FINISH HIM/HER!
 
-			if (fighter1->IsDizzy)
+			if (fighter1->currentState->Name == STATE_FINISH_HIM)
 			{
 				loser = fighter1->fighterIndex;
 				fighter2->AcceptingInput = true;
 			}
-			else if (fighter2->IsDizzy)
+			else if (fighter2->currentState->Name == STATE_FINISH_HIM)
 			{
 				loser = fighter2->fighterIndex;
 				fighter1->AcceptingInput = true;
@@ -419,14 +420,16 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct Fighter* fighter1, st
 	{
 		if (rapTicks >= matchTicks + MATCH_TIME_FINISH)
 		{
-			if (fighter1->IsDizzy)
+			if (fighter1->currentState->Name == STATE_FINISH_HIM)
 			{
-				fighter1->DoDefeatedSequence = true;
+				//fighter1->DoDefeatedSequence = true;
+				stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter1, fighter1->spriteAnimator);
 				matchState = 2;
 			}
-			else if (fighter2->IsDizzy)
+			else if (fighter2->currentState->Name == STATE_FINISH_HIM)
 			{
-				fighter2->DoDefeatedSequence = true;
+				//fighter2->DoDefeatedSequence = true;
+				stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter2, fighter2->spriteAnimator);
 				matchState = 2;
 			}
 		}

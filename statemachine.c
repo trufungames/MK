@@ -53,6 +53,22 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
     // GLOBAL FIGHTER LOGIC - REGARDLESS OF STATE
     /////////////////////////////////////////////////////
 
+    if (fighter->hitPoints <= 0
+        && !fighter->IsBeingDamaged
+        && fighter->currentState->Name != STATE_FINISH_HIM
+        && fighter->currentState->Name != STATE_IS_LOSER)
+    {
+        if (fighter->roundsLost >= 1)
+        {            
+            stateMachineGoto(stateMachine, STATE_FINISH_HIM, fighter, spriteAnimator);
+        }
+        else
+        {
+            fighter->vars[0] = fighter->currentState->Name == STATE_LAYDOWN ? 1 : 0;
+            stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
+        }
+    }
+
     if (fighter->currentState->Name == STATE_CAGE_SHADOW_KICK
         && sprite[fighter->spriteIndex-1].active == R_is_active
         && sprite[fighter->spriteIndex].active == R_is_active
@@ -139,6 +155,7 @@ void stateMachineSleep(struct StateMachine* stateMachine, short ticks, struct Fi
 
 void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    
     fighter->MadeContact = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
@@ -3651,7 +3668,7 @@ void StateHitFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fi
     {
         if (rapTicks > fighter->FrozenShakeTicks + 2)
         {
-            fighter->positionX += (2 * fighter->vars[1]);
+            fighter->worldPositionX += (2 * fighter->vars[1]);
             fighter->vars[1] *= -1;
             fighter->vars[2]++;
             fighter->FrozenShakeTicks = rapTicks;
@@ -4182,5 +4199,130 @@ void StateKasumiRoll_Sleep(struct StateMachine* stateMachine, struct Fighter* fi
 }
 
 void StateKasumiRoll_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// IS LOSER
+
+void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    fighter->roundsLost++;
+}
+
+void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0)
+    {
+        if (animationIsComplete(spriteAnimator, fighter->HIT_FALL_FRAME_COUNT))
+        {
+            fighterSetOnFloor(fighter);
+            sfxThud(fighter->soundHandler);
+            bgShake(false);                
+            fighter->vars[0] = 1;
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        animateFrame(spriteAnimator, fighter->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+}
+
+void StateIsLoser_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateIsLoser_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// IS WINNER
+// vars[0] = played sound
+
+void StateIsWinner_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->IsWinner = true;
+    fighterSetOnFloor(fighter);
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+}
+
+void StateIsWinner_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0 && spriteAnimator->currentFrame == 1)
+    {
+        fighter->vars[0] = 1;
+        switch(fighter->fighterIndex)
+        {
+            case CAGE:
+                sfxCageYeah(fighter->soundHandler);
+                break;
+            case KANO:
+                sfxKanoYell(fighter->soundHandler);
+                break;
+        }
+    }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->winsFrames, fighter->WINS_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateIsWinner_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateIsWinner_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FINISH HIM!
+// vars[1] = taken damage
+
+void StateFinishHim_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    
+}
+
+void StateFinishHim_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    // if (fighter->IsBeingDamaged && fighter->vars[1] == 0)
+    // {
+    //     fighter->vars[1] = 1;
+     
+    //     if (animationIsComplete(spriteAnimator, fighter->HIT_FALL_FRAME_COUNT))
+    //     {
+    //         fighterSetOnFloor(fighter);
+    //         sfxThud(fighter->soundHandler);
+    //         bgShake(false);                
+    //         fighter->roundsLost++;
+    //     }
+
+    //     updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    // }
+
+    updateSpriteAnimator(spriteAnimator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+}
+
+void StateFinishHim_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateFinishHim_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }
