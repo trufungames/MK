@@ -5,7 +5,7 @@
 __Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
 	move.l 12(%fp),%a0
-	move.l 408(%a0),-(%sp)
+	move.l 410(%a0),-(%sp)
 	move.l %a0,-(%sp)
 	pea 65.w
 	move.l 8(%fp),-(%sp)
@@ -18,7 +18,7 @@ __Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator:
 __Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
 	move.l 12(%fp),%a0
-	move.l 408(%a0),-(%sp)
+	move.l 410(%a0),-(%sp)
 	move.l %a0,-(%sp)
 	pea 64.w
 	move.l 8(%fp),-(%sp)
@@ -31,7 +31,7 @@ __Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator:
 __Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
 	move.l 12(%fp),%a0
-	move.l 408(%a0),-(%sp)
+	move.l 410(%a0),-(%sp)
 	move.l %a0,-(%sp)
 	pea 56.w
 	move.l 8(%fp),-(%sp)
@@ -44,7 +44,7 @@ __Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator:
 __Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator:
 	link.w %fp,#0
 	move.l 12(%fp),%a0
-	move.l 408(%a0),-(%sp)
+	move.l 410(%a0),-(%sp)
 	move.l %a0,-(%sp)
 	pea 52.w
 	move.l 8(%fp),-(%sp)
@@ -1795,8 +1795,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #12001408,-(%sp)
 	jsr (%a3)
-	move.l #12001408,__ZL13fighterKasumi+272
-	move.l #12830560,__ZL13fighterKasumi+276
+	move.l #12001408,__ZL13fighterKasumi+274
+	move.l #12830560,__ZL13fighterKasumi+278
 	moveq #59,%d0
 	move.l %d0,__ZL13fighterKasumi+2
 	move.l %d0,__ZL14kasumiAnimator
@@ -1856,8 +1856,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #12001408,-(%sp)
 	jsr (%a3)
-	move.l #12001408,__ZL14fighterKasumi2+272
-	move.l #12830560,__ZL14fighterKasumi2+276
+	move.l #12001408,__ZL14fighterKasumi2+274
+	move.l #12830560,__ZL14fighterKasumi2+278
 	moveq #62,%d1
 	move.l %d1,__ZL14fighterKasumi2+2
 	move.l %d1,__ZL15kasumiAnimator2
@@ -1890,7 +1890,7 @@ __Z17switchScreenFightiib:
 	move.l %d0,_jsfFontIndx
 	moveq #29,%d3
 	move.l %d3,(%sp)
-	pea 245.w
+	pea 253.w
 	jsr rapLocate
 	move.l #.LC75,_js_r_textbuffer
 	addq.l #8,%sp
@@ -2273,8 +2273,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #11403216,-(%sp)
 	jsr (%a3)
-	move.l #11403216,__ZL12fighterSonya+272
-	move.l #12830800,__ZL12fighterSonya+276
+	move.l #11403216,__ZL12fighterSonya+274
+	move.l #12830800,__ZL12fighterSonya+278
 	moveq #59,%d1
 	move.l %d1,__ZL12fighterSonya+2
 	move.l %d1,__ZL13sonyaAnimator
@@ -2318,8 +2318,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #10264464,-(%sp)
 	jsr (%a3)
-	move.l #10264464,__ZL13fighterRaiden+272
-	move.l #12830704,__ZL13fighterRaiden+276
+	move.l #10264464,__ZL13fighterRaiden+274
+	move.l #12830704,__ZL13fighterRaiden+278
 	moveq #59,%d1
 	move.l %d1,__ZL13fighterRaiden+2
 	move.l %d1,__ZL14raidenAnimator
@@ -2365,8 +2365,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #9690992,-(%sp)
 	jsr (%a3)
-	move.l #9690992,__ZL11fighterKang+272
-	move.l #12830848,__ZL11fighterKang+276
+	move.l #9690992,__ZL11fighterKang+274
+	move.l #12830848,__ZL11fighterKang+278
 	moveq #59,%d0
 	move.l %d0,__ZL11fighterKang+2
 	move.l %d0,__ZL12kangAnimator
@@ -2410,8 +2410,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #12001312,-(%sp)
 	jsr (%a3)
-	move.l #12001312,__ZL15fighterScorpion+272
-	move.l #12830560,__ZL15fighterScorpion+276
+	move.l #12001312,__ZL15fighterScorpion+274
+	move.l #12830560,__ZL15fighterScorpion+278
 	moveq #59,%d0
 	move.l %d0,__ZL15fighterScorpion+2
 	move.l %d0,__ZL16scorpionAnimator
@@ -2455,8 +2455,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #12001264,-(%sp)
 	jsr (%a3)
-	move.l #12001264,__ZL11fighterKano+272
-	move.l #12830656,__ZL11fighterKano+276
+	move.l #12001264,__ZL11fighterKano+274
+	move.l #12830656,__ZL11fighterKano+278
 	moveq #59,%d1
 	move.l %d1,__ZL11fighterKano+2
 	move.l %d1,__ZL12kanoAnimator
@@ -2500,8 +2500,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #10911664,-(%sp)
 	jsr (%a3)
-	move.l #10911664,__ZL14fighterSubzero+272
-	move.l #12830752,__ZL14fighterSubzero+276
+	move.l #10911664,__ZL14fighterSubzero+274
+	move.l #12830752,__ZL14fighterSubzero+278
 	moveq #59,%d1
 	move.l %d1,__ZL14fighterSubzero+2
 	move.l %d1,__ZL15subzeroAnimator
@@ -2545,8 +2545,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #11403216,-(%sp)
 	jsr (%a3)
-	move.l #11403216,__ZL13fighterSonya2+272
-	move.l #12830800,__ZL13fighterSonya2+276
+	move.l #11403216,__ZL13fighterSonya2+274
+	move.l #12830800,__ZL13fighterSonya2+278
 	moveq #62,%d1
 	move.l %d1,__ZL13fighterSonya2+2
 	move.l %d1,__ZL14sonyaAnimator2
@@ -2592,8 +2592,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #10264464,-(%sp)
 	jsr (%a3)
-	move.l #10264464,__ZL14fighterRaiden2+272
-	move.l #12830704,__ZL14fighterRaiden2+276
+	move.l #10264464,__ZL14fighterRaiden2+274
+	move.l #12830704,__ZL14fighterRaiden2+278
 	moveq #62,%d1
 	move.l %d1,__ZL14fighterRaiden2+2
 	move.l %d1,__ZL15raidenAnimator2
@@ -2644,8 +2644,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #9125712,-(%sp)
 	jsr (%a3)
-	move.l #9125712,__ZL12fighterCage2+272
-	move.l #12830608,__ZL12fighterCage2+276
+	move.l #9125712,__ZL12fighterCage2+274
+	move.l #12830608,__ZL12fighterCage2+278
 	moveq #62,%d1
 	move.l %d1,__ZL12fighterCage2+2
 	move.l %d1,__ZL13cageAnimator2
@@ -2691,8 +2691,8 @@ __Z17switchScreenFightiib:
 	pea 14.w
 	move.l #9125712,-(%sp)
 	jsr (%a3)
-	move.l #9125712,__ZL11fighterCage+272
-	move.l #12830608,__ZL11fighterCage+276
+	move.l #9125712,__ZL11fighterCage+274
+	move.l #12830608,__ZL11fighterCage+278
 	moveq #59,%d1
 	move.l %d1,__ZL11fighterCage+2
 	move.l %d1,__ZL12cageAnimator
@@ -2738,8 +2738,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #9690992,-(%sp)
 	jsr (%a3)
-	move.l #9690992,__ZL12fighterKang2+272
-	move.l #12830848,__ZL12fighterKang2+276
+	move.l #9690992,__ZL12fighterKang2+274
+	move.l #12830848,__ZL12fighterKang2+278
 	moveq #62,%d1
 	move.l %d1,__ZL12fighterKang2+2
 	move.l %d1,__ZL13kangAnimator2
@@ -2785,8 +2785,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #12001312,-(%sp)
 	jsr (%a3)
-	move.l #12001312,__ZL16fighterScorpion2+272
-	move.l #12830560,__ZL16fighterScorpion2+276
+	move.l #12001312,__ZL16fighterScorpion2+274
+	move.l #12830560,__ZL16fighterScorpion2+278
 	moveq #62,%d1
 	move.l %d1,__ZL16fighterScorpion2+2
 	move.l %d1,__ZL17scorpionAnimator2
@@ -2832,8 +2832,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #12001264,-(%sp)
 	jsr (%a3)
-	move.l #12001264,__ZL12fighterKano2+272
-	move.l #12830656,__ZL12fighterKano2+276
+	move.l #12001264,__ZL12fighterKano2+274
+	move.l #12830656,__ZL12fighterKano2+278
 	moveq #62,%d1
 	move.l %d1,__ZL12fighterKano2+2
 	move.l %d1,__ZL13kanoAnimator2
@@ -2879,8 +2879,8 @@ __Z17switchScreenFightiib:
 	pea 15.w
 	move.l #10911664,-(%sp)
 	jsr (%a3)
-	move.l #10911664,__ZL15fighterSubzero2+272
-	move.l #12830752,__ZL15fighterSubzero2+276
+	move.l #10911664,__ZL15fighterSubzero2+274
+	move.l #12830752,__ZL15fighterSubzero2+278
 	moveq #62,%d1
 	move.l %d1,__ZL15fighterSubzero2+2
 	move.l %d1,__ZL16subzeroAnimator2
@@ -4714,860 +4714,860 @@ __Z9basicmainv:
 	pea 68.w
 	pea __ZL19fighterStateMachine
 	jsr (%a2)
-	move.l #__ZL12cageAnimator,__ZL11fighterCage+408
-	move.l #__ZL17lightningAnimator,__ZL11fighterCage+412
-	move.l #__ZL25projectileGreenBoltFrames,__ZL11fighterCage+588
-	move.l #__ZL28projectileGreenBoltEndFrames,__ZL11fighterCage+592
-	move.l #__ZL30specials_Cage_GreenBolt_Inputs,__ZL11fighterCage+318
-	move.l #__ZL31specials_Cage_ShadowKick_Inputs,__ZL11fighterCage+322
-	move.l #__ZL29specials_Cage_NutPunch_Inputs,__ZL11fighterCage+326
-	move.w #3,__ZL11fighterCage+330
+	move.l #__ZL12cageAnimator,__ZL11fighterCage+410
+	move.l #__ZL17lightningAnimator,__ZL11fighterCage+414
+	move.l #__ZL25projectileGreenBoltFrames,__ZL11fighterCage+590
+	move.l #__ZL28projectileGreenBoltEndFrames,__ZL11fighterCage+594
+	move.l #__ZL30specials_Cage_GreenBolt_Inputs,__ZL11fighterCage+320
+	move.l #__ZL31specials_Cage_ShadowKick_Inputs,__ZL11fighterCage+324
+	move.l #__ZL29specials_Cage_NutPunch_Inputs,__ZL11fighterCage+328
 	move.w #3,__ZL11fighterCage+332
-	move.w #1,__ZL11fighterCage+334
-	move.l #__ZL19cageGreenBoltFrames,__ZL11fighterCage+568
-	move.l #__ZL18cageNutPunchFrames,__ZL11fighterCage+584
-	move.l #__Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+336
-	move.l #__Z25doSpecial_Cage_ShadowKickP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+340
-	move.l #__Z23doSpecial_Cage_NutPunchP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+344
-	move.l #_cageImpactFrameNutPunch,__ZL11fighterCage+404
-	move.l #__ZL14cageIdleFrames,__ZL11fighterCage+416
-	move.l #__ZL15cageDizzyFrames,__ZL11fighterCage+420
-	move.l #__ZL14cageWinsFrames,__ZL11fighterCage+424
-	move.l #__ZL17cageSpecialFrames,__ZL11fighterCage+428
-	move.l #__ZL14cageWalkFrames,__ZL11fighterCage+432
-	move.l #__ZL14cageTurnFrames,__ZL11fighterCage+436
-	move.l #__ZL14cageJumpFrames,__ZL11fighterCage+440
-	move.l #__ZL18cageJumpRollFrames,__ZL11fighterCage+444
-	move.l #__ZL14cageDuckFrames,__ZL11fighterCage+448
-	move.l #__ZL15cageBlockFrames,__ZL11fighterCage+452
-	move.l #__ZL18cageBlockHitFrames,__ZL11fighterCage+456
-	move.l #__ZL19cageBlockDuckFrames,__ZL11fighterCage+460
-	move.l #__ZL22cageBlockDuckHitFrames,__ZL11fighterCage+464
-	move.l #__ZL18cagePunchLowFrames,__ZL11fighterCage+468
-	move.l #__ZL24cagePunchLowRepeatFrames,__ZL11fighterCage+472
-	move.l #__ZL19cagePunchHighFrames,__ZL11fighterCage+476
-	move.l #__ZL25cagePunchHighRepeatFrames,__ZL11fighterCage+480
-	move.l #__ZL17cageKickLowFrames,__ZL11fighterCage+484
-	move.l #__ZL18cageKickHighFrames,__ZL11fighterCage+488
-	move.l #__ZL19cageJumpPunchFrames,__ZL11fighterCage+492
-	move.l #__ZL18cageJumpKickFrames,__ZL11fighterCage+496
-	move.l #__ZL22cageJumpDropKickFrames,__ZL11fighterCage+500
-	move.l #__ZL18cageUppercutFrames,__ZL11fighterCage+504
-	move.l #__ZL16cageHitLowFrames,__ZL11fighterCage+508
-	move.l #__ZL17cageHitHighFrames,__ZL11fighterCage+512
-	move.l #__ZL17cageHitBackFrames,__ZL11fighterCage+516
-	move.l #__ZL21cageHitUppercutFrames,__ZL11fighterCage+520
-	move.l #__ZL17cageHitFallFrames,__ZL11fighterCage+524
-	move.l #__ZL18cageHitSweepFrames,__ZL11fighterCage+528
-	move.l #__ZL15cageKipUpFrames,__ZL11fighterCage+532
-	move.l #__ZL15cageSweepFrames,__ZL11fighterCage+536
-	move.l #__ZL20cageRoundhouseFrames,__ZL11fighterCage+540
-	move.l #__ZL19cageBodyPunchFrames,__ZL11fighterCage+544
-	move.l #__ZL18cageBodyKickFrames,__ZL11fighterCage+548
-	move.l #__ZL18cageDuckKickFrames,__ZL11fighterCage+552
-	move.l #__ZL15cageThrowFrames,__ZL11fighterCage+556
-	move.l #__ZL21cageBeingThrownFrames,__ZL11fighterCage+560
-	move.l #__ZL24cageBeingThrownLowFrames,__ZL11fighterCage+564
-	move.l #__ZL13cageAnimator2,__ZL12fighterCage2+408
-	move.l #__ZL18lightning2Animator,__ZL12fighterCage2+412
-	move.l #__ZL25projectileGreenBoltFrames,__ZL12fighterCage2+588
-	move.l #__ZL28projectileGreenBoltEndFrames,__ZL12fighterCage2+592
-	move.l #__ZL30specials_Cage_GreenBolt_Inputs,__ZL12fighterCage2+318
-	move.l #__ZL31specials_Cage_ShadowKick_Inputs,__ZL12fighterCage2+322
-	move.l #__ZL29specials_Cage_NutPunch_Inputs,__ZL12fighterCage2+326
-	move.w #3,__ZL12fighterCage2+330
+	move.w #3,__ZL11fighterCage+334
+	move.w #1,__ZL11fighterCage+336
+	move.l #__ZL19cageGreenBoltFrames,__ZL11fighterCage+570
+	move.l #__ZL18cageNutPunchFrames,__ZL11fighterCage+586
+	move.l #__Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+338
+	move.l #__Z25doSpecial_Cage_ShadowKickP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+342
+	move.l #__Z23doSpecial_Cage_NutPunchP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterCage+346
+	move.l #_cageImpactFrameNutPunch,__ZL11fighterCage+406
+	move.l #__ZL14cageIdleFrames,__ZL11fighterCage+418
+	move.l #__ZL15cageDizzyFrames,__ZL11fighterCage+422
+	move.l #__ZL14cageWinsFrames,__ZL11fighterCage+426
+	move.l #__ZL17cageSpecialFrames,__ZL11fighterCage+430
+	move.l #__ZL14cageWalkFrames,__ZL11fighterCage+434
+	move.l #__ZL14cageTurnFrames,__ZL11fighterCage+438
+	move.l #__ZL14cageJumpFrames,__ZL11fighterCage+442
+	move.l #__ZL18cageJumpRollFrames,__ZL11fighterCage+446
+	move.l #__ZL14cageDuckFrames,__ZL11fighterCage+450
+	move.l #__ZL15cageBlockFrames,__ZL11fighterCage+454
+	move.l #__ZL18cageBlockHitFrames,__ZL11fighterCage+458
+	move.l #__ZL19cageBlockDuckFrames,__ZL11fighterCage+462
+	move.l #__ZL22cageBlockDuckHitFrames,__ZL11fighterCage+466
+	move.l #__ZL18cagePunchLowFrames,__ZL11fighterCage+470
+	move.l #__ZL24cagePunchLowRepeatFrames,__ZL11fighterCage+474
+	move.l #__ZL19cagePunchHighFrames,__ZL11fighterCage+478
+	move.l #__ZL25cagePunchHighRepeatFrames,__ZL11fighterCage+482
+	move.l #__ZL17cageKickLowFrames,__ZL11fighterCage+486
+	move.l #__ZL18cageKickHighFrames,__ZL11fighterCage+490
+	move.l #__ZL19cageJumpPunchFrames,__ZL11fighterCage+494
+	move.l #__ZL18cageJumpKickFrames,__ZL11fighterCage+498
+	move.l #__ZL22cageJumpDropKickFrames,__ZL11fighterCage+502
+	move.l #__ZL18cageUppercutFrames,__ZL11fighterCage+506
+	move.l #__ZL16cageHitLowFrames,__ZL11fighterCage+510
+	move.l #__ZL17cageHitHighFrames,__ZL11fighterCage+514
+	move.l #__ZL17cageHitBackFrames,__ZL11fighterCage+518
+	move.l #__ZL21cageHitUppercutFrames,__ZL11fighterCage+522
+	move.l #__ZL17cageHitFallFrames,__ZL11fighterCage+526
+	move.l #__ZL18cageHitSweepFrames,__ZL11fighterCage+530
+	move.l #__ZL15cageKipUpFrames,__ZL11fighterCage+534
+	move.l #__ZL15cageSweepFrames,__ZL11fighterCage+538
+	move.l #__ZL20cageRoundhouseFrames,__ZL11fighterCage+542
+	move.l #__ZL19cageBodyPunchFrames,__ZL11fighterCage+546
+	move.l #__ZL18cageBodyKickFrames,__ZL11fighterCage+550
+	move.l #__ZL18cageDuckKickFrames,__ZL11fighterCage+554
+	move.l #__ZL15cageThrowFrames,__ZL11fighterCage+558
+	move.l #__ZL21cageBeingThrownFrames,__ZL11fighterCage+562
+	move.l #__ZL24cageBeingThrownLowFrames,__ZL11fighterCage+566
+	move.l #__ZL13cageAnimator2,__ZL12fighterCage2+410
+	move.l #__ZL18lightning2Animator,__ZL12fighterCage2+414
+	move.l #__ZL25projectileGreenBoltFrames,__ZL12fighterCage2+590
+	move.l #__ZL28projectileGreenBoltEndFrames,__ZL12fighterCage2+594
+	move.l #__ZL30specials_Cage_GreenBolt_Inputs,__ZL12fighterCage2+320
+	move.l #__ZL31specials_Cage_ShadowKick_Inputs,__ZL12fighterCage2+324
+	move.l #__ZL29specials_Cage_NutPunch_Inputs,__ZL12fighterCage2+328
 	move.w #3,__ZL12fighterCage2+332
-	move.w #1,__ZL12fighterCage2+334
-	move.l #__ZL19cageGreenBoltFrames,__ZL12fighterCage2+568
-	move.l #__ZL18cageNutPunchFrames,__ZL12fighterCage2+584
-	move.l #__Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+336
-	move.l #__Z25doSpecial_Cage_ShadowKickP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+340
-	move.l #__Z23doSpecial_Cage_NutPunchP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+344
-	move.l #_cageImpactFrameNutPunch,__ZL12fighterCage2+404
-	move.l #__ZL14cageIdleFrames,__ZL12fighterCage2+416
-	move.l #__ZL15cageDizzyFrames,__ZL12fighterCage2+420
-	move.l #__ZL14cageWinsFrames,__ZL12fighterCage2+424
-	move.l #__ZL17cageSpecialFrames,__ZL12fighterCage2+428
-	move.l #__ZL14cageWalkFrames,__ZL12fighterCage2+432
-	move.l #__ZL14cageTurnFrames,__ZL12fighterCage2+436
-	move.l #__ZL14cageJumpFrames,__ZL12fighterCage2+440
-	move.l #__ZL18cageJumpRollFrames,__ZL12fighterCage2+444
-	move.l #__ZL14cageDuckFrames,__ZL12fighterCage2+448
-	move.l #__ZL15cageBlockFrames,__ZL12fighterCage2+452
-	move.l #__ZL18cageBlockHitFrames,__ZL12fighterCage2+456
-	move.l #__ZL19cageBlockDuckFrames,__ZL12fighterCage2+460
-	move.l #__ZL22cageBlockDuckHitFrames,__ZL12fighterCage2+464
-	move.l #__ZL18cagePunchLowFrames,__ZL12fighterCage2+468
-	move.l #__ZL24cagePunchLowRepeatFrames,__ZL12fighterCage2+472
-	move.l #__ZL19cagePunchHighFrames,__ZL12fighterCage2+476
-	move.l #__ZL25cagePunchHighRepeatFrames,__ZL12fighterCage2+480
-	move.l #__ZL17cageKickLowFrames,__ZL12fighterCage2+484
-	move.l #__ZL18cageKickHighFrames,__ZL12fighterCage2+488
-	move.l #__ZL19cageJumpPunchFrames,__ZL12fighterCage2+492
-	move.l #__ZL18cageJumpKickFrames,__ZL12fighterCage2+496
-	move.l #__ZL22cageJumpDropKickFrames,__ZL12fighterCage2+500
-	move.l #__ZL18cageUppercutFrames,__ZL12fighterCage2+504
-	move.l #__ZL16cageHitLowFrames,__ZL12fighterCage2+508
-	move.l #__ZL17cageHitHighFrames,__ZL12fighterCage2+512
-	move.l #__ZL17cageHitBackFrames,__ZL12fighterCage2+516
-	move.l #__ZL21cageHitUppercutFrames,__ZL12fighterCage2+520
-	move.l #__ZL17cageHitFallFrames,__ZL12fighterCage2+524
-	move.l #__ZL18cageHitSweepFrames,__ZL12fighterCage2+528
-	move.l #__ZL15cageKipUpFrames,__ZL12fighterCage2+532
-	move.l #__ZL15cageSweepFrames,__ZL12fighterCage2+536
-	move.l #__ZL20cageRoundhouseFrames,__ZL12fighterCage2+540
-	move.l #__ZL19cageBodyPunchFrames,__ZL12fighterCage2+544
-	move.l #__ZL18cageBodyKickFrames,__ZL12fighterCage2+548
-	move.l #__ZL18cageDuckKickFrames,__ZL12fighterCage2+552
-	move.l #__ZL15cageThrowFrames,__ZL12fighterCage2+556
-	move.l #__ZL21cageBeingThrownFrames,__ZL12fighterCage2+560
-	move.l #__ZL24cageBeingThrownLowFrames,__ZL12fighterCage2+564
-	move.l #__ZL12kanoAnimator,__ZL11fighterKano+408
-	move.l #__ZL17lightningAnimator,__ZL11fighterKano+412
-	move.l #__ZL21projectileKnifeFrames,__ZL11fighterKano+588
-	move.l #__ZL24projectileKnifeEndFrames,__ZL11fighterKano+592
-	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL11fighterKano+318
-	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL11fighterKano+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL11fighterKano+326
-	move.w #2,__ZL11fighterKano+330
-	move.w #3,__ZL11fighterKano+332
-	clr.w __ZL11fighterKano+334
-	move.l #__ZL15kanoKnifeFrames,__ZL11fighterKano+568
-	move.l #__ZL20kanoCannonBallFrames,__ZL11fighterKano+576
-	move.l #__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKano+336
-	move.l #__Z25doSpecial_Kano_CannonBallP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKano+340
-	move.l #__ZL14kanoIdleFrames,__ZL11fighterKano+416
-	move.l #__ZL15kanoDizzyFrames,__ZL11fighterKano+420
-	move.l #__ZL14kanoWinsFrames,__ZL11fighterKano+424
-	move.l #__ZL17kanoSpecialFrames,__ZL11fighterKano+428
-	move.l #__ZL14kanoWalkFrames,__ZL11fighterKano+432
-	move.l #__ZL14kanoTurnFrames,__ZL11fighterKano+436
-	move.l #__ZL14kanoJumpFrames,__ZL11fighterKano+440
-	move.l #__ZL18kanoJumpRollFrames,__ZL11fighterKano+444
-	move.l #__ZL14kanoDuckFrames,__ZL11fighterKano+448
-	move.l #__ZL15kanoBlockFrames,__ZL11fighterKano+452
-	move.l #__ZL18kanoBlockHitFrames,__ZL11fighterKano+456
-	move.l #__ZL19kanoBlockDuckFrames,__ZL11fighterKano+460
-	move.l #__ZL22kanoBlockDuckHitFrames,__ZL11fighterKano+464
-	move.l #__ZL18kanoPunchLowFrames,__ZL11fighterKano+468
-	move.l #__ZL24kanoPunchLowRepeatFrames,__ZL11fighterKano+472
-	move.l #__ZL19kanoPunchHighFrames,__ZL11fighterKano+476
-	move.l #__ZL25kanoPunchHighRepeatFrames,__ZL11fighterKano+480
-	move.l #__ZL17kanoKickLowFrames,__ZL11fighterKano+484
-	move.l #__ZL18kanoKickHighFrames,__ZL11fighterKano+488
-	move.l #__ZL19kanoJumpPunchFrames,__ZL11fighterKano+492
-	move.l #__ZL18kanoJumpKickFrames,__ZL11fighterKano+496
-	move.l #__ZL22kanoJumpDropKickFrames,__ZL11fighterKano+500
-	move.l #__ZL18kanoUppercutFrames,__ZL11fighterKano+504
-	move.l #__ZL15kanoSweepFrames,__ZL11fighterKano+536
-	move.l #__ZL20kanoRoundhouseFrames,__ZL11fighterKano+540
-	move.l #__ZL19kanoBodyPunchFrames,__ZL11fighterKano+544
-	move.l #__ZL18kanoBodyKickFrames,__ZL11fighterKano+548
-	move.l #__ZL18kanoDuckKickFrames,__ZL11fighterKano+552
-	move.l #__ZL15kanoThrowFrames,__ZL11fighterKano+556
-	move.l #__ZL21kanoBeingThrownFrames,__ZL11fighterKano+560
-	move.l #__ZL24kanoBeingThrownLowFrames,__ZL11fighterKano+564
-	move.l #__ZL16kanoHitLowFrames,__ZL11fighterKano+508
-	move.l #__ZL17kanoHitHighFrames,__ZL11fighterKano+512
-	move.l #__ZL17kanoHitBackFrames,__ZL11fighterKano+516
-	move.l #__ZL21kanoHitUppercutFrames,__ZL11fighterKano+520
-	move.l #__ZL17kanoHitFallFrames,__ZL11fighterKano+524
-	move.l #__ZL18kanoHitSweepFrames,__ZL11fighterKano+528
-	move.l #__ZL17kanoHitNutsFrames,__ZL11fighterKano+596
-	move.l #__ZL15kanoKipUpFrames,__ZL11fighterKano+532
-	move.l #__ZL13kanoAnimator2,__ZL12fighterKano2+408
-	move.l #__ZL18lightning2Animator,__ZL12fighterKano2+412
-	move.l #__ZL21projectileKnifeFrames,__ZL12fighterKano2+588
-	move.l #__ZL24projectileKnifeEndFrames,__ZL12fighterKano2+592
-	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL12fighterKano2+318
-	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL12fighterKano2+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL12fighterKano2+326
-	move.w #2,__ZL12fighterKano2+330
-	move.w #4,__ZL12fighterKano2+332
-	clr.w __ZL12fighterKano2+334
-	move.l #__ZL15kanoKnifeFrames,__ZL12fighterKano2+568
-	move.l #__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKano2+336
-	move.l #__Z25doSpecial_Kano_CannonBallP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKano2+340
-	move.l #__ZL14kanoIdleFrames,__ZL12fighterKano2+416
-	move.l #__ZL15kanoDizzyFrames,__ZL12fighterKano2+420
-	move.l #__ZL14kanoWinsFrames,__ZL12fighterKano2+424
-	move.l #__ZL17kanoSpecialFrames,__ZL12fighterKano2+428
-	move.l #__ZL14kanoWalkFrames,__ZL12fighterKano2+432
-	move.l #__ZL14kanoTurnFrames,__ZL12fighterKano2+436
-	move.l #__ZL14kanoJumpFrames,__ZL12fighterKano2+440
-	move.l #__ZL18kanoJumpRollFrames,__ZL12fighterKano2+444
-	move.l #__ZL14kanoDuckFrames,__ZL12fighterKano2+448
-	move.l #__ZL15kanoBlockFrames,__ZL12fighterKano2+452
-	move.l #__ZL18kanoBlockHitFrames,__ZL12fighterKano2+456
-	move.l #__ZL19kanoBlockDuckFrames,__ZL12fighterKano2+460
-	move.l #__ZL22kanoBlockDuckHitFrames,__ZL12fighterKano2+464
-	move.l #__ZL18kanoPunchLowFrames,__ZL12fighterKano2+468
-	move.l #__ZL24kanoPunchLowRepeatFrames,__ZL12fighterKano2+472
-	move.l #__ZL19kanoPunchHighFrames,__ZL12fighterKano2+476
-	move.l #__ZL25kanoPunchHighRepeatFrames,__ZL12fighterKano2+480
-	move.l #__ZL17kanoKickLowFrames,__ZL12fighterKano2+484
-	move.l #__ZL18kanoKickHighFrames,__ZL12fighterKano2+488
-	move.l #__ZL19kanoJumpPunchFrames,__ZL12fighterKano2+492
-	move.l #__ZL18kanoJumpKickFrames,__ZL12fighterKano2+496
-	move.l #__ZL22kanoJumpDropKickFrames,__ZL12fighterKano2+500
-	move.l #__ZL18kanoUppercutFrames,__ZL12fighterKano2+504
-	move.l #__ZL15kanoSweepFrames,__ZL12fighterKano2+536
-	move.l #__ZL20kanoRoundhouseFrames,__ZL12fighterKano2+540
-	move.l #__ZL19kanoBodyPunchFrames,__ZL12fighterKano2+544
-	move.l #__ZL18kanoBodyKickFrames,__ZL12fighterKano2+548
-	move.l #__ZL18kanoDuckKickFrames,__ZL12fighterKano2+552
-	move.l #__ZL15kanoThrowFrames,__ZL12fighterKano2+556
-	move.l #__ZL21kanoBeingThrownFrames,__ZL12fighterKano2+560
-	move.l #__ZL24kanoBeingThrownLowFrames,__ZL12fighterKano2+564
-	move.l #__ZL16kanoHitLowFrames,__ZL12fighterKano2+508
-	move.l #__ZL17kanoHitHighFrames,__ZL12fighterKano2+512
-	move.l #__ZL17kanoHitBackFrames,__ZL12fighterKano2+516
-	move.l #__ZL21kanoHitUppercutFrames,__ZL12fighterKano2+520
-	move.l #__ZL17kanoHitFallFrames,__ZL12fighterKano2+524
-	move.l #__ZL18kanoHitSweepFrames,__ZL12fighterKano2+528
-	move.l #__ZL17kanoHitNutsFrames,__ZL12fighterKano2+596
-	move.l #__ZL15kanoKipUpFrames,__ZL12fighterKano2+532
-	move.l #__ZL15lightningFrames,__ZL13fighterRaiden+600
-	move.l #__ZL14raidenAnimator,__ZL13fighterRaiden+408
-	move.l #__ZL17lightningAnimator,__ZL13fighterRaiden+412
-	move.l #__ZL25projectileLightningFrames,__ZL13fighterRaiden+588
-	move.l #__ZL28projectileLightningEndFrames,__ZL13fighterRaiden+592
-	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL13fighterRaiden+318
-	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL13fighterRaiden+322
-	move.l #__ZL31specials_Raiden_Teleport_Inputs,__ZL13fighterRaiden+326
-	move.w #3,__ZL13fighterRaiden+330
+	move.w #3,__ZL12fighterCage2+334
+	move.w #1,__ZL12fighterCage2+336
+	move.l #__ZL19cageGreenBoltFrames,__ZL12fighterCage2+570
+	move.l #__ZL18cageNutPunchFrames,__ZL12fighterCage2+586
+	move.l #__Z24doSpecial_Cage_GreenBoltP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+338
+	move.l #__Z25doSpecial_Cage_ShadowKickP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+342
+	move.l #__Z23doSpecial_Cage_NutPunchP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterCage2+346
+	move.l #_cageImpactFrameNutPunch,__ZL12fighterCage2+406
+	move.l #__ZL14cageIdleFrames,__ZL12fighterCage2+418
+	move.l #__ZL15cageDizzyFrames,__ZL12fighterCage2+422
+	move.l #__ZL14cageWinsFrames,__ZL12fighterCage2+426
+	move.l #__ZL17cageSpecialFrames,__ZL12fighterCage2+430
+	move.l #__ZL14cageWalkFrames,__ZL12fighterCage2+434
+	move.l #__ZL14cageTurnFrames,__ZL12fighterCage2+438
+	move.l #__ZL14cageJumpFrames,__ZL12fighterCage2+442
+	move.l #__ZL18cageJumpRollFrames,__ZL12fighterCage2+446
+	move.l #__ZL14cageDuckFrames,__ZL12fighterCage2+450
+	move.l #__ZL15cageBlockFrames,__ZL12fighterCage2+454
+	move.l #__ZL18cageBlockHitFrames,__ZL12fighterCage2+458
+	move.l #__ZL19cageBlockDuckFrames,__ZL12fighterCage2+462
+	move.l #__ZL22cageBlockDuckHitFrames,__ZL12fighterCage2+466
+	move.l #__ZL18cagePunchLowFrames,__ZL12fighterCage2+470
+	move.l #__ZL24cagePunchLowRepeatFrames,__ZL12fighterCage2+474
+	move.l #__ZL19cagePunchHighFrames,__ZL12fighterCage2+478
+	move.l #__ZL25cagePunchHighRepeatFrames,__ZL12fighterCage2+482
+	move.l #__ZL17cageKickLowFrames,__ZL12fighterCage2+486
+	move.l #__ZL18cageKickHighFrames,__ZL12fighterCage2+490
+	move.l #__ZL19cageJumpPunchFrames,__ZL12fighterCage2+494
+	move.l #__ZL18cageJumpKickFrames,__ZL12fighterCage2+498
+	move.l #__ZL22cageJumpDropKickFrames,__ZL12fighterCage2+502
+	move.l #__ZL18cageUppercutFrames,__ZL12fighterCage2+506
+	move.l #__ZL16cageHitLowFrames,__ZL12fighterCage2+510
+	move.l #__ZL17cageHitHighFrames,__ZL12fighterCage2+514
+	move.l #__ZL17cageHitBackFrames,__ZL12fighterCage2+518
+	move.l #__ZL21cageHitUppercutFrames,__ZL12fighterCage2+522
+	move.l #__ZL17cageHitFallFrames,__ZL12fighterCage2+526
+	move.l #__ZL18cageHitSweepFrames,__ZL12fighterCage2+530
+	move.l #__ZL15cageKipUpFrames,__ZL12fighterCage2+534
+	move.l #__ZL15cageSweepFrames,__ZL12fighterCage2+538
+	move.l #__ZL20cageRoundhouseFrames,__ZL12fighterCage2+542
+	move.l #__ZL19cageBodyPunchFrames,__ZL12fighterCage2+546
+	move.l #__ZL18cageBodyKickFrames,__ZL12fighterCage2+550
+	move.l #__ZL18cageDuckKickFrames,__ZL12fighterCage2+554
+	move.l #__ZL15cageThrowFrames,__ZL12fighterCage2+558
+	move.l #__ZL21cageBeingThrownFrames,__ZL12fighterCage2+562
+	move.l #__ZL24cageBeingThrownLowFrames,__ZL12fighterCage2+566
+	move.l #__ZL12kanoAnimator,__ZL11fighterKano+410
+	move.l #__ZL17lightningAnimator,__ZL11fighterKano+414
+	move.l #__ZL21projectileKnifeFrames,__ZL11fighterKano+590
+	move.l #__ZL24projectileKnifeEndFrames,__ZL11fighterKano+594
+	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL11fighterKano+320
+	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL11fighterKano+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL11fighterKano+328
+	move.w #2,__ZL11fighterKano+332
+	move.w #3,__ZL11fighterKano+334
+	clr.w __ZL11fighterKano+336
+	move.l #__ZL15kanoKnifeFrames,__ZL11fighterKano+570
+	move.l #__ZL20kanoCannonBallFrames,__ZL11fighterKano+578
+	move.l #__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKano+338
+	move.l #__Z25doSpecial_Kano_CannonBallP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKano+342
+	move.l #__ZL14kanoIdleFrames,__ZL11fighterKano+418
+	move.l #__ZL15kanoDizzyFrames,__ZL11fighterKano+422
+	move.l #__ZL14kanoWinsFrames,__ZL11fighterKano+426
+	move.l #__ZL17kanoSpecialFrames,__ZL11fighterKano+430
+	move.l #__ZL14kanoWalkFrames,__ZL11fighterKano+434
+	move.l #__ZL14kanoTurnFrames,__ZL11fighterKano+438
+	move.l #__ZL14kanoJumpFrames,__ZL11fighterKano+442
+	move.l #__ZL18kanoJumpRollFrames,__ZL11fighterKano+446
+	move.l #__ZL14kanoDuckFrames,__ZL11fighterKano+450
+	move.l #__ZL15kanoBlockFrames,__ZL11fighterKano+454
+	move.l #__ZL18kanoBlockHitFrames,__ZL11fighterKano+458
+	move.l #__ZL19kanoBlockDuckFrames,__ZL11fighterKano+462
+	move.l #__ZL22kanoBlockDuckHitFrames,__ZL11fighterKano+466
+	move.l #__ZL18kanoPunchLowFrames,__ZL11fighterKano+470
+	move.l #__ZL24kanoPunchLowRepeatFrames,__ZL11fighterKano+474
+	move.l #__ZL19kanoPunchHighFrames,__ZL11fighterKano+478
+	move.l #__ZL25kanoPunchHighRepeatFrames,__ZL11fighterKano+482
+	move.l #__ZL17kanoKickLowFrames,__ZL11fighterKano+486
+	move.l #__ZL18kanoKickHighFrames,__ZL11fighterKano+490
+	move.l #__ZL19kanoJumpPunchFrames,__ZL11fighterKano+494
+	move.l #__ZL18kanoJumpKickFrames,__ZL11fighterKano+498
+	move.l #__ZL22kanoJumpDropKickFrames,__ZL11fighterKano+502
+	move.l #__ZL18kanoUppercutFrames,__ZL11fighterKano+506
+	move.l #__ZL15kanoSweepFrames,__ZL11fighterKano+538
+	move.l #__ZL20kanoRoundhouseFrames,__ZL11fighterKano+542
+	move.l #__ZL19kanoBodyPunchFrames,__ZL11fighterKano+546
+	move.l #__ZL18kanoBodyKickFrames,__ZL11fighterKano+550
+	move.l #__ZL18kanoDuckKickFrames,__ZL11fighterKano+554
+	move.l #__ZL15kanoThrowFrames,__ZL11fighterKano+558
+	move.l #__ZL21kanoBeingThrownFrames,__ZL11fighterKano+562
+	move.l #__ZL24kanoBeingThrownLowFrames,__ZL11fighterKano+566
+	move.l #__ZL16kanoHitLowFrames,__ZL11fighterKano+510
+	move.l #__ZL17kanoHitHighFrames,__ZL11fighterKano+514
+	move.l #__ZL17kanoHitBackFrames,__ZL11fighterKano+518
+	move.l #__ZL21kanoHitUppercutFrames,__ZL11fighterKano+522
+	move.l #__ZL17kanoHitFallFrames,__ZL11fighterKano+526
+	move.l #__ZL18kanoHitSweepFrames,__ZL11fighterKano+530
+	move.l #__ZL17kanoHitNutsFrames,__ZL11fighterKano+598
+	move.l #__ZL15kanoKipUpFrames,__ZL11fighterKano+534
+	move.l #__ZL13kanoAnimator2,__ZL12fighterKano2+410
+	move.l #__ZL18lightning2Animator,__ZL12fighterKano2+414
+	move.l #__ZL21projectileKnifeFrames,__ZL12fighterKano2+590
+	move.l #__ZL24projectileKnifeEndFrames,__ZL12fighterKano2+594
+	move.l #__ZL26specials_Kano_Knife_Inputs,__ZL12fighterKano2+320
+	move.l #__ZL31specials_Kano_CannonBall_Inputs,__ZL12fighterKano2+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL12fighterKano2+328
+	move.w #2,__ZL12fighterKano2+332
+	move.w #4,__ZL12fighterKano2+334
+	clr.w __ZL12fighterKano2+336
+	move.l #__ZL15kanoKnifeFrames,__ZL12fighterKano2+570
+	move.l #__Z20doSpecial_Kano_KnifeP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKano2+338
+	move.l #__Z25doSpecial_Kano_CannonBallP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKano2+342
+	move.l #__ZL14kanoIdleFrames,__ZL12fighterKano2+418
+	move.l #__ZL15kanoDizzyFrames,__ZL12fighterKano2+422
+	move.l #__ZL14kanoWinsFrames,__ZL12fighterKano2+426
+	move.l #__ZL17kanoSpecialFrames,__ZL12fighterKano2+430
+	move.l #__ZL14kanoWalkFrames,__ZL12fighterKano2+434
+	move.l #__ZL14kanoTurnFrames,__ZL12fighterKano2+438
+	move.l #__ZL14kanoJumpFrames,__ZL12fighterKano2+442
+	move.l #__ZL18kanoJumpRollFrames,__ZL12fighterKano2+446
+	move.l #__ZL14kanoDuckFrames,__ZL12fighterKano2+450
+	move.l #__ZL15kanoBlockFrames,__ZL12fighterKano2+454
+	move.l #__ZL18kanoBlockHitFrames,__ZL12fighterKano2+458
+	move.l #__ZL19kanoBlockDuckFrames,__ZL12fighterKano2+462
+	move.l #__ZL22kanoBlockDuckHitFrames,__ZL12fighterKano2+466
+	move.l #__ZL18kanoPunchLowFrames,__ZL12fighterKano2+470
+	move.l #__ZL24kanoPunchLowRepeatFrames,__ZL12fighterKano2+474
+	move.l #__ZL19kanoPunchHighFrames,__ZL12fighterKano2+478
+	move.l #__ZL25kanoPunchHighRepeatFrames,__ZL12fighterKano2+482
+	move.l #__ZL17kanoKickLowFrames,__ZL12fighterKano2+486
+	move.l #__ZL18kanoKickHighFrames,__ZL12fighterKano2+490
+	move.l #__ZL19kanoJumpPunchFrames,__ZL12fighterKano2+494
+	move.l #__ZL18kanoJumpKickFrames,__ZL12fighterKano2+498
+	move.l #__ZL22kanoJumpDropKickFrames,__ZL12fighterKano2+502
+	move.l #__ZL18kanoUppercutFrames,__ZL12fighterKano2+506
+	move.l #__ZL15kanoSweepFrames,__ZL12fighterKano2+538
+	move.l #__ZL20kanoRoundhouseFrames,__ZL12fighterKano2+542
+	move.l #__ZL19kanoBodyPunchFrames,__ZL12fighterKano2+546
+	move.l #__ZL18kanoBodyKickFrames,__ZL12fighterKano2+550
+	move.l #__ZL18kanoDuckKickFrames,__ZL12fighterKano2+554
+	move.l #__ZL15kanoThrowFrames,__ZL12fighterKano2+558
+	move.l #__ZL21kanoBeingThrownFrames,__ZL12fighterKano2+562
+	move.l #__ZL24kanoBeingThrownLowFrames,__ZL12fighterKano2+566
+	move.l #__ZL16kanoHitLowFrames,__ZL12fighterKano2+510
+	move.l #__ZL17kanoHitHighFrames,__ZL12fighterKano2+514
+	move.l #__ZL17kanoHitBackFrames,__ZL12fighterKano2+518
+	move.l #__ZL21kanoHitUppercutFrames,__ZL12fighterKano2+522
+	move.l #__ZL17kanoHitFallFrames,__ZL12fighterKano2+526
+	move.l #__ZL18kanoHitSweepFrames,__ZL12fighterKano2+530
+	move.l #__ZL17kanoHitNutsFrames,__ZL12fighterKano2+598
+	move.l #__ZL15kanoKipUpFrames,__ZL12fighterKano2+534
+	move.l #__ZL15lightningFrames,__ZL13fighterRaiden+602
+	move.l #__ZL14raidenAnimator,__ZL13fighterRaiden+410
+	move.l #__ZL17lightningAnimator,__ZL13fighterRaiden+414
+	move.l #__ZL25projectileLightningFrames,__ZL13fighterRaiden+590
+	move.l #__ZL28projectileLightningEndFrames,__ZL13fighterRaiden+594
+	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL13fighterRaiden+320
+	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL13fighterRaiden+324
+	move.l #__ZL31specials_Raiden_Teleport_Inputs,__ZL13fighterRaiden+328
 	move.w #3,__ZL13fighterRaiden+332
-	move.w #2,__ZL13fighterRaiden+334
-	move.l #__ZL21raidenLightningFrames,__ZL13fighterRaiden+568
-	move.l #__ZL19raidenTorpedoFrames,__ZL13fighterRaiden+576
-	move.l #__ZL22raidenTorpedoEndFrames,__ZL13fighterRaiden+580
-	move.l #__ZL20raidenTeleportFrames,__ZL13fighterRaiden+584
-	move.l #__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+336
-	move.l #__Z24doSpecial_Raiden_TorpedoP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+340
-	move.l #__Z25doSpecial_Raiden_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+344
-	move.l #__ZL16raidenIdleFrames,__ZL13fighterRaiden+416
-	move.l #__ZL17raidenDizzyFrames,__ZL13fighterRaiden+420
-	move.l #__ZL16raidenWinsFrames,__ZL13fighterRaiden+424
-	move.l #__ZL19raidenSpecialFrames,__ZL13fighterRaiden+428
-	move.l #__ZL16raidenWalkFrames,__ZL13fighterRaiden+432
-	move.l #__ZL16raidenTurnFrames,__ZL13fighterRaiden+436
-	move.l #__ZL16raidenJumpFrames,__ZL13fighterRaiden+440
-	move.l #__ZL20raidenJumpRollFrames,__ZL13fighterRaiden+444
-	move.l #__ZL16raidenDuckFrames,__ZL13fighterRaiden+448
-	move.l #__ZL17raidenBlockFrames,__ZL13fighterRaiden+452
-	move.l #__ZL20raidenBlockHitFrames,__ZL13fighterRaiden+456
-	move.l #__ZL21raidenBlockDuckFrames,__ZL13fighterRaiden+460
-	move.l #__ZL24raidenBlockDuckHitFrames,__ZL13fighterRaiden+464
-	move.l #__ZL20raidenPunchLowFrames,__ZL13fighterRaiden+468
-	move.l #__ZL26raidenPunchLowRepeatFrames,__ZL13fighterRaiden+472
-	move.l #__ZL21raidenPunchHighFrames,__ZL13fighterRaiden+476
-	move.l #__ZL27raidenPunchHighRepeatFrames,__ZL13fighterRaiden+480
-	move.l #__ZL19raidenKickLowFrames,__ZL13fighterRaiden+484
-	move.l #__ZL20raidenKickHighFrames,__ZL13fighterRaiden+488
-	move.l #__ZL21raidenJumpPunchFrames,__ZL13fighterRaiden+492
-	move.l #__ZL20raidenJumpKickFrames,__ZL13fighterRaiden+496
-	move.l #__ZL24raidenJumpDropKickFrames,__ZL13fighterRaiden+500
-	move.l #__ZL20raidenUppercutFrames,__ZL13fighterRaiden+504
-	move.l #__ZL17raidenSweepFrames,__ZL13fighterRaiden+536
-	move.l #__ZL22raidenRoundhouseFrames,__ZL13fighterRaiden+540
-	move.l #__ZL21raidenBodyPunchFrames,__ZL13fighterRaiden+544
-	move.l #__ZL20raidenBodyKickFrames,__ZL13fighterRaiden+548
-	move.l #__ZL20raidenDuckKickFrames,__ZL13fighterRaiden+552
-	move.l #__ZL17raidenThrowFrames,__ZL13fighterRaiden+556
-	move.l #__ZL23raidenBeingThrownFrames,__ZL13fighterRaiden+560
-	move.l #__ZL26raidenBeingThrownLowFrames,__ZL13fighterRaiden+564
-	move.l #__ZL17raidenKipUpFrames,__ZL13fighterRaiden+532
-	move.l #__ZL18raidenHitLowFrames,__ZL13fighterRaiden+508
-	move.l #__ZL19raidenHitHighFrames,__ZL13fighterRaiden+512
-	move.l #__ZL19raidenHitBackFrames,__ZL13fighterRaiden+516
-	move.l #__ZL23raidenHitUppercutFrames,__ZL13fighterRaiden+520
-	move.l #__ZL19raidenHitFallFrames,__ZL13fighterRaiden+524
-	move.l #__ZL20raidenHitSweepFrames,__ZL13fighterRaiden+528
-	move.l #__ZL19raidenHitNutsFrames,__ZL13fighterRaiden+596
-	move.l #__ZL15lightningFrames,__ZL14fighterRaiden2+600
-	move.l #__ZL15raidenAnimator2,__ZL14fighterRaiden2+408
-	move.l #__ZL18lightning2Animator,__ZL14fighterRaiden2+412
-	move.l #__ZL25projectileLightningFrames,__ZL14fighterRaiden2+588
-	move.l #__ZL28projectileLightningEndFrames,__ZL14fighterRaiden2+592
-	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL14fighterRaiden2+318
-	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL14fighterRaiden2+322
-	move.l #__ZL31specials_Raiden_Teleport_Inputs,__ZL14fighterRaiden2+326
-	move.w #3,__ZL14fighterRaiden2+330
+	move.w #3,__ZL13fighterRaiden+334
+	move.w #2,__ZL13fighterRaiden+336
+	move.l #__ZL21raidenLightningFrames,__ZL13fighterRaiden+570
+	move.l #__ZL19raidenTorpedoFrames,__ZL13fighterRaiden+578
+	move.l #__ZL22raidenTorpedoEndFrames,__ZL13fighterRaiden+582
+	move.l #__ZL20raidenTeleportFrames,__ZL13fighterRaiden+586
+	move.l #__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+338
+	move.l #__Z24doSpecial_Raiden_TorpedoP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+342
+	move.l #__Z25doSpecial_Raiden_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterRaiden+346
+	move.l #__ZL16raidenIdleFrames,__ZL13fighterRaiden+418
+	move.l #__ZL17raidenDizzyFrames,__ZL13fighterRaiden+422
+	move.l #__ZL16raidenWinsFrames,__ZL13fighterRaiden+426
+	move.l #__ZL19raidenSpecialFrames,__ZL13fighterRaiden+430
+	move.l #__ZL16raidenWalkFrames,__ZL13fighterRaiden+434
+	move.l #__ZL16raidenTurnFrames,__ZL13fighterRaiden+438
+	move.l #__ZL16raidenJumpFrames,__ZL13fighterRaiden+442
+	move.l #__ZL20raidenJumpRollFrames,__ZL13fighterRaiden+446
+	move.l #__ZL16raidenDuckFrames,__ZL13fighterRaiden+450
+	move.l #__ZL17raidenBlockFrames,__ZL13fighterRaiden+454
+	move.l #__ZL20raidenBlockHitFrames,__ZL13fighterRaiden+458
+	move.l #__ZL21raidenBlockDuckFrames,__ZL13fighterRaiden+462
+	move.l #__ZL24raidenBlockDuckHitFrames,__ZL13fighterRaiden+466
+	move.l #__ZL20raidenPunchLowFrames,__ZL13fighterRaiden+470
+	move.l #__ZL26raidenPunchLowRepeatFrames,__ZL13fighterRaiden+474
+	move.l #__ZL21raidenPunchHighFrames,__ZL13fighterRaiden+478
+	move.l #__ZL27raidenPunchHighRepeatFrames,__ZL13fighterRaiden+482
+	move.l #__ZL19raidenKickLowFrames,__ZL13fighterRaiden+486
+	move.l #__ZL20raidenKickHighFrames,__ZL13fighterRaiden+490
+	move.l #__ZL21raidenJumpPunchFrames,__ZL13fighterRaiden+494
+	move.l #__ZL20raidenJumpKickFrames,__ZL13fighterRaiden+498
+	move.l #__ZL24raidenJumpDropKickFrames,__ZL13fighterRaiden+502
+	move.l #__ZL20raidenUppercutFrames,__ZL13fighterRaiden+506
+	move.l #__ZL17raidenSweepFrames,__ZL13fighterRaiden+538
+	move.l #__ZL22raidenRoundhouseFrames,__ZL13fighterRaiden+542
+	move.l #__ZL21raidenBodyPunchFrames,__ZL13fighterRaiden+546
+	move.l #__ZL20raidenBodyKickFrames,__ZL13fighterRaiden+550
+	move.l #__ZL20raidenDuckKickFrames,__ZL13fighterRaiden+554
+	move.l #__ZL17raidenThrowFrames,__ZL13fighterRaiden+558
+	move.l #__ZL23raidenBeingThrownFrames,__ZL13fighterRaiden+562
+	move.l #__ZL26raidenBeingThrownLowFrames,__ZL13fighterRaiden+566
+	move.l #__ZL17raidenKipUpFrames,__ZL13fighterRaiden+534
+	move.l #__ZL18raidenHitLowFrames,__ZL13fighterRaiden+510
+	move.l #__ZL19raidenHitHighFrames,__ZL13fighterRaiden+514
+	move.l #__ZL19raidenHitBackFrames,__ZL13fighterRaiden+518
+	move.l #__ZL23raidenHitUppercutFrames,__ZL13fighterRaiden+522
+	move.l #__ZL19raidenHitFallFrames,__ZL13fighterRaiden+526
+	move.l #__ZL20raidenHitSweepFrames,__ZL13fighterRaiden+530
+	move.l #__ZL19raidenHitNutsFrames,__ZL13fighterRaiden+598
+	move.l #__ZL15lightningFrames,__ZL14fighterRaiden2+602
+	move.l #__ZL15raidenAnimator2,__ZL14fighterRaiden2+410
+	move.l #__ZL18lightning2Animator,__ZL14fighterRaiden2+414
+	move.l #__ZL25projectileLightningFrames,__ZL14fighterRaiden2+590
+	move.l #__ZL28projectileLightningEndFrames,__ZL14fighterRaiden2+594
+	move.l #__ZL32specials_Raiden_Lightning_Inputs,__ZL14fighterRaiden2+320
+	move.l #__ZL30specials_Raiden_Torpedo_Inputs,__ZL14fighterRaiden2+324
+	move.l #__ZL31specials_Raiden_Teleport_Inputs,__ZL14fighterRaiden2+328
 	move.w #3,__ZL14fighterRaiden2+332
-	move.w #2,__ZL14fighterRaiden2+334
-	move.l #__ZL21raidenLightningFrames,__ZL14fighterRaiden2+568
-	move.l #__ZL19raidenTorpedoFrames,__ZL14fighterRaiden2+576
-	move.l #__ZL22raidenTorpedoEndFrames,__ZL14fighterRaiden2+580
-	move.l #__ZL20raidenTeleportFrames,__ZL14fighterRaiden2+584
-	move.l #__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+336
-	move.l #__Z24doSpecial_Raiden_TorpedoP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+340
-	move.l #__Z25doSpecial_Raiden_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+344
-	move.l #__ZL16raidenIdleFrames,__ZL14fighterRaiden2+416
-	move.l #__ZL17raidenDizzyFrames,__ZL14fighterRaiden2+420
-	move.l #__ZL16raidenWinsFrames,__ZL14fighterRaiden2+424
-	move.l #__ZL19raidenSpecialFrames,__ZL14fighterRaiden2+428
-	move.l #__ZL16raidenWalkFrames,__ZL14fighterRaiden2+432
-	move.l #__ZL16raidenTurnFrames,__ZL14fighterRaiden2+436
-	move.l #__ZL16raidenJumpFrames,__ZL14fighterRaiden2+440
-	move.l #__ZL20raidenJumpRollFrames,__ZL14fighterRaiden2+444
-	move.l #__ZL16raidenDuckFrames,__ZL14fighterRaiden2+448
-	move.l #__ZL17raidenBlockFrames,__ZL14fighterRaiden2+452
-	move.l #__ZL20raidenBlockHitFrames,__ZL14fighterRaiden2+456
-	move.l #__ZL21raidenBlockDuckFrames,__ZL14fighterRaiden2+460
-	move.l #__ZL24raidenBlockDuckHitFrames,__ZL14fighterRaiden2+464
-	move.l #__ZL20raidenPunchLowFrames,__ZL14fighterRaiden2+468
-	move.l #__ZL26raidenPunchLowRepeatFrames,__ZL14fighterRaiden2+472
-	move.l #__ZL21raidenPunchHighFrames,__ZL14fighterRaiden2+476
-	move.l #__ZL27raidenPunchHighRepeatFrames,__ZL14fighterRaiden2+480
-	move.l #__ZL19raidenKickLowFrames,__ZL14fighterRaiden2+484
-	move.l #__ZL20raidenKickHighFrames,__ZL14fighterRaiden2+488
-	move.l #__ZL21raidenJumpPunchFrames,__ZL14fighterRaiden2+492
-	move.l #__ZL20raidenJumpKickFrames,__ZL14fighterRaiden2+496
-	move.l #__ZL24raidenJumpDropKickFrames,__ZL14fighterRaiden2+500
-	move.l #__ZL20raidenUppercutFrames,__ZL14fighterRaiden2+504
-	move.l #__ZL17raidenSweepFrames,__ZL14fighterRaiden2+536
-	move.l #__ZL22raidenRoundhouseFrames,__ZL14fighterRaiden2+540
-	move.l #__ZL21raidenBodyPunchFrames,__ZL14fighterRaiden2+544
-	move.l #__ZL20raidenBodyKickFrames,__ZL14fighterRaiden2+548
-	move.l #__ZL20raidenDuckKickFrames,__ZL14fighterRaiden2+552
-	move.l #__ZL17raidenThrowFrames,__ZL14fighterRaiden2+556
-	move.l #__ZL23raidenBeingThrownFrames,__ZL14fighterRaiden2+560
-	move.l #__ZL26raidenBeingThrownLowFrames,__ZL14fighterRaiden2+564
-	move.l #__ZL17raidenKipUpFrames,__ZL14fighterRaiden2+532
-	move.l #__ZL18raidenHitLowFrames,__ZL14fighterRaiden2+508
-	move.l #__ZL19raidenHitHighFrames,__ZL14fighterRaiden2+512
-	move.l #__ZL19raidenHitBackFrames,__ZL14fighterRaiden2+516
-	move.l #__ZL23raidenHitUppercutFrames,__ZL14fighterRaiden2+520
-	move.l #__ZL19raidenHitFallFrames,__ZL14fighterRaiden2+524
-	move.l #__ZL20raidenHitSweepFrames,__ZL14fighterRaiden2+528
-	move.l #__ZL19raidenHitNutsFrames,__ZL14fighterRaiden2+596
-	move.l #__ZL12kangAnimator,__ZL11fighterKang+408
-	move.l #__ZL17lightningAnimator,__ZL11fighterKang+412
-	move.l #__ZL24projectileFireballFrames,__ZL11fighterKang+588
-	move.l #__ZL27projectileFireballEndFrames,__ZL11fighterKang+592
-	move.l #__ZL29specials_Kang_Fireball_Inputs,__ZL11fighterKang+318
-	move.l #__ZL31specials_Kang_FlyingKick_Inputs,__ZL11fighterKang+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL11fighterKang+326
-	move.w #3,__ZL11fighterKang+330
+	move.w #3,__ZL14fighterRaiden2+334
+	move.w #2,__ZL14fighterRaiden2+336
+	move.l #__ZL21raidenLightningFrames,__ZL14fighterRaiden2+570
+	move.l #__ZL19raidenTorpedoFrames,__ZL14fighterRaiden2+578
+	move.l #__ZL22raidenTorpedoEndFrames,__ZL14fighterRaiden2+582
+	move.l #__ZL20raidenTeleportFrames,__ZL14fighterRaiden2+586
+	move.l #__Z26doSpecial_Raiden_LightningP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+338
+	move.l #__Z24doSpecial_Raiden_TorpedoP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+342
+	move.l #__Z25doSpecial_Raiden_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterRaiden2+346
+	move.l #__ZL16raidenIdleFrames,__ZL14fighterRaiden2+418
+	move.l #__ZL17raidenDizzyFrames,__ZL14fighterRaiden2+422
+	move.l #__ZL16raidenWinsFrames,__ZL14fighterRaiden2+426
+	move.l #__ZL19raidenSpecialFrames,__ZL14fighterRaiden2+430
+	move.l #__ZL16raidenWalkFrames,__ZL14fighterRaiden2+434
+	move.l #__ZL16raidenTurnFrames,__ZL14fighterRaiden2+438
+	move.l #__ZL16raidenJumpFrames,__ZL14fighterRaiden2+442
+	move.l #__ZL20raidenJumpRollFrames,__ZL14fighterRaiden2+446
+	move.l #__ZL16raidenDuckFrames,__ZL14fighterRaiden2+450
+	move.l #__ZL17raidenBlockFrames,__ZL14fighterRaiden2+454
+	move.l #__ZL20raidenBlockHitFrames,__ZL14fighterRaiden2+458
+	move.l #__ZL21raidenBlockDuckFrames,__ZL14fighterRaiden2+462
+	move.l #__ZL24raidenBlockDuckHitFrames,__ZL14fighterRaiden2+466
+	move.l #__ZL20raidenPunchLowFrames,__ZL14fighterRaiden2+470
+	move.l #__ZL26raidenPunchLowRepeatFrames,__ZL14fighterRaiden2+474
+	move.l #__ZL21raidenPunchHighFrames,__ZL14fighterRaiden2+478
+	move.l #__ZL27raidenPunchHighRepeatFrames,__ZL14fighterRaiden2+482
+	move.l #__ZL19raidenKickLowFrames,__ZL14fighterRaiden2+486
+	move.l #__ZL20raidenKickHighFrames,__ZL14fighterRaiden2+490
+	move.l #__ZL21raidenJumpPunchFrames,__ZL14fighterRaiden2+494
+	move.l #__ZL20raidenJumpKickFrames,__ZL14fighterRaiden2+498
+	move.l #__ZL24raidenJumpDropKickFrames,__ZL14fighterRaiden2+502
+	move.l #__ZL20raidenUppercutFrames,__ZL14fighterRaiden2+506
+	move.l #__ZL17raidenSweepFrames,__ZL14fighterRaiden2+538
+	move.l #__ZL22raidenRoundhouseFrames,__ZL14fighterRaiden2+542
+	move.l #__ZL21raidenBodyPunchFrames,__ZL14fighterRaiden2+546
+	move.l #__ZL20raidenBodyKickFrames,__ZL14fighterRaiden2+550
+	move.l #__ZL20raidenDuckKickFrames,__ZL14fighterRaiden2+554
+	move.l #__ZL17raidenThrowFrames,__ZL14fighterRaiden2+558
+	move.l #__ZL23raidenBeingThrownFrames,__ZL14fighterRaiden2+562
+	move.l #__ZL26raidenBeingThrownLowFrames,__ZL14fighterRaiden2+566
+	move.l #__ZL17raidenKipUpFrames,__ZL14fighterRaiden2+534
+	move.l #__ZL18raidenHitLowFrames,__ZL14fighterRaiden2+510
+	move.l #__ZL19raidenHitHighFrames,__ZL14fighterRaiden2+514
+	move.l #__ZL19raidenHitBackFrames,__ZL14fighterRaiden2+518
+	move.l #__ZL23raidenHitUppercutFrames,__ZL14fighterRaiden2+522
+	move.l #__ZL19raidenHitFallFrames,__ZL14fighterRaiden2+526
+	move.l #__ZL20raidenHitSweepFrames,__ZL14fighterRaiden2+530
+	move.l #__ZL19raidenHitNutsFrames,__ZL14fighterRaiden2+598
+	move.l #__ZL12kangAnimator,__ZL11fighterKang+410
+	move.l #__ZL17lightningAnimator,__ZL11fighterKang+414
+	move.l #__ZL24projectileFireballFrames,__ZL11fighterKang+590
+	move.l #__ZL27projectileFireballEndFrames,__ZL11fighterKang+594
+	move.l #__ZL29specials_Kang_Fireball_Inputs,__ZL11fighterKang+320
+	move.l #__ZL31specials_Kang_FlyingKick_Inputs,__ZL11fighterKang+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL11fighterKang+328
 	move.w #3,__ZL11fighterKang+332
-	clr.w __ZL11fighterKang+334
-	move.l #__ZL18kangFireballFrames,__ZL11fighterKang+568
-	move.l #__Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKang+336
-	move.l #__Z25doSpecial_Kang_FlyingKickP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKang+340
-	move.l #__ZL14kangIdleFrames,__ZL11fighterKang+416
-	move.l #__ZL15kangDizzyFrames,__ZL11fighterKang+420
-	move.l #__ZL14kangWinsFrames,__ZL11fighterKang+424
-	move.l #__ZL17kangSpecialFrames,__ZL11fighterKang+428
-	move.l #__ZL14kangWalkFrames,__ZL11fighterKang+432
-	move.l #__ZL14kangTurnFrames,__ZL11fighterKang+436
-	move.l #__ZL14kangJumpFrames,__ZL11fighterKang+440
-	move.l #__ZL18kangJumpRollFrames,__ZL11fighterKang+444
-	move.l #__ZL14kangDuckFrames,__ZL11fighterKang+448
-	move.l #__ZL15kangBlockFrames,__ZL11fighterKang+452
-	move.l #__ZL18kangBlockHitFrames,__ZL11fighterKang+456
-	move.l #__ZL19kangBlockDuckFrames,__ZL11fighterKang+460
-	move.l #__ZL22kangBlockDuckHitFrames,__ZL11fighterKang+464
-	move.l #__ZL18kangPunchLowFrames,__ZL11fighterKang+468
-	move.l #__ZL24kangPunchLowRepeatFrames,__ZL11fighterKang+472
-	move.l #__ZL19kangPunchHighFrames,__ZL11fighterKang+476
-	move.l #__ZL25kangPunchHighRepeatFrames,__ZL11fighterKang+480
-	move.l #__ZL17kangKickLowFrames,__ZL11fighterKang+484
-	move.l #__ZL18kangKickHighFrames,__ZL11fighterKang+488
-	move.l #__ZL19kangJumpPunchFrames,__ZL11fighterKang+492
-	move.l #__ZL18kangJumpKickFrames,__ZL11fighterKang+496
-	move.l #__ZL22kangJumpDropKickFrames,__ZL11fighterKang+500
-	move.l #__ZL18kangUppercutFrames,__ZL11fighterKang+504
-	move.l #__ZL15kangKipUpFrames,__ZL11fighterKang+532
-	move.l #__ZL15kangSweepFrames,__ZL11fighterKang+536
-	move.l #__ZL20kangRoundhouseFrames,__ZL11fighterKang+540
-	move.l #__ZL19kangBodyPunchFrames,__ZL11fighterKang+544
-	move.l #__ZL18kangBodyKickFrames,__ZL11fighterKang+548
-	move.l #__ZL18kangDuckKickFrames,__ZL11fighterKang+552
-	move.l #__ZL15kangThrowFrames,__ZL11fighterKang+556
-	move.l #__ZL21kangBeingThrownFrames,__ZL11fighterKang+560
-	move.l #__ZL24kangBeingThrownLowFrames,__ZL11fighterKang+564
-	move.l #__ZL16kangHitLowFrames,__ZL11fighterKang+508
-	move.l #__ZL17kangHitHighFrames,__ZL11fighterKang+512
-	move.l #__ZL17kangHitBackFrames,__ZL11fighterKang+516
-	move.l #__ZL21kangHitUppercutFrames,__ZL11fighterKang+520
-	move.l #__ZL17kangHitFallFrames,__ZL11fighterKang+524
-	move.l #__ZL18kangHitSweepFrames,__ZL11fighterKang+528
-	move.l #__ZL17kangHitNutsFrames,__ZL11fighterKang+596
-	move.l #__ZL13kangAnimator2,__ZL12fighterKang2+408
-	move.l #__ZL18lightning2Animator,__ZL12fighterKang2+412
-	move.l #__ZL24projectileFireballFrames,__ZL12fighterKang2+588
-	move.l #__ZL27projectileFireballEndFrames,__ZL12fighterKang2+592
-	move.l #__ZL29specials_Kang_Fireball_Inputs,__ZL12fighterKang2+318
-	move.l #__ZL31specials_Kang_FlyingKick_Inputs,__ZL12fighterKang2+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL12fighterKang2+326
-	move.w #3,__ZL12fighterKang2+330
+	move.w #3,__ZL11fighterKang+334
+	clr.w __ZL11fighterKang+336
+	move.l #__ZL18kangFireballFrames,__ZL11fighterKang+570
+	move.l #__Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKang+338
+	move.l #__Z25doSpecial_Kang_FlyingKickP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKang+342
+	move.l #__ZL14kangIdleFrames,__ZL11fighterKang+418
+	move.l #__ZL15kangDizzyFrames,__ZL11fighterKang+422
+	move.l #__ZL14kangWinsFrames,__ZL11fighterKang+426
+	move.l #__ZL17kangSpecialFrames,__ZL11fighterKang+430
+	move.l #__ZL14kangWalkFrames,__ZL11fighterKang+434
+	move.l #__ZL14kangTurnFrames,__ZL11fighterKang+438
+	move.l #__ZL14kangJumpFrames,__ZL11fighterKang+442
+	move.l #__ZL18kangJumpRollFrames,__ZL11fighterKang+446
+	move.l #__ZL14kangDuckFrames,__ZL11fighterKang+450
+	move.l #__ZL15kangBlockFrames,__ZL11fighterKang+454
+	move.l #__ZL18kangBlockHitFrames,__ZL11fighterKang+458
+	move.l #__ZL19kangBlockDuckFrames,__ZL11fighterKang+462
+	move.l #__ZL22kangBlockDuckHitFrames,__ZL11fighterKang+466
+	move.l #__ZL18kangPunchLowFrames,__ZL11fighterKang+470
+	move.l #__ZL24kangPunchLowRepeatFrames,__ZL11fighterKang+474
+	move.l #__ZL19kangPunchHighFrames,__ZL11fighterKang+478
+	move.l #__ZL25kangPunchHighRepeatFrames,__ZL11fighterKang+482
+	move.l #__ZL17kangKickLowFrames,__ZL11fighterKang+486
+	move.l #__ZL18kangKickHighFrames,__ZL11fighterKang+490
+	move.l #__ZL19kangJumpPunchFrames,__ZL11fighterKang+494
+	move.l #__ZL18kangJumpKickFrames,__ZL11fighterKang+498
+	move.l #__ZL22kangJumpDropKickFrames,__ZL11fighterKang+502
+	move.l #__ZL18kangUppercutFrames,__ZL11fighterKang+506
+	move.l #__ZL15kangKipUpFrames,__ZL11fighterKang+534
+	move.l #__ZL15kangSweepFrames,__ZL11fighterKang+538
+	move.l #__ZL20kangRoundhouseFrames,__ZL11fighterKang+542
+	move.l #__ZL19kangBodyPunchFrames,__ZL11fighterKang+546
+	move.l #__ZL18kangBodyKickFrames,__ZL11fighterKang+550
+	move.l #__ZL18kangDuckKickFrames,__ZL11fighterKang+554
+	move.l #__ZL15kangThrowFrames,__ZL11fighterKang+558
+	move.l #__ZL21kangBeingThrownFrames,__ZL11fighterKang+562
+	move.l #__ZL24kangBeingThrownLowFrames,__ZL11fighterKang+566
+	move.l #__ZL16kangHitLowFrames,__ZL11fighterKang+510
+	move.l #__ZL17kangHitHighFrames,__ZL11fighterKang+514
+	move.l #__ZL17kangHitBackFrames,__ZL11fighterKang+518
+	move.l #__ZL21kangHitUppercutFrames,__ZL11fighterKang+522
+	move.l #__ZL17kangHitFallFrames,__ZL11fighterKang+526
+	move.l #__ZL18kangHitSweepFrames,__ZL11fighterKang+530
+	move.l #__ZL17kangHitNutsFrames,__ZL11fighterKang+598
+	move.l #__ZL13kangAnimator2,__ZL12fighterKang2+410
+	move.l #__ZL18lightning2Animator,__ZL12fighterKang2+414
+	move.l #__ZL24projectileFireballFrames,__ZL12fighterKang2+590
+	move.l #__ZL27projectileFireballEndFrames,__ZL12fighterKang2+594
+	move.l #__ZL29specials_Kang_Fireball_Inputs,__ZL12fighterKang2+320
+	move.l #__ZL31specials_Kang_FlyingKick_Inputs,__ZL12fighterKang2+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL12fighterKang2+328
 	move.w #3,__ZL12fighterKang2+332
-	clr.w __ZL12fighterKang2+334
-	move.l #__ZL18kangFireballFrames,__ZL12fighterKang2+568
-	move.l #__Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKang2+336
-	move.l #__Z25doSpecial_Kang_FlyingKickP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKang2+340
-	move.l #__ZL14kangIdleFrames,__ZL12fighterKang2+416
-	move.l #__ZL15kangDizzyFrames,__ZL12fighterKang2+420
-	move.l #__ZL14kangWinsFrames,__ZL12fighterKang2+424
-	move.l #__ZL17kangSpecialFrames,__ZL12fighterKang2+428
-	move.l #__ZL14kangWalkFrames,__ZL12fighterKang2+432
-	move.l #__ZL14kangTurnFrames,__ZL12fighterKang2+436
-	move.l #__ZL14kangJumpFrames,__ZL12fighterKang2+440
-	move.l #__ZL18kangJumpRollFrames,__ZL12fighterKang2+444
-	move.l #__ZL14kangDuckFrames,__ZL12fighterKang2+448
-	move.l #__ZL15kangBlockFrames,__ZL12fighterKang2+452
-	move.l #__ZL18kangBlockHitFrames,__ZL12fighterKang2+456
-	move.l #__ZL19kangBlockDuckFrames,__ZL12fighterKang2+460
-	move.l #__ZL22kangBlockDuckHitFrames,__ZL12fighterKang2+464
-	move.l #__ZL18kangPunchLowFrames,__ZL12fighterKang2+468
-	move.l #__ZL24kangPunchLowRepeatFrames,__ZL12fighterKang2+472
-	move.l #__ZL19kangPunchHighFrames,__ZL12fighterKang2+476
-	move.l #__ZL25kangPunchHighRepeatFrames,__ZL12fighterKang2+480
-	move.l #__ZL17kangKickLowFrames,__ZL12fighterKang2+484
-	move.l #__ZL18kangKickHighFrames,__ZL12fighterKang2+488
-	move.l #__ZL18kangJumpKickFrames,__ZL12fighterKang2+496
-	move.l #__ZL22kangJumpDropKickFrames,__ZL12fighterKang2+500
-	move.l #__ZL18kangUppercutFrames,__ZL12fighterKang2+504
-	move.l #__ZL15kangKipUpFrames,__ZL12fighterKang2+532
-	move.l #__ZL15kangSweepFrames,__ZL12fighterKang2+536
-	move.l #__ZL20kangRoundhouseFrames,__ZL12fighterKang2+540
-	move.l #__ZL19kangBodyPunchFrames,__ZL12fighterKang2+544
-	move.l #__ZL18kangBodyKickFrames,__ZL12fighterKang2+548
-	move.l #__ZL18kangDuckKickFrames,__ZL12fighterKang2+552
-	move.l #__ZL15kangThrowFrames,__ZL12fighterKang2+556
-	move.l #__ZL21kangBeingThrownFrames,__ZL12fighterKang2+560
-	move.l #__ZL24kangBeingThrownLowFrames,__ZL12fighterKang2+564
-	move.l #__ZL16kangHitLowFrames,__ZL12fighterKang2+508
-	move.l #__ZL17kangHitHighFrames,__ZL12fighterKang2+512
-	move.l #__ZL17kangHitBackFrames,__ZL12fighterKang2+516
-	move.l #__ZL21kangHitUppercutFrames,__ZL12fighterKang2+520
-	move.l #__ZL17kangHitFallFrames,__ZL12fighterKang2+524
-	move.l #__ZL18kangHitSweepFrames,__ZL12fighterKang2+528
-	move.l #__ZL17kangHitNutsFrames,__ZL12fighterKang2+596
-	move.l #__ZL16scorpionAnimator,__ZL15fighterScorpion+408
-	move.l #__ZL17lightningAnimator,__ZL15fighterScorpion+412
-	move.l #__ZL23projectileHarpoonFrames,__ZL15fighterScorpion+588
-	move.l #__ZL26projectileHarpoonEndFrames,__ZL15fighterScorpion+592
-	move.l #__ZL32specials_Scorpion_Harpoon_Inputs,__ZL15fighterScorpion+318
-	move.l #__ZL33specials_Scorpion_Teleport_Inputs,__ZL15fighterScorpion+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL15fighterScorpion+326
-	move.w #3,__ZL15fighterScorpion+330
+	move.w #3,__ZL12fighterKang2+334
+	clr.w __ZL12fighterKang2+336
+	move.l #__ZL18kangFireballFrames,__ZL12fighterKang2+570
+	move.l #__Z23doSpecial_Kang_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKang2+338
+	move.l #__Z25doSpecial_Kang_FlyingKickP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKang2+342
+	move.l #__ZL14kangIdleFrames,__ZL12fighterKang2+418
+	move.l #__ZL15kangDizzyFrames,__ZL12fighterKang2+422
+	move.l #__ZL14kangWinsFrames,__ZL12fighterKang2+426
+	move.l #__ZL17kangSpecialFrames,__ZL12fighterKang2+430
+	move.l #__ZL14kangWalkFrames,__ZL12fighterKang2+434
+	move.l #__ZL14kangTurnFrames,__ZL12fighterKang2+438
+	move.l #__ZL14kangJumpFrames,__ZL12fighterKang2+442
+	move.l #__ZL18kangJumpRollFrames,__ZL12fighterKang2+446
+	move.l #__ZL14kangDuckFrames,__ZL12fighterKang2+450
+	move.l #__ZL15kangBlockFrames,__ZL12fighterKang2+454
+	move.l #__ZL18kangBlockHitFrames,__ZL12fighterKang2+458
+	move.l #__ZL19kangBlockDuckFrames,__ZL12fighterKang2+462
+	move.l #__ZL22kangBlockDuckHitFrames,__ZL12fighterKang2+466
+	move.l #__ZL18kangPunchLowFrames,__ZL12fighterKang2+470
+	move.l #__ZL24kangPunchLowRepeatFrames,__ZL12fighterKang2+474
+	move.l #__ZL19kangPunchHighFrames,__ZL12fighterKang2+478
+	move.l #__ZL25kangPunchHighRepeatFrames,__ZL12fighterKang2+482
+	move.l #__ZL17kangKickLowFrames,__ZL12fighterKang2+486
+	move.l #__ZL18kangKickHighFrames,__ZL12fighterKang2+490
+	move.l #__ZL18kangJumpKickFrames,__ZL12fighterKang2+498
+	move.l #__ZL22kangJumpDropKickFrames,__ZL12fighterKang2+502
+	move.l #__ZL18kangUppercutFrames,__ZL12fighterKang2+506
+	move.l #__ZL15kangKipUpFrames,__ZL12fighterKang2+534
+	move.l #__ZL15kangSweepFrames,__ZL12fighterKang2+538
+	move.l #__ZL20kangRoundhouseFrames,__ZL12fighterKang2+542
+	move.l #__ZL19kangBodyPunchFrames,__ZL12fighterKang2+546
+	move.l #__ZL18kangBodyKickFrames,__ZL12fighterKang2+550
+	move.l #__ZL18kangDuckKickFrames,__ZL12fighterKang2+554
+	move.l #__ZL15kangThrowFrames,__ZL12fighterKang2+558
+	move.l #__ZL21kangBeingThrownFrames,__ZL12fighterKang2+562
+	move.l #__ZL24kangBeingThrownLowFrames,__ZL12fighterKang2+566
+	move.l #__ZL16kangHitLowFrames,__ZL12fighterKang2+510
+	move.l #__ZL17kangHitHighFrames,__ZL12fighterKang2+514
+	move.l #__ZL17kangHitBackFrames,__ZL12fighterKang2+518
+	move.l #__ZL21kangHitUppercutFrames,__ZL12fighterKang2+522
+	move.l #__ZL17kangHitFallFrames,__ZL12fighterKang2+526
+	move.l #__ZL18kangHitSweepFrames,__ZL12fighterKang2+530
+	move.l #__ZL17kangHitNutsFrames,__ZL12fighterKang2+598
+	move.l #__ZL16scorpionAnimator,__ZL15fighterScorpion+410
+	move.l #__ZL17lightningAnimator,__ZL15fighterScorpion+414
+	move.l #__ZL23projectileHarpoonFrames,__ZL15fighterScorpion+590
+	move.l #__ZL26projectileHarpoonEndFrames,__ZL15fighterScorpion+594
+	move.l #__ZL32specials_Scorpion_Harpoon_Inputs,__ZL15fighterScorpion+320
+	move.l #__ZL33specials_Scorpion_Teleport_Inputs,__ZL15fighterScorpion+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL15fighterScorpion+328
 	move.w #3,__ZL15fighterScorpion+332
-	clr.w __ZL15fighterScorpion+334
-	move.l #__ZL21scorpionHarpoonFrames,__ZL15fighterScorpion+568
-	move.l #__ZL24scorpionHarpoonEndFrames,__ZL15fighterScorpion+572
-	move.l #__Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterScorpion+336
-	move.l #__Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterScorpion+340
-	move.l #__ZL18scorpionIdleFrames,__ZL15fighterScorpion+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterScorpion+420
-	move.l #__ZL17subzeroWinsFrames,__ZL15fighterScorpion+424
-	move.l #__ZL21scorpionSpecialFrames,__ZL15fighterScorpion+428
-	move.l #__ZL18scorpionWalkFrames,__ZL15fighterScorpion+432
-	move.l #__ZL17subzeroTurnFrames,__ZL15fighterScorpion+436
-	move.l #__ZL17subzeroJumpFrames,__ZL15fighterScorpion+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterScorpion+444
-	move.l #__ZL17subzeroDuckFrames,__ZL15fighterScorpion+448
-	move.l #__ZL18subzeroBlockFrames,__ZL15fighterScorpion+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterScorpion+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterScorpion+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterScorpion+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterScorpion+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL15fighterScorpion+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterScorpion+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL15fighterScorpion+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterScorpion+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterScorpion+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterScorpion+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterScorpion+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterScorpion+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterScorpion+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterScorpion+532
-	move.l #__ZL18subzeroSweepFrames,__ZL15fighterScorpion+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterScorpion+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterScorpion+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterScorpion+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterScorpion+552
-	move.l #__ZL18subzeroThrowFrames,__ZL15fighterScorpion+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterScorpion+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterScorpion+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterScorpion+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterScorpion+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterScorpion+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL15fighterScorpion+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterScorpion+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterScorpion+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL15fighterScorpion+596
-	move.l #__ZL17scorpionAnimator2,__ZL16fighterScorpion2+408
-	move.l #__ZL18lightning2Animator,__ZL16fighterScorpion2+412
-	move.l #__ZL23projectileHarpoonFrames,__ZL16fighterScorpion2+588
-	move.l #__ZL26projectileHarpoonEndFrames,__ZL16fighterScorpion2+592
-	move.l #__ZL32specials_Scorpion_Harpoon_Inputs,__ZL16fighterScorpion2+318
-	move.l #__ZL33specials_Scorpion_Teleport_Inputs,__ZL16fighterScorpion2+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL16fighterScorpion2+326
-	move.w #3,__ZL16fighterScorpion2+330
+	move.w #3,__ZL15fighterScorpion+334
+	clr.w __ZL15fighterScorpion+336
+	move.l #__ZL21scorpionHarpoonFrames,__ZL15fighterScorpion+570
+	move.l #__ZL24scorpionHarpoonEndFrames,__ZL15fighterScorpion+574
+	move.l #__Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterScorpion+338
+	move.l #__Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterScorpion+342
+	move.l #__ZL18scorpionIdleFrames,__ZL15fighterScorpion+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterScorpion+422
+	move.l #__ZL17subzeroWinsFrames,__ZL15fighterScorpion+426
+	move.l #__ZL21scorpionSpecialFrames,__ZL15fighterScorpion+430
+	move.l #__ZL18scorpionWalkFrames,__ZL15fighterScorpion+434
+	move.l #__ZL17subzeroTurnFrames,__ZL15fighterScorpion+438
+	move.l #__ZL17subzeroJumpFrames,__ZL15fighterScorpion+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterScorpion+446
+	move.l #__ZL17subzeroDuckFrames,__ZL15fighterScorpion+450
+	move.l #__ZL18subzeroBlockFrames,__ZL15fighterScorpion+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterScorpion+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterScorpion+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterScorpion+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterScorpion+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL15fighterScorpion+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterScorpion+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL15fighterScorpion+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterScorpion+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterScorpion+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterScorpion+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterScorpion+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterScorpion+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterScorpion+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterScorpion+534
+	move.l #__ZL18subzeroSweepFrames,__ZL15fighterScorpion+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterScorpion+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterScorpion+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterScorpion+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterScorpion+554
+	move.l #__ZL18subzeroThrowFrames,__ZL15fighterScorpion+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterScorpion+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterScorpion+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterScorpion+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterScorpion+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterScorpion+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL15fighterScorpion+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterScorpion+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterScorpion+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL15fighterScorpion+598
+	move.l #__ZL17scorpionAnimator2,__ZL16fighterScorpion2+410
+	move.l #__ZL18lightning2Animator,__ZL16fighterScorpion2+414
+	move.l #__ZL23projectileHarpoonFrames,__ZL16fighterScorpion2+590
+	move.l #__ZL26projectileHarpoonEndFrames,__ZL16fighterScorpion2+594
+	move.l #__ZL32specials_Scorpion_Harpoon_Inputs,__ZL16fighterScorpion2+320
+	move.l #__ZL33specials_Scorpion_Teleport_Inputs,__ZL16fighterScorpion2+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL16fighterScorpion2+328
 	move.w #3,__ZL16fighterScorpion2+332
-	clr.w __ZL16fighterScorpion2+334
-	move.l #__ZL21scorpionHarpoonFrames,__ZL16fighterScorpion2+568
-	move.l #__ZL24scorpionHarpoonEndFrames,__ZL16fighterScorpion2+572
-	move.l #__Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator,__ZL16fighterScorpion2+336
-	move.l #__Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL16fighterScorpion2+340
-	move.l #__ZL18scorpionIdleFrames,__ZL16fighterScorpion2+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL16fighterScorpion2+420
-	move.l #__ZL17subzeroWinsFrames,__ZL16fighterScorpion2+424
-	move.l #__ZL21scorpionSpecialFrames,__ZL16fighterScorpion2+428
-	move.l #__ZL18scorpionWalkFrames,__ZL16fighterScorpion2+432
-	move.l #__ZL17subzeroTurnFrames,__ZL16fighterScorpion2+436
-	move.l #__ZL17subzeroJumpFrames,__ZL16fighterScorpion2+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL16fighterScorpion2+444
-	move.l #__ZL17subzeroDuckFrames,__ZL16fighterScorpion2+448
-	move.l #__ZL18subzeroBlockFrames,__ZL16fighterScorpion2+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL16fighterScorpion2+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL16fighterScorpion2+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL16fighterScorpion2+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL16fighterScorpion2+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL16fighterScorpion2+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL16fighterScorpion2+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL16fighterScorpion2+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL16fighterScorpion2+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL16fighterScorpion2+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL16fighterScorpion2+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL16fighterScorpion2+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL16fighterScorpion2+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL16fighterScorpion2+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL16fighterScorpion2+532
-	move.l #__ZL18subzeroSweepFrames,__ZL16fighterScorpion2+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL16fighterScorpion2+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL16fighterScorpion2+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL16fighterScorpion2+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL16fighterScorpion2+552
-	move.l #__ZL18subzeroThrowFrames,__ZL16fighterScorpion2+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL16fighterScorpion2+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL16fighterScorpion2+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL16fighterScorpion2+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL16fighterScorpion2+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL16fighterScorpion2+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL16fighterScorpion2+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL16fighterScorpion2+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL16fighterScorpion2+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL16fighterScorpion2+596
-	move.l #__ZL15subzeroAnimator,__ZL14fighterSubzero+408
-	move.l #__ZL17lightningAnimator,__ZL14fighterSubzero+412
-	move.l #__ZL22projectileFreezeFrames,__ZL14fighterSubzero+588
-	move.l #__ZL25projectileFreezeEndFrames,__ZL14fighterSubzero+592
-	move.l #__ZL30specials_Subzero_Freeze_Inputs,__ZL14fighterSubzero+318
-	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL14fighterSubzero+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterSubzero+326
-	move.w #3,__ZL14fighterSubzero+330
-	move.w #14,__ZL14fighterSubzero+332
-	clr.w __ZL14fighterSubzero+334
-	move.l #__ZL19subzeroFreezeFrames,__ZL14fighterSubzero+568
-	move.l #__ZL18subzeroSlideFrames,__ZL14fighterSubzero+576
-	move.l #__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterSubzero+336
-	move.l #__Z23doSpecial_Subzero_SlideP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterSubzero+340
-	move.l #__ZL17subzeroIdleFrames,__ZL14fighterSubzero+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterSubzero+420
-	move.l #__ZL17subzeroWinsFrames,__ZL14fighterSubzero+424
-	move.l #__ZL20subzeroSpecialFrames,__ZL14fighterSubzero+428
-	move.l #__ZL17subzeroWalkFrames,__ZL14fighterSubzero+432
-	move.l #__ZL17subzeroTurnFrames,__ZL14fighterSubzero+436
-	move.l #__ZL17subzeroJumpFrames,__ZL14fighterSubzero+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterSubzero+444
-	move.l #__ZL17subzeroDuckFrames,__ZL14fighterSubzero+448
-	move.l #__ZL18subzeroBlockFrames,__ZL14fighterSubzero+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterSubzero+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterSubzero+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterSubzero+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterSubzero+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL14fighterSubzero+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterSubzero+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL14fighterSubzero+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterSubzero+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterSubzero+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterSubzero+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterSubzero+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterSubzero+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterSubzero+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterSubzero+532
-	move.l #__ZL18subzeroSweepFrames,__ZL14fighterSubzero+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterSubzero+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterSubzero+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterSubzero+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterSubzero+552
-	move.l #__ZL18subzeroThrowFrames,__ZL14fighterSubzero+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterSubzero+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterSubzero+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterSubzero+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterSubzero+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterSubzero+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL14fighterSubzero+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterSubzero+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterSubzero+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL14fighterSubzero+596
-	move.l #__ZL16subzeroAnimator2,__ZL15fighterSubzero2+408
-	move.l #__ZL18lightning2Animator,__ZL15fighterSubzero2+412
-	move.l #__ZL22projectileFreezeFrames,__ZL15fighterSubzero2+588
-	move.l #__ZL25projectileFreezeEndFrames,__ZL15fighterSubzero2+592
-	move.l #__ZL30specials_Subzero_Freeze_Inputs,__ZL15fighterSubzero2+318
-	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL15fighterSubzero2+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL15fighterSubzero2+326
-	move.w #3,__ZL15fighterSubzero2+330
-	move.w #14,__ZL15fighterSubzero2+332
-	clr.w __ZL15fighterSubzero2+334
-	move.l #__ZL19subzeroFreezeFrames,__ZL15fighterSubzero2+568
-	move.l #__ZL18subzeroSlideFrames,__ZL15fighterSubzero2+576
-	move.l #__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterSubzero2+336
-	move.l #__Z23doSpecial_Subzero_SlideP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterSubzero2+340
-	move.l #__ZL17subzeroIdleFrames,__ZL15fighterSubzero2+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterSubzero2+420
-	move.l #__ZL17subzeroWinsFrames,__ZL15fighterSubzero2+424
-	move.l #__ZL20subzeroSpecialFrames,__ZL15fighterSubzero2+428
-	move.l #__ZL17subzeroTurnFrames,__ZL15fighterSubzero2+436
-	move.l #__ZL17subzeroWalkFrames,__ZL15fighterSubzero2+432
-	move.l #__ZL17subzeroJumpFrames,__ZL15fighterSubzero2+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterSubzero2+444
-	move.l #__ZL17subzeroDuckFrames,__ZL15fighterSubzero2+448
-	move.l #__ZL18subzeroBlockFrames,__ZL15fighterSubzero2+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterSubzero2+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterSubzero2+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterSubzero2+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterSubzero2+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL15fighterSubzero2+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterSubzero2+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL15fighterSubzero2+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterSubzero2+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterSubzero2+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterSubzero2+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterSubzero2+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterSubzero2+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterSubzero2+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterSubzero2+532
-	move.l #__ZL18subzeroSweepFrames,__ZL15fighterSubzero2+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterSubzero2+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterSubzero2+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterSubzero2+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterSubzero2+552
-	move.l #__ZL18subzeroThrowFrames,__ZL15fighterSubzero2+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterSubzero2+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterSubzero2+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterSubzero2+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterSubzero2+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterSubzero2+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL15fighterSubzero2+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterSubzero2+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterSubzero2+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL15fighterSubzero2+596
-	move.l #__ZL13sonyaAnimator,__ZL12fighterSonya+408
-	move.l #__ZL17lightningAnimator,__ZL12fighterSonya+412
-	move.l #__ZL21projectileRingsFrames,__ZL12fighterSonya+588
-	move.l #__ZL24projectileRingsEndFrames,__ZL12fighterSonya+592
-	move.l #__ZL27specials_Sonya_Rings_Inputs,__ZL12fighterSonya+318
-	move.l #__ZL29specials_Sonya_LegGrab_Inputs,__ZL12fighterSonya+322
-	move.l #__ZL34specials_Sonya_SquareFlight_Inputs,__ZL12fighterSonya+326
-	move.w #3,__ZL12fighterSonya+330
-	move.w #14,__ZL12fighterSonya+332
-	move.w #3,__ZL12fighterSonya+334
-	move.l #__ZL16sonyaRingsFrames,__ZL12fighterSonya+568
-	move.l #__ZL18sonyaLegGrabFrames,__ZL12fighterSonya+576
-	move.l #__Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+336
-	move.l #__Z23doSpecial_Sonya_LegGrabP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+340
-	move.l #__Z28doSpecial_Sonya_SquareFlightP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+344
-	move.l #__ZL15sonyaIdleFrames,__ZL12fighterSonya+416
-	move.l #__ZL16sonyaDizzyFrames,__ZL12fighterSonya+420
-	move.l #__ZL15sonyaWinsFrames,__ZL12fighterSonya+424
-	move.l #__ZL18sonyaSpecialFrames,__ZL12fighterSonya+428
-	move.l #__ZL15sonyaWalkFrames,__ZL12fighterSonya+432
-	move.l #__ZL15sonyaTurnFrames,__ZL12fighterSonya+436
-	move.l #__ZL15sonyaJumpFrames,__ZL12fighterSonya+440
-	move.l #__ZL19sonyaJumpRollFrames,__ZL12fighterSonya+444
-	move.l #__ZL15sonyaDuckFrames,__ZL12fighterSonya+448
-	move.l #__ZL16sonyaBlockFrames,__ZL12fighterSonya+452
-	move.l #__ZL19sonyaBlockHitFrames,__ZL12fighterSonya+456
-	move.l #__ZL20sonyaBlockDuckFrames,__ZL12fighterSonya+460
-	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL12fighterSonya+464
-	move.l #__ZL19sonyaPunchLowFrames,__ZL12fighterSonya+468
-	move.l #__ZL25sonyaPunchLowRepeatFrames,__ZL12fighterSonya+472
-	move.l #__ZL20sonyaPunchHighFrames,__ZL12fighterSonya+476
-	move.l #__ZL26sonyaPunchHighRepeatFrames,__ZL12fighterSonya+480
-	move.l #__ZL18sonyaKickLowFrames,__ZL12fighterSonya+484
-	move.l #__ZL19sonyaKickHighFrames,__ZL12fighterSonya+488
-	move.l #__ZL20sonyaJumpPunchFrames,__ZL12fighterSonya+492
-	move.l #__ZL19sonyaJumpKickFrames,__ZL12fighterSonya+496
-	move.l #__ZL23sonyaJumpDropKickFrames,__ZL12fighterSonya+500
-	move.l #__ZL19sonyaUppercutFrames,__ZL12fighterSonya+504
-	move.l #__ZL16sonyaKipUpFrames,__ZL12fighterSonya+532
-	move.l #__ZL16sonyaSweepFrames,__ZL12fighterSonya+536
-	move.l #__ZL21sonyaRoundhouseFrames,__ZL12fighterSonya+540
-	move.l #__ZL20sonyaBodyPunchFrames,__ZL12fighterSonya+544
-	move.l #__ZL19sonyaBodyKickFrames,__ZL12fighterSonya+548
-	move.l #__ZL19sonyaDuckKickFrames,__ZL12fighterSonya+552
-	move.l #__ZL16sonyaThrowFrames,__ZL12fighterSonya+556
-	move.l #__ZL22sonyaBeingThrownFrames,__ZL12fighterSonya+560
-	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL12fighterSonya+564
-	move.l #__ZL17sonyaHitLowFrames,__ZL12fighterSonya+508
-	move.l #__ZL18sonyaHitHighFrames,__ZL12fighterSonya+512
-	move.l #__ZL18sonyaHitBackFrames,__ZL12fighterSonya+516
-	move.l #__ZL22sonyaHitUppercutFrames,__ZL12fighterSonya+520
-	move.l #__ZL18sonyaHitFallFrames,__ZL12fighterSonya+524
-	move.l #__ZL19sonyaHitSweepFrames,__ZL12fighterSonya+528
-	move.l #__ZL14sonyaAnimator2,__ZL13fighterSonya2+408
-	move.l #__ZL18lightning2Animator,__ZL13fighterSonya2+412
-	move.l #__ZL21projectileRingsFrames,__ZL13fighterSonya2+588
-	move.l #__ZL24projectileRingsEndFrames,__ZL13fighterSonya2+592
-	move.l #__ZL27specials_Sonya_Rings_Inputs,__ZL13fighterSonya2+318
-	move.l #__ZL29specials_Sonya_LegGrab_Inputs,__ZL13fighterSonya2+322
-	move.l #__ZL34specials_Sonya_SquareFlight_Inputs,__ZL13fighterSonya2+326
-	move.w #3,__ZL13fighterSonya2+330
-	move.w #14,__ZL13fighterSonya2+332
-	move.w #3,__ZL13fighterSonya2+334
-	move.l #__ZL16sonyaRingsFrames,__ZL13fighterSonya2+568
-	move.l #__ZL18sonyaLegGrabFrames,__ZL13fighterSonya2+576
-	move.l #__Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+336
-	move.l #__Z23doSpecial_Sonya_LegGrabP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+340
-	move.l #__Z28doSpecial_Sonya_SquareFlightP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+344
-	move.l #__ZL15sonyaIdleFrames,__ZL13fighterSonya2+416
-	move.l #__ZL16sonyaDizzyFrames,__ZL13fighterSonya2+420
-	move.l #__ZL15sonyaWinsFrames,__ZL13fighterSonya2+424
-	move.l #__ZL18sonyaSpecialFrames,__ZL13fighterSonya2+428
-	move.l #__ZL15sonyaWalkFrames,__ZL13fighterSonya2+432
-	move.l #__ZL15sonyaTurnFrames,__ZL13fighterSonya2+436
-	move.l #__ZL15sonyaJumpFrames,__ZL13fighterSonya2+440
-	move.l #__ZL19sonyaJumpRollFrames,__ZL13fighterSonya2+444
-	move.l #__ZL15sonyaDuckFrames,__ZL13fighterSonya2+448
-	move.l #__ZL16sonyaBlockFrames,__ZL13fighterSonya2+452
-	move.l #__ZL19sonyaBlockHitFrames,__ZL13fighterSonya2+456
-	move.l #__ZL20sonyaBlockDuckFrames,__ZL13fighterSonya2+460
-	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL13fighterSonya2+464
-	move.l #__ZL19sonyaPunchLowFrames,__ZL13fighterSonya2+468
-	move.l #__ZL25sonyaPunchLowRepeatFrames,__ZL13fighterSonya2+472
-	move.l #__ZL20sonyaPunchHighFrames,__ZL13fighterSonya2+476
-	move.l #__ZL26sonyaPunchHighRepeatFrames,__ZL13fighterSonya2+480
-	move.l #__ZL18sonyaKickLowFrames,__ZL13fighterSonya2+484
-	move.l #__ZL19sonyaKickHighFrames,__ZL13fighterSonya2+488
-	move.l #__ZL20sonyaJumpPunchFrames,__ZL13fighterSonya2+492
-	move.l #__ZL19sonyaJumpKickFrames,__ZL13fighterSonya2+496
-	move.l #__ZL23sonyaJumpDropKickFrames,__ZL13fighterSonya2+500
-	move.l #__ZL19sonyaUppercutFrames,__ZL13fighterSonya2+504
-	move.l #__ZL16sonyaKipUpFrames,__ZL13fighterSonya2+532
-	move.l #__ZL16sonyaSweepFrames,__ZL13fighterSonya2+536
-	move.l #__ZL21sonyaRoundhouseFrames,__ZL13fighterSonya2+540
-	move.l #__ZL20sonyaBodyPunchFrames,__ZL13fighterSonya2+544
-	move.l #__ZL19sonyaBodyKickFrames,__ZL13fighterSonya2+548
-	move.l #__ZL19sonyaDuckKickFrames,__ZL13fighterSonya2+552
-	move.l #__ZL16sonyaThrowFrames,__ZL13fighterSonya2+556
-	move.l #__ZL22sonyaBeingThrownFrames,__ZL13fighterSonya2+560
-	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL13fighterSonya2+564
-	move.l #__ZL17sonyaHitLowFrames,__ZL13fighterSonya2+508
-	move.l #__ZL18sonyaHitHighFrames,__ZL13fighterSonya2+512
-	move.l #__ZL18sonyaHitBackFrames,__ZL13fighterSonya2+516
-	move.l #__ZL22sonyaHitUppercutFrames,__ZL13fighterSonya2+520
-	move.l #__ZL18sonyaHitFallFrames,__ZL13fighterSonya2+524
-	move.l #__ZL19sonyaHitSweepFrames,__ZL13fighterSonya2+528
-	move.l #__ZL14kasumiAnimator,__ZL13fighterKasumi+408
-	move.l #__ZL17lightningAnimator,__ZL13fighterKasumi+412
-	move.l #__ZL30projectileKasumiFireballFrames,__ZL13fighterKasumi+588
-	move.l #__ZL25projectileFreezeEndFrames,__ZL13fighterKasumi+592
-	move.l #__ZL31specials_Kasumi_Fireball_Inputs,__ZL13fighterKasumi+318
-	move.l #__ZL27specials_Kasumi_Roll_Inputs,__ZL13fighterKasumi+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL13fighterKasumi+326
-	move.w #3,__ZL13fighterKasumi+330
+	move.w #3,__ZL16fighterScorpion2+334
+	clr.w __ZL16fighterScorpion2+336
+	move.l #__ZL21scorpionHarpoonFrames,__ZL16fighterScorpion2+570
+	move.l #__ZL24scorpionHarpoonEndFrames,__ZL16fighterScorpion2+574
+	move.l #__Z26doSpecial_Scorpion_HarpoonP12StateMachineP7FighterP14SpriteAnimator,__ZL16fighterScorpion2+338
+	move.l #__Z27doSpecial_Scorpion_TeleportP12StateMachineP7FighterP14SpriteAnimator,__ZL16fighterScorpion2+342
+	move.l #__ZL18scorpionIdleFrames,__ZL16fighterScorpion2+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL16fighterScorpion2+422
+	move.l #__ZL17subzeroWinsFrames,__ZL16fighterScorpion2+426
+	move.l #__ZL21scorpionSpecialFrames,__ZL16fighterScorpion2+430
+	move.l #__ZL18scorpionWalkFrames,__ZL16fighterScorpion2+434
+	move.l #__ZL17subzeroTurnFrames,__ZL16fighterScorpion2+438
+	move.l #__ZL17subzeroJumpFrames,__ZL16fighterScorpion2+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL16fighterScorpion2+446
+	move.l #__ZL17subzeroDuckFrames,__ZL16fighterScorpion2+450
+	move.l #__ZL18subzeroBlockFrames,__ZL16fighterScorpion2+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL16fighterScorpion2+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL16fighterScorpion2+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL16fighterScorpion2+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL16fighterScorpion2+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL16fighterScorpion2+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL16fighterScorpion2+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL16fighterScorpion2+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL16fighterScorpion2+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL16fighterScorpion2+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL16fighterScorpion2+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL16fighterScorpion2+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL16fighterScorpion2+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL16fighterScorpion2+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL16fighterScorpion2+534
+	move.l #__ZL18subzeroSweepFrames,__ZL16fighterScorpion2+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL16fighterScorpion2+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL16fighterScorpion2+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL16fighterScorpion2+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL16fighterScorpion2+554
+	move.l #__ZL18subzeroThrowFrames,__ZL16fighterScorpion2+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL16fighterScorpion2+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL16fighterScorpion2+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL16fighterScorpion2+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL16fighterScorpion2+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL16fighterScorpion2+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL16fighterScorpion2+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL16fighterScorpion2+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL16fighterScorpion2+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL16fighterScorpion2+598
+	move.l #__ZL15subzeroAnimator,__ZL14fighterSubzero+410
+	move.l #__ZL17lightningAnimator,__ZL14fighterSubzero+414
+	move.l #__ZL22projectileFreezeFrames,__ZL14fighterSubzero+590
+	move.l #__ZL25projectileFreezeEndFrames,__ZL14fighterSubzero+594
+	move.l #__ZL30specials_Subzero_Freeze_Inputs,__ZL14fighterSubzero+320
+	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL14fighterSubzero+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterSubzero+328
+	move.w #3,__ZL14fighterSubzero+332
+	move.w #14,__ZL14fighterSubzero+334
+	clr.w __ZL14fighterSubzero+336
+	move.l #__ZL19subzeroFreezeFrames,__ZL14fighterSubzero+570
+	move.l #__ZL18subzeroSlideFrames,__ZL14fighterSubzero+578
+	move.l #__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterSubzero+338
+	move.l #__Z23doSpecial_Subzero_SlideP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterSubzero+342
+	move.l #__ZL17subzeroIdleFrames,__ZL14fighterSubzero+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterSubzero+422
+	move.l #__ZL17subzeroWinsFrames,__ZL14fighterSubzero+426
+	move.l #__ZL20subzeroSpecialFrames,__ZL14fighterSubzero+430
+	move.l #__ZL17subzeroWalkFrames,__ZL14fighterSubzero+434
+	move.l #__ZL17subzeroTurnFrames,__ZL14fighterSubzero+438
+	move.l #__ZL17subzeroJumpFrames,__ZL14fighterSubzero+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterSubzero+446
+	move.l #__ZL17subzeroDuckFrames,__ZL14fighterSubzero+450
+	move.l #__ZL18subzeroBlockFrames,__ZL14fighterSubzero+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterSubzero+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterSubzero+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterSubzero+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterSubzero+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL14fighterSubzero+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterSubzero+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL14fighterSubzero+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterSubzero+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterSubzero+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterSubzero+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterSubzero+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterSubzero+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterSubzero+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterSubzero+534
+	move.l #__ZL18subzeroSweepFrames,__ZL14fighterSubzero+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterSubzero+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterSubzero+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterSubzero+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterSubzero+554
+	move.l #__ZL18subzeroThrowFrames,__ZL14fighterSubzero+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterSubzero+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterSubzero+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterSubzero+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterSubzero+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterSubzero+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL14fighterSubzero+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterSubzero+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterSubzero+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL14fighterSubzero+598
+	move.l #__ZL16subzeroAnimator2,__ZL15fighterSubzero2+410
+	move.l #__ZL18lightning2Animator,__ZL15fighterSubzero2+414
+	move.l #__ZL22projectileFreezeFrames,__ZL15fighterSubzero2+590
+	move.l #__ZL25projectileFreezeEndFrames,__ZL15fighterSubzero2+594
+	move.l #__ZL30specials_Subzero_Freeze_Inputs,__ZL15fighterSubzero2+320
+	move.l #__ZL29specials_Subzero_Slide_Inputs,__ZL15fighterSubzero2+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL15fighterSubzero2+328
+	move.w #3,__ZL15fighterSubzero2+332
+	move.w #14,__ZL15fighterSubzero2+334
+	clr.w __ZL15fighterSubzero2+336
+	move.l #__ZL19subzeroFreezeFrames,__ZL15fighterSubzero2+570
+	move.l #__ZL18subzeroSlideFrames,__ZL15fighterSubzero2+578
+	move.l #__Z24doSpecial_Subzero_FreezeP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterSubzero2+338
+	move.l #__Z23doSpecial_Subzero_SlideP12StateMachineP7FighterP14SpriteAnimator,__ZL15fighterSubzero2+342
+	move.l #__ZL17subzeroIdleFrames,__ZL15fighterSubzero2+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL15fighterSubzero2+422
+	move.l #__ZL17subzeroWinsFrames,__ZL15fighterSubzero2+426
+	move.l #__ZL20subzeroSpecialFrames,__ZL15fighterSubzero2+430
+	move.l #__ZL17subzeroTurnFrames,__ZL15fighterSubzero2+438
+	move.l #__ZL17subzeroWalkFrames,__ZL15fighterSubzero2+434
+	move.l #__ZL17subzeroJumpFrames,__ZL15fighterSubzero2+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL15fighterSubzero2+446
+	move.l #__ZL17subzeroDuckFrames,__ZL15fighterSubzero2+450
+	move.l #__ZL18subzeroBlockFrames,__ZL15fighterSubzero2+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL15fighterSubzero2+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL15fighterSubzero2+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL15fighterSubzero2+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL15fighterSubzero2+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL15fighterSubzero2+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL15fighterSubzero2+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL15fighterSubzero2+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL15fighterSubzero2+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL15fighterSubzero2+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL15fighterSubzero2+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL15fighterSubzero2+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL15fighterSubzero2+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL15fighterSubzero2+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL15fighterSubzero2+534
+	move.l #__ZL18subzeroSweepFrames,__ZL15fighterSubzero2+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL15fighterSubzero2+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL15fighterSubzero2+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL15fighterSubzero2+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL15fighterSubzero2+554
+	move.l #__ZL18subzeroThrowFrames,__ZL15fighterSubzero2+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL15fighterSubzero2+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL15fighterSubzero2+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL15fighterSubzero2+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL15fighterSubzero2+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL15fighterSubzero2+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL15fighterSubzero2+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL15fighterSubzero2+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL15fighterSubzero2+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL15fighterSubzero2+598
+	move.l #__ZL13sonyaAnimator,__ZL12fighterSonya+410
+	move.l #__ZL17lightningAnimator,__ZL12fighterSonya+414
+	move.l #__ZL21projectileRingsFrames,__ZL12fighterSonya+590
+	move.l #__ZL24projectileRingsEndFrames,__ZL12fighterSonya+594
+	move.l #__ZL27specials_Sonya_Rings_Inputs,__ZL12fighterSonya+320
+	move.l #__ZL29specials_Sonya_LegGrab_Inputs,__ZL12fighterSonya+324
+	move.l #__ZL34specials_Sonya_SquareFlight_Inputs,__ZL12fighterSonya+328
+	move.w #3,__ZL12fighterSonya+332
+	move.w #14,__ZL12fighterSonya+334
+	move.w #3,__ZL12fighterSonya+336
+	move.l #__ZL16sonyaRingsFrames,__ZL12fighterSonya+570
+	move.l #__ZL18sonyaLegGrabFrames,__ZL12fighterSonya+578
+	move.l #__Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+338
+	move.l #__Z23doSpecial_Sonya_LegGrabP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+342
+	move.l #__Z28doSpecial_Sonya_SquareFlightP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterSonya+346
+	move.l #__ZL15sonyaIdleFrames,__ZL12fighterSonya+418
+	move.l #__ZL16sonyaDizzyFrames,__ZL12fighterSonya+422
+	move.l #__ZL15sonyaWinsFrames,__ZL12fighterSonya+426
+	move.l #__ZL18sonyaSpecialFrames,__ZL12fighterSonya+430
+	move.l #__ZL15sonyaWalkFrames,__ZL12fighterSonya+434
+	move.l #__ZL15sonyaTurnFrames,__ZL12fighterSonya+438
+	move.l #__ZL15sonyaJumpFrames,__ZL12fighterSonya+442
+	move.l #__ZL19sonyaJumpRollFrames,__ZL12fighterSonya+446
+	move.l #__ZL15sonyaDuckFrames,__ZL12fighterSonya+450
+	move.l #__ZL16sonyaBlockFrames,__ZL12fighterSonya+454
+	move.l #__ZL19sonyaBlockHitFrames,__ZL12fighterSonya+458
+	move.l #__ZL20sonyaBlockDuckFrames,__ZL12fighterSonya+462
+	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL12fighterSonya+466
+	move.l #__ZL19sonyaPunchLowFrames,__ZL12fighterSonya+470
+	move.l #__ZL25sonyaPunchLowRepeatFrames,__ZL12fighterSonya+474
+	move.l #__ZL20sonyaPunchHighFrames,__ZL12fighterSonya+478
+	move.l #__ZL26sonyaPunchHighRepeatFrames,__ZL12fighterSonya+482
+	move.l #__ZL18sonyaKickLowFrames,__ZL12fighterSonya+486
+	move.l #__ZL19sonyaKickHighFrames,__ZL12fighterSonya+490
+	move.l #__ZL20sonyaJumpPunchFrames,__ZL12fighterSonya+494
+	move.l #__ZL19sonyaJumpKickFrames,__ZL12fighterSonya+498
+	move.l #__ZL23sonyaJumpDropKickFrames,__ZL12fighterSonya+502
+	move.l #__ZL19sonyaUppercutFrames,__ZL12fighterSonya+506
+	move.l #__ZL16sonyaKipUpFrames,__ZL12fighterSonya+534
+	move.l #__ZL16sonyaSweepFrames,__ZL12fighterSonya+538
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL12fighterSonya+542
+	move.l #__ZL20sonyaBodyPunchFrames,__ZL12fighterSonya+546
+	move.l #__ZL19sonyaBodyKickFrames,__ZL12fighterSonya+550
+	move.l #__ZL19sonyaDuckKickFrames,__ZL12fighterSonya+554
+	move.l #__ZL16sonyaThrowFrames,__ZL12fighterSonya+558
+	move.l #__ZL22sonyaBeingThrownFrames,__ZL12fighterSonya+562
+	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL12fighterSonya+566
+	move.l #__ZL17sonyaHitLowFrames,__ZL12fighterSonya+510
+	move.l #__ZL18sonyaHitHighFrames,__ZL12fighterSonya+514
+	move.l #__ZL18sonyaHitBackFrames,__ZL12fighterSonya+518
+	move.l #__ZL22sonyaHitUppercutFrames,__ZL12fighterSonya+522
+	move.l #__ZL18sonyaHitFallFrames,__ZL12fighterSonya+526
+	move.l #__ZL19sonyaHitSweepFrames,__ZL12fighterSonya+530
+	move.l #__ZL14sonyaAnimator2,__ZL13fighterSonya2+410
+	move.l #__ZL18lightning2Animator,__ZL13fighterSonya2+414
+	move.l #__ZL21projectileRingsFrames,__ZL13fighterSonya2+590
+	move.l #__ZL24projectileRingsEndFrames,__ZL13fighterSonya2+594
+	move.l #__ZL27specials_Sonya_Rings_Inputs,__ZL13fighterSonya2+320
+	move.l #__ZL29specials_Sonya_LegGrab_Inputs,__ZL13fighterSonya2+324
+	move.l #__ZL34specials_Sonya_SquareFlight_Inputs,__ZL13fighterSonya2+328
+	move.w #3,__ZL13fighterSonya2+332
+	move.w #14,__ZL13fighterSonya2+334
+	move.w #3,__ZL13fighterSonya2+336
+	move.l #__ZL16sonyaRingsFrames,__ZL13fighterSonya2+570
+	move.l #__ZL18sonyaLegGrabFrames,__ZL13fighterSonya2+578
+	move.l #__Z21doSpecial_Sonya_RingsP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+338
+	move.l #__Z23doSpecial_Sonya_LegGrabP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+342
+	move.l #__Z28doSpecial_Sonya_SquareFlightP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterSonya2+346
+	move.l #__ZL15sonyaIdleFrames,__ZL13fighterSonya2+418
+	move.l #__ZL16sonyaDizzyFrames,__ZL13fighterSonya2+422
+	move.l #__ZL15sonyaWinsFrames,__ZL13fighterSonya2+426
+	move.l #__ZL18sonyaSpecialFrames,__ZL13fighterSonya2+430
+	move.l #__ZL15sonyaWalkFrames,__ZL13fighterSonya2+434
+	move.l #__ZL15sonyaTurnFrames,__ZL13fighterSonya2+438
+	move.l #__ZL15sonyaJumpFrames,__ZL13fighterSonya2+442
+	move.l #__ZL19sonyaJumpRollFrames,__ZL13fighterSonya2+446
+	move.l #__ZL15sonyaDuckFrames,__ZL13fighterSonya2+450
+	move.l #__ZL16sonyaBlockFrames,__ZL13fighterSonya2+454
+	move.l #__ZL19sonyaBlockHitFrames,__ZL13fighterSonya2+458
+	move.l #__ZL20sonyaBlockDuckFrames,__ZL13fighterSonya2+462
+	move.l #__ZL23sonyaBlockDuckHitFrames,__ZL13fighterSonya2+466
+	move.l #__ZL19sonyaPunchLowFrames,__ZL13fighterSonya2+470
+	move.l #__ZL25sonyaPunchLowRepeatFrames,__ZL13fighterSonya2+474
+	move.l #__ZL20sonyaPunchHighFrames,__ZL13fighterSonya2+478
+	move.l #__ZL26sonyaPunchHighRepeatFrames,__ZL13fighterSonya2+482
+	move.l #__ZL18sonyaKickLowFrames,__ZL13fighterSonya2+486
+	move.l #__ZL19sonyaKickHighFrames,__ZL13fighterSonya2+490
+	move.l #__ZL20sonyaJumpPunchFrames,__ZL13fighterSonya2+494
+	move.l #__ZL19sonyaJumpKickFrames,__ZL13fighterSonya2+498
+	move.l #__ZL23sonyaJumpDropKickFrames,__ZL13fighterSonya2+502
+	move.l #__ZL19sonyaUppercutFrames,__ZL13fighterSonya2+506
+	move.l #__ZL16sonyaKipUpFrames,__ZL13fighterSonya2+534
+	move.l #__ZL16sonyaSweepFrames,__ZL13fighterSonya2+538
+	move.l #__ZL21sonyaRoundhouseFrames,__ZL13fighterSonya2+542
+	move.l #__ZL20sonyaBodyPunchFrames,__ZL13fighterSonya2+546
+	move.l #__ZL19sonyaBodyKickFrames,__ZL13fighterSonya2+550
+	move.l #__ZL19sonyaDuckKickFrames,__ZL13fighterSonya2+554
+	move.l #__ZL16sonyaThrowFrames,__ZL13fighterSonya2+558
+	move.l #__ZL22sonyaBeingThrownFrames,__ZL13fighterSonya2+562
+	move.l #__ZL25sonyaBeingThrownLowFrames,__ZL13fighterSonya2+566
+	move.l #__ZL17sonyaHitLowFrames,__ZL13fighterSonya2+510
+	move.l #__ZL18sonyaHitHighFrames,__ZL13fighterSonya2+514
+	move.l #__ZL18sonyaHitBackFrames,__ZL13fighterSonya2+518
+	move.l #__ZL22sonyaHitUppercutFrames,__ZL13fighterSonya2+522
+	move.l #__ZL18sonyaHitFallFrames,__ZL13fighterSonya2+526
+	move.l #__ZL19sonyaHitSweepFrames,__ZL13fighterSonya2+530
+	move.l #__ZL14kasumiAnimator,__ZL13fighterKasumi+410
+	move.l #__ZL17lightningAnimator,__ZL13fighterKasumi+414
+	move.l #__ZL30projectileKasumiFireballFrames,__ZL13fighterKasumi+590
+	move.l #__ZL25projectileFreezeEndFrames,__ZL13fighterKasumi+594
+	move.l #__ZL31specials_Kasumi_Fireball_Inputs,__ZL13fighterKasumi+320
+	move.l #__ZL27specials_Kasumi_Roll_Inputs,__ZL13fighterKasumi+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL13fighterKasumi+328
 	move.w #3,__ZL13fighterKasumi+332
-	clr.w __ZL13fighterKasumi+334
-	move.l #__ZL20kasumiFireballFrames,__ZL13fighterKasumi+568
-	move.l #__ZL16kasumiRollFrames,__ZL13fighterKasumi+576
-	move.l #__Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterKasumi+336
-	move.l #__Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterKasumi+340
-	move.l #__ZL17subzeroIdleFrames,__ZL13fighterKasumi+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL13fighterKasumi+420
-	move.l #__ZL17subzeroWinsFrames,__ZL13fighterKasumi+424
-	move.l #__ZL19kasumiSpecialFrames,__ZL13fighterKasumi+428
-	move.l #__ZL17subzeroWalkFrames,__ZL13fighterKasumi+432
-	move.l #__ZL17subzeroTurnFrames,__ZL13fighterKasumi+436
-	move.l #__ZL17subzeroJumpFrames,__ZL13fighterKasumi+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL13fighterKasumi+444
-	move.l #__ZL17subzeroDuckFrames,__ZL13fighterKasumi+448
-	move.l #__ZL18subzeroBlockFrames,__ZL13fighterKasumi+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL13fighterKasumi+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL13fighterKasumi+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL13fighterKasumi+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL13fighterKasumi+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL13fighterKasumi+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL13fighterKasumi+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL13fighterKasumi+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL13fighterKasumi+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL13fighterKasumi+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL13fighterKasumi+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL13fighterKasumi+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL13fighterKasumi+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL13fighterKasumi+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL13fighterKasumi+532
-	move.l #__ZL18subzeroSweepFrames,__ZL13fighterKasumi+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL13fighterKasumi+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL13fighterKasumi+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL13fighterKasumi+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL13fighterKasumi+552
-	move.l #__ZL18subzeroThrowFrames,__ZL13fighterKasumi+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL13fighterKasumi+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL13fighterKasumi+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL13fighterKasumi+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL13fighterKasumi+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL13fighterKasumi+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL13fighterKasumi+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL13fighterKasumi+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL13fighterKasumi+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL13fighterKasumi+596
-	move.l #__ZL14kasumiAnimator,__ZL14fighterKasumi2+408
-	move.l #__ZL17lightningAnimator,__ZL14fighterKasumi2+412
-	move.l #__ZL30projectileKasumiFireballFrames,__ZL14fighterKasumi2+588
-	move.l #__ZL25projectileFreezeEndFrames,__ZL14fighterKasumi2+592
-	move.l #__ZL31specials_Kasumi_Fireball_Inputs,__ZL14fighterKasumi2+318
-	move.l #__ZL27specials_Kasumi_Roll_Inputs,__ZL14fighterKasumi2+322
-	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterKasumi2+326
-	move.w #3,__ZL14fighterKasumi2+330
+	move.w #3,__ZL13fighterKasumi+334
+	clr.w __ZL13fighterKasumi+336
+	move.l #__ZL20kasumiFireballFrames,__ZL13fighterKasumi+570
+	move.l #__ZL16kasumiRollFrames,__ZL13fighterKasumi+578
+	move.l #__Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterKasumi+338
+	move.l #__Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator,__ZL13fighterKasumi+342
+	move.l #__ZL17subzeroIdleFrames,__ZL13fighterKasumi+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL13fighterKasumi+422
+	move.l #__ZL17subzeroWinsFrames,__ZL13fighterKasumi+426
+	move.l #__ZL19kasumiSpecialFrames,__ZL13fighterKasumi+430
+	move.l #__ZL17subzeroWalkFrames,__ZL13fighterKasumi+434
+	move.l #__ZL17subzeroTurnFrames,__ZL13fighterKasumi+438
+	move.l #__ZL17subzeroJumpFrames,__ZL13fighterKasumi+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL13fighterKasumi+446
+	move.l #__ZL17subzeroDuckFrames,__ZL13fighterKasumi+450
+	move.l #__ZL18subzeroBlockFrames,__ZL13fighterKasumi+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL13fighterKasumi+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL13fighterKasumi+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL13fighterKasumi+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL13fighterKasumi+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL13fighterKasumi+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL13fighterKasumi+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL13fighterKasumi+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL13fighterKasumi+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL13fighterKasumi+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL13fighterKasumi+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL13fighterKasumi+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL13fighterKasumi+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL13fighterKasumi+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL13fighterKasumi+534
+	move.l #__ZL18subzeroSweepFrames,__ZL13fighterKasumi+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL13fighterKasumi+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL13fighterKasumi+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL13fighterKasumi+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL13fighterKasumi+554
+	move.l #__ZL18subzeroThrowFrames,__ZL13fighterKasumi+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL13fighterKasumi+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL13fighterKasumi+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL13fighterKasumi+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL13fighterKasumi+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL13fighterKasumi+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL13fighterKasumi+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL13fighterKasumi+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL13fighterKasumi+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL13fighterKasumi+598
+	move.l #__ZL14kasumiAnimator,__ZL14fighterKasumi2+410
+	move.l #__ZL17lightningAnimator,__ZL14fighterKasumi2+414
+	move.l #__ZL30projectileKasumiFireballFrames,__ZL14fighterKasumi2+590
+	move.l #__ZL25projectileFreezeEndFrames,__ZL14fighterKasumi2+594
+	move.l #__ZL31specials_Kasumi_Fireball_Inputs,__ZL14fighterKasumi2+320
+	move.l #__ZL27specials_Kasumi_Roll_Inputs,__ZL14fighterKasumi2+324
+	move.l #__ZL28specials_FIGHTER_NONE_Inputs,__ZL14fighterKasumi2+328
 	move.w #3,__ZL14fighterKasumi2+332
-	clr.w __ZL14fighterKasumi2+334
-	move.l #__ZL20kasumiFireballFrames,__ZL14fighterKasumi2+568
-	move.l #__ZL16kasumiRollFrames,__ZL14fighterKasumi2+576
-	move.l #__Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterKasumi2+336
-	move.l #__Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterKasumi2+340
-	move.l #__ZL17subzeroIdleFrames,__ZL14fighterKasumi2+416
-	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterKasumi2+420
-	move.l #__ZL17subzeroWinsFrames,__ZL14fighterKasumi2+424
-	move.l #__ZL19kasumiSpecialFrames,__ZL14fighterKasumi2+428
-	move.l #__ZL17subzeroWalkFrames,__ZL14fighterKasumi2+432
-	move.l #__ZL17subzeroTurnFrames,__ZL14fighterKasumi2+436
-	move.l #__ZL17subzeroJumpFrames,__ZL14fighterKasumi2+440
-	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterKasumi2+444
-	move.l #__ZL17subzeroDuckFrames,__ZL14fighterKasumi2+448
-	move.l #__ZL18subzeroBlockFrames,__ZL14fighterKasumi2+452
-	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterKasumi2+456
-	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterKasumi2+460
-	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterKasumi2+464
-	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterKasumi2+468
-	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL14fighterKasumi2+472
-	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterKasumi2+476
-	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL14fighterKasumi2+480
-	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterKasumi2+484
-	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterKasumi2+488
-	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterKasumi2+492
-	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterKasumi2+496
-	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterKasumi2+500
-	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterKasumi2+504
-	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterKasumi2+532
-	move.l #__ZL18subzeroSweepFrames,__ZL14fighterKasumi2+536
-	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterKasumi2+540
-	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterKasumi2+544
-	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterKasumi2+548
-	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterKasumi2+552
-	move.l #__ZL18subzeroThrowFrames,__ZL14fighterKasumi2+556
-	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterKasumi2+560
-	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterKasumi2+564
-	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterKasumi2+508
-	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterKasumi2+512
-	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterKasumi2+516
-	move.l #__ZL24subzeroHitUppercutFrames,__ZL14fighterKasumi2+520
-	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterKasumi2+524
-	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterKasumi2+528
-	move.l #__ZL20subzeroHitNutsFrames,__ZL14fighterKasumi2+596
+	move.w #3,__ZL14fighterKasumi2+334
+	clr.w __ZL14fighterKasumi2+336
+	move.l #__ZL20kasumiFireballFrames,__ZL14fighterKasumi2+570
+	move.l #__ZL16kasumiRollFrames,__ZL14fighterKasumi2+578
+	move.l #__Z25doSpecial_Kasumi_FireballP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterKasumi2+338
+	move.l #__Z21doSpecial_Kasumi_RollP12StateMachineP7FighterP14SpriteAnimator,__ZL14fighterKasumi2+342
+	move.l #__ZL17subzeroIdleFrames,__ZL14fighterKasumi2+418
+	move.l #__ZL18subzeroDizzyFrames,__ZL14fighterKasumi2+422
+	move.l #__ZL17subzeroWinsFrames,__ZL14fighterKasumi2+426
+	move.l #__ZL19kasumiSpecialFrames,__ZL14fighterKasumi2+430
+	move.l #__ZL17subzeroWalkFrames,__ZL14fighterKasumi2+434
+	move.l #__ZL17subzeroTurnFrames,__ZL14fighterKasumi2+438
+	move.l #__ZL17subzeroJumpFrames,__ZL14fighterKasumi2+442
+	move.l #__ZL21subzeroJumpRollFrames,__ZL14fighterKasumi2+446
+	move.l #__ZL17subzeroDuckFrames,__ZL14fighterKasumi2+450
+	move.l #__ZL18subzeroBlockFrames,__ZL14fighterKasumi2+454
+	move.l #__ZL21subzeroBlockHitFrames,__ZL14fighterKasumi2+458
+	move.l #__ZL22subzeroBlockDuckFrames,__ZL14fighterKasumi2+462
+	move.l #__ZL25subzeroBlockDuckHitFrames,__ZL14fighterKasumi2+466
+	move.l #__ZL21subzeroPunchLowFrames,__ZL14fighterKasumi2+470
+	move.l #__ZL27subzeroPunchLowRepeatFrames,__ZL14fighterKasumi2+474
+	move.l #__ZL22subzeroPunchHighFrames,__ZL14fighterKasumi2+478
+	move.l #__ZL28subzeroPunchHighRepeatFrames,__ZL14fighterKasumi2+482
+	move.l #__ZL20subzeroKickLowFrames,__ZL14fighterKasumi2+486
+	move.l #__ZL21subzeroKickHighFrames,__ZL14fighterKasumi2+490
+	move.l #__ZL22subzeroJumpPunchFrames,__ZL14fighterKasumi2+494
+	move.l #__ZL21subzeroJumpKickFrames,__ZL14fighterKasumi2+498
+	move.l #__ZL25subzeroJumpDropKickFrames,__ZL14fighterKasumi2+502
+	move.l #__ZL21subzeroUppercutFrames,__ZL14fighterKasumi2+506
+	move.l #__ZL18subzeroKipUpFrames,__ZL14fighterKasumi2+534
+	move.l #__ZL18subzeroSweepFrames,__ZL14fighterKasumi2+538
+	move.l #__ZL23subzeroRoundhouseFrames,__ZL14fighterKasumi2+542
+	move.l #__ZL22subzeroBodyPunchFrames,__ZL14fighterKasumi2+546
+	move.l #__ZL21subzeroBodyKickFrames,__ZL14fighterKasumi2+550
+	move.l #__ZL21subzeroDuckKickFrames,__ZL14fighterKasumi2+554
+	move.l #__ZL18subzeroThrowFrames,__ZL14fighterKasumi2+558
+	move.l #__ZL24subzeroBeingThrownFrames,__ZL14fighterKasumi2+562
+	move.l #__ZL27subzeroBeingThrownLowFrames,__ZL14fighterKasumi2+566
+	move.l #__ZL19subzeroHitLowFrames,__ZL14fighterKasumi2+510
+	move.l #__ZL20subzeroHitHighFrames,__ZL14fighterKasumi2+514
+	move.l #__ZL20subzeroHitBackFrames,__ZL14fighterKasumi2+518
+	move.l #__ZL24subzeroHitUppercutFrames,__ZL14fighterKasumi2+522
+	move.l #__ZL20subzeroHitFallFrames,__ZL14fighterKasumi2+526
+	move.l #__ZL21subzeroHitSweepFrames,__ZL14fighterKasumi2+530
+	move.l #__ZL20subzeroHitNutsFrames,__ZL14fighterKasumi2+598
 	move.w #0,15728728
 	addq.l #8,%sp
 	moveq #20,%d1
@@ -6401,15 +6401,15 @@ __Z9basicmainv:
 	jsr __Z17fighterCastShadowP7Fighterb
 	addq.l #8,%sp
 	move.l %d5,%a0
-	move.l 202(%a0),-(%sp)
+	move.l 204(%a0),-(%sp)
 	jsr jsfGetPad
 	move.l %d5,%a1
-	move.l %d0,192(%a1)
+	move.l %d0,194(%a1)
 	move.l %d6,%a0
-	move.l 202(%a0),(%sp)
+	move.l 204(%a0),(%sp)
 	jsr jsfGetPad
 	move.l %d6,%a1
-	move.l %d0,192(%a1)
+	move.l %d0,194(%a1)
 	move.l -60(%fp),(%sp)
 	move.l %d5,-(%sp)
 	pea __ZL19fighterStateMachine
@@ -6552,15 +6552,15 @@ __Z9basicmainv:
 	moveq #1,%d0
 	move.l %d0,(%sp)
 	jsr jsfGetPad
-	move.l %d0,__ZL11fighterCage+192
+	move.l %d0,__ZL11fighterCage+194
 	moveq #2,%d1
 	move.l %d1,(%sp)
 	jsr jsfGetPad
-	move.l %d0,__ZL12fighterCage2+192
+	move.l %d0,__ZL12fighterCage2+194
 	addq.l #4,%sp
 	tst.b __ZL11fighterCage+101
 	jeq .L254
-	move.l __ZL11fighterCage+192,%d0
+	move.l __ZL11fighterCage+194,%d0
 	move.l JAGPAD_HASH,%a1
 	move.l %a1,%d1
 	and.l %d0,%d1
@@ -6575,7 +6575,7 @@ __Z9basicmainv:
 .L254:
 	tst.b __ZL12fighterCage2+101
 	jeq .L257
-	move.l __ZL12fighterCage2+192,%d0
+	move.l __ZL12fighterCage2+194,%d0
 	move.l JAGPAD_HASH,%a1
 	move.l %a1,%d1
 	and.l %d0,%d1
@@ -6894,8 +6894,8 @@ __Z9basicmainv:
 	move.l %d6,%a1
 	move.w (%a1),96(%a0)
 	move.w (%a0),96(%a1)
-	move.l %d6,604(%a0)
-	move.l %d5,604(%a1)
+	move.l %d6,606(%a0)
+	move.l %d5,606(%a1)
 	jsr __Z9musicStopv
 	jsr __Z12stageSetNextv
 	move.w _p2Cursor,%a0
@@ -7418,20 +7418,20 @@ __Z9basicmainv:
 	move.l #__ZL13fighterKasumi,%d5
 .L349:
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -7445,20 +7445,20 @@ __Z9basicmainv:
 	move.l #__ZL14fighterKasumi2,%d6
 .L361:
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -7913,20 +7913,20 @@ __Z9basicmainv:
 	move.l #__ZL13kanoAnimator2,-64(%fp)
 	move.l #__ZL12fighterKano2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -7939,20 +7939,20 @@ __Z9basicmainv:
 	move.l #__ZL13cageAnimator2,-64(%fp)
 	move.l #__ZL12fighterCage2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -7960,10 +7960,10 @@ __Z9basicmainv:
 	jra .L360
 .L458:
 	move.l %d5,%a0
-	tst.b 143(%a0)
+	tst.b 144(%a0)
 	jne .L392
 	move.l %d6,%a1
-	tst.b 143(%a1)
+	tst.b 144(%a1)
 	jeq .L393
 .L392:
 	pea 1.w
@@ -8219,20 +8219,20 @@ __Z9basicmainv:
 	move.l #__ZL13kangAnimator2,-64(%fp)
 	move.l #__ZL12fighterKang2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -8248,20 +8248,20 @@ __Z9basicmainv:
 	move.l #__ZL15raidenAnimator2,-64(%fp)
 	move.l #__ZL14fighterRaiden2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -8274,20 +8274,20 @@ __Z9basicmainv:
 	move.l #__ZL14sonyaAnimator2,-64(%fp)
 	move.l #__ZL13fighterSonya2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -8300,20 +8300,20 @@ __Z9basicmainv:
 	move.l #__ZL16subzeroAnimator2,-64(%fp)
 	move.l #__ZL15fighterSubzero2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -8367,20 +8367,20 @@ __Z9basicmainv:
 	move.l #__ZL17scorpionAnimator2,-64(%fp)
 	move.l #__ZL16fighterScorpion2,%d6
 	move.l %d6,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-24,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-20,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-16,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-12,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-8,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-4,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d6,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.w _p2Selected,%d0
@@ -8400,20 +8400,20 @@ __Z9basicmainv:
 	move.l #__ZL16scorpionAnimator,-60(%fp)
 	move.l #__ZL15fighterScorpion,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8426,20 +8426,20 @@ __Z9basicmainv:
 	move.l #__ZL12kanoAnimator,-60(%fp)
 	move.l #__ZL11fighterKano,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8452,20 +8452,20 @@ __Z9basicmainv:
 	move.l #__ZL12cageAnimator,-60(%fp)
 	move.l #__ZL11fighterCage,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8478,20 +8478,20 @@ __Z9basicmainv:
 	move.l #__ZL12kangAnimator,-60(%fp)
 	move.l #__ZL11fighterKang,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8507,20 +8507,20 @@ __Z9basicmainv:
 	move.l #__ZL14raidenAnimator,-60(%fp)
 	move.l #__ZL13fighterRaiden,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8533,20 +8533,20 @@ __Z9basicmainv:
 	move.l #__ZL13sonyaAnimator,-60(%fp)
 	move.l #__ZL12fighterSonya,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -8559,20 +8559,20 @@ __Z9basicmainv:
 	move.l #__ZL15subzeroAnimator,-60(%fp)
 	move.l #__ZL14fighterSubzero,%d5
 	move.l %d5,%a1
-	move.l 408(%a1),%a0
+	move.l 410(%a1),%a0
 	clr.w 14(%a0)
 	lea (-48,%fp),%a0
-	move.l %a0,294(%a1)
+	move.l %a0,296(%a1)
 	lea (-44,%fp),%a0
-	move.l %a0,298(%a1)
+	move.l %a0,300(%a1)
 	lea (-40,%fp),%a0
-	move.l %a0,302(%a1)
+	move.l %a0,304(%a1)
 	lea (-36,%fp),%a0
-	move.l %a0,306(%a1)
+	move.l %a0,308(%a1)
 	lea (-32,%fp),%a0
-	move.l %a0,310(%a1)
+	move.l %a0,312(%a1)
 	lea (-28,%fp),%a0
-	move.l %a0,314(%a1)
+	move.l %a0,316(%a1)
 	move.l %d5,-(%sp)
 	jsr __Z15playerinputInitP7Fighter
 	move.l JAGPAD_C,%d2
@@ -9889,7 +9889,7 @@ __ZL11fighterCage:
 	.word	11
 	.word	8
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL12cageAnimator:
 	.long	15
@@ -12301,7 +12301,7 @@ __ZL12fighterCage2:
 	.word	11
 	.word	8
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL13cageAnimator2:
 	.long	17
@@ -12365,7 +12365,7 @@ __ZL11fighterKano:
 	.word	0
 	.word	28
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL12kanoAnimator:
 	.long	15
@@ -14750,7 +14750,7 @@ __ZL12fighterKano2:
 	.word	0
 	.word	28
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL13kanoAnimator2:
 	.long	17
@@ -14806,7 +14806,7 @@ __ZL13fighterRaiden:
 	.word	5
 	.word	20
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL15lightningFrames:
 	.word	64
@@ -17540,7 +17540,7 @@ __ZL14fighterRaiden2:
 	.word	5
 	.word	20
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL15raidenAnimator2:
 	.long	17
@@ -17596,7 +17596,7 @@ __ZL11fighterKang:
 	.word	0
 	.word	9
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL12kangAnimator:
 	.long	15
@@ -19929,7 +19929,7 @@ __ZL12fighterKang2:
 	.word	0
 	.word	9
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL13kangAnimator2:
 	.long	17
@@ -19985,7 +19985,7 @@ __ZL15fighterScorpion:
 	.word	0
 	.word	19
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL16scorpionAnimator:
 	.long	15
@@ -22362,7 +22362,7 @@ __ZL16fighterScorpion2:
 	.word	0
 	.word	19
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL17scorpionAnimator2:
 	.long	17
@@ -22413,7 +22413,7 @@ __ZL14fighterSubzero:
 	.word	26
 	.word	7
 	.word	6
-	.skip 526
+	.skip 528
 	.even
 __ZL15subzeroAnimator:
 	.long	15
@@ -23068,7 +23068,7 @@ __ZL15fighterSubzero2:
 	.word	26
 	.word	7
 	.word	6
-	.skip 526
+	.skip 528
 	.even
 __ZL16subzeroAnimator2:
 	.long	17
@@ -23124,7 +23124,7 @@ __ZL12fighterSonya:
 	.word	4
 	.word	8
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL13sonyaAnimator:
 	.long	15
@@ -25500,7 +25500,7 @@ __ZL13fighterSonya2:
 	.word	4
 	.word	8
 	.word	5
-	.skip 516
+	.skip 518
 	.even
 __ZL14sonyaAnimator2:
 	.long	17
@@ -25556,7 +25556,7 @@ __ZL13fighterKasumi:
 	.word	0
 	.word	7
 	.word	0
-	.skip 516
+	.skip 518
 	.even
 __ZL14kasumiAnimator:
 	.long	15
@@ -26028,11 +26028,11 @@ __ZL14fighterKasumi2:
 	.word	0
 	.word	7
 	.word	0
-	.skip 516
+	.skip 518
 	.even
 __ZL12soundHandler:
-	.byte	0
-	.byte	0
+	.byte	1
+	.byte	1
 	.word	163
 	.word	120
 	.skip 2

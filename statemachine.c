@@ -55,6 +55,9 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
 
     if (fighter->hitPoints <= 0
         && !fighter->IsBeingDamaged
+        && fighter->IsActive
+        && !fighter->IsDefeated
+        && !fighter->TookFinalBlow
         && fighter->currentState->Name != STATE_FINISH_HIM
         && fighter->currentState->Name != STATE_IS_LOSER)
     {
@@ -64,7 +67,8 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         }
         else
         {
-            fighter->vars[0] = fighter->currentState->Name == STATE_LAYDOWN ? 1 : 0;
+            fighter->vars[0] = 0;//fighter->currentState->Name == STATE_LAYDOWN ? 1 : 0;
+            fighter->roundsLost++;
             stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
         }
     }
@@ -155,7 +159,13 @@ void stateMachineSleep(struct StateMachine* stateMachine, short ticks, struct Fi
 
 void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    
+    if (fighter->IsDefeated)
+    {
+        fighter->IsActive = false;
+        fighter->TookFinalBlow = true;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
+    }
+
     fighter->MadeContact = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
@@ -1653,6 +1663,13 @@ void StateHitSweep_HandleInput(struct StateMachine* stateMachine, struct Fighter
 
 void StateGetUp_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    if (fighter->IsDefeated)
+    {
+        fighter->IsActive = false;
+        fighter->TookFinalBlow = true;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
+    }
+
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->exitingState = false;
@@ -1872,6 +1889,13 @@ void StateHitUppercut_HandleInput(struct StateMachine* stateMachine, struct Figh
 
 void StateLaydown_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    if (fighter->IsDefeated)
+    {
+        fighter->IsActive = false;
+        fighter->TookFinalBlow = true;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
+    }    
+
     fighter->exitingState = false;
     fighter->lastTicks = rapTicks;
 }
@@ -4211,8 +4235,8 @@ void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
     sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-    fighter->roundsLost++;
 }
 
 void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -4228,10 +4252,6 @@ void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* figh
         }
 
         updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-    }
-    else
-    {
-        animateFrame(spriteAnimator, fighter->spriteIndex, fighter->HIT_FALL_FRAME_COUNT-1, *fighter->hitFallFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
     }
 }
 
@@ -4292,31 +4312,37 @@ void StateIsWinner_HandleInput(struct StateMachine* stateMachine, struct Fighter
 
 void StateFinishHim_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    if (fighter->IsDefeated && fighter->TookFinalBlow)
+    {
+        fighter->IsActive = false;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
+    }
+
     fighter->exitingState = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
-    
+    fighter->IsDefeated = true;
 }
 
 void StateFinishHim_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    // if (fighter->IsBeingDamaged && fighter->vars[1] == 0)
-    // {
-    //     fighter->vars[1] = 1;
-     
-    //     if (animationIsComplete(spriteAnimator, fighter->HIT_FALL_FRAME_COUNT))
-    //     {
-    //         fighterSetOnFloor(fighter);
-    //         sfxThud(fighter->soundHandler);
-    //         bgShake(false);                
-    //         fighter->roundsLost++;
-    //     }
+    if (fighter->IsDefeated && fighter->TookFinalBlow)
+    {
+        if (animationIsComplete(spriteAnimator, fighter->HIT_FALL_FRAME_COUNT))
+        {
+            fighterSetOnFloor(fighter);
+            sfxThud(fighter->soundHandler);
+            bgShake(false);                
+            fighter->vars[0] = 1;
+        }
 
-    //     updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-    // }
-
-    updateSpriteAnimator(spriteAnimator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+        updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else
+    {
+        updateSpriteAnimator(spriteAnimator, *fighter->dizzyFrames, fighter->DIZZY_FRAME_COUNT, true, true, fighter->positionX, fighter->positionY, fighter->direction);
+    }
 }
 
 void StateFinishHim_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)

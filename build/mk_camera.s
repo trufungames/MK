@@ -41,27 +41,27 @@ __Z12cameraUpdateP7FighterS0_:
 	movem.l #12336,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%a1
-	move.w 248(%a0),%d2
+	move.w 250(%a0),%d2
 	move.l _cameraX,%d0
 	move.w _xOffset+2,%d1
 	add.w %d0,%d1
 	move.w %d2,%d3
 	sub.w %d1,%d3
-	move.w %d3,240(%a0)
-	move.w 248(%a1),%a2
+	move.w %d3,242(%a0)
+	move.w 250(%a1),%a2
 	move.w %a2,%d3
 	sub.w %d1,%d3
-	move.w %d3,240(%a1)
+	move.w %d3,242(%a1)
 	move.w raptor_ticks,%a3
 	move.l _cameraTicks,%d1
 	addq.l #1,%d1
 	cmp.l %a3,%d1
 	jge .L2
-	move.w 262(%a0),%d1
+	move.w 264(%a0),%d1
 	cmp.w #1,%d1
 	jeq .L35
 .L4:
-	move.w 262(%a1),%d3
+	move.w 264(%a1),%d3
 	cmp.w #1,%d3
 	jeq .L36
 .L6:
@@ -308,7 +308,7 @@ __Z28cameraFighterIsAtBoundsRightP7Fighter:
 	cmp.l _cameraXMax.l,%d0
 	jlt .L54
 	move.l 8(%fp),%a0
-	cmp.w #261,240(%a0)
+	cmp.w #261,242(%a0)
 	sgt %d0
 	neg.b %d0
 	unlk %fp
@@ -325,7 +325,7 @@ __Z27cameraFighterIsAtBoundsLeftP7Fighter:
 	cmp.l _cameraX.l,%d0
 	jlt .L59
 	move.l 8(%fp),%a0
-	cmp.w #10,240(%a0)
+	cmp.w #10,242(%a0)
 	sle %d0
 	neg.b %d0
 	unlk %fp

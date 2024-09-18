@@ -80,8 +80,8 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,12876(%a0)
 	add.w %d0,13068(%a0)
 	add.w %d0,9228(%a0)
-	add.w %d0,242(%a3)
-	add.w %d0,242(%a2)
+	add.w %d0,244(%a3)
+	add.w %d0,244(%a2)
 .L14:
 	move.l %a1,_LastTicks
 .L6:
@@ -142,8 +142,8 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,12876(%a0)
 	add.w %d0,13068(%a0)
 	add.w %d0,9228(%a0)
-	add.w %d0,242(%a3)
-	add.w %d0,242(%a2)
+	add.w %d0,244(%a3)
+	add.w %d0,244(%a2)
 	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv

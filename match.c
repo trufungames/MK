@@ -256,7 +256,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		else if (fighter1->currentState->Name == STATE_FINISH_HIM || fighter2->currentState->Name == STATE_FINISH_HIM)
 		{
 			rapClockMode = Clock_Freeze;
-			fighterResetFlagsAll(fighter1, fighter2);
+			//fighterResetFlagsAll(fighter1, fighter2);
 			fighterSetOnFloor(fighter1);
 			fighterSetOnFloor(fighter2);
 			matchState = 4;  //FINISH HIM/HER!
@@ -323,6 +323,9 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 						break;
 					case SONYA:
 						sfxSonya(soundHandler);
+						break;
+					case KASUMI:
+						sfxKasumi(soundHandler);
 						break;
 					default:
 						break;

@@ -139,7 +139,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDizzy = false;
-    fighter->IsFinishHim = false;
+    fighter->TookFinalBlow = false;
     fighter->IsStunned = false;
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
@@ -1155,7 +1155,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
     fighter->IsDefeated = false;
-    fighter->IsFinishHim = false;
+    fighter->TookFinalBlow = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
     fighter->IsStunned = false;
