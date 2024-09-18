@@ -353,8 +353,8 @@ __Z19stagePositionAssetsv:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	tst.w __ZL12currentStage
-	jne .L52
+	move.w __ZL12currentStage,%d0
+	jne .L57
 	move.l sprite,%a3
 	lea __Z10cameraGetXv,%a2
 	jsr (%a2)
@@ -372,6 +372,45 @@ __Z19stagePositionAssetsv:
 	sub.w %d0,%d1
 	move.w %d1,9032(%a3)
 .L52:
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L57:
+	cmp.w #1,%d0
+	jne .L52
+	move.l sprite,%a3
+	lea __Z17cameraGetParalaxXv,%a2
+	jsr (%a2)
+	move.w #128,%d1
+	sub.w %d0,%d1
+	move.w %d1,7304(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #220,%d1
+	sub.w %d0,%d1
+	move.w %d1,7496(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #340,%d1
+	sub.w %d0,%d1
+	move.w %d1,7688(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #416,%d1
+	sub.w %d0,%d1
+	move.w %d1,7880(%a3)
+	move.l sprite,%a3
+	lea __Z10cameraGetXv,%a2
+	jsr (%a2)
+	moveq #10,%d1
+	sub.w %d0,%d1
+	move.w %d1,12680(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #722,%d1
+	sub.w %d0,%d1
+	move.w %d1,12872(%a3)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -395,7 +434,7 @@ __ZL12currentStage:
 	.even
 _CSWTCH.24:
 	.long	192
-	.long	226
+	.long	224
 	.long	260
 	.long	260
 	.long	226

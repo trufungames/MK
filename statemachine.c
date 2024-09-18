@@ -67,7 +67,7 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         }
         else
         {
-            fighter->vars[0] = 0;//fighter->currentState->Name == STATE_LAYDOWN ? 1 : 0;
+            fighter->vars[0] = fighter->IsLayingDown ? 1 : 0;
             fighter->roundsLost++;
             stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
         }
@@ -197,6 +197,7 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
 
 void StateIdle_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
+    fighter->IsLayingDown = false;
     if (fighter->fighterIndex == RAIDEN && rapTicks >= fighter->vars[1] + 120)
     {
         sfxRaidenIdleZap(fighter->soundHandler);
@@ -1646,6 +1647,7 @@ void StateHitSweep_Update(struct StateMachine* stateMachine, struct Fighter* fig
         sfxThud(fighter->soundHandler);
         bgShake(false);
         fighter->IsBeingDamaged = false;
+        fighter->IsLayingDown = true;
         stateMachineGoto(stateMachine, STATE_GETUP, fighter, spriteAnimator);
     }
 }
@@ -1868,6 +1870,7 @@ void StateHitUppercut_Update(struct StateMachine* stateMachine, struct Fighter* 
             bgShake(false);
             sfxThud(fighter->soundHandler);
             fighter->IsBeingDamaged = false;
+            fighter->IsLayingDown = true;
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
@@ -1898,6 +1901,7 @@ void StateLaydown_Enter(struct StateMachine* stateMachine, struct Fighter* fight
 
     fighter->exitingState = false;
     fighter->lastTicks = rapTicks;
+    fighter->IsLayingDown = true;
 }
 
 void StateLaydown_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -1964,6 +1968,7 @@ void StateHitDropKick_Update(struct StateMachine* stateMachine, struct Fighter* 
             bgShake(false);
             sfxThud(fighter->soundHandler);
             fighter->IsBeingDamaged = false;
+            fighter->IsLayingDown = true;
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
@@ -2020,6 +2025,7 @@ void StateHitAir_Update(struct StateMachine* stateMachine, struct Fighter* fight
             bgShake(false);
             sfxThud(fighter->soundHandler);
             fighter->IsBeingDamaged = false;
+            fighter->IsLayingDown = true;
             stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
         }
         
@@ -2333,6 +2339,7 @@ void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* 
                 sfxThud(fighter->soundHandler);
                 fighter->IsBeingDamaged = false;
                 fighter->IsBeingTripped = false;
+                fighter->IsLayingDown = true;
                 stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
                 return;
             }
@@ -4235,7 +4242,6 @@ void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
-    fighter->vars[0] = 0;
     sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 }
 
@@ -4323,6 +4329,7 @@ void StateFinishHim_Enter(struct StateMachine* stateMachine, struct Fighter* fig
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
     fighter->IsDefeated = true;
+    fighter->IsLayingDown = false;
 }
 
 void StateFinishHim_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)

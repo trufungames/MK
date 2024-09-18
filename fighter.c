@@ -144,6 +144,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsDefeated = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
+    fighter->IsLayingDown = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
     fighter->DoThrowSequence = false;
@@ -1158,6 +1159,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->TookFinalBlow = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
+    fighter->IsLayingDown = false;
     fighter->IsStunned = false;
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
@@ -1952,7 +1954,7 @@ void fighterCastShadow(struct Fighter* fighter, bool includeY)
     sprite[fighter->spriteIndex - 1].bytewid = sprite[fighter->spriteIndex].bytewid;
     sprite[fighter->spriteIndex - 1].framesz = sprite[fighter->spriteIndex].framesz;
     sprite[fighter->spriteIndex - 1].gfxbase = sprite[fighter->spriteIndex].gfxbase;
-    sprite[fighter->spriteIndex - 1].active = R_is_active;
+    sprite[fighter->spriteIndex - 1].active = fighter->IsLayingDown ? R_is_inactive : R_is_active;
 
     if (includeY)
     {

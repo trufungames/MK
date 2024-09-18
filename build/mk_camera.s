@@ -286,6 +286,18 @@ __Z10cameraGetXv:
 	unlk %fp
 	rts
 	.even
+	.globl	__Z17cameraGetParalaxXv
+__Z17cameraGetParalaxXv:
+	link.w %fp,#0
+	move.l _cameraX,%d0
+	jpl .L51
+	addq.l #1,%d0
+.L51:
+	asr.l #1,%d0
+	add.l _xOffset,%d0
+	unlk %fp
+	rts
+	.even
 	.globl	__Z15cameraGetOffsetv
 __Z15cameraGetOffsetv:
 	link.w %fp,#0
@@ -306,14 +318,14 @@ __Z28cameraFighterIsAtBoundsRightP7Fighter:
 	link.w %fp,#0
 	move.l _cameraX,%d0
 	cmp.l _cameraXMax.l,%d0
-	jlt .L54
+	jlt .L56
 	move.l 8(%fp),%a0
 	cmp.w #261,242(%a0)
 	sgt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L54:
+.L56:
 	clr.b %d0
 	unlk %fp
 	rts
@@ -323,14 +335,14 @@ __Z27cameraFighterIsAtBoundsLeftP7Fighter:
 	link.w %fp,#0
 	moveq #10,%d0
 	cmp.l _cameraX.l,%d0
-	jlt .L59
+	jlt .L61
 	move.l 8(%fp),%a0
 	cmp.w #10,242(%a0)
 	sle %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L59:
+.L61:
 	clr.b %d0
 	unlk %fp
 	rts

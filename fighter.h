@@ -78,6 +78,7 @@ struct Fighter {
     bool TookFinalBlow;
     bool IsStunned;
     bool IsDefeated;
+    bool IsLayingDown;
     bool IsFrozen;
     bool FrozenShakeComplete;
     int FrozenShakeDirection;

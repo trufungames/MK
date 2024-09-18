@@ -153,7 +153,7 @@ int stageGetStartX()
         case STAGE_GATES:
             return 192;
         case STAGE_WARRIOR:
-            return 226;
+            return 224;
         case STAGE_PIT:
             return 260;
         case STAGE_PIT_BOTTOM:
@@ -242,6 +242,14 @@ void stagePositionAssets()
             sprite[FOREGROUND_PILLAR].x_ = STAGE_PALACEGATES_PILLAR_X - cameraGetX();
             sprite[STAGE_GATES_FLAME].x_ = STAGE_PALACEGATES_FLAME1_X - cameraGetX();
             sprite[STAGE_GATES_FLAME+1].x_ = STAGE_PALACEGATES_FLAME2_X - cameraGetX();
+            break;
+        case STAGE_WARRIOR:
+            sprite[STAGE_WARRIOR_BUSH].x_ = STAGE_WARRIOR_BUSH1_X - cameraGetParalaxX();
+            sprite[STAGE_WARRIOR_BUSH+1].x_ = STAGE_WARRIOR_BUSH2_X - cameraGetParalaxX();
+            sprite[STAGE_WARRIOR_BUSH+2].x_ = STAGE_WARRIOR_BUSH3_X - cameraGetParalaxX();
+            sprite[STAGE_WARRIOR_BUSH+3].x_ = STAGE_WARRIOR_BUSH4_X - cameraGetParalaxX();
+            sprite[FOREGROUND_PILLAR].x_ = STAGE_WARRIOR_PILLAR1_X - cameraGetX();
+            sprite[FOREGROUND_PILLAR+1].x_ = STAGE_WARRIOR_PILLAR2_X - cameraGetX();
             break;
         default:
             break;

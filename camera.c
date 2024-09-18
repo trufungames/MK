@@ -176,6 +176,11 @@ int cameraGetX()
     return cameraX + xOffset;
 }
 
+int cameraGetParalaxX()
+{
+    return (cameraX / 2) + xOffset;
+}
+
 int cameraGetOffset()
 {
     return xOffset;

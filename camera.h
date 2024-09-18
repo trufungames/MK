@@ -6,6 +6,7 @@ bool cameraCanMove();
 bool cameraIsAtLeftWall();
 bool cameraIsAtRightWall();
 int cameraGetX();
+int cameraGetParalaxX();
 void cameraResetTicks();
 int cameraGetOffset();
 bool cameraFighterIsAtBoundsRight(struct Fighter* fighter);

@@ -288,6 +288,12 @@
 #define STAGE_PALACEGATES_FLAME1_X 138
 #define STAGE_PALACEGATES_FLAME2_X 662
 #define STAGE_PALACEGATES_PILLAR_X 10
+#define STAGE_WARRIOR_BUSH1_X 128
+#define STAGE_WARRIOR_BUSH2_X 220
+#define STAGE_WARRIOR_BUSH3_X 340
+#define STAGE_WARRIOR_BUSH4_X 416
+#define STAGE_WARRIOR_PILLAR1_X 10
+#define STAGE_WARRIOR_PILLAR2_X 730
 
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 69
