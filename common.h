@@ -285,8 +285,8 @@
 #define FIGHTER_MAX_WORLD_POSITION_X 716
 
 //-----------------------------------------------------------------------------------------------------
-#define STAGE_PALACEGATES_FLAME1_X 138
-#define STAGE_PALACEGATES_FLAME2_X 662
+#define STAGE_PALACEGATES_FLAME1_X 137
+#define STAGE_PALACEGATES_FLAME2_X 660
 #define STAGE_PALACEGATES_PILLAR_X 10
 #define STAGE_WARRIOR_BUSH1_X 128
 #define STAGE_WARRIOR_BUSH2_X 220
@@ -294,7 +294,8 @@
 #define STAGE_WARRIOR_BUSH4_X 416
 #define STAGE_WARRIOR_PILLAR1_X 10
 #define STAGE_WARRIOR_PILLAR2_X 730
-
+#define STAGE_PITBOTTOM_SPIKES_X 4
+#define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
 #define STATE_TOTAL_COUNT 69
 #define STATE_IDLE 0

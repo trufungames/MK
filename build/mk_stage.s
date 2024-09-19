@@ -259,9 +259,10 @@ __Z14stageGetHeightv:
 __Z14stageGetStartXv:
 	link.w %fp,#0
 	move.w __ZL12currentStage,%d1
-	moveq #95,%d0
+	subq.w #1,%d1
+	moveq #63,%d0
 	not.b %d0
-	cmp.w #5,%d1
+	cmp.w #4,%d1
 	jhi .L32
 	and.l #65535,%d1
 	move.l %d1,%a0
@@ -354,31 +355,39 @@ __Z19stagePositionAssetsv:
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
 	move.w __ZL12currentStage,%d0
-	jne .L57
-	move.l sprite,%a3
-	lea __Z10cameraGetXv,%a2
-	jsr (%a2)
-	moveq #10,%d1
-	sub.w %d0,%d1
-	move.w %d1,12680(%a3)
-	move.l sprite,%a3
-	jsr (%a2)
-	move.w #138,%d1
-	sub.w %d0,%d1
-	move.w %d1,8840(%a3)
-	move.l sprite,%a3
-	jsr (%a2)
-	move.w #662,%d1
-	sub.w %d0,%d1
-	move.w %d1,9032(%a3)
+	cmp.w #1,%d0
+	jeq .L55
+	jle .L60
+	cmp.w #3,%d0
+	jeq .L56
+	cmp.w #4,%d0
+	jeq .L61
 .L52:
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
-.L57:
-	cmp.w #1,%d0
-	jne .L52
+.L56:
+	move.l sprite,%a2
+	jsr __Z10cameraGetXv
+	moveq #4,%d1
+	sub.w %d0,%d1
+	move.w %d1,13064(%a2)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L61:
+	move.l sprite,%a2
+	jsr __Z10cameraGetXv
+	move.w #352,%d1
+	sub.w %d0,%d1
+	move.w %d1,9224(%a2)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L55:
 	move.l sprite,%a3
 	lea __Z17cameraGetParalaxXv,%a2
 	jsr (%a2)
@@ -408,9 +417,32 @@ __Z19stagePositionAssetsv:
 	move.w %d1,12680(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
-	move.w #722,%d1
+	move.w #730,%d1
 	sub.w %d0,%d1
 	move.w %d1,12872(%a3)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L60:
+	tst.w %d0
+	jne .L52
+	move.l sprite,%a3
+	lea __Z10cameraGetXv,%a2
+	jsr (%a2)
+	moveq #10,%d1
+	sub.w %d0,%d1
+	move.w %d1,12680(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #137,%d1
+	sub.w %d0,%d1
+	move.w %d1,8840(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #660,%d1
+	sub.w %d0,%d1
+	move.w %d1,9032(%a3)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -433,9 +465,8 @@ __ZL12currentStage:
 	.text
 	.even
 _CSWTCH.24:
-	.long	192
 	.long	224
-	.long	260
-	.long	260
-	.long	226
-	.long	140
+	.long	256
+	.long	256
+	.long	224
+	.long	144

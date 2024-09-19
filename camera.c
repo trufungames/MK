@@ -29,12 +29,13 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
     backgroundGfxBase = gfxBase;
 
     setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+    sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
     cameraTicks = rapTicks;
 }
 
 void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 {
-    //printMessageInt("camera x", cameraX, 20, 0);
+    //printMessageInt("camera x", cameraGetX(), 20, 0);
     //printMessageInt("offset x", xOffset, 20, 10);
 
     fighter1->positionX = fighter1->worldPositionX - cameraGetX();

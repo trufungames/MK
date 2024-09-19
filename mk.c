@@ -6922,25 +6922,25 @@ void basicmain()
 
 				if (stageGet() == STAGE_THRONE)
 				{
-					if (fighter1Ptr->IsDefeated || fighter2Ptr->IsDefeated)
+					if (fighter1Ptr->currentState->Name == STATE_IS_WINNER || fighter2Ptr->currentState->Name == STATE_IS_WINNER)
 					{
 						updateSpriteAnimator(&shangTsungAnimator, shangTsungClapFrames, 6, true, true);
 					}
 					else
 					{
-						if (cameraGetX() < 40)
+						if (cameraGetX() < 144)
 						{
 							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[4], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
 						}
-						else if (cameraGetX() < 80)
+						else if (cameraGetX() < 192)
 						{
 							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[3], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
 						}
-						else if (cameraGetX() > 120)
+						else if (cameraGetX() > 288)
 						{
 							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[1], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
 						}
-						else if (cameraGetX() > 130)
+						else if (cameraGetX() > 336)
 						{
 							setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[2], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
 						}
@@ -7908,7 +7908,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
             }
 
 			sprite[THRONE_SHANG_TSUNG].active = R_is_active;
-			sprite[THRONE_SHANG_TSUNG].x_ = 120;
+			//sprite[THRONE_SHANG_TSUNG].x_ = 120;
 			setAnimationFrame(shangTsungAnimator.spriteIndex, &shangTsungAnimator, &shangTsungSitFrames[0], sprite[shangTsungAnimator.spriteIndex].x_, sprite[shangTsungAnimator.spriteIndex].y_, 1);
 			
             sprite[STAGE_PIT_MOON].active=R_is_inactive;
@@ -7956,7 +7956,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
             sprite[STAGE_SECONDARY_BACKGROUND].gfxbase=(int)imageBuffer320x240;
             sprite[STAGE_SECONDARY_BACKGROUND].active=R_is_active;
-			sprite[STAGE_SECONDARY_BACKGROUND].y_ = 32;
+			sprite[STAGE_SECONDARY_BACKGROUND].y_ = 40;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
 			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
@@ -8197,6 +8197,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 	rapSetActiveList(2);
 	
 	cameraInit(STAGE_PRIMARY_BACKGROUND, stageGetStartX(), stageGetStartY(), 214, (int)imageBuffer);
+	stagePositionAssets();
 	onScreenVsBattle = false;
 	onScreenFight = true;
 }

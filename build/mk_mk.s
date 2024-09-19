@@ -1912,9 +1912,10 @@ __Z17switchScreenFightiib:
 	move.l %d0,-(%sp)
 	pea 45.w
 	jsr __Z10cameraInitjiiij
+	lea (20,%sp),%sp
+	jsr __Z19stagePositionAssetsv
 	clr.b _onScreenVsBattle
 	move.b #1,_onScreenFight
-	lea (20,%sp),%sp
 	movem.l -16(%fp),#3084
 	unlk %fp
 	rts
@@ -1945,7 +1946,7 @@ __Z17switchScreenFightiib:
 	move.l #__ZL18imageBuffer320x240,8108(%a0)
 	moveq #1,%d0
 	move.l %d0,8068(%a0)
-	move.w #32,8076(%a0)
+	move.w #40,8076(%a0)
 	move.l #__ZL11imageBuffer,8684(%a0)
 	clr.w 8652(%a0)
 	move.l #240,8672(%a0)
@@ -2205,7 +2206,6 @@ __Z17switchScreenFightiib:
 	move.l sprite,%a0
 	moveq #1,%d0
 	move.l %d0,9220(%a0)
-	move.w #120,9224(%a0)
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -2929,7 +2929,6 @@ __Z17switchScreenFightiib:
 	move.l sprite,%a0
 	moveq #1,%d0
 	move.l %d0,9220(%a0)
-	move.w #120,9224(%a0)
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -3210,7 +3209,7 @@ __Z17switchScreenFightiib:
 	move.l #__ZL18imageBuffer320x240,8108(%a0)
 	moveq #1,%d0
 	move.l %d0,8068(%a0)
-	move.w #32,8076(%a0)
+	move.w #40,8076(%a0)
 	move.l #__ZL11imageBuffer,8684(%a0)
 	clr.w 8652(%a0)
 	move.l #240,8672(%a0)
@@ -7959,12 +7958,14 @@ __Z9basicmainv:
 	addq.l #4,%sp
 	jra .L360
 .L458:
-	move.l %d5,%a0
-	tst.b 144(%a0)
-	jne .L392
+	move.l %d5,%a1
+	move.l 288(%a1),%a0
+	cmp.w #67,(%a0)
+	jeq .L392
 	move.l %d6,%a1
-	tst.b 144(%a1)
-	jeq .L393
+	move.l 288(%a1),%a0
+	cmp.w #67,(%a0)
+	jne .L393
 .L392:
 	pea 1.w
 	pea 1.w
@@ -8044,9 +8045,8 @@ __Z9basicmainv:
 	jra .L458
 .L393:
 	jsr __Z10cameraGetXv
-	moveq #39,%d1
-	cmp.l %d0,%d1
-	jlt .L394
+	cmp.l #143,%d0
+	jgt .L394
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -8128,9 +8128,8 @@ __Z9basicmainv:
 	jra .L458
 .L394:
 	jsr __Z10cameraGetXv
-	moveq #79,%d1
-	cmp.l %d0,%d1
-	jlt .L395
+	cmp.l #191,%d0
+	jgt .L395
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -8618,9 +8617,8 @@ __Z9basicmainv:
 	jra .L433
 .L395:
 	jsr __Z10cameraGetXv
-	moveq #120,%d1
-	cmp.l %d0,%d1
-	jge .L396
+	cmp.l #288,%d0
+	jle .L396
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -8653,7 +8651,7 @@ __Z9basicmainv:
 	jra .L476
 .L396:
 	jsr __Z10cameraGetXv
-	cmp.l #130,%d0
+	cmp.l #336,%d0
 	jle .L397
 	move.l __ZL18shangTsungAnimator,%d0
 	move.l %d0,%d1

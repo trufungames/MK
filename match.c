@@ -289,7 +289,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 	}
 	else if (matchState == 3)
 	{
-		if (!playedCrowd)
+		if (!playedCrowd && stageGet() == STAGE_THRONE)
 		{
 			playedCrowd = true;
 			sfxCrowdClap(soundHandler);
