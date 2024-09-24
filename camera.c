@@ -40,6 +40,8 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
     fighter1->positionX = fighter1->worldPositionX - cameraGetX();
     fighter2->positionX = fighter2->worldPositionX - cameraGetX();
+    fighter1->projectilePositionX = fighter1->projectileWorldPositionX - cameraGetX();
+    fighter2->projectilePositionX = fighter2->projectileWorldPositionX - cameraGetX();
     
     if (rapTicks > cameraTicks + 1)
     {

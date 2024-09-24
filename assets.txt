@@ -113,6 +113,7 @@ ROM,BMP_PAL_FROZEN_SUBZERO,gfx_clut,ASSETS\GFX\pal_frozen_subzero.bmp
 ROM,BMP_PAL_FROZEN_SONYA,gfx_clut,ASSETS\GFX\pal_frozen_sonya.bmp
 ROM,BMP_PAL_FROZEN_KANG,gfx_clut,ASSETS\GFX\pal_frozen_kang.bmp
 ROM,BMP_PAL_SCORPION_TELEPORT,gfx_clut,ASSETS\GFX\pal_scorpion_teleport.bmp
+ROM,BMP_PAL_DECAP_KANO,gfx_clut,ASSETS\GFX\pal_decap_kano.bmp
 ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
 ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
 ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP
@@ -209,6 +210,9 @@ ROM,scorpion_teleport_sam,sfx_raw8000,ASSETS\SFX\scorpion_teleport.wav
 ROM,subzero_slide_sam,sfx_raw8000,ASSETS\SFX\subzero_slide.wav
 ROM,shownomercy_sam,sfx_raw8000,ASSETS\SFX\shownomercy.wav
 ROM,kasumi_fireball_sam,sfx_raw8000,ASSETS\SFX\kasumi_fireball.wav
+ROM,fatality_gong_sam,sfx_raw8000,ASSETS\SFX\fatality_gong.wav
+ROM,fatality_groan_male_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_male.wav
+ROM,fatality_groan_female_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_female.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

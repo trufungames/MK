@@ -139,6 +139,9 @@
 #define SOUND_KASUMI 80
 #define SOUND_SHOWNOMERCY 81
 #define SOUND_KASUMI_FIREBALL 82
+#define SOUND_FATALITY_GONG 83
+#define SOUND_FATALITY_GROAN_MALE 84
+#define SOUND_FATALITY_GROAN_FEMALE 85
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -202,7 +205,7 @@
 #define FLOOR_LOCATION_Y_FIGHTER 90
 #define HITBOX_WIDTH 32
 #define PLAYER_INPUT_STACK_SIZE 6
-#define PLAYER_INPUT_TIMEOUT 30
+#define PLAYER_INPUT_TIMEOUT 45
 #define HARPOON_MINIMUM_DISTANCE 150
 
 //-----------------------------------------------------------------------------------------------------
@@ -235,7 +238,7 @@
 #define CHOOSE_FIGHTER_TIME_TOTAL 30*60
 #define MATCH_TIME_TOTAL 99*60
 #define MATCH_TIME_WINS 6*60
-#define MATCH_TIME_FINISH 3*60
+#define MATCH_TIME_FINISH 5*60
 
 //-----------------------------------------------------------------------------------------------------
 #define SOUND_CHANNEL_PRIMARY_L 4
@@ -283,6 +286,11 @@
 #define FIGHTER_MAX_DISTANCE_FROM_OPPONENT 280
 #define FIGHTER_MIN_WORLD_POSITION_X 16
 #define FIGHTER_MAX_WORLD_POSITION_X 716
+#define FIGHTER_FATALITY_CLOSE_RANGE_MIN_X -32
+#define FIGHTER_FATALITY_CLOSE_RANGE_MAX_X 32
+#define FIGHTER_FATALITY_MID_RANGE_MIN_X 160
+#define FIGHTER_FATALITY_MID_RANGE_MAX_X 240
+#define FIGHTER_FATALITY_CAGE_HEAD_SPEED_X 3
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_PALACEGATES_FLAME1_X 137
@@ -297,7 +305,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 69
+#define STATE_TOTAL_COUNT 71
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -368,6 +376,8 @@
 #define STATE_IS_LOSER 66
 #define STATE_IS_WINNER 67
 #define STATE_FINISH_HIM 68
+#define STATE_CAGE_FATALITY1 69
+#define STATE_HIT_CAGE_FATALITY1 70
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

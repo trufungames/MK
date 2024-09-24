@@ -122,6 +122,7 @@ struct Fighter {
     short positionY;
     short projectilePositionX;
     short projectilePositionY;
+    short projectileWorldPositionX;
     short worldPositionX;
     short worldPositionY;
     short hitPoints;
@@ -132,12 +133,13 @@ struct Fighter {
     bool justTurned;
     bool changedDirection;
     bool isPlayer1;
+    bool isDoingFatality;
     short roundsLost;
     bool hasRoomToMove;
     bool isMaxDistance;
     int defaultClut;
     int frozenClut;
-    short vars[3];
+    short vars[4];
     struct State* currentState;
     bool exitingState;
     bool isSleeping;
@@ -151,13 +153,17 @@ struct Fighter {
     int (*special1Inputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special2Inputs)[PLAYER_INPUT_STACK_SIZE];
     int (*special3Inputs)[PLAYER_INPUT_STACK_SIZE];
+    int (*fatality1Inputs)[PLAYER_INPUT_STACK_SIZE];
     short special1InputCount;
     short special2InputCount;
     short special3InputCount;
+    short fatality1InputCount;
+    bool fatality1IsCloseRange;
     void (*doSpecialMove1)(struct StateMachine*,struct Fighter*, struct SpriteAnimator*);
     void (*doSpecialMove2)(struct StateMachine*,struct Fighter*, struct SpriteAnimator*);
     void (*doSpecialMove3)(struct StateMachine*,struct Fighter*, struct SpriteAnimator*);
     void (*doProjectileEnd)(struct StateMachine*,struct Fighter*, struct SpriteAnimator*);
+    void (*doFatality1)(struct StateMachine*,struct Fighter*, struct SpriteAnimator*);
     struct ImpactFrame* impactFrameLowPunch;
     struct ImpactFrame* impactFrameHighPunch;
     struct ImpactFrame* impactFrameLowKick;
@@ -221,6 +227,9 @@ struct Fighter {
     struct AnimationFrame (*projectileEndFrames)[5];
     struct AnimationFrame (*hitNutsFrames)[2];
     struct AnimationFrame (*lightningFrames)[30];
+    struct AnimationFrame (*hitDecapFrames)[7];
+    struct AnimationFrame (*fatality1Frames)[6];
+    struct AnimationFrame (*decapFrames)[4];
     struct Fighter* Opponent;
 };
 
@@ -250,6 +259,8 @@ void fighterCaptureDpadInputs(struct Fighter* fighter);
 
 bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
+bool fighterHandleFatality(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+
 void fighterPlayHiya(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayGroan(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
@@ -257,6 +268,8 @@ void fighterPlayGroan(int fighter, struct SoundHandler* soundHandler, bool isPla
 void fighterPlayYell(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
+
+void fighterPlayFatalityGroan(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 

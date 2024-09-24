@@ -138,6 +138,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsBeingTripped = false;
     fighter->IsBeingDamaged = false;
     fighter->IsPushing = false;
+    fighter->isDoingFatality = false;
     fighter->IsDizzy = false;
     fighter->TookFinalBlow = false;
     fighter->IsStunned = false;
@@ -976,6 +977,35 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
     }
 }
 
+bool fighterHandleFatality(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+    //if they're not dizzy at the FINISH HIM! prompt, then let's bail
+    if (fighter->Opponent->currentState->Name != STATE_FINISH_HIM)
+        return false;
+
+    short distance = fighter->direction == 1 ? fighter->Opponent->worldPositionX - (fighter->worldPositionX + FIGHTER_WIDTH) : fighter->worldPositionX - (fighter->Opponent->worldPositionX + FIGHTER_WIDTH);
+
+    if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
+    {
+        playerinputPush(fighter, JAGPAD_C);
+    }
+
+    if (fighter->pad & JAGPAD_A && fighter->ButtonReleased)
+    {
+        playerinputPush(fighter, JAGPAD_A);
+    }
+
+    if (playerinputContains(fighter, *fighter->fatality1Inputs, fighter->fatality1InputCount)
+        && ((fighter->fatality1IsCloseRange && distance >= FIGHTER_FATALITY_CLOSE_RANGE_MIN_X && distance <= FIGHTER_FATALITY_CLOSE_RANGE_MAX_X)
+            || (!fighter->fatality1IsCloseRange && distance >= FIGHTER_FATALITY_MID_RANGE_MIN_X && distance <= FIGHTER_FATALITY_MID_RANGE_MAX_X)))
+    {        
+        (fighter->doFatality1)(stateMachine, fighter, animator);
+        return true;
+    }
+
+    return false;
+}
+
 bool fighterHandleSpecialMoves(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
     if (fighter->IsBeingDamaged || fighter->IsFrozen)
@@ -1111,6 +1141,18 @@ void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlay
     }
 }
 
+void fighterPlayFatalityGroan(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
+{
+    switch (fighter)
+    {
+        case SONYA:
+            sfxFatalityGroanFemale(soundHandler);
+            break;
+        default:
+            sfxFatalityGroanMale(soundHandler);
+    }
+}
+
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 {
     if (rapRND() & 255 > 100)
@@ -1157,6 +1199,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->IsPushing = false;
     fighter->IsDefeated = false;
     fighter->TookFinalBlow = false;
+    fighter->isDoingFatality = false;
     fighter->IsFrozen = false;
     fighter->IsBeingPushed = false;
     fighter->IsLayingDown = false;

@@ -362,6 +362,16 @@ void StateFinishHim_Update(struct StateMachine*, struct Fighter*, struct SpriteA
 void StateFinishHim_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateFinishHim_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
+void StateCageFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateCageFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateCageFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitCageFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitCageFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitCageFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitCageFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
 //TODOs
 //[X] Add HIT_BLOCKING state
 //[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)

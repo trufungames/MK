@@ -289,10 +289,14 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 	}
 	else if (matchState == 3)
 	{
-		if (!playedCrowd && stageGet() == STAGE_THRONE)
+		if (!playedCrowd)
 		{
 			playedCrowd = true;
-			sfxCrowdClap(soundHandler);
+
+			if (stageGet() == STAGE_THRONE)
+			{
+				sfxCrowdClap(soundHandler);
+			}
 		}
 
 		if (rapTicks > matchTicks + 140)
@@ -464,4 +468,9 @@ int matchGetFighter2Wins()
 void matchResetTicks()
 {
 	fightAnimator.lastTick = rapTicks;
+}
+
+void matchPrepForFatality()
+{
+	sprite[FIGHT].active = R_is_inactive;
 }

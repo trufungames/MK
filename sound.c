@@ -767,6 +767,39 @@ void sfxCrowdClap(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_CROWD_CLAP, 8000);
 }
 
+void sfxFatalityGong(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_FATALITY_GONG, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_FATALITY_GONG, 8000);
+}
+
+void sfxFatalityGroanMale(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_FATALITY_GROAN_MALE, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_FATALITY_GROAN_MALE, 8000);
+}
+
+void sfxFatalityGroanFemale(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_FATALITY_GROAN_FEMALE, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_FATALITY_GROAN_FEMALE, 8000);
+}
+
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)
