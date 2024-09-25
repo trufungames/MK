@@ -11,3 +11,4 @@ void stageMove(int direction, int offset);
 void stageHideShowSprite(int spriteIndex, int width);
 void stageResetTicks();
 void stagePositionAssets();
+int stageGetFatalityPalette();

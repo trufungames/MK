@@ -268,7 +268,7 @@ __Z14stageGetStartXv:
 	move.l %d1,%a0
 	add.l %d1,%a0
 	move.l %a0,%a1
-	add.l #_CSWTCH.24,%a1
+	add.l #_CSWTCH.25,%a1
 	move.l (%a1,%a0.l),%d0
 .L32:
 	unlk %fp
@@ -447,6 +447,19 @@ __Z19stagePositionAssetsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
+	.even
+	.globl	__Z23stageGetFatalityPalettev
+__Z23stageGetFatalityPalettev:
+	link.w %fp,#0
+	cmp.w #2,__ZL12currentStage.l
+	jeq .L65
+	moveq #96,%d0
+	unlk %fp
+	rts
+.L65:
+	moveq #80,%d0
+	unlk %fp
+	rts
 	.globl	colliders
 	.data
 	.even
@@ -464,7 +477,7 @@ __ZL12currentStage:
 	.word	5
 	.text
 	.even
-_CSWTCH.24:
+_CSWTCH.25:
 	.long	224
 	.long	256
 	.long	256

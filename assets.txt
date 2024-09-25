@@ -113,7 +113,14 @@ ROM,BMP_PAL_FROZEN_SUBZERO,gfx_clut,ASSETS\GFX\pal_frozen_subzero.bmp
 ROM,BMP_PAL_FROZEN_SONYA,gfx_clut,ASSETS\GFX\pal_frozen_sonya.bmp
 ROM,BMP_PAL_FROZEN_KANG,gfx_clut,ASSETS\GFX\pal_frozen_kang.bmp
 ROM,BMP_PAL_SCORPION_TELEPORT,gfx_clut,ASSETS\GFX\pal_scorpion_teleport.bmp
+ROM,BMP_PAL_DECAP_CAGE,gfx_clut,ASSETS\GFX\pal_decap_cage.bmp
 ROM,BMP_PAL_DECAP_KANO,gfx_clut,ASSETS\GFX\pal_decap_kano.bmp
+ROM,BMP_PAL_DECAP_RAIDEN,gfx_clut,ASSETS\GFX\pal_decap_raiden.bmp
+ROM,BMP_PAL_DECAP_KANG,gfx_clut,ASSETS\GFX\pal_decap_kang.bmp
+ROM,BMP_PAL_DECAP_SUBZERO,gfx_clut,ASSETS\GFX\pal_decap_subzero.bmp
+ROM,BMP_PAL_DECAP_SCORPION,gfx_clut,ASSETS\GFX\pal_decap_scorpion.bmp
+ROM,BMP_PAL_DECAP_SONYA,gfx_clut,ASSETS\GFX\pal_decap_sonya.bmp
+ROM,BMP_PAL_DECAP_KASUMI,gfx_clut,ASSETS\GFX\pal_decap_kasumi.bmp
 ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
 ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
 ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP

@@ -261,3 +261,14 @@ void stagePositionAssets()
             break;
     }
 }
+
+int stageGetFatalityPalette()
+{
+    switch (currentStage)
+    {
+        case STAGE_PIT:
+            return 80;
+        default:
+            return 96;
+    }
+}

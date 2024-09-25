@@ -4251,7 +4251,6 @@ void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
-    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 }
 
 void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -4267,6 +4266,11 @@ void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* figh
         }
 
         updateSpriteAnimator(spriteAnimator, *fighter->hitFallFrames, fighter->HIT_FALL_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    
+    if (fighter->vars[1] == 1)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
     }
 }
 
@@ -4374,6 +4378,7 @@ void StateFinishHim_HandleInput(struct StateMachine* stateMachine, struct Fighte
 // vars[0] = has crouched
 // vars[1] = duck pause
 // vars[2] = played sound
+// vars[3] = final pause before winning stance
 
 void StateCageFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -4385,42 +4390,56 @@ void StateCageFatality1_Enter(struct StateMachine* stateMachine, struct Fighter*
     fighter->vars[0] = 0;
     fighter->vars[1] = rapTicks;
     fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->DidFatality = true;
 }
 
 void StateCageFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    if (rapTicks >= fighter->lastTicks + 60)
+    if (fighter->vars[3] == 0)
     {
-        if (fighter->vars[0] == 0)
+        if (rapTicks >= fighter->lastTicks + 60)
         {
-            //crouch first
-            if (animationIsComplete(spriteAnimator, fighter->DUCK_FRAME_COUNT))
+            if (fighter->vars[0] == 0)
             {
-                fighter->vars[0] = 1;
-                fighter->vars[1] = rapTicks;
-                spriteAnimator->currentFrame = 0;
-                return;
-            }
+                //crouch first
+                if (animationIsComplete(spriteAnimator, fighter->DUCK_FRAME_COUNT))
+                {
+                    fighter->vars[0] = 1;
+                    fighter->vars[1] = rapTicks;
+                    spriteAnimator->currentFrame = 0;
+                    return;
+                }
 
-            updateSpriteAnimator(spriteAnimator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);       
+                updateSpriteAnimator(spriteAnimator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);       
+            }
+            else if (fighter->vars[0] == 1 && rapTicks >= fighter->vars[1] + 30)
+            {
+                //uppercut!
+                if (fighter->vars[2] == 0)
+                {
+                    fighter->vars[2] = 1;
+                    sfxSwing(fighter->soundHandler);
+                }
+
+                if (animationIsComplete(spriteAnimator, fighter->UPPERCUT_FRAME_COUNT - 1))
+                {
+                    sfxImpact(fighter->soundHandler);
+                    fighter->vars[3] = 1;
+                    fighter->lastTicks = rapTicks;
+                    stateMachineGoto(stateMachine, STATE_HIT_CAGE_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
+                    return;
+                }
+                
+                updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);            
+            }
         }
-        else if (fighter->vars[0] == 1 && rapTicks >= fighter->vars[1] + 30)
+    }
+    else
+    {
+        if (rapTicks >= fighter->lastTicks + 60)
         {
-            //uppercut!
-            if (fighter->vars[2] == 0)
-            {
-                fighter->vars[2] = 1;
-                sfxSwing(fighter->soundHandler);
-            }
-
-            if (animationIsComplete(spriteAnimator, fighter->UPPERCUT_FRAME_COUNT - 1))
-            {
-                sfxImpact(fighter->soundHandler);
-                stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
-                stateMachineGoto(stateMachine, STATE_HIT_CAGE_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
-            }
-            
-            updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);            
+            stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
         }
     }
     //TODO animate the uppercut and hang on the last frame for a couple of seconds, then goto StateIsWinner
@@ -4475,15 +4494,28 @@ void StateHitCageFatality1_Enter(struct StateMachine* stateMachine, struct Fight
     switch(fighter->fighterIndex)
     {
         case CAGE:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_CAGE_clut),13,16);
             break;
         case KANO:
             jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANO_clut),13,16);
             break;
         case RAIDEN:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_RAIDEN_clut),13,16);
             break;
         case KANG:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANG_clut),13,16);
+            break;
+        case SUBZERO:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SUBZERO_clut),13,16);
+            break;
+        case SCORPION:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SCORPION_clut),13,16);
             break;
         case SONYA:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SONYA_clut),13,16);
+            break;
+        case KASUMI:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KASUMI_clut),13,16);
             break;
         default:
             break;
@@ -4493,7 +4525,13 @@ void StateHitCageFatality1_Enter(struct StateMachine* stateMachine, struct Fight
 void StateHitCageFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->vars[3] == 1 && animationIsComplete(spriteAnimator, 7))
+    {
+        //ensure that the projectile sprite stays active
+        fighter->vars[0] = 1;
+        fighter->vars[1] = 1;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);
         return;
+    }
 
     if (spriteAnimator->currentFrame == 0 && fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 20)
     {
@@ -4514,15 +4552,15 @@ void StateHitCageFatality1_Update(struct StateMachine* stateMachine, struct Figh
             fighter->projectileWorldPositionX += FIGHTER_FATALITY_CAGE_HEAD_SPEED_X;// * fighter->positionX <= 160 ? 1 : -1;
             fighter->projectilePositionY += UppercutOffsets[fighter->vars[1]];
 
-            if (fighter->projectilePositionY > FLOOR_LOCATION_Y + 16)
-                fighter->projectilePositionY = FLOOR_LOCATION_Y + 16;
+            if (fighter->projectilePositionY > FLOOR_LOCATION_Y)
+                fighter->projectilePositionY = FLOOR_LOCATION_Y;
 
             fighter->vars[1]++;
 
-            if (fighter->projectilePositionY >= FLOOR_LOCATION_Y + 16)
+            if (fighter->projectilePositionY >= FLOOR_LOCATION_Y)
             {
                 fighter->projectilePositionY = FLOOR_LOCATION_Y - 8;
-                bloodPool(fighter->projectileWorldPositionX - 4, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                bloodPool(fighter->projectileWorldPositionX+8, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                 bgShake(false);
                 sfxThud(fighter->soundHandler);
                 fighter->vars[2] = 1;  //start the second bounce
@@ -4543,7 +4581,7 @@ void StateHitCageFatality1_Update(struct StateMachine* stateMachine, struct Figh
             if (fighter->projectilePositionY >= FLOOR_LOCATION_Y + 16)
             {
                 fighter->projectilePositionY = FLOOR_LOCATION_Y + 16;
-                bloodPool(fighter->projectileWorldPositionX - 4, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                bloodPool(fighter->projectileWorldPositionX+8, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                 bgShake(false);
                 sfxThud(fighter->soundHandler);
                 fighter->IsDefeated = true;

@@ -144,6 +144,7 @@ struct Fighter {
     bool exitingState;
     bool isSleeping;
     short sleepTicks;
+    bool DidFatality;
     struct PlayerInput* input1;
     struct PlayerInput* input2;
     struct PlayerInput* input3;

@@ -149,6 +149,7 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->DoBlockSequence = false;
     fighter->DoWinSequence = false;
     fighter->DoThrowSequence = false;
+    fighter->DidFatality = false;
     fighter->ThrowX = 0;
     fighter->ThrowY = 0;
     fighter->MadeContactUppercut = false;
@@ -1212,6 +1213,7 @@ void fighterResetFlags(struct Fighter* fighter)
     fighter->justTurned = false;
     fighter->changedDirection = false;
     fighter->hasRoomToMove = true;
+    fighter->DidFatality = false;
 }
 
 void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2)

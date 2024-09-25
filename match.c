@@ -21,6 +21,8 @@ int fighter2Wins = 0;
 int winsTicks = 0;
 bool playedName = false;
 bool playedWins = false;
+bool playedFatality = false;
+bool didFatality = false;
 bool playedCrowd = false;
 
 static SpriteAnimator fightAnimator = {
@@ -115,6 +117,8 @@ void matchReset()
 	winsTicks = 0;
 	playedName = false;
 	playedWins = false;
+	playedFatality = false;
+	didFatality = false;
 	playedCrowd = false;
 }
 
@@ -221,7 +225,8 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		if (fighter1->currentState->Name == STATE_IS_LOSER)
 		{
 			winner = fighter2->fighterIndex;
-			loser = fighter1->fighterIndex;
+			didFatality = fighter2->DidFatality;
+			loser = fighter1->fighterIndex;			
 			
 			fighter2Wins++;
 
@@ -233,7 +238,8 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		else if (fighter2->currentState->Name == STATE_IS_LOSER)
 		{
 			winner = fighter1->fighterIndex;
-			loser = fighter2->fighterIndex;
+			didFatality = fighter1->DidFatality;
+			loser = fighter2->fighterIndex;			
 			
 			fighter1Wins++;
 
@@ -339,6 +345,12 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 			{
 				playedWins = true;
 				sfxWins(soundHandler);
+				winsTicks = rapTicks;
+			}
+			else if (didFatality && !playedFatality && rapTicks > winsTicks + 70)
+			{
+				playedFatality = true;
+				sfxFatality(soundHandler);
 			}
 
 			switch (winner)

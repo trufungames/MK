@@ -979,22 +979,58 @@ static AnimationFrame cageHitSweepFrames[] = {
 	{ 80, 48, 752, 1072, -16, 53, 5 }
 };
 static AnimationFrame cageHitDecapFrames[] = {
-	{ 32, 96, 976, 656, 21, 16, 60 },
+	{ 32, 96, 976, 656, 21, 16, 50 },
 	{ 32, 96, 448, 960, 20, 16, 5 },
-	{ 32, 64, 480, 960, 21, 48, 30 },
+	{ 32, 64, 480, 960, 21, 48, 10 },
 	{ 48, 80, 512, 912, 21, 32, 5 },
 	{ 64, 64, 560, 928, 15, 48, 5 },
 	{ 96, 32, 624, 960, 15, 84, 5 },
 	{ 96, 32, 624, 960, 15, 84, 5 }
 };
 static AnimationFrame kanoHitDecapFrames[] = {
-	{ 32, 96, 992, 528, 13, 16, 60 },
+	{ 32, 96, 992, 528, 13, 16, 50 },
 	{ 48, 96, 880, 816, 12, 16, 5 },
-	{ 48, 64, 928, 864, 16, 48, 30 },
+	{ 48, 64, 928, 864, 16, 48, 10 },
 	{ 64, 64, 560, 832, 18, 48, 5 },
 	{ 96, 32, 816, 912, 15, 84, 5 },
 	{ 96, 32, 816, 912, 15, 84, 5 },
 	{ 96, 32, 816, 912, 15, 84, 5 }
+};
+static AnimationFrame raidenHitDecapFrames[] = {
+	{ 32, 96, 144, 416, 10, 16, 50 },
+	{ 48, 80, 176, 416, 12, 32, 5 },
+	{ 32, 64, 224, 416, 20, 48, 10 },
+	{ 64, 64, 256, 416, 18, 48, 5 },
+	{ 96, 32, 448, 336, 13, 80, 5 },
+	{ 96, 32, 448, 336, 13, 80, 5 },
+	{ 96, 32, 448, 336, 13, 80, 5 }
+};
+static AnimationFrame kangHitDecapFrames[] = {
+	{ 32, 96, 992, 224, 15, 16, 50 },
+	{ 32, 96, 992, 224, 15, 16, 5 },
+	{ 32, 64, 400, 672, 20, 48, 10 },	
+	{ 64, 64, 848, 960, 19, 48, 5 },
+	{ 96, 32, 128, 672, 15, 80, 5 },	
+	{ 96, 32, 128, 672, 15, 80, 5 },
+	{ 96, 32, 128, 672, 15, 80, 5 }
+};
+static AnimationFrame subzeroHitDecapFrames[] = {
+	{ 32, 96, 992, 240, 13, 16, 50 },
+	{ 32, 96, 992, 640, 13, 16, 5 },
+	{ 32, 80, 992, 736, 18, 21, 5 },
+	{ 48, 64, 608, 848, 18, 48, 10 },
+	{ 64, 64, 448, 1104, 18, 48, 5 },
+	{ 96, 32, 816, 1136, 16, 80, 5 },
+	{ 96, 32, 816, 1136, 16, 80, 5 }
+};
+static AnimationFrame sonyaHitDecapFrames[] = {
+	{ 32, 96, 992, 240, 9, 16, 50 },
+	{ 32, 96, 608, 848, 11, 16, 5 },
+	{ 48, 64, 784, 816, 18, 48, 10 },
+	{ 80, 64, 944, 880, 18, 48, 5 },
+	{ 96, 32, 928, 848, 16, 80, 5 },
+	{ 96, 32, 928, 848, 16, 80, 5 },
+	{ 96, 32, 928, 848, 16, 80, 5 }
 };
 static AnimationFrame cageIdleFrames[] = {
 	{ 80, 112, 0, 0, 0, 0, 6 },
@@ -1198,11 +1234,41 @@ static AnimationFrame cageUppercutFrames[] = {
 	{ 64, 112, 288, 368, 4, 0, 4 },
 	{ 64, 112, 288, 368, 4, 0, 4 }
 };
+static AnimationFrame cageDecapFrames[] = {
+	{ 16, 16, 192, 192, 0, 0, 10 },
+	{ 16, 16, 192, 208, 0, 0, 10 },
+	{ 16, 16, 192, 224, 0, 0, 10 },
+	{ 16, 16, 192, 240, 0, 0, 10 }
+};
 static AnimationFrame kanoDecapFrames[] = {
 	{ 16, 16, 192, 256, 0, 0, 10 },
 	{ 16, 16, 192, 272, 0, 0, 10 },
 	{ 16, 16, 176, 288, 0, 0, 10 },
 	{ 16, 16, 192, 288, 0, 0, 10 }
+};
+static AnimationFrame raidenDecapFrames[] = {
+	{ 16, 16, 176, 496, 0, 0, 10 },
+	{ 16, 16, 192, 496, 0, 0, 10 },
+	{ 16, 16, 176, 512, 0, 0, 10 },
+	{ 16, 16, 192, 512, 0, 0, 10 }
+};
+static AnimationFrame kangDecapFrames[] = {
+	{ 16, 16, 176, 304, 0, 0, 10 },
+	{ 16, 16, 192, 304, 0, 0, 10 },
+	{ 16, 16, 176, 320, 0, 0, 10 },
+	{ 16, 16, 192, 320, 0, 0, 10 }
+};
+static AnimationFrame subzeroDecapFrames[] = {
+	{ 16, 16, 176, 560, 0, 0, 10 },
+	{ 16, 16, 192, 560, 0, 0, 10 },
+	{ 16, 16, 192, 608, 0, 0, 10 },
+	{ 16, 16, 192, 624, 0, 0, 10 }
+};
+static AnimationFrame sonyaDecapFrames[] = {
+	{ 16, 16, 176, 528, 0, 0, 10 },
+	{ 16, 16, 192, 528, 0, 0, 10 },
+	{ 16, 16, 176, 544, 0, 0, 10 },
+	{ 16, 16, 192, 544, 0, 0, 10 }
 };
 static AnimationFrame cageFatality1Frames[] = {
 	{ 80, 64, 944, 288, 0, 48, 5 },
@@ -4768,6 +4834,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_CAGE_FATALITY1, &stateHitCageFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
+		fighterCage.decapFrames = &cageDecapFrames;
 		fighterCage.fatality1Inputs = &fatality_Cage_Decap_Inputs;
 		fighterCage.fatality1InputCount = 3;
 		fighterCage.doFatality1 = &doFatality_Cage_Decap;
@@ -4828,6 +4895,7 @@ void basicmain()
 		fighterCage.beingThrownFrames = &cageBeingThrownFrames;
 		fighterCage.beingThrownLowFrames = &cageBeingThrownLowFrames;
 		fighterCage2.spriteAnimator = &cageAnimator2;
+		fighterCage2.decapFrames = &cageDecapFrames;
 		fighterCage2.fatality1Inputs = &fatality_Cage_Decap_Inputs;
 		fighterCage2.fatality1InputCount = 3;
 		fighterCage2.doFatality1 = &doFatality_Cage_Decap;
@@ -5000,6 +5068,8 @@ void basicmain()
 		fighterKano2.kipUpFrames = &kanoKipUpFrames;
 		//Raiden
 		fighterRaiden.lightningFrames = &lightningFrames;
+		fighterRaiden.decapFrames = &raidenDecapFrames;
+		fighterRaiden.hitDecapFrames = &raidenHitDecapFrames;
 		fighterRaiden.spriteAnimator = &raidenAnimator;
 		fighterRaiden.projectileAnimator = &lightningAnimator;
 		fighterRaiden.projectileFrames = &projectileLightningFrames;
@@ -5057,6 +5127,8 @@ void basicmain()
 		fighterRaiden.hitSweepFrames = &raidenHitSweepFrames;
 		fighterRaiden.hitNutsFrames = &raidenHitNutsFrames;
 		fighterRaiden2.lightningFrames = &lightningFrames;
+		fighterRaiden2.decapFrames = &raidenDecapFrames;
+		fighterRaiden2.hitDecapFrames = &raidenHitDecapFrames;
 		fighterRaiden2.spriteAnimator = &raidenAnimator2;
 		fighterRaiden2.projectileAnimator = &lightning2Animator;
 		fighterRaiden2.projectileFrames = &projectileLightningFrames;
@@ -5115,6 +5187,8 @@ void basicmain()
 		fighterRaiden2.hitNutsFrames = &raidenHitNutsFrames;
 		//Liu Kang
 		fighterKang.spriteAnimator = &kangAnimator;
+		fighterKang.decapFrames = &kangDecapFrames;
+		fighterKang.hitDecapFrames = &kangHitDecapFrames;
 		fighterKang.projectileAnimator = &lightningAnimator;
 		fighterKang.projectileFrames = &projectileFireballFrames;
 		fighterKang.projectileEndFrames = &projectileFireballEndFrames;
@@ -5167,6 +5241,8 @@ void basicmain()
 		fighterKang.hitSweepFrames = &kangHitSweepFrames;
 		fighterKang.hitNutsFrames = &kangHitNutsFrames;
 		fighterKang2.spriteAnimator = &kangAnimator2;
+		fighterKang2.decapFrames = &kangDecapFrames;
+		fighterKang2.hitDecapFrames = &kangHitDecapFrames;
 		fighterKang2.projectileAnimator = &lightning2Animator;
 		fighterKang2.projectileFrames = &projectileFireballFrames;
 		fighterKang2.projectileEndFrames = &projectileFireballEndFrames;
@@ -5220,6 +5296,8 @@ void basicmain()
 		fighterKang2.hitNutsFrames = &kangHitNutsFrames;
 		//Scorpion
 		fighterScorpion.spriteAnimator = &scorpionAnimator;
+		fighterScorpion.decapFrames = &subzeroDecapFrames;
+		fighterScorpion.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterScorpion.projectileAnimator = &lightningAnimator;
 		fighterScorpion.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion.projectileEndFrames = &projectileHarpoonEndFrames;
@@ -5273,6 +5351,8 @@ void basicmain()
 		fighterScorpion.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterScorpion.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
+		fighterScorpion2.decapFrames = &subzeroDecapFrames;
+		fighterScorpion2.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterScorpion2.projectileAnimator = &lightning2Animator;
 		fighterScorpion2.projectileFrames = &projectileHarpoonFrames;
 		fighterScorpion2.projectileEndFrames = &projectileHarpoonEndFrames;
@@ -5327,6 +5407,8 @@ void basicmain()
 		fighterScorpion2.hitNutsFrames = &subzeroHitNutsFrames;
 		//Sub-Zero
 		fighterSubzero.spriteAnimator = &subzeroAnimator;
+		fighterSubzero.decapFrames = &subzeroDecapFrames;
+		fighterSubzero.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterSubzero.projectileAnimator = &lightningAnimator;
 		fighterSubzero.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero.projectileEndFrames = &projectileFreezeEndFrames;
@@ -5380,6 +5462,8 @@ void basicmain()
 		fighterSubzero.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterSubzero.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterSubzero2.spriteAnimator = &subzeroAnimator2;
+		fighterSubzero2.decapFrames = &subzeroDecapFrames;
+		fighterSubzero2.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterSubzero2.projectileAnimator = &lightning2Animator;
 		fighterSubzero2.projectileFrames = &projectileFreezeFrames;
 		fighterSubzero2.projectileEndFrames = &projectileFreezeEndFrames;
@@ -5434,6 +5518,8 @@ void basicmain()
 		fighterSubzero2.hitNutsFrames = &subzeroHitNutsFrames;
 		//Sonya
 		fighterSonya.spriteAnimator = &sonyaAnimator;
+		fighterSonya.decapFrames = &sonyaDecapFrames;
+		fighterSonya.hitDecapFrames = &sonyaHitDecapFrames;
 		fighterSonya.projectileAnimator = &lightningAnimator;
 		fighterSonya.projectileFrames = &projectileRingsFrames;
 		fighterSonya.projectileEndFrames = &projectileRingsEndFrames;
@@ -5487,6 +5573,8 @@ void basicmain()
 		fighterSonya.hitFallFrames = &sonyaHitFallFrames;
 		fighterSonya.hitSweepFrames = &sonyaHitSweepFrames;
 		fighterSonya2.spriteAnimator = &sonyaAnimator2;
+		fighterSonya2.decapFrames = &sonyaDecapFrames;
+		fighterSonya2.hitDecapFrames = &sonyaHitDecapFrames;
 		fighterSonya2.projectileAnimator = &lightning2Animator;
 		fighterSonya2.projectileFrames = &projectileRingsFrames;
 		fighterSonya2.projectileEndFrames = &projectileRingsEndFrames;
@@ -5541,6 +5629,8 @@ void basicmain()
 		fighterSonya2.hitSweepFrames = &sonyaHitSweepFrames;
 		//Kasumi
 		fighterKasumi.spriteAnimator = &kasumiAnimator;
+		fighterKasumi.decapFrames = &subzeroDecapFrames;
+		fighterKasumi.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterKasumi.projectileAnimator = &lightningAnimator;
 		fighterKasumi.projectileFrames = &projectileKasumiFireballFrames;
 		fighterKasumi.projectileEndFrames = &projectileFreezeEndFrames;
@@ -5593,7 +5683,9 @@ void basicmain()
 		fighterKasumi.hitFallFrames = &subzeroHitFallFrames;
 		fighterKasumi.hitSweepFrames = &subzeroHitSweepFrames;
 		fighterKasumi.hitNutsFrames = &subzeroHitNutsFrames;		
-		fighterKasumi2.spriteAnimator = &kasumiAnimator;
+		fighterKasumi2.spriteAnimator = &kasumiAnimator2;
+		fighterKasumi2.decapFrames = &subzeroDecapFrames;
+		fighterKasumi2.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterKasumi2.projectileAnimator = &lightningAnimator;
 		fighterKasumi2.projectileFrames = &projectileKasumiFireballFrames;
 		fighterKasumi2.projectileEndFrames = &projectileFreezeEndFrames;
@@ -6811,7 +6903,7 @@ void basicmain()
 					sfxFatalityGong(&soundHandler);					
 
 					for (int j = 0; j < 32; j++)
-            			rapFadeClut(0,96,BLACKPAL);
+            			rapFadeClut(0,stageGetFatalityPalette(),BLACKPAL);
 				}
 
 				stateMachineUpdate(&fighterStateMachine, fighter1Ptr, spriteAnimator1Ptr, fighter2Ptr);
