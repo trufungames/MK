@@ -121,6 +121,7 @@ ROM,BMP_PAL_DECAP_SUBZERO,gfx_clut,ASSETS\GFX\pal_decap_subzero.bmp
 ROM,BMP_PAL_DECAP_SCORPION,gfx_clut,ASSETS\GFX\pal_decap_scorpion.bmp
 ROM,BMP_PAL_DECAP_SONYA,gfx_clut,ASSETS\GFX\pal_decap_sonya.bmp
 ROM,BMP_PAL_DECAP_KASUMI,gfx_clut,ASSETS\GFX\pal_decap_kasumi.bmp
+ROM,BMP_PAL_KANO_HEART,gfx_clut,ASSETS\GFX\pal_kano_heart.bmp
 ROM,BMP_FMV_BACKGROUND,gfx_clut_pack,ASSETS\GFX\fmv_background.BMP
 ROM,BMP_FMV_CAGE,gfx_clut_pack,ASSETS\GFX\fmv_cage.BMP
 ROM,BMP_FMV_KANO,gfx_clut_pack,ASSETS\GFX\fmv_kano.BMP
@@ -220,6 +221,7 @@ ROM,kasumi_fireball_sam,sfx_raw8000,ASSETS\SFX\kasumi_fireball.wav
 ROM,fatality_gong_sam,sfx_raw8000,ASSETS\SFX\fatality_gong.wav
 ROM,fatality_groan_male_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_male.wav
 ROM,fatality_groan_female_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_female.wav
+ROM,kano_heartbeat_sam,sfx_raw8000,ASSETS\SFX\kano_heartbeat.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

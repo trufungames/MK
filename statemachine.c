@@ -4442,8 +4442,6 @@ void StateCageFatality1_Update(struct StateMachine* stateMachine, struct Fighter
             stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
         }
     }
-    //TODO animate the uppercut and hang on the last frame for a couple of seconds, then goto StateIsWinner
-    //TODO On the last frame of the uppercut, make the Opponent goto HitCageFatality1 state
 }
 
 void StateCageFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -4608,5 +4606,84 @@ void StateHitCageFatality1_Sleep(struct StateMachine* stateMachine, struct Fight
 }
 
 void StateHitCageFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// KANO FATALITY 1
+// vars[0] trigged hit heart rip
+
+void StateKanoFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->isDoingFatality = true;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->DidFatality = true;
+}
+
+void StateKanoFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[3] == 0)
+    {
+        if (rapTicks >= fighter->lastTicks + 60)
+        {
+            if (spriteAnimator->currentFrame == 2 && fighter->vars[0] == 0)
+            {
+                fighter->vars[0] = 1;
+                sfxImpact(fighter->soundHandler);
+                stateMachineGoto(stateMachine, STATE_HIT_KANO_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
+                return;
+            }
+
+            //Start the heart rip!
+            updateSpriteAnimator(spriteAnimator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);       
+        }
+    }
+    else
+    {
+        if (rapTicks >= fighter->lastTicks + 60)
+        {
+            stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+        }
+    }
+}
+
+void StateKanoFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateKanoFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT KANO FATALITY 1
+
+void StateHitKanoFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->isDoingFatality = true;
+    fighter->vars[0] = 0;
+    fighter->DidFatality = true;
+}
+
+void StateHitKanoFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+}
+
+void StateHitKanoFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitKanoFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

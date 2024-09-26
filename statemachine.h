@@ -372,17 +372,12 @@ void StateHitCageFatality1_Update(struct StateMachine*, struct Fighter*, struct 
 void StateHitCageFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitCageFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 
-//TODOs
-//[X] Add HIT_BLOCKING state
-//[X] Add HIT_BLOCKING_KNOCKBACK state (when blocking a dropkick the fighter gets knocked back a few pixels)
-//[X] Add Body-To-Body states
-//[X] Add ImpactFrame(s) to the PunchRepeat High and Low states
-//[X] Add Throw States
-//[X] Add Turn Around State
-//[X] Add Collision Detection between fighters, push them out if on top of each other
-//[x] Add Projectiles back in using states
-//[X] Fix flames on Palace Gates
-//[x] Add new background image to Palace Gates
-//[X] Fix Sound to use round-robin
-//[ ] Fix the camera, once and for all!!
-//[ ] Fix match progression
+void StateKanoFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKanoFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateKanoFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKanoFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitKanoFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitKanoFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitKanoFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitKanoFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

@@ -142,6 +142,7 @@
 #define SOUND_FATALITY_GONG 83
 #define SOUND_FATALITY_GROAN_MALE 84
 #define SOUND_FATALITY_GROAN_FEMALE 85
+#define SOUND_KANO_HEARTBEAT 86
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -305,7 +306,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 71
+#define STATE_TOTAL_COUNT 73
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -378,6 +379,8 @@
 #define STATE_FINISH_HIM 68
 #define STATE_CAGE_FATALITY1 69
 #define STATE_HIT_CAGE_FATALITY1 70
+#define STATE_KANO_FATALITY1 71
+#define STATE_HIT_KANO_FATALITY1 72
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

@@ -296,6 +296,12 @@ static State stateCageFatality1 = {
 static State stateHitCageFatality1 = {
 	STATE_HIT_CAGE_FATALITY1
 };
+static State stateKanoFatality1 = {
+	STATE_KANO_FATALITY1
+};
+static State stateHitKanoFatality1 = {
+	STATE_HIT_KANO_FATALITY1
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -1277,6 +1283,16 @@ static AnimationFrame cageFatality1Frames[] = {
 	{ 48, 128, 240, 352, 21, -14, 6 },
 	{ 64, 112, 288, 368, 4, 0, 5 },
 	{ 64, 112, 288, 368, 4, 0, 5 }
+};
+static AnimationFrame kanoFatality1Frames[] = {
+	{ 64, 112, 288, 1024, 0, 0, 6 },
+	{ 64, 112, 352, 1024, 0, 0, 6 },
+	{ 112, 96, 416, 1024, 0, 16, 30 },
+	{ 64, 112, 528, 1008, 0, 0, 6 },
+	{ 64, 112, 592, 1008, 0, 0, 6 },
+	{ 64, 112, 656, 944, 0, 0, 6 },
+	{ 64, 112, 720, 944, 0, 0, 6 },
+	{ 64, 128, 784, 944, 0, -16, 6 }
 };
 static AnimationFrame cageKipUpFrames[] = {
 	{ 32, 64, 768, 464, 3, 48, 5 },
@@ -3689,6 +3705,7 @@ void doSpecial_Kasumi_Fireball(struct StateMachine* stateMachine, struct Fighter
 void doSpecial_Kasumi_Roll(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 void doFatality_Cage_Decap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doFatality_Kano_Heartrip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -4760,6 +4777,14 @@ void basicmain()
 		stateHitCageFatality1.update = &StateHitCageFatality1_Update;
 		stateHitCageFatality1.sleep = &StateHitCageFatality1_Sleep;
 		stateHitCageFatality1.handleInput = &StateHitCageFatality1_HandleInput;
+		stateKanoFatality1.enter = &StateKanoFatality1_Enter;
+		stateKanoFatality1.update = &StateKanoFatality1_Update;
+		stateKanoFatality1.sleep = &StateKanoFatality1_Sleep;
+		stateKanoFatality1.handleInput = &StateKanoFatality1_HandleInput;
+		stateHitKanoFatality1.enter = &StateHitKanoFatality1_Enter;
+		stateHitKanoFatality1.update = &StateHitKanoFatality1_Update;
+		stateHitKanoFatality1.sleep = &StateHitKanoFatality1_Sleep;
+		stateHitKanoFatality1.handleInput = &StateHitKanoFatality1_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4832,6 +4857,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_FINISH_HIM, &stateFinishHim);
 		stateMachineAdd(&fighterStateMachine, STATE_CAGE_FATALITY1, &stateCageFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_CAGE_FATALITY1, &stateHitCageFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_KANO_FATALITY1, &stateKanoFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_KANO_FATALITY1, &stateHitKanoFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
@@ -4958,6 +4985,11 @@ void basicmain()
 		//Kano
 		fighterKano.spriteAnimator = &kanoAnimator;
 		fighterKano.decapFrames = &kanoDecapFrames;
+		fighterKano.fatality1Inputs = &fatality_Kano_Heart_Inputs;
+		fighterKano.fatality1InputCount = 4;
+		fighterKano.doFatality1 = &doFatality_Kano_Heartrip;
+		fighterKano.fatality1Frames = &kanoFatality1Frames;
+		fighterKano.fatality1IsCloseRange = true;
 		fighterKano.projectileAnimator = &lightningAnimator;
 		fighterKano.projectileFrames = &projectileKnifeFrames;
 		fighterKano.projectileEndFrames = &projectileKnifeEndFrames;
@@ -5013,6 +5045,11 @@ void basicmain()
 		fighterKano.kipUpFrames = &kanoKipUpFrames;		
 		fighterKano2.spriteAnimator = &kanoAnimator2;
 		fighterKano2.decapFrames = &kanoDecapFrames;
+		fighterKano2.fatality1Inputs = &fatality_Kano_Heart_Inputs;
+		fighterKano2.fatality1InputCount = 4;
+		fighterKano2.doFatality1 = &doFatality_Kano_Heartrip;
+		fighterKano2.fatality1Frames = &kanoFatality1Frames;
+		fighterKano2.fatality1IsCloseRange = true;
 		fighterKano2.projectileAnimator = &lightning2Animator;
 		fighterKano2.projectileFrames = &projectileKnifeFrames;
 		fighterKano2.projectileEndFrames = &projectileKnifeEndFrames;
@@ -5023,7 +5060,7 @@ void basicmain()
 		fighterKano2.special2InputCount = 4;
 		fighterKano2.special3InputCount = 0;
 		fighterKano2.special1Frames = &kanoKnifeFrames;
-		fighterKano.special2Frames = &kanoCannonBallFrames;
+		fighterKano2.special2Frames = &kanoCannonBallFrames;
 		fighterKano2.doSpecialMove1 = &doSpecial_Kano_Knife;
 		fighterKano2.doSpecialMove2 = &doSpecial_Kano_CannonBall;
 		fighterKano2.idleFrames = &kanoIdleFrames;
@@ -8746,4 +8783,9 @@ void doSpecial_Kasumi_Roll(struct StateMachine* stateMachine, struct Fighter* fi
 void doFatality_Cage_Decap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_CAGE_FATALITY1, fighter, fighter->spriteAnimator);
+}
+
+void doFatality_Kano_Heartrip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_KANO_FATALITY1, fighter, fighter->spriteAnimator);
 }

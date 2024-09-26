@@ -787,4 +787,13 @@ sample85:	dc.l	fatality_groan_female_sam		; start of sample
 s85_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample86:	dc.l	kano_heartbeat_sam		; start of sample
+			dc.l	kano_heartbeat_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s86_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.
