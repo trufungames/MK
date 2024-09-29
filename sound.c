@@ -561,6 +561,17 @@ void sfxKanoHeartbeat(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KANO_HEARTBEAT, 8000);
 }
 
+void sfxKanoHeartrip(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KANO_HEARTRIP, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KANO_HEARTRIP, 8000);
+}
+
 void sfxKanoCannonBallStart(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

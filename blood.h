@@ -56,6 +56,8 @@ void bloodGlob(short x, short y, short direction);
 
 void bloodDrop(short x, short y, short direction);
 
+void bloodDrip(short x, short y);
+
 void bloodBall(short x, short y, short direction);
 
 void bloodPool(short x, short y);

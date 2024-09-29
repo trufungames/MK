@@ -222,6 +222,7 @@ ROM,fatality_gong_sam,sfx_raw8000,ASSETS\SFX\fatality_gong.wav
 ROM,fatality_groan_male_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_male.wav
 ROM,fatality_groan_female_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_female.wav
 ROM,kano_heartbeat_sam,sfx_raw8000,ASSETS\SFX\kano_heartbeat.wav
+ROM,kano_heartrip_sam,sfx_raw8000,ASSETS\SFX\kano_heartrip.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

@@ -139,7 +139,7 @@ struct Fighter {
     bool isMaxDistance;
     int defaultClut;
     int frozenClut;
-    short vars[4];
+    short vars[5];
     struct State* currentState;
     bool exitingState;
     bool isSleeping;
@@ -229,7 +229,7 @@ struct Fighter {
     struct AnimationFrame (*hitNutsFrames)[2];
     struct AnimationFrame (*lightningFrames)[30];
     struct AnimationFrame (*hitDecapFrames)[7];
-    struct AnimationFrame (*fatality1Frames)[6];
+    struct AnimationFrame (*fatality1Frames)[8];
     struct AnimationFrame (*decapFrames)[4];
     struct Fighter* Opponent;
 };

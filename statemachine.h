@@ -381,3 +381,13 @@ void StateHitKanoFatality1_Enter(struct StateMachine*, struct Fighter*, struct S
 void StateHitKanoFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
 void StateHitKanoFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitKanoFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateRaidenFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateRaidenFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateRaidenFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateRaidenFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitRaidenFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitRaidenFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitRaidenFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitRaidenFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

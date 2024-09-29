@@ -796,4 +796,13 @@ sample86:	dc.l	kano_heartbeat_sam		; start of sample
 s86_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample87:	dc.l	kano_heartrip_sam		; start of sample
+			dc.l	kano_heartrip_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s87_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

@@ -302,6 +302,12 @@ static State stateKanoFatality1 = {
 static State stateHitKanoFatality1 = {
 	STATE_HIT_KANO_FATALITY1
 };
+static State stateRaidenFatality1 = {
+	STATE_RAIDEN_FATALITY1
+};
+static State stateHitRaidenFatality1 = {
+	STATE_HIT_RAIDEN_FATALITY1
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -1282,15 +1288,17 @@ static AnimationFrame cageFatality1Frames[] = {
 	{ 64, 112, 176, 368, 15, 2, 5 },
 	{ 48, 128, 240, 352, 21, -14, 6 },
 	{ 64, 112, 288, 368, 4, 0, 5 },
-	{ 64, 112, 288, 368, 4, 0, 5 }
+	{ 64, 112, 288, 368, 4, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 static AnimationFrame kanoFatality1Frames[] = {
 	{ 64, 112, 288, 1024, 0, 0, 6 },
 	{ 64, 112, 352, 1024, 0, 0, 6 },
-	{ 112, 96, 416, 1024, 0, 16, 30 },
+	{ 112, 96, 416, 1024, 0, 16, 120 },
 	{ 64, 112, 528, 1008, 0, 0, 6 },
 	{ 64, 112, 592, 1008, 0, 0, 6 },
-	{ 64, 112, 656, 944, 0, 0, 6 },
+	{ 64, 112, 656, 944, 0, 0, 30 },
 	{ 64, 112, 720, 944, 0, 0, 6 },
 	{ 64, 128, 784, 944, 0, -16, 6 }
 };
@@ -3503,7 +3511,7 @@ static int specials_Kasumi_Roll_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK
 
 static int fatality_Cage_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
 static int fatality_Kano_Heart_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_BACK, 0, 0 };
-static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, INPUT_BACK, INPUT_BACK, 0 };
+static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, INPUT_BACK, INPUT_FORWARD, 0 };
 static int fatality_Kang_Flip_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
 static int fatality_Scorpion_Toasty_Inputs[] = { INPUT_UP, INPUT_UP, 0, 0, 0, INPUT_BLK };
 static int fatality_Subzero_SpineRip_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
@@ -4785,6 +4793,14 @@ void basicmain()
 		stateHitKanoFatality1.update = &StateHitKanoFatality1_Update;
 		stateHitKanoFatality1.sleep = &StateHitKanoFatality1_Sleep;
 		stateHitKanoFatality1.handleInput = &StateHitKanoFatality1_HandleInput;
+		stateRaidenFatality1.enter = &StateRaidenFatality1_Enter;
+		stateRaidenFatality1.update = &StateRaidenFatality1_Update;
+		stateRaidenFatality1.sleep = &StateRaidenFatality1_Sleep;
+		stateRaidenFatality1.handleInput = &StateRaidenFatality1_HandleInput;
+		stateHitRaidenFatality1.enter = &StateHitRaidenFatality1_Enter;
+		stateHitRaidenFatality1.update = &StateHitRaidenFatality1_Update;
+		stateHitRaidenFatality1.sleep = &StateHitRaidenFatality1_Sleep;
+		stateHitRaidenFatality1.handleInput = &StateHitRaidenFatality1_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4859,6 +4875,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_CAGE_FATALITY1, &stateHitCageFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_KANO_FATALITY1, &stateKanoFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_KANO_FATALITY1, &stateHitKanoFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_RAIDEN_FATALITY1, &stateRaidenFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_RAIDEN_FATALITY1, &stateHitRaidenFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;

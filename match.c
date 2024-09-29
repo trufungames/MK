@@ -226,12 +226,13 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		{
 			winner = fighter2->fighterIndex;
 			didFatality = fighter2->DidFatality;
-			loser = fighter1->fighterIndex;			
+			loser = fighter1->fighterIndex;
 			
 			fighter2Wins++;
 
-			if (fighter2Wins <= 2)
+			if (fighter2Wins <= 2 && !didFatality)
 			{
+				fighter2->vars[3] = 0;
 				stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter2, fighter2->spriteAnimator);
 			}
 		}
@@ -239,12 +240,13 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		{
 			winner = fighter1->fighterIndex;
 			didFatality = fighter1->DidFatality;
-			loser = fighter2->fighterIndex;			
+			loser = fighter2->fighterIndex;
 			
 			fighter1Wins++;
 
-			if (fighter1Wins <= 2)
+			if (fighter1Wins <= 2 && !didFatality)
 			{
+				fighter1->vars[3] = 0;
 				stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter1, fighter1->spriteAnimator);
 			}
 		}

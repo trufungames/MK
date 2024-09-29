@@ -325,11 +325,22 @@ void bloodUpdate(struct SoundHandler* soundHandler)
     {
         if (bloodBalls[i].InUse)
         {
-            updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false, bloodBalls[i].X - cameraGetX(), bloodBalls[i].Y, 1);
+            if (bloodBalls[i].Direction != 0)
+            {
+                updateSpriteAnimator(bloodBalls[i].Animator, bloodBallFrames, 5, bloodBalls[i].Direction == -1 ? true : false, false, bloodBalls[i].X - cameraGetX(), bloodBalls[i].Y, 1);
+            }
+            else
+            {
+                setAnimationFrame(bloodBalls[i].SpriteIndex, bloodBalls[i].Animator, &bloodBallFrames[4], bloodBalls[i].X - cameraGetX(), bloodBalls[i].Y, 1);
+            }
 
             if (rapTicks >= bloodBalls[i].LastTicks + FIGHTER_BLOOD_TICKS)
             {
-                bloodBalls[i].X -= bloodBalls[i].MomentumX * bloodBalls[i].Direction;
+                if (bloodBalls[i].Direction != 0)
+                {
+                    bloodBalls[i].X -= bloodBalls[i].MomentumX * bloodBalls[i].Direction;
+                }
+                
                 bloodBalls[i].Y += 7.0f;
 
                 if (sprite[bloodBalls[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
