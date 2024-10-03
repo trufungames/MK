@@ -296,6 +296,16 @@ void bloodUpdate(struct SoundHandler* soundHandler)
         }
     }
 
+    //////////////////////////////////////////////
+    // BLOOD DROP DIRECTIONS
+    //////////////////////////////////////////////
+    // -1 LEFT
+    // 1 RIGHT
+    // 0 DOWN
+    // 10 NW
+    // 11 NE
+    // 12 SW
+    // 13 SE
     for (int i = 0; i < TOTAL_BLOOD_COUNT; i++)
     {
         if (bloodDrops[i].InUse)
@@ -304,13 +314,31 @@ void bloodUpdate(struct SoundHandler* soundHandler)
 
             if (rapTicks >= bloodDrops[i].LastTicks + FIGHTER_BLOOD_TICKS)
             {
-                bloodDrops[i].X -= bloodDrops[i].MomentumX * bloodDrops[i].Direction;
-                bloodDrops[i].Y += bloodDrops[i].MomentumY;
+                if (bloodDrops[i].Direction < 2)
+                {
+                    bloodDrops[i].X -= bloodDrops[i].MomentumX * bloodDrops[i].Direction;
+                    bloodDrops[i].Y += bloodDrops[i].MomentumY;
+                }
+                else
+                {
+                    bloodDrops[i].X += (FIGHTER_BLOOD_HEADZAP_SPEED * (bloodDrops[i].Direction % 2 == 0 ? -1 : 1));
+                    bloodDrops[i].Y += (FIGHTER_BLOOD_HEADZAP_SPEED * (bloodDrops[i].Direction <= 11 ? -1 : 1));
+                }                
 
                 if (sprite[bloodDrops[i].SpriteIndex].y_ > FLOOR_LOCATION_Y + 16)
                 {
                     bloodPool(bloodDrops[i].X, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
                     //sfxBlood(soundHandler);
+                    sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
+                    bloodDrops[i].InUse  = false;
+                }
+
+                if (bloodDrops[i].Direction > 2 &&
+                    (bloodDrops[i].X - cameraGetX() <= 0
+                        || bloodDrops[i].X - cameraGetX() >= 320
+                        || bloodDrops[i].Y <= 0
+                        || bloodDrops[i].Y > 240))
+                {
                     sprite[bloodDrops[i].SpriteIndex].active = R_is_inactive;
                     bloodDrops[i].InUse  = false;
                 }
@@ -412,6 +440,17 @@ void bloodGlob(short x, short y, short direction)
         bloodGlobObject.Animator->currentFrame = 0;
     }
 }
+
+//////////////////////////////////////////////
+// BLOOD DROP DIRECTIONS
+//////////////////////////////////////////////
+// -1 LEFT
+// 1 RIGHT
+// 0 DOWN
+// 10 NW
+// 11 NE
+// 12 SW
+// 13 SE
 
 void bloodDrop(short x, short y, short direction)
 {

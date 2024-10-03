@@ -26,6 +26,16 @@ static struct ImpactFrame sonyaImpactLegGrab = {
 static AnimationFrame kanoHeartFrames[] = {
 	{ 16, 16, 192, 640, 0, 0, 6 },
 };
+static AnimationFrame raidenLightningFatalityFrames[] = {
+	{ 48, 48, 0, 592, 0, 0, 5 },
+    { 48, 48, 0, 592, 0, 0, 5 },
+	{ 32, 32, 160, 608, 32, 0, 5 },
+	{ 48, 32, 160, 576, 35, -7, 5 },
+	{ 48, 64, 0, 176, 22, -16, 5 },
+	{ 64, 80, 48, 176, 22, -24, 5 },
+	{ 80, 96, 112, 192, 18, -32, 5 },
+    { 80, 96, 112, 192, 18, -32, 5 }
+};
 
 void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state)
 {
@@ -4445,6 +4455,7 @@ void StateCageFatality1_Update(struct StateMachine* stateMachine, struct Fighter
     {
         if (rapTicks >= fighter->lastTicks + 60)
         {
+            fighter->vars[3] = 0;
             stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
         }
     }
@@ -4799,11 +4810,7 @@ void StateHitKanoFatality1_HandleInput(struct StateMachine* stateMachine, struct
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // RAIDEN FATALITY 1
-// vars[0] trigged hit heart rip
-// vars[1] trigged the opponent
-// vars[2] rapTicks for heartbeat
-// vars[3] heartbeat count before IsWinner is set
-// vars[4] played heartbeat sound
+
 void StateRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     fighter->exitingState = false;
@@ -4817,9 +4824,9 @@ void StateRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fighte
     fighter->vars[3] = 0;
     fighter->vars[4] = 0;
     fighter->DidFatality = true;
-
-    fighter->projectileWorldPositionX = fighter->worldPositionX + (2 * fighter->direction);
-    fighter->projectilePositionY = fighter->positionY - 12;
+    
+    fighter->projectileWorldPositionX = fighter->worldPositionX + (48 * fighter->direction);
+    fighter->projectilePositionY = fighter->positionY;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -4840,63 +4847,42 @@ void StateRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fighte
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
     }
 
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_KANO_HEART_clut),13,16);           
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);      
 }
 
 void StateRaidenFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    if (rapTicks >= fighter->lastTicks + 60)
+    if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
     {
-        if (spriteAnimator->currentFrame == 2 && fighter->vars[0] == 0)
+        if (animationIsComplete(spriteAnimator, 6) && fighter->vars[0] == 0)
         {
-            fighter->vars[0] = 1;
-            sfxImpact(fighter->soundHandler);
-            stateMachineGoto(stateMachine, STATE_HIT_KANO_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
-            return;
-        }
-        else if (spriteAnimator->currentFrame == 3 && fighter->vars[1] == 0)
-        {
-            fighter->vars[1] = 1;
-            fighter->Opponent->vars[3] = 1;  //tell the opponent that the heart is getting ripped out
-            fighter->vars[2] = rapTicks;          
-            fighter->vars[3] = 0;  
-        }
-        else if (fighter->vars[1] == 1 && animationIsComplete(spriteAnimator, 8))
-        {
-            //start the heart beat animation
-            if (rapTicks >= fighter->vars[2] + 30)
+            if (fighter->projectileAnimator->currentFrame == 3 && fighter->vars[4] == 0)
             {
-                fighter->vars[2] = rapTicks;
-                fighter->vars[3]++;
-                if (fighter->vars[4] == 0)
-                {
-                    fighter->vars[4] = 1;
-                    sfxKanoHeartbeat(fighter->soundHandler);
-                    bloodBall(fighter->worldPositionX - 4 + (fighter->direction == -1 ? FIGHTER_WIDTH - 8 : 0), fighter->positionY, 0);
-                }
-
-                if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
-                {
-                    sprite[fighter->lightningSpriteIndex].active = R_is_active;
-                }
-                else
-                {
-                    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-                }    
+                sfxRaidenHeadZap(fighter->soundHandler);
+                //trigger the opponent to zap their head off
+                fighter->vars[4] = 1;
+                stateMachineGoto(stateMachine, STATE_HIT_RAIDEN_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
             }
 
-            updateSpriteAnimator(fighter->projectileAnimator, kanoHeartFrames, 1, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
-
-            if (fighter->vars[3] >= 8)
+            if (animationIsComplete(fighter->projectileAnimator, 8))
             {
-                fighter->vars[3] = 1;
-                stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+                sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                fighter->lastTicks = rapTicks;
+                fighter->vars[0] = 1;                
                 return;
             }
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+            updateSpriteAnimator(fighter->projectileAnimator, raidenLightningFatalityFrames, 8, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
         }
 
-        //Start the heart rip!
-        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 8, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        //Do the head zap pose!
+        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (fighter->vars[0] == 1 && rapTicks >= fighter->lastTicks + 60)
+    {
+        fighter->vars[3] = 0;
+        stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+        return;
     }
 }
 
@@ -4910,10 +4896,11 @@ void StateRaidenFatality1_HandleInput(struct StateMachine* stateMachine, struct 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // HIT RAIDEN FATALITY 1
-// vars[0] did initial stun shake
-// vars[1] shake direction
-// vars[2] did the heart rip sound and impale
-// vars[3] triggers the heart rip
+// vars[0] played "caught" animation
+// vars[1] squirted blood and played sound
+// vars[2] played "decap" animation
+// vars[3] rapTicks for decap pause
+// vars[4] squirted more blood
 
 void StateHitRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -4922,48 +4909,96 @@ void StateHitRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fig
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
     fighter->vars[0] = 0;
-    fighter->vars[1] = 1;
+    fighter->vars[1] = 0;
     fighter->vars[2] = 0;
     fighter->vars[3] = 0;
-    fighterPlayFatalityGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
-    bloodImpale(fighter->worldPositionX + (fighter->direction * -32), fighter->positionY, fighter->direction);
     
-    if (fighter->direction == -1)
-    {
-        fighter->worldPositionX = fighter->Opponent->worldPositionX + FIGHTER_WIDTH + 24;
-    }
-    else
-    {
-        fighter->worldPositionX = fighter->Opponent->worldPositionX - (FIGHTER_WIDTH * 2) + 24;
-    }
-    animateFrame(spriteAnimator, fighter->spriteIndex, spriteAnimator->currentFrame, *fighter->dizzyFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);    
 }
 
 void StateHitRaidenFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
     if (fighter->vars[0] == 0)
     {
-        if (rapTicks > fighter->lastTicks + 2)
+        if (fighter->isPlayer1)
         {
-            fighter->worldPositionX += (2 * fighter->vars[1]);
-            fighter->vars[1] *= -1;
-            fighter->vars[2]++;
+            jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),14,16);
+        }
+        else
+        {
+            jsfLoadClut((unsigned short *)(void *)(fighter->frozenClut),15,16);
+        }
+        
+        if (animationIsComplete(spriteAnimator, 4))
+        {
+            if (fighter->isPlayer1)
+            {
+                jsfLoadClut((unsigned short *)(void *)fighter->defaultClut, 14, 16);
+            }
+            else
+            {
+                jsfLoadClut((unsigned short *)(void *)fighter->defaultClut, 15, 16);
+            }
+
+            fighter->vars[0] = 1;            
+            spriteAnimator->currentFrame = 0;
+            fighter->vars[3] = rapTicks;
+
+        }
+        updateSpriteAnimator(spriteAnimator, *fighter->caughtFrames, 4, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (fighter->vars[0] == 1 && fighter->vars[2] == 0)
+    {
+        if (fighter->vars[1] == 0)
+        {
+            fighter->vars[1] = 1;
+            //////////////////////////////////////////////
+            // BLOOD DROP DIRECTIONS
+            //////////////////////////////////////////////
+            // -1 LEFT
+            // 1 RIGHT
+            // 0 DOWN
+            // 10 NW
+            // 11 NE
+            // 12 SW
+            // 13 SE         
+            bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+            bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 8, fighter->direction * -1);
+            fighterPlayFatalityGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             fighter->lastTicks = rapTicks;
-            animateFrame(spriteAnimator, fighter->spriteIndex, spriteAnimator->currentFrame, *fighter->dizzyFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
         }
 
-        if (fighter->vars[2] >= 6)
+        if (fighter->vars[4] == 0 && rapTicks >= fighter->lastTicks + 70)
         {
-            fighter->vars[0] = 1;
-            fighter->vars[2] = 0;
-            fighter->lastTicks = rapTicks;
+            fighter->vars[4] = 1;
+            bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+            bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 8, fighter->direction * -1);
+            sfxKanoHeartrip(fighter->soundHandler);
+        }
+
+        if (animationIsComplete(spriteAnimator, 7) && fighter->vars[4] == 1)
+        {
+            fighter->vars[2] = 1;
+            bgShake(false);
+            sfxThud(fighter->soundHandler);
+            return;
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->hitDecapFrames, 7, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+        if (rapTicks < fighter->vars[3] + 90)
+        {
+            //stay on that first decap frame for dramatic purposes...
+            spriteAnimator->currentFrame = 0;
         }
     }
-    else if (fighter->vars[3] == 1 && fighter->vars[2] == 0)
+    else if (fighter->vars[0] == 1 && fighter->vars[2] == 1)
     {
-        sfxKanoHeartrip(fighter->soundHandler);
-        bloodImpale(fighter->worldPositionX, fighter->positionY, fighter->direction);
-        fighter->vars[0] = 0;
+        fighter->vars[0] = 1;
+        fighter->vars[1] = 0;
         fighter->IsDefeated = true;
         fighter->IsActive = false;
         stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);
@@ -4976,5 +5011,95 @@ void StateHitRaidenFatality1_Sleep(struct StateMachine* stateMachine, struct Fig
 }
 
 void StateHitRaidenFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LIU KANG FATALITY 1
+// vars[0] initial pause
+// vars[1] start slide to position
+// vars[2] slide timing
+// vars[3] end slide to position
+
+void StateKangFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->isDoingFatality = true;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->vars[4] = 0;
+    fighter->DidFatality = true;    
+}
+
+void StateKangFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
+    {
+        if (fighter->vars[1] == 0)
+        {
+            sfxKangFatality(fighter->soundHandler);
+            fighterSlideToPositionX(fighter, fighter->Opponent->worldPositionX + (48 * fighter->direction * -1));
+            fighter->vars[1] = 1;
+            fighter->vars[2] = rapTicks;
+        }
+        else if (fighter->IsSlidingToPositionX && fighter->vars[1] == 1 && rapTicks >= fighter->vars[2] + 2)
+        {
+            if (fighter->SlidePositionXTarget > fighter->worldPositionX)
+            {
+                fighterPositionXAdd(fighter, 8);
+
+                if (fighter->worldPositionX >= fighter->SlidePositionXTarget - 7)
+                {
+                    fighter->IsSlidingToPositionX = false;
+                    fighter->vars[3] = 1;
+                }
+            }
+            else if (fighter->SlidePositionXTarget < fighter->worldPositionX)
+            {
+                fighterPositionXAdd(fighter, -8);
+
+                if (fighter->worldPositionX <= fighter->SlidePositionXTarget + 7)
+                {
+                    fighter->IsSlidingToPositionX = false;
+                    fighter->vars[3] = 1;
+                }
+            }
+            fighter->vars[2] = rapTicks;
+        }
+
+        if (animationIsComplete(spriteAnimator, 14))
+        {
+            fighter->vars[0] = 1;
+        }
+        
+        //TODO start the kickflip animation and zip towards the opponent
+        //upon contact with the opponent, animate the uppercut and trigger STATE_HIT_CAGE to decap
+        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 14, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (fighter->vars[0] == 1 && fighter->vars[4] == 0)
+    {
+        stateMachineGoto(stateMachine, STATE_HIT_CAGE_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
+        fighter->vars[4] = 1;
+        fighter->lastTicks = rapTicks;
+        return;
+    }
+    else if (fighter->vars[4] == 1 && rapTicks >= fighter->lastTicks + 60)
+    {
+        fighter->vars[3] = 0;
+        stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+        return;
+    }
+}
+
+void StateKangFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateKangFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

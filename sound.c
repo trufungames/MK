@@ -723,6 +723,17 @@ void sfxRaidenTorpedo(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_TORPEDO, 8000);
 }
 
+void sfxRaidenHeadZap(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_RAIDEN_HEADZAP, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_RAIDEN_HEADZAP, 8000);
+}
+
 void sfxRaidenIdleZap(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)
@@ -765,6 +776,17 @@ void sfxKasumiFireball(struct SoundHandler* soundHandler)
 
 	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KASUMI_FIREBALL, 8000);
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KASUMI_FIREBALL, 8000);
+}
+
+void sfxKangFatality(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_KANG_FATALITY, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_KANG_FATALITY, 8000);
 }
 
 void sfxCrowdAww(struct SoundHandler* soundHandler)
@@ -820,6 +842,17 @@ void sfxFatalityGroanFemale(struct SoundHandler* soundHandler)
 	
 	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_FATALITY_GROAN_FEMALE, 8000);
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_FATALITY_GROAN_FEMALE, 8000);
+}
+
+void sfxFatalityGroanKang(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_FATALITY_GROAN_KANG, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_FATALITY_GROAN_KANG, 8000);
 }
 
 void sfxAnnouncerExcellent(struct SoundHandler* soundHandler)

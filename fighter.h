@@ -229,8 +229,9 @@ struct Fighter {
     struct AnimationFrame (*hitNutsFrames)[2];
     struct AnimationFrame (*lightningFrames)[30];
     struct AnimationFrame (*hitDecapFrames)[7];
-    struct AnimationFrame (*fatality1Frames)[8];
+    struct AnimationFrame (*fatality1Frames)[14];
     struct AnimationFrame (*decapFrames)[4];
+    struct AnimationFrame (*caughtFrames)[4];
     struct Fighter* Opponent;
 };
 

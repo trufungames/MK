@@ -212,6 +212,7 @@ ROM,kano_cannonball_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball.wav
 ROM,kano_cannonball_start_sam,sfx_raw8000,ASSETS\SFX\kano_cannonball_start.wav
 ROM,raiden_teleport_sam,sfx_raw8000,ASSETS\SFX\raiden_teleport.wav
 ROM,raiden_torpedo_sam,sfx_raw8000,ASSETS\SFX\raiden_torpedo.wav
+ROM,raiden_headzap_sam,sfx_raw8000,ASSETS\SFX\raiden_headzap.wav
 ROM,raiden_idle_zap_sam,sfx_raw8000,ASSETS\SFX\raiden_idle_zap.wav
 ROM,kang_flyingkick_sam,sfx_raw8000,ASSETS\SFX\kang_flyingkick.wav
 ROM,scorpion_teleport_sam,sfx_raw8000,ASSETS\SFX\scorpion_teleport.wav
@@ -221,8 +222,10 @@ ROM,kasumi_fireball_sam,sfx_raw8000,ASSETS\SFX\kasumi_fireball.wav
 ROM,fatality_gong_sam,sfx_raw8000,ASSETS\SFX\fatality_gong.wav
 ROM,fatality_groan_male_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_male.wav
 ROM,fatality_groan_female_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_female.wav
+ROM,fatality_groan_kang_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_kang.wav
 ROM,kano_heartbeat_sam,sfx_raw8000,ASSETS\SFX\kano_heartbeat.wav
 ROM,kano_heartrip_sam,sfx_raw8000,ASSETS\SFX\kano_heartrip.wav
+ROM,kang_fatality_sam,sfx_raw8000,ASSETS\SFX\kang_fatality.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

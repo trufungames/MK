@@ -986,6 +986,8 @@ bool fighterHandleFatality(struct StateMachine* stateMachine, struct Fighter* fi
 
     short distance = fighter->direction == 1 ? fighter->Opponent->worldPositionX - (fighter->worldPositionX + FIGHTER_WIDTH) : fighter->worldPositionX - (fighter->Opponent->worldPositionX + FIGHTER_WIDTH);
 
+    //printMessageInt("Distance", distance, 100, 8);
+
     if (fighter->pad & JAGPAD_C && fighter->ButtonReleased)
     {
         playerinputPush(fighter, JAGPAD_C);
@@ -1149,8 +1151,12 @@ void fighterPlayFatalityGroan(int fighter, struct SoundHandler* soundHandler, bo
         case SONYA:
             sfxFatalityGroanFemale(soundHandler);
             break;
+        case KANG:
+            sfxFatalityGroanKang(soundHandler);
+            break;
         default:
             sfxFatalityGroanMale(soundHandler);
+            break;
     }
 }
 

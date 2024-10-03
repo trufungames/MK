@@ -144,6 +144,9 @@
 #define SOUND_FATALITY_GROAN_FEMALE 85
 #define SOUND_KANO_HEARTBEAT 86
 #define SOUND_KANO_HEARTRIP 87
+#define SOUND_RAIDEN_HEADZAP 88
+#define SOUND_FATALITY_GROAN_KANG 89
+#define SOUND_KANG_FATALITY 90
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -290,9 +293,10 @@
 #define FIGHTER_MAX_WORLD_POSITION_X 716
 #define FIGHTER_FATALITY_CLOSE_RANGE_MIN_X -32
 #define FIGHTER_FATALITY_CLOSE_RANGE_MAX_X 32
-#define FIGHTER_FATALITY_MID_RANGE_MIN_X 160
-#define FIGHTER_FATALITY_MID_RANGE_MAX_X 240
+#define FIGHTER_FATALITY_MID_RANGE_MIN_X 90
+#define FIGHTER_FATALITY_MID_RANGE_MAX_X 140
 #define FIGHTER_FATALITY_CAGE_HEAD_SPEED_X 3
+#define FIGHTER_BLOOD_HEADZAP_SPEED 8
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_PALACEGATES_FLAME1_X 137
@@ -307,7 +311,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 75
+#define STATE_TOTAL_COUNT 76
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -384,6 +388,7 @@
 #define STATE_HIT_KANO_FATALITY1 72
 #define STATE_RAIDEN_FATALITY1 73
 #define STATE_HIT_RAIDEN_FATALITY1 74
+#define STATE_KANG_FATALITY1 75
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

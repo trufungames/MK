@@ -1304,8 +1304,8 @@ __Z9bloodPoolss:
 	.even
 	.globl	__Z11bloodUpdateP12SoundHandler
 __Z11bloodUpdateP12SoundHandler:
-	link.w %fp,#0
-	movem.l #12348,-(%sp)
+	link.w %fp,#-12
+	movem.l #16188,-(%sp)
 	tst.b _impaled
 	jeq .L59
 	move.w raptor_ticks,%a0
@@ -1316,29 +1316,29 @@ __Z11bloodUpdateP12SoundHandler:
 	clr.b _impaled
 .L59:
 	tst.b _bloodSprays+8
-	jne .L143
+	jne .L133
 .L60:
 	tst.b _bloodSprays+24
-	jne .L144
+	jne .L134
 .L66:
 	tst.b _bloodGlobObject+8
 	jeq .L69
 	move.w raptor_ticks,%d0
-	move.w _bloodGlobObject+10,%a2
+	move.w _bloodGlobObject+10,%d2
 	cmp.w _bloodGlobObject+14.l,%d0
 	jle .L71
-	sub.w _bloodDirection,%a2
-	move.w %a2,_bloodGlobObject+10
+	sub.w _bloodDirection,%d2
+	move.w %d2,_bloodGlobObject+10
 	move.w %d0,_bloodGlobObject+14
 .L71:
-	move.w _bloodDirection,%a4
-	move.w _bloodGlobObject+12,%a3
+	move.w _bloodDirection,%a3
+	move.w _bloodGlobObject+12,%a2
 	jsr __Z10cameraGetXv
-	move.l %a4,-(%sp)
 	move.l %a3,-(%sp)
-	sub.w %d0,%a2
-	move.w %a2,%a2
 	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
 	pea 6.w
@@ -1362,34 +1362,35 @@ __Z11bloodUpdateP12SoundHandler:
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
 .L69:
-	tst.b _bloodDrops+8
-	jne .L145
+	lea _bloodDrops+8,%a3
+	lea _bloodDrops,%a1
+	move.l #_bloodDrops+18,%d2
+	lea _bloodDrops+10,%a0
+	lea _bloodDrops+12,%a4
+	lea _bloodDrops+16,%a5
+	lea _bloodDrops+14,%a2
+	move.l #__Z10cameraGetXv,%d6
+	move.l #__Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss,%d7
+	move.l %a1,-12(%fp)
+.L80:
+	tst.b (%a3)
+	jne .L135
 .L72:
-	tst.b _bloodDrops+34
-	jne .L146
-.L75:
-	tst.b _bloodDrops+60
-	jne .L147
-.L78:
-	tst.b _bloodDrops+86
-	jne .L148
-.L81:
-	tst.b _bloodDrops+112
-	jne .L149
-.L84:
-	tst.b _bloodDrops+138
-	jne .L150
-.L87:
-	tst.b _bloodDrops+164
-	jne .L151
-.L90:
-	tst.b _bloodDrops+190
-	jne .L152
-.L93:
+	lea (26,%a3),%a3
+	moveq #26,%d0
+	add.l %d0,-12(%fp)
+	add.l %d0,%d2
+	lea (26,%a0),%a0
+	lea (26,%a4),%a4
+	lea (26,%a5),%a5
+	lea (26,%a2),%a2
+	cmp.l #_bloodDrops+222,%a2
+	jne .L80
+.L160:
 	tst.b _bloodBalls+8
-	jeq .L95
+	jeq .L81
 	tst.w _bloodBalls+12
-	jeq .L153
+	jeq .L136
 	move.w _bloodBalls+20,%a2
 	move.w _bloodBalls+18,%d2
 	jsr __Z10cameraGetXv
@@ -1410,29 +1411,29 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
-.L102:
-	move.w raptor_ticks,%a4
+.L88:
+	move.w raptor_ticks,%d2
 	move.w _bloodBalls+10,%a1
 	addq.l #2,%a1
-	move.w %a4,%a0
+	move.w %d2,%a0
 	cmp.l %a1,%a0
-	jle .L95
-	move.w _bloodBalls+12,%d2
+	jle .L81
+	move.w _bloodBalls+12,%d3
 	lea ___floatsisf,%a2
-	jeq .L154
+	jeq .L137
 	move.w _bloodBalls+18,%a0
 	move.l %a0,-(%sp)
 	jsr (%a2)
-	move.l %d0,%d3
-	move.w %d2,%a0
-	move.l %a0,(%sp)
+	move.l %d0,%d4
+	move.w %d3,%a1
+	move.l %a1,(%sp)
 	jsr (%a2)
 	move.l _bloodBalls+14,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
 	lea ___fixsfsi,%a3
@@ -1458,14 +1459,14 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jgt .L99
-.L100:
-	move.w %a4,_bloodBalls+10
-.L95:
+	jgt .L85
+.L86:
+	move.w %d2,_bloodBalls+10
+.L81:
 	tst.b _bloodBalls+30
-	jeq .L103
+	jeq .L89
 	tst.w _bloodBalls+34
-	jeq .L155
+	jeq .L138
 	move.w _bloodBalls+42,%a2
 	move.w _bloodBalls+40,%d2
 	jsr __Z10cameraGetXv
@@ -1486,29 +1487,29 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+26,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
-.L110:
-	move.w raptor_ticks,%a4
+.L96:
+	move.w raptor_ticks,%d2
 	move.w _bloodBalls+32,%a1
 	addq.l #2,%a1
-	move.w %a4,%a0
+	move.w %d2,%a0
 	cmp.l %a1,%a0
-	jle .L103
-	move.w _bloodBalls+34,%d2
+	jle .L89
+	move.w _bloodBalls+34,%d3
 	lea ___floatsisf,%a2
-	jeq .L156
+	jeq .L139
 	move.w _bloodBalls+40,%a0
 	move.l %a0,-(%sp)
 	jsr (%a2)
-	move.l %d0,%d3
-	move.w %d2,%a0
-	move.l %a0,(%sp)
+	move.l %d0,%d4
+	move.w %d3,%a1
+	move.l %a1,(%sp)
 	jsr (%a2)
 	move.l _bloodBalls+36,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
 	lea ___fixsfsi,%a3
@@ -1516,8 +1517,8 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a3)
 	addq.l #4,%sp
 	move.w %d0,_bloodBalls+40
-	move.w _bloodBalls+42,%a0
-	move.l %a0,-(%sp)
+	move.w _bloodBalls+42,%a1
+	move.l %a1,-(%sp)
 	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
@@ -1534,14 +1535,14 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jgt .L107
-.L108:
-	move.w %a4,_bloodBalls+32
-.L103:
+	jgt .L93
+.L94:
+	move.w %d2,_bloodBalls+32
+.L89:
 	tst.b _bloodBalls+52
-	jeq .L111
+	jeq .L97
 	tst.w _bloodBalls+56
-	jeq .L157
+	jeq .L140
 	move.w _bloodBalls+64,%a2
 	move.w _bloodBalls+62,%d2
 	jsr __Z10cameraGetXv
@@ -1562,29 +1563,29 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+48,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
-.L118:
-	move.w raptor_ticks,%a4
+.L104:
+	move.w raptor_ticks,%d2
 	move.w _bloodBalls+54,%a1
 	addq.l #2,%a1
-	move.w %a4,%a0
+	move.w %d2,%a0
 	cmp.l %a1,%a0
-	jle .L111
-	move.w _bloodBalls+56,%d2
+	jle .L97
+	move.w _bloodBalls+56,%d3
 	lea ___floatsisf,%a2
-	jeq .L158
+	jeq .L141
 	move.w _bloodBalls+62,%a0
 	move.l %a0,-(%sp)
 	jsr (%a2)
-	move.l %d0,%d3
-	move.w %d2,%a0
-	move.l %a0,(%sp)
+	move.l %d0,%d4
+	move.w %d3,%a1
+	move.l %a1,(%sp)
 	jsr (%a2)
 	move.l _bloodBalls+58,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
 	lea ___fixsfsi,%a3
@@ -1592,8 +1593,8 @@ __Z11bloodUpdateP12SoundHandler:
 	jsr (%a3)
 	addq.l #4,%sp
 	move.w %d0,_bloodBalls+62
-	move.w _bloodBalls+64,%a0
-	move.l %a0,-(%sp)
+	move.w _bloodBalls+64,%a1
+	move.l %a1,-(%sp)
 	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
@@ -1610,22 +1611,22 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jgt .L115
-.L116:
-	move.w %a4,_bloodBalls+54
-.L111:
+	jgt .L101
+.L102:
+	move.w %d2,_bloodBalls+54
+.L97:
 	tst.b _bloodBalls+74
-	jeq .L119
+	jeq .L105
 	tst.w _bloodBalls+78
-	jeq .L120
+	jeq .L106
 	move.w _bloodBalls+86,%a2
 	move.w _bloodBalls+84,%d2
 	jsr __Z10cameraGetXv
 	pea 1.w
 	move.l %a2,-(%sp)
 	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
+	move.w %d2,%a1
+	move.l %a1,-(%sp)
 	clr.l -(%sp)
 	cmp.w #-1,_bloodBalls+78.l
 	seq %d0
@@ -1638,17 +1639,17 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+70,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
-.L121:
-	move.w raptor_ticks,%a4
+.L107:
+	move.w raptor_ticks,%d2
 	move.w _bloodBalls+76,%a1
 	addq.l #2,%a1
-	move.w %a4,%a0
+	move.w %d2,%a0
 	cmp.l %a1,%a0
-	jle .L119
-	move.w _bloodBalls+78,%d2
+	jle .L105
+	move.w _bloodBalls+78,%d3
 	lea ___floatsisf,%a2
 	lea ___fixsfsi,%a3
-	jne .L159
+	jne .L142
 	move.w _bloodBalls+86,%a0
 	move.l %a0,-(%sp)
 	jsr (%a2)
@@ -1667,49 +1668,139 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jgt .L160
-.L123:
-	move.w %a4,_bloodBalls+76
-.L119:
+	jgt .L143
+.L109:
+	move.w %d2,_bloodBalls+76
+.L105:
 	tst.b _bloodPools+8
-	jne .L161
+	jne .L144
 	tst.b _bloodPools+22
-	jne .L162
-.L125:
+	jne .L145
+.L111:
 	tst.b _bloodPools+36
-	jne .L163
-.L126:
+	jne .L146
+.L112:
 	tst.b _bloodPools+50
-	jne .L164
-.L127:
+	jne .L147
+.L113:
 	tst.b _bloodPools+64
-	jne .L165
-.L128:
+	jne .L148
+.L114:
 	tst.b _bloodPools+78
-	jne .L166
-.L129:
+	jne .L149
+.L115:
 	tst.b _bloodPools+92
-	jne .L167
-.L130:
+	jne .L150
+.L116:
 	tst.b _bloodPools+106
-	jne .L168
-.L131:
+	jne .L151
+.L117:
 	tst.b _bloodSquirts+8
-	jne .L169
-.L132:
+	jne .L152
+.L118:
 	tst.b _bloodSquirts+22
-	jne .L170
-.L133:
+	jne .L153
+.L119:
 	tst.b _bloodSquirts+36
-	jne .L171
-.L134:
+	jne .L154
+.L120:
 	tst.b _bloodSquirts+50
-	jne .L172
+	jne .L155
 .L58:
-	movem.l -24(%fp),#15372
+	movem.l -52(%fp),#15612
 	unlk %fp
 	rts
-.L144:
+.L135:
+	move.w (%a4),%d5
+	ext.l %d5
+	move.w (%a5),%d4
+	ext.l %d4
+	move.w (%a2),%d3
+	move.l %a0,-4(%fp)
+	move.l %d6,%a1
+	jsr (%a1)
+	move.l %d5,-(%sp)
+	move.l %d4,-(%sp)
+	sub.w %d0,%d3
+	move.w %d3,%a1
+	move.l %a1,-(%sp)
+	pea 1.w
+	cmp.w #-1,(%a4)
+	seq %d0
+	ext.w %d0
+	ext.l %d0
+	neg.l %d0
+	move.l %d0,-(%sp)
+	pea 8.w
+	pea _bloodDropFrames
+	move.l -10(%a2),-(%sp)
+	move.l %d7,%a1
+	jsr (%a1)
+	move.l -4(%fp),%a0
+	move.w (%a0),%d1
+	ext.l %d1
+	addq.l #2,%d1
+	move.w raptor_ticks,%d0
+	ext.l %d0
+	lea (32,%sp),%sp
+	cmp.l %d1,%d0
+	jle .L72
+	move.w (%a4),%d3
+	cmp.w #1,%d3
+	jle .L156
+	move.w (%a2),%d0
+	btst #0,%d3
+	jne .L157
+	moveq #-8,%d1
+	add.w %d0,%d1
+	move.w %d1,(%a2)
+	move.w (%a5),%d0
+	cmp.w #11,(%a4)
+	jgt .L125
+.L161:
+	moveq #-8,%d1
+	add.w %d0,%d1
+	move.w %d1,(%a5)
+	move.l #___addsf3,%d3
+.L74:
+	move.l -12(%fp),%a1
+	move.l (%a1),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%d1
+	move.l %d0,%a1
+	cmp.w #182,12(%a1,%d1.l)
+	jgt .L158
+.L77:
+	cmp.w #2,(%a4)
+	jgt .L159
+.L122:
+	move.l _gravity,-(%sp)
+	move.l %d2,%a1
+	move.l (%a1),-(%sp)
+	move.l %a0,-4(%fp)
+	move.l %d3,%a1
+	jsr (%a1)
+	addq.l #8,%sp
+	move.l %d2,%a1
+	move.l %d0,(%a1)
+	move.l -4(%fp),%a0
+	move.w raptor_ticks,(%a0)
+.L162:
+	lea (26,%a3),%a3
+	moveq #26,%d0
+	add.l %d0,-12(%fp)
+	add.l %d0,%d2
+	lea (26,%a0),%a0
+	lea (26,%a4),%a4
+	lea (26,%a5),%a5
+	lea (26,%a2),%a2
+	cmp.l #_bloodDrops+222,%a2
+	jne .L80
+	jra .L160
+.L134:
 	lea __Z19animationIsCompleteP14SpriteAnimators,%a3
 	lea __Z10cameraGetXv,%a2
 	lea __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss,%a4
@@ -1754,7 +1845,289 @@ __Z11bloodUpdateP12SoundHandler:
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
 	jra .L66
-.L143:
+.L157:
+	moveq #8,%d1
+	add.w %d0,%d1
+	move.w %d1,(%a2)
+	move.w (%a5),%d0
+	cmp.w #11,(%a4)
+	jle .L161
+.L125:
+	moveq #8,%d1
+	add.w %d0,%d1
+	move.w %d1,(%a5)
+	move.l #___addsf3,%d3
+	jra .L74
+.L159:
+	move.w (%a2),%d4
+	ext.l %d4
+	move.l %a0,-4(%fp)
+	move.l %d6,%a1
+	jsr (%a1)
+	sub.l %d0,%d4
+	move.l -4(%fp),%a0
+	tst.l %d4
+	jle .L79
+	move.w (%a2),%d4
+	ext.l %d4
+	move.l %d6,%a1
+	jsr (%a1)
+	sub.l %d0,%d4
+	move.l -4(%fp),%a0
+	cmp.l #319,%d4
+	jgt .L79
+	move.w (%a5),%d0
+	jle .L79
+	cmp.w #240,%d0
+	jle .L122
+.L79:
+	move.l -12(%fp),%a1
+	move.l (%a1),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%d1
+	moveq #-1,%d4
+	move.l %d0,%a1
+	move.l %d4,4(%a1,%d1.l)
+	clr.b (%a3)
+	move.l _gravity,-(%sp)
+	move.l %d2,%a1
+	move.l (%a1),-(%sp)
+	move.l %a0,-4(%fp)
+	move.l %d3,%a1
+	jsr (%a1)
+	addq.l #8,%sp
+	move.l %d2,%a1
+	move.l %d0,(%a1)
+	move.l -4(%fp),%a0
+	move.w raptor_ticks,(%a0)
+	jra .L162
+.L158:
+	move.l %a0,-4(%fp)
+	jsr RAPTOR_random
+	and.w #4,%d0
+	add.w #182,%d0
+	move.w %d0,%a1
+	move.l %a1,-(%sp)
+	move.w (%a2),%a1
+	move.l %a1,-(%sp)
+	jsr __Z9bloodPoolss
+	move.l -12(%fp),%a1
+	move.l (%a1),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%d1
+	moveq #-1,%d4
+	move.l %d0,%a1
+	move.l %d4,4(%a1,%d1.l)
+	clr.b (%a3)
+	addq.l #8,%sp
+	move.l -4(%fp),%a0
+	cmp.w #2,(%a4)
+	jle .L122
+	jra .L159
+.L154:
+	move.w _bloodSquirts+40,%a2
+	move.w _bloodSquirts+38,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 6.w
+	pea _bloodSquirtFrames
+	move.l _bloodSquirts+32,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	pea 6.w
+	move.l _bloodSquirts+32,-(%sp)
+	jsr __Z19animationIsCompleteP14SpriteAnimators
+	addq.l #8,%sp
+	tst.b %d0
+	jeq .L120
+	clr.b _bloodSquirts+36
+	move.l _bloodSquirts+28,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	tst.b _bloodSquirts+50
+	jeq .L58
+	jra .L155
+.L153:
+	move.w _bloodSquirts+26,%a2
+	move.w _bloodSquirts+24,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 6.w
+	pea _bloodSquirtFrames
+	move.l _bloodSquirts+18,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	pea 6.w
+	move.l _bloodSquirts+18,-(%sp)
+	jsr __Z19animationIsCompleteP14SpriteAnimators
+	addq.l #8,%sp
+	tst.b %d0
+	jeq .L119
+	clr.b _bloodSquirts+22
+	move.l _bloodSquirts+14,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	tst.b _bloodSquirts+36
+	jeq .L120
+	jra .L154
+.L152:
+	move.w _bloodSquirts+12,%a2
+	move.w _bloodSquirts+10,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 6.w
+	pea _bloodSquirtFrames
+	move.l _bloodSquirts+4,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	pea 6.w
+	move.l _bloodSquirts+4,-(%sp)
+	jsr __Z19animationIsCompleteP14SpriteAnimators
+	addq.l #8,%sp
+	tst.b %d0
+	jeq .L118
+	clr.b _bloodSquirts+8
+	move.l _bloodSquirts,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	tst.b _bloodSquirts+22
+	jeq .L119
+	jra .L153
+.L151:
+	move.w _bloodPools+110,%a2
+	move.w _bloodPools+108,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a1
+	move.l %a1,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+102,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	tst.b _bloodSquirts+8
+	jeq .L118
+	jra .L152
+.L150:
+	move.w _bloodPools+96,%a2
+	move.w _bloodPools+94,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+88,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	tst.b _bloodPools+106
+	jeq .L117
+	jra .L151
+.L149:
+	move.w _bloodPools+82,%a2
+	move.w _bloodPools+80,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a1
+	move.l %a1,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+74,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	tst.b _bloodPools+92
+	jeq .L116
+	jra .L150
+.L148:
+	move.w _bloodPools+68,%a2
+	move.w _bloodPools+66,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a0
+	move.l %a0,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+60,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	tst.b _bloodPools+78
+	jeq .L115
+	jra .L149
+.L147:
+	move.w _bloodPools+54,%a2
+	move.w _bloodPools+52,%d2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a2,-(%sp)
+	sub.w %d0,%d2
+	move.w %d2,%a1
+	move.l %a1,-(%sp)
+	clr.l -(%sp)
+	pea 1.w
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+46,-(%sp)
+	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
+	lea (32,%sp),%sp
+	tst.b _bloodPools+64
+	jeq .L114
+	jra .L148
+.L133:
 	pea 5.w
 	move.l _bloodSprays+4,-(%sp)
 	lea __Z19animationIsCompleteP14SpriteAnimators,%a3
@@ -1839,309 +2212,14 @@ __Z11bloodUpdateP12SoundHandler:
 	moveq #1,%d1
 	or.l %d0,%d1
 	move.l %d1,24(%a0)
-	moveq #1,%d0
-	move.l %d0,4(%a0)
+	moveq #1,%d4
+	move.l %d4,4(%a0)
 	move.l _bloodSprays+20,%a0
 	clr.w 14(%a0)
 	tst.b _bloodSprays+24
 	jeq .L66
-	jra .L144
-.L152:
-	move.w _bloodDrops+194,%a3
-	move.w _bloodDrops+198,%a2
-	move.w _bloodDrops+196,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+194.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+186,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+192,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L93
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+196,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+194,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+204,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+196
-	move.w _bloodDrops+198,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+200,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+198
-	move.l _bloodDrops+182,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L173
-	move.l _bloodDrops+200,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+200
-	move.w %d2,_bloodDrops+192
-	jra .L93
-.L166:
-	move.w _bloodPools+82,%a2
-	move.w _bloodPools+80,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+74,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+92
-	jeq .L130
-	jra .L167
-.L165:
-	move.w _bloodPools+68,%a2
-	move.w _bloodPools+66,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+60,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+78
-	jeq .L129
-	jra .L166
-.L164:
-	move.w _bloodPools+54,%a2
-	move.w _bloodPools+52,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+46,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+64
-	jeq .L128
-	jra .L165
-.L163:
-	move.w _bloodPools+40,%a2
-	move.w _bloodPools+38,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+32,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+50
-	jeq .L127
-	jra .L164
-.L162:
-	move.w _bloodPools+26,%a2
-	move.w _bloodPools+24,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+18,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+36
-	jeq .L126
-	jra .L163
-.L161:
-	move.w _bloodPools+12,%a2
-	move.w _bloodPools+10,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+4,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+22
-	jeq .L125
-	jra .L162
-.L170:
-	move.w _bloodSquirts+26,%a2
-	move.w _bloodSquirts+24,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 6.w
-	pea _bloodSquirtFrames
-	move.l _bloodSquirts+18,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	pea 6.w
-	move.l _bloodSquirts+18,-(%sp)
-	jsr __Z19animationIsCompleteP14SpriteAnimators
-	addq.l #8,%sp
-	tst.b %d0
-	jeq .L133
-	clr.b _bloodSquirts+22
-	move.l _bloodSquirts+14,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+36
-	jeq .L134
-	jra .L171
-.L169:
-	move.w _bloodSquirts+12,%a2
-	move.w _bloodSquirts+10,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 6.w
-	pea _bloodSquirtFrames
-	move.l _bloodSquirts+4,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	pea 6.w
-	move.l _bloodSquirts+4,-(%sp)
-	jsr __Z19animationIsCompleteP14SpriteAnimators
-	addq.l #8,%sp
-	tst.b %d0
-	jeq .L132
-	clr.b _bloodSquirts+8
-	move.l _bloodSquirts,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+22
-	jeq .L133
-	jra .L170
-.L168:
-	move.w _bloodPools+110,%a2
-	move.w _bloodPools+108,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+102,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodSquirts+8
-	jeq .L132
-	jra .L169
-.L167:
-	move.w _bloodPools+96,%a2
-	move.w _bloodPools+94,%d2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	clr.l -(%sp)
-	pea 1.w
-	pea 3.w
-	pea _bloodPoolFrames
-	move.l _bloodPools+88,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	lea (32,%sp),%sp
-	tst.b _bloodPools+106
-	jeq .L131
-	jra .L168
-.L172:
+	jra .L134
+.L155:
 	move.w _bloodSquirts+54,%a2
 	move.w _bloodSquirts+52,%d2
 	jsr __Z10cameraGetXv
@@ -2172,12 +2250,12 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	movem.l -24(%fp),#15372
+	movem.l -52(%fp),#15612
 	unlk %fp
 	rts
-.L171:
-	move.w _bloodSquirts+40,%a2
-	move.w _bloodSquirts+38,%d2
+.L146:
+	move.w _bloodPools+40,%a2
+	move.w _bloodPools+38,%d2
 	jsr __Z10cameraGetXv
 	pea 1.w
 	move.l %a2,-(%sp)
@@ -2186,604 +2264,53 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l %a0,-(%sp)
 	clr.l -(%sp)
 	pea 1.w
-	pea 6.w
-	pea _bloodSquirtFrames
-	move.l _bloodSquirts+32,-(%sp)
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+32,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
 	lea (32,%sp),%sp
-	pea 6.w
-	move.l _bloodSquirts+32,-(%sp)
-	jsr __Z19animationIsCompleteP14SpriteAnimators
-	addq.l #8,%sp
-	tst.b %d0
-	jeq .L134
-	clr.b _bloodSquirts+36
-	move.l _bloodSquirts+28,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	tst.b _bloodSquirts+50
-	jeq .L58
-	jra .L172
-.L150:
-	move.w _bloodDrops+142,%a3
-	move.w _bloodDrops+146,%a2
-	move.w _bloodDrops+144,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+142.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+134,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+140,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L87
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+144,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+142,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+152,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+144
-	move.w _bloodDrops+146,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+148,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+146
-	move.l _bloodDrops+130,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L88
-	move.l _bloodDrops+148,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+148
-	move.w %d2,_bloodDrops+140
-.L174:
-	tst.b _bloodDrops+164
-	jeq .L90
-	jra .L151
-.L149:
-	move.w _bloodDrops+116,%a3
-	move.w _bloodDrops+120,%a2
-	move.w _bloodDrops+118,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+116.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+108,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+114,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L84
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+118,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+116,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+126,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+118
-	move.w _bloodDrops+120,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+122,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+120
-	move.l _bloodDrops+104,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L85
-	move.l _bloodDrops+122,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+122
-	move.w %d2,_bloodDrops+114
-.L175:
-	tst.b _bloodDrops+138
-	jeq .L87
-	jra .L150
-.L148:
-	move.w _bloodDrops+90,%a3
-	move.w _bloodDrops+94,%a2
-	move.w _bloodDrops+92,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+90.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+82,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+88,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L81
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+92,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+90,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+100,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+92
-	move.w _bloodDrops+94,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+96,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+94
-	move.l _bloodDrops+78,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L82
-	move.l _bloodDrops+96,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+96
-	move.w %d2,_bloodDrops+88
-.L177:
-	tst.b _bloodDrops+112
-	jeq .L84
-	jra .L149
-.L147:
-	move.w _bloodDrops+64,%a3
-	move.w _bloodDrops+68,%a2
-	move.w _bloodDrops+66,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+64.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+56,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+62,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L78
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+66,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+64,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+74,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+66
-	move.w _bloodDrops+68,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+70,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+68
-	move.l _bloodDrops+52,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L79
-	move.l _bloodDrops+70,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+70
-	move.w %d2,_bloodDrops+62
-.L178:
-	tst.b _bloodDrops+86
-	jeq .L81
-	jra .L148
-.L146:
-	move.w _bloodDrops+38,%a3
-	move.w _bloodDrops+42,%a2
-	move.w _bloodDrops+40,%d2
-	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
-	move.l %a2,-(%sp)
-	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
-	pea 1.w
-	cmp.w #-1,_bloodDrops+38.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+30,-(%sp)
-	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+36,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
-	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L75
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+40,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+38,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+48,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+40
-	move.w _bloodDrops+42,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+44,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+42
-	move.l _bloodDrops+26,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L76
-	move.l _bloodDrops+44,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+44
-	move.w %d2,_bloodDrops+36
-.L176:
-	tst.b _bloodDrops+60
-	jeq .L78
+	tst.b _bloodPools+50
+	jeq .L113
 	jra .L147
 .L145:
-	move.w _bloodDrops+12,%a3
-	move.w _bloodDrops+16,%a2
-	move.w _bloodDrops+14,%d2
+	move.w _bloodPools+26,%a2
+	move.w _bloodPools+24,%d2
 	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
+	pea 1.w
 	move.l %a2,-(%sp)
 	sub.w %d0,%d2
-	move.w %d2,%a0
-	move.l %a0,-(%sp)
+	move.w %d2,%a1
+	move.l %a1,-(%sp)
+	clr.l -(%sp)
 	pea 1.w
-	cmp.w #-1,_bloodDrops+12.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+4,-(%sp)
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+18,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+10,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
 	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L72
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+14,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+12,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+22,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+14
-	move.w _bloodDrops+16,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+18,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+16
-	move.l _bloodDrops,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L73
-	move.l _bloodDrops+18,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+18
-	move.w %d2,_bloodDrops+10
-.L179:
-	tst.b _bloodDrops+34
-	jeq .L75
+	tst.b _bloodPools+36
+	jeq .L112
 	jra .L146
-.L151:
-	move.w _bloodDrops+168,%a3
-	move.w _bloodDrops+172,%a2
-	move.w _bloodDrops+170,%d2
+.L144:
+	move.w _bloodPools+12,%a2
+	move.w _bloodPools+10,%d2
 	jsr __Z10cameraGetXv
-	move.l %a3,-(%sp)
+	pea 1.w
 	move.l %a2,-(%sp)
 	sub.w %d0,%d2
 	move.w %d2,%a0
 	move.l %a0,-(%sp)
+	clr.l -(%sp)
 	pea 1.w
-	cmp.w #-1,_bloodDrops+168.l
-	seq %d0
-	ext.w %d0
-	ext.l %d0
-	neg.l %d0
-	move.l %d0,-(%sp)
-	pea 8.w
-	pea _bloodDropFrames
-	move.l _bloodDrops+160,-(%sp)
+	pea 3.w
+	pea _bloodPoolFrames
+	move.l _bloodPools+4,-(%sp)
 	jsr __Z20updateSpriteAnimatorP14SpriteAnimatorP14AnimationFramesbbsss
-	move.w raptor_ticks,%d2
-	move.w _bloodDrops+166,%a1
-	addq.l #2,%a1
-	move.w %d2,%a0
 	lea (32,%sp),%sp
-	cmp.l %a1,%a0
-	jle .L90
-	lea ___floatsisf,%a2
-	move.w _bloodDrops+170,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l %d0,%d3
-	move.w _bloodDrops+168,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	move.l _bloodDrops+178,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___mulsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
-	jsr ___subsf3
-	addq.l #8,%sp
-	lea ___fixsfsi,%a3
-	move.l %d0,-(%sp)
-	jsr (%a3)
-	move.w %d0,_bloodDrops+170
-	move.w _bloodDrops+172,%a0
-	move.l %a0,(%sp)
-	jsr (%a2)
-	lea ___addsf3,%a2
-	move.l _bloodDrops+174,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a2)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodDrops+172
-	move.l _bloodDrops+156,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jgt .L91
-	move.l _bloodDrops+174,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+174
-	move.w %d2,_bloodDrops+166
-.L180:
-	tst.b _bloodDrops+190
-	jeq .L93
-	jra .L152
-.L120:
-	move.w _bloodBalls+86,%a3
-	move.w _bloodBalls+84,%a2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a3,-(%sp)
-	sub.l %d0,%a2
-	move.l %a2,-(%sp)
-	pea _bloodBallFrames+56
-	move.l _bloodBalls+70,-(%sp)
-	move.l _bloodBalls+66,-(%sp)
-	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
-	lea (24,%sp),%sp
-	jra .L121
-.L153:
-	move.w _bloodBalls+20,%a3
-	move.w _bloodBalls+18,%a2
-	jsr __Z10cameraGetXv
-	pea 1.w
-	move.l %a3,-(%sp)
-	sub.l %d0,%a2
-	move.l %a2,-(%sp)
-	pea _bloodBallFrames+56
-	move.l _bloodBalls+4,-(%sp)
-	move.l _bloodBalls,-(%sp)
-	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
-	lea (24,%sp),%sp
-	jra .L102
-.L157:
+	tst.b _bloodPools+22
+	jeq .L111
+	jra .L145
+.L140:
 	move.w _bloodBalls+64,%a3
 	move.w _bloodBalls+62,%a2
 	jsr __Z10cameraGetXv
@@ -2796,8 +2323,8 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+44,-(%sp)
 	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
 	lea (24,%sp),%sp
-	jra .L118
-.L155:
+	jra .L104
+.L138:
 	move.w _bloodBalls+42,%a3
 	move.w _bloodBalls+40,%a2
 	jsr __Z10cameraGetXv
@@ -2810,21 +2337,96 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l _bloodBalls+22,-(%sp)
 	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
 	lea (24,%sp),%sp
-	jra .L110
-.L159:
+	jra .L96
+.L106:
+	move.w _bloodBalls+86,%a3
+	move.w _bloodBalls+84,%a2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a3,-(%sp)
+	sub.l %d0,%a2
+	move.l %a2,-(%sp)
+	pea _bloodBallFrames+56
+	move.l _bloodBalls+70,-(%sp)
+	move.l _bloodBalls+66,-(%sp)
+	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
+	lea (24,%sp),%sp
+	jra .L107
+.L136:
+	move.w _bloodBalls+20,%a3
+	move.w _bloodBalls+18,%a2
+	jsr __Z10cameraGetXv
+	pea 1.w
+	move.l %a3,-(%sp)
+	sub.l %d0,%a2
+	move.l %a2,-(%sp)
+	pea _bloodBallFrames+56
+	move.l _bloodBalls+4,-(%sp)
+	move.l _bloodBalls,-(%sp)
+	jsr __Z17setAnimationFramejP14SpriteAnimatorP14AnimationFrameiii
+	lea (24,%sp),%sp
+	jra .L88
+.L156:
+	move.w (%a2),%a1
+	move.l %a1,-(%sp)
+	jsr ___floatsisf
+	move.l %d0,%d4
+	move.w %d3,%a1
+	move.l %a1,(%sp)
+	jsr ___floatsisf
+	move.l 8(%a2),(%sp)
+	move.l %d0,-(%sp)
+	jsr ___mulsf3
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	move.l %d4,-(%sp)
+	jsr ___subsf3
+	addq.l #8,%sp
+	move.l #___fixsfsi,%d4
+	move.l %d0,-(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	move.w %d0,(%a2)
+	move.w (%a5),%a1
+	move.l %a1,(%sp)
+	jsr ___floatsisf
+	move.l #___addsf3,%d3
+	move.l %d2,%a1
+	move.l (%a1),(%sp)
+	move.l %d0,-(%sp)
+	jsr ___addsf3
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	move.l %d4,%a1
+	jsr (%a1)
+	addq.l #4,%sp
+	move.w %d0,(%a5)
+	move.l -4(%fp),%a0
+	move.l -12(%fp),%a1
+	move.l (%a1),%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%d1
+	move.l %d0,%a1
+	cmp.w #182,12(%a1,%d1.l)
+	jle .L77
+	jra .L158
+.L142:
 	move.w _bloodBalls+84,%a0
 	move.l %a0,-(%sp)
 	jsr (%a2)
-	move.l %d0,%d3
-	move.w %d2,%a0
-	move.l %a0,(%sp)
+	move.l %d0,%d4
+	move.w %d3,%a1
+	move.l %a1,(%sp)
 	jsr (%a2)
 	move.l _bloodBalls+80,(%sp)
 	move.l %d0,-(%sp)
 	jsr ___mulsf3
 	addq.l #4,%sp
 	move.l %d0,(%sp)
-	move.l %d3,-(%sp)
+	move.l %d4,-(%sp)
 	jsr ___subsf3
 	addq.l #8,%sp
 	lea ___fixsfsi,%a3
@@ -2850,31 +2452,9 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jle .L123
-	jra .L160
-.L158:
-	lea ___fixsfsi,%a3
-	move.w _bloodBalls+64,%a0
-	move.l %a0,-(%sp)
-	jsr (%a2)
-	move.l #0x40e00000,(%sp)
-	move.l %d0,-(%sp)
-	jsr ___addsf3
-	addq.l #4,%sp
-	move.l %d0,(%sp)
-	jsr (%a3)
-	addq.l #4,%sp
-	move.w %d0,_bloodBalls+64
-	move.l _bloodBalls+44,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	cmp.w #182,12(%a0,%d0.l)
-	jle .L116
-	jra .L115
-.L154:
+	jle .L109
+	jra .L143
+.L137:
 	lea ___fixsfsi,%a3
 	move.w _bloodBalls+20,%a0
 	move.l %a0,-(%sp)
@@ -2894,12 +2474,12 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jle .L100
-	jra .L99
-.L156:
+	jle .L86
+	jra .L85
+.L139:
 	lea ___fixsfsi,%a3
-	move.w _bloodBalls+42,%a0
-	move.l %a0,-(%sp)
+	move.w _bloodBalls+42,%a1
+	move.l %a1,-(%sp)
 	jsr (%a2)
 	move.l #0x40e00000,(%sp)
 	move.l %d0,-(%sp)
@@ -2916,17 +2496,39 @@ __Z11bloodUpdateP12SoundHandler:
 	lsl.l #6,%d0
 	move.l sprite,%a0
 	cmp.w #182,12(%a0,%d0.l)
-	jle .L108
-.L107:
+	jle .L94
+	jra .L93
+.L141:
+	lea ___fixsfsi,%a3
+	move.w _bloodBalls+64,%a1
+	move.l %a1,-(%sp)
+	jsr (%a2)
+	move.l #0x40e00000,(%sp)
+	move.l %d0,-(%sp)
+	jsr ___addsf3
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a3)
+	addq.l #4,%sp
+	move.w %d0,_bloodBalls+64
+	move.l _bloodBalls+44,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	cmp.w #182,12(%a0,%d0.l)
+	jle .L102
+.L101:
 	jsr RAPTOR_random
 	and.w #4,%d0
 	add.w #182,%d0
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	move.w _bloodBalls+40,%a0
-	move.l %a0,-(%sp)
+	move.w _bloodBalls+62,%a1
+	move.l %a1,-(%sp)
 	jsr __Z9bloodPoolss
-	move.l _bloodBalls+22,%d0
+	move.l _bloodBalls+44,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
 	add.l %d1,%d0
@@ -2934,17 +2536,17 @@ __Z11bloodUpdateP12SoundHandler:
 	move.l sprite,%a0
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+30
-	move.w raptor_ticks,%a4
+	clr.b _bloodBalls+52
+	move.w raptor_ticks,%d2
 	addq.l #8,%sp
-	move.w %a4,_bloodBalls+32
-	jra .L103
-.L160:
+	move.w %d2,_bloodBalls+54
+	jra .L97
+.L143:
 	jsr RAPTOR_random
 	and.w #4,%d0
 	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
+	move.w %d0,%a1
+	move.l %a1,-(%sp)
 	move.w _bloodBalls+84,%a0
 	move.l %a0,-(%sp)
 	jsr __Z9bloodPoolss
@@ -2957,16 +2559,38 @@ __Z11bloodUpdateP12SoundHandler:
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
 	clr.b _bloodBalls+74
-	move.w raptor_ticks,%a4
+	move.w raptor_ticks,%d2
 	addq.l #8,%sp
-	move.w %a4,_bloodBalls+76
-	jra .L119
-.L99:
+	move.w %d2,_bloodBalls+76
+	jra .L105
+.L93:
 	jsr RAPTOR_random
 	and.w #4,%d0
 	add.w #182,%d0
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
+	move.w _bloodBalls+40,%a1
+	move.l %a1,-(%sp)
+	jsr __Z9bloodPoolss
+	move.l _bloodBalls+22,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	move.l sprite,%a0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	clr.b _bloodBalls+30
+	move.w raptor_ticks,%d2
+	addq.l #8,%sp
+	move.w %d2,_bloodBalls+32
+	jra .L89
+.L85:
+	jsr RAPTOR_random
+	and.w #4,%d0
+	add.w #182,%d0
+	move.w %d0,%a1
+	move.l %a1,-(%sp)
 	move.w _bloodBalls+18,%a0
 	move.l %a0,-(%sp)
 	jsr __Z9bloodPoolss
@@ -2979,248 +2603,10 @@ __Z11bloodUpdateP12SoundHandler:
 	moveq #-1,%d1
 	move.l %d1,4(%a0,%d0.l)
 	clr.b _bloodBalls+8
-	move.w raptor_ticks,%a4
-	addq.l #8,%sp
-	move.w %a4,_bloodBalls+10
-	jra .L95
-.L115:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodBalls+62,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodBalls+44,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodBalls+52
-	move.w raptor_ticks,%a4
-	addq.l #8,%sp
-	move.w %a4,_bloodBalls+54
-	jra .L111
-.L88:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+144,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+130,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+138
 	move.w raptor_ticks,%d2
 	addq.l #8,%sp
-	move.l _bloodDrops+148,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+148
-	move.w %d2,_bloodDrops+140
-	jra .L174
-.L85:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+118,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+104,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+112
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+122,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+122
-	move.w %d2,_bloodDrops+114
-	jra .L175
-.L76:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+40,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+26,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+34
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+44,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+44
-	move.w %d2,_bloodDrops+36
-	jra .L176
-.L173:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+196,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+182,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+190
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+200,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+200
-	move.w %d2,_bloodDrops+192
-	jra .L93
-.L82:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+92,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+78,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+86
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+96,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+96
-	move.w %d2,_bloodDrops+88
-	jra .L177
-.L79:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+66,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+52,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+60
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+70,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+70
-	move.w %d2,_bloodDrops+62
-	jra .L178
-.L73:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+14,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+8
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+18,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+18
-	move.w %d2,_bloodDrops+10
-	jra .L179
-.L91:
-	jsr RAPTOR_random
-	and.w #4,%d0
-	add.w #182,%d0
-	move.w %d0,%a0
-	move.l %a0,-(%sp)
-	move.w _bloodDrops+170,%a0
-	move.l %a0,-(%sp)
-	jsr __Z9bloodPoolss
-	move.l _bloodDrops+156,%d0
-	move.l %d0,%d1
-	add.l %d0,%d1
-	add.l %d1,%d0
-	lsl.l #6,%d0
-	move.l sprite,%a0
-	moveq #-1,%d1
-	move.l %d1,4(%a0,%d0.l)
-	clr.b _bloodDrops+164
-	move.w raptor_ticks,%d2
-	addq.l #8,%sp
-	move.l _bloodDrops+174,-(%sp)
-	move.l _gravity,-(%sp)
-	jsr (%a2)
-	addq.l #8,%sp
-	move.l %d0,_bloodDrops+174
-	move.w %d2,_bloodDrops+166
-	jra .L180
+	move.w %d2,_bloodBalls+10
+	jra .L81
 	.even
 	.globl	__Z11bloodSquirtss
 __Z11bloodSquirtss:
@@ -3230,18 +2616,18 @@ __Z11bloodSquirtss:
 	move.w 10(%fp),%d1
 	move.w 14(%fp),%d0
 	tst.b _bloodSquirts+8
-	jeq .L185
+	jeq .L167
 	tst.b _bloodSquirts+22
-	jeq .L186
+	jeq .L168
 	tst.b _bloodSquirts+36
-	jeq .L187
+	jeq .L169
 	tst.b _bloodSquirts+50
-	jeq .L189
+	jeq .L171
 	move.l (%sp)+,%d2
 	move.l (%sp)+,%d3
 	unlk %fp
 	rts
-.L189:
+.L171:
 	move.w #3,%a0
 	move.l %a0,%d3
 	add.l %a0,%d3
@@ -3265,12 +2651,12 @@ __Z11bloodSquirtss:
 	move.l %d1,4(%a1,%d0.l)
 	move.l 4(%a0),%a0
 	clr.w 14(%a0)
-.L190:
+.L172:
 	move.l (%sp)+,%d2
 	move.l (%sp)+,%d3
 	unlk %fp
 	rts
-.L185:
+.L167:
 	sub.l %a0,%a0
 	move.l %a0,%d3
 	add.l %a0,%d3
@@ -3294,8 +2680,8 @@ __Z11bloodSquirtss:
 	move.l %d1,4(%a1,%d0.l)
 	move.l 4(%a0),%a0
 	clr.w 14(%a0)
-	jra .L190
-.L186:
+	jra .L172
+.L168:
 	move.w #1,%a0
 	move.l %a0,%d3
 	add.l %a0,%d3
@@ -3319,8 +2705,8 @@ __Z11bloodSquirtss:
 	move.l %d1,4(%a1,%d0.l)
 	move.l 4(%a0),%a0
 	clr.w 14(%a0)
-	jra .L190
-.L187:
+	jra .L172
+.L169:
 	move.w #2,%a0
 	move.l %a0,%d3
 	add.l %a0,%d3
@@ -3344,7 +2730,7 @@ __Z11bloodSquirtss:
 	move.l %d1,4(%a1,%d0.l)
 	move.l 4(%a0),%a0
 	clr.w 14(%a0)
-	jra .L190
+	jra .L172
 	.even
 	.globl	__Z15bloodResetTicksv
 __Z15bloodResetTicksv:
@@ -3413,19 +2799,19 @@ __Z11bloodImpalesss:
 	move.l 16(%fp),%d2
 	move.w %d4,%d5
 	tst.b _impaled
-	jeq .L202
+	jeq .L184
 	movem.l -36(%fp),#7420
 	unlk %fp
 	rts
-.L202:
+.L184:
 	move.w %d2,%d6
 	neg.w %d6
 	move.w %d6,%a2
 	tst.b _bloodGlobObject+8
-	jeq .L203
+	jeq .L185
 	tst.b _bloodSprays+8
-	jeq .L204
-.L197:
+	jeq .L186
+.L179:
 	move.l %a2,-(%sp)
 	move.w %d4,%d0
 	add.w #25,%d0
@@ -3480,11 +2866,11 @@ __Z11bloodImpalesss:
 	move.w raptor_ticks,%a0
 	move.l %a0,_impaledTicks
 	lea (12,%sp),%sp
-.L205:
+.L187:
 	movem.l -36(%fp),#7420
 	unlk %fp
 	rts
-.L204:
+.L186:
 	move.w %d3,%d7
 	add.w #-10,%d7
 	move.w %d7,_bloodSprays+10
@@ -3575,8 +2961,8 @@ __Z11bloodImpalesss:
 	move.w raptor_ticks,%a0
 	move.l %a0,_impaledTicks
 	lea (12,%sp),%sp
-	jra .L205
-.L203:
+	jra .L187
+.L185:
 	move.w %d4,%d7
 	add.w #20,%d7
 	move.w %d3,%a3
@@ -3616,8 +3002,8 @@ __Z11bloodImpalesss:
 	move.l _bloodGlobObject+4,%a0
 	clr.w 14(%a0)
 	tst.b _bloodSprays+8
-	jne .L197
-	jra .L204
+	jne .L179
+	jra .L186
 	.globl	_impaledTicks
 	.bss
 	.even

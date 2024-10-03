@@ -805,4 +805,31 @@ sample87:	dc.l	kano_heartrip_sam		; start of sample
 s87_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample88:	dc.l	raiden_headzap_sam		; start of sample
+			dc.l	raiden_headzap_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s88_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample89:	dc.l	fatality_groan_kang_sam		; start of sample
+			dc.l	fatality_groan_kang_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s89_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample90:	dc.l	kang_fatality_sam		; start of sample
+			dc.l	kang_fatality_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s90_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.
