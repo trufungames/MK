@@ -638,6 +638,28 @@ void sfxSubzeroSlide(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SUBZERO_SLIDE, 8000);
 }
 
+void sfxScorpionSkull(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SCORPION_SKULL, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SCORPION_SKULL, 8000);
+}
+
+void sfxScorpionSkullFlame(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SCORPION_SKULL_FLAME, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SCORPION_SKULL_FLAME, 8000);
+}
+
 void sfxScorpionHarpoon(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

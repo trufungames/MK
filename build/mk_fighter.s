@@ -643,9 +643,9 @@ __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator:
 	jeq .L61
 	tst.b 352(%a2)
 	jne .L66
-	cmp.w #89,%d2
+	cmp.w #79,%d2
 	jle .L61
-	cmp.w #140,%d2
+	cmp.w #130,%d2
 	jgt .L61
 	move.l 16(%fp),-(%sp)
 	move.l %a2,-(%sp)

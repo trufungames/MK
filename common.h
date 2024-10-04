@@ -147,6 +147,8 @@
 #define SOUND_RAIDEN_HEADZAP 88
 #define SOUND_FATALITY_GROAN_KANG 89
 #define SOUND_KANG_FATALITY 90
+#define SOUND_SCORPION_SKULL 91
+#define SOUND_SCORPION_SKULL_FLAME 92
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -293,8 +295,8 @@
 #define FIGHTER_MAX_WORLD_POSITION_X 716
 #define FIGHTER_FATALITY_CLOSE_RANGE_MIN_X -32
 #define FIGHTER_FATALITY_CLOSE_RANGE_MAX_X 32
-#define FIGHTER_FATALITY_MID_RANGE_MIN_X 90
-#define FIGHTER_FATALITY_MID_RANGE_MAX_X 140
+#define FIGHTER_FATALITY_MID_RANGE_MIN_X 80
+#define FIGHTER_FATALITY_MID_RANGE_MAX_X 130
 #define FIGHTER_FATALITY_CAGE_HEAD_SPEED_X 3
 #define FIGHTER_BLOOD_HEADZAP_SPEED 8
 
@@ -311,7 +313,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 76
+#define STATE_TOTAL_COUNT 78
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -389,6 +391,8 @@
 #define STATE_RAIDEN_FATALITY1 73
 #define STATE_HIT_RAIDEN_FATALITY1 74
 #define STATE_KANG_FATALITY1 75
+#define STATE_SCORPION_FATALITY1 76
+#define STATE_HIT_SKELETON 77
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

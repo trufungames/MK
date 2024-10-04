@@ -226,6 +226,8 @@ ROM,fatality_groan_kang_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_kang.wav
 ROM,kano_heartbeat_sam,sfx_raw8000,ASSETS\SFX\kano_heartbeat.wav
 ROM,kano_heartrip_sam,sfx_raw8000,ASSETS\SFX\kano_heartrip.wav
 ROM,kang_fatality_sam,sfx_raw8000,ASSETS\SFX\kang_fatality.wav
+ROM,scorpion_skull_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull.wav
+ROM,scorpion_skull_flame_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull_flame.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

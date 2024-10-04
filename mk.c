@@ -311,6 +311,12 @@ static State stateHitRaidenFatality1 = {
 static State stateKangFatality1 = {
 	STATE_KANG_FATALITY1
 };
+static State stateScorpionFatality1 = {
+	STATE_SCORPION_FATALITY1
+};
+static State stateHitSkeleton = {
+	STATE_HIT_SKELETON
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -1386,6 +1392,23 @@ static AnimationFrame kangFatality1Frames[] = {
 	{ 80, 112, 144, 224, 7, 2, 5 },
 	{ 48, 128, 224, 224, 16, -14, 5 }
 };
+static AnimationFrame scorpionFatality1Frames[] = {
+	{ 48, 112, 528, 960, -2, 0, 8 },
+	{ 48, 128, 576, 1024, 0, -16, 8 },
+	{ 48, 112, 624, 1024, 0, 0, 8 },
+	{ 48, 96, 672, 1024, 0, 16, 8 },
+	{ 48, 112, 720, 1024, 1, 0, 8 },
+	{ 64, 112, 768, 1024, -7, 0, 60 },
+	{ 80, 96, 832, 1040, 0, 16, 120 },
+	{ 64, 112, 768, 1024, -7, 0, 8 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+
 static AnimationFrame cageKipUpFrames[] = {
 	{ 32, 64, 768, 464, 3, 48, 5 },
 	{ 48, 80, 832, 528, 0, 26, 5 },
@@ -3801,6 +3824,7 @@ void doFatality_Cage_Decap(struct StateMachine* stateMachine, struct Fighter* fi
 void doFatality_Kano_Heartrip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Raiden_HeadZap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Kang_Flip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doFatality_Scorpion_Toasty(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -4892,6 +4916,14 @@ void basicmain()
 		stateKangFatality1.update = &StateKangFatality1_Update;
 		stateKangFatality1.sleep = &StateKangFatality1_Sleep;
 		stateKangFatality1.handleInput = &StateKangFatality1_HandleInput;
+		stateScorpionFatality1.enter = &StateScorpionFatality1_Enter;
+		stateScorpionFatality1.update = &StateScorpionFatality1_Update;
+		stateScorpionFatality1.sleep = &StateScorpionFatality1_Sleep;
+		stateScorpionFatality1.handleInput = &StateScorpionFatality1_HandleInput;
+		stateHitSkeleton.enter = &StateHitSkeleton_Enter;
+		stateHitSkeleton.update = &StateHitSkeleton_Update;
+		stateHitSkeleton.sleep = &StateHitSkeleton_Sleep;
+		stateHitSkeleton.handleInput = &StateHitSkeleton_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -4969,6 +5001,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_RAIDEN_FATALITY1, &stateRaidenFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_RAIDEN_FATALITY1, &stateHitRaidenFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_KANG_FATALITY1, &stateKangFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_FATALITY1, &stateScorpionFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_SKELETON, &stateHitSkeleton);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
@@ -5472,6 +5506,11 @@ void basicmain()
 		//Scorpion
 		fighterScorpion.spriteAnimator = &scorpionAnimator;
 		fighterScorpion.decapFrames = &subzeroDecapFrames;
+		fighterScorpion.fatality1Inputs = &fatality_Scorpion_Toasty_Inputs;
+		fighterScorpion.fatality1InputCount = 2;
+		fighterScorpion.doFatality1 = &doFatality_Scorpion_Toasty;
+		fighterScorpion.fatality1Frames = &scorpionFatality1Frames;
+		fighterScorpion.fatality1IsCloseRange = false;
 		fighterScorpion.caughtFrames = &subzeroCaughtFrames;
 		fighterScorpion.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterScorpion.projectileAnimator = &lightningAnimator;
@@ -5528,6 +5567,11 @@ void basicmain()
 		fighterScorpion.hitNutsFrames = &subzeroHitNutsFrames;
 		fighterScorpion2.spriteAnimator = &scorpionAnimator2;
 		fighterScorpion2.decapFrames = &subzeroDecapFrames;
+		fighterScorpion2.fatality1Inputs = &fatality_Scorpion_Toasty_Inputs;
+		fighterScorpion2.fatality1InputCount = 2;
+		fighterScorpion2.doFatality1 = &doFatality_Scorpion_Toasty;
+		fighterScorpion2.fatality1Frames = &scorpionFatality1Frames;
+		fighterScorpion2.fatality1IsCloseRange = false;
 		fighterScorpion2.caughtFrames = &subzeroCaughtFrames;
 		fighterScorpion2.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterScorpion2.projectileAnimator = &lightning2Animator;
@@ -8944,4 +8988,9 @@ void doFatality_Raiden_HeadZap(struct StateMachine* stateMachine, struct Fighter
 void doFatality_Kang_Flip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_KANG_FATALITY1, fighter, fighter->spriteAnimator);
+}
+
+void doFatality_Scorpion_Toasty(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SCORPION_FATALITY1, fighter, fighter->spriteAnimator);
 }

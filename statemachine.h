@@ -396,3 +396,13 @@ void StateKangFatality1_Enter(struct StateMachine*, struct Fighter*, struct Spri
 void StateKangFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
 void StateKangFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateKangFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateScorpionFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateScorpionFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateScorpionFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitSkeleton_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSkeleton_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitSkeleton_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSkeleton_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

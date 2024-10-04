@@ -832,4 +832,22 @@ sample90:	dc.l	kang_fatality_sam		; start of sample
 s90_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample91:	dc.l	scorpion_skull_sam		; start of sample
+			dc.l	scorpion_skull_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s91_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample92:	dc.l	scorpion_skull_flame_sam		; start of sample
+			dc.l	scorpion_skull_flame_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s92_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.
