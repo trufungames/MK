@@ -38,17 +38,26 @@ static AnimationFrame raidenLightningFatalityFrames[] = {
 };
 static AnimationFrame scorpionToastyFatalityFrames[] = {
 	{ 16, 16, 0, 832, 0, 0, 5 },
-    { 16, 16, 16, 832, 8, 8, 5 },
+    { 16, 16, 16, 832, 0, 8, 5 },
 	{ 32, 32, 32, 832, -2, -2, 5 },
 	{ 48, 48, 64, 832, 0, 10, 5 },
 	{ 64, 80, 112, 832, 6, -2, 5 },
-	{ 80, 80, 0, 880, -2, 2, 5 },
+	{ 80, 80, 0, 880, -2, 8, 5 },
 	{ 48, 64, 96, 912, 48, 16, 5},
 	{ 64, 80, 144, 912, 42, 0, 5},
 	{ 80, 144, 96, 992, 26, -64, 5},
 	{ 32, 160, 0, 960, 50, -80, 5},
 	{ 32, 128, 32, 960, 50, -48, 5},
 	{ 32, 128, 64, 976, 50, -48, 5}
+};
+static AnimationFrame skeletonFrames[] = {
+	{ 48, 96, 0, 1120, 0, 16, 30 },
+    { 48, 96, 48, 1120, 0, 16, 5 },
+	{ 48, 96, 96, 1136, 0, 16, 5 },
+	{ 48, 80, 144, 1136, 0, 32, 5 },
+	{ 48, 80, 0, 1216, 0, 32, 5 },
+	{ 48, 80, 48, 1216, 0, 32, 5 },
+	{ 48, 64, 96, 1232, 0, 48, 5}
 };
 
 void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state)
@@ -5139,7 +5148,7 @@ void StateScorpionFatality1_Enter(struct StateMachine* stateMachine, struct Figh
     fighter->DidFatality = true;    
 
     fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction);
-    fighter->projectilePositionY = fighter->positionY;
+    fighter->projectilePositionY = fighter->positionY + 32;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -5175,7 +5184,7 @@ void StateScorpionFatality1_Update(struct StateMachine* stateMachine, struct Fig
 
         updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 8, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
-        if (animationIsComplete(spriteAnimator, 8))
+        if (animationIsComplete(spriteAnimator, 7))
         {
             if (fighter->vars[2] == 0)
             {
@@ -5183,8 +5192,19 @@ void StateScorpionFatality1_Update(struct StateMachine* stateMachine, struct Fig
                 sfxScorpionSkullFlame(fighter->soundHandler);
             }
 
-            sprite[fighter->lightningSpriteIndex].active = R_is_active;
-            updateSpriteAnimator(fighter->projectileAnimator, scorpionToastyFatalityFrames, 12, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+            if (!animationIsComplete(fighter->projectileAnimator, 12))
+            {
+                sprite[fighter->lightningSpriteIndex].active = R_is_active;
+                updateSpriteAnimator(fighter->projectileAnimator, scorpionToastyFatalityFrames, 12, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+            }
+            else
+            {
+                sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                stateMachineGoto(stateMachine, STATE_HIT_SKELETON, fighter->Opponent, fighter->Opponent->spriteAnimator);
+                animateFrame(spriteAnimator, fighter->spriteIndex, 7, *fighter->fatality1Frames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+                fighter->vars[3] = 1;
+                stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+            }
         }
     }
 }
@@ -5213,17 +5233,57 @@ void StateHitSkeleton_Enter(struct StateMachine* stateMachine, struct Fighter* f
     fighter->vars[3] = 0;
     fighter->vars[4] = 0;
     fighter->DidFatality = true;    
+
+    fighter->projectileWorldPositionX = fighter->worldPositionX;
+    fighter->projectilePositionY = fighter->positionY;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
+    sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+
+    if (fighter->direction == 1)
+    {
+        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+    }
+    else
+    {
+        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+    }
+    jsfLoadClut((unsigned short *)(void *)(BMP_PROJECTILES_clut),13,16);
 }
 
 void StateHitSkeleton_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
+    if (fighter->vars[0] == 0)
     {
-        
-        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 14, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+        fighter->vars[0] = 1;
+        fighterPlayFatalityGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
     }
 
-    
+    if (animationIsComplete(fighter->projectileAnimator, 7))
+    {
+        fighter->vars[0] = 1;
+        fighter->vars[1] = 1;
+        fighter->IsDefeated = true;
+        fighter->IsActive = false;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);
+        return;
+    }
+
+    updateSpriteAnimator(fighter->projectileAnimator, skeletonFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+
+    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->spriteIndex].active = R_is_inactive;
+
+    //hide the shadow
+    fighter->IsLayingDown = true;
+    sprite[fighter->spriteIndex-1].active = R_is_inactive;
 }
 
 void StateHitSkeleton_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
