@@ -850,4 +850,22 @@ sample92:	dc.l	scorpion_skull_flame_sam		; start of sample
 s92_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample93:	dc.l	fatality_scream_male_sam		; start of sample
+			dc.l	fatality_scream_male_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s93_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample94:	dc.l	fatality_scream_female_sam		; start of sample
+			dc.l	fatality_scream_female_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s94_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
 ; END OF FILE.

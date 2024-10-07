@@ -232,6 +232,7 @@ struct Fighter {
     struct AnimationFrame (*fatality1Frames)[14];
     struct AnimationFrame (*decapFrames)[4];
     struct AnimationFrame (*caughtFrames)[4];
+    struct AnimationFrame (*frontDecapFrames)[7];
     struct Fighter* Opponent;
 };
 
@@ -272,6 +273,8 @@ void fighterPlayYell(int fighter, struct SoundHandler* soundHandler, bool isPlay
 void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayFatalityGroan(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
+
+void fighterPlayFatalityScream(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
 
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 

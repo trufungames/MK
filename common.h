@@ -38,10 +38,10 @@
 #define BRANCH_FIGHTERS BLOOD_POOL + 8
 #define P1_FIGHTER_SHADOW_PIT BRANCH_FIGHTERS + 1
 #define P1_FIGHTER_PIT P1_FIGHTER_SHADOW_PIT + 1
-#define P1_PROJECTILE P1_FIGHTER_PIT + 1
-#define P2_FIGHTER_SHADOW_PIT P1_PROJECTILE + 1
+#define P2_FIGHTER_SHADOW_PIT P1_FIGHTER_PIT + 1
 #define P2_FIGHTER_PIT P2_FIGHTER_SHADOW_PIT + 1
-#define P2_PROJECTILE P2_FIGHTER_PIT + 1
+#define P1_PROJECTILE P2_FIGHTER_PIT + 1
+#define P2_PROJECTILE P1_PROJECTILE + 1
 #define P1_HB_ATTACK P2_PROJECTILE + 1
 #define P2_HB_ATTACK P1_HB_ATTACK + 1
 #define FOREGROUND_PILLAR P2_HB_ATTACK + 1
@@ -149,6 +149,8 @@
 #define SOUND_KANG_FATALITY 90
 #define SOUND_SCORPION_SKULL 91
 #define SOUND_SCORPION_SKULL_FLAME 92
+#define SOUND_FATALITY_SCREAM_MALE 93
+#define SOUND_FATALITY_SCREAM_FEMALE 94
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -313,7 +315,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 78
+#define STATE_TOTAL_COUNT 79
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -393,6 +395,7 @@
 #define STATE_KANG_FATALITY1 75
 #define STATE_SCORPION_FATALITY1 76
 #define STATE_HIT_SKELETON 77
+#define STATE_SUBZERO_FATALITY1 78
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

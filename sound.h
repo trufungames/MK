@@ -75,6 +75,8 @@ void sfxTitleStart(struct SoundHandler* soundHandler);
 void sfxCrowdAww(struct SoundHandler* soundHandler);
 void sfxCrowdClap(struct SoundHandler* soundHandler);
 void sfxFatalityGong(struct SoundHandler* soundHandler);
+void sfxFatalityScreamMale(struct SoundHandler* soundHandler);
+void sfxFatalityScreamFemale(struct SoundHandler* soundHandler);
 void sfxFatalityGroanMale(struct SoundHandler* soundHandler);
 void sfxFatalityGroanFemale(struct SoundHandler* soundHandler);
 void sfxFatalityGroanKang(struct SoundHandler* soundHandler);

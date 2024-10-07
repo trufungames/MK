@@ -1160,6 +1160,22 @@ void fighterPlayFatalityGroan(int fighter, struct SoundHandler* soundHandler, bo
     }
 }
 
+void fighterPlayFatalityScream(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
+{
+    switch (fighter)
+    {
+        case SONYA:
+            sfxFatalityScreamFemale(soundHandler);
+            break;
+        case KANG:
+            sfxFatalityGroanKang(soundHandler);
+            break;
+        default:
+            sfxFatalityScreamMale(soundHandler);
+            break;
+    }
+}
+
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler)
 {
     if (rapRND() & 255 > 100)

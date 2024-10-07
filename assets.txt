@@ -113,6 +113,15 @@ ROM,BMP_PAL_FROZEN_SUBZERO,gfx_clut,ASSETS\GFX\pal_frozen_subzero.bmp
 ROM,BMP_PAL_FROZEN_SONYA,gfx_clut,ASSETS\GFX\pal_frozen_sonya.bmp
 ROM,BMP_PAL_FROZEN_KANG,gfx_clut,ASSETS\GFX\pal_frozen_kang.bmp
 ROM,BMP_PAL_SCORPION_TELEPORT,gfx_clut,ASSETS\GFX\pal_scorpion_teleport.bmp
+ROM,BMP_PAL_FRONT_DECAP_CAGE,gfx_clut,ASSETS\GFX\pal_front_decap_cage.bmp
+ROM,BMP_PAL_FRONT_DECAP_KANO,gfx_clut,ASSETS\GFX\pal_front_decap_kano.bmp
+ROM,BMP_PAL_FRONT_DECAP_RAIDEN,gfx_clut,ASSETS\GFX\pal_front_decap_raiden.bmp
+ROM,BMP_PAL_FRONT_DECAP_KANG,gfx_clut,ASSETS\GFX\pal_front_decap_kang.bmp
+ROM,BMP_PAL_FRONT_DECAP_SUBZERO,gfx_clut,ASSETS\GFX\pal_front_decap_subzero.bmp
+ROM,BMP_PAL_FRONT_DECAP_SCORPION,gfx_clut,ASSETS\GFX\pal_front_decap_scorpion.bmp
+ROM,BMP_PAL_FRONT_DECAP_REPTILE,gfx_clut,ASSETS\GFX\pal_front_decap_reptile.bmp
+ROM,BMP_PAL_FRONT_DECAP_SONYA,gfx_clut,ASSETS\GFX\pal_front_decap_sonya.bmp
+ROM,BMP_PAL_FRONT_DECAP_KASUMI,gfx_clut,ASSETS\GFX\pal_front_decap_kasumi.bmp
 ROM,BMP_PAL_DECAP_CAGE,gfx_clut,ASSETS\GFX\pal_decap_cage.bmp
 ROM,BMP_PAL_DECAP_KANO,gfx_clut,ASSETS\GFX\pal_decap_kano.bmp
 ROM,BMP_PAL_DECAP_RAIDEN,gfx_clut,ASSETS\GFX\pal_decap_raiden.bmp
@@ -228,6 +237,8 @@ ROM,kano_heartrip_sam,sfx_raw8000,ASSETS\SFX\kano_heartrip.wav
 ROM,kang_fatality_sam,sfx_raw8000,ASSETS\SFX\kang_fatality.wav
 ROM,scorpion_skull_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull.wav
 ROM,scorpion_skull_flame_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull_flame.wav
+ROM,fatality_scream_male_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_male.wav
+ROM,fatality_scream_female_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_female.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
