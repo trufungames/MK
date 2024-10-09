@@ -60,7 +60,7 @@ static AnimationFrame skeletonFrames[] = {
 	{ 48, 64, 96, 1232, 0, 48, 5}
 };
 static AnimationFrame decapSpineFrames[] = {
-	{ 16, 48, 192, 752, 53, 5, 35 },
+	{ 16, 48, 192, 752, 53, 5, 30 },
 	{ 16, 48, 192, 704, 53, 5, 30 },
     { 16, 48, 192, 752, 42, 47, 8 },
 	{ 16, 48, 192, 752, 9, 28, 4 },
@@ -2520,23 +2520,23 @@ void StateThrowingProjectile_Enter(struct StateMachine* stateMachine, struct Fig
     switch(fighter->fighterIndex)
     {
         case CAGE:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_CAGE_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxCageGreenbolt(fighter->soundHandler);
             break;
         case KANO:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANO_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxKanoKnife(fighter->soundHandler);
             break;
         case RAIDEN:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxRaidenLightning(fighter->soundHandler);
             break;
         case KANG:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KANG_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxCageGreenbolt(fighter->soundHandler);
             break;
             case SONYA:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SONYA_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxSonyaRings(fighter->soundHandler);
             break;
         default:
@@ -2647,7 +2647,7 @@ void StateCageShadowKick_Enter(struct StateMachine* stateMachine, struct Fighter
     switch(fighter->fighterIndex)
     {
         case CAGE:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_CAGE_SHADOW_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_CAGE_SHADOW_clut),fighter->isPlayer1 ? 9: 13,16);
             sfxCageGreenbolt(fighter->soundHandler);
             break;
         default:
@@ -3186,7 +3186,7 @@ void StateScorpionHarpoon_Enter(struct StateMachine* stateMachine, struct Fighte
     sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
     sfxScorpionHarpoon(fighter->soundHandler);
     fighter->lastTicks = rapTicks;
 }
@@ -3229,11 +3229,11 @@ void StateScorpionHarpoon_Update(struct StateMachine* stateMachine, struct Fight
 
 		if (fighter->vars[2] == -1)
 		{
-			jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+			jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
 		}
 		else
 		{
-			jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),13,16);
+			jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),fighter->isPlayer1 ? 9: 13,16);
 		}
 
 		fighter->vars[2] *= -1;
@@ -3415,7 +3415,7 @@ void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Figh
     sprite[fighter->lightningSpriteIndex].vbox = 16;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
     sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
 }
 
 void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3551,7 +3551,7 @@ void StateScorpionTeleport_Enter(struct StateMachine* stateMachine, struct Fight
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
     sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_SCORPION_TELEPORT_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_SCORPION_TELEPORT_clut),fighter->isPlayer1 ? 9: 13,16);
     sfxScorpionTeleport(fighter->soundHandler);
 }
 
@@ -3654,7 +3654,7 @@ void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter*
     sprite[fighter->lightningSpriteIndex].gwidth = 104;
     sprite[fighter->lightningSpriteIndex].hbox = 16;
     sprite[fighter->lightningSpriteIndex].vbox = 16; 
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),fighter->isPlayer1 ? 9: 13,16);
     sfxSubzeroFreeze(fighter->soundHandler);
     fighter->lastTicks = rapTicks;
     sprite[fighter->lightningSpriteIndex].active = R_is_active;
@@ -4182,7 +4182,7 @@ void StateKasumiFireball_Update(struct StateMachine* stateMachine, struct Fighte
         sprite[fighter->lightningSpriteIndex].hbox = 16;
         sprite[fighter->lightningSpriteIndex].vbox = 16;
         
-        jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),13,16);
+        jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),fighter->isPlayer1 ? 9: 13,16);
         sfxKasumiFireball(fighter->soundHandler);
     }
     else if (fighter->vars[0] == 1)
@@ -4541,28 +4541,28 @@ void StateHitCageFatality1_Enter(struct StateMachine* stateMachine, struct Fight
     switch(fighter->fighterIndex)
     {
         case CAGE:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_CAGE_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_CAGE_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case KANO:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANO_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANO_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case RAIDEN:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_RAIDEN_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_RAIDEN_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case KANG:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANG_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANG_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case SUBZERO:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SUBZERO_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SUBZERO_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case SCORPION:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SCORPION_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case SONYA:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SONYA_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SONYA_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         case KASUMI:
-            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KASUMI_clut),13,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KASUMI_clut),fighter->isPlayer1 ? 9: 13,16);
             break;
         default:
             break;
@@ -4701,7 +4701,7 @@ void StateKanoFatality1_Enter(struct StateMachine* stateMachine, struct Fighter*
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
     }
 
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_KANO_HEART_clut),13,16);           
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_KANO_HEART_clut),fighter->isPlayer1 ? 9: 13,16);           
 }
 
 void StateKanoFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -4879,7 +4879,7 @@ void StateRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fighte
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
     }
 
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),13,16);      
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_RAIDEN_clut),fighter->isPlayer1 ? 9: 13,16);      
 }
 
 void StateRaidenFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -4944,7 +4944,6 @@ void StateHitRaidenFatality1_Enter(struct StateMachine* stateMachine, struct Fig
     fighter->vars[1] = 0;
     fighter->vars[2] = 0;
     fighter->vars[3] = 0;
-    fighter->vars[4] = 0;    
 }
 
 void StateHitRaidenFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -5184,7 +5183,7 @@ void StateScorpionFatality1_Enter(struct StateMachine* stateMachine, struct Figh
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
     }
 
-    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),fighter->isPlayer1 ? 9: 13,16);
 }
 
 void StateScorpionFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -5271,7 +5270,7 @@ void StateHitSkeleton_Enter(struct StateMachine* stateMachine, struct Fighter* f
     {
         sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
     }
-    jsfLoadClut((unsigned short *)(void *)(BMP_PROJECTILES_clut),13,16);
+    jsfLoadClut((unsigned short *)(void *)(BMP_PROJECTILES_clut),fighter->isPlayer1 ? 9: 13,16);
 }
 
 void StateHitSkeleton_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -5365,8 +5364,8 @@ void StateSubzeroFatality1_Enter(struct StateMachine* stateMachine, struct Fight
         sprite[fighter->Opponent->lightningSpriteIndex].flip = R_is_flipped;
     }
 
-    int fighterClutIndex = fighter->isPlayer1 ? 13 : 14;
-    int opponentClutIndex = fighter->isPlayer1 ? 14 : 13;
+    int fighterClutIndex = fighter->isPlayer1 ? 9: 13;
+    int opponentClutIndex = fighter->isPlayer1 ? 13 : 10;
     
     switch (fighter->Opponent->fighterIndex)
     {
@@ -5408,27 +5407,33 @@ void StateSubzeroFatality1_Update(struct StateMachine* stateMachine, struct Figh
 {
     if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
     {
-        if (spriteAnimator->currentFrame == 4 && fighter->vars[1] == 0)
+        if (spriteAnimator->currentFrame == 2 && fighter->vars[1] == 0)
         {
             fighter->vars[1] = 1;
             fighter->Opponent->vars[4] = 1;
-            stateMachineGoto(stateMachine, STATE_HIT_RAIDEN_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
+            stateMachineGoto(stateMachine, STATE_HIT_SUBZERO_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
         }
 
-        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 9, true, false, fighter->positionX, fighter->positionY, fighter->direction);
-
-        if (spriteAnimator->currentFrame >= 4)
+        if (spriteAnimator->currentFrame >= 3)
         {
-            if (animationIsComplete(fighter->projectileAnimator, 7))
+            if (animationIsComplete(fighter->spriteAnimator, 9))
             {
                 fighter->vars[3] = 1;
                 stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
                 return;
             }
 
+            if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+                sprite[fighter->lightningSpriteIndex].active = R_is_active;
+
+            if (sprite[fighter->Opponent->lightningSpriteIndex].active == R_is_inactive)
+                sprite[fighter->Opponent->lightningSpriteIndex].active = R_is_active;
+
             updateSpriteAnimator(fighter->projectileAnimator, decapSpineFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
             updateSpriteAnimator(fighter->Opponent->projectileAnimator, *fighter->frontDecapFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
         }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 9, true, false, fighter->positionX, fighter->positionY, fighter->direction);        
     }
 }
 
@@ -5437,5 +5442,100 @@ void StateSubzeroFatality1_Sleep(struct StateMachine* stateMachine, struct Fight
 }
 
 void StateSubzeroFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT SUBZERO FATALITY 1
+// vars[0] played "caught" animation
+// vars[1] squirted blood and played sound
+// vars[2] played "decap" animation
+// vars[3] rapTicks for decap pause
+// vars[4] squirted more blood
+
+void StateHitSubzeroFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 1;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->FrozenShakeTicks = rapTicks;
+}
+
+void StateHitSubzeroFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0)
+    {
+        if (rapTicks > fighter->FrozenShakeTicks + 2)
+        {
+            fighter->worldPositionX += (2 * fighter->vars[1]);
+            fighter->vars[1] *= -1;
+            fighter->vars[2]++;
+            fighter->FrozenShakeTicks = rapTicks;
+        }
+
+        if (fighter->vars[2] >= 6)
+        {
+            fighter->vars[0] = 1;
+            fighter->vars[1] = 0;
+            fighter->vars[2] = 0;
+            spriteAnimator->currentFrame = 0;
+            fighter->vars[3] = rapTicks;
+            fighter->vars[4] = 0;
+        }
+
+        animateFrame(spriteAnimator, fighter->spriteIndex, 3, *fighter->caughtFrames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+    }
+    else if (fighter->vars[0] == 1 && fighter->vars[2] == 0)
+    {
+        if (fighter->vars[1] == 0)
+        {
+            fighter->vars[1] = 1;   
+            bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+            bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 8, fighter->direction * -1);
+            fighterPlayFatalityScream(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+            fighter->lastTicks = rapTicks;
+            spriteAnimator->currentFrame = 0;
+            spriteAnimator->lastTick = rapTicks;
+        }
+
+        if (animationIsComplete(spriteAnimator, 7))
+        {
+            fighter->vars[2] = 1;
+            bgShake(false);
+            sfxThud(fighter->soundHandler);
+            return;
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->hitDecapFrames, 7, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+        if (rapTicks < fighter->vars[3] + 90)
+        {
+            //stay on that first decap frame for dramatic purposes...
+            spriteAnimator->currentFrame = 0;
+        }
+    }
+    else if (fighter->vars[0] == 1 && fighter->vars[2] == 1)
+    {
+        fighter->vars[0] = 1;
+        fighter->vars[1] = 0;
+        fighter->IsDefeated = true;
+        fighter->IsActive = false;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);
+        return;
+    }
+}
+
+void StateHitSubzeroFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitSubzeroFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }

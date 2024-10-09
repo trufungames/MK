@@ -302,7 +302,7 @@ __Z9stageMoveii:
 .L43:
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,13064(%a0)
+	add.w %d1,12872(%a0)
 	unlk %fp
 	rts
 .L48:
@@ -318,8 +318,8 @@ __Z9stageMoveii:
 	add.w %d1,7688(%a0)
 	add.w %d1,7880(%a0)
 	add.w %d1,%d1
+	add.w %d1,12488(%a0)
 	add.w %d1,12680(%a0)
-	add.w %d1,12872(%a0)
 	unlk %fp
 	rts
 .L47:
@@ -327,7 +327,7 @@ __Z9stageMoveii:
 	jne .L39
 	move.l sprite,%a0
 	add.w %d1,%d1
-	add.w %d1,12680(%a0)
+	add.w %d1,12488(%a0)
 	add.w %d1,8840(%a0)
 	add.w %d1,9032(%a0)
 	unlk %fp
@@ -372,7 +372,7 @@ __Z19stagePositionAssetsv:
 	jsr __Z10cameraGetXv
 	moveq #4,%d1
 	sub.w %d0,%d1
-	move.w %d1,13064(%a2)
+	move.w %d1,12872(%a2)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -414,12 +414,12 @@ __Z19stagePositionAssetsv:
 	jsr (%a2)
 	moveq #10,%d1
 	sub.w %d0,%d1
-	move.w %d1,12680(%a3)
+	move.w %d1,12488(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #730,%d1
 	sub.w %d0,%d1
-	move.w %d1,12872(%a3)
+	move.w %d1,12680(%a3)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -432,7 +432,7 @@ __Z19stagePositionAssetsv:
 	jsr (%a2)
 	moveq #10,%d1
 	sub.w %d0,%d1
-	move.w %d1,12680(%a3)
+	move.w %d1,12488(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #137,%d1

@@ -2,6 +2,8 @@
 #include "jstudio.h"
 #include "romassets.h"
 
+#define SPRITE_FONT_PALETTE 10
+
 #define BACKGROUND 1
 #define BACKGROUND16 BACKGROUND + 1
 #define CHOOSE_KASUMI BACKGROUND16 + 1
@@ -35,8 +37,7 @@
 #define STAGE_GATES_FLAME STAGE_PRIMARY_BACKGROUND + 1
 #define THRONE_SHANG_TSUNG STAGE_GATES_FLAME + 2
 #define BLOOD_POOL THRONE_SHANG_TSUNG + 1
-#define BRANCH_FIGHTERS BLOOD_POOL + 8
-#define P1_FIGHTER_SHADOW_PIT BRANCH_FIGHTERS + 1
+#define P1_FIGHTER_SHADOW_PIT  BLOOD_POOL + 8
 #define P1_FIGHTER_PIT P1_FIGHTER_SHADOW_PIT + 1
 #define P2_FIGHTER_SHADOW_PIT P1_FIGHTER_PIT + 1
 #define P2_FIGHTER_PIT P2_FIGHTER_SHADOW_PIT + 1
@@ -315,7 +316,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 79
+#define STATE_TOTAL_COUNT 80
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -396,6 +397,7 @@
 #define STATE_SCORPION_FATALITY1 76
 #define STATE_HIT_SKELETON 77
 #define STATE_SUBZERO_FATALITY1 78
+#define STATE_HIT_SUBZERO_FATALITY1 79
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

@@ -2015,23 +2015,23 @@ void fighterPositionXAdd(struct Fighter* fighter, int xAdd)
 
 void fighterCastShadow(struct Fighter* fighter, bool includeY)
 {
-    sprite[fighter->spriteIndex - 1].x_ = sprite[fighter->spriteIndex].x_;
-    sprite[fighter->spriteIndex - 1].width = sprite[fighter->spriteIndex].width;
-    sprite[fighter->spriteIndex - 1].height = sprite[fighter->spriteIndex].height;
-    sprite[fighter->spriteIndex - 1].bytewid = sprite[fighter->spriteIndex].bytewid;
-    sprite[fighter->spriteIndex - 1].framesz = sprite[fighter->spriteIndex].framesz;
-    sprite[fighter->spriteIndex - 1].gfxbase = sprite[fighter->spriteIndex].gfxbase;
-    sprite[fighter->spriteIndex - 1].active = fighter->IsLayingDown ? R_is_inactive : R_is_active;
+    // sprite[fighter->spriteIndex - 1].x_ = sprite[fighter->spriteIndex].x_;
+    // sprite[fighter->spriteIndex - 1].width = sprite[fighter->spriteIndex].width;
+    // sprite[fighter->spriteIndex - 1].height = sprite[fighter->spriteIndex].height;
+    // sprite[fighter->spriteIndex - 1].bytewid = sprite[fighter->spriteIndex].bytewid;
+    // sprite[fighter->spriteIndex - 1].framesz = sprite[fighter->spriteIndex].framesz;
+    // sprite[fighter->spriteIndex - 1].gfxbase = sprite[fighter->spriteIndex].gfxbase;
+    sprite[fighter->spriteIndex - 1].active = R_is_inactive;  //fighter->IsLayingDown ? R_is_inactive : R_is_active;
 
-    if (includeY)
-    {
-        sprite[fighter->spriteIndex - 1].y_ = sprite[fighter->spriteIndex].y_ + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10 + FLOOR_LOCATION_Y_FIGHTER - fighter->positionY + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height);
+    // if (includeY)
+    // {
+    //     sprite[fighter->spriteIndex - 1].y_ = sprite[fighter->spriteIndex].y_ + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10 + FLOOR_LOCATION_Y_FIGHTER - fighter->positionY + sprite[fighter->spriteIndex].height - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height);
 
-        if (sprite[fighter->spriteIndex - 1].y_ > FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10)
-        {
-            sprite[fighter->spriteIndex - 1].y_ = FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10;
-        }
-    }
+    //     if (sprite[fighter->spriteIndex - 1].y_ > FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10)
+    //     {
+    //         sprite[fighter->spriteIndex - 1].y_ = FLOOR_LOCATION_Y_FIGHTER + 112 - fighterShadowHeightLookup(sprite[fighter->spriteIndex].height) - 10;
+    //     }
+    // }
 }
 
 int fighterShadowHeightLookup(int height)

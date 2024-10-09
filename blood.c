@@ -7,11 +7,11 @@
 #include "spritedelay.h"
 
 SpriteAnimator bloodSpray1Animator = {
-	BLOOD_SPRAY, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SPRAY, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodSpray2Animator = {
-	BLOOD_SPRAY+1, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SPRAY+1, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 AnimationFrame bloodSprayFrames[] = {
@@ -23,7 +23,7 @@ AnimationFrame bloodSprayFrames[] = {
 };
 
 SpriteAnimator bloodGlobAnimator = {
-	BLOOD_GLOB, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_GLOB, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 AnimationFrame bloodGlobFrames[] = {
@@ -40,35 +40,35 @@ BloodSpray bloodGlobObject = {
 };
 
 SpriteAnimator bloodDrop1Animator = {
-	BLOOD_DROP, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop2Animator = {
-	BLOOD_DROP+1, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+1, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop3Animator = {
-	BLOOD_DROP+2, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+2, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop4Animator = {
-	BLOOD_DROP+3, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+3, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop5Animator = {
-	BLOOD_DROP+4, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+4, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop6Animator = {
-	BLOOD_DROP+5, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+5, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop7Animator = {
-	BLOOD_DROP+6, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+6, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodDrop8Animator = {
-	BLOOD_DROP+7, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_DROP+7, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 AnimationFrame bloodDropFrames[] = {
@@ -83,19 +83,19 @@ AnimationFrame bloodDropFrames[] = {
 };
 
 SpriteAnimator bloodBall1Animator = {
-	BLOOD_BALL, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_BALL, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodBall2Animator = {
-	BLOOD_BALL+1, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_BALL+1, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodBall3Animator = {
-	BLOOD_BALL+2, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_BALL+2, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodBall4Animator = {
-	BLOOD_BALL+3, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_BALL+3, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 AnimationFrame bloodBallFrames[] = {
@@ -107,35 +107,35 @@ AnimationFrame bloodBallFrames[] = {
 };
 
 SpriteAnimator bloodPool1Animator = {
-	BLOOD_POOL, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool2Animator = {
-	BLOOD_POOL+1, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+1, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool3Animator = {
-	BLOOD_POOL+2, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+2, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool4Animator = {
-	BLOOD_POOL+3, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+3, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool5Animator = {
-	BLOOD_POOL+4, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+4, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool6Animator = {
-	BLOOD_POOL+5, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+5, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool7Animator = {
-	BLOOD_POOL+6, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+6, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodPool8Animator = {
-	BLOOD_POOL+7, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_POOL+7, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 AnimationFrame bloodPoolFrames[] = {
@@ -189,19 +189,19 @@ AnimationFrame bloodSquirtFrames[] = {
 };
 
 SpriteAnimator bloodSquirt1Animator = {
-	BLOOD_SQUIRT, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SQUIRT, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodSquirt2Animator = {
-	BLOOD_SQUIRT+1, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SQUIRT+1, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodSquirt3Animator = {
-	BLOOD_SQUIRT+2, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SQUIRT+2, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 SpriteAnimator bloodSquirt4Animator = {
-	BLOOD_SQUIRT+3, 0.5f, BMP_BLOOD, 0, 0
+	BLOOD_SQUIRT+3, 0.5f, BMP_BLOOD_RED, 0, 0
 };
 
 BloodSquirt bloodSquirts[] = {

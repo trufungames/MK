@@ -1959,7 +1959,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	32/2							; sprite_hbox					; width of collision box
 	dc.l	32/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
@@ -1983,13 +1983,6 @@ raptor_init_table:
 	dc.l	1								; sprite_hitpoint				; Hitpoints before death
 	dc.l	2								; sprite_damage					; Hitpoints deducted from target
 	dc.l	256/2							; sprite_gwidth					; GFX width (of data)
-
-; BRANCH Object 21
-	dc.l    -3                                ; BRANCH object
-    dc.l    BR_more
-    dc.l    230
-    dc.l    7
-    dc.l    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ; Player 1 Object Shadow
 	dc.l	1								; (REPEAT COUNTER) 				; Create this many objects of this type (or 1 for a single object)
@@ -2178,7 +2171,7 @@ raptor_init_table:
 	dc.l	%00100000						; sprite_scale_x				; x scale factor (if scaled)
 	dc.l	%00100000						; sprite_scale_y				; y scale factor (if scaled)
 	dc.l	-1								; sprite_was_hit				; initially flagged as not hit
-	dc.l	13							; sprite_CLUT					; no_CLUT (8/16/24 bit) or CLUT (1/2/4 bit)
+	dc.l	9							; sprite_CLUT					; no_CLUT (8/16/24 bit) or CLUT (1/2/4 bit)
 	dc.l	can_hit						; sprite_colchk					; if sprite can collide with another
 	dc.l	cd_keep							; sprite_remhit					; flag to remove (or keep) on collision
 	dc.l	single							; sprite_bboxlink				; single for normal bounding box, else pointer to table
@@ -2435,7 +2428,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	16/2							; sprite_hbox					; width of collision box
 	dc.l	32/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
@@ -2474,7 +2467,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	32/2							; sprite_hbox					; width of collision box
 	dc.l	32/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
@@ -2513,7 +2506,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	16/2							; sprite_hbox					; width of collision box
 	dc.l	16/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
@@ -2552,7 +2545,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	48/2							; sprite_hbox					; width of collision box
 	dc.l	48/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag
@@ -2591,7 +2584,7 @@ raptor_init_table:
 	dc.l	0								; sprite_coffy					; y offset from center for collision box center	
 	dc.l	32/2							; sprite_hbox					; width of collision box
 	dc.l	32/2							; sprite_vbox					; height of collision box
-	dc.l	BMP_BLOOD				; sprite_gfxbase				; start of bitmap data
+	dc.l	BMP_BLOOD_RED				; sprite_gfxbase				; start of bitmap data
 	dc.l	4								; (BIT DEPTH)					; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB							; (CRY/RGB)						; bitmap GFX type
 	dc.l	is_trans						; (TRANSPARENCY)				; bitmap TRANS flag

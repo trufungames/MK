@@ -411,3 +411,8 @@ void StateSubzeroFatality1_Enter(struct StateMachine*, struct Fighter*, struct S
 void StateSubzeroFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
 void StateSubzeroFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateSubzeroFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitSubzeroFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSubzeroFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitSubzeroFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitSubzeroFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

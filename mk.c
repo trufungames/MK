@@ -320,6 +320,9 @@ static State stateHitSkeleton = {
 static State stateSubzeroFatality1 = {
 	STATE_SUBZERO_FATALITY1
 };
+static State stateHitSubzeroFatality1 = {
+	STATE_HIT_SUBZERO_FATALITY1
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -1415,9 +1418,9 @@ static AnimationFrame scorpionFatality1Frames[] = {
 static AnimationFrame subzeroFatality1Frames[] = {
 	{ 64, 96, 464, 112, 0, 16, 8 },
 	{ 64, 112, 528, 112, 0, 0, 8 },
-	{ 80, 112, 592, 112, 5, 0, 8 },		
-	{ 48, 128, 672, 112, 6, -16, 8 },	
-	{ 64, 112, 720, 112, 0, 0, 65 },	
+	{ 80, 112, 592, 112, 5, 0, 30 },		
+	{ 48, 128, 672, 112, 6, -16, 60 },	
+	{ 64, 112, 720, 112, 0, 0, 8 },	
 	{ 48, 112, 528, 1072, 0, 0, 8 },
 	{ 48, 112, 976, 1072, 0, 0, 8 },
 	{ 48, 128, 64, 1136, 0, -16, 8 },
@@ -1430,7 +1433,7 @@ static AnimationFrame subzeroFatality1Frames[] = {
 };
 
 static AnimationFrame frontDecapCageFrames[] = {
-	{ 16, 32, 160, 672, 51, -15, 35 },
+	{ 16, 32, 160, 672, 51, -15, 30 },
 	{ 16, 32, 160, 672, 51, -15, 30 },
     { 16, 32, 160, 672, 40, 27, 8 },
 	{ 16, 32, 160, 672, 7, 8, 4 },
@@ -1440,7 +1443,7 @@ static AnimationFrame frontDecapCageFrames[] = {
 };
 
 static AnimationFrame frontDecapKanoFrames[] = {
-	{ 16, 32, 176, 672, 51, -15, 35 },
+	{ 16, 32, 176, 672, 51, -15, 30 },
 	{ 16, 32, 176, 672, 51, -15, 30 },
     { 16, 32, 176, 672, 40, 27, 8 },
 	{ 16, 32, 176, 672, 7, 8, 4 },
@@ -1450,7 +1453,7 @@ static AnimationFrame frontDecapKanoFrames[] = {
 };
 
 static AnimationFrame frontDecapRaidenFrames[] = {
-	{ 16, 32, 160, 704, 45, -15, 35 },
+	{ 16, 32, 160, 704, 45, -15, 30 },
 	{ 16, 32, 160, 704, 45, -15, 30 },
     { 16, 32, 160, 704, 34, 27, 8 },
 	{ 16, 32, 160, 704, 1, 8, 4 },
@@ -1460,7 +1463,7 @@ static AnimationFrame frontDecapRaidenFrames[] = {
 };
 
 static AnimationFrame frontDecapKangFrames[] = {
-	{ 16, 32, 160, 736, 51, -15, 35 },
+	{ 16, 32, 160, 736, 51, -15, 30 },
 	{ 16, 32, 160, 736, 51, -15, 30 },
     { 16, 32, 160, 736, 40, 27, 8 },
 	{ 16, 32, 160, 736, 7, 8, 4 },
@@ -1470,7 +1473,7 @@ static AnimationFrame frontDecapKangFrames[] = {
 };
 
 static AnimationFrame frontDecapNinjaFrames[] = {
-	{ 16, 32, 176, 736, 51, -15, 35 },
+	{ 16, 32, 176, 736, 51, -15, 30 },
 	{ 16, 32, 176, 736, 51, -15, 30 },
     { 16, 32, 176, 736, 40, 27, 8 },
 	{ 16, 32, 176, 736, 7, 8, 4 },
@@ -1480,7 +1483,7 @@ static AnimationFrame frontDecapNinjaFrames[] = {
 };
 
 static AnimationFrame frontDecapSonyaFrames[] = {
-	{ 16, 32, 192, 672, 51, -15, 35 },
+	{ 16, 32, 192, 672, 51, -15, 30 },
 	{ 16, 32, 192, 672, 51, -15, 30 },
     { 16, 32, 192, 672, 40, 27, 8 },
 	{ 16, 32, 192, 672, 7, 8, 4 },
@@ -5009,6 +5012,10 @@ void basicmain()
 		stateSubzeroFatality1.update = &StateSubzeroFatality1_Update;
 		stateSubzeroFatality1.sleep = &StateSubzeroFatality1_Sleep;
 		stateSubzeroFatality1.handleInput = &StateSubzeroFatality1_HandleInput;
+		stateHitSubzeroFatality1.enter = &StateHitSubzeroFatality1_Enter;
+		stateHitSubzeroFatality1.update = &StateHitSubzeroFatality1_Update;
+		stateHitSubzeroFatality1.sleep = &StateHitSubzeroFatality1_Sleep;
+		stateHitSubzeroFatality1.handleInput = &StateHitSubzeroFatality1_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -5089,6 +5096,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SCORPION_FATALITY1, &stateScorpionFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_SKELETON, &stateHitSkeleton);
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FATALITY1, &stateSubzeroFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_SUBZERO_FATALITY1, &stateHitSubzeroFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
@@ -8513,10 +8521,10 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
             break;
     }
 
-	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_clut),10,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),9,16);
+	//jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),10,16);  10 is used for fonts
 	jsfLoadClut((unsigned short *)(void *)(BMP_MATCH_clut),11,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_HEALTHBAR_OFF_clut),12,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BLOOD_RED_clut),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 
 	switch (p1Cursor)
@@ -8912,7 +8920,7 @@ void setFighterAlternatePalette(int fighter1Index, int fighter2Index)
 
 void setPlayer1Name(char* name)
 {
-	rapUse8x8fontPalette(10);
+	rapUse8x8fontPalette(SPRITE_FONT_PALETTE);
 	jsfSetFontSize(0);
 	jsfSetFontIndx(1);
 	rapLocate(26,29);
@@ -8922,7 +8930,7 @@ void setPlayer1Name(char* name)
 
 void setPlayer2Name(char* name, int length)
 {
-	rapUse8x8fontPalette(10);
+	rapUse8x8fontPalette(SPRITE_FONT_PALETTE);
 	jsfSetFontSize(0);
 	jsfSetFontIndx(1);
 	rapLocate(301 - (length * 8),29);
