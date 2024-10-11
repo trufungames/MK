@@ -5373,7 +5373,7 @@ void StateSubzeroFatality1_Enter(struct StateMachine* stateMachine, struct Fight
     }
 
     int fighterClutIndex = fighter->isPlayer1 ? 9: 13;
-    int opponentClutIndex = fighter->isPlayer1 ? 13 : 10;
+    int opponentClutIndex = fighter->isPlayer1 ? 13 : 9;
     
     switch (fighter->Opponent->fighterIndex)
     {

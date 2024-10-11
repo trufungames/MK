@@ -5811,7 +5811,7 @@ __Z9basicmainv:
 	move.l #__ZL21frontDecapNinjaFrames,__ZL14fighterKasumi2+642
 	move.l #__ZL19subzeroCaughtFrames,__ZL14fighterKasumi2+638
 	move.l #__ZL21subzeroHitDecapFrames,__ZL14fighterKasumi2+626
-	move.l #__ZL17lightningAnimator,__ZL14fighterKasumi2+434
+	move.l #__ZL18lightning2Animator,__ZL14fighterKasumi2+434
 	move.l #__ZL30projectileKasumiFireballFrames,__ZL14fighterKasumi2+610
 	move.l #__ZL25projectileFreezeEndFrames,__ZL14fighterKasumi2+614
 	move.l #__ZL31specials_Kasumi_Fireball_Inputs,__ZL14fighterKasumi2+328

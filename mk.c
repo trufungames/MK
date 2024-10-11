@@ -6033,7 +6033,7 @@ void basicmain()
 		fighterKasumi2.frontDecapFrames = &frontDecapNinjaFrames;
 		fighterKasumi2.caughtFrames = &subzeroCaughtFrames;
 		fighterKasumi2.hitDecapFrames = &subzeroHitDecapFrames;
-		fighterKasumi2.projectileAnimator = &lightningAnimator;
+		fighterKasumi2.projectileAnimator = &lightning2Animator;
 		fighterKasumi2.projectileFrames = &projectileKasumiFireballFrames;
 		fighterKasumi2.projectileEndFrames = &projectileFreezeEndFrames;
 		fighterKasumi2.special1Inputs = &specials_Kasumi_Fireball_Inputs;

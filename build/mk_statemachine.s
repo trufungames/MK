@@ -14572,7 +14572,7 @@ __Z27StateSubzeroFatality1_EnterP12StateMachineP7FighterP14SpriteAnimator:
 	unlk %fp
 	jra jsfLoadClut
 .L1605:
-	moveq #10,%d0
+	moveq #9,%d0
 	moveq #13,%d2
 	jra .L1593
 .L1607:
