@@ -60,13 +60,13 @@ static AnimationFrame skeletonFrames[] = {
 	{ 48, 64, 96, 1232, 0, 48, 5}
 };
 static AnimationFrame decapSpineFrames[] = {
-	{ 16, 48, 192, 752, 53, 5, 30 },
-	{ 16, 48, 192, 704, 53, 5, 30 },
-    { 16, 48, 192, 752, 42, 47, 8 },
-	{ 16, 48, 192, 752, 9, 28, 4 },
-	{ 16, 48, 192, 704, 9, 28, 4 },
-	{ 16, 48, 192, 704, 12, 23, 8 },
-	{ 16, 48, 192, 704, 11, 13, 8 }
+	{ 16, 48, 192, 752, 45, 2, 30 },
+	{ 16, 48, 192, 752, 45, 2, 60 },
+    { 16, 48, 192, 752, 37, 44, 8 },
+	{ 16, 48, 192, 752, 0, 28, 4 },
+	{ 16, 48, 192, 704, -8, 28, 4 },
+	{ 16, 48, 192, 704, -9, 21, 8 },
+	{ 16, 48, 192, 704, -10, 9, 8 }
 };
 
 void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state)
@@ -195,7 +195,7 @@ void stateMachineGoto(struct StateMachine* stateMachine, short newState, struct 
     if (fighter->currentState->Name == newState)
         return;
 
-    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    //sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     fighter->currentState = stateMachine->states[newState];
     fighter->currentState->enter(stateMachine, fighter, spriteAnimator);
 }
@@ -4296,6 +4296,10 @@ void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
+    if (fighter->vars[1] == 1)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    }
 }
 
 void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -4340,7 +4344,11 @@ void StateIsWinner_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     fighter->vars[0] = 0;
     fighter->IsWinner = true;
     fighterSetOnFloor(fighter);
-    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+
+    if (fighter->vars[2] != 123)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    }
 }
 
 void StateIsWinner_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -5355,12 +5363,12 @@ void StateSubzeroFatality1_Enter(struct StateMachine* stateMachine, struct Fight
 
     if (fighter->direction == 1)
     {
-        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
         sprite[fighter->Opponent->lightningSpriteIndex].flip = R_is_normal;
     }
     else
     {
-        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
         sprite[fighter->Opponent->lightningSpriteIndex].flip = R_is_flipped;
     }
 
@@ -5414,11 +5422,14 @@ void StateSubzeroFatality1_Update(struct StateMachine* stateMachine, struct Figh
             stateMachineGoto(stateMachine, STATE_HIT_SUBZERO_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);
         }
 
+        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 9, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
         if (spriteAnimator->currentFrame >= 3)
         {
             if (animationIsComplete(fighter->spriteAnimator, 9))
             {
                 fighter->vars[3] = 1;
+                fighter->vars[2] = 123;
                 stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
                 return;
             }
@@ -5430,10 +5441,8 @@ void StateSubzeroFatality1_Update(struct StateMachine* stateMachine, struct Figh
                 sprite[fighter->Opponent->lightningSpriteIndex].active = R_is_active;
 
             updateSpriteAnimator(fighter->projectileAnimator, decapSpineFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
-            updateSpriteAnimator(fighter->Opponent->projectileAnimator, *fighter->frontDecapFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+            updateSpriteAnimator(fighter->Opponent->projectileAnimator, *fighter->Opponent->frontDecapFrames, 7, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
         }
-
-        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 9, true, false, fighter->positionX, fighter->positionY, fighter->direction);        
     }
 }
 
@@ -5463,7 +5472,17 @@ void StateHitSubzeroFatality1_Enter(struct StateMachine* stateMachine, struct Fi
     fighter->vars[1] = 1;
     fighter->vars[2] = 0;
     fighter->vars[3] = 0;
+    fighter->vars[4] = 0;
     fighter->FrozenShakeTicks = rapTicks;
+    
+    if (fighter->direction == -1)
+    {
+        fighter->worldPositionX = fighter->Opponent->worldPositionX + FIGHTER_WIDTH + 16;
+    }
+    else
+    {
+        fighter->worldPositionX = fighter->Opponent->worldPositionX - (FIGHTER_WIDTH * 2) + 40;
+    }
 }
 
 void StateHitSubzeroFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -5495,6 +5514,7 @@ void StateHitSubzeroFatality1_Update(struct StateMachine* stateMachine, struct F
         if (fighter->vars[1] == 0)
         {
             fighter->vars[1] = 1;   
+            fighter->worldPositionX += (24 * fighter->direction);
             bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
             bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
             bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
@@ -5503,6 +5523,15 @@ void StateHitSubzeroFatality1_Update(struct StateMachine* stateMachine, struct F
             fighter->lastTicks = rapTicks;
             spriteAnimator->currentFrame = 0;
             spriteAnimator->lastTick = rapTicks;
+        }
+        else if (fighter->vars[4] == 0 && rapTicks >= fighter->lastTicks + 70)
+        {
+            fighter->vars[4] = 1;
+            bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+            bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
+            bloodDrop(fighter->worldPositionX, fighter->positionY - 8, fighter->direction * -1);
+            sfxKanoHeartrip(fighter->soundHandler);
         }
 
         if (animationIsComplete(spriteAnimator, 7))
@@ -5523,8 +5552,9 @@ void StateHitSubzeroFatality1_Update(struct StateMachine* stateMachine, struct F
     }
     else if (fighter->vars[0] == 1 && fighter->vars[2] == 1)
     {
+        bloodBall(fighter->worldPositionX - 4 - (fighter->direction == -1 ? (FIGHTER_WIDTH - 6) : (FIGHTER_WIDTH * -2) + 24), fighter->positionY + 6, 0);
         fighter->vars[0] = 1;
-        fighter->vars[1] = 0;
+        fighter->vars[1] = 1;
         fighter->IsDefeated = true;
         fighter->IsActive = false;
         stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);

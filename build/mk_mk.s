@@ -10304,16 +10304,16 @@ __ZL20frontDecapCageFrames:
 	.word	32
 	.word	160
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
 	.word	30
 	.word	16
 	.word	32
 	.word	160
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
-	.word	30
+	.word	60
 	.word	16
 	.word	32
 	.word	160
@@ -10325,28 +10325,28 @@ __ZL20frontDecapCageFrames:
 	.word	32
 	.word	160
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	160
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	160
 	.word	672
-	.word	10
+	.word	1
 	.word	3
 	.word	8
 	.word	16
 	.word	32
 	.word	160
 	.word	672
-	.word	9
+	.word	0
 	.word	-9
 	.word	8
 	.even
@@ -13050,16 +13050,16 @@ __ZL20frontDecapKanoFrames:
 	.word	32
 	.word	176
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
 	.word	30
 	.word	16
 	.word	32
 	.word	176
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
-	.word	30
+	.word	60
 	.word	16
 	.word	32
 	.word	176
@@ -13071,28 +13071,28 @@ __ZL20frontDecapKanoFrames:
 	.word	32
 	.word	176
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	176
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	176
 	.word	672
-	.word	10
+	.word	1
 	.word	3
 	.word	8
 	.word	16
 	.word	32
 	.word	176
 	.word	672
-	.word	9
+	.word	0
 	.word	-9
 	.word	8
 	.even
@@ -15960,53 +15960,53 @@ __ZL17raidenDecapFrames:
 	.word	10
 	.even
 __ZL22frontDecapRaidenFrames:
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	45
+	.word	39
 	.word	-15
 	.word	30
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	45
+	.word	39
 	.word	-15
-	.word	30
-	.word	16
+	.word	60
+	.word	32
 	.word	32
 	.word	160
 	.word	704
 	.word	34
 	.word	27
 	.word	8
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	1
+	.word	-4
 	.word	8
 	.word	4
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	1
+	.word	-4
 	.word	8
 	.word	4
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	4
+	.word	-5
 	.word	3
 	.word	8
-	.word	16
+	.word	32
 	.word	32
 	.word	160
 	.word	704
-	.word	3
+	.word	-6
 	.word	-9
 	.word	8
 	.even
@@ -18821,16 +18821,16 @@ __ZL20frontDecapKangFrames:
 	.word	32
 	.word	160
 	.word	736
-	.word	51
+	.word	45
 	.word	-15
 	.word	30
 	.word	16
 	.word	32
 	.word	160
 	.word	736
-	.word	51
+	.word	45
 	.word	-15
-	.word	30
+	.word	60
 	.word	16
 	.word	32
 	.word	160
@@ -18842,28 +18842,28 @@ __ZL20frontDecapKangFrames:
 	.word	32
 	.word	160
 	.word	736
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	160
 	.word	736
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	160
 	.word	736
-	.word	10
+	.word	1
 	.word	3
 	.word	8
 	.word	16
 	.word	32
 	.word	160
 	.word	736
-	.word	9
+	.word	0
 	.word	-9
 	.word	8
 	.even
@@ -21480,16 +21480,16 @@ __ZL21frontDecapNinjaFrames:
 	.word	32
 	.word	176
 	.word	736
-	.word	51
+	.word	45
 	.word	-15
 	.word	30
 	.word	16
 	.word	32
 	.word	176
 	.word	736
-	.word	51
+	.word	45
 	.word	-15
-	.word	30
+	.word	60
 	.word	16
 	.word	32
 	.word	176
@@ -21501,28 +21501,28 @@ __ZL21frontDecapNinjaFrames:
 	.word	32
 	.word	176
 	.word	736
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	176
 	.word	736
-	.word	7
+	.word	2
 	.word	8
 	.word	4
 	.word	16
 	.word	32
 	.word	176
 	.word	736
-	.word	10
+	.word	1
 	.word	3
 	.word	8
 	.word	16
 	.word	32
 	.word	176
 	.word	736
-	.word	9
+	.word	0
 	.word	-9
 	.word	8
 	.even
@@ -24172,7 +24172,7 @@ __ZL22subzeroFatality1Frames:
 	.word	112
 	.word	5
 	.word	0
-	.word	30
+	.word	16
 	.word	48
 	.word	128
 	.word	672
@@ -24993,53 +24993,53 @@ __ZL16sonyaDecapFrames:
 	.word	10
 	.even
 __ZL21frontDecapSonyaFrames:
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
 	.word	30
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	51
+	.word	45
 	.word	-15
-	.word	30
-	.word	16
+	.word	60
+	.word	32
 	.word	32
 	.word	192
 	.word	672
 	.word	40
 	.word	27
 	.word	8
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	7
+	.word	2
 	.word	8
 	.word	4
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	10
+	.word	1
 	.word	3
 	.word	8
-	.word	16
+	.word	32
 	.word	32
 	.word	192
 	.word	672
-	.word	9
+	.word	0
 	.word	-9
 	.word	8
 	.even
@@ -25063,14 +25063,14 @@ __ZL17sonyaCaughtFrames:
 	.word	880
 	.word	848
 	.word	0
-	.word	-16
+	.word	0
 	.word	12
 	.word	48
 	.word	112
 	.word	880
 	.word	848
 	.word	0
-	.word	-16
+	.word	0
 	.word	6
 	.even
 __ZL19sonyaHitDecapFrames:
