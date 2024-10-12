@@ -45,6 +45,7 @@ void sfxKanoHeartrip(struct SoundHandler* soundHandler);
 void sfxKanoCannonBallStart(struct SoundHandler* soundHandler);
 void sfxKanoCannonBall(struct SoundHandler* soundHandler);
 void sfxSonyaRings(struct SoundHandler* soundHandler);
+void sfxSonyaKiss(struct SoundHandler* soundHandler);
 void sfxSubzeroFreeze(struct SoundHandler* soundHandler);
 void sfxSubzeroFreezeEnd(struct SoundHandler* soundHandler);
 void sfxSubzeroSlide(struct SoundHandler* soundHandler);

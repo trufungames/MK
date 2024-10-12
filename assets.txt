@@ -50,6 +50,7 @@ ROM,BMPRAIDEN,gfx_clut,ASSETS\GFX\raiden.BMP
 ROM,BMPSUBZERO,gfx_clut,ASSETS\GFX\subzero.BMP
 ROM,BMPSONYA,gfx_clut,ASSETS\GFX\sonya.BMP
 ROM,BMPKANO,gfx_clut,ASSETS\GFX\kano.BMP
+ROM,BMPGORO,gfx_clut_pack,ASSETS\GFX\goro_placeholder.BMP
 ROM,PAL_SCORPION,gfx_clut,ASSETS\GFX\pal_scorpion.BMP
 ROM,PAL_REPTILE,gfx_clut,ASSETS\GFX\pal_reptile.BMP
 ROM,PAL_KASUMI,gfx_clut,ASSETS\GFX\pal_kasumi.BMP
@@ -240,6 +241,7 @@ ROM,scorpion_skull_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull.wav
 ROM,scorpion_skull_flame_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull_flame.wav
 ROM,fatality_scream_male_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_male.wav
 ROM,fatality_scream_female_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_female.wav
+ROM,sonya_kiss_sam,sfx_raw8000,ASSETS\SFX\sonya_kiss.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

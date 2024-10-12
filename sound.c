@@ -605,6 +605,17 @@ void sfxSonyaRings(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SONYA_RINGS, 8000);
 }
 
+void sfxSonyaKiss(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SONYA_KISS, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SONYA_KISS, 8000);
+}
+
 void sfxSubzeroFreeze(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

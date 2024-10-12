@@ -5572,3 +5572,93 @@ void StateHitSubzeroFatality1_Sleep(struct StateMachine* stateMachine, struct Fi
 void StateHitSubzeroFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SONYA FATALITY 1
+// vars[0] initial pause
+// vars[1] played skull sound
+// vars[2] played flame sound
+
+void StateSonyaFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->isDoingFatality = true;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->vars[4] = 0;
+    fighter->DidFatality = true;    
+
+    fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction);
+    fighter->projectilePositionY = fighter->positionY + 32;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
+    sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+
+    if (fighter->direction == 1)
+    {
+        sprite[fighter->lightningSpriteIndex].flip = R_is_normal;
+    }
+    else
+    {
+        sprite[fighter->lightningSpriteIndex].flip = R_is_flipped;
+    }
+
+    jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_KASUMI_clut),fighter->isPlayer1 ? 9: 13,16);
+}
+
+void StateSonyaFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
+    {
+        if (spriteAnimator->currentFrame == 2 && fighter->vars[1] == 0)
+        {
+            fighter->vars[1] = 1;
+            sfxScorpionSkull(fighter->soundHandler);
+        }
+
+        updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 8, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+        if (animationIsComplete(spriteAnimator, 7))
+        {
+            if (fighter->vars[2] == 0)
+            {
+                fighter->vars[2] = 1;
+                sfxScorpionSkullFlame(fighter->soundHandler);
+            }
+
+            if (!animationIsComplete(fighter->projectileAnimator, 12))
+            {
+                sprite[fighter->lightningSpriteIndex].active = R_is_active;
+                updateSpriteAnimator(fighter->projectileAnimator, scorpionToastyFatalityFrames, 12, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+            }
+            else
+            {
+                sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                stateMachineGoto(stateMachine, STATE_HIT_SKELETON, fighter->Opponent, fighter->Opponent->spriteAnimator);
+                animateFrame(spriteAnimator, fighter->spriteIndex, 7, *fighter->fatality1Frames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
+                fighter->vars[3] = 1;
+                stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+            }
+        }
+    }
+}
+
+void StateSonyaFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateSonyaFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}

@@ -323,6 +323,9 @@ static State stateSubzeroFatality1 = {
 static State stateHitSubzeroFatality1 = {
 	STATE_HIT_SUBZERO_FATALITY1
 };
+static State stateSonyaFatality1 = {
+	STATE_SONYA_FATALITY1
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -5016,6 +5019,10 @@ void basicmain()
 		stateHitSubzeroFatality1.update = &StateHitSubzeroFatality1_Update;
 		stateHitSubzeroFatality1.sleep = &StateHitSubzeroFatality1_Sleep;
 		stateHitSubzeroFatality1.handleInput = &StateHitSubzeroFatality1_HandleInput;
+		stateSonyaFatality1.enter = &StateSonyaFatality1_Enter;
+		stateSonyaFatality1.update = &StateSonyaFatality1_Update;
+		stateSonyaFatality1.sleep = &StateSonyaFatality1_Sleep;
+		stateSonyaFatality1.handleInput = &StateSonyaFatality1_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -5097,6 +5104,7 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_SKELETON, &stateHitSkeleton);
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FATALITY1, &stateSubzeroFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_SUBZERO_FATALITY1, &stateHitSubzeroFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_SONYA_FATALITY1, &stateSonyaFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
