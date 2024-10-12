@@ -14,6 +14,9 @@
 static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short UppercutOffsets[26] = {-20, -20, -16, -14, -13, -10, -9, -6, -4, -3, -2, -1, 0, 0, 0, 2, 3, 4, 6, 9, 12, 13, 14, 20, 22, 24 };
+static short SonyaKissXOffsets[16] = { 14, 31, 48, 64, 73, 79, 76, 67, 52, 39, 30, 25, 26, 32, 41, 52 };
+static short SonyaKissYOffsets[16] = {  0,  3,  8, 14, 21, 29, 39, 45, 48, 46, 42, 36, 27, 20, 14,  9 };
+
 static AnimationFrame cageShadowKickFrames[] = {
 	{ 96, 96, 0, 736, 0, 16, 6 },
 };
