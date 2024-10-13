@@ -1435,6 +1435,23 @@ static AnimationFrame subzeroFatality1Frames[] = {
 	{ 0, 0, 0, 0, 0, 0, 0 }
 };
 
+static AnimationFrame sonyaFatality1Frames[] = {
+	{ 48, 112, 768, 704, 0, 0, 6 },
+	{ 48, 112, 816, 688, 0, 0, 6 },
+	{ 48, 112, 864, 736, 0, 0, 6 },
+	{ 48, 112, 912, 736, 0, 0, 6 },
+	{ 48, 112, 960, 720, -5, 0, 6 },
+	{ 48, 112, 0, 784, -6, 0, 6 },
+	{ 48, 112, 48, 816, -5, 0, 6 },
+	{ 48, 96, 96, 832, -4, 16, 6},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0},
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
+
 static AnimationFrame frontDecapCageFrames[] = {
 	{ 16, 32, 160, 672, 45, -15, 30 },
 	{ 16, 32, 160, 672, 45, -15, 60 },
@@ -3709,7 +3726,7 @@ static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_B
 static int fatality_Kang_Flip_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
 static int fatality_Scorpion_Toasty_Inputs[] = { INPUT_UP, INPUT_UP, 0, 0, 0, INPUT_BLK };
 static int fatality_Subzero_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
-static int fatality_Sonya_Kiss_Inputs[] = { INPUT_BLK, INPUT_BACK, INPUT_BACK, INPUT_FORWARD, INPUT_FORWARD, 0 };
+static int fatality_Sonya_Kiss_Inputs[] = { INPUT_BLK, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
 static int fatality_Kasumi_Portal_Inputs[] = { INPUT_DOWN, INPUT_DOWN, INPUT_UP, INPUT_UP, 0, INPUT_BLK };
 
 static SpriteAnimator fmvAnimator = {
@@ -3912,6 +3929,7 @@ void doFatality_Raiden_HeadZap(struct StateMachine* stateMachine, struct Fighter
 void doFatality_Kang_Flip(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Scorpion_Toasty(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Subzero_Decap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doFatality_Sonya_Kiss(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -5867,6 +5885,11 @@ void basicmain()
 		fighterSonya.spriteAnimator = &sonyaAnimator;
 		fighterSonya.decapFrames = &sonyaDecapFrames;
 		fighterSonya.frontDecapFrames = &frontDecapSonyaFrames;
+		fighterSonya.fatality1Inputs = &fatality_Sonya_Kiss_Inputs;
+		fighterSonya.fatality1InputCount = 3;
+		fighterSonya.doFatality1 = &doFatality_Sonya_Kiss;
+		fighterSonya.fatality1Frames = &sonyaFatality1Frames;
+		fighterSonya.fatality1IsCloseRange = false;
 		fighterSonya.caughtFrames = &sonyaCaughtFrames;
 		fighterSonya.hitDecapFrames = &sonyaHitDecapFrames;
 		fighterSonya.projectileAnimator = &lightningAnimator;
@@ -5924,6 +5947,11 @@ void basicmain()
 		fighterSonya2.spriteAnimator = &sonyaAnimator2;
 		fighterSonya2.decapFrames = &sonyaDecapFrames;
 		fighterSonya2.frontDecapFrames = &frontDecapSonyaFrames;
+		fighterSonya2.fatality1Inputs = &fatality_Sonya_Kiss_Inputs;
+		fighterSonya2.fatality1InputCount = 3;
+		fighterSonya2.doFatality1 = &doFatality_Sonya_Kiss;
+		fighterSonya2.fatality1Frames = &sonyaFatality1Frames;
+		fighterSonya2.fatality1IsCloseRange = false;
 		fighterSonya2.caughtFrames = &sonyaCaughtFrames;
 		fighterSonya2.hitDecapFrames = &sonyaHitDecapFrames;
 		fighterSonya2.projectileAnimator = &lightning2Animator;
@@ -9126,4 +9154,9 @@ void doFatality_Scorpion_Toasty(struct StateMachine* stateMachine, struct Fighte
 void doFatality_Subzero_Decap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SUBZERO_FATALITY1, fighter, fighter->spriteAnimator);
+}
+
+void doFatality_Sonya_Kiss(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_SONYA_FATALITY1, fighter, fighter->spriteAnimator);
 }

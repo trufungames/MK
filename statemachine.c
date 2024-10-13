@@ -71,6 +71,9 @@ static AnimationFrame decapSpineFrames[] = {
 	{ 16, 48, 192, 704, -9, 21, 8 },
 	{ 16, 48, 192, 704, -10, 9, 8 }
 };
+static AnimationFrame sonyaKissFrames[] = {
+	{ 16, 16, 160, 768, 0, 0, 6 },
+};
 
 void stateMachineAdd(struct StateMachine* stateMachine, short name, struct State* state)
 {
@@ -5576,8 +5579,10 @@ void StateHitSubzeroFatality1_HandleInput(struct StateMachine* stateMachine, str
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SONYA FATALITY 1
 // vars[0] initial pause
-// vars[1] played skull sound
-// vars[2] played flame sound
+// vars[1] played kiss sound
+// vars[2] launched fireball
+// vars[3] fireball Index
+// vars[4] played the final flame animation and sound
 
 void StateSonyaFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -5594,7 +5599,7 @@ void StateSonyaFatality1_Enter(struct StateMachine* stateMachine, struct Fighter
     fighter->DidFatality = true;    
 
     fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction);
-    fighter->projectilePositionY = fighter->positionY + 32;
+    fighter->projectilePositionY = fighter->positionY + 8;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -5622,34 +5627,69 @@ void StateSonyaFatality1_Update(struct StateMachine* stateMachine, struct Fighte
 {
     if (fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 60)
     {
-        if (spriteAnimator->currentFrame == 2 && fighter->vars[1] == 0)
+        if (spriteAnimator->currentFrame == 1 && fighter->vars[1] == 0)
         {
             fighter->vars[1] = 1;
-            sfxScorpionSkull(fighter->soundHandler);
+            sfxSonyaKiss(fighter->soundHandler);
         }
 
         updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, 8, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 
-        if (animationIsComplete(spriteAnimator, 7))
+        if (animationIsComplete(spriteAnimator, 8))
         {
             if (fighter->vars[2] == 0)
             {
                 fighter->vars[2] = 1;
-                sfxScorpionSkullFlame(fighter->soundHandler);
+                sfxKanoCannonBallStart(fighter->soundHandler);
+                fighter->lastTicks = rapTicks;
             }
 
-            if (!animationIsComplete(fighter->projectileAnimator, 12))
+            if (fighter->vars[3] < 16 && rapTicks >= fighter->lastTicks + 2)
             {
-                sprite[fighter->lightningSpriteIndex].active = R_is_active;
-                updateSpriteAnimator(fighter->projectileAnimator, scorpionToastyFatalityFrames, 12, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+                if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+                    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+                
+                updateSpriteAnimator(fighter->projectileAnimator, sonyaKissFrames, 1, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+
+                fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction) + SonyaKissXOffsets[fighter->vars[3]];
+                fighter->projectilePositionY = fighter->positionY + 8 + SonyaKissYOffsets[fighter->vars[3]];
+                sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
+                sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
+                fighter->vars[3]++;
+                fighter->lastTicks = rapTicks;
             }
-            else
+            else if (fighter->vars[4] == 0 && fighter->vars[3] >= 16 && rapTicks >= fighter->lastTicks + 2)
             {
-                sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
-                stateMachineGoto(stateMachine, STATE_HIT_SKELETON, fighter->Opponent, fighter->Opponent->spriteAnimator);
-                animateFrame(spriteAnimator, fighter->spriteIndex, 7, *fighter->fatality1Frames, spriteAnimator->mulFactor, spriteAnimator->base, FIGHTER_WIDTH, fighter->positionX, fighter->positionY, fighter->direction);
-                fighter->vars[3] = 1;
-                stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+                //we've done the loop, now just move the ball towards the opponent until it reaches them.
+                fighter->projectileWorldPositionX += (8 * fighter->direction);
+                fighter->projectilePositionY += (8 * fighter->direction);
+                fighter->lastTicks = rapTicks;
+
+                if (fighter->projectileWorldPositionX >= fighter->Opponent->worldPositionX && fighter->vars[4] == 0)
+                {
+                    //boom goes the dynamite
+                    sfxScorpionSkullFlame(fighter->soundHandler);
+                    fighter->vars[4] = 1;
+                    fighter->projectileAnimator->currentFrame = 6;
+                }
+            }
+            else if (fighter->vars[4] == 1)
+            {
+                fighter->projectileWorldPositionX = fighter->Opponent->worldPositionX;
+                fighter->projectilePositionY = fighter->Opponent->positionY;
+
+                if (!animationIsComplete(fighter->projectileAnimator, 12))
+                {
+                    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+                    updateSpriteAnimator(fighter->projectileAnimator, scorpionToastyFatalityFrames, 12, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+                }
+                else
+                {
+                    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+                    stateMachineGoto(stateMachine, STATE_HIT_SKELETON, fighter->Opponent, fighter->Opponent->spriteAnimator);                    
+                    fighter->vars[3] = 0;
+                    stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+                }
             }
         }
     }
