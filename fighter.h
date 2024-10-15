@@ -139,7 +139,7 @@ struct Fighter {
     bool isMaxDistance;
     int defaultClut;
     int frozenClut;
-    short vars[5];
+    short vars[6];
     struct State* currentState;
     bool exitingState;
     bool isSleeping;

@@ -15,7 +15,7 @@ static short JumpOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 
 static short FlipOffsets[20] = {-20, -16, -12, -10, -8, -6, -4, -2, 0, 0, 2, 4, 6, 8, 10, 12, 16, 20};
 static short UppercutOffsets[26] = {-20, -20, -16, -14, -13, -10, -9, -6, -4, -3, -2, -1, 0, 0, 0, 2, 3, 4, 6, 9, 12, 13, 14, 20, 22, 24 };
 static short SonyaKissXOffsets[16] = { 14, 31, 48, 64, 73, 79, 76, 67, 52, 39, 30, 25, 26, 32, 41, 52 };
-static short SonyaKissYOffsets[16] = {  0,  3,  8, 14, 21, 29, 39, 45, 48, 46, 42, 36, 27, 20, 14,  9 };
+static short SonyaKissYOffsets[16] = {  0, -3, -8, -14, -21, -29, -39, -45, -48, -46, -42, -36, -27, -20, -14, -9 };
 
 static AnimationFrame cageShadowKickFrames[] = {
 	{ 96, 96, 0, 736, 0, 16, 6 },
@@ -5583,6 +5583,7 @@ void StateHitSubzeroFatality1_HandleInput(struct StateMachine* stateMachine, str
 // vars[2] launched fireball
 // vars[3] fireball Index
 // vars[4] played the final flame animation and sound
+// vars[5] rapTicks
 
 void StateSonyaFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
@@ -5596,10 +5597,11 @@ void StateSonyaFatality1_Enter(struct StateMachine* stateMachine, struct Fighter
     fighter->vars[2] = 0;
     fighter->vars[3] = 0;
     fighter->vars[4] = 0;
+    fighter->vars[5] = 0;
     fighter->DidFatality = true;    
 
-    fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction);
-    fighter->projectilePositionY = fighter->positionY + 8;
+    fighter->projectileWorldPositionX = fighter->worldPositionX + (16 * fighter->direction);
+    fighter->projectilePositionY = fighter->positionY + 16;
     fighter->projectileAnimator->currentFrame = 0;
     fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
     fighter->projectileAnimator->base = BMP_PROJECTILES;
@@ -5641,31 +5643,37 @@ void StateSonyaFatality1_Update(struct StateMachine* stateMachine, struct Fighte
             {
                 fighter->vars[2] = 1;
                 sfxKanoCannonBallStart(fighter->soundHandler);
-                fighter->lastTicks = rapTicks;
+                fighter->vars[5] = rapTicks;
             }
 
-            if (fighter->vars[3] < 16 && rapTicks >= fighter->lastTicks + 2)
+            if (fighter->vars[3] < 16 && rapTicks >= fighter->vars[5] + 3)
             {
                 if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
                     sprite[fighter->lightningSpriteIndex].active = R_is_active;
                 
                 updateSpriteAnimator(fighter->projectileAnimator, sonyaKissFrames, 1, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
 
-                fighter->projectileWorldPositionX = fighter->worldPositionX + (64 * fighter->direction) + SonyaKissXOffsets[fighter->vars[3]];
-                fighter->projectilePositionY = fighter->positionY + 8 + SonyaKissYOffsets[fighter->vars[3]];
+                fighter->projectileWorldPositionX = fighter->worldPositionX + (16 * fighter->direction) + (SonyaKissXOffsets[fighter->vars[3]] * fighter->direction);
+                fighter->projectilePositionY = fighter->positionY + 16 + SonyaKissYOffsets[fighter->vars[3]];
                 sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
                 sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
-                fighter->vars[3]++;
-                fighter->lastTicks = rapTicks;
+                fighter->vars[3]++;                
+                fighter->vars[5] = rapTicks;
             }
-            else if (fighter->vars[4] == 0 && fighter->vars[3] >= 16 && rapTicks >= fighter->lastTicks + 2)
+            else if (fighter->vars[4] == 0 && fighter->vars[3] >= 16 && rapTicks >= fighter->vars[5] + 3)
             {
                 //we've done the loop, now just move the ball towards the opponent until it reaches them.
                 fighter->projectileWorldPositionX += (8 * fighter->direction);
-                fighter->projectilePositionY += (8 * fighter->direction);
-                fighter->lastTicks = rapTicks;
+                fighter->projectilePositionX = fighter->projectileWorldPositionX - cameraGetX();
+                fighter->projectilePositionY += 12;
+                sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
+                sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
+                fighter->vars[5] = rapTicks;
 
-                if (fighter->projectileWorldPositionX >= fighter->Opponent->worldPositionX && fighter->vars[4] == 0)
+                //updateSpriteAnimator(fighter->projectileAnimator, sonyaKissFrames, 1, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+
+                if ((fighter->direction == 1 && fighter->projectileWorldPositionX >= fighter->Opponent->worldPositionX
+                    || fighter->direction == -1 && fighter->projectileWorldPositionX <= fighter->Opponent->worldPositionX + FIGHTER_WIDTH) && fighter->vars[4] == 0)
                 {
                     //boom goes the dynamite
                     sfxScorpionSkullFlame(fighter->soundHandler);
@@ -5675,8 +5683,9 @@ void StateSonyaFatality1_Update(struct StateMachine* stateMachine, struct Fighte
             }
             else if (fighter->vars[4] == 1)
             {
-                fighter->projectileWorldPositionX = fighter->Opponent->worldPositionX;
-                fighter->projectilePositionY = fighter->Opponent->positionY;
+                fighter->projectileWorldPositionX = fighter->Opponent->worldPositionX - (40 * fighter->direction);                
+                fighter->projectilePositionX = fighter->projectileWorldPositionX - cameraGetX();
+                fighter->projectilePositionY = fighter->Opponent->positionY + 32;
 
                 if (!animationIsComplete(fighter->projectileAnimator, 12))
                 {

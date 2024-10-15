@@ -107,13 +107,13 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	move.w raptor_ticks,%a0
 	cmp.l %d0,%a0
 	jle .L55
-	move.l 294(%a2),%a0
+	move.l 296(%a2),%a0
 	cmp.w #68,(%a0)
 	jeq .L83
-	move.l 294(%a3),%a0
+	move.l 296(%a3),%a0
 	cmp.w #68,(%a0)
 	jne .L55
-	move.l 430(%a3),-(%sp)
+	move.l 432(%a3),-(%sp)
 	move.l %a3,-(%sp)
 	pea 66.w
 	move.l 12(%fp),-(%sp)
@@ -137,20 +137,20 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	unlk %fp
 	rts
 .L80:
-	move.l 294(%a2),%a0
+	move.l 296(%a2),%a0
 	cmp.w #66,(%a0)
 	jeq .L85
-	move.l 294(%a3),%a0
+	move.l 296(%a3),%a0
 	cmp.w #66,(%a0)
 	jeq .L15
 	move.l _winner,%a0
 .L14:
 	cmp.w #0,%a0
 	jne .L86
-	move.l 294(%a2),%a0
+	move.l 296(%a2),%a0
 	cmp.w #68,(%a0)
 	jeq .L17
-	move.l 294(%a3),%a0
+	move.l 296(%a3),%a0
 	cmp.w #68,(%a0)
 	jeq .L17
 .L72:
@@ -324,11 +324,11 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	jsr (%a4)
 	moveq #4,%d2
 	move.l %d2,_matchState
-	move.l 294(%a2),%a0
+	move.l 296(%a2),%a0
 	addq.l #4,%sp
 	cmp.w #68,(%a0)
 	jeq .L92
-	move.l 294(%a3),%a0
+	move.l 296(%a3),%a0
 	cmp.w #68,(%a0)
 	jeq .L20
 	move.l _loser,%a1
@@ -623,7 +623,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 .L85:
 	move.w (%a3),%a0
 	move.l %a0,_winner
-	move.b 302(%a3),%d1
+	move.b 304(%a3),%d1
 	move.b %d1,_didFatality
 	move.w (%a2),%a1
 	move.l %a1,_loser
@@ -636,7 +636,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	tst.b %d1
 	jne .L14
 	clr.w 290(%a3)
-	move.l 430(%a3),-(%sp)
+	move.l 432(%a3),-(%sp)
 	move.l %a3,-(%sp)
 	pea 67.w
 	move.l 12(%fp),-(%sp)
@@ -682,7 +682,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 .L15:
 	move.w (%a2),%a0
 	move.l %a0,_winner
-	move.b 302(%a2),%d1
+	move.b 304(%a2),%d1
 	move.b %d1,_didFatality
 	move.w (%a3),%a1
 	move.l %a1,_loser
@@ -695,7 +695,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	tst.b %d1
 	jne .L14
 	clr.w 290(%a2)
-	move.l 430(%a2),-(%sp)
+	move.l 432(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	pea 67.w
 	move.l 12(%fp),-(%sp)
@@ -734,7 +734,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	unlk %fp
 	rts
 .L83:
-	move.l 430(%a2),-(%sp)
+	move.l 432(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	pea 66.w
 	move.l 12(%fp),-(%sp)
