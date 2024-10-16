@@ -303,6 +303,7 @@
 #define FIGHTER_FATALITY_MID_RANGE_MAX_X 100
 #define FIGHTER_FATALITY_CAGE_HEAD_SPEED_X 3
 #define FIGHTER_BLOOD_HEADZAP_SPEED 8
+#define FIGHTER_FATALITY_KASUMI_HEAD_SPEED_X 8
 
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_PALACEGATES_FLAME1_X 137
@@ -317,7 +318,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 81
+#define STATE_TOTAL_COUNT 83
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -400,6 +401,8 @@
 #define STATE_SUBZERO_FATALITY1 78
 #define STATE_HIT_SUBZERO_FATALITY1 79
 #define STATE_SONYA_FATALITY1 80
+#define STATE_KASUMI_FATALITY1 81
+#define STATE_HIT_KASUMI_FATALITY1 82
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7

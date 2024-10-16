@@ -5711,3 +5711,259 @@ void StateSonyaFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter
 void StateSonyaFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {    
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// KASUMI FATALITY 1
+// vars[0] initial pause
+
+void StateKasumiFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->isDoingFatality = true;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = rapTicks;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->vars[4] = 0;
+    fighter->vars[5] = 0;
+    fighter->DidFatality = true;
+}
+
+void StateKasumiFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (rapTicks >= fighter->lastTicks + 60)
+    {
+        if (fighter->vars[0] == 0)
+        {
+            //crouch first
+            if (animationIsComplete(spriteAnimator, fighter->DUCK_FRAME_COUNT))
+            {
+                fighter->vars[0] = 1;
+                fighter->vars[1] = rapTicks;
+                spriteAnimator->currentFrame = 0;
+                return;
+            }
+
+            updateSpriteAnimator(spriteAnimator, *fighter->duckFrames, fighter->DUCK_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);       
+        }
+        else if (fighter->vars[0] == 1 && rapTicks >= fighter->vars[1] + 30)
+        {
+            //uppercut!
+            if (fighter->vars[2] == 0)
+            {
+                fighter->vars[2] = 1;
+                sfxSwing(fighter->soundHandler);
+            }
+
+            if (fighter->vars[4] == 0)
+            {
+                if (animationIsComplete(spriteAnimator, fighter->UPPERCUT_FRAME_COUNT - 1))
+                {
+                    sfxImpact(fighter->soundHandler);
+                    stateMachineGoto(stateMachine, STATE_HIT_KASUMI_FATALITY1, fighter->Opponent, fighter->Opponent->spriteAnimator);                    
+                    fighter->vars[1] = 0;
+                    fighter->vars[4] = 1;
+                    return;
+                }
+                updateSpriteAnimator(spriteAnimator, *fighter->fatality1Frames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);            
+            }
+            else if (fighter->vars[4] == 1 && fighter->vars[5] == 1)
+            {
+                if (animationIsComplete(spriteAnimator, fighter->ROUNDHOUSE_FRAME_COUNT))
+                {
+                    fighter->vars[3] = 0;
+                    stateMachineGoto(stateMachine, STATE_IS_WINNER, fighter, fighter->spriteAnimator);
+                    return;
+                }
+                updateSpriteAnimator(spriteAnimator, *fighter->roundhouseFrames, fighter->ROUNDHOUSE_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+            }
+        }
+    }
+}
+
+void StateKasumiFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateKasumiFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HIT KASUMI FATALITY 1
+// vars[0] played sound
+// vars[1] = head jump index
+// vars[2] = did second bounce
+
+void StateHitKasumiFatality1_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+    fighter->exitingState = false;
+    spriteAnimator->currentFrame = 0;
+    spriteAnimator->lastTick = rapTicks;
+    fighter->lastTicks = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
+    fighter->vars[3] = 0;
+    fighter->vars[4] = 0;
+    fighterPlayFatalityScream(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+    bgShake(false);
+    bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+    bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+    bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);
+    bloodDrop(fighter->worldPositionX, fighter->positionY - 8, fighter->direction * -1);
+
+    fighter->projectileWorldPositionX = fighter->worldPositionX;
+    fighter->projectilePositionY = fighter->positionY;
+    fighter->projectileAnimator->currentFrame = 0;
+    fighter->projectileAnimator->spriteIndex = fighter->lightningSpriteIndex;
+    fighter->projectileAnimator->base = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gfxbase = BMP_PROJECTILES;
+    sprite[fighter->lightningSpriteIndex].gwidth = 104;
+    sprite[fighter->lightningSpriteIndex].hbox = 16;
+    sprite[fighter->lightningSpriteIndex].vbox = 16;
+    sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
+    sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
+    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    
+    switch(fighter->fighterIndex)
+    {
+        case CAGE:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_CAGE_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case KANO:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANO_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case RAIDEN:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_RAIDEN_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case KANG:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KANG_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case SUBZERO:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SUBZERO_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case SCORPION:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case SONYA:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_SONYA_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        case KASUMI:
+            jsfLoadClut((unsigned short *)(void *)(BMP_PAL_DECAP_KASUMI_clut),fighter->isPlayer1 ? 9: 13,16);
+            break;
+        default:
+            break;
+    }
+}
+
+void StateHitKasumiFatality1_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
+{
+    if (fighter->vars[3] == 1 && animationIsComplete(spriteAnimator, 7))
+    {
+        //ensure that the projectile sprite stays active
+        fighter->vars[0] = 1;
+        fighter->vars[1] = 1;
+        stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, fighter->spriteAnimator);
+        return;
+    }
+
+    if (spriteAnimator->currentFrame == 0 && fighter->vars[0] == 0 && rapTicks >= fighter->lastTicks + 20)
+    {
+        fighter->vars[0] = 1;
+        bloodSquirt(fighter->worldPositionX, fighter->positionY - 30);
+        bloodDrop(fighter->worldPositionX, fighter->positionY, fighter->direction * -1);
+        bloodDrop(fighter->worldPositionX, fighter->positionY - 16, fighter->direction);        
+    }
+
+    //Show decap frame and pop the head onto the projectile sprite, then animate it and drop blood
+    updateSpriteAnimator(spriteAnimator, *fighter->hitDecapFrames, 7, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+
+    if (rapTicks >= fighter->lastTicks + 2)
+    {
+        if (fighter->vars[2] == 0)
+        {
+            //before bounce
+            fighter->projectilePositionY += UppercutOffsets[fighter->vars[1]];
+
+            if (fighter->projectilePositionY > FLOOR_LOCATION_Y)
+                fighter->projectilePositionY = FLOOR_LOCATION_Y;
+
+            fighter->vars[1]++;
+
+            if (fighter->vars[1] >= 24 && fighter->Opponent->vars[5] == 0)
+            {
+                fighter->Opponent->vars[5] = 1;
+                fighter->Opponent->spriteAnimator->currentFrame = 0;
+            }
+
+            if (fighter->Opponent->spriteAnimator->currentFrame == 1 && fighter->vars[4] == 0)
+            {
+                bloodSquirt(fighter->projectileWorldPositionX, fighter->positionY - 30);
+                bloodDrop(fighter->projectileWorldPositionX, fighter->positionY, fighter->direction * -1);
+                bloodDrop(fighter->projectileWorldPositionX, fighter->positionY - 16, fighter->direction);
+                fighterPlayFatalityGroan(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
+                fighter->vars[1] = 6;
+                fighter->vars[4] = 1;
+            }
+            else if (fighter->vars[4] == 1)
+            {
+                fighter->projectileWorldPositionX += FIGHTER_FATALITY_KASUMI_HEAD_SPEED_X * (fighter->direction * -1);// * fighter->positionX <= 160 ? 1 : -1;
+            }
+
+            if (fighter->vars[4] == 1 && fighter->projectilePositionY >= FLOOR_LOCATION_Y)
+            {
+                fighter->projectilePositionY = FLOOR_LOCATION_Y - 8;
+                bloodPool(fighter->projectileWorldPositionX+8, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                bgShake(false);
+                sfxThud(fighter->soundHandler);
+                fighter->vars[2] = 1;  //start the second bounce
+                fighter->vars[1] = 5;
+            }
+        }
+        else
+        {
+            //after bounce
+            fighter->projectileWorldPositionX += FIGHTER_FATALITY_CAGE_HEAD_SPEED_X * (fighter->direction * -1);// * fighter->positionX <= 160 ? 1 : -1;
+            fighter->projectilePositionY += UppercutOffsets[fighter->vars[1]];
+
+            if (fighter->projectilePositionY > FLOOR_LOCATION_Y + 16)
+                fighter->projectilePositionY = FLOOR_LOCATION_Y + 16;
+
+            fighter->vars[1]++;
+
+            if (fighter->projectilePositionY >= FLOOR_LOCATION_Y + 16)
+            {
+                fighter->projectilePositionY = FLOOR_LOCATION_Y + 16;
+                bloodPool(fighter->projectileWorldPositionX+8, FLOOR_LOCATION_Y + 16 + (rapRND() & 4));
+                bgShake(false);
+                sfxThud(fighter->soundHandler);
+                fighter->IsDefeated = true;
+                fighter->TookFinalBlow = true;
+                fighter->IsActive = false;        
+                fighter->vars[3] = 1;        
+            }
+        }
+        fighter->lastTicks = rapTicks;
+    }
+
+    if (fighter->vars[1] < 25)
+    {
+        updateSpriteAnimator(fighter->projectileAnimator, *fighter->decapFrames, 4, true, true, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+    }
+    else
+    {
+        setAnimationFrame(fighter->lightningSpriteIndex, fighter->projectileAnimator, fighter->decapFrames[0], fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+    }
+}
+
+void StateHitKasumiFatality1_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{
+}
+
+void StateHitKasumiFatality1_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
+{    
+}

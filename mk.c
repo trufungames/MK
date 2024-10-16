@@ -326,6 +326,12 @@ static State stateHitSubzeroFatality1 = {
 static State stateSonyaFatality1 = {
 	STATE_SONYA_FATALITY1
 };
+static State stateKasumiFatality1 = {
+	STATE_KASUMI_FATALITY1
+};
+static State stateHitKasumiFatality1 = {
+	STATE_HIT_KASUMI_FATALITY1
+};
 
 ////////////////////////////////////////////////////////////////////
 static SpriteAnimator shangTsungAnimator = {
@@ -2559,6 +2565,22 @@ static AnimationFrame subzeroUppercutFrames[] = {
 	{ 64, 112, 720, 112, 0, 0, 4 },
 	{ 64, 112, 720, 112, 0, 0, 4 }
 };
+static AnimationFrame kasumiFatality1Frames[] = {
+	{ 64, 112, 528, 112, 0, 0, 5 },
+	{ 80, 112, 592, 112, 5, 0, 5 },	
+	{ 48, 128, 672, 112, 6, -16, 5 },
+	{ 48, 128, 784, 112, 2, -16, 6 },
+	{ 64, 112, 720, 112, 0, 0, 5 },
+	{ 64, 112, 720, 112, 0, 0, 5 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 },
+	{ 0, 0, 0, 0, 0, 0, 0 }
+};
 static AnimationFrame subzeroKipUpFrames[] = {
 	{ 48, 48, 976, 352, 0, 64, 5 },
 	{ 48, 80, 0, 736, 4, 31, 5 },
@@ -3727,7 +3749,7 @@ static int fatality_Kang_Flip_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INP
 static int fatality_Scorpion_Toasty_Inputs[] = { INPUT_UP, INPUT_UP, 0, 0, 0, INPUT_BLK };
 static int fatality_Subzero_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
 static int fatality_Sonya_Kiss_Inputs[] = { INPUT_BLK, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
-static int fatality_Kasumi_Portal_Inputs[] = { INPUT_DOWN, INPUT_DOWN, INPUT_UP, INPUT_UP, 0, INPUT_BLK };
+static int fatality_Kasumi_HeadKick_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_DOWN, 0, 0 };
 
 static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
@@ -3930,6 +3952,7 @@ void doFatality_Kang_Flip(struct StateMachine* stateMachine, struct Fighter* fig
 void doFatality_Scorpion_Toasty(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Subzero_Decap(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 void doFatality_Sonya_Kiss(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
+void doFatality_Kasumi_HeadKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator);
 
 ///////////////////////////////
 // Player 1 Fighters
@@ -5041,6 +5064,14 @@ void basicmain()
 		stateSonyaFatality1.update = &StateSonyaFatality1_Update;
 		stateSonyaFatality1.sleep = &StateSonyaFatality1_Sleep;
 		stateSonyaFatality1.handleInput = &StateSonyaFatality1_HandleInput;
+		stateKasumiFatality1.enter = &StateKasumiFatality1_Enter;
+		stateKasumiFatality1.update = &StateKasumiFatality1_Update;
+		stateKasumiFatality1.sleep = &StateKasumiFatality1_Sleep;
+		stateKasumiFatality1.handleInput = &StateKasumiFatality1_HandleInput;
+		stateHitKasumiFatality1.enter = &StateHitKasumiFatality1_Enter;
+		stateHitKasumiFatality1.update = &StateHitKasumiFatality1_Update;
+		stateHitKasumiFatality1.sleep = &StateHitKasumiFatality1_Sleep;
+		stateHitKasumiFatality1.handleInput = &StateHitKasumiFatality1_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -5123,6 +5154,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SUBZERO_FATALITY1, &stateSubzeroFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_SUBZERO_FATALITY1, &stateHitSubzeroFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_FATALITY1, &stateSonyaFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_FATALITY1, &stateKasumiFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_KASUMI_FATALITY1, &stateHitKasumiFatality1);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
@@ -6010,6 +6043,11 @@ void basicmain()
 		fighterKasumi.spriteAnimator = &kasumiAnimator;
 		fighterKasumi.decapFrames = &subzeroDecapFrames;
 		fighterKasumi.frontDecapFrames = &frontDecapNinjaFrames;
+		fighterKasumi.fatality1Inputs = &fatality_Kasumi_HeadKick_Inputs;
+		fighterKasumi.fatality1InputCount = 4;
+		fighterKasumi.doFatality1 = &doFatality_Kasumi_HeadKick;
+		fighterKasumi.fatality1Frames = &kasumiFatality1Frames;
+		fighterKasumi.fatality1IsCloseRange = true;
 		fighterKasumi.caughtFrames = &subzeroCaughtFrames;
 		fighterKasumi.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterKasumi.projectileAnimator = &lightningAnimator;
@@ -6067,6 +6105,11 @@ void basicmain()
 		fighterKasumi2.spriteAnimator = &kasumiAnimator2;
 		fighterKasumi2.decapFrames = &subzeroDecapFrames;
 		fighterKasumi2.frontDecapFrames = &frontDecapNinjaFrames;
+		fighterKasumi2.fatality1Inputs = &fatality_Kasumi_HeadKick_Inputs;
+		fighterKasumi2.fatality1InputCount = 4;
+		fighterKasumi2.doFatality1 = &doFatality_Kasumi_HeadKick;
+		fighterKasumi2.fatality1Frames = &kasumiFatality1Frames;
+		fighterKasumi2.fatality1IsCloseRange = true;
 		fighterKasumi2.caughtFrames = &subzeroCaughtFrames;
 		fighterKasumi2.hitDecapFrames = &subzeroHitDecapFrames;
 		fighterKasumi2.projectileAnimator = &lightning2Animator;
@@ -9159,4 +9202,9 @@ void doFatality_Subzero_Decap(struct StateMachine* stateMachine, struct Fighter*
 void doFatality_Sonya_Kiss(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
 {
 	stateMachineGoto(stateMachine, STATE_SONYA_FATALITY1, fighter, fighter->spriteAnimator);
+}
+
+void doFatality_Kasumi_HeadKick(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* animator)
+{
+	stateMachineGoto(stateMachine, STATE_KASUMI_FATALITY1, fighter, fighter->spriteAnimator);
 }

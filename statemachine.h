@@ -421,3 +421,13 @@ void StateSonyaFatality1_Enter(struct StateMachine*, struct Fighter*, struct Spr
 void StateSonyaFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
 void StateSonyaFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateSonyaFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateKasumiFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKasumiFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateKasumiFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateKasumiFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitKasumiFatality1_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitKasumiFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitKasumiFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitKasumiFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
