@@ -71,8 +71,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -331,6 +331,12 @@ static State stateKasumiFatality1 = {
 };
 static State stateHitKasumiFatality1 = {
 	STATE_HIT_KASUMI_FATALITY1
+};
+static State statePitFatality = {
+	STATE_PIT_FATALITY
+};
+static State stateHitPitFatality = {
+	STATE_HIT_PIT_FATALITY
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -5072,6 +5078,14 @@ void basicmain()
 		stateHitKasumiFatality1.update = &StateHitKasumiFatality1_Update;
 		stateHitKasumiFatality1.sleep = &StateHitKasumiFatality1_Sleep;
 		stateHitKasumiFatality1.handleInput = &StateHitKasumiFatality1_HandleInput;
+		statePitFatality.enter = &StatePitFatality_Enter;
+		statePitFatality.update = &StatePitFatality_Update;
+		statePitFatality.sleep = &StatePitFatality_Sleep;
+		statePitFatality.handleInput = &StatePitFatality_HandleInput;
+		stateHitPitFatality.enter = &StateHitPitFatality_Enter;
+		stateHitPitFatality.update = &StateHitPitFatality_Update;
+		stateHitPitFatality.sleep = &StateHitPitFatality_Sleep;
+		stateHitPitFatality.handleInput = &StateHitPitFatality_HandleInput;
 				
 		stateMachineAdd(&fighterStateMachine, STATE_IDLE, &stateIdle);
 		stateMachineAdd(&fighterStateMachine, STATE_BLOCKING, &stateBlocking);
@@ -5156,6 +5170,8 @@ void basicmain()
 		stateMachineAdd(&fighterStateMachine, STATE_SONYA_FATALITY1, &stateSonyaFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_KASUMI_FATALITY1, &stateKasumiFatality1);
 		stateMachineAdd(&fighterStateMachine, STATE_HIT_KASUMI_FATALITY1, &stateHitKasumiFatality1);
+		stateMachineAdd(&fighterStateMachine, STATE_PIT_FATALITY, &statePitFatality);
+		stateMachineAdd(&fighterStateMachine, STATE_HIT_PIT_FATALITY, &stateHitPitFatality);
 
 		fighterCage.spriteAnimator = &cageAnimator;
 		fighterCage.decapFrames = &cageDecapFrames;
@@ -7349,6 +7365,11 @@ void basicmain()
 				if (pad1 & JAGPAD_5)
 				{
 					showMessageInt("Black Palette", BLACKPALx16[3]);
+				}
+				else if (pad1 & JAGPAD_6)
+				{
+					sfxPitFall(&soundHandler);
+					cameraScrollPit();
 				}
 
 				//match progression

@@ -382,6 +382,143 @@ __Z22spriteDelaySetInactiveiiPb:
 	move.b #1,(%a1,%d0.l)
 	move.l 16(%fp),10(%a0)
 	jra .L38
+	.even
+	.globl	__Z20spriteDelayRemoveAllv
+__Z20spriteDelayRemoveAllv:
+	link.w %fp,#0
+	move.l sprite,%a0
+	tst.b _sprites+8
+	jeq .L41
+	clr.b _sprites+8
+	move.l _sprites,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+10,%a1
+	clr.b (%a1)
+.L41:
+	tst.b _sprites+22
+	jeq .L42
+	clr.b _sprites+22
+	move.l _sprites+14,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+24,%a1
+	clr.b (%a1)
+.L42:
+	tst.b _sprites+36
+	jeq .L43
+	clr.b _sprites+36
+	move.l _sprites+28,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+38,%a1
+	clr.b (%a1)
+.L43:
+	tst.b _sprites+50
+	jeq .L44
+	clr.b _sprites+50
+	move.l _sprites+42,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+52,%a1
+	clr.b (%a1)
+.L44:
+	tst.b _sprites+64
+	jeq .L45
+	clr.b _sprites+64
+	move.l _sprites+56,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+66,%a1
+	clr.b (%a1)
+.L45:
+	tst.b _sprites+78
+	jeq .L46
+	clr.b _sprites+78
+	move.l _sprites+70,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+80,%a1
+	clr.b (%a1)
+.L46:
+	tst.b _sprites+92
+	jeq .L47
+	clr.b _sprites+92
+	move.l _sprites+84,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+94,%a1
+	clr.b (%a1)
+.L47:
+	tst.b _sprites+106
+	jeq .L48
+	clr.b _sprites+106
+	move.l _sprites+98,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+108,%a1
+	clr.b (%a1)
+.L48:
+	tst.b _sprites+120
+	jeq .L49
+	clr.b _sprites+120
+	move.l _sprites+112,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+122,%a1
+	clr.b (%a1)
+.L49:
+	tst.b _sprites+134
+	jeq .L40
+	clr.b _sprites+134
+	move.l _sprites+126,%d0
+	move.l %d0,%d1
+	add.l %d0,%d1
+	add.l %d1,%d0
+	lsl.l #6,%d0
+	moveq #-1,%d1
+	move.l %d1,4(%a0,%d0.l)
+	move.l _sprites+136,%a0
+	clr.b (%a0)
+.L40:
+	unlk %fp
+	rts
 	.globl	_sprites
 	.bss
 	.even

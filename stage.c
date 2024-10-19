@@ -2,7 +2,7 @@
 #include "stage.h"
 #include "camera.h"
 
-static short currentStage = STAGE_GORO;
+static short currentStage = STAGE_PIT;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
@@ -21,7 +21,7 @@ int stageGet()
 
 void stageSetNext()
 {
-    currentStage++;
+    //currentStage++;
     
     if (currentStage > STAGE_GORO)
     {

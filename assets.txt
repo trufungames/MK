@@ -242,6 +242,8 @@ ROM,scorpion_skull_flame_sam,sfx_raw8000,ASSETS\SFX\scorpion_skull_flame.wav
 ROM,fatality_scream_male_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_male.wav
 ROM,fatality_scream_female_sam,sfx_raw8000,ASSETS\SFX\fatality_scream_female.wav
 ROM,sonya_kiss_sam,sfx_raw8000,ASSETS\SFX\sonya_kiss.wav
+ROM,pit_fall_sam,sfx_raw8000,ASSETS\SFX\pit_fall.wav
+ROM,pit_land_sam,sfx_raw8000,ASSETS\SFX\pit_land.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod

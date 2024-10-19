@@ -50,3 +50,16 @@ void spriteDelaySetInactive(int spriteIndex, int ticks, bool* inUseFlag)
         }
     }
 }
+
+void spriteDelayRemoveAll()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (sprites[i].inUse)
+        {
+            sprites[i].inUse = false;
+            sprite[sprites[i].spriteIndex].active = R_is_inactive;
+            (*sprites[i].inUseFlag) = false;
+        }
+    }
+}

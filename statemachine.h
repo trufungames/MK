@@ -431,3 +431,13 @@ void StateHitKasumiFatality1_Enter(struct StateMachine*, struct Fighter*, struct
 void StateHitKasumiFatality1_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
 void StateHitKasumiFatality1_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
 void StateHitKasumiFatality1_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StatePitFatality_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StatePitFatality_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StatePitFatality_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StatePitFatality_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+
+void StateHitPitFatality_Enter(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitPitFatality_Update(struct StateMachine*, struct Fighter*, struct SpriteAnimator*, struct Fighter*);
+void StateHitPitFatality_Sleep(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);
+void StateHitPitFatality_HandleInput(struct StateMachine*, struct Fighter*, struct SpriteAnimator*);

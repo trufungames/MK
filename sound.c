@@ -132,6 +132,26 @@ void sfxIntro(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_INTRO, 8000);
 }
 
+void sfxPitFall(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_PIT_FALL, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_PIT_FALL, 8000);
+}
+
+void sfxPitLand(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableSFX)
+		return;
+
+	soundNextChannel(soundHandler);
+	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_PIT_LAND, 8000);
+	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_PIT_LAND, 8000);
+}
+
 void sfxHiyaMale(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

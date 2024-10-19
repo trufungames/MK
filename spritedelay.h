@@ -11,3 +11,5 @@ void spriteDelayInit();
 void spriteDelayUpdate();
 
 void spriteDelaySetInactive(int spriteIndex, int ticks, bool* inUseFlag);
+
+void spriteDelayRemoveAll();

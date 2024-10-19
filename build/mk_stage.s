@@ -21,10 +21,7 @@ __Z8stageGetv:
 	.globl	__Z12stageSetNextv
 __Z12stageSetNextv:
 	link.w %fp,#0
-	move.w __ZL12currentStage,%d0
-	addq.w #1,%d0
-	move.w %d0,__ZL12currentStage
-	cmp.w #5,%d0
+	cmp.w #5,__ZL12currentStage.l
 	jle .L3
 	clr.w __ZL12currentStage
 .L3:
@@ -268,7 +265,7 @@ __Z14stageGetStartXv:
 	move.l %d1,%a0
 	add.l %d1,%a0
 	move.l %a0,%a1
-	add.l #_CSWTCH.25,%a1
+	add.l #_CSWTCH.24,%a1
 	move.l (%a1,%a0.l),%d0
 .L32:
 	unlk %fp
@@ -474,10 +471,10 @@ sprite:
 .lcomm __ZL11cloudTicks3,4
 	.even
 __ZL12currentStage:
-	.word	5
+	.word	2
 	.text
 	.even
-_CSWTCH.25:
+_CSWTCH.24:
 	.long	224
 	.long	256
 	.long	256

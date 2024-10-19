@@ -1543,9 +1543,17 @@ void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* figh
         }
         else if (fighter1->currentState->Name == STATE_UPPERCUTTING)
         {
-            fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false, fighter1, POINTS_UPPERCUT);
-            stateMachineSleep(stateMachine, 50, fighter1, spriteAnimator1);
-            stateMachineGoto(stateMachine, STATE_HIT_UPPERCUT, fighter2, spriteAnimator2);
+            if (stageGet() == STAGE_PIT && fighter2->currentState->Name == STATE_FINISH_HIM)
+            {
+                stateMachineGoto(stateMachine, STATE_PIT_FATALITY, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine, STATE_HIT_PIT_FATALITY, fighter2, spriteAnimator2);
+            }
+            else if (fighter2->currentState->Name != STATE_HIT_PIT_FATALITY)
+            {
+                fighterAddPendingDamage(fighter2, DMG_UPPERCUT, false, fighter1, POINTS_UPPERCUT);
+                stateMachineSleep(stateMachine, 50, fighter1, spriteAnimator1);
+                stateMachineGoto(stateMachine, STATE_HIT_UPPERCUT, fighter2, spriteAnimator2);
+            }
         }
         else if (fighter1->currentState->Name == STATE_JUMPING_KICKING_FORWARD)
         {

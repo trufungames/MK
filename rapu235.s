@@ -877,5 +877,22 @@ sample95:	dc.l	sonya_kiss_sam		; start of sample
 s95_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
+sample96:	dc.l	pit_fall_sam		; start of sample
+			dc.l	pit_fall_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s96_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
+
+sample97:	dc.l	pit_land_sam		; start of sample
+			dc.l	pit_land_sam_end	; end of sample
+			dc.l	0				; repeat offset
+			dc.l	0				; repeat length
+			dc.w	0				; <NULL>
+			dc.b	0				; fine tune
+s97_vol:		dc.b	255				; volume
+			dc.l	8000			; default play rate
 
 ; END OF FILE.

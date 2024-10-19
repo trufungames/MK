@@ -1793,7 +1793,7 @@ raptor_init_table:
 	dc.l	1								; (REPEAT COUNTER) 				; Create this many objects of this type (or 1 for a single object)
 	dc.l	is_active						; sprite_active					; sprite active flag
 	dc.w	-8,0								; sprite_x						; 16.16 x value to position at
-	dc.w	95,0								; sprite_y						; 16.16 y value to position at
+	dc.w	0,0								; sprite_y						; 16.16 y value to position at
 	dc.w	0,0								; sprite_xadd					; 16.16 x addition for sprite movement
 	dc.w	0,0								; sprite_yadd					; 16.16 y addition for sprite movement
 	dc.l	336								; sprite_width					; width of sprite (in pixels)

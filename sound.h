@@ -19,6 +19,8 @@ void sfxP1Cursor(struct SoundHandler* soundHandler);
 void sfxP2Cursor(struct SoundHandler* soundHandler);
 void sfxGong(struct SoundHandler* soundHandler);
 void sfxIntro(struct SoundHandler* soundHandler);
+void sfxPitFall(struct SoundHandler* soundHandler);
+void sfxPitLand(struct SoundHandler* soundHandler);
 void sfxHiyaMale(struct SoundHandler* soundHandler);
 void sfxHiyaFemale(struct SoundHandler* soundHandler);
 void sfxHiyaKang(struct SoundHandler* soundHandler);

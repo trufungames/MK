@@ -153,6 +153,8 @@
 #define SOUND_FATALITY_SCREAM_MALE 93
 #define SOUND_FATALITY_SCREAM_FEMALE 94
 #define SOUND_SONYA_KISS 95
+#define SOUND_PIT_FALL 96
+#define SOUND_PIT_LAND 97
 
 //-----------------------------------------------------------------------------------------------------
 // POINTS_TIME_BONUS = SECONDS LEFT * 10
@@ -318,7 +320,7 @@
 #define STAGE_PITBOTTOM_SPIKES_X 4
 #define STAGE_THRONE_SHANGTSUNG_X 352
 //-----------------------------------------------------------------------------------------------------
-#define STATE_TOTAL_COUNT 83
+#define STATE_TOTAL_COUNT 85
 #define STATE_IDLE 0
 #define STATE_BLOCKING 1
 #define STATE_DUCKING 2
@@ -403,6 +405,8 @@
 #define STATE_SONYA_FATALITY1 80
 #define STATE_KASUMI_FATALITY1 81
 #define STATE_HIT_KASUMI_FATALITY1 82
+#define STATE_PIT_FATALITY 83
+#define STATE_HIT_PIT_FATALITY 84
 
 //-----------------------------------------------------------------------------------------------------
 #define SCORPION_IDLE_FRAME_COUNT 7
