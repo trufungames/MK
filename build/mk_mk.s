@@ -2183,6 +2183,8 @@ __Z17switchScreenFightiib:
 	tst.b %d3
 	jne .L142
 	move.l sprite,%a0
+	move.w #-256,12872(%a0)
+	move.w #645,12876(%a0)
 	move.l #__ZL18imageBuffer320x240,5228(%a0)
 	moveq #1,%d1
 	move.l %d1,5188(%a0)
@@ -2241,6 +2243,12 @@ __Z17switchScreenFightiib:
 .L136:
 	jsr (%a3)
 	addq.l #8,%sp
+	moveq #16,%d0
+	move.l %d0,(%sp)
+	pea 7.w
+	move.l #12435936,-(%sp)
+	jsr (%a3)
+	addq.l #8,%sp
 	move.l #__ZL12soundHandler,(%sp)
 	jsr __Z13musicStagePitP12SoundHandler
 	addq.l #4,%sp
@@ -2253,6 +2261,7 @@ __Z17switchScreenFightiib:
 	moveq #1,%d0
 	move.l %d0,12868(%a0)
 	move.w #-256,12872(%a0)
+	move.w #150,12876(%a0)
 	moveq #-1,%d1
 	move.l %d1,5188(%a0)
 	move.l #__ZL11imageBuffer,8684(%a0)
@@ -2284,13 +2293,13 @@ __Z17switchScreenFightiib:
 	clr.l -(%sp)
 	move.l #12413152,-(%sp)
 	lea jsfLoadClut,%a3
+.L145:
 	jsr (%a3)
 	addq.l #8,%sp
 	moveq #16,%d0
 	move.l %d0,(%sp)
-	pea 5.w
+	pea 7.w
 	move.l #12435936,-(%sp)
-.L145:
 	jsr (%a3)
 	addq.l #8,%sp
 	move.l #__ZL12soundHandler,(%sp)
@@ -3098,6 +3107,7 @@ __Z17switchScreenFightiib:
 	moveq #1,%d0
 	move.l %d0,12868(%a0)
 	move.w #-256,12872(%a0)
+	move.w #150,12876(%a0)
 	moveq #-1,%d1
 	move.l %d1,5188(%a0)
 	move.l #__ZL11imageBuffer,8684(%a0)
@@ -3129,12 +3139,6 @@ __Z17switchScreenFightiib:
 	clr.l -(%sp)
 	move.l #12413152,-(%sp)
 	lea jsfLoadClut,%a3
-	jsr (%a3)
-	addq.l #8,%sp
-	moveq #16,%d0
-	move.l %d0,(%sp)
-	pea 5.w
-	move.l #12435936,-(%sp)
 	jra .L145
 .L142:
 	pea __ZL18imageBuffer320x240
@@ -3147,6 +3151,8 @@ __Z17switchScreenFightiib:
 	jsr (%a3)
 	addq.l #8,%sp
 	move.l sprite,%a0
+	move.w #-256,12872(%a0)
+	move.w #645,12876(%a0)
 	move.l #__ZL18imageBuffer320x240,5228(%a0)
 	moveq #1,%d1
 	move.l %d1,5188(%a0)
@@ -28375,8 +28381,8 @@ __ZL15kasumiAnimator2:
 	.skip 4
 	.even
 __ZL12soundHandler:
-	.byte	0
-	.byte	0
+	.byte	1
+	.byte	1
 	.word	163
 	.word	120
 	.skip 2

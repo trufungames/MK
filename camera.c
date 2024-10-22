@@ -114,33 +114,39 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
         }
         else if (isScrollingPit)
         {
-            if (fighter1->currentState->Name == STATE_PIT_FATALITY)
-            {
-                sprite[fighter1->spriteIndex].y_ -= 8;
-
-                if (sprite[fighter1->spriteIndex].y_ <= 0)
-                {
-                    //sprite[fighter1->spriteIndex].active = R_is_inactive;
-                }
-            }
-            else if (fighter2->currentState->Name == STATE_PIT_FATALITY)
-            {
-                sprite[fighter2->spriteIndex].y_ -= 8;
-
-                if (sprite[fighter2->spriteIndex].y_ <= 0)
-                {
-                    //sprite[fighter2->spriteIndex].active = R_is_inactive;
-                }
-            }
-
             if (sprite[STAGE_PRIMARY_BACKGROUND].y_ > 0)
             {
+                if (fighter1->currentState->Name == STATE_PIT_FATALITY)
+                {
+                    //add the offset to the fighter, so we can clip the sprite along the top as they scroll
+                    fighter1->vars[1] = 8;
+                }
+                else if (fighter2->currentState->Name == STATE_PIT_FATALITY)
+                {
+                    //add the offset to the fighter, so we can clip the sprite along the top as they scroll
+                    fighter2->vars[1] = 8;
+                }
+
                 sprite[STAGE_PRIMARY_BACKGROUND].y_ -= 8;
+                sprite[FOREGROUND_SPIKES].y_ -= 8;
                 setFrame(backgroundSpriteIndex, 352, 240, cameraX, cameraY, 1.0f, backgroundGfxBase);
             }
             else if (cameraY < 400)
             {
+                if (fighter1->currentState->Name == STATE_PIT_FATALITY)
+                {
+                    //add the offset to the fighter, so we can clip the sprite along the top as they scroll
+                    fighter1->vars[1] = 8;
+                }
+                else if (fighter2->currentState->Name == STATE_PIT_FATALITY)
+                {
+                    //add the offset to the fighter, so we can clip the sprite along the top as they scroll
+                    fighter2->vars[1] = 8;
+                }
+                
                 cameraY += 8;
+                sprite[FOREGROUND_SPIKES].active = R_is_active;
+                sprite[FOREGROUND_SPIKES].y_ -= 8;
                 setFrame(backgroundSpriteIndex, 352, 240, cameraX, cameraY, 1.0f, backgroundGfxBase);
             }
             else

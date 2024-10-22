@@ -278,6 +278,10 @@ void fighterPlayFatalityScream(int fighter, struct SoundHandler* soundHandler, b
 
 void fighterPlayUppercutReaction(struct SoundHandler* soundHandler);
 
+void fighterPlayPitFall(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
+
+void fighterPlayPitLand(int fighter, struct SoundHandler* soundHandler, bool isPlayer1);
+
 void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2);
 
 void fighterHandleImpact(struct StateMachine* stateMachine, struct Fighter* fighter1, struct SpriteAnimator* spriteAnimator1, struct Fighter* fighter2, struct SpriteAnimator* spriteAnimator2);

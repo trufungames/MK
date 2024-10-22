@@ -55,6 +55,22 @@ void setFrame(unsigned int spriteIndex, short width, short height, short x, shor
     sprite[spriteIndex].gfxbase = base + (x * mulFactor) + (y * sprite[spriteIndex].gwidth);
 }
 
+void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base, short positionX, short positionY, short offsetX, short offsetY, int direction)
+{
+    sprite[spriteIndex].width = width;
+    sprite[spriteIndex].height =  height;
+    sprite[spriteIndex].bytewid = width * mulFactor;
+    sprite[spriteIndex].framesz = width * height * mulFactor;
+    sprite[spriteIndex].gfxbase = base + (x * mulFactor) + (y * sprite[spriteIndex].gwidth);
+    sprite[spriteIndex].x_ = positionX + (offsetX * direction);
+    sprite[spriteIndex].y_ = positionY + offsetY;
+
+    if (direction == -1)
+    {
+        sprite[spriteIndex].x_ -= width - 48;
+    }
+}
+
 void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struct AnimationFrame* animationFrame, int x, int y, int direction)
 {
     setFrame(spriteIndex, animationFrame->width, animationFrame->height, animationFrame->x, animationFrame->y, animator->mulFactor, animator->base);

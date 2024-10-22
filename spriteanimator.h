@@ -24,6 +24,8 @@ void animateFrame(struct SpriteAnimator *animator, unsigned int spriteIndex, uns
 
 void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base);
 
+void setFrame(unsigned int spriteIndex, short width, short height, short x, short y, float mulFactor, unsigned int base, short positionX, short positionY, short offsetX, short offsetY, int direction);
+
 void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame, int x, int y, int direction);
 
 short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame);

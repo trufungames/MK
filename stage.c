@@ -193,6 +193,7 @@ void stageMove(int direction, int offset)
             sprite[STAGE_GATES_FLAME].x_ += 2 * direction;
             sprite[STAGE_GATES_FLAME+1].x_ += 2 * direction;
             break;
+        case STAGE_PIT:
         case STAGE_PIT_BOTTOM:
             sprite[FOREGROUND_SPIKES].x_ += 2 * direction;
             break;
@@ -204,7 +205,6 @@ void stageMove(int direction, int offset)
             sprite[FOREGROUND_PILLAR].x_ += 2 * direction;
             sprite[FOREGROUND_PILLAR+1].x_ += 2 * direction;
             break;
-        case STAGE_PIT:
         case STAGE_GORO:
             break;
         case STAGE_THRONE:
@@ -251,6 +251,7 @@ void stagePositionAssets()
             sprite[FOREGROUND_PILLAR].x_ = STAGE_WARRIOR_PILLAR1_X - cameraGetX();
             sprite[FOREGROUND_PILLAR+1].x_ = STAGE_WARRIOR_PILLAR2_X - cameraGetX();
             break;
+        case STAGE_PIT:
         case STAGE_PIT_BOTTOM:
             sprite[FOREGROUND_SPIKES].x_ = STAGE_PITBOTTOM_SPIKES_X - cameraGetX();
             break;

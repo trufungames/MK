@@ -71,8 +71,8 @@ int fmvIndex = 6;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -8438,6 +8438,10 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
                 rapUnpack(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
             }
 
+			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
+			sprite[FOREGROUND_SPIKES].x_ = -256;
+			sprite[FOREGROUND_SPIKES].y_ = 645;
+
             sprite[STAGE_PIT_MOON].gfxbase=(int)imageBuffer320x240;
             sprite[STAGE_PIT_MOON].active=R_is_active;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
@@ -8478,6 +8482,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
             jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,80);
             jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),5,16);
             jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),6,16);
+			jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
 
             musicStagePit(&soundHandler);
             break;
@@ -8492,6 +8497,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 
 			sprite[FOREGROUND_SPIKES].active = R_is_active;
 			sprite[FOREGROUND_SPIKES].x_ = -256;
+			sprite[FOREGROUND_SPIKES].y_ = 150;
 
             sprite[STAGE_PIT_MOON].active=R_is_inactive;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
@@ -8521,7 +8527,7 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 			sprite[STAGE_GATES_TEMPLE].active = R_is_inactive;
 
             jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,80);
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),5,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
 
             musicStagePit(&soundHandler);
             break;

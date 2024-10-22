@@ -1133,6 +1133,32 @@ void fighterPlayYell(int fighter, struct SoundHandler* soundHandler, bool isPlay
     }
 }
 
+void fighterPlayPitFall(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
+{
+    switch (fighter)
+    {
+        case SONYA:
+            sfxFatalityScreamFemale(soundHandler);
+            break;
+        default:
+            sfxPitFall(soundHandler);
+            break;
+    }
+}
+
+void fighterPlayPitLand(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
+{
+    switch (fighter)
+    {
+        case SONYA:
+            sfxFatalityGroanFemale(soundHandler);
+            break;
+        default:
+            sfxPitLand(soundHandler);
+            break;
+    }
+}
+
 void fighterPlayJump(int fighter, struct SoundHandler* soundHandler, bool isPlayer1)
 {
     switch (fighter)

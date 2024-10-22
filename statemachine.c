@@ -5972,32 +5972,46 @@ void StateHitKasumiFatality1_HandleInput(struct StateMachine* stateMachine, stru
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // PIT FATALITY
 // vars[0] offset
-// vars[1] set offset
+// vars[1] current offset
 
 void StatePitFatality_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
     fighter->exitingState = false;
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
+    fighter->vars[0] = 0;
+    fighter->vars[1] = 0;
+    fighter->vars[2] = 0;
     fighter->lastTicks = rapTicks;
     fighter->DidFatality = true;
-    fighter->vars[0] = 0;
 }
 
 void StatePitFatality_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    if (fighter->hitUppercutFrames[fighter->UPPERCUT_FRAME_COUNT-1]->height - fighter->vars[0] > 0)
+    if (spriteAnimator->currentAnimationFrame->height - fighter->vars[0] - 16 > 0)
     {
-        //TODO crop the fighter's image once Y goes below 0.
-        
-        if (fighter->vars[1] == 0 && sprite[fighter->spriteIndex].y_ < 0)
+        if (sprite[fighter->spriteIndex].y_ > 1 && fighter->vars[1] > 0)
         {
-            fighter->vars[1] = 1;
+            int newY = sprite[fighter->spriteIndex].y_ - fighter->vars[1];
+            fighter->vars[1] = 0;
+
+            if (newY < 1)
+                newY = 1;
+
+            sprite[fighter->spriteIndex].y_ = newY;
+        }    
+        else if (fighter->vars[1] > 0)
+        {
             //add this offset to the total
-            fighter->vars[0] += (sprite[fighter->spriteIndex].y_ * -1);
+            fighter->vars[0] += fighter->vars[1];
+            fighter->vars[1] = 0;
+            sprite[fighter->spriteIndex].y_ = 1;
+            setFrame(fighter->spriteIndex, spriteAnimator->currentAnimationFrame->width, spriteAnimator->currentAnimationFrame->height - fighter->vars[0], spriteAnimator->currentAnimationFrame->x, spriteAnimator->currentAnimationFrame->y + fighter->vars[0], spriteAnimator->mulFactor, spriteAnimator->base, fighter->positionX, 1, spriteAnimator->currentAnimationFrame->offsetX, spriteAnimator->currentAnimationFrame->offsetY, fighter->direction);
         }
-        
-        setFrame(fighter->spriteIndex, fighter->hitUppercutFrames[fighter->UPPERCUT_FRAME_COUNT-1]->width, fighter->hitUppercutFrames[fighter->UPPERCUT_FRAME_COUNT-1]->height - fighter->vars[0], fighter->hitUppercutFrames[fighter->UPPERCUT_FRAME_COUNT-1]->x, fighter->hitUppercutFrames[fighter->UPPERCUT_FRAME_COUNT-1]->y + fighter->vars[0], spriteAnimator->mulFactor, spriteAnimator->base);
+    }
+    else
+    {
+        sprite[fighter->spriteIndex].active = R_is_inactive;
     }
 }
 
@@ -6019,7 +6033,6 @@ void StatePitFatality_HandleInput(struct StateMachine* stateMachine, struct Figh
 
 void StateHitPitFatality_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    musicStop();
     fighterFaceOpponent(fighter);
     fighter->exitingState = false;
     spriteAnimator->currentFrame = 0;
@@ -6030,6 +6043,7 @@ void StateHitPitFatality_Enter(struct StateMachine* stateMachine, struct Fighter
     fighter->vars[2] = rapTicks;
     fighter->vars[3] = 0;
     fighter->vars[4] = 0;
+    fighter->vars[5] = 0;
     sfxImpact(fighter->soundHandler);
     bgShake(false);
     bloodSquirt(fighter->worldPositionX - (20 * fighter->direction), fighter->positionY - 30);
@@ -6038,22 +6052,22 @@ void StateHitPitFatality_Enter(struct StateMachine* stateMachine, struct Fighter
 
 void StateHitPitFatality_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {
-    if (fighter->vars[0] == 0 && rapTicks >= fighter->vars[2] + 30)
+    if (fighter->vars[5] == 0 && rapTicks >= fighter->vars[2] + 20)
     {
-        fighter->vars[0] = 1;
-        sfxPitFall(fighter->soundHandler);
+        fighter->vars[5] = 1;
+        musicStop();
     }
 
     if (rapTicks >= fighter->lastTicks + 2 && fighter->vars[3] == 0)
     {
-        //fighterPositionXAdd(fighter, FIGHTER_UPPERCUT_X_SPEED * -fighter->direction);
+        fighterPositionXAdd(fighter, FIGHTER_PIT_FATALITY_SPEED_X * -fighter->direction);
         fighter->positionY += UppercutOffsets[fighter->vars[0]];
         fighter->vars[0]++;
 
         if (fighter->vars[0] == 24)
         {
             cameraScrollPit();
-            sfxPitFall(fighter->soundHandler);
+            fighterPlayPitFall(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
             fighter->vars[3] = 1;
         }
         
@@ -6063,14 +6077,14 @@ void StateHitPitFatality_Update(struct StateMachine* stateMachine, struct Fighte
     else if (fighter->vars[3] == 1 && !cameraIsScrollingPit() && fighter->vars[4] == 0)
     {
         fighter->vars[4] = 1;
-        sfxPitLand(fighter->soundHandler);
+        fighterPlayPitLand(fighter->fighterIndex, fighter->soundHandler, fighter->isPlayer1);
         fighterSetOnFloor(fighter);
         animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 25, *fighter->hitUppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
         bgShake(false);
-        bloodSquirt(fighter->worldPositionX - (20 * fighter->direction), fighter->positionY - 30);
-        bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (40 * fighter->direction * -1), fighter->positionY - 40, fighter->direction * -1);
-        bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (20 * fighter->direction), fighter->positionY - 50, fighter->direction);
-        bloodDrop(fighter->worldPositionX - (40 * fighter->direction) + (20 * fighter->direction * -1), fighter->positionY - 50, fighter->direction * -1);
+        bloodSquirt(fighter->worldPositionX, fighter->positionY + 32);
+        bloodSquirt(fighter->worldPositionX + (8 * fighter->direction), fighter->positionY + 42);
+        bloodDrop(fighter->worldPositionX, fighter->positionY + 32, fighter->direction * -1);
+        bloodDrop(fighter->worldPositionX, fighter->positionY + 36, fighter->direction);
         fighter->IsDefeated = true;
         fighter->TookFinalBlow = true;
         fighter->IsActive = false;
