@@ -186,7 +186,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 .L78:
 	clr.b 172(%a2)
 	clr.b 172(%a3)
-	move.l #12601328,-(%sp)
+	move.l #12756944,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	move.l _round,%d0
 	addq.l #6,%d0
@@ -275,7 +275,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	unlk %fp
 	rts
 .L87:
-	move.l #12601328,-(%sp)
+	move.l #12756944,-(%sp)
 	move.l #0x3f000000,-(%sp)
 	pea 192.w
 	clr.l -(%sp)
@@ -303,7 +303,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 .L88:
 	move.b #1,_playedCrowd
 	jsr __Z8stageGetv
-	moveq #4,%d2
+	moveq #5,%d2
 	cmp.l %d0,%d2
 	jne .L23
 	move.l 8(%fp),-(%sp)
@@ -853,7 +853,7 @@ sprite:
 __ZL13fightAnimator:
 	.long	87
 	.long	1056964608
-	.long	12601328
+	.long	12756944
 	.word	0
 	.word	0
 	.skip 6

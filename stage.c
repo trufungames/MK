@@ -1,11 +1,26 @@
 #include "common.h"
 #include "stage.h"
 #include "camera.h"
+#include "spriteanimator.h"
 
-static short currentStage = STAGE_PIT;
+static short currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
+
+static AnimationFrame monkFrames[] = {
+	{ 384, 32, 0, 0, 0, 0, 6 },
+    { 384, 32, 0, 32, 0, 0, 6 },
+    { 384, 32, 0, 64, 0, 0, 6 },
+    { 384, 32, 0, 96, 0, 0, 6 },
+    { 384, 32, 0, 128, 0, 0, 6 }
+};
+
+static AnimationFrame monkClapFrames[] = {
+	{ 384, 32, 0, 160, 0, 0, 6 },
+    { 384, 32, 0, 192, 0, 0, 6 },
+    { 384, 32, 0, 224, 0, 0, 6 }
+};
 
 void stageInit()
 {
@@ -21,7 +36,7 @@ int stageGet()
 
 void stageSetNext()
 {
-    //currentStage++;
+    currentStage++;
     
     if (currentStage > STAGE_GORO)
     {
@@ -33,6 +48,10 @@ void stageLoadVsBattle()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_COURTYARD_clut),1,16);
+            sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_COURTYARD;
+            break;
         case STAGE_GATES:
             jsfLoadClut((unsigned short *)(void *)(BMP_BATTLE_GATES_clut),1,16);
             sprite[BATTLE_NAME].gfxbase = BMP_BATTLE_GATES;

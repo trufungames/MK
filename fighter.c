@@ -998,7 +998,7 @@ bool fighterHandleFatality(struct StateMachine* stateMachine, struct Fighter* fi
         playerinputPush(fighter, JAGPAD_A);
     }
 
-    if ((fighter->pad & JAGPAD_B || fighter->pad & JAGPAD_8) && fighter->ButtonReleased)
+    if (fighter->fighterIndex != SCORPION && (fighter->pad & JAGPAD_B || fighter->pad & JAGPAD_8) && fighter->ButtonReleased)
     {
         playerinputPush(fighter, JAGPAD_B);
     }

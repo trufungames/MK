@@ -3293,17 +3293,17 @@ void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* f
         fighter->vars[0] = 1;
         if (fighter->direction == -1)
         {
-            fighter->HarpoonKnockbackDistance = fighter->positionX - opponent->positionX + FIGHTER_WIDTH;
+            fighter->HarpoonKnockbackDistance = fighter->worldPositionX - opponent->worldPositionX + FIGHTER_WIDTH;
         }
         else
         {
-            fighter->HarpoonKnockbackDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
+            fighter->HarpoonKnockbackDistance = opponent->worldPositionX - fighter->worldPositionX + FIGHTER_WIDTH;
         }
 
         if (fighter->HarpoonKnockbackDistance < HARPOON_MINIMUM_DISTANCE)
         {   
             fighter->HarpoonKnockbackDistance = HARPOON_MINIMUM_DISTANCE - fighter->HarpoonKnockbackDistance;
-            fighterSlideToPositionX(fighter, fighter->positionX + (fighter->HarpoonKnockbackDistance * fighter->direction * -1));
+            fighterSlideToPositionX(fighter, fighter->worldPositionX + (fighter->HarpoonKnockbackDistance * fighter->direction * -1));
         }
         else
         {
@@ -3313,11 +3313,11 @@ void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* f
 
         if (fighter->direction == -1)
         {
-            fighter->HarpoonSourceX = opponent->positionX + FIGHTER_WIDTH;
+            fighter->HarpoonSourceX = opponent->worldPositionX + FIGHTER_WIDTH;
         }
         else
         {
-            fighter->HarpoonSourceX = opponent->positionX - FIGHTER_WIDTH;
+            fighter->HarpoonSourceX = opponent->worldPositionX - FIGHTER_WIDTH;
         }
 
         fighter->lastTicks = rapTicks;
@@ -3327,20 +3327,20 @@ void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* f
     
     if (fighter->HarpoonKnockbackDistance > 0 && fighter->IsSlidingToPositionX && fighter->vars[2] == 0)
     {
-        if (fighter->SlidePositionXTarget > fighter->positionX)
+        if (fighter->SlidePositionXTarget > fighter->worldPositionX)
         {
             fighterPositionXAdd(fighter, 8);
 
-            if (fighter->positionX >= fighter->SlidePositionXTarget)
+            if (fighter->worldPositionX >= fighter->SlidePositionXTarget)
             {
                 fighter->IsSlidingToPositionX = false;
             }
         }
-        else if (fighter->SlidePositionXTarget < fighter->positionX)
+        else if (fighter->SlidePositionXTarget < fighter->worldPositionX)
         {
             fighterPositionXAdd(fighter, -8);
 
-            if (fighter->positionX <= fighter->SlidePositionXTarget)
+            if (fighter->worldPositionX <= fighter->SlidePositionXTarget)
             {
                 fighter->IsSlidingToPositionX = false;
             }
@@ -3357,20 +3357,20 @@ void StateHitHarpoon_Update(struct StateMachine* stateMachine, struct Fighter* f
 
         if (fighter->IsSlidingToPositionX && rapTicks >= fighter->lastTicks + 2)
         {
-            if (fighter->SlidePositionXTarget > fighter->positionX)
+            if (fighter->SlidePositionXTarget > fighter->worldPositionX)
             {
                 fighterPositionXAdd(fighter, 8);
 
-                if (fighter->positionX >= fighter->SlidePositionXTarget)
+                if (fighter->worldPositionX >= fighter->SlidePositionXTarget)
                 {
                     fighter->IsSlidingToPositionX = false;
                 }
             }
-            else if (fighter->SlidePositionXTarget < fighter->positionX)
+            else if (fighter->SlidePositionXTarget < fighter->worldPositionX)
             {
                 fighterPositionXAdd(fighter, -8);
 
-                if (fighter->positionX <= fighter->SlidePositionXTarget)
+                if (fighter->worldPositionX <= fighter->SlidePositionXTarget)
                 {
                     fighter->IsSlidingToPositionX = false;
                 }
@@ -3603,7 +3603,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         if (fighter->direction == -1 && fighter->positionX <= CAMERA_BOUND_LEFT)
         {
             //we've hit the LEFT camera bound, so let's teleport to the other side
-            fighter->positionX = CAMERA_BOUND_RIGHT - 1 + FIGHTER_WIDTH;
+            fighter->worldPositionX = CAMERA_BOUND_RIGHT - 1 + FIGHTER_WIDTH + cameraGetX();
             opponent->IsTurning = true;
 
             // //Turn Scorpion Around
@@ -3615,7 +3615,7 @@ void StateScorpionTeleport_Update(struct StateMachine* stateMachine, struct Figh
         else if (fighter->direction == 1 && fighter->positionX >= CAMERA_BOUND_RIGHT)
         {
             //we've hit the RIGHT camera bound, so let's teleport to the other side
-            fighter->positionX = CAMERA_BOUND_LEFT + 1 - FIGHTER_WIDTH;
+            fighter->worldPositionX = CAMERA_BOUND_LEFT + 1 - FIGHTER_WIDTH + cameraGetX();
             opponent->IsTurning = true;
 
             // //Turn Scorpion Around
@@ -5188,6 +5188,7 @@ void StateScorpionFatality1_Enter(struct StateMachine* stateMachine, struct Figh
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
     sprite[fighter->lightningSpriteIndex].y_ = fighter->projectilePositionY;
     sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
 
     if (fighter->direction == 1)
     {

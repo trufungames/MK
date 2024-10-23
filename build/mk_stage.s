@@ -21,9 +21,12 @@ __Z8stageGetv:
 	.globl	__Z12stageSetNextv
 __Z12stageSetNextv:
 	link.w %fp,#0
-	cmp.w #5,__ZL12currentStage.l
+	move.w __ZL12currentStage,%d0
+	addq.w #1,%d0
+	move.w %d0,__ZL12currentStage
+	cmp.w #6,%d0
 	jle .L3
-	clr.w __ZL12currentStage
+	move.w #1,__ZL12currentStage
 .L3:
 	unlk %fp
 	rts
@@ -31,20 +34,32 @@ __Z12stageSetNextv:
 	.globl	__Z17stageLoadVsBattlev
 __Z17stageLoadVsBattlev:
 	link.w %fp,#0
-	cmp.w #5,__ZL12currentStage.l
+	cmp.w #6,__ZL12currentStage.l
 	jhi .L7
 	moveq #0,%d0
 	move.w __ZL12currentStage,%d0
 	add.l %d0,%d0
-	move.w .L14(%pc,%d0.l),%d0
+	move.w .L15(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
+.L15:
+	.word .L9-.L15
+	.word .L10-.L15
+	.word .L11-.L15
+	.word .L12-.L15
+	.word .L12-.L15
+	.word .L13-.L15
+	.word .L14-.L15
 .L14:
-	.word .L9-.L14
-	.word .L10-.L14
-	.word .L11-.L14
-	.word .L11-.L14
-	.word .L12-.L14
-	.word .L13-.L14
+	pea 16.w
+	pea 1.w
+	move.l #8537328,-(%sp)
+	jsr jsfLoadClut
+	move.l sprite,%a0
+	move.l #8535888,4844(%a0)
+	lea (12,%sp),%sp
+.L7:
+	unlk %fp
+	rts
 .L13:
 	pea 16.w
 	pea 1.w
@@ -52,17 +67,6 @@ __Z17stageLoadVsBattlev:
 	jsr jsfLoadClut
 	move.l sprite,%a0
 	move.l #8534416,4844(%a0)
-	lea (12,%sp),%sp
-.L7:
-	unlk %fp
-	rts
-.L12:
-	pea 16.w
-	pea 1.w
-	move.l #8534384,-(%sp)
-	jsr jsfLoadClut
-	move.l sprite,%a0
-	move.l #8532944,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -79,20 +83,30 @@ __Z17stageLoadVsBattlev:
 .L10:
 	pea 16.w
 	pea 1.w
-	move.l #8532912,-(%sp)
+	move.l #8531440,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8531472,4844(%a0)
+	move.l #8530000,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
 .L11:
 	pea 16.w
 	pea 1.w
-	move.l #8531440,-(%sp)
+	move.l #8534384,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8530000,4844(%a0)
+	move.l #8532944,4844(%a0)
+	lea (12,%sp),%sp
+	unlk %fp
+	rts
+.L12:
+	pea 16.w
+	pea 1.w
+	move.l #8532912,-(%sp)
+	jsr jsfLoadClut
+	move.l sprite,%a0
+	move.l #8531472,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -101,18 +115,18 @@ __Z17stageLoadVsBattlev:
 __Z11stageUpdatev:
 	link.w %fp,#0
 	movem.l #8252,-(%sp)
-	cmp.w #2,__ZL12currentStage.l
-	jeq .L23
-.L17:
+	cmp.w #3,__ZL12currentStage.l
+	jeq .L24
+.L18:
 	movem.l -20(%fp),#15364
 	unlk %fp
 	rts
-.L23:
+.L24:
 	move.w raptor_ticks,%a2
 	move.l __ZL11cloudTicks1,%d0
 	addq.l #1,%d0
 	cmp.l %d0,%a2
-	jle .L20
+	jle .L21
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
 	move.w 5576(%a3),%a0
@@ -141,11 +155,11 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.w %d0,5768(%a3)
 	move.l %a2,__ZL11cloudTicks1
-.L20:
+.L21:
 	move.l __ZL11cloudTicks2,%d0
 	addq.l #3,%d0
 	cmp.l %a2,%d0
-	jge .L21
+	jge .L22
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
 	move.w 5960(%a3),%a0
@@ -185,11 +199,11 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.w %d0,6344(%a3)
 	move.l %a2,__ZL11cloudTicks2
-.L21:
+.L22:
 	move.l __ZL11cloudTicks3,%d0
 	addq.l #7,%d0
 	cmp.l %a2,%d0
-	jge .L17
+	jge .L18
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
 	move.w 6536(%a3),%a0
@@ -245,10 +259,10 @@ __Z14stageGetHeightv:
 	link.w %fp,#0
 	moveq #79,%d0
 	not.b %d0
-	cmp.w #2,__ZL12currentStage.l
-	jeq .L27
+	cmp.w #3,__ZL12currentStage.l
+	jeq .L28
 	move.b #-16,%d0
-.L27:
+.L28:
 	unlk %fp
 	rts
 	.even
@@ -256,25 +270,25 @@ __Z14stageGetHeightv:
 __Z14stageGetStartXv:
 	link.w %fp,#0
 	move.w __ZL12currentStage,%d1
-	subq.w #1,%d1
+	subq.w #2,%d1
 	moveq #63,%d0
 	not.b %d0
 	cmp.w #4,%d1
-	jhi .L32
+	jhi .L33
 	and.l #65535,%d1
 	move.l %d1,%a0
 	add.l %d1,%a0
 	move.l %a0,%a1
-	add.l #_CSWTCH.24,%a1
+	add.l #_CSWTCH.25,%a1
 	move.l (%a1,%a0.l),%d0
-.L32:
+.L33:
 	unlk %fp
 	rts
 	.even
 	.globl	__Z14stageGetStartYv
 __Z14stageGetStartYv:
 	link.w %fp,#0
-	cmp.w #3,__ZL12currentStage.l
+	cmp.w #4,__ZL12currentStage.l
 	seq %d0
 	ext.w %d0
 	and.l #400,%d0
@@ -285,32 +299,35 @@ __Z14stageGetStartYv:
 __Z9stageMoveii:
 	link.w %fp,#0
 	move.l 8(%fp),%d0
-	cmp.w #4,__ZL12currentStage.l
-	jhi .L39
+	cmp.w #5,__ZL12currentStage.l
+	jhi .L40
 	moveq #0,%d1
 	move.w __ZL12currentStage,%d1
 	add.l %d1,%d1
-	move.w .L45(%pc,%d1.l),%d1
-	move.l sprite,%a0
+	move.w .L46(%pc,%d1.l),%d1
 	jmp %pc@(2,%d1:w)
+.L46:
+	.word .L40-.L46
+	.word .L42-.L46
+	.word .L43-.L46
+	.word .L44-.L46
+	.word .L44-.L46
+	.word .L45-.L46
 .L45:
-	.word .L41-.L45
-	.word .L42-.L45
-	.word .L43-.L45
-	.word .L43-.L45
-	.word .L44-.L45
-.L44:
+	move.l sprite,%a0
 	add.w %d0,%d0
 	add.w %d0,9224(%a0)
-.L39:
+.L40:
 	unlk %fp
 	rts
-.L43:
+.L44:
+	move.l sprite,%a0
 	add.w %d0,%d0
 	add.w %d0,12872(%a0)
 	unlk %fp
 	rts
-.L42:
+.L43:
+	move.l sprite,%a0
 	add.w %d0,7304(%a0)
 	add.w %d0,7496(%a0)
 	add.w %d0,7688(%a0)
@@ -320,7 +337,8 @@ __Z9stageMoveii:
 	add.w %d0,12680(%a0)
 	unlk %fp
 	rts
-.L41:
+.L42:
+	move.l sprite,%a0
 	add.w %d0,%d0
 	add.w %d0,12488(%a0)
 	add.w %d0,8840(%a0)
@@ -349,31 +367,32 @@ __Z19stagePositionAssetsv:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	cmp.w #4,__ZL12currentStage.l
-	jhi .L50
+	cmp.w #5,__ZL12currentStage.l
+	jhi .L51
 	moveq #0,%d0
 	move.w __ZL12currentStage,%d0
 	add.l %d0,%d0
-	move.w .L56(%pc,%d0.l),%d0
+	move.w .L57(%pc,%d0.l),%d0
 	jmp %pc@(2,%d0:w)
+.L57:
+	.word .L51-.L57
+	.word .L53-.L57
+	.word .L54-.L57
+	.word .L55-.L57
+	.word .L55-.L57
+	.word .L56-.L57
 .L56:
-	.word .L52-.L56
-	.word .L53-.L56
-	.word .L54-.L56
-	.word .L54-.L56
-	.word .L55-.L56
-.L55:
 	move.l sprite,%a2
 	jsr __Z10cameraGetXv
 	move.w #352,%d1
 	sub.w %d0,%d1
 	move.w %d1,9224(%a2)
-.L50:
+.L51:
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
-.L54:
+.L55:
 	move.l sprite,%a2
 	jsr __Z10cameraGetXv
 	moveq #4,%d1
@@ -383,7 +402,7 @@ __Z19stagePositionAssetsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
-.L53:
+.L54:
 	move.l sprite,%a3
 	lea __Z17cameraGetParalaxXv,%a2
 	jsr (%a2)
@@ -420,7 +439,7 @@ __Z19stagePositionAssetsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
-.L52:
+.L53:
 	move.l sprite,%a3
 	lea __Z10cameraGetXv,%a2
 	jsr (%a2)
@@ -445,12 +464,12 @@ __Z19stagePositionAssetsv:
 	.globl	__Z23stageGetFatalityPalettev
 __Z23stageGetFatalityPalettev:
 	link.w %fp,#0
-	cmp.w #2,__ZL12currentStage.l
-	jeq .L61
+	cmp.w #3,__ZL12currentStage.l
+	jeq .L62
 	moveq #96,%d0
 	unlk %fp
 	rts
-.L61:
+.L62:
 	moveq #80,%d0
 	unlk %fp
 	rts
@@ -468,10 +487,10 @@ sprite:
 .lcomm __ZL11cloudTicks3,4
 	.even
 __ZL12currentStage:
-	.word	2
+	.word	6
 	.text
 	.even
-_CSWTCH.24:
+_CSWTCH.25:
 	.long	224
 	.long	256
 	.long	256

@@ -203,12 +203,13 @@
 #define DMG_SPECIAL_MOVE 20
 
 //-----------------------------------------------------------------------------------------------------
-#define STAGE_GATES 0
-#define STAGE_WARRIOR 1
-#define STAGE_PIT 2
-#define STAGE_PIT_BOTTOM 3
-#define STAGE_THRONE 4
-#define STAGE_GORO 5
+#define STAGE_COURTYARD 0
+#define STAGE_GATES 1
+#define STAGE_WARRIOR 2
+#define STAGE_PIT 3
+#define STAGE_PIT_BOTTOM 4
+#define STAGE_THRONE 5
+#define STAGE_GORO 6
 
 //-----------------------------------------------------------------------------------------------------
 #define CAMERA_BOUND_LEFT 10

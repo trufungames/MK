@@ -39,6 +39,7 @@ ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
 ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
 ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
 ROM,BMP_P2_SELECTOR_FLASH,gfx_clut,ASSETS\GFX\p2_selector_flash.BMP
+ROM,BMP_BATTLE_COURTYARD,gfx_clut,ASSETS\GFX\battle_courtyard.BMP
 ROM,BMP_BATTLE_GATES,gfx_clut,ASSETS\GFX\battle_gates.BMP
 ROM,BMP_BATTLE_THEPIT,gfx_clut,ASSETS\GFX\battle_thepit.BMP
 ROM,BMP_BATTLE_WARRIOR,gfx_clut,ASSETS\GFX\battle_warrior.BMP
@@ -77,6 +78,9 @@ ROM,BMP_WARRIOR_PILLAR,gfx_clut,assets\gfx\stage_warrior_pillar.bmp
 ROM,BMP_GORO_BACKGROUND,gfx_clut_pack,assets\gfx\stage_goro_background.bmp
 ROM,BMP_GORO_PARALAX,gfx_clut_pack,assets\gfx\stage_goro_paralax.bmp
 ROM,BMP_GORO_EYES,gfx_clut,assets\gfx\stage_goro_eyes.bmp
+ROM,BMP_COURTYARD_BACKGROUND,gfx_clut_pack,assets\gfx\stage_courtyard_background.bmp
+ROM,BMP_COURTYARD_PARALAX,gfx_clut,assets\gfx\stage_courtyard_parallax.bmp
+ROM,BMP_COURTYARD_MONKS,gfx_clut,assets\gfx\stage_courtyard_monks.bmp
 ROM,BMP_GATES_BACKGROUND,gfx_clut_pack,assets\gfx\stage_gates_background.bmp
 ROM,BMP_GATES_PARALAX,gfx_clut_pack,assets\gfx\stage_gates_paralax.bmp
 ROM,BMP_FLAME,gfx_clut,assets\gfx\flame.bmp
