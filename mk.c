@@ -15,7 +15,6 @@
 #include "playerinput.h"
 #include "hud.h"
 #include "statemachine.h"
-#include "screenmachine.h"
 
 // -----------------------------------------------------------------------
 // Global Variables
@@ -61,7 +60,7 @@ bool preppedForFatality = false;
 //3 = GORO LIVES!
 //4 = GORO PROFILE
 //5 = Winners don't use drugs!
-int fmvIndex = 6;
+int fmvIndex = 7;
 int attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
@@ -69,20 +68,6 @@ static SoundHandler soundHandler = {
 	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
-};
-
-//////////////////////////////////////////////////////////////////////////
-//SCREENS
-static ScreenMachine screenMachine = {};
-
-static Screen screenPrealpha = {
-	SCREEN_PREALPHA
-};
-static Screen screenTrufun = {
-	SCREEN_TRUFUN
-};
-static Screen screenTitleScreen = {
-	SCREEN_TITLE_SCREEN
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -3928,6 +3913,7 @@ void initTitleScreen();
 void initMenuScreen();
 void initAttractMode();
 void switchAttractFMV();
+void switchAttractFMV(int fighter);
 void initLeaderboard();
 void initShangTsungIsland();
 void initGoroLives();
@@ -4753,20 +4739,9 @@ void basicmain()
 		short fighters2OffsetY = 134;		
 		bool p1SelectedSpecial = false;
 		bool p2SelectedSpecial = false;
-		fmvIndex = 6;
+		fmvIndex = 7;
 		goroProfileShown = false;
 		attractSlideIndex = 0;
-
-		screenPrealpha.enter = &ScreenPrealpha_Enter;
-		screenPrealpha.update = &ScreenPrealpha_Update;
-		screenTrufun.enter = &ScreenTrufun_Enter;
-		screenTrufun.update = &ScreenTrufun_Update;
-		screenTitleScreen.enter = &ScreenTitleScreen_Enter;
-		screenTitleScreen.update = &ScreenTitleScreen_Update;
-				
-		screenMachineAdd(&screenMachine, SCREEN_PREALPHA, &screenPrealpha);
-		screenMachineAdd(&screenMachine, SCREEN_TRUFUN, &screenTrufun);
-		screenMachineAdd(&screenMachine, SCREEN_TITLE_SCREEN, &screenTitleScreen);
 
 		stateIdle.enter = &StateIdle_Enter;
 		stateIdle.update = &StateIdle_Update;
@@ -6529,25 +6504,25 @@ void basicmain()
 					case 2:
 						switch (fmvIndex)
 						{
-							case 0:
+							case CAGE:
 								updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
 								break;
-							case 1:
+							case KANO:
 								updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
 								break;
-							case 2:
+							case RAIDEN:
 								updateSpriteAnimator(&fmvAnimator, fmvRaidenFrames, 20, true, false, 120, 43, 1);
 								break;
-							case 3:
+							case KANG:
 								updateSpriteAnimator(&fmvAnimator, fmvKangFrames, 18, true, false, 120, 43, 1);
 								break;
-							case 4:
+							case SCORPION:
 								updateSpriteAnimator(&fmvAnimator, fmvScorpionFrames, 19, true, false, 120, 43, 1);
 								break;
-							case 5:
+							case SUBZERO:
 								updateSpriteAnimator(&fmvAnimator, fmvSubzeroFrames, 16, true, false, 120, 43, 1);
 								break;
-							case 6:
+							case SONYA:
 								updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
 								break;
 						}
@@ -7762,10 +7737,16 @@ void switchAttractFMV()
 {
 	fmvIndex++;
 
-	if (fmvIndex > 6)
+	if (fmvIndex > 7)
 	{
-		fmvIndex = 0;
+		fmvIndex = 1;
 	}
+	switchAttractFMV(fmvIndex);
+	attractModeTicks = rapTicks;
+}
+
+void switchAttractFMV(int fighterIndex)
+{
 	rapParticleClear();
 	fmvAnimator.currentFrame = 0;
 	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
@@ -7791,13 +7772,13 @@ void switchAttractFMV()
 	char* line7 = "AS THE AWARD WINNING SUDDEN VIOLENCE.";
 	int line7Offset = 4;
 
-	switch (fmvIndex)
+	switch (fighterIndex)
 	{
-		case 0:
+		case CAGE:
 			rapUnpack(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_CAGE_clut),0,128);
 			break;
-		case 1:
+		case KANO:
 			rapUnpack(BMP_FMV_KANO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANO_clut),0,128);
 			name = "KANO";
@@ -7817,7 +7798,7 @@ void switchAttractFMV()
 			line7 = "CRIME'S INNER CIRCLES.";
 			line7Offset = 60;
 			break;
-		case 2:
+		case RAIDEN:
 			rapUnpack(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_RAIDEN_clut),0,128);
 			name = "RAIDEN";
@@ -7837,7 +7818,7 @@ void switchAttractFMV()
 			line7 = "";
 			line7Offset = 0;
 			break;
-		case 3:
+		case KANG:
 			rapUnpack(BMP_FMV_KANG,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANG_clut),0,128);
 			name = "LIU KANG";
@@ -7857,7 +7838,7 @@ void switchAttractFMV()
 			line7 = "";
 			line7Offset = 0;
 			break;
-		case 4:
+		case SCORPION:
 			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
 			name = "SCORPION";
@@ -7877,7 +7858,7 @@ void switchAttractFMV()
 			line7 = "";
 			line7Offset = 0;
 			break;
-		case 5:
+		case SUBZERO:
 			rapUnpack(BMP_FMV_SUBZERO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SUBZERO_clut),0,128);
 			name = "SUB-ZERO";
@@ -7897,7 +7878,7 @@ void switchAttractFMV()
 			line7 = "";
 			line7Offset = 0;
 			break;
-		case 6:
+		case SONYA:
 			rapUnpack(BMP_FMV_SONYA,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SONYA_clut),0,128);
 			name = "SONYA";
@@ -7966,31 +7947,30 @@ void switchAttractFMV()
 
 	switch (fmvIndex)
 	{
-		case 0:
+		case CAGE:
 			sfxJohnnyCage(&soundHandler);
 			break;
-		case 1:
+		case KANO:
 			sfxKano(&soundHandler);
 			break;
-		case 2:
+		case RAIDEN:
 			sfxRaiden(&soundHandler);
 			break;
-		case 3:
+		case KANG:
 			sfxLiuKang(&soundHandler);
 			break;
-		case 4:
+		case SCORPION:
 			sfxScorpion(&soundHandler);
 			break;
-		case 5:
+		case SUBZERO:
 			sfxSubzero(&soundHandler);
 			break;
-		case 6:
+		case SONYA:
 			sfxSonya(&soundHandler);
 			break;
 		default:
 			break;
 	}
-	attractModeTicks = rapTicks;
 }
 
 void initLeaderboard()
