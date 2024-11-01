@@ -24,6 +24,7 @@ bool playedWins = false;
 bool playedFatality = false;
 bool didFatality = false;
 bool playedCrowd = false;
+bool hasWinner = false;
 
 static SpriteAnimator fightAnimator = {
 	FIGHT, 0.5f, BMP_MATCH, 0, 0
@@ -120,6 +121,7 @@ void matchReset()
 	playedFatality = false;
 	didFatality = false;
 	playedCrowd = false;
+	hasWinner = false;
 }
 
 void matchInit()
@@ -138,6 +140,11 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 	rapLocate(156, 8);
 	js_r_textbuffer = ee_printf("%02d",rapClockHex);
 	rapPrint();
+
+	if (fighter1->currentState->Name == STATE_IS_WINNER || fighter2->currentState->Name == STATE_IS_WINNER)
+	{
+		hasWinner = true;
+	}
 
     if (matchState == 0)
     {
@@ -301,7 +308,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 		{
 			playedCrowd = true;
 
-			if (stageGet() == STAGE_THRONE)
+			if (stageGet() == STAGE_THRONE || stageGet() == STAGE_COURTYARD)
 			{
 				sfxCrowdClap(soundHandler);
 			}
@@ -487,4 +494,9 @@ void matchResetTicks()
 void matchPrepForFatality()
 {
 	sprite[FIGHT].active = R_is_inactive;
+}
+
+bool matchHasWinner()
+{
+	return hasWinner;
 }

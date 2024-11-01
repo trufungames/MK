@@ -20,11 +20,22 @@ unsigned int backgroundSpriteIndex;
 unsigned int backgroundGfxBase;
 short targetCameraX = 0;
 bool isScrollingPit = false;
+short xStep = 8;
 
-void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsigned int gfxBase)
+void cameraInit(int stage, int startX, int startY, int xMax, unsigned int gfxBase)
 {
     xOffset = 0;
-    backgroundSpriteIndex = spriteIndex;
+
+    switch (stage)
+    {
+        case STAGE_COURTYARD:
+            backgroundSpriteIndex = STAGE_PRIMARY_BACKGROUND_4BIT;
+            break;
+        default:
+            backgroundSpriteIndex = STAGE_PRIMARY_BACKGROUND;
+            break;
+    }
+    
     cameraX = startX;
     cameraY = startY;
     targetCameraX = cameraX;
@@ -32,7 +43,7 @@ void cameraInit(unsigned int spriteIndex, int startX, int startY, int xMax, unsi
     backgroundGfxBase = gfxBase;
 
     setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
-    sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
+    sprite[backgroundSpriteIndex].x_ = xOffset;
     cameraTicks = rapTicks;
 }
 
@@ -67,11 +78,11 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 
         panDirection = cameraX < targetCameraX ? 1 : -1;
 
-        if (panDirection == 1 && targetCameraX - cameraX < 8)
+        if (panDirection == 1 && targetCameraX - cameraX < xStep)
         {
             targetCameraX = cameraX;
         }
-        else if (panDirection == -1 && cameraX - targetCameraX < 8)
+        else if (panDirection == -1 && cameraX - targetCameraX < xStep)
         {
             targetCameraX = cameraX;
         }
@@ -85,14 +96,14 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
             // {
             //     xOffset = -8;
 
-                if ((panDirection == 1 && targetCameraX - cameraX > 8)
-                    || (panDirection == -1 && cameraX - targetCameraX > 8))
+                if ((panDirection == 1 && targetCameraX - cameraX > xStep)
+                    || (panDirection == -1 && cameraX - targetCameraX > xStep))
                 {
-                    cameraX += panDirection * 8;
+                    cameraX += panDirection * xStep;
                 }
                 else
                 {
-                    cameraX += panDirection * 8;
+                    cameraX += panDirection * xStep;
                 }
 
                 if (panDirection == 1 && cameraX > FIGHTER_MAX_WORLD_POSITION_X)
@@ -109,12 +120,12 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                 setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
             //}
 
-            sprite[STAGE_PRIMARY_BACKGROUND].x_ = xOffset; 
+            sprite[backgroundSpriteIndex].x_ = xOffset;
             stagePositionAssets();
         }
         else if (isScrollingPit)
         {
-            if (sprite[STAGE_PRIMARY_BACKGROUND].y_ > 0)
+            if (sprite[backgroundSpriteIndex].y_ > 0)
             {
                 if (fighter1->currentState->Name == STATE_PIT_FATALITY)
                 {
@@ -127,7 +138,7 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                     fighter2->vars[1] = 8;
                 }
 
-                sprite[STAGE_PRIMARY_BACKGROUND].y_ -= 8;
+                sprite[backgroundSpriteIndex].y_ -= 8;
                 sprite[FOREGROUND_SPIKES].y_ -= 8;
                 setFrame(backgroundSpriteIndex, 352, 240, cameraX, cameraY, 1.0f, backgroundGfxBase);
             }
@@ -257,7 +268,7 @@ bool cameraFighterIsAtBoundsLeft(struct Fighter* fighter)
 void cameraScrollPit()
 {
     isScrollingPit = true;
-    sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
+    sprite[backgroundSpriteIndex].height = 240;
 }
 
 bool cameraIsScrollingPit()

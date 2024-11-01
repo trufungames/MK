@@ -6,3 +6,4 @@ int matchGetFighter1Wins();
 int matchGetFighter2Wins();
 void matchResetTicks();
 void matchPrepForFatality();
+bool matchHasWinner();

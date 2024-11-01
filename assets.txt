@@ -30,14 +30,14 @@
 '
 ' That's all, have fun!
 '
-ROM,BMP_DOTLAST,gfx_clut16,ASSETS\GFX\dotlast.BMP
+ROM,BMP_DOTLAST,gfx_clut_pack,ASSETS\GFX\dotlast.BMP
 ROM,BMP_TITLESCREEN,gfx_clut_pack,assets\gfx\title_screen.bmp
 ROM,BMP_PREALPHA,gfx_clut_pack,assets\gfx\prealpha.bmp
 ROM,BMP_TRUFUN,gfx_clut_pack,assets\gfx\trufun.bmp
 ROM,BMP_CHOOSEFIGHTER,gfx_clut_pack,assets\gfx\choose_your_fighter.bmp
 ROM,BMP_BATTLESCREEN,gfx_clut_pack,assets\gfx\battle_screen.bmp
-ROM,BMP_P1_SELECTOR,gfx_clut16,ASSETS\GFX\p1_selector.BMP
-ROM,BMP_P2_SELECTOR,gfx_clut16,ASSETS\GFX\p2_selector.BMP
+ROM,BMP_P1_SELECTOR,gfx_clut,ASSETS\GFX\p1_selector.BMP
+ROM,BMP_P2_SELECTOR,gfx_clut,ASSETS\GFX\p2_selector.BMP
 ROM,BMP_P2_SELECTOR_FLASH,gfx_clut,ASSETS\GFX\p2_selector_flash.BMP
 ROM,BMP_BATTLE_COURTYARD,gfx_clut,ASSETS\GFX\battle_courtyard.BMP
 ROM,BMP_BATTLE_GATES,gfx_clut,ASSETS\GFX\battle_gates.BMP
@@ -79,10 +79,12 @@ ROM,BMP_GORO_BACKGROUND,gfx_clut_pack,assets\gfx\stage_goro_background.bmp
 ROM,BMP_GORO_PARALAX,gfx_clut_pack,assets\gfx\stage_goro_paralax.bmp
 ROM,BMP_GORO_EYES,gfx_clut,assets\gfx\stage_goro_eyes.bmp
 ROM,BMP_COURTYARD_BACKGROUND,gfx_clut_pack,assets\gfx\stage_courtyard_background.bmp
-ROM,BMP_COURTYARD_PARALAX,gfx_clut,assets\gfx\stage_courtyard_parallax.bmp
+ROM,BMP_COURTYARD_PARALAX,gfx_clut_pack,assets\gfx\stage_courtyard_parallax.bmp
 ROM,BMP_COURTYARD_MONKS,gfx_clut,assets\gfx\stage_courtyard_monks.bmp
-ROM,BMP_GATES_BACKGROUND,gfx_clut_pack,assets\gfx\stage_gates_background.bmp
-ROM,BMP_GATES_PARALAX,gfx_clut_pack,assets\gfx\stage_gates_paralax.bmp
+ROM,BMP_PALACE_BACKGROUND,gfx_clut_pack,assets\gfx\stage_palace_background.bmp
+ROM,BMP_PALACE_PARALAX,gfx_clut_pack,assets\gfx\stage_palace_paralax.bmp
+ROM,BMP_PALACE_CLOUDS1,gfx_clut,assets\gfx\stage_palace_clouds1.bmp
+ROM,BMP_PALACE_CLOUDS2,gfx_clut,assets\gfx\stage_palace_clouds2.bmp
 ROM,BMP_FLAME,gfx_clut,assets\gfx\flame.bmp
 ROM,BMP_HITBOX,gfx_clut,ASSETS\GFX\hitbox_on.BMP
 ROM,BMP_HITBOX_ATTACK,gfx_clut,ASSETS\GFX\hitbox_attack_on.BMP
@@ -149,7 +151,16 @@ ROM,BMP_ATTRACT_LEADERBOARD,gfx_clut_pack,ASSETS\GFX\attract_leaderboard.BMP
 ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
 ROM,BMP_ATTRACT_SHANGTSUNG,gfx_clut_pack,ASSETS\GFX\attract_shangtsung.BMP
 ROM,BMP_ATTRACT_WINNERS,gfx_clut_pack,ASSETS\GFX\attract_winners.BMP
-ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
+'ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
+ROM,BMP_BATTLEPLAN_TOP,gfx_clut,ASSETS\GFX\battleplan_top.BMP
+ROM,BMP_BATTLEPLAN_BOTTOM,gfx_clut,ASSETS\GFX\battleplan_bottom.BMP
+ROM,BMP_BATTLEPLAN_INTERSECTION,gfx_clut,ASSETS\GFX\battleplan_intersection.BMP
+ROM,BMP_BATTLEPLAN_ENDURANCE,gfx_clut,ASSETS\GFX\battleplan_endurance.BMP
+ROM,BMP_BATTLEPLAN_SINGLE,gfx_clut,ASSETS\GFX\battleplan_single.BMP
+ROM,BMP_BATTLEPLAN_SHANGTSUNG,gfx_clut,ASSETS\GFX\battleplan_shangtsung.BMP
+ROM,BMP_BATTLEPLAN_GORO,gfx_clut,ASSETS\GFX\battleplan_goro.BMP
+ROM,BMP_BATTLEPLAN_PORTRAITS,gfx_clut,ASSETS\GFX\battleplan_portraits.BMP
+ROM,BMP_ENDINGS_PORTRAITS,gfx_clut_pack,ASSETS\GFX\endings_portraits.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav
 ROM,p2cursor_sam,sfx_raw8000,ASSETS\SFX\p2cursor.wav
@@ -250,6 +261,7 @@ ROM,pit_fall_sam,sfx_raw8000,ASSETS\SFX\pit_fall.wav
 ROM,pit_land_sam,sfx_raw8000,ASSETS\SFX\pit_land.wav
 
 ROM,MOD_TITLE,modfile1,ASSETS\Music\mk_title.mod
+ROM,MOD_STAGE_COURTYARD,modfile1,ASSETS\Music\stage_courtyard.mod
 ROM,MOD_STAGE_GATES,modfile1,ASSETS\Music\stage_gates.mod
 ROM,MOD_STAGE_PIT,modfile1,ASSETS\Music\stage_pit.mod
 ROM,MOD_STAGE_WARRIOR,modfile1,ASSETS\Music\stage_warrior.mod

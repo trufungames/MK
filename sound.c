@@ -1030,6 +1030,17 @@ void musicTitle(struct SoundHandler* soundHandler)
 	u235ModuleVol(soundHandler->VolumeMusic / 4);
 }
 
+void musicStageCourtyard(struct SoundHandler* soundHandler)
+{
+	if (!soundHandler->EnableMusic)
+		return;
+
+	u235StopModule();
+	u235Silence();
+	u235PlayModule(MOD_STAGE_COURTYARD,MOD_STEREO);
+	u235ModuleVol(soundHandler->VolumeMusic);	
+}
+
 void musicStageGates(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableMusic)

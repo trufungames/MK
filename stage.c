@@ -2,24 +2,32 @@
 #include "stage.h"
 #include "camera.h"
 #include "spriteanimator.h"
+#include "match.h"
 
 static short currentStage = STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
 
+static SpriteAnimator monksAnimator = {
+	STAGE_MONKS, 0.5f, BMP_COURTYARD_MONKS, 0, 0, 0
+};
+
 static AnimationFrame monkFrames[] = {
-	{ 384, 32, 0, 0, 0, 0, 6 },
-    { 384, 32, 0, 32, 0, 0, 6 },
-    { 384, 32, 0, 64, 0, 0, 6 },
-    { 384, 32, 0, 96, 0, 0, 6 },
-    { 384, 32, 0, 128, 0, 0, 6 }
+	{ 576, 32, 0, 0, 0, 0, 10 },
+    { 576, 32, 0, 32, 0, 0, 10 },
+    { 576, 32, 0, 64, 0, 0, 10 },
+    { 576, 32, 0, 96, 0, 0, 10 },
+    { 576, 32, 0, 128, 0, 0, 10 },
+    { 576, 32, 0, 96, 0, 0, 10 },
+    { 576, 32, 0, 64, 0, 0, 10 },
+    { 576, 32, 0, 32, 0, 0, 10 }
 };
 
 static AnimationFrame monkClapFrames[] = {
-	{ 384, 32, 0, 160, 0, 0, 6 },
-    { 384, 32, 0, 192, 0, 0, 6 },
-    { 384, 32, 0, 224, 0, 0, 6 }
+	{ 576, 32, 0, 160, 0, 0, 6 },
+    { 576, 32, 0, 192, 0, 0, 6 },
+    { 576, 32, 0, 224, 0, 0, 6 }
 };
 
 void stageInit()
@@ -27,6 +35,8 @@ void stageInit()
     cloudTicks1 = 0;
     cloudTicks2 = 0;
     cloudTicks3 = 0;
+    monksAnimator.currentFrame = 0;
+    monksAnimator.lastTick = rapTicks;
 }
 
 int stageGet()
@@ -40,7 +50,7 @@ void stageSetNext()
     
     if (currentStage > STAGE_GORO)
     {
-        currentStage = STAGE_GATES;
+        currentStage = STAGE_COURTYARD;
     }
 }
 
@@ -82,7 +92,23 @@ void stageUpdate()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            if (matchHasWinner())
+            {
+                updateSpriteAnimator(&monksAnimator, monkClapFrames, 3, true, true);
+            }
+            else
+            {
+                updateSpriteAnimator(&monksAnimator, monkFrames, 8, true, true);
+            }
+            break;
         case STAGE_GATES:
+            if (rapTicks >= cloudTicks1 + 4)
+            {
+                sprite[STAGE_PALACE_CLOUDS1+0].x_ += 1.0f;
+                sprite[STAGE_PALACE_CLOUDS1+1].x_ += 1.0f;
+                cloudTicks1 = rapTicks;
+            }
             stageHideShowSprite(STAGE_GATES_FLAME, 16);
             stageHideShowSprite(STAGE_GATES_FLAME+1, 16);
             stageHideShowSprite(FOREGROUND_PILLAR, 32);
@@ -135,16 +161,18 @@ int stageGetFighterHitboxIndex()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            return 34;
         case STAGE_GATES:
-            return 27;
+            return 34;
         case STAGE_WARRIOR:
-            return 27;
+            return 34;
         case STAGE_PIT:
-            return 27;
+            return 34;
         case STAGE_GORO:
-            return 27;
+            return 34;
         default:
-            return 27;
+            return 34;
     }
 }
 
@@ -152,6 +180,8 @@ int stageGetHeight()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            return 240;
         case STAGE_GATES:
             return 240;
         case STAGE_WARRIOR:
@@ -169,6 +199,8 @@ int stageGetStartX()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            return 192;
         case STAGE_GATES:
             return 192;
         case STAGE_WARRIOR:
@@ -201,6 +233,9 @@ void stageMove(int direction, int offset)
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            sprite[STAGE_MONKS].x_ += 1 * direction;
+            break;
         case STAGE_GATES:
             // sprite[STAGE_WARRIOR_BUSH].x_ += 1.0f * direction;
             // sprite[STAGE_WARRIOR_BUSH+1].x_ += 1.0f * direction;
@@ -251,12 +286,16 @@ void stageResetTicks()
     cloudTicks1 = rapTicks;
     cloudTicks2 = rapTicks;
     cloudTicks3 = rapTicks;
+    monksAnimator.lastTick = rapTicks;
 }
 
 void stagePositionAssets()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            sprite[STAGE_MONKS].x_ = 0 - cameraGetParalaxX();
+            break;
         case STAGE_GATES:
             sprite[FOREGROUND_PILLAR].x_ = STAGE_PALACEGATES_PILLAR_X - cameraGetX();
             sprite[STAGE_GATES_FLAME].x_ = STAGE_PALACEGATES_FLAME1_X - cameraGetX();
@@ -269,6 +308,10 @@ void stagePositionAssets()
             sprite[STAGE_WARRIOR_BUSH+3].x_ = STAGE_WARRIOR_BUSH4_X - cameraGetParalaxX();
             sprite[FOREGROUND_PILLAR].x_ = STAGE_WARRIOR_PILLAR1_X - cameraGetX();
             sprite[FOREGROUND_PILLAR+1].x_ = STAGE_WARRIOR_PILLAR2_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME].x_ = STAGE_WARRIOR_FLAME1_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME+1].x_ = STAGE_WARRIOR_FLAME2_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME+2].x_ = STAGE_WARRIOR_FLAME3_X - cameraGetX();
+            sprite[STAGE_GATES_FLAME+3].x_ = STAGE_WARRIOR_FLAME4_X - cameraGetX();
             break;
         case STAGE_PIT:
         case STAGE_PIT_BOTTOM:
@@ -286,6 +329,8 @@ int stageGetFatalityPalette()
 {
     switch (currentStage)
     {
+        case STAGE_COURTYARD:
+            return 128;
         case STAGE_PIT:
             return 80;
         default:

@@ -92,6 +92,7 @@ void sfxWins(struct SoundHandler* soundHandler);
 void sfxFlawless(struct SoundHandler* soundHandler);
 void sfxFatality(struct SoundHandler* soundHandler);
 void musicTitle(struct SoundHandler* soundHandler);
+void musicStageCourtyard(struct SoundHandler* soundHandler);
 void musicStageGates(struct SoundHandler* soundHandler);
 void musicStagePit(struct SoundHandler* soundHandler);
 void musicStageWarrior(struct SoundHandler* soundHandler);
