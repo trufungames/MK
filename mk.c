@@ -33,6 +33,7 @@ bool inAttractMode = false;
 bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
+bool onScreenFighterIntro = false;
 bool fadedIn = false;
 bool fadedOut = false;
 bool kasumiUnlocked = false;
@@ -54,6 +55,7 @@ bool menuSelected = false;
 short attractModeIndex = 0;
 bool goroProfileShown = false;
 bool preppedForFatality = false;
+bool isSinglePlayer = true;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
@@ -3913,7 +3915,7 @@ void initTitleScreen();
 void initMenuScreen();
 void initAttractMode();
 void switchAttractFMV();
-void switchAttractFMV(int fighter);
+void switchAttractFMV(int fighter, bool sayFighterName);
 void initLeaderboard();
 void initShangTsungIsland();
 void initGoroLives();
@@ -3921,6 +3923,7 @@ void initGoroProfile();
 void initWinners();
 void initGameAssets();
 void switchScreenChooseFighter();
+void switchScreenFighterIntro(int fighterIndex);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
 void SetPlayerPalettes();
@@ -6571,6 +6574,33 @@ void basicmain()
 				}
 				
 			}
+			else if (onScreenFighterIntro)
+			{
+				switch (p1Cursor)
+				{
+					case CAGE:
+						updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
+						break;
+					case KANO:
+						updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
+						break;
+					case RAIDEN:
+						updateSpriteAnimator(&fmvAnimator, fmvRaidenFrames, 20, true, false, 120, 43, 1);
+						break;
+					case KANG:
+						updateSpriteAnimator(&fmvAnimator, fmvKangFrames, 18, true, false, 120, 43, 1);
+						break;
+					case SCORPION:
+						updateSpriteAnimator(&fmvAnimator, fmvScorpionFrames, 19, true, false, 120, 43, 1);
+						break;
+					case SUBZERO:
+						updateSpriteAnimator(&fmvAnimator, fmvSubzeroFrames, 16, true, false, 120, 43, 1);
+						break;
+					case SONYA:
+						updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
+						break;
+				}
+			}
 			else if (onScreenChooseFighter)
 			{
 				pad1 = jsfGetPadPressed(LEFT_PAD);
@@ -6876,223 +6906,226 @@ void basicmain()
 
 				bool p2CursorChanged = false;
 
-				if (p2Selected == -1)
+				if (!isSinglePlayer)
 				{
-					if (pad2 & JAGPAD_LEFT)
+					if (p2Selected == -1)
 					{
-						p2CursorChanged = true;
-						
-						if (kasumiUnlocked && p2Cursor == 2)
-							p2Cursor = 7;
-						else if (kasumiUnlocked && p2Cursor == 7)
-							p2Cursor = 1;
-						else
+						if (pad2 & JAGPAD_LEFT)
 						{
-							p2Cursor--;
-							if (p2Cursor < 0)
-								p2Cursor = 3;
-							else if (p2Cursor == 3)
-								p2Cursor = 6;
-						}
-					}
-					else if (pad2 & JAGPAD_RIGHT)
-					{
-						p2CursorChanged = true;
-
-						if (kasumiUnlocked && p2Cursor == 1)
-							p2Cursor = 7;
-						else if (kasumiUnlocked && p2Cursor == 7)
-							p2Cursor = 2;
-						else
-						{
-							p2Cursor++;
-
-							if (p2Cursor == 4)
-								p2Cursor = 0;
-							else if (p2Cursor == 7)
-								p2Cursor = 4;
-						}
-					}
-					else if (pad2 & JAGPAD_UP)
-					{
-						p2CursorChanged = true;
-						if (kasumiUnlocked && p2Cursor == 5)
-							p2Cursor = 7;
-						else
-						{
-							if (p2Cursor == 4)
+							p2CursorChanged = true;
+							
+							if (kasumiUnlocked && p2Cursor == 2)
+								p2Cursor = 7;
+							else if (kasumiUnlocked && p2Cursor == 7)
 								p2Cursor = 1;
-							else if (p2Cursor == 6)
+							else
+							{
+								p2Cursor--;
+								if (p2Cursor < 0)
+									p2Cursor = 3;
+								else if (p2Cursor == 3)
+									p2Cursor = 6;
+							}
+						}
+						else if (pad2 & JAGPAD_RIGHT)
+						{
+							p2CursorChanged = true;
+
+							if (kasumiUnlocked && p2Cursor == 1)
+								p2Cursor = 7;
+							else if (kasumiUnlocked && p2Cursor == 7)
 								p2Cursor = 2;
+							else
+							{
+								p2Cursor++;
+
+								if (p2Cursor == 4)
+									p2Cursor = 0;
+								else if (p2Cursor == 7)
+									p2Cursor = 4;
+							}
+						}
+						else if (pad2 & JAGPAD_UP)
+						{
+							p2CursorChanged = true;
+							if (kasumiUnlocked && p2Cursor == 5)
+								p2Cursor = 7;
+							else
+							{
+								if (p2Cursor == 4)
+									p2Cursor = 1;
+								else if (p2Cursor == 6)
+									p2Cursor = 2;
+							}
+						}
+						else if (pad2 & JAGPAD_DOWN)
+						{
+							p2CursorChanged = true;
+							if (kasumiUnlocked && p2Cursor == 7)
+								p2Cursor = 5;
+							else
+							{
+								if (p2Cursor == 1)
+									p2Cursor = 4;
+								else if (p2Cursor == 2)
+									p2Cursor = 6;
+							}
 						}
 					}
-					else if (pad2 & JAGPAD_DOWN)
+
+					if (p2CursorChanged)
 					{
-						p2CursorChanged = true;
-						if (kasumiUnlocked && p2Cursor == 7)
-							p2Cursor = 5;
-						else
-						{
-							if (p2Cursor == 1)
-								p2Cursor = 4;
-							else if (p2Cursor == 2)
-								p2Cursor = 6;
-						}
+						sfxP1Cursor(&soundHandler);
+						SetPlayerPalettes();
 					}
-				}
 
-				if (p2CursorChanged)
-				{
-					sfxP1Cursor(&soundHandler);
-					SetPlayerPalettes();
-				}
-
-				switch (p2Cursor)
-				{
-					case 0:
-						//Johnny Cage
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+					switch (p2Cursor)
+					{
+						case 0:
+							//Johnny Cage
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterCage2, &cageAnimator2, cageSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterCage2, &cageAnimator2, cageSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterCage2, &cageAnimator2, cageWinsFrames);
+								}
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterCage2, &cageAnimator2, cageWinsFrames);
+								fighterUpdateIdle(delta, &fighterCage2, &cageAnimator2, cageIdleFrames);
 							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterCage2, &cageAnimator2, cageIdleFrames);
-						}
-						break;
-					case 1:
-						//Kano
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+							break;
+						case 1:
+							//Kano
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterKano2, &kanoAnimator2, kanoSpecialFrames);
-							}
-							else
-							{
-								fighterUpdateVictoryPose(delta, &fighterKano2, &kanoAnimator2, kanoWinsFrames);
-							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterKano2, &kanoAnimator2, kanoIdleFrames);
-						}
-						break;
-					case 2:
-						//Sub-Zero
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
-							{
-								fighterUpdateSpecialPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterKano2, &kanoAnimator2, kanoSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterKano2, &kanoAnimator2, kanoWinsFrames);
+								}
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroWinsFrames);
+								fighterUpdateIdle(delta, &fighterKano2, &kanoAnimator2, kanoIdleFrames);
 							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterSubzero2, &subzeroAnimator2, subzeroIdleFrames);
-						}
-						break;
-					case 3:
-						//Sonya
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+							break;
+						case 2:
+							//Sub-Zero
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaSpecialFrames);
-							}
-							else
-							{
-								fighterUpdateVictoryPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaWinsFrames);
-							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterSonya2, &sonyaAnimator2, sonyaIdleFrames);
-						}
-						break;
-					case 4:
-						//Raiden
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
-							{
-								fighterUpdateSpecialPose(delta, &fighterRaiden2, &raidenAnimator2, raidenSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterSubzero2, &subzeroAnimator2, subzeroWinsFrames);
+								}
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterRaiden2, &raidenAnimator2, raidenWinsFrames);
-							}							
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterRaiden2, &raidenAnimator2, raidenIdleFrames);
-							updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
-						}
-						break;
-					case 5:
-						//Liu Kang
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+								fighterUpdateIdle(delta, &fighterSubzero2, &subzeroAnimator2, subzeroIdleFrames);
+							}
+							break;
+						case 3:
+							//Sonya
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterKang2, &kangAnimator2, kangSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterSonya2, &sonyaAnimator2, sonyaWinsFrames);
+								}
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterKang2, &kangAnimator2, kangWinsFrames);
+								fighterUpdateIdle(delta, &fighterSonya2, &sonyaAnimator2, sonyaIdleFrames);
 							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterKang2, &kangAnimator2, kangIdleFrames);
-						}
-						break;
-					case 6:
-						//Scorpion
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+							break;
+						case 4:
+							//Raiden
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterScorpion2, &scorpionAnimator2, scorpionSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterRaiden2, &raidenAnimator2, raidenSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterRaiden2, &raidenAnimator2, raidenWinsFrames);
+								}							
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterScorpion2, &scorpionAnimator2, subzeroWinsFrames);
+								fighterUpdateIdle(delta, &fighterRaiden2, &raidenAnimator2, raidenIdleFrames);
+								updateSpriteAnimator(&lightning2Animator, lightningFrames, 30, true, true);
 							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterScorpion2, &scorpionAnimator2, scorpionIdleFrames);
-						}
-						break;
-					case 7:
-						//Kasumi
-						if (p2Selected > -1)
-						{
-							if (p2SelectedSpecial)
+							break;
+						case 5:
+							//Liu Kang
+							if (p2Selected > -1)
 							{
-								fighterUpdateSpecialPose(delta, &fighterKasumi2, &kasumiAnimator2, kasumiSpecialFrames);
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterKang2, &kangAnimator2, kangSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterKang2, &kangAnimator2, kangWinsFrames);
+								}
 							}
 							else
 							{
-								fighterUpdateVictoryPose(delta, &fighterKasumi2, &kasumiAnimator2, subzeroWinsFrames);
+								fighterUpdateIdle(delta, &fighterKang2, &kangAnimator2, kangIdleFrames);
 							}
-						}
-						else
-						{
-							fighterUpdateIdle(delta, &fighterKasumi2, &kasumiAnimator2, subzeroIdleFrames);
-						}
+							break;
+						case 6:
+							//Scorpion
+							if (p2Selected > -1)
+							{
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterScorpion2, &scorpionAnimator2, scorpionSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterScorpion2, &scorpionAnimator2, subzeroWinsFrames);
+								}
+							}
+							else
+							{
+								fighterUpdateIdle(delta, &fighterScorpion2, &scorpionAnimator2, scorpionIdleFrames);
+							}
+							break;
+						case 7:
+							//Kasumi
+							if (p2Selected > -1)
+							{
+								if (p2SelectedSpecial)
+								{
+									fighterUpdateSpecialPose(delta, &fighterKasumi2, &kasumiAnimator2, kasumiSpecialFrames);
+								}
+								else
+								{
+									fighterUpdateVictoryPose(delta, &fighterKasumi2, &kasumiAnimator2, subzeroWinsFrames);
+								}
+							}
+							else
+							{
+								fighterUpdateIdle(delta, &fighterKasumi2, &kasumiAnimator2, subzeroIdleFrames);
+							}
+					}
 				}
 
 				if ((pad1 & JAGPAD_C || pad1 & JAGPAD_B || pad1 & JAGPAD_A || pad1 & JAGPAD_7 || pad1 & JAGPAD_8 || pad1 & JAGPAD_9 || rapTicks >= chooseTicks + CHOOSE_FIGHTER_TIME_TOTAL) && p1Selected == -1)
@@ -7286,6 +7319,14 @@ void basicmain()
 						rapFadeClut(0,256,BLACKPAL);
 						jsfVsync(0);
 					}
+
+					if (isSinglePlayer)
+					{
+						fighterMakeSelectable(&fighterSubzero2, true);
+						fighterShow(&fighterSubzero2);
+						fighter2Ptr = &fighterSubzero2;						
+						spriteAnimator2Ptr = &subzeroAnimator2;
+					}
 					
 					fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;
 					fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
@@ -7295,8 +7336,17 @@ void basicmain()
 
 					musicStop();
 					stageSetNext();
-					switchScreenVsBattle(p1Cursor, p2Cursor);				
-					sfxIntro(&soundHandler);
+
+					if (isSinglePlayer)
+					{
+						switchScreenFighterIntro(p1Cursor);
+					}
+					else
+					{
+						switchScreenVsBattle(p1Cursor, p2Cursor);				
+						sfxIntro(&soundHandler);
+					}
+					
 					myTicks = rapTicks;
 				}
 			}
@@ -7741,11 +7791,11 @@ void switchAttractFMV()
 	{
 		fmvIndex = 1;
 	}
-	switchAttractFMV(fmvIndex);
+	switchAttractFMV(fmvIndex, true);
 	attractModeTicks = rapTicks;
 }
 
-void switchAttractFMV(int fighterIndex)
+void switchAttractFMV(int fighterIndex, bool sayFighterName)
 {
 	rapParticleClear();
 	fmvAnimator.currentFrame = 0;
@@ -7945,31 +7995,34 @@ void switchAttractFMV(int fighterIndex)
 	js_r_textbuffer=name;
 	rapPrint();
 
-	switch (fmvIndex)
+	if (sayFighterName)
 	{
-		case CAGE:
-			sfxJohnnyCage(&soundHandler);
-			break;
-		case KANO:
-			sfxKano(&soundHandler);
-			break;
-		case RAIDEN:
-			sfxRaiden(&soundHandler);
-			break;
-		case KANG:
-			sfxLiuKang(&soundHandler);
-			break;
-		case SCORPION:
-			sfxScorpion(&soundHandler);
-			break;
-		case SUBZERO:
-			sfxSubzero(&soundHandler);
-			break;
-		case SONYA:
-			sfxSonya(&soundHandler);
-			break;
-		default:
-			break;
+		switch (fmvIndex)
+		{
+			case CAGE:
+				sfxJohnnyCage(&soundHandler);
+				break;
+			case KANO:
+				sfxKano(&soundHandler);
+				break;
+			case RAIDEN:
+				sfxRaiden(&soundHandler);
+				break;
+			case KANG:
+				sfxLiuKang(&soundHandler);
+				break;
+			case SCORPION:
+				sfxScorpion(&soundHandler);
+				break;
+			case SUBZERO:
+				sfxSubzero(&soundHandler);
+				break;
+			case SONYA:
+				sfxSonya(&soundHandler);
+				break;
+			default:
+				break;
+		}
 	}
 }
 
@@ -8177,16 +8230,17 @@ void switchScreenChooseFighter()
 	p1Cursor = 1;
 	p2Cursor = 2;
 	p1Selected = -1;
-	p2Selected = -1;
+	p2Selected = p2Cursor; //-1;  for single player, let's default to Sub-Zero for player2
+	isSinglePlayer = true;
+	
 	p1FlashCount = 0;
-	p2FlashCount = 0;
+	p2FlashCount = 99; //disable to flash for player 2 since defaulting to single player mode
 	chooseFighterDone = false;
 	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);	
 	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
-
 	sprite[P1_CURSOR].active = R_is_active;
-	sprite[P2_CURSOR].active = R_is_active;
+	sprite[P2_CURSOR].active = R_is_inactive;
 
 	if (kasumiUnlocked)
 	{
@@ -8208,10 +8262,20 @@ void switchScreenChooseFighter()
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	
 	SetPlayerPalettes();
+	sprite[P2_FIGHTER].active = isSinglePlayer ? R_is_inactive : R_is_active;
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
 	chooseTicks = rapTicks;
+}
+
+void switchScreenFighterIntro(int fighterIndex)
+{
+	sprite[P1_FIGHTER].active = R_is_inactive;
+	sprite[P2_FIGHTER].active = R_is_inactive;
+	sfxFatalityGong(&soundHandler);
+	switchAttractFMV(fighterIndex - 1, false);
+	onScreenFighterIntro = true;
 }
 
 void switchScreenVsBattle(int p1Cursor, int p2Cursor)
@@ -9051,91 +9115,94 @@ void SetPlayerPalettes()
 			break;
 	}
 
-	switch (p2Cursor)
+	if (!isSinglePlayer)
 	{
-		case 0:
-			//Johnny Cage
-			jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
-			fighterMakeSelectable(&fighterCage2, false);
-			fighterShow(&fighterCage2);
-			sprite[P2_CURSOR].x_ = 7;
-			sprite[P2_CURSOR].y_ = 42;
-			sprite[P2_FLASH].x_ = 7;
-			sprite[P2_FLASH].y_ = 46;
-			break;
-		case 1:
-			//Kano
-			jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
-			fighterMakeSelectable(&fighterKano2, false);
-			fighterShow(&fighterKano2);
-			sprite[P2_CURSOR].x_ = 68;
-			sprite[P2_CURSOR].y_ = 42;
-			sprite[P2_FLASH].x_ = 68;
-			sprite[P2_FLASH].y_ = 46;
-			break;
-		case 2:
-			//Sub-Zero
-			jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
-			fighterMakeSelectable(&fighterSubzero2, false);
-			fighterShow(&fighterSubzero2);
-			sprite[P2_CURSOR].x_ = 189;
-			sprite[P2_CURSOR].y_ = 42;
-			sprite[P2_FLASH].x_ = 189;
-			sprite[P2_FLASH].y_ = 46;
-			break;
-		case 3:
-			//Sonya
-			jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
-			fighterMakeSelectable(&fighterSonya2, false);
-			fighterShow(&fighterSonya2);
-			sprite[P2_CURSOR].x_ = 250;
-			sprite[P2_CURSOR].y_ = 42;
-			sprite[P2_FLASH].x_ = 250;
-			sprite[P2_FLASH].y_ = 46;
-			break;
-		case 4:
-			//Raiden
-			jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
-			fighterMakeSelectable(&fighterRaiden2, false);
-			fighterShow(&fighterRaiden2);
-			sprite[LIGHTNING2].active = R_is_active;
-			sprite[P2_CURSOR].x_ = 68;
-			sprite[P2_CURSOR].y_ = 116;
-			sprite[P2_FLASH].x_ = 68;
-			sprite[P2_FLASH].y_ = 120;
-			break;
-		case 5:
-			//Liu Kang
-			jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
-			fighterMakeSelectable(&fighterKang2, false);
-			fighterShow(&fighterKang2);
-			sprite[P2_CURSOR].x_ = 129;
-			sprite[P2_CURSOR].y_ = 116;
-			sprite[P2_FLASH].x_ = 129;
-			sprite[P2_FLASH].y_ = 120;
-			break;
-		case 6:
-			//Scorpion
-			jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
-			fighterMakeSelectable(&fighterScorpion2, false);
-			fighterShow(&fighterScorpion2);
-			sprite[P2_CURSOR].x_ = 189;
-			sprite[P2_CURSOR].y_ = 116;
-			sprite[P2_FLASH].x_ = 189;
-			sprite[P2_FLASH].y_ = 120;
-			break;
-		case 7:
-			//Kasumi
-			jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),15,16);
-			fighterMakeSelectable(&fighterKasumi2, false);
-			fighterShow(&fighterKasumi2);
-			sprite[P2_CURSOR].x_ = 129;
-			sprite[P2_CURSOR].y_ = 42;
-			sprite[P2_FLASH].x_ = 129;
-			sprite[P2_FLASH].y_ = 46;
-			break;
+		switch (p2Cursor)
+		{
+			case 0:
+				//Johnny Cage
+				jsfLoadClut((unsigned short *)(void *)(BMPCAGE_clut),15,16);
+				fighterMakeSelectable(&fighterCage2, false);
+				fighterShow(&fighterCage2);
+				sprite[P2_CURSOR].x_ = 7;
+				sprite[P2_CURSOR].y_ = 42;
+				sprite[P2_FLASH].x_ = 7;
+				sprite[P2_FLASH].y_ = 46;
+				break;
+			case 1:
+				//Kano
+				jsfLoadClut((unsigned short *)(void *)(BMPKANO_clut),15,16);
+				fighterMakeSelectable(&fighterKano2, false);
+				fighterShow(&fighterKano2);
+				sprite[P2_CURSOR].x_ = 68;
+				sprite[P2_CURSOR].y_ = 42;
+				sprite[P2_FLASH].x_ = 68;
+				sprite[P2_FLASH].y_ = 46;
+				break;
+			case 2:
+				//Sub-Zero
+				jsfLoadClut((unsigned short *)(void *)(BMPSUBZERO_clut),15,16);
+				fighterMakeSelectable(&fighterSubzero2, false);
+				fighterShow(&fighterSubzero2);
+				sprite[P2_CURSOR].x_ = 189;
+				sprite[P2_CURSOR].y_ = 42;
+				sprite[P2_FLASH].x_ = 189;
+				sprite[P2_FLASH].y_ = 46;
+				break;
+			case 3:
+				//Sonya
+				jsfLoadClut((unsigned short *)(void *)(BMPSONYA_clut),15,16);
+				fighterMakeSelectable(&fighterSonya2, false);
+				fighterShow(&fighterSonya2);
+				sprite[P2_CURSOR].x_ = 250;
+				sprite[P2_CURSOR].y_ = 42;
+				sprite[P2_FLASH].x_ = 250;
+				sprite[P2_FLASH].y_ = 46;
+				break;
+			case 4:
+				//Raiden
+				jsfLoadClut((unsigned short *)(void *)(BMPRAIDEN_clut),15,16);
+				fighterMakeSelectable(&fighterRaiden2, false);
+				fighterShow(&fighterRaiden2);
+				sprite[LIGHTNING2].active = R_is_active;
+				sprite[P2_CURSOR].x_ = 68;
+				sprite[P2_CURSOR].y_ = 116;
+				sprite[P2_FLASH].x_ = 68;
+				sprite[P2_FLASH].y_ = 120;
+				break;
+			case 5:
+				//Liu Kang
+				jsfLoadClut((unsigned short *)(void *)(BMPKANG_clut),15,16);
+				fighterMakeSelectable(&fighterKang2, false);
+				fighterShow(&fighterKang2);
+				sprite[P2_CURSOR].x_ = 129;
+				sprite[P2_CURSOR].y_ = 116;
+				sprite[P2_FLASH].x_ = 129;
+				sprite[P2_FLASH].y_ = 120;
+				break;
+			case 6:
+				//Scorpion
+				jsfLoadClut((unsigned short *)(void *)(PAL_SCORPION_clut),15,16);
+				fighterMakeSelectable(&fighterScorpion2, false);
+				fighterShow(&fighterScorpion2);
+				sprite[P2_CURSOR].x_ = 189;
+				sprite[P2_CURSOR].y_ = 116;
+				sprite[P2_FLASH].x_ = 189;
+				sprite[P2_FLASH].y_ = 120;
+				break;
+			case 7:
+				//Kasumi
+				jsfLoadClut((unsigned short *)(void *)(PAL_KASUMI_clut),15,16);
+				fighterMakeSelectable(&fighterKasumi2, false);
+				fighterShow(&fighterKasumi2);
+				sprite[P2_CURSOR].x_ = 129;
+				sprite[P2_CURSOR].y_ = 42;
+				sprite[P2_FLASH].x_ = 129;
+				sprite[P2_FLASH].y_ = 46;
+				break;
+		}
 	}
-
+	
 	setFighterAlternatePalette(p1Cursor, p2Cursor);
 }
 
