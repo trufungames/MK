@@ -3759,28 +3759,7 @@ static SpriteAnimator fmvAnimator = {
 	FMV, 0.5f, (int)imageBufferFMV, 0, 0
 };
 
-static AnimationFrame fmvCageFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 },
-	{ 160, 64, 0, 832, 0, 0, 8 },
-	{ 160, 64, 0, 896, 0, 0, 8 },
-	{ 160, 64, 0, 960, 0, 0, 8 },
-	{ 160, 64, 0, 1024, 0, 0, 8 },
-	{ 160, 64, 0, 1088, 0, 0, 8 }
-};
-
-static AnimationFrame fmvKanoFrames[] = {
+static AnimationFrame fmvAllFrames[] = {
 	{ 160, 64, 0, 0, 0, 0, 8 },
 	{ 160, 64, 0, 64, 0, 0, 8 },
 	{ 160, 64, 0, 128, 0, 0, 8 },
@@ -3802,107 +3781,6 @@ static AnimationFrame fmvKanoFrames[] = {
 	{ 160, 64, 0, 1216, 0, 0, 8 },
 	{ 160, 64, 0, 1280, 0, 0, 8 },
 	{ 160, 64, 0, 1344, 0, 0, 8 }
-};
-
-static AnimationFrame fmvRaidenFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 },
-	{ 160, 64, 0, 832, 0, 0, 8 },
-	{ 160, 64, 0, 896, 0, 0, 8 },
-	{ 160, 64, 0, 960, 0, 0, 8 },
-	{ 160, 64, 0, 1024, 0, 0, 8 },
-	{ 160, 64, 0, 1152, 0, 0, 8 },
-	{ 160, 64, 0, 1216, 0, 0, 8 },
-	{ 160, 64, 0, 1280, 0, 0, 8 }
-};
-
-static AnimationFrame fmvKangFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 },
-	{ 160, 64, 0, 832, 0, 0, 8 },
-	{ 160, 64, 0, 896, 0, 0, 8 },
-	{ 160, 64, 0, 960, 0, 0, 8 },
-	{ 160, 64, 0, 1024, 0, 0, 8 },
-	{ 160, 64, 0, 1152, 0, 0, 8 }
-};
-
-static AnimationFrame fmvScorpionFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 },
-	{ 160, 64, 0, 832, 0, 0, 8 },
-	{ 160, 64, 0, 896, 0, 0, 8 },
-	{ 160, 64, 0, 960, 0, 0, 8 },
-	{ 160, 64, 0, 1024, 0, 0, 8 },
-	{ 160, 64, 0, 1152, 0, 0, 8 },
-	{ 160, 64, 0, 1216, 0, 0, 8 }
-};
-
-static AnimationFrame fmvSubzeroFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 },
-	{ 160, 64, 0, 832, 0, 0, 8 },
-	{ 160, 64, 0, 896, 0, 0, 8 },
-	{ 160, 64, 0, 960, 0, 0, 8 }
-};
-
-static AnimationFrame fmvSonyaFrames[] = {
-	{ 160, 64, 0, 0, 0, 0, 8 },
-	{ 160, 64, 0, 64, 0, 0, 8 },
-	{ 160, 64, 0, 128, 0, 0, 8 },
-	{ 160, 64, 0, 192, 0, 0, 8 },
-	{ 160, 64, 0, 256, 0, 0, 8 },
-	{ 160, 64, 0, 320, 0, 0, 8 },
-	{ 160, 64, 0, 384, 0, 0, 8 },
-	{ 160, 64, 0, 448, 0, 0, 8 },
-	{ 160, 64, 0, 512, 0, 0, 8 },
-	{ 160, 64, 0, 576, 0, 0, 8 },
-	{ 160, 64, 0, 640, 0, 0, 8 },
-	{ 160, 64, 0, 704, 0, 0, 8 },
-	{ 160, 64, 0, 768, 0, 0, 8 }
 };
 
 // *************************************************
@@ -6508,25 +6386,28 @@ void basicmain()
 						switch (fmvIndex)
 						{
 							case CAGE:
-								updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 17, true, false, 120, 43, 1);
 								break;
 							case KANO:
-								updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 21, true, false, 120, 43, 1);
 								break;
 							case RAIDEN:
-								updateSpriteAnimator(&fmvAnimator, fmvRaidenFrames, 20, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 20, true, false, 120, 43, 1);
 								break;
 							case KANG:
-								updateSpriteAnimator(&fmvAnimator, fmvKangFrames, 18, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 18, true, false, 120, 43, 1);
 								break;
 							case SCORPION:
-								updateSpriteAnimator(&fmvAnimator, fmvScorpionFrames, 19, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 19, true, false, 120, 43, 1);
 								break;
 							case SUBZERO:
-								updateSpriteAnimator(&fmvAnimator, fmvSubzeroFrames, 16, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 16, true, false, 120, 43, 1);
 								break;
 							case SONYA:
-								updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 13, true, false, 120, 43, 1);
+								break;
+							case KASUMI:
+								updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 7, true, false, 120, 43, 1);
 								break;
 						}
 						break;
@@ -6576,28 +6457,31 @@ void basicmain()
 			}
 			else if (onScreenFighterIntro)
 			{
-				switch (p1Cursor)
+				switch (fmvIndex)
 				{
 					case CAGE:
-						updateSpriteAnimator(&fmvAnimator, fmvCageFrames, 18, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 17, true, false, 120, 43, 1);
 						break;
 					case KANO:
-						updateSpriteAnimator(&fmvAnimator, fmvKanoFrames, 21, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 21, true, false, 120, 43, 1);
 						break;
 					case RAIDEN:
-						updateSpriteAnimator(&fmvAnimator, fmvRaidenFrames, 20, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 20, true, false, 120, 43, 1);
 						break;
 					case KANG:
-						updateSpriteAnimator(&fmvAnimator, fmvKangFrames, 18, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 18, true, false, 120, 43, 1);
 						break;
 					case SCORPION:
-						updateSpriteAnimator(&fmvAnimator, fmvScorpionFrames, 19, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 19, true, false, 120, 43, 1);
 						break;
 					case SUBZERO:
-						updateSpriteAnimator(&fmvAnimator, fmvSubzeroFrames, 16, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 16, true, false, 120, 43, 1);
 						break;
 					case SONYA:
-						updateSpriteAnimator(&fmvAnimator, fmvSonyaFrames, 13, true, false, 120, 43, 1);
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 13, true, false, 120, 43, 1);
+						break;
+					case KASUMI:
+						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 7, true, false, 120, 43, 1);
 						break;
 				}
 			}
@@ -7339,7 +7223,7 @@ void basicmain()
 
 					if (isSinglePlayer)
 					{
-						switchScreenFighterIntro(p1Cursor);
+						switchScreenFighterIntro(fighter1Ptr->fighterIndex);
 					}
 					else
 					{
@@ -7789,7 +7673,7 @@ void switchAttractFMV()
 
 	if (fmvIndex > 7)
 	{
-		fmvIndex = 1;
+		fmvIndex = 0;
 	}
 	switchAttractFMV(fmvIndex, true);
 	attractModeTicks = rapTicks;
@@ -7799,6 +7683,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 {
 	rapParticleClear();
 	fmvAnimator.currentFrame = 0;
+	fmvAnimator.lastTick = rapTicks;
 	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_inactive;
@@ -7832,7 +7717,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			rapUnpack(BMP_FMV_KANO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANO_clut),0,128);
 			name = "KANO";
-			nameOffset = 128;
+			nameOffset = 148;
 			line1 = "A MERCENARY, THUG, EXTORTIONIST";
 			line1Offset = 24;
 			line2 = "THIEF - KANO LIVES A LIFE OF CRIME";
@@ -7852,7 +7737,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			rapUnpack(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_RAIDEN_clut),0,128);
 			name = "RAIDEN";
-			nameOffset = 129;
+			nameOffset = 136;
 			line1 = "THE NAME RAIDEN IS ACTUALLY THAT OF";
 			line1Offset = 15;
 			line2 = "A DEITY KNOWN AS THE THUNDER GOD.";
@@ -7892,7 +7777,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
 			name = "SCORPION";
-			nameOffset = 127;
+			nameOffset = 135;
 			line1 = "LIKE SUB-ZERO, SCORPION'S TRUE";
 			line1Offset = 33;
 			line2 = "NAME AND ORIGIN ARE NOT KNOWN.";
@@ -7946,6 +7831,26 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line6 = "ISLAND WHERE THEY WERE AMBUSHED";
 			line6Offset = 28;
 			line7 = "BY SHANG TSUNG'S PERSONAL ARMY.";
+			line7Offset = 28;
+			break;
+		case KASUMI:
+			rapUnpack(BMP_FMV_KASUMI,(int)(int*)imageBufferFMV);
+			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KASUMI_clut),0,128);
+			name = "KASUMI";
+			nameOffset = 136;
+			line1 = "AFTER DEFEATING GYAKU, BROTHERS";
+			line1Offset = 28;
+			line2 = "HABAKI AND SENZO WERE BANISHED TO";
+			line2Offset = 20;
+			line3 = "NETHEREALM. THEY SACRIFICED THEIR";
+			line3Offset = 20;
+			line4 = "MORTAL FORMS TO BECOME KASUMI,";
+			line4Offset = 32;
+			line5 = "AN ALL-POWERFUL UNDEAD WARRIOR.";
+			line5Offset = 28;
+			line6 = "KASUMI ENTERS THE TOURNAMENT TO";
+			line6Offset = 28;
+			line7 = "SEEK REVENGE AND REINCARNATION.";
 			line7Offset = 28;
 			break;
 	}
@@ -8019,6 +7924,9 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 				break;
 			case SONYA:
 				sfxSonya(&soundHandler);
+				break;
+			case KASUMI:
+				sfxKasumi(&soundHandler);
 				break;
 			default:
 				break;
@@ -8273,8 +8181,9 @@ void switchScreenFighterIntro(int fighterIndex)
 {
 	sprite[P1_FIGHTER].active = R_is_inactive;
 	sprite[P2_FIGHTER].active = R_is_inactive;
-	sfxFatalityGong(&soundHandler);
-	switchAttractFMV(fighterIndex - 1, false);
+	sfxIntro(&soundHandler);
+	fmvIndex = fighterIndex;
+	switchAttractFMV(fighterIndex, false);
 	onScreenFighterIntro = true;
 }
 

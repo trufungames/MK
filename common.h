@@ -227,17 +227,17 @@
 #define HARPOON_MINIMUM_DISTANCE 150
 
 //-----------------------------------------------------------------------------------------------------
-#define CAGE 1
-#define KANO 2
-#define RAIDEN 3
-#define KANG 4
-#define SCORPION 5
-#define SUBZERO 6
-#define SONYA 7
+#define CAGE 0
+#define KANO 1
+#define RAIDEN 2
+#define KANG 3
+#define SCORPION 4
+#define SUBZERO 5
+#define SONYA 6
+#define KASUMI 7
 #define REPTILE 8
-#define KASUMI 9
-#define GORO 10
-#define SHANG 11
+#define GORO 9
+#define SHANG 10
 //-----------------------------------------------------------------------------------------------------
 #define INPUT_BACK 1
 #define INPUT_FORWARD 2

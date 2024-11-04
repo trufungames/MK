@@ -147,6 +147,7 @@ ROM,BMP_FMV_KANG,gfx_clut_pack,ASSETS\GFX\fmv_kang.BMP
 ROM,BMP_FMV_SCORPION,gfx_clut_pack,ASSETS\GFX\fmv_scorpion.BMP
 ROM,BMP_FMV_SUBZERO,gfx_clut_pack,ASSETS\GFX\fmv_subzero.BMP
 ROM,BMP_FMV_SONYA,gfx_clut_pack,ASSETS\GFX\fmv_sonya.BMP
+ROM,BMP_FMV_KASUMI,gfx_clut_pack,ASSETS\GFX\fmv_kasumi.BMP
 ROM,BMP_ATTRACT_LEADERBOARD,gfx_clut_pack,ASSETS\GFX\attract_leaderboard.BMP
 ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
 ROM,BMP_ATTRACT_SHANGTSUNG,gfx_clut_pack,ASSETS\GFX\attract_shangtsung.BMP
