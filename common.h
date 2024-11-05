@@ -57,6 +57,7 @@
 #define BLOOD_SQUIRT BLOOD_DROP + 8 //1 of 4
 #define BLOOD_BALL BLOOD_SQUIRT + 4
 #define FIGHT BLOOD_BALL + 4
+#define BATTLEPLAN_TOP FIGHT + 2
 //#define HUD FIGHT + 1
 //#define P1_HEALTHBAR HUD + 2
 //#define P2_HEALTHBAR P1_HEALTHBAR + 1

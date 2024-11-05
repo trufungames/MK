@@ -34,6 +34,7 @@ bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
 bool onScreenFighterIntro = false;
+bool onScreenBattlePlan = false;
 bool fadedIn = false;
 bool fadedOut = false;
 bool kasumiUnlocked = false;
@@ -56,14 +57,16 @@ short attractModeIndex = 0;
 bool goroProfileShown = false;
 bool preppedForFatality = false;
 bool isSinglePlayer = true;
+short myTicks = 0;
+short battleTicks = 0;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
 //3 = GORO LIVES!
 //4 = GORO PROFILE
 //5 = Winners don't use drugs!
-int fmvIndex = 7;
-int attractSlideIndex = 0;
+short fmvIndex = 7;
+short attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
 	true,  //music on/off
@@ -3804,6 +3807,7 @@ void switchScreenChooseFighter();
 void switchScreenFighterIntro(int fighterIndex);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
+void switchScreenBattlePlan();
 void SetPlayerPalettes();
 void setFighterAlternatePalette(int fighter1Index, int fighter2Index);
 void setPlayer1Name(char* name);
@@ -4600,7 +4604,7 @@ void basicmain()
 		bool debugMode = false;
 		pad1 = 0;
 		pad2 = 0;
-		int myTicks = 0;
+		myTicks = 0;
 		p1Cursor = 1;
 		p2Cursor = 2;
 		p1Selected = -1;
@@ -6484,6 +6488,81 @@ void basicmain()
 						updateSpriteAnimator(&fmvAnimator, fmvAllFrames, 7, true, false, 120, 43, 1);
 						break;
 				}
+
+				if (rapTicks > myTicks + (60*1) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
+					|| rapTicks > myTicks + (60*5))
+				{
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
+					switchScreenBattlePlan();
+				}
+			}
+			else if (onScreenBattlePlan)
+			{
+				if (rapTicks >= chooseTicks + 60)
+				{
+					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -300)
+					{
+						sprite[BATTLEPLAN_TOP].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+1].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+2].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+3].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+4].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+5].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+6].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+7].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+8].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+9].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+10].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+11].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+12].y_ -= 4;
+						sprite[BATTLEPLAN_TOP+13].y_ -= 4;
+
+						sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+2].active = sprite[BATTLEPLAN_TOP+2].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+3].active = sprite[BATTLEPLAN_TOP+3].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+4].active = sprite[BATTLEPLAN_TOP+4].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+5].active = sprite[BATTLEPLAN_TOP+5].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+6].active = sprite[BATTLEPLAN_TOP+6].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+7].active = sprite[BATTLEPLAN_TOP+7].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+8].active = sprite[BATTLEPLAN_TOP+8].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+9].active = sprite[BATTLEPLAN_TOP+9].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+10].active = sprite[BATTLEPLAN_TOP+10].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+11].active = sprite[BATTLEPLAN_TOP+11].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
+
+						battleTicks = rapTicks;
+					}
+					else if (sprite[BATTLEPLAN_TOP].y_ <= -300 && rapTicks >= battleTicks + 60)
+					{
+						for (int i = 0; i < 80; i++)
+						{
+							rapFadeClut(0,256,BLACKPAL);
+							jsfVsync(0);
+						}
+
+						roundFightSequenceComplete = false;
+						myTicks = rapTicks;
+						musicStop();
+						bgInit();
+						bloodInit();
+						spriteDelayInit();
+						sleepInit();
+						matchInit();		
+						stageInit();
+						fighterRestartMatch(fighter1Ptr);
+						fighterRestartMatch(fighter2Ptr);
+						switchScreenFight(p1Cursor, p2Cursor, true);
+						stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+						stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+						displayWinnerMedals();
+					}
+				}
 			}
 			else if (onScreenChooseFighter)
 			{
@@ -8185,6 +8264,36 @@ void switchScreenFighterIntro(int fighterIndex)
 	fmvIndex = fighterIndex;
 	switchAttractFMV(fighterIndex, false);
 	onScreenFighterIntro = true;
+	myTicks = rapTicks;
+}
+
+void switchScreenBattlePlan()
+{
+	fadedIn = false;
+	fadedOut = false;
+	onScreenFighterIntro = false;
+	onScreenBattlePlan = true;
+	musicTitle(&soundHandler);
+	rapSetActiveList(3);
+	rapParticleClear();
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_TOP_clut),0,16);
+	sprite[BATTLEPLAN_TOP].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+1].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+2].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+3].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+4].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+5].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+6].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+7].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+8].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+9].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+10].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+11].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+12].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+13].active = R_is_active;
+	myTicks = rapTicks;
+	battleTicks = rapTicks;
+	chooseTicks = rapTicks;
 }
 
 void switchScreenVsBattle(int p1Cursor, int p2Cursor)
