@@ -313,7 +313,7 @@
 #define FIGHTER_BLOOD_HEADZAP_SPEED 8
 #define FIGHTER_FATALITY_KASUMI_HEAD_SPEED_X 8
 #define FIGHTER_PIT_FATALITY_SPEED_X 2
-
+#define FIGHTER_BATTLEPLAN_STEP_Y 4
 //-----------------------------------------------------------------------------------------------------
 #define STAGE_PALACEGATES_FLAME1_X 137
 #define STAGE_PALACEGATES_FLAME2_X 660

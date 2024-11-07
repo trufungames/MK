@@ -24,6 +24,7 @@ short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
 short p2Selected = -1;
+short battlePlanYOffset = 0;
 bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
@@ -59,6 +60,7 @@ bool preppedForFatality = false;
 bool isSinglePlayer = true;
 short myTicks = 0;
 short battleTicks = 0;
+int battleplan_lineup[] = { SCORPION, KANG, CAGE, SUBZERO, KASUMI, RAIDEN, SONYA  };
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
@@ -69,8 +71,8 @@ short fmvIndex = 7;
 short attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -3803,6 +3805,10 @@ void initGoroLives();
 void initGoroProfile();
 void initWinners();
 void initGameAssets();
+void printBattlePlan();
+short getFighterNameOffset(short fighterIndex);
+void setFighterName(short fighterIndex);
+void setFighterNameSpaces(short fighterIndex);
 void switchScreenChooseFighter();
 void switchScreenFighterIntro(int fighterIndex);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
@@ -6504,22 +6510,23 @@ void basicmain()
 			{
 				if (rapTicks >= chooseTicks + 60)
 				{
-					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -300)
+					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -332)
 					{
-						sprite[BATTLEPLAN_TOP].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+1].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+2].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+3].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+4].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+5].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+6].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+7].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+8].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+9].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+10].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+11].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+12].y_ -= 4;
-						sprite[BATTLEPLAN_TOP+13].y_ -= 4;
+						sprite[BATTLEPLAN_TOP].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
 						sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
@@ -6535,10 +6542,14 @@ void basicmain()
 						sprite[BATTLEPLAN_TOP+11].active = sprite[BATTLEPLAN_TOP+11].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
+						
+						battlePlanYOffset -= 2;
+						printBattlePlan();
 
 						battleTicks = rapTicks;
 					}
-					else if (sprite[BATTLEPLAN_TOP].y_ <= -300 && rapTicks >= battleTicks + 60)
+					else if (sprite[BATTLEPLAN_TOP].y_ <= -332 && rapTicks >= battleTicks + 120)
 					{
 						for (int i = 0; i < 80; i++)
 						{
@@ -7947,6 +7958,13 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 		
 	jsfLoadClut((unsigned short *)(void *)(BMP_FMV_BACKGROUND_clut),8,16);
 	
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(nameOffset,14);
+	js_r_textbuffer=name;
+	rapPrint();
+
 	rapUse8x8fontPalette(15);
 	jsfSetFontSize(0);
 	jsfSetFontIndx(0);
@@ -7972,13 +7990,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 	js_r_textbuffer=line7;
 	rapPrint();
 
-	rapUse8x16fontPalette(15);
-	jsfSetFontSize(1);
-	jsfSetFontIndx(1);
-	rapLocate(nameOffset,14);
-	js_r_textbuffer=name;
-	rapPrint();
-
+	
 	if (sayFighterName)
 	{
 		switch (fmvIndex)
@@ -8291,9 +8303,179 @@ void switchScreenBattlePlan()
 	sprite[BATTLEPLAN_TOP+11].active = R_is_active;
 	sprite[BATTLEPLAN_TOP+12].active = R_is_active;
 	sprite[BATTLEPLAN_TOP+13].active = R_is_active;
+	sprite[BATTLEPLAN_TOP+14].active = R_is_active;
 	myTicks = rapTicks;
 	battleTicks = rapTicks;
 	chooseTicks = rapTicks;
+	battlePlanYOffset = 0;
+	printBattlePlan();
+}
+
+void printBattlePlan()
+{
+	//rapParticleClear();
+	
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+
+	rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "           ";
+	rapPrint();
+	rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14);
+	js_r_textbuffer = "BATTLE PLAN";
+	rapPrint();
+
+	rapUse8x8fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(0);
+
+	rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "           ";
+	rapPrint();	
+	rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60);
+	js_r_textbuffer = "SHANG TSUNG";
+	rapPrint();
+
+	rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "    ";
+	rapPrint();
+	rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116);
+	js_r_textbuffer = "GORO";
+	rapPrint();
+
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "          ";
+	rapPrint();
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12);
+	js_r_textbuffer = "ENDURANCE3";
+	rapPrint();
+
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "          ";
+	rapPrint();
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12);
+	js_r_textbuffer = "ENDURANCE2";
+	rapPrint();
+
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+4].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "          ";
+	rapPrint();
+	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+4].y_ + 12);
+	js_r_textbuffer = "ENDURANCE1";
+	rapPrint();
+
+	rapLocate(190 - (6 * 8), sprite[BATTLEPLAN_TOP+6].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+	js_r_textbuffer = "            ";
+	rapPrint();
+	rapLocate(190 - (6 * 8), sprite[BATTLEPLAN_TOP+6].y_ + 12);
+	js_r_textbuffer = "MIRROR MATCH";
+	rapPrint();
+
+	for (short i = 0; i < 7; i++)
+	{
+		if (sprite[BATTLEPLAN_TOP+7+i].y_ + 12 > 0 && sprite[BATTLEPLAN_TOP+7+i].y_ + 12 < 240)
+		{
+			rapLocate(190 - (getFighterNameOffset(battleplan_lineup[i]) * 8), sprite[BATTLEPLAN_TOP+7+i].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+			setFighterNameSpaces(battleplan_lineup[i]);
+			rapPrint();
+			rapLocate(190 - (getFighterNameOffset(battleplan_lineup[i]) * 8), sprite[BATTLEPLAN_TOP+7+i].y_ + 12);
+			setFighterName(battleplan_lineup[i]);
+			rapPrint();
+		}
+	}
+}
+
+short getFighterNameOffset(short fighterIndex)
+{
+	switch(fighterIndex)
+	{
+		case CAGE:
+			return 6;
+		case KANO:
+			return 3;
+		case RAIDEN:
+			return 4;
+		case KANG:
+			return 5;
+		case SCORPION:
+			return 5;
+		case SUBZERO:
+			return 5;
+		case SONYA:
+			return 3;
+		case KASUMI:
+		default:
+			return 4;
+	}
+}
+
+void setFighterName(short fighterIndex)
+{
+	switch(fighterIndex)
+	{
+		case CAGE:
+			js_r_textbuffer = "JOHNNY CAGE";
+			break;
+		case KANO:
+			js_r_textbuffer = "KANO";
+			break;
+		case RAIDEN:
+			js_r_textbuffer = "RAIDEN";
+			break;
+		case KANG:
+			js_r_textbuffer = "LIU KANG";
+			break;
+		case SCORPION:
+			js_r_textbuffer = "SCORPION";
+			break;
+		case SUBZERO:
+			js_r_textbuffer = "SUB-ZERO";
+			break;
+		case SONYA:
+			js_r_textbuffer = "SONYA";
+			break;
+		case KASUMI:
+			js_r_textbuffer = "KASUMI";
+			break;
+		default:
+			js_r_textbuffer = "???";
+			break;
+	}
+}
+
+void setFighterNameSpaces(short fighterIndex)
+{
+	switch(fighterIndex)
+	{
+		case CAGE:
+			js_r_textbuffer = "           ";
+			break;
+		case KANO:
+			js_r_textbuffer = "    ";
+			break;
+		case RAIDEN:
+			js_r_textbuffer = "      ";
+			break;
+		case KANG:
+			js_r_textbuffer = "        ";
+			break;
+		case SCORPION:
+			js_r_textbuffer = "        ";
+			break;
+		case SUBZERO:
+			js_r_textbuffer = "        ";
+			break;
+		case SONYA:
+			js_r_textbuffer = "     ";
+			break;
+		case KASUMI:
+			js_r_textbuffer = "      ";
+			break;
+		default:
+			js_r_textbuffer = "   ";
+			break;
+	}
 }
 
 void switchScreenVsBattle(int p1Cursor, int p2Cursor)
