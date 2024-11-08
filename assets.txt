@@ -160,7 +160,7 @@ ROM,BMP_BATTLEPLAN_ENDURANCE,gfx_clut,ASSETS\GFX\battleplan_endurance.BMP
 ROM,BMP_BATTLEPLAN_SINGLE,gfx_clut,ASSETS\GFX\battleplan_single.BMP
 ROM,BMP_BATTLEPLAN_SHANGTSUNG,gfx_clut,ASSETS\GFX\battleplan_shangtsung.BMP
 ROM,BMP_BATTLEPLAN_GORO,gfx_clut,ASSETS\GFX\battleplan_goro.BMP
-ROM,BMP_BATTLEPLAN_PORTRAITS,gfx_clut,ASSETS\GFX\battleplan_portraits.BMP
+ROM,BMP_BATTLEPLAN_PORTRAITS,gfx_clut_pack,ASSETS\GFX\battleplan_portraits.BMP
 ROM,BMP_ENDINGS_PORTRAITS,gfx_clut_pack,ASSETS\GFX\endings_portraits.BMP
 
 ROM,p1cursor_sam,sfx_raw8000,ASSETS\SFX\p1cursor.wav

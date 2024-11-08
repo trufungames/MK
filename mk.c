@@ -20,6 +20,7 @@
 // Global Variables
 // -----------------------------------------------------------------------
 
+short i = 0;
 short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
@@ -60,6 +61,7 @@ bool preppedForFatality = false;
 bool isSinglePlayer = true;
 short myTicks = 0;
 short battleTicks = 0;
+int battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
 int battleplan_lineup[] = { SCORPION, KANG, CAGE, SUBZERO, KASUMI, RAIDEN, SONYA  };
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
@@ -343,8 +345,65 @@ static State stateHitPitFatality = {
 };
 
 ////////////////////////////////////////////////////////////////////
+static SpriteAnimator battleplanPortrait1Animator = {
+	BATTLEPLAN_PORTRAITS, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait2Animator = {
+	BATTLEPLAN_PORTRAITS+1, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait3Animator = {
+	BATTLEPLAN_PORTRAITS+2, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait4Animator = {
+	BATTLEPLAN_PORTRAITS+3, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait5Animator = {
+	BATTLEPLAN_PORTRAITS+4, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait6Animator = {
+	BATTLEPLAN_PORTRAITS+5, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait7Animator = {
+	BATTLEPLAN_PORTRAITS+6, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait8Animator = {
+	BATTLEPLAN_PORTRAITS+7, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait9Animator = {
+	BATTLEPLAN_PORTRAITS+8, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait10Animator = {
+	BATTLEPLAN_PORTRAITS+9, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait11Animator = {
+	BATTLEPLAN_PORTRAITS+10, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait12Animator = {
+	BATTLEPLAN_PORTRAITS+11, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait13Animator = {
+	BATTLEPLAN_PORTRAITS+12, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait14Animator = {
+	BATTLEPLAN_PORTRAITS+13, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+static SpriteAnimator battleplanPortrait15Animator = {
+	BATTLEPLAN_PORTRAITS+14, 1.0f, BMP_BATTLEPLAN_PORTRAITS, 0, 0, 48
+};
+
 static SpriteAnimator shangTsungAnimator = {
 	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
+};
+
+static AnimationFrame battleplanPortraitFrames[] = {
+	{ 16, 32, 0, 0, 0, 0, 6},
+	{ 16, 32, 16, 0, 0, 0, 6},
+	{ 16, 32, 32, 0, 0, 0, 6},
+	{ 16, 32, 48, 0, 0, 0, 6},
+	{ 16, 32, 64, 0, 0, 0, 6},
+	{ 16, 32, 80, 0, 0, 0, 6},
+	{ 16, 32, 96, 0, 0, 0, 6},
+	{ 16, 32, 112, 0, 0, 0, 6}
 };
 
 static AnimationFrame shangTsungSitFrames[] = {
@@ -6512,6 +6571,23 @@ void basicmain()
 				{
 					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -332)
 					{
+						sprite[BATTLEPLAN_SHANGTSUNG].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_GORO].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN_PORTRAITS+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
@@ -6528,6 +6604,23 @@ void basicmain()
 						sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
+						sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+1].active = sprite[BATTLEPLAN_PORTRAITS+1].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+2].active = sprite[BATTLEPLAN_PORTRAITS+2].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+3].active = sprite[BATTLEPLAN_PORTRAITS+3].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+4].active = sprite[BATTLEPLAN_PORTRAITS+4].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+5].active = sprite[BATTLEPLAN_PORTRAITS+5].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+6].active = sprite[BATTLEPLAN_PORTRAITS+6].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+7].active = sprite[BATTLEPLAN_PORTRAITS+7].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+8].active = sprite[BATTLEPLAN_PORTRAITS+8].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+9].active = sprite[BATTLEPLAN_PORTRAITS+9].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+10].active = sprite[BATTLEPLAN_PORTRAITS+10].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+11].active = sprite[BATTLEPLAN_PORTRAITS+11].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+12].active = sprite[BATTLEPLAN_PORTRAITS+12].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+13].active = sprite[BATTLEPLAN_PORTRAITS+13].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PORTRAITS+14].active = sprite[BATTLEPLAN_PORTRAITS+14].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+2].active = sprite[BATTLEPLAN_TOP+2].y_ > -32 ? R_is_active : R_is_inactive;
@@ -8281,6 +8374,37 @@ void switchScreenFighterIntro(int fighterIndex)
 
 void switchScreenBattlePlan()
 {
+	rapUnpack(BMP_BATTLEPLAN_PORTRAITS,(int)(int*)imageBuffer320x240);
+	sprite[BATTLEPLAN_PORTRAITS].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+1].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+2].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+3].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+4].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+5].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+6].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+7].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+8].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+9].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+10].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+11].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+12].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+13].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLEPLAN_PORTRAITS+14].gfxbase=(int)imageBuffer320x240;
+	battleplanPortrait1Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait2Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait3Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait4Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait5Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait6Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait7Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait8Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait9Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait10Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait11Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait12Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait13Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait14Animator.base = (int)imageBuffer320x240;
+	battleplanPortrait15Animator.base = (int)imageBuffer320x240;
 	fadedIn = false;
 	fadedOut = false;
 	onScreenFighterIntro = false;
@@ -8288,7 +8412,40 @@ void switchScreenBattlePlan()
 	musicTitle(&soundHandler);
 	rapSetActiveList(3);
 	rapParticleClear();
-	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_TOP_clut),0,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_TOP_clut),12,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_PORTRAITS_clut),0,96);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_GORO_clut),13,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_SHANGTSUNG_clut),14,16);
+	
+	sprite[BATTLEPLAN_PORTRAITS].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS].y_ = sprite[BATTLEPLAN_TOP+2].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS, &battleplanPortrait1Animator, &battleplanPortraitFrames[battleplan_endurance[0]], sprite[BATTLEPLAN_PORTRAITS].x_, sprite[BATTLEPLAN_PORTRAITS].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+1].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+1].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+1].y_ = sprite[BATTLEPLAN_TOP+2].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+1, &battleplanPortrait2Animator, &battleplanPortraitFrames[battleplan_endurance[1]], sprite[BATTLEPLAN_PORTRAITS+1].x_, sprite[BATTLEPLAN_PORTRAITS+1].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+2].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+2].y_ = sprite[BATTLEPLAN_TOP+3].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+2, &battleplanPortrait3Animator, &battleplanPortraitFrames[battleplan_endurance[2]], sprite[BATTLEPLAN_PORTRAITS+2].x_, sprite[BATTLEPLAN_PORTRAITS+2].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+3].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+3].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+3].y_ = sprite[BATTLEPLAN_TOP+3].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+3, &battleplanPortrait4Animator, &battleplanPortraitFrames[battleplan_endurance[3]], sprite[BATTLEPLAN_PORTRAITS+3].x_, sprite[BATTLEPLAN_PORTRAITS+3].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+4].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+4].y_ = sprite[BATTLEPLAN_TOP+4].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+4, &battleplanPortrait5Animator, &battleplanPortraitFrames[battleplan_endurance[4]], sprite[BATTLEPLAN_PORTRAITS+4].x_, sprite[BATTLEPLAN_PORTRAITS+4].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+5].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+5].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+5].y_ = sprite[BATTLEPLAN_TOP+4].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+5, &battleplanPortrait6Animator, &battleplanPortraitFrames[battleplan_endurance[5]], sprite[BATTLEPLAN_PORTRAITS+5].x_, sprite[BATTLEPLAN_PORTRAITS+5].y_, 1);
+
+	sprite[BATTLEPLAN_SHANGTSUNG].active = R_is_active;
+	sprite[BATTLEPLAN_GORO].active = R_is_active;
 	sprite[BATTLEPLAN_TOP].active = R_is_active;
 	sprite[BATTLEPLAN_TOP+1].active = R_is_active;
 	sprite[BATTLEPLAN_TOP+2].active = R_is_active;
@@ -8372,7 +8529,7 @@ void printBattlePlan()
 	js_r_textbuffer = "MIRROR MATCH";
 	rapPrint();
 
-	for (short i = 0; i < 7; i++)
+	for (i = 0; i < 7; i++)
 	{
 		if (sprite[BATTLEPLAN_TOP+7+i].y_ + 12 > 0 && sprite[BATTLEPLAN_TOP+7+i].y_ + 12 < 240)
 		{
