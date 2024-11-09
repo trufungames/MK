@@ -73,8 +73,8 @@ short fmvIndex = 7;
 short attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -3872,7 +3872,7 @@ void switchScreenChooseFighter();
 void switchScreenFighterIntro(int fighterIndex);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground);
-void switchScreenBattlePlan();
+void switchScreenBattlePlan(int fighterIndex);
 void SetPlayerPalettes();
 void setFighterAlternatePalette(int fighter1Index, int fighter2Index);
 void setPlayer1Name(char* name);
@@ -6562,12 +6562,12 @@ void basicmain()
 						rapFadeClut(0,256,BLACKPAL);
 						jsfVsync(0);
 					}
-					switchScreenBattlePlan();
+					switchScreenBattlePlan(fighter1Ptr->fighterIndex);
 				}
 			}
 			else if (onScreenBattlePlan)
 			{
-				if (rapTicks >= chooseTicks + 60)
+				if (rapTicks >= chooseTicks + 40)
 				{
 					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -332)
 					{
@@ -6603,7 +6603,12 @@ void basicmain()
 						sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 						sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
+						sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
+						sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
+
+						sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
@@ -6636,6 +6641,7 @@ void basicmain()
 						sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
 						sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
+						sprite[BATTLEPLAN_PLAYER_MARKER].active = sprite[BATTLEPLAN_PLAYER_MARKER].y_ > -32 ? R_is_active : R_is_inactive;
 						
 						battlePlanYOffset -= 2;
 						printBattlePlan();
@@ -8372,7 +8378,7 @@ void switchScreenFighterIntro(int fighterIndex)
 	myTicks = rapTicks;
 }
 
-void switchScreenBattlePlan()
+void switchScreenBattlePlan(int fighterIndex)
 {
 	rapUnpack(BMP_BATTLEPLAN_PORTRAITS,(int)(int*)imageBuffer320x240);
 	sprite[BATTLEPLAN_PORTRAITS].gfxbase=(int)imageBuffer320x240;
@@ -8412,11 +8418,17 @@ void switchScreenBattlePlan()
 	musicTitle(&soundHandler);
 	rapSetActiveList(3);
 	rapParticleClear();
-	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_TOP_clut),12,16);
+	
 	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_PORTRAITS_clut),0,96);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_clut),10,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_MARKER_clut),11,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_TOP_clut),12,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_GORO_clut),13,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLEPLAN_SHANGTSUNG_clut),14,16);
 	
+	///////////////////////////////////////////////////////////////////////
+	//ENDURANCE MATCHES
+	///////////////////////////////////////////////////////////////////////
 	sprite[BATTLEPLAN_PORTRAITS].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS].y_ = sprite[BATTLEPLAN_TOP+2].y_ + 3;
 	setAnimationFrame(BATTLEPLAN_PORTRAITS, &battleplanPortrait1Animator, &battleplanPortraitFrames[battleplan_endurance[0]], sprite[BATTLEPLAN_PORTRAITS].x_, sprite[BATTLEPLAN_PORTRAITS].y_, 1);
@@ -8443,6 +8455,54 @@ void switchScreenBattlePlan()
 	sprite[BATTLEPLAN_PORTRAITS+5].x_ += 24;
 	sprite[BATTLEPLAN_PORTRAITS+5].y_ = sprite[BATTLEPLAN_TOP+4].y_ + 3;
 	setAnimationFrame(BATTLEPLAN_PORTRAITS+5, &battleplanPortrait6Animator, &battleplanPortraitFrames[battleplan_endurance[5]], sprite[BATTLEPLAN_PORTRAITS+5].x_, sprite[BATTLEPLAN_PORTRAITS+5].y_, 1);
+
+	///////////////////////////////////////////////////////////////////////
+	//1-ON-1 MATCHES
+	///////////////////////////////////////////////////////////////////////
+	sprite[BATTLEPLAN_PORTRAITS+6].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+6].y_ = sprite[BATTLEPLAN_TOP+6].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+6, &battleplanPortrait7Animator, &battleplanPortraitFrames[fighterIndex], sprite[BATTLEPLAN_PORTRAITS+6].x_, sprite[BATTLEPLAN_PORTRAITS+6].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+7].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+7].y_ = sprite[BATTLEPLAN_TOP+7].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+7, &battleplanPortrait8Animator, &battleplanPortraitFrames[battleplan_lineup[0]], sprite[BATTLEPLAN_PORTRAITS+7].x_, sprite[BATTLEPLAN_PORTRAITS+7].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+8].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+8].y_ = sprite[BATTLEPLAN_TOP+8].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+8, &battleplanPortrait9Animator, &battleplanPortraitFrames[battleplan_lineup[1]], sprite[BATTLEPLAN_PORTRAITS+8].x_, sprite[BATTLEPLAN_PORTRAITS+8].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+9].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+9].y_ = sprite[BATTLEPLAN_TOP+9].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+9, &battleplanPortrait10Animator, &battleplanPortraitFrames[battleplan_lineup[2]], sprite[BATTLEPLAN_PORTRAITS+9].x_, sprite[BATTLEPLAN_PORTRAITS+9].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+10].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+10].y_ = sprite[BATTLEPLAN_TOP+10].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+10, &battleplanPortrait11Animator, &battleplanPortraitFrames[battleplan_lineup[3]], sprite[BATTLEPLAN_PORTRAITS+10].x_, sprite[BATTLEPLAN_PORTRAITS+10].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+11].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+11].y_ = sprite[BATTLEPLAN_TOP+11].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+11, &battleplanPortrait12Animator, &battleplanPortraitFrames[battleplan_lineup[4]], sprite[BATTLEPLAN_PORTRAITS+11].x_, sprite[BATTLEPLAN_PORTRAITS+11].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+12].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+12].y_ = sprite[BATTLEPLAN_TOP+12].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+12, &battleplanPortrait13Animator, &battleplanPortraitFrames[battleplan_lineup[5]], sprite[BATTLEPLAN_PORTRAITS+12].x_, sprite[BATTLEPLAN_PORTRAITS+12].y_, 1);
+
+	sprite[BATTLEPLAN_PORTRAITS+13].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+13].y_ = sprite[BATTLEPLAN_TOP+13].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+13, &battleplanPortrait14Animator, &battleplanPortraitFrames[battleplan_lineup[6]], sprite[BATTLEPLAN_PORTRAITS+13].x_, sprite[BATTLEPLAN_PORTRAITS+13].y_, 1);
+
+	///////////////////////////////////////////////////////////////////
+	//THE PLAYER
+	///////////////////////////////////////////////////////////////////
+	sprite[BATTLEPLAN_PORTRAITS+14].active = R_is_active;
+	sprite[BATTLEPLAN_PORTRAITS+14].x_ -= 28;
+	sprite[BATTLEPLAN_PORTRAITS+14].y_ = sprite[BATTLEPLAN_TOP+13].y_ + 3;
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+14, &battleplanPortrait15Animator, &battleplanPortraitFrames[fighterIndex], sprite[BATTLEPLAN_PORTRAITS+14].x_, sprite[BATTLEPLAN_PORTRAITS+14].y_, 1);
+
+	sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
+	sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
+
+	sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
 
 	sprite[BATTLEPLAN_SHANGTSUNG].active = R_is_active;
 	sprite[BATTLEPLAN_GORO].active = R_is_active;
@@ -8472,16 +8532,16 @@ void printBattlePlan()
 {
 	//rapParticleClear();
 	
-	rapUse8x16fontPalette(15);
-	jsfSetFontSize(1);
-	jsfSetFontIndx(1);
+	// rapUse8x16fontPalette(15);
+	// jsfSetFontSize(1);
+	// jsfSetFontIndx(1);
 
-	rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14 + FIGHTER_BATTLEPLAN_STEP_Y);
-	js_r_textbuffer = "           ";
-	rapPrint();
-	rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14);
-	js_r_textbuffer = "BATTLE PLAN";
-	rapPrint();
+	// rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14 + FIGHTER_BATTLEPLAN_STEP_Y);
+	// js_r_textbuffer = "           ";
+	// rapPrint();
+	// rapLocate(115, sprite[BATTLEPLAN_TOP].y_ + 14);
+	// js_r_textbuffer = "BATTLE PLAN";
+	// rapPrint();
 
 	rapUse8x8fontPalette(15);
 	jsfSetFontSize(0);

@@ -153,6 +153,7 @@ ROM,BMP_ATTRACT_GORO,gfx_clut_pack,ASSETS\GFX\attract_goro.BMP
 ROM,BMP_ATTRACT_SHANGTSUNG,gfx_clut_pack,ASSETS\GFX\attract_shangtsung.BMP
 ROM,BMP_ATTRACT_WINNERS,gfx_clut_pack,ASSETS\GFX\attract_winners.BMP
 'ROM,BMP_ATTRACT_REAL,gfx_clut_pack,ASSETS\GFX\attract_real.BMP
+ROM,BMP_BATTLEPLAN,gfx_clut,ASSETS\GFX\battleplan.BMP
 ROM,BMP_BATTLEPLAN_TOP,gfx_clut,ASSETS\GFX\battleplan_top.BMP
 ROM,BMP_BATTLEPLAN_BOTTOM,gfx_clut,ASSETS\GFX\battleplan_bottom.BMP
 ROM,BMP_BATTLEPLAN_INTERSECTION,gfx_clut,ASSETS\GFX\battleplan_intersection.BMP
@@ -160,6 +161,7 @@ ROM,BMP_BATTLEPLAN_ENDURANCE,gfx_clut,ASSETS\GFX\battleplan_endurance.BMP
 ROM,BMP_BATTLEPLAN_SINGLE,gfx_clut,ASSETS\GFX\battleplan_single.BMP
 ROM,BMP_BATTLEPLAN_SHANGTSUNG,gfx_clut,ASSETS\GFX\battleplan_shangtsung.BMP
 ROM,BMP_BATTLEPLAN_GORO,gfx_clut,ASSETS\GFX\battleplan_goro.BMP
+ROM,BMP_BATTLEPLAN_MARKER,gfx_clut,ASSETS\GFX\battleplan_marker.BMP
 ROM,BMP_BATTLEPLAN_PORTRAITS,gfx_clut_pack,ASSETS\GFX\battleplan_portraits.BMP
 ROM,BMP_ENDINGS_PORTRAITS,gfx_clut_pack,ASSETS\GFX\endings_portraits.BMP
 
