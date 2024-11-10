@@ -6562,7 +6562,21 @@ void basicmain()
 						rapFadeClut(0,256,BLACKPAL);
 						jsfVsync(0);
 					}
-					switchScreenBattlePlan(fighter1Ptr->fighterIndex);
+					//switchScreenBattlePlan(fighter1Ptr->fighterIndex);
+					roundFightSequenceComplete = false;
+					myTicks = rapTicks;
+					bgInit();
+					bloodInit();
+					spriteDelayInit();
+					sleepInit();
+					matchInit();		
+					stageInit();
+					fighterRestartMatch(fighter1Ptr);
+					fighterRestartMatch(fighter2Ptr);
+					switchScreenFight(p1Cursor, p2Cursor, true);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+					stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+					displayWinnerMedals();
 				}
 			}
 			else if (onScreenBattlePlan)
@@ -6654,6 +6668,11 @@ void basicmain()
 						{
 							rapFadeClut(0,256,BLACKPAL);
 							jsfVsync(0);
+						}
+
+						for (i = 0; i < 22; i++)
+						{
+							sprite[BATTLEPLAN_TOP-1+i].active = R_is_inactive;
 						}
 
 						roundFightSequenceComplete = false;
@@ -7411,8 +7430,8 @@ void basicmain()
 					stageSetNext();
 
 					if (isSinglePlayer)
-					{
-						switchScreenFighterIntro(fighter1Ptr->fighterIndex);
+					{		
+						switchScreenBattlePlan(fighter1Ptr->fighterIndex);		
 					}
 					else
 					{
@@ -8037,10 +8056,10 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line4Offset = 32;
 			line5 = "AN ALL-POWERFUL UNDEAD WARRIOR.";
 			line5Offset = 28;
-			line6 = "KASUMI ENTERS THE TOURNAMENT TO";
-			line6Offset = 28;
-			line7 = "SEEK REVENGE AND REINCARNATION.";
-			line7Offset = 28;
+			line6 = "KASUMI ENTERS THE TOURNAMENT";
+			line6Offset = 36;
+			line7 = "SEEKING REVENGE AND REINCARNATION.";
+			line7Offset = 16;
 			break;
 	}
 
@@ -8372,10 +8391,11 @@ void switchScreenFighterIntro(int fighterIndex)
 	sprite[P1_FIGHTER].active = R_is_inactive;
 	sprite[P2_FIGHTER].active = R_is_inactive;
 	sfxIntro(&soundHandler);
-	fmvIndex = fighterIndex;
+	fmvIndex = fighterIndex;  //try this, then the next line to see what fixes it...
 	switchAttractFMV(fighterIndex, false);
 	onScreenFighterIntro = true;
 	myTicks = rapTicks;
+	rapSetActiveList(0);
 }
 
 void switchScreenBattlePlan(int fighterIndex)
@@ -8786,6 +8806,10 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 
 void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 {
+	sprite[P1_FIGHTER].active = R_is_active;
+	sprite[P2_FIGHTER].active = R_is_active;
+	sprite[FMV].active = R_is_inactive;
+	rapParticleClear();
 	rapTicks = 0;
 	lastTicks = rapTicks;
 	bgResetTicks();
@@ -9439,6 +9463,8 @@ void switchScreenFight(int p1Cursor, int p2Cursor, bool unpackBackground)
 	cameraInit(stageGet(), stageGetStartX(), stageGetStartY(), 214, (int)imageBuffer);
 	stagePositionAssets();
 	onScreenVsBattle = false;
+	onScreenFighterIntro = false;
+	onScreenBattlePlan = false;
 	onScreenFight = true;
 }
 
