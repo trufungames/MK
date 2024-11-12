@@ -62,7 +62,7 @@ bool isSinglePlayer = true;
 short myTicks = 0;
 short battleTicks = 0;
 int battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
-int battleplan_lineup[] = { SCORPION, KANG, CAGE, SUBZERO, KASUMI, RAIDEN, SONYA  };
+int battleplan_lineup[] = { -1, -1, -1, -1, -1, -1, -1 };
 int battleplan_index = 6;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
@@ -3851,6 +3851,8 @@ static AnimationFrame fmvAllFrames[] = {
 // *************************************************
 //               User Prototypes
 // *************************************************
+void shuffleLineup(int fighterIndex);
+bool lineupContains(int fighterIndex);
 void initBlackPalettes();
 void initAlphaScreen();
 void initTruFunScreen();
@@ -6563,44 +6565,67 @@ void basicmain()
 						rapFadeClut(0,256,BLACKPAL);
 						jsfVsync(0);
 					}
+
+					shuffleLineup(fighter1Ptr->fighterIndex);
 					
-					switch(battleplan_index)
+					switch(battleplan_lineup[battleplan_index])
 					{
 						case CAGE:
 							fighter2Ptr = &fighterCage2;
 							spriteAnimator2Ptr = &cageAnimator2;
+							fighterMakeSelectable(&fighterCage2, false);
+							fighterShow(&fighterCage2);
 							break;
 						case KANO:
 							fighter2Ptr = &fighterKano2;
 							spriteAnimator2Ptr = &kanoAnimator2;
+							fighterMakeSelectable(&fighterKano2, false);
+							fighterShow(&fighterKano2);
 							break;
 						case RAIDEN:
 							fighter2Ptr = &fighterRaiden2;
 							spriteAnimator2Ptr = &raidenAnimator2;
+							fighterMakeSelectable(&fighterRaiden2, false);
+							fighterShow(&fighterRaiden2);
 							break;
 						case KANG:
 							fighter2Ptr = &fighterKang2;
 							spriteAnimator2Ptr = &kangAnimator2;
+							fighterMakeSelectable(&fighterKang2, false);
+							fighterShow(&fighterKang2);
 							break;
 						case SCORPION:
 							fighter2Ptr = &fighterScorpion2;
 							spriteAnimator2Ptr = &scorpionAnimator2;
+							fighterMakeSelectable(&fighterScorpion2, false);
+							fighterShow(&fighterScorpion2);
 							break;
 						case SUBZERO:
 							fighter2Ptr = &fighterSubzero2;
 							spriteAnimator2Ptr = &subzeroAnimator2;
+							fighterMakeSelectable(&fighterSubzero2, false);
+							fighterShow(&fighterSubzero2);
 							break;
 						case SONYA:
 							fighter2Ptr = &fighterSonya2;
 							spriteAnimator2Ptr = &sonyaAnimator2;
+							fighterMakeSelectable(&fighterSonya2, false);
+							fighterShow(&fighterSonya2);
 							break;
 						case KASUMI:
 							fighter2Ptr = &fighterKasumi2;
 							spriteAnimator2Ptr = &kasumiAnimator2;
+							fighterMakeSelectable(&fighterKasumi2, false);
+							fighterShow(&fighterKasumi2);
 							break;
 						default:
 							break;
 					}
+					fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;
+					fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
+					fighter1Ptr->Opponent = fighter2Ptr;
+					fighter2Ptr->Opponent = fighter1Ptr;
+					
 					switchScreenBattlePlan(fighter1Ptr->fighterIndex);
 					// roundFightSequenceComplete = false;
 					// myTicks = rapTicks;
@@ -7813,6 +7838,32 @@ void basicmain()
 	}
 }
 
+void shuffleLineup(int fighterIndex)
+{
+	int randomFighter = -1;
+
+	for (int i = 0; i < 7; i++)
+	{
+		randomFighter = rapRND() % 8;
+
+		while (randomFighter < 0 || randomFighter > 7 || randomFighter == fighterIndex || lineupContains(randomFighter))
+			randomFighter = rapRND() % 8;
+		
+		battleplan_lineup[i] = randomFighter;
+	}
+}
+
+bool lineupContains(int fighterIndex)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		if (battleplan_lineup[i] == fighterIndex)
+			return true;
+	}
+
+	return false;
+}
+
 void initBlackPalettes()
 {
 	for (int i = 0; i < 8; i++)
@@ -8764,91 +8815,91 @@ void setFighterNameSpaces(short fighterIndex)
 
 void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 {
-	//chooseTicks = rapTicks;
-	// rapParticleClear();
-	// rapUnpack(BMP_BATTLESCREEN,(int)(int*)imageBuffer320x240);
-	// sprite[BATTLE_SCREEN].gfxbase=(int)imageBuffer320x240;
-	// sprite[BATTLE_SCREEN].active=R_is_active;
+	chooseTicks = rapTicks;
+	rapParticleClear();
+	rapUnpack(BMP_BATTLESCREEN,(int)(int*)imageBuffer320x240);
+	sprite[BATTLE_SCREEN].gfxbase=(int)imageBuffer320x240;
+	sprite[BATTLE_SCREEN].active=R_is_active;
 
-	// jsfLoadClut((unsigned short *)(void *)(BMP_BATTLESCREEN_clut),0,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_BATTLESCREEN_clut),0,16);
 
-	// switch (p1Cursor)
-	// {
-	// 	case 0:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
-	// 		break;
-	// 	case 1:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
-	// 		break;
-	// 	case 2:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
-	// 		break;
-	// 	case 3:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
-	// 		break;
-	// 	case 4:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
-	// 		break;
-	// 	case 5:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
-	// 		break;
-	// 	case 6:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
-	// 		break;
-	// 	case 7:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),4,16);
-	// 		sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
-	// 		break;
-	// }
+	switch (p1Cursor)
+	{
+		case 0:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
+			break;
+		case 1:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
+			break;
+		case 2:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
+			break;
+		case 3:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
+			break;
+		case 4:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
+			break;
+		case 5:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
+			break;
+		case 6:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
+			break;
+		case 7:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),4,16);
+			sprite[P1_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
+			break;
+	}
 
-	// switch (p2Cursor)
-	// {
-	// 	case 0:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
-	// 		break;
-	// 	case 1:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
-	// 		break;
-	// 	case 2:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
-	// 		break;
-	// 	case 3:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
-	// 		break;
-	// 	case 4:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
-	// 		break;
-	// 	case 5:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
-	// 		break;
-	// 	case 6:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
-	// 		break;
-	// 	case 7:
-	// 		jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),5,16);
-	// 		sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
-	// 		break;
-	// }
+	switch (p2Cursor)
+	{
+		case 0:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_CAGE_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_CAGE;
+			break;
+		case 1:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANO_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANO;
+			break;
+		case 2:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SUBZERO_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SUBZERO;
+			break;
+		case 3:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SONYA_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SONYA;
+			break;
+		case 4:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_RAIDEN_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_RAIDEN;
+			break;
+		case 5:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KANG_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KANG;
+			break;
+		case 6:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_SCORPION_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_SCORPION;
+			break;
+		case 7:
+			jsfLoadClut((unsigned short *)(void *)(BMP_PT_KASUMI_clut),5,16);
+			sprite[P2_PT_PORTRAIT].gfxbase = BMP_PT_KASUMI;
+			break;
+	}
 
-	// stageLoadVsBattle();
+	stageLoadVsBattle();
 
 	onScreenChooseFighter = false;
 	onScreenVsBattle = true;
-	//rapSetActiveList(1);
+	rapSetActiveList(1);
 }
 
 void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackground)
