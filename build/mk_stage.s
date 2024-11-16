@@ -57,7 +57,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8503616,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8502176,4844(%a0)
+	move.l #8502176,5036(%a0)
 	lea (12,%sp),%sp
 .L7:
 	unlk %fp
@@ -68,7 +68,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8502144,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8500704,4844(%a0)
+	move.l #8500704,5036(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -78,7 +78,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8496256,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8494816,4844(%a0)
+	move.l #8494816,5036(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -88,7 +88,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8497728,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8496288,4844(%a0)
+	move.l #8496288,5036(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -98,7 +98,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8500672,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8499232,4844(%a0)
+	move.l #8499232,5036(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -108,7 +108,7 @@ __Z17stageLoadVsBattlev:
 	move.l #8499200,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8497760,4844(%a0)
+	move.l #8497760,5036(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -146,7 +146,7 @@ __Z11stageUpdatev:
 	jle .L24
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 5576(%a3),%a0
+	move.w 5768(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -158,8 +158,8 @@ __Z11stageUpdatev:
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
 	jsr (%a4)
-	move.w %d0,5576(%a3)
-	move.w 5768(%a3),%a0
+	move.w %d0,5768(%a3)
+	move.w 5960(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -170,7 +170,7 @@ __Z11stageUpdatev:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	addq.l #4,%sp
-	move.w %d0,5768(%a3)
+	move.w %d0,5960(%a3)
 	move.l %a2,__ZL11cloudTicks1
 .L24:
 	move.l __ZL11cloudTicks2,%d0
@@ -179,7 +179,7 @@ __Z11stageUpdatev:
 	jge .L25
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 5960(%a3),%a0
+	move.w 6152(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -190,17 +190,6 @@ __Z11stageUpdatev:
 	addq.l #8,%sp
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,5960(%a3)
-	move.w 6152(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,6152(%a3)
 	move.w 6344(%a3),%a0
@@ -213,8 +202,19 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	addq.l #4,%sp
 	move.w %d0,6344(%a3)
+	move.w 6536(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.w %d0,6536(%a3)
 	move.l %a2,__ZL11cloudTicks2
 .L25:
 	move.l __ZL11cloudTicks3,%d0
@@ -223,7 +223,7 @@ __Z11stageUpdatev:
 	jge .L18
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 6536(%a3),%a0
+	move.w 6728(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -234,17 +234,6 @@ __Z11stageUpdatev:
 	addq.l #8,%sp
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
-	jsr (%a4)
-	move.w %d0,6536(%a3)
-	move.w 6728(%a3),%a0
-	move.l %a0,(%sp)
-	move.l %d2,%a0
-	jsr (%a0)
-	move.l #0x3f800000,(%sp)
-	move.l %d0,-(%sp)
-	jsr (%a5)
-	addq.l #4,%sp
-	move.l %d0,(%sp)
 	jsr (%a4)
 	move.w %d0,6728(%a3)
 	move.w 6920(%a3),%a0
@@ -257,8 +246,19 @@ __Z11stageUpdatev:
 	addq.l #4,%sp
 	move.l %d0,(%sp)
 	jsr (%a4)
-	addq.l #4,%sp
 	move.w %d0,6920(%a3)
+	move.w 7112(%a3),%a0
+	move.l %a0,(%sp)
+	move.l %d2,%a0
+	jsr (%a0)
+	move.l #0x3f800000,(%sp)
+	move.l %d0,-(%sp)
+	jsr (%a5)
+	addq.l #4,%sp
+	move.l %d0,(%sp)
+	jsr (%a4)
+	addq.l #4,%sp
+	move.w %d0,7112(%a3)
 	move.l %a2,__ZL11cloudTicks3
 	movem.l -20(%fp),#15364
 	unlk %fp
@@ -271,7 +271,7 @@ __Z11stageUpdatev:
 	jle .L18
 	move.l sprite,%a3
 	move.l #___floatsisf,%d2
-	move.w 7112(%a3),%a0
+	move.w 7304(%a3),%a0
 	move.l %a0,-(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -283,8 +283,8 @@ __Z11stageUpdatev:
 	lea ___fixsfsi,%a4
 	move.l %d0,-(%sp)
 	jsr (%a4)
-	move.w %d0,7112(%a3)
-	move.w 7304(%a3),%a0
+	move.w %d0,7304(%a3)
+	move.w 7496(%a3),%a0
 	move.l %a0,(%sp)
 	move.l %d2,%a0
 	jsr (%a0)
@@ -295,7 +295,7 @@ __Z11stageUpdatev:
 	move.l %d0,(%sp)
 	jsr (%a4)
 	addq.l #4,%sp
-	move.w %d0,7304(%a3)
+	move.w %d0,7496(%a3)
 	move.l %a2,__ZL11cloudTicks1
 	movem.l -20(%fp),#15364
 	unlk %fp
@@ -315,7 +315,7 @@ __Z11stageUpdatev:
 	.globl	__Z26stageGetFighterHitboxIndexv
 __Z26stageGetFighterHitboxIndexv:
 	link.w %fp,#0
-	moveq #34,%d0
+	moveq #35,%d0
 	unlk %fp
 	rts
 	.even
@@ -381,34 +381,34 @@ __Z9stageMoveii:
 	.word .L48-.L49
 .L48:
 	add.w %d0,%d0
-	add.w %d0,10568(%a0)
+	add.w %d0,10760(%a0)
 .L42:
 	unlk %fp
 	rts
 .L47:
 	add.w %d0,%d0
-	add.w %d0,14216(%a0)
+	add.w %d0,14408(%a0)
 	unlk %fp
 	rts
 .L44:
-	add.w %d0,9224(%a0)
+	add.w %d0,9416(%a0)
 	unlk %fp
 	rts
 .L45:
 	add.w %d0,%d0
-	add.w %d0,13832(%a0)
-	add.w %d0,9800(%a0)
+	add.w %d0,14024(%a0)
 	add.w %d0,9992(%a0)
+	add.w %d0,10184(%a0)
 	unlk %fp
 	rts
 .L46:
-	add.w %d0,7688(%a0)
 	add.w %d0,7880(%a0)
 	add.w %d0,8072(%a0)
 	add.w %d0,8264(%a0)
+	add.w %d0,8456(%a0)
 	add.w %d0,%d0
-	add.w %d0,13832(%a0)
 	add.w %d0,14024(%a0)
+	add.w %d0,14216(%a0)
 	unlk %fp
 	rts
 	.even
@@ -454,7 +454,7 @@ __Z19stagePositionAssetsv:
 	jsr __Z10cameraGetXv
 	move.w #352,%d1
 	sub.w %d0,%d1
-	move.w %d1,10568(%a2)
+	move.w %d1,10760(%a2)
 .L54:
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
@@ -465,7 +465,7 @@ __Z19stagePositionAssetsv:
 	jsr __Z10cameraGetXv
 	moveq #4,%d1
 	sub.w %d0,%d1
-	move.w %d1,14216(%a2)
+	move.w %d1,14408(%a2)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -474,7 +474,7 @@ __Z19stagePositionAssetsv:
 	move.l sprite,%a2
 	jsr __Z17cameraGetParalaxXv
 	neg.w %d0
-	move.w %d0,9224(%a2)
+	move.w %d0,9416(%a2)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -485,17 +485,17 @@ __Z19stagePositionAssetsv:
 	jsr (%a2)
 	moveq #10,%d1
 	sub.w %d0,%d1
-	move.w %d1,13832(%a3)
+	move.w %d1,14024(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #137,%d1
 	sub.w %d0,%d1
-	move.w %d1,9800(%a3)
+	move.w %d1,9992(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #660,%d1
 	sub.w %d0,%d1
-	move.w %d1,9992(%a3)
+	move.w %d1,10184(%a3)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -506,53 +506,53 @@ __Z19stagePositionAssetsv:
 	jsr (%a2)
 	move.w #128,%d1
 	sub.w %d0,%d1
-	move.w %d1,7688(%a3)
+	move.w %d1,7880(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #220,%d1
 	sub.w %d0,%d1
-	move.w %d1,7880(%a3)
+	move.w %d1,8072(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #340,%d1
 	sub.w %d0,%d1
-	move.w %d1,8072(%a3)
+	move.w %d1,8264(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #416,%d1
 	sub.w %d0,%d1
-	move.w %d1,8264(%a3)
+	move.w %d1,8456(%a3)
 	move.l sprite,%a3
 	lea __Z10cameraGetXv,%a2
 	jsr (%a2)
 	moveq #10,%d1
 	sub.w %d0,%d1
-	move.w %d1,13832(%a3)
+	move.w %d1,14024(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #730,%d1
 	sub.w %d0,%d1
-	move.w %d1,14024(%a3)
+	move.w %d1,14216(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #135,%d1
 	sub.w %d0,%d1
-	move.w %d1,9800(%a3)
+	move.w %d1,9992(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #338,%d1
 	sub.w %d0,%d1
-	move.w %d1,9992(%a3)
+	move.w %d1,10184(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #428,%d1
 	sub.w %d0,%d1
-	move.w %d1,10184(%a3)
+	move.w %d1,10376(%a3)
 	move.l sprite,%a3
 	jsr (%a2)
 	move.w #639,%d1
 	sub.w %d0,%d1
-	move.w %d1,10376(%a3)
+	move.w %d1,10568(%a3)
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
@@ -590,7 +590,7 @@ sprite:
 .lcomm __ZL11cloudTicks3,4
 	.even
 __ZL13monksAnimator:
-	.long	48
+	.long	49
 	.long	1056964608
 	.long	12550512
 	.word	0

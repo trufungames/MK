@@ -112,16 +112,6 @@ void sfxP2Cursor(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1,SOUND_P2CURSOR,8000);
 }
 
-void sfxGong(struct SoundHandler* soundHandler)
-{
-	if (!soundHandler->EnableSFX)
-		return;
-
-	soundNextChannel(soundHandler);
-	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_GONG, 8000);
-	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_GONG, 8000);
-}
-
 void sfxIntro(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)

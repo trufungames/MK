@@ -20,7 +20,6 @@
 // Global Variables
 // -----------------------------------------------------------------------
 
-short i = 0;
 short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
@@ -36,6 +35,7 @@ bool onScreenChooseFighter = false;
 bool onScreenVsBattle = false;
 bool onScreenFight = false;
 bool onScreenFighterIntro = false;
+bool onScreenFighterEnding = false;
 bool onScreenBattlePlan = false;
 bool fadedIn = false;
 bool fadedOut = false;
@@ -63,7 +63,7 @@ short myTicks = 0;
 short battleTicks = 0;
 int battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
 int battleplan_lineup[] = { -1, -1, -1, -1, -1, -1, -1 };
-int battleplan_index = 6;
+int battleplan_index = 1;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
@@ -394,6 +394,25 @@ static SpriteAnimator battleplanPortrait15Animator = {
 
 static SpriteAnimator shangTsungAnimator = {
 	THRONE_SHANG_TSUNG, 0.5f, BMP_THRONE_SHANG, 0, 0, 48
+};
+
+static AnimationFrame fighterEndingFrames[] {
+	{ 80, 64, 0, 0, 0, 0, 6},	//cage
+	{ 80, 64, 80, 0, 0, 0, 6}, 
+	{ 80, 64, 160, 0, 0, 0, 6},	//kano
+	{ 80, 64, 240, 0, 0, 0, 6},
+	{ 80, 64, 0, 64, 0, 0, 6},  //raiden
+	{ 80, 64, 80, 64, 0, 0, 6},
+	{ 80, 64, 160, 64, 0, 0, 6},  //kang
+	{ 80, 64, 240, 64, 0, 0, 6},
+	{ 80, 64, 0, 128, 0, 0, 6},	//scorpion
+	{ 80, 64, 80, 128, 0, 0, 6}, 
+	{ 80, 64, 160, 128, 0, 0, 6},	//subzero
+	{ 80, 64, 240, 128, 0, 0, 6},
+	{ 80, 64, 0, 192, 0, 0, 6},  //sonya
+	{ 80, 64, 80, 192, 0, 0, 6},
+	{ 80, 64, 160, 192, 0, 0, 6},  //kasumi
+	{ 80, 64, 240, 192, 0, 0, 6}
 };
 
 static AnimationFrame battleplanPortraitFrames[] = {
@@ -3873,6 +3892,8 @@ void setFighterName(short fighterIndex);
 void setFighterNameSpaces(short fighterIndex);
 void switchScreenChooseFighter();
 void switchScreenFighterIntro(int fighterIndex);
+void switchScreenFighterEnding(int fighterIndex);
+void switchScreenFighterEndingPage2(int fighterIndex);
 void switchScreenVsBattle(int p1Cursor, int p2Cursor);
 void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackground);
 void switchScreenBattlePlan(int fighterIndex);
@@ -6527,6 +6548,92 @@ void basicmain()
 				}
 				
 			}
+			else if (onScreenFighterEnding)
+			{
+				if (menuIndex == 0)
+				{
+					switch (fmvIndex)
+					{
+						case CAGE:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[0], 120, 43, 1);
+							break;
+						case KANO:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[2], 120, 43, 1);
+							break;
+						case RAIDEN:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
+							break;
+						case KANG:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[6], 120, 43, 1);
+							break;
+						case SCORPION:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[8], 120, 43, 1);
+							break;
+						case SUBZERO:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[10], 120, 43, 1);
+							break;
+						case SONYA:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[12], 120, 43, 1);
+							break;
+						case KASUMI:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[14], 120, 43, 1);
+							break;
+					}
+				}
+				else
+				{
+					switch (fmvIndex)
+					{
+						case CAGE:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[1], 120, 43, 1);
+							break;
+						case KANO:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[3], 120, 43, 1);
+							break;
+						case RAIDEN:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
+							break;
+						case KANG:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[7], 120, 43, 1);
+							break;
+						case SCORPION:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[9], 120, 43, 1);
+							break;
+						case SUBZERO:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[11], 120, 43, 1);
+							break;
+						case SONYA:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[13], 120, 43, 1);
+							break;
+						case KASUMI:
+							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[15], 120, 43, 1);
+							break;
+					}
+				}
+				
+
+				if (rapTicks > myTicks + (60*1) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
+					|| rapTicks > myTicks + (60*8))
+				{
+					for (int i = 0; i < 90; i++)
+					{
+						rapFadeClut(0,256,BLACKPAL);
+						jsfVsync(0);
+					}
+
+					if (menuIndex == 0)
+					{
+						switchScreenFighterEndingPage2(fighter1Ptr->fighterIndex);
+						continue;
+					}
+					else
+					{
+						onScreenFighterEnding = false;
+						initMenuScreen();
+						continue;
+					}
+				}
+			}
 			else if (onScreenFighterIntro)
 			{
 				switch (fmvIndex)
@@ -6645,115 +6752,157 @@ void basicmain()
 			}
 			else if (onScreenBattlePlan)
 			{
+				//if battleplan_index == 6, we scroll down, otherwise, we scroll the player portrait up.
 				if (rapTicks >= chooseTicks + 40)
 				{
-					if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -332)
+					if (battleplan_index == 6)
 					{
-						sprite[BATTLEPLAN_SHANGTSUNG].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_GORO].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_PORTRAITS+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-						sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+						if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_TOP].y_ > -332)
+						{
+							sprite[BATTLEPLAN_SHANGTSUNG].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_GORO].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_PORTRAITS+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+1].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+2].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+3].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+4].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+5].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+6].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+7].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+8].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+9].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+10].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+11].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
-						sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
-						sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
+							sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
+							sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
 
-						sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+1].active = sprite[BATTLEPLAN_PORTRAITS+1].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+2].active = sprite[BATTLEPLAN_PORTRAITS+2].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+3].active = sprite[BATTLEPLAN_PORTRAITS+3].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+4].active = sprite[BATTLEPLAN_PORTRAITS+4].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+5].active = sprite[BATTLEPLAN_PORTRAITS+5].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+6].active = sprite[BATTLEPLAN_PORTRAITS+6].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+7].active = sprite[BATTLEPLAN_PORTRAITS+7].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+8].active = sprite[BATTLEPLAN_PORTRAITS+8].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+9].active = sprite[BATTLEPLAN_PORTRAITS+9].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+10].active = sprite[BATTLEPLAN_PORTRAITS+10].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+11].active = sprite[BATTLEPLAN_PORTRAITS+11].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+12].active = sprite[BATTLEPLAN_PORTRAITS+12].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+13].active = sprite[BATTLEPLAN_PORTRAITS+13].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PORTRAITS+14].active = sprite[BATTLEPLAN_PORTRAITS+14].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+2].active = sprite[BATTLEPLAN_TOP+2].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+3].active = sprite[BATTLEPLAN_TOP+3].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+4].active = sprite[BATTLEPLAN_TOP+4].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+5].active = sprite[BATTLEPLAN_TOP+5].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+6].active = sprite[BATTLEPLAN_TOP+6].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+7].active = sprite[BATTLEPLAN_TOP+7].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+8].active = sprite[BATTLEPLAN_TOP+8].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+9].active = sprite[BATTLEPLAN_TOP+9].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+10].active = sprite[BATTLEPLAN_TOP+10].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+11].active = sprite[BATTLEPLAN_TOP+11].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
-						sprite[BATTLEPLAN_PLAYER_MARKER].active = sprite[BATTLEPLAN_PLAYER_MARKER].y_ > -32 ? R_is_active : R_is_inactive;
-						
-						battlePlanYOffset -= 2;
-						printBattlePlan();
+							sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+1].active = sprite[BATTLEPLAN_PORTRAITS+1].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+2].active = sprite[BATTLEPLAN_PORTRAITS+2].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+3].active = sprite[BATTLEPLAN_PORTRAITS+3].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+4].active = sprite[BATTLEPLAN_PORTRAITS+4].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+5].active = sprite[BATTLEPLAN_PORTRAITS+5].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+6].active = sprite[BATTLEPLAN_PORTRAITS+6].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+7].active = sprite[BATTLEPLAN_PORTRAITS+7].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+8].active = sprite[BATTLEPLAN_PORTRAITS+8].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+9].active = sprite[BATTLEPLAN_PORTRAITS+9].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+10].active = sprite[BATTLEPLAN_PORTRAITS+10].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+11].active = sprite[BATTLEPLAN_PORTRAITS+11].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+12].active = sprite[BATTLEPLAN_PORTRAITS+12].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+13].active = sprite[BATTLEPLAN_PORTRAITS+13].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PORTRAITS+14].active = sprite[BATTLEPLAN_PORTRAITS+14].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+2].active = sprite[BATTLEPLAN_TOP+2].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+3].active = sprite[BATTLEPLAN_TOP+3].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+4].active = sprite[BATTLEPLAN_TOP+4].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+5].active = sprite[BATTLEPLAN_TOP+5].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+6].active = sprite[BATTLEPLAN_TOP+6].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+7].active = sprite[BATTLEPLAN_TOP+7].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+8].active = sprite[BATTLEPLAN_TOP+8].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+9].active = sprite[BATTLEPLAN_TOP+9].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+10].active = sprite[BATTLEPLAN_TOP+10].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+11].active = sprite[BATTLEPLAN_TOP+11].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN_PLAYER_MARKER].active = sprite[BATTLEPLAN_PLAYER_MARKER].y_ > -32 ? R_is_active : R_is_inactive;
+							
+							battlePlanYOffset -= 2;
+							printBattlePlan();
 
-						battleTicks = rapTicks;
+							battleTicks = rapTicks;
+						}
+						else if (sprite[BATTLEPLAN_TOP].y_ <= -332 && rapTicks >= battleTicks + 120)
+						{
+							for (int i = 0; i < 80; i++)
+							{
+								rapFadeClut(0,256,BLACKPAL);
+								jsfVsync(0);
+							}
+
+							for (int i = 0; i < 35; i++)
+							{
+								sprite[BATTLEPLAN_TOP-1+i].active = R_is_inactive;
+							}
+
+							roundFightSequenceComplete = false;
+							myTicks = rapTicks;
+							musicStop();
+							bgInit();
+							bloodInit();
+							spriteDelayInit();
+							sleepInit();
+							matchInit();		
+							stageInit();
+							fighterRestartMatch(fighter1Ptr);
+							fighterRestartMatch(fighter2Ptr);
+							switchScreenFight(fighter1Ptr->fighterIndex, fighter2Ptr->fighterIndex, true);
+							stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+							stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+							displayWinnerMedals();
+						}
 					}
-					else if (sprite[BATTLEPLAN_TOP].y_ <= -332 && rapTicks >= battleTicks + 120)
+					else
 					{
-						for (int i = 0; i < 80; i++)
+						if (rapTicks >= battleTicks + 2 && sprite[BATTLEPLAN_PORTRAITS+14].y_ > sprite[BATTLEPLAN_TOP+13].y_ + 3 - ((5 - battleplan_index + 1) * 32))
 						{
-							rapFadeClut(0,256,BLACKPAL);
-							jsfVsync(0);
+							sprite[BATTLEPLAN_PORTRAITS+14].y_ -= 2;
+							sprite[BATTLEPLAN_PLAYER_MARKER].y_ -= 2;
+							battleTicks = rapTicks;
 						}
-
-						for (int i = 0; i < 35; i++)
+						else if (rapTicks >= battleTicks + 60 && sprite[BATTLEPLAN_PORTRAITS+14].y_ <= sprite[BATTLEPLAN_TOP+13].y_ + 3 - ((5 - battleplan_index + 1) * 32))
 						{
-							sprite[BATTLEPLAN_TOP-1+i].active = R_is_inactive;
-						}
+							for (int i = 0; i < 80; i++)
+							{
+								rapFadeClut(0,256,BLACKPAL);
+								jsfVsync(0);
+							}
 
-						roundFightSequenceComplete = false;
-						myTicks = rapTicks;
-						musicStop();
-						bgInit();
-						bloodInit();
-						spriteDelayInit();
-						sleepInit();
-						matchInit();		
-						stageInit();
-						fighterRestartMatch(fighter1Ptr);
-						fighterRestartMatch(fighter2Ptr);
-						switchScreenFight(fighter1Ptr->fighterIndex, fighter2Ptr->fighterIndex, true);
-						stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
-						stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
-						displayWinnerMedals();
+							for (int i = 0; i < 35; i++)
+							{
+								sprite[BATTLEPLAN_TOP-1+i].active = R_is_inactive;
+							}
+
+							roundFightSequenceComplete = false;
+							myTicks = rapTicks;
+							musicStop();
+							bgInit();
+							bloodInit();
+							spriteDelayInit();
+							sleepInit();
+							matchInit();		
+							stageInit();
+							fighterRestartMatch(fighter1Ptr);
+							fighterRestartMatch(fighter2Ptr);
+							switchScreenFight(fighter1Ptr->fighterIndex, fighter2Ptr->fighterIndex, true);
+							stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter1Ptr, spriteAnimator1Ptr);
+							stateMachineInit(&fighterStateMachine, STATE_IDLE, fighter2Ptr, spriteAnimator2Ptr);
+							displayWinnerMedals();
+						}
 					}
 				}
 			}
@@ -7585,12 +7734,88 @@ void basicmain()
 						jsfVsync(0);
 					}
 					
-					//point the fighter's back to the choose your fighter sprite
-					fighter1Ptr->spriteIndex = P1_FIGHTER;
-					fighter2Ptr->spriteIndex = P2_FIGHTER;
+					if (!isSinglePlayer)
+					{
+						//point the fighter's back to the choose your fighter sprite
+						fighter1Ptr->spriteIndex = P1_FIGHTER;
+						fighter2Ptr->spriteIndex = P2_FIGHTER;
 
-					musicTitle(&soundHandler);
-					switchScreenChooseFighter();
+						musicTitle(&soundHandler);
+						switchScreenChooseFighter();
+					}
+					else
+					{
+						//TODO clb
+						stageSetNext();
+						battleplan_index--;  //move up the ladder.  TODO check for -1 and goto Fighter's ending
+
+						if (battleplan_index < 0)
+						{
+							switchScreenFighterEnding(fighter1Ptr->fighterIndex);
+							continue;
+						}
+
+						switch(battleplan_lineup[battleplan_index])
+						{
+							case CAGE:
+								fighter2Ptr = &fighterCage2;
+								spriteAnimator2Ptr = &cageAnimator2;
+								fighterMakeSelectable(&fighterCage2, false);
+								fighterShow(&fighterCage2);
+								break;
+							case KANO:
+								fighter2Ptr = &fighterKano2;
+								spriteAnimator2Ptr = &kanoAnimator2;
+								fighterMakeSelectable(&fighterKano2, false);
+								fighterShow(&fighterKano2);
+								break;
+							case RAIDEN:
+								fighter2Ptr = &fighterRaiden2;
+								spriteAnimator2Ptr = &raidenAnimator2;
+								fighterMakeSelectable(&fighterRaiden2, false);
+								fighterShow(&fighterRaiden2);
+								break;
+							case KANG:
+								fighter2Ptr = &fighterKang2;
+								spriteAnimator2Ptr = &kangAnimator2;
+								fighterMakeSelectable(&fighterKang2, false);
+								fighterShow(&fighterKang2);
+								break;
+							case SCORPION:
+								fighter2Ptr = &fighterScorpion2;
+								spriteAnimator2Ptr = &scorpionAnimator2;
+								fighterMakeSelectable(&fighterScorpion2, false);
+								fighterShow(&fighterScorpion2);
+								break;
+							case SUBZERO:
+								fighter2Ptr = &fighterSubzero2;
+								spriteAnimator2Ptr = &subzeroAnimator2;
+								fighterMakeSelectable(&fighterSubzero2, false);
+								fighterShow(&fighterSubzero2);
+								break;
+							case SONYA:
+								fighter2Ptr = &fighterSonya2;
+								spriteAnimator2Ptr = &sonyaAnimator2;
+								fighterMakeSelectable(&fighterSonya2, false);
+								fighterShow(&fighterSonya2);
+								break;
+							case KASUMI:
+								fighter2Ptr = &fighterKasumi2;
+								spriteAnimator2Ptr = &kasumiAnimator2;
+								fighterMakeSelectable(&fighterKasumi2, false);
+								fighterShow(&fighterKasumi2);
+								break;
+							default:
+								break;
+						}
+						fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;
+						fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
+						fighter1Ptr->Opponent = fighter2Ptr;
+						fighter2Ptr->Opponent = fighter1Ptr;
+						
+						switchScreenBattlePlan(fighter1Ptr->fighterIndex);
+					}
+					
 					continue;
 				}
 
@@ -7939,6 +8164,7 @@ void initMenuScreen()
 	sprite[TITLE_FIGHTERS+3].active = R_is_active;
 	sprite[TITLE_STONE].gfxbase = BMP_TS_MENU1;
 	sprite[TITLE_STONE].active = R_is_active;
+	sprite[ENDING].active = R_is_inactive;
 	
 	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,64);
 	jsfLoadClut((unsigned short *)(void *)(BMP_TS_MENU1_clut),4,16);
@@ -7981,8 +8207,6 @@ void switchAttractFMV()
 void switchAttractFMV(int fighterIndex, bool sayFighterName)
 {
 	rapParticleClear();
-	fmvAnimator.currentFrame = 0;
-	fmvAnimator.lastTick = rapTicks;
 	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_inactive;
@@ -8158,7 +8382,12 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 	sprite[FMV].gfxbase=(int)imageBufferFMV;
 	sprite[FMV].active = R_is_active;
 	fmvAnimator.base = (int)imageBufferFMV;
+	fmvAnimator.currentFrame = 0;
+	fmvAnimator.lastTick = rapTicks;
+	fmvAnimator.spriteIndex = FMV;
+	fmvAnimator.mulFactor = 0.5f;
 
+	sprite[ENDING].active = R_is_inactive;
 	sprite[TITLE_FIGHTERS].active = R_is_inactive;
 	sprite[TITLE_FIGHTERS+1].active = R_is_inactive;
 	sprite[TITLE_FIGHTERS+2].active = R_is_inactive;
@@ -8199,7 +8428,6 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 	js_r_textbuffer=line7;
 	rapPrint();
 
-	
 	if (sayFighterName)
 	{
 		switch (fmvIndex)
@@ -8489,8 +8717,426 @@ void switchScreenFighterIntro(int fighterIndex)
 	rapSetActiveList(0);
 }
 
+void switchScreenFighterEndingPage2(int fighterIndex)
+{
+	menuIndex = 1;  //we're now on page 2
+	rapParticleClear();
+	jsfLoadClut((unsigned short *)(void *)(BMP_ENDINGS_PORTRAITS_clut),0,224);
+	jsfLoadClut((unsigned short *)(void *)(BMP_FMV_BACKGROUND_clut),14,16);
+
+	char* name = "JOHNNY CAGE";
+	int nameOffset = 116;
+	char* line1 = "HE RETURNS TO HOLLYWOOD AFTER";
+	int line1Offset = 36;
+	char* line2 = "DEFENDING HIS NEW TITLE AS GRAND";
+	int line2Offset = 24;
+	char* line3 = "CHAMPION. CAGE GOES ON TO FILM";
+	int line3Offset = 34;
+	char* line4 = "MORTAL KOMBAT: THE MOVIE";
+	int line4Offset = 56;
+	char* line5 = "AND ITS MANY SUCCESSFUL SEQUELS";
+	int line5Offset = 28;
+	char* line6 = "";
+	int line6Offset = 0;
+	char* line7 = "";
+	int line7Offset = 0;
+
+	switch (fighterIndex)
+	{
+		case CAGE:						
+			break;
+		case KANO:
+			name = "KANO";
+			nameOffset = 148;
+			line1 = "THAT BRINGS SHAME AND TORMENT";
+			line1Offset = 36;
+			line2 = "TO ALL THOSE INVOLVED.";
+			line2Offset = 64;
+			line3 = "";
+			line3Offset = 0;
+			line4 = "THEIR REIGN WILL END IN ANARCHY";
+			line4Offset = 28;
+			line5 = "AND DEATH. IT WILL RESULT IN THE";
+			line5Offset = 26;
+			line6 = "FINAL DISMANTALING OF THE TOURNAMENT";
+			line6Offset = 8;
+			line7 = "AND THE BATTLE OF THE SANS.";
+			line7Offset = 46;
+			break;
+		case RAIDEN:
+			name = "RAIDEN";
+			nameOffset = 136;
+			line1 = "AND SOON INVITES OTHER GODS TO";
+			line1Offset = 34;
+			line2 = "PARTICIPATE IN HIS CONTEST. THE";
+			line2Offset = 32;
+			line3 = "ENSUING BATTLES RAGE ON FOR";
+			line3Offset = 48;
+			line4 = "YEARS. AND THE WARS RESULT IN";
+			line4Offset = 40;
+			line5 = "OUR WORLD'S FINAL DESTRUCTION.";
+			line5Offset = 38;
+			line6 = "";
+			line6Offset = 0;
+			line7 = "HAVE A NICE DAY.";
+			line7Offset = 94;
+			break;
+		case KANG:
+			name = "LIU KANG";
+			nameOffset = 135;
+			line1 = "THE SHAOLIN TEMPLES. KANG'S";
+			line1Offset = 50;
+			line2 = "HEROICS WILL ALWAYS BE REMEMBERED.";
+			line2Offset = 22;
+			line3 = "";
+			line3Offset = 0;
+			line4 = "HE WILL CONTINUE THE TRADITIONS";
+			line4Offset = 34;
+			line5 = "OF THE SHAOLIN TEMPLES AND RESTORE";
+			line5Offset = 22;
+			line6 = "THE TRUE PRICE AND RESPECT OF THE";
+			line6Offset = 24;
+			line7 = "ONCE GREAT TOURNAMENT.";
+			line7Offset = 68;
+			break;
+		case SCORPION:
+			name = "SCORPION";
+			nameOffset = 135;
+			line1 = "EVEN WITH SCORPION'S TRIUMPH";
+			line1Offset = 44;
+			line2 = "IN THE TOURNAMENT AND NEW";
+			line2Offset = 56;
+			line3 = "TITLE AS GRAND CHAMPION, THE";
+			line3Offset = 44;
+			line4 = "PRICE HE PAID WAS HIGH. HE";
+			line4Offset = 54;
+			line5 = "CAN NEVER AGAIN KNOW HIS";
+			line5Offset = 60;
+			line6 = "FAMILY AND MUST EXIST FOREVER";
+			line6Offset = 40;
+			line7 = "WITH HIS SECRET CURSE.";
+			line7Offset = 68;
+			break;
+		case SUBZERO:
+			name = "SUB-ZERO";
+			nameOffset = 135;
+			line1 = "THE ASSASSINATION OF SHANG TSUNG.";
+			line1Offset = 24;
+			line2 = "HE WAS PAID A LARGE SUM OF MONEY";
+			line2Offset = 26;
+			line3 = "BY ONE OF TSUNG'S WEALTHY ENEMIES.";
+			line3Offset = 20;
+			line4 = "WITH HIS MISSION ACCOMPLISHED";
+			line4Offset = 40;
+			line5 = "SUB-ZERO WILL COLLECT HIS FORTUNE";
+			line5Offset = 22;
+			line6 = "AND RETIRE FROM HIS DANGEROUS";
+			line6Offset = 40;
+			line7 = "PROFESSION.";
+			line7Offset = 112;
+			break;
+		case SONYA:
+			name = "SONYA";
+			nameOffset = 144;
+			line1 = "ONLY IF SONYA COULD WIN";
+			line1Offset = 56;
+			line2 = "THE CONTEST.  HER VICTORY";
+			line2Offset = 48;
+			line3 = "NOT ONLY RELEASED HER UNIT -";
+			line3Offset = 36;
+			line4 = "BUT ALSO PUT AN END TO THE";
+			line4Offset = 40;
+			line5 = "BLACK DRAGON AND SHANG";
+			line5Offset = 56;
+			line6 = "TSUNG'S POWERFUL GRIP ON";
+			line6Offset = 48;
+			line7 = "THE TOURNAMENT.";
+			line7Offset = 84;
+			break;
+		case KASUMI:
+			name = "KASUMI";
+			nameOffset = 136;
+			line1 = "BACK IN THE NETHEREALM,";
+			line1Offset = 52;
+			line2 = "RAIDEN VOWS TO HELP KASUMI";
+			line2Offset = 40;
+			line3 = "DEFEAT SHINNOCK AND RETURN TO";
+			line3Offset = 28;
+			line4 = "THEIR MORTAL FORMS, HABAKI AND";
+			line4Offset = 26;
+			line5 = "SENZO.";
+			line5Offset = 122;
+			line6 = "";
+			line6Offset = 0;
+			line7 = "";
+			line7Offset = 0;
+			break;
+	}
+	
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(nameOffset,14);
+	js_r_textbuffer=name;
+	rapPrint();
+
+	rapUse8x8fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(0);
+	rapLocate(8 + line1Offset, 128);
+	js_r_textbuffer=line1;
+	rapPrint();
+	rapLocate(8 + line2Offset, 140);
+	js_r_textbuffer=line2;
+	rapPrint();
+	rapLocate(8 + line3Offset, 152);
+	js_r_textbuffer=line3;
+	rapPrint();
+	rapLocate(8 + line4Offset, 164);
+	js_r_textbuffer=line4;
+	rapPrint();
+	rapLocate(8 + line5Offset, 176);
+	js_r_textbuffer=line5;
+	rapPrint();
+	rapLocate(8 + line6Offset, 188);
+	js_r_textbuffer=line6;
+	rapPrint();
+	rapLocate(8 + line7Offset, 200);
+	js_r_textbuffer=line7;
+	rapPrint();
+
+	myTicks = rapTicks;
+}
+
+void switchScreenFighterEnding(int fighterIndex)
+{
+	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;		// Set Background colour.
+
+	menuIndex = 0;  //keep track of what page we're on...
+	sprite[FMV].active = R_is_inactive;
+	rapUnpack(BMP_ENDINGS_PORTRAITS,(int)(int*)imageBuffer);
+	sprite[ENDING].gfxbase=(int)imageBuffer;
+	sprite[ENDING].active = R_is_active;
+	fmvAnimator.base = (int)imageBuffer;
+	fmvAnimator.currentFrame = 0;
+	fmvAnimator.lastTick = rapTicks;	
+	fmvAnimator.spriteIndex = ENDING;
+	fmvAnimator.mulFactor = 1.0f;
+
+	jsfLoadClut((unsigned short *)(void *)(BMP_ENDINGS_PORTRAITS_clut),0,224);
+
+	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
+	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND16].active = R_is_active;
+	sprite[BACKGROUND16].CLUT = 14;
+	sprite[BACKGROUND].active = R_is_inactive;
+
+	jsfLoadClut((unsigned short *)(void *)(BMP_FMV_BACKGROUND_clut),14,16);
+
+	sprite[P1_FIGHTER].active = R_is_inactive;
+	sprite[P2_FIGHTER].active = R_is_inactive;
+	musicStageGoro(&soundHandler);
+	fmvIndex = fighterIndex;  //try this, then the next line to see what fixes it...	
+	rapParticleClear();
+
+	char* name = "JOHNNY CAGE";
+	int nameOffset = 116;
+	char* line1 = "THROUGH THE BATTLES OF LIFE OR DEATH";
+	int line1Offset = 8;
+	char* line2 = "SITUATIONS FACED DURING THE";
+	int line2Offset = 44;
+	char* line3 = "TOURNAMENT, JOHNNY CAGE LEARNS THE";
+	int line3Offset = 16;
+	char* line4 = "TRUE IMPORTANCE OF HIS FIGHTING";
+	int line4Offset = 28;
+	char* line5 = "SKILLS. HE ALSO REALIZES THE FULL";
+	int line5Offset = 20;
+	char* line6 = "POTENTIAL OF THE TOURNAMENT.";
+	int line6Offset = 40;
+	char* line7 = "";
+	int line7Offset = 0;
+
+	switch (fighterIndex)
+	{
+		case CAGE:						
+			break;
+		case KANO:
+			name = "KANO";
+			nameOffset = 148;
+			line1 = "WITH THE DEFEAT OF GORO AND SHANG";
+			line1Offset = 20;
+			line2 = "TSUNG, KANO WILL BRING HIS OWN BRAND";
+			line2Offset = 8;
+			line3 = "OF TREACHERY TO THE TOURNAMENT.";
+			line3Offset = 28;
+			line4 = "";
+			line4Offset = 0;
+			line5 = "HIS BLACK DRAGON ORGANIZATION";
+			line5Offset = 36;
+			line6 = "FORMS A MONOPOLY OVER THE CONTEST.";
+			line6Offset = 16;
+			line7 = "";
+			line7Offset = 0;
+			break;
+		case RAIDEN:
+			name = "RAIDEN";
+			nameOffset = 136;
+			line1 = "RAIDEN'S VICTORY COMES AS NO SURPRISE";
+			line1Offset = 4;
+			line2 = "TO HIM. HE WAS NEVER IMPRESSED BY";
+			line2Offset = 20;
+			line3 = "SHANG TSUNG'S INFERIOR SORCERY,";
+			line3Offset = 28;
+			line4 = "GORO'S BRUTE FORCE, OR THE CHALLENGE";
+			line4Offset = 8;
+			line5 = "OF THE OTHER CONTESTANTS. HE QUICKLY";
+			line5Offset = 8;
+			line6 = "BECOMES BORED WITH HIS MORTAL";
+			line6Offset = 36;
+			line7 = "COMPETITION.";
+			line7Offset = 104;
+			break;
+		case KANG:
+			name = "LIU KANG";
+			nameOffset = 135;
+			line1 = "AFTER DEFEATING MIGHT GORO AND PUTTING";
+			line1Offset = 0;
+			line2 = "AN END TO SHANG TSUNG'S RULE OVER THE";
+			line2Offset = 4;
+			line3 = "TOURNAMENT, KANG IS ABLE TO RETURN THE";
+			line3Offset = 0;
+			line4 = "CONTEST TO ITS RIGHTFULL HOSTS -";
+			line4Offset = 24;
+			line5 = "";
+			line5Offset = 0;
+			line6 = "";
+			line6Offset = 0;
+			line7 = "";
+			line7Offset = 0;
+			break;
+		case SCORPION:
+			name = "SCORPION";
+			nameOffset = 135;
+			line1 = "MARKED FOR DEATH YEARS AGO BY THE";
+			line1Offset = 20;
+			line2 = "LIN KUEI, SCORPION WAS MURDERED";
+			line2Offset = 28;
+			line3 = "BY SUB-ZERO. HE LEFT BEHIND A WIFE";
+			line3Offset = 16;
+			line4 = "AND CHILD IN HIS FORMER LIFE";
+			line4Offset = 40;
+			line5 = "BUT WAS ALLOWED TO RETURN AND";
+			line5Offset = 36;
+			line6 = "AVENGE HIS DEATH.";
+			line6Offset = 84;
+			line7 = "";
+			line7Offset = 0;
+			break;
+		case SUBZERO:
+			name = "SUB-ZERO";
+			nameOffset = 135;
+			line1 = "AFTER RECEIVING THE TITLE OF";
+			line1Offset = 40;
+			line2 = "GRAND CHAMPION, SUB-ZERO";
+			line2Offset = 56;
+			line3 = "DISAPPEARS BACK INTO THE";
+			line3Offset = 56;
+			line4 = "SHADOWS FROM WHICH HE CAME.";
+			line4Offset = 44;
+			line5 = "HIS ONLY GOAL IN THE";
+			line5Offset = 72;
+			line6 = "TOURNAMENT WAS...";
+			line6Offset = 84;
+			line7 = "";
+			line7Offset = 0;
+			break;
+		case SONYA:
+			name = "SONYA";
+			nameOffset = 144;
+			line1 = "CAPTURED BY SHANG TSUNG,";
+			line1Offset = 56;
+			line2 = "SONYA'S SPECIAL FORCES UNIT";
+			line2Offset = 44;
+			line3 = "WAS TAKEN HOSTAGE - THEIR";
+			line3Offset = 52;
+			line4 = "ONLY HOPE WAS THE TOURNAMENT.";
+			line4Offset = 36;
+			line5 = "SHANG TSUNG PROMISED TO";
+			line5Offset = 60;
+			line6 = "RELEASE THE ENTIRE TEAM...";
+			line6Offset = 48;
+			line7 = "";
+			line7Offset = 0;
+			break;
+		case KASUMI:
+			name = "KASUMI";
+			nameOffset = 136;
+			line1 = "AFTER DEFEATING SHANG TSUNG,";
+			line1Offset = 40;
+			line2 = "KASUMI REALIZES HE WAS TRICKED";
+			line2Offset = 24;
+			line3 = "BY SHINNOCK INTO ENTERING THE";
+			line3Offset = 26;
+			line4 = "TOURNAMENT - ONLY TO ELIMINATE";
+			line4Offset = 24;
+			line5 = "THE EARTHREALMERS...";
+			line5Offset = 64;
+			line6 = "";
+			line6Offset = 0;
+			line7 = "";
+			line7Offset = 0;
+			break;
+	}
+	
+	rapUse8x16fontPalette(15);
+	jsfSetFontSize(1);
+	jsfSetFontIndx(1);
+	rapLocate(nameOffset,14);
+	js_r_textbuffer=name;
+	rapPrint();
+
+	rapUse8x8fontPalette(15);
+	jsfSetFontSize(0);
+	jsfSetFontIndx(0);
+	rapLocate(8 + line1Offset, 128);
+	js_r_textbuffer=line1;
+	rapPrint();
+	rapLocate(8 + line2Offset, 140);
+	js_r_textbuffer=line2;
+	rapPrint();
+	rapLocate(8 + line3Offset, 152);
+	js_r_textbuffer=line3;
+	rapPrint();
+	rapLocate(8 + line4Offset, 164);
+	js_r_textbuffer=line4;
+	rapPrint();
+	rapLocate(8 + line5Offset, 176);
+	js_r_textbuffer=line5;
+	rapPrint();
+	rapLocate(8 + line6Offset, 188);
+	js_r_textbuffer=line6;
+	rapPrint();
+	rapLocate(8 + line7Offset, 200);
+	js_r_textbuffer=line7;
+	rapPrint();
+
+	onAlphaScreen = false;
+	onTruFunScreen = false;
+	onTitleScreen = false;
+	onMenuScreen = false;
+	onScreenChooseFighter = false;
+	onScreenVsBattle = false;
+	onScreenFighterIntro = false;
+	onScreenBattlePlan = false;
+	onScreenFight = false;
+	onScreenFighterEnding = true;
+	myTicks = rapTicks;
+	rapSetActiveList(0);
+}
+
 void switchScreenBattlePlan(int fighterIndex)
 {
+	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;		// Set Background colour.
 	rapUnpack(BMP_BATTLEPLAN_PORTRAITS,(int)(int*)imageBuffer320x240);
 	sprite[BATTLEPLAN_PORTRAITS].gfxbase=(int)imageBuffer320x240;
 	sprite[BATTLEPLAN_PORTRAITS+1].gfxbase=(int)imageBuffer320x240;
@@ -8522,6 +9168,33 @@ void switchScreenBattlePlan(int fighterIndex)
 	battleplanPortrait13Animator.base = (int)imageBuffer320x240;
 	battleplanPortrait14Animator.base = (int)imageBuffer320x240;
 	battleplanPortrait15Animator.base = (int)imageBuffer320x240;
+
+	if (battleplan_index == 6)
+	{
+		sprite[BATTLEPLAN_TOP].y_ = 0;
+	}
+	else
+	{
+		sprite[BATTLEPLAN_TOP].y_ = -332 + ((5 - battleplan_index) * 32);
+	}
+
+	sprite[BATTLEPLAN_TOP+1].y_ = sprite[BATTLEPLAN_TOP].y_ + 144;
+	sprite[BATTLEPLAN_TOP+2].y_ = sprite[BATTLEPLAN_TOP].y_ + 169;
+	sprite[BATTLEPLAN_TOP+3].y_ = sprite[BATTLEPLAN_TOP].y_ + 201;
+	sprite[BATTLEPLAN_TOP+4].y_ = sprite[BATTLEPLAN_TOP].y_ + 233;
+	sprite[BATTLEPLAN_TOP+5].y_ = sprite[BATTLEPLAN_TOP].y_ + 265;
+	sprite[BATTLEPLAN_TOP+6].y_ = sprite[BATTLEPLAN_TOP].y_ + 290;
+	sprite[BATTLEPLAN_TOP+7].y_ = sprite[BATTLEPLAN_TOP].y_ + 322;
+	sprite[BATTLEPLAN_TOP+8].y_ = sprite[BATTLEPLAN_TOP].y_ + 354;
+	sprite[BATTLEPLAN_TOP+9].y_ = sprite[BATTLEPLAN_TOP].y_ + 386;
+	sprite[BATTLEPLAN_TOP+10].y_ = sprite[BATTLEPLAN_TOP].y_ + 418;
+	sprite[BATTLEPLAN_TOP+11].y_ = sprite[BATTLEPLAN_TOP].y_ + 450;
+	sprite[BATTLEPLAN_TOP+12].y_ = sprite[BATTLEPLAN_TOP].y_ + 482;
+	sprite[BATTLEPLAN_TOP+13].y_ = sprite[BATTLEPLAN_TOP].y_ + 514;
+	sprite[BATTLEPLAN_TOP+14].y_ = sprite[BATTLEPLAN_TOP].y_ + 546;
+	sprite[BATTLEPLAN_TOP+15].y_ = sprite[BATTLEPLAN_TOP].y_ + 45;	//shang tsung
+	sprite[BATTLEPLAN_TOP+16].y_ = sprite[BATTLEPLAN_TOP].y_ + 101;  //goro
+	
 	fadedIn = false;
 	fadedOut = false;
 	
@@ -8541,61 +9214,61 @@ void switchScreenBattlePlan(int fighterIndex)
 	///////////////////////////////////////////////////////////////////////
 	sprite[BATTLEPLAN_PORTRAITS].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS].y_ = sprite[BATTLEPLAN_TOP+2].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS, &battleplanPortrait1Animator, &battleplanPortraitFrames[battleplan_endurance[0]], sprite[BATTLEPLAN_PORTRAITS].x_, sprite[BATTLEPLAN_PORTRAITS].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS, &battleplanPortrait1Animator, &battleplanPortraitFrames[battleplan_endurance[0]], sprite[BATTLEPLAN_PORTRAITS].x_, sprite[BATTLEPLAN_PORTRAITS].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+1].active = R_is_active;
-	sprite[BATTLEPLAN_PORTRAITS+1].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+1].x_ = 128;
 	sprite[BATTLEPLAN_PORTRAITS+1].y_ = sprite[BATTLEPLAN_TOP+2].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+1, &battleplanPortrait2Animator, &battleplanPortraitFrames[battleplan_endurance[1]], sprite[BATTLEPLAN_PORTRAITS+1].x_, sprite[BATTLEPLAN_PORTRAITS+1].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+1, &battleplanPortrait2Animator, &battleplanPortraitFrames[battleplan_endurance[1]], sprite[BATTLEPLAN_PORTRAITS+1].x_, sprite[BATTLEPLAN_PORTRAITS+1].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+2].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+2].y_ = sprite[BATTLEPLAN_TOP+3].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+2, &battleplanPortrait3Animator, &battleplanPortraitFrames[battleplan_endurance[2]], sprite[BATTLEPLAN_PORTRAITS+2].x_, sprite[BATTLEPLAN_PORTRAITS+2].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+2, &battleplanPortrait3Animator, &battleplanPortraitFrames[battleplan_endurance[2]], sprite[BATTLEPLAN_PORTRAITS+2].x_, sprite[BATTLEPLAN_PORTRAITS+2].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+3].active = R_is_active;
-	sprite[BATTLEPLAN_PORTRAITS+3].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+3].x_ = 128;
 	sprite[BATTLEPLAN_PORTRAITS+3].y_ = sprite[BATTLEPLAN_TOP+3].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+3, &battleplanPortrait4Animator, &battleplanPortraitFrames[battleplan_endurance[3]], sprite[BATTLEPLAN_PORTRAITS+3].x_, sprite[BATTLEPLAN_PORTRAITS+3].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+3, &battleplanPortrait4Animator, &battleplanPortraitFrames[battleplan_endurance[3]], sprite[BATTLEPLAN_PORTRAITS+3].x_, sprite[BATTLEPLAN_PORTRAITS+3].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+4].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+4].y_ = sprite[BATTLEPLAN_TOP+4].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+4, &battleplanPortrait5Animator, &battleplanPortraitFrames[battleplan_endurance[4]], sprite[BATTLEPLAN_PORTRAITS+4].x_, sprite[BATTLEPLAN_PORTRAITS+4].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+4, &battleplanPortrait5Animator, &battleplanPortraitFrames[battleplan_endurance[4]], sprite[BATTLEPLAN_PORTRAITS+4].x_, sprite[BATTLEPLAN_PORTRAITS+4].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+5].active = R_is_active;
-	sprite[BATTLEPLAN_PORTRAITS+5].x_ += 24;
+	sprite[BATTLEPLAN_PORTRAITS+5].x_ = 128;
 	sprite[BATTLEPLAN_PORTRAITS+5].y_ = sprite[BATTLEPLAN_TOP+4].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+5, &battleplanPortrait6Animator, &battleplanPortraitFrames[battleplan_endurance[5]], sprite[BATTLEPLAN_PORTRAITS+5].x_, sprite[BATTLEPLAN_PORTRAITS+5].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+5, &battleplanPortrait6Animator, &battleplanPortraitFrames[battleplan_endurance[5]], sprite[BATTLEPLAN_PORTRAITS+5].x_, sprite[BATTLEPLAN_PORTRAITS+5].y_, 1, false);
 
 	///////////////////////////////////////////////////////////////////////
 	//1-ON-1 MATCHES
 	///////////////////////////////////////////////////////////////////////
 	sprite[BATTLEPLAN_PORTRAITS+6].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+6].y_ = sprite[BATTLEPLAN_TOP+6].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+6, &battleplanPortrait7Animator, &battleplanPortraitFrames[fighterIndex], sprite[BATTLEPLAN_PORTRAITS+6].x_, sprite[BATTLEPLAN_PORTRAITS+6].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+6, &battleplanPortrait7Animator, &battleplanPortraitFrames[fighterIndex], sprite[BATTLEPLAN_PORTRAITS+6].x_, sprite[BATTLEPLAN_PORTRAITS+6].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+7].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+7].y_ = sprite[BATTLEPLAN_TOP+7].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+7, &battleplanPortrait8Animator, &battleplanPortraitFrames[battleplan_lineup[0]], sprite[BATTLEPLAN_PORTRAITS+7].x_, sprite[BATTLEPLAN_PORTRAITS+7].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+7, &battleplanPortrait8Animator, &battleplanPortraitFrames[battleplan_lineup[0]], sprite[BATTLEPLAN_PORTRAITS+7].x_, sprite[BATTLEPLAN_PORTRAITS+7].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+8].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+8].y_ = sprite[BATTLEPLAN_TOP+8].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+8, &battleplanPortrait9Animator, &battleplanPortraitFrames[battleplan_lineup[1]], sprite[BATTLEPLAN_PORTRAITS+8].x_, sprite[BATTLEPLAN_PORTRAITS+8].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+8, &battleplanPortrait9Animator, &battleplanPortraitFrames[battleplan_lineup[1]], sprite[BATTLEPLAN_PORTRAITS+8].x_, sprite[BATTLEPLAN_PORTRAITS+8].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+9].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+9].y_ = sprite[BATTLEPLAN_TOP+9].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+9, &battleplanPortrait10Animator, &battleplanPortraitFrames[battleplan_lineup[2]], sprite[BATTLEPLAN_PORTRAITS+9].x_, sprite[BATTLEPLAN_PORTRAITS+9].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+9, &battleplanPortrait10Animator, &battleplanPortraitFrames[battleplan_lineup[2]], sprite[BATTLEPLAN_PORTRAITS+9].x_, sprite[BATTLEPLAN_PORTRAITS+9].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+10].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+10].y_ = sprite[BATTLEPLAN_TOP+10].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+10, &battleplanPortrait11Animator, &battleplanPortraitFrames[battleplan_lineup[3]], sprite[BATTLEPLAN_PORTRAITS+10].x_, sprite[BATTLEPLAN_PORTRAITS+10].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+10, &battleplanPortrait11Animator, &battleplanPortraitFrames[battleplan_lineup[3]], sprite[BATTLEPLAN_PORTRAITS+10].x_, sprite[BATTLEPLAN_PORTRAITS+10].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+11].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+11].y_ = sprite[BATTLEPLAN_TOP+11].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+11, &battleplanPortrait12Animator, &battleplanPortraitFrames[battleplan_lineup[4]], sprite[BATTLEPLAN_PORTRAITS+11].x_, sprite[BATTLEPLAN_PORTRAITS+11].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+11, &battleplanPortrait12Animator, &battleplanPortraitFrames[battleplan_lineup[4]], sprite[BATTLEPLAN_PORTRAITS+11].x_, sprite[BATTLEPLAN_PORTRAITS+11].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+12].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+12].y_ = sprite[BATTLEPLAN_TOP+12].y_ + 3;
-	setAnimationFrame(BATTLEPLAN_PORTRAITS+12, &battleplanPortrait13Animator, &battleplanPortraitFrames[battleplan_lineup[5]], sprite[BATTLEPLAN_PORTRAITS+12].x_, sprite[BATTLEPLAN_PORTRAITS+12].y_, 1);
+	setAnimationFrame(BATTLEPLAN_PORTRAITS+12, &battleplanPortrait13Animator, &battleplanPortraitFrames[battleplan_lineup[5]], sprite[BATTLEPLAN_PORTRAITS+12].x_, sprite[BATTLEPLAN_PORTRAITS+12].y_, 1, false);
 
 	sprite[BATTLEPLAN_PORTRAITS+13].active = R_is_active;
 	sprite[BATTLEPLAN_PORTRAITS+13].y_ = sprite[BATTLEPLAN_TOP+13].y_ + 3;
@@ -8605,8 +9278,14 @@ void switchScreenBattlePlan(int fighterIndex)
 	//THE PLAYER
 	///////////////////////////////////////////////////////////////////
 	sprite[BATTLEPLAN_PORTRAITS+14].active = R_is_active;
-	sprite[BATTLEPLAN_PORTRAITS+14].x_ -= 28;
+	sprite[BATTLEPLAN_PORTRAITS+14].x_ = 76;
 	sprite[BATTLEPLAN_PORTRAITS+14].y_ = sprite[BATTLEPLAN_TOP+13].y_ + 3;
+
+	if (battleplan_index < 6)
+	{
+		sprite[BATTLEPLAN_PORTRAITS+14].y_ = sprite[BATTLEPLAN_TOP+13].y_ + 3 - ((5 - battleplan_index) * 32);
+	}
+
 	setAnimationFrame(BATTLEPLAN_PORTRAITS+14, &battleplanPortrait15Animator, &battleplanPortraitFrames[fighterIndex], sprite[BATTLEPLAN_PORTRAITS+14].x_, sprite[BATTLEPLAN_PORTRAITS+14].y_, 1);
 
 	sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
@@ -8614,26 +9293,44 @@ void switchScreenBattlePlan(int fighterIndex)
 
 	sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
 
-	sprite[BATTLEPLAN_SHANGTSUNG].active = R_is_active;
-	sprite[BATTLEPLAN_GORO].active = R_is_active;
-	sprite[BATTLEPLAN_TOP].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+1].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+2].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+3].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+4].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+5].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+6].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+7].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+8].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+9].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+10].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+11].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+12].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+13].active = R_is_active;
-	sprite[BATTLEPLAN_TOP+14].active = R_is_active;
+	sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+1].active = sprite[BATTLEPLAN_PORTRAITS+1].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+2].active = sprite[BATTLEPLAN_PORTRAITS+2].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+3].active = sprite[BATTLEPLAN_PORTRAITS+3].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+4].active = sprite[BATTLEPLAN_PORTRAITS+4].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+5].active = sprite[BATTLEPLAN_PORTRAITS+5].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+6].active = sprite[BATTLEPLAN_PORTRAITS+6].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+7].active = sprite[BATTLEPLAN_PORTRAITS+7].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+8].active = sprite[BATTLEPLAN_PORTRAITS+8].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+9].active = sprite[BATTLEPLAN_PORTRAITS+9].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+10].active = sprite[BATTLEPLAN_PORTRAITS+10].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+11].active = sprite[BATTLEPLAN_PORTRAITS+11].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+12].active = sprite[BATTLEPLAN_PORTRAITS+12].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+13].active = sprite[BATTLEPLAN_PORTRAITS+13].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PORTRAITS+14].active = sprite[BATTLEPLAN_PORTRAITS+14].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP].active = sprite[BATTLEPLAN_TOP].y_ > -144 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+1].active = sprite[BATTLEPLAN_TOP+1].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+2].active = sprite[BATTLEPLAN_TOP+2].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+3].active = sprite[BATTLEPLAN_TOP+3].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+4].active = sprite[BATTLEPLAN_TOP+4].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+5].active = sprite[BATTLEPLAN_TOP+5].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+6].active = sprite[BATTLEPLAN_TOP+6].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+7].active = sprite[BATTLEPLAN_TOP+7].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+8].active = sprite[BATTLEPLAN_TOP+8].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+9].active = sprite[BATTLEPLAN_TOP+9].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+10].active = sprite[BATTLEPLAN_TOP+10].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+11].active = sprite[BATTLEPLAN_TOP+11].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+12].active = sprite[BATTLEPLAN_TOP+12].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+13].active = sprite[BATTLEPLAN_TOP+13].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN_PLAYER_MARKER].active = sprite[BATTLEPLAN_PLAYER_MARKER].y_ > -32 ? R_is_active : R_is_inactive;
 	battlePlanYOffset = 0;
 	printBattlePlan();
 	onScreenFighterIntro = false;
+	onScreenFighterEnding = false;
 	onScreenBattlePlan = true;
 	myTicks = rapTicks;
 	battleTicks = rapTicks;
@@ -8707,7 +9404,7 @@ void printBattlePlan()
 		rapPrint();
 	}
 
-	for (i = 0; i < 7; i++)
+	for (short i = 0; i < 7; i++)
 	{
 		if (sprite[BATTLEPLAN_TOP+7+i].y_ + 12 > 0 && sprite[BATTLEPLAN_TOP+7+i].y_ + 12 < 240)
 		{

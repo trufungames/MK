@@ -28,6 +28,8 @@ void setFrame(unsigned int spriteIndex, short width, short height, short x, shor
 
 void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame, int x, int y, int direction);
 
+void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator* animator, struct AnimationFrame* animationFrame, int x, int y, int direction, bool safeguardY);
+
 short getAnimationFrameWidth(struct AnimationFrame animationFrames[], short currentFrame);
 
 bool animationIsComplete(struct SpriteAnimator *animator, short totalFrames);

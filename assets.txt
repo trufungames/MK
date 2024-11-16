@@ -178,7 +178,7 @@ ROM,subzero_sam,sfx_raw8000,ASSETS\SFX\subzero.wav
 ROM,kasumi_sam,sfx_raw8000,ASSETS\SFX\kasumi.wav
 ROM,sonya_sam,sfx_raw8000,ASSETS\SFX\sonya.wav
 ROM,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
-ROM,gong_sam,sfx_raw8000,ASSETS\SFX\gong.wav
+'ROM,gong_sam,sfx_raw8000,ASSETS\SFX\gong.wav
 ROM,intro_sam,sfx_raw8000,ASSETS\SFX\intro.wav
 ROM,hiya_female1_sam,sfx_raw8000,ASSETS\SFX\hiya_female1.wav
 ROM,hiya_female2_sam,sfx_raw8000,ASSETS\SFX\hiya_female2.wav

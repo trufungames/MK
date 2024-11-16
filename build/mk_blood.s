@@ -3028,26 +3028,26 @@ _bloodDirection:
 	.globl	_bloodSquirts
 	.even
 _bloodSquirts:
-	.long	86
+	.long	87
 	.long	_bloodSquirt1Animator
 	.byte	0
 	.skip 5
-	.long	87
+	.long	88
 	.long	_bloodSquirt2Animator
 	.byte	0
 	.skip 5
-	.long	88
+	.long	89
 	.long	_bloodSquirt3Animator
 	.byte	0
 	.skip 5
-	.long	89
+	.long	90
 	.long	_bloodSquirt4Animator
 	.byte	0
 	.skip 5
 	.globl	_bloodSquirt4Animator
 	.even
 _bloodSquirt4Animator:
-	.long	89
+	.long	90
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3056,7 +3056,7 @@ _bloodSquirt4Animator:
 	.globl	_bloodSquirt3Animator
 	.even
 _bloodSquirt3Animator:
-	.long	88
+	.long	89
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3065,7 +3065,7 @@ _bloodSquirt3Animator:
 	.globl	_bloodSquirt2Animator
 	.even
 _bloodSquirt2Animator:
-	.long	87
+	.long	88
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3074,7 +3074,7 @@ _bloodSquirt2Animator:
 	.globl	_bloodSquirt1Animator
 	.even
 _bloodSquirt1Animator:
-	.long	86
+	.long	87
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3135,63 +3135,63 @@ _bloodSquirtFrames:
 	.globl	_bloodPools
 	.even
 _bloodPools:
-	.long	56
+	.long	57
 	.long	_bloodPool1Animator
 	.byte	0
 	.skip 5
-	.long	57
+	.long	58
 	.long	_bloodPool2Animator
 	.byte	0
 	.skip 5
-	.long	58
+	.long	59
 	.long	_bloodPool3Animator
 	.byte	0
 	.skip 5
-	.long	59
+	.long	60
 	.long	_bloodPool4Animator
 	.byte	0
 	.skip 5
-	.long	60
+	.long	61
 	.long	_bloodPool5Animator
 	.byte	0
 	.skip 5
-	.long	61
+	.long	62
 	.long	_bloodPool6Animator
 	.byte	0
 	.skip 5
-	.long	62
+	.long	63
 	.long	_bloodPool7Animator
 	.byte	0
 	.skip 5
-	.long	63
+	.long	64
 	.long	_bloodPool8Animator
 	.byte	0
 	.skip 5
 	.globl	_bloodBalls
 	.even
 _bloodBalls:
-	.long	90
+	.long	91
 	.long	_bloodBall1Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
 	.skip 8
-	.long	91
+	.long	92
 	.long	_bloodBall2Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
 	.skip 8
-	.long	92
+	.long	93
 	.long	_bloodBall3Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
 	.skip 8
-	.long	93
+	.long	94
 	.long	_bloodBall4Animator
 	.byte	0
 	.skip 1
@@ -3201,7 +3201,7 @@ _bloodBalls:
 	.globl	_bloodDrops
 	.even
 _bloodDrops:
-	.long	78
+	.long	79
 	.long	_bloodDrop1Animator
 	.byte	0
 	.skip 1
@@ -3209,7 +3209,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	79
+	.long	80
 	.long	_bloodDrop2Animator
 	.byte	0
 	.skip 1
@@ -3217,7 +3217,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	80
+	.long	81
 	.long	_bloodDrop3Animator
 	.byte	0
 	.skip 1
@@ -3225,7 +3225,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	81
+	.long	82
 	.long	_bloodDrop4Animator
 	.byte	0
 	.skip 1
@@ -3233,7 +3233,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	82
+	.long	83
 	.long	_bloodDrop5Animator
 	.byte	0
 	.skip 1
@@ -3241,7 +3241,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	83
+	.long	84
 	.long	_bloodDrop6Animator
 	.byte	0
 	.skip 1
@@ -3249,7 +3249,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	84
+	.long	85
 	.long	_bloodDrop7Animator
 	.byte	0
 	.skip 1
@@ -3257,7 +3257,7 @@ _bloodDrops:
 	.word	0
 	.word	0
 	.skip 10
-	.long	85
+	.long	86
 	.long	_bloodDrop8Animator
 	.byte	0
 	.skip 1
@@ -3268,14 +3268,14 @@ _bloodDrops:
 	.globl	_bloodSprays
 	.even
 _bloodSprays:
-	.long	75
+	.long	76
 	.long	_bloodSpray1Animator
 	.byte	0
 	.skip 1
 	.word	0
 	.word	0
 	.skip 2
-	.long	76
+	.long	77
 	.long	_bloodSpray2Animator
 	.byte	0
 	.skip 1
@@ -3309,7 +3309,7 @@ _bloodPoolFrames:
 	.globl	_bloodPool8Animator
 	.even
 _bloodPool8Animator:
-	.long	63
+	.long	64
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3318,7 +3318,7 @@ _bloodPool8Animator:
 	.globl	_bloodPool7Animator
 	.even
 _bloodPool7Animator:
-	.long	62
+	.long	63
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3327,7 +3327,7 @@ _bloodPool7Animator:
 	.globl	_bloodPool6Animator
 	.even
 _bloodPool6Animator:
-	.long	61
+	.long	62
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3336,7 +3336,7 @@ _bloodPool6Animator:
 	.globl	_bloodPool5Animator
 	.even
 _bloodPool5Animator:
-	.long	60
+	.long	61
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3345,7 +3345,7 @@ _bloodPool5Animator:
 	.globl	_bloodPool4Animator
 	.even
 _bloodPool4Animator:
-	.long	59
+	.long	60
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3354,7 +3354,7 @@ _bloodPool4Animator:
 	.globl	_bloodPool3Animator
 	.even
 _bloodPool3Animator:
-	.long	58
+	.long	59
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3363,7 +3363,7 @@ _bloodPool3Animator:
 	.globl	_bloodPool2Animator
 	.even
 _bloodPool2Animator:
-	.long	57
+	.long	58
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3372,7 +3372,7 @@ _bloodPool2Animator:
 	.globl	_bloodPool1Animator
 	.even
 _bloodPool1Animator:
-	.long	56
+	.long	57
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3419,7 +3419,7 @@ _bloodBallFrames:
 	.globl	_bloodBall4Animator
 	.even
 _bloodBall4Animator:
-	.long	93
+	.long	94
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3428,7 +3428,7 @@ _bloodBall4Animator:
 	.globl	_bloodBall3Animator
 	.even
 _bloodBall3Animator:
-	.long	92
+	.long	93
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3437,7 +3437,7 @@ _bloodBall3Animator:
 	.globl	_bloodBall2Animator
 	.even
 _bloodBall2Animator:
-	.long	91
+	.long	92
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3446,7 +3446,7 @@ _bloodBall2Animator:
 	.globl	_bloodBall1Animator
 	.even
 _bloodBall1Animator:
-	.long	90
+	.long	91
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3514,7 +3514,7 @@ _bloodDropFrames:
 	.globl	_bloodDrop8Animator
 	.even
 _bloodDrop8Animator:
-	.long	85
+	.long	86
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3523,7 +3523,7 @@ _bloodDrop8Animator:
 	.globl	_bloodDrop7Animator
 	.even
 _bloodDrop7Animator:
-	.long	84
+	.long	85
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3532,7 +3532,7 @@ _bloodDrop7Animator:
 	.globl	_bloodDrop6Animator
 	.even
 _bloodDrop6Animator:
-	.long	83
+	.long	84
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3541,7 +3541,7 @@ _bloodDrop6Animator:
 	.globl	_bloodDrop5Animator
 	.even
 _bloodDrop5Animator:
-	.long	82
+	.long	83
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3550,7 +3550,7 @@ _bloodDrop5Animator:
 	.globl	_bloodDrop4Animator
 	.even
 _bloodDrop4Animator:
-	.long	81
+	.long	82
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3559,7 +3559,7 @@ _bloodDrop4Animator:
 	.globl	_bloodDrop3Animator
 	.even
 _bloodDrop3Animator:
-	.long	80
+	.long	81
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3568,7 +3568,7 @@ _bloodDrop3Animator:
 	.globl	_bloodDrop2Animator
 	.even
 _bloodDrop2Animator:
-	.long	79
+	.long	80
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3577,7 +3577,7 @@ _bloodDrop2Animator:
 	.globl	_bloodDrop1Animator
 	.even
 _bloodDrop1Animator:
-	.long	78
+	.long	79
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3586,7 +3586,7 @@ _bloodDrop1Animator:
 	.globl	_bloodGlobObject
 	.even
 _bloodGlobObject:
-	.long	77
+	.long	78
 	.long	_bloodGlobAnimator
 	.byte	0
 	.skip 1
@@ -3641,7 +3641,7 @@ _bloodGlobFrames:
 	.globl	_bloodGlobAnimator
 	.even
 _bloodGlobAnimator:
-	.long	77
+	.long	78
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3688,7 +3688,7 @@ _bloodSprayFrames:
 	.globl	_bloodSpray2Animator
 	.even
 _bloodSpray2Animator:
-	.long	76
+	.long	77
 	.long	1056964608
 	.long	12792944
 	.word	0
@@ -3697,7 +3697,7 @@ _bloodSpray2Animator:
 	.globl	_bloodSpray1Animator
 	.even
 _bloodSpray1Animator:
-	.long	75
+	.long	76
 	.long	1056964608
 	.long	12792944
 	.word	0

@@ -73,12 +73,17 @@ void setFrame(unsigned int spriteIndex, short width, short height, short x, shor
 
 void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struct AnimationFrame* animationFrame, int x, int y, int direction)
 {
+    setAnimationFrame(spriteIndex, animator, animationFrame, x, y, direction, true);
+}
+
+void setAnimationFrame(unsigned int spriteIndex, SpriteAnimator *animator, struct AnimationFrame* animationFrame, int x, int y, int direction, bool safeguardY)
+{
     setFrame(spriteIndex, animationFrame->width, animationFrame->height, animationFrame->x, animationFrame->y, animator->mulFactor, animator->base);
     sprite[spriteIndex].x_ = x + (animationFrame->offsetX * direction);
     
     tempY = y + (animationFrame->offsetY);
 
-    if (tempY < 0)
+    if (tempY < 0 && safeguardY)
     {
         tempY = 0;
     }

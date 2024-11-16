@@ -111,8 +111,8 @@ sample10:	dc.l	fight_sam		; start of sample
 s10_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate		
 
-sample11:	dc.l	gong_sam		; start of sample
-			dc.l	gong_sam_end	; end of sample
+sample11:	dc.l	fight_sam		; start of sample
+			dc.l	fight_sam_end	; end of sample
 			dc.l	0				; repeat offset
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>

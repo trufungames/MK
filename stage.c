@@ -162,17 +162,17 @@ int stageGetFighterHitboxIndex()
     switch (currentStage)
     {
         case STAGE_COURTYARD:
-            return 34;
+            return 35;
         case STAGE_GATES:
-            return 34;
+            return 35;
         case STAGE_WARRIOR:
-            return 34;
+            return 35;
         case STAGE_PIT:
-            return 34;
+            return 35;
         case STAGE_GORO:
-            return 34;
+            return 35;
         default:
-            return 34;
+            return 35;
     }
 }
 
