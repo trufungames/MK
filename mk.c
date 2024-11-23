@@ -39,11 +39,7 @@ bool onScreenFighterEnding = false;
 bool onScreenBattlePlan = false;
 bool fadedIn = false;
 bool fadedOut = false;
-bool kasumiUnlocked = false;
-short titleShakeTicks = rapTicks;
-bool titleShaking = false;
-short titleShakeCount = 0;
-short titleShakeDirection = 1;
+bool kasumiUnlocked = true;
 short gameStartTicks = rapTicks;
 short ticksPerSec = 60;
 short lastTicks = 0;
@@ -61,9 +57,9 @@ bool preppedForFatality = false;
 bool isSinglePlayer = true;
 short myTicks = 0;
 short battleTicks = 0;
-int battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
-int battleplan_lineup[] = { -1, -1, -1, -1, -1, -1, -1 };
-int battleplan_index = 1;
+short battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
+short battleplan_lineup[] = { -1, -1, -1, -1, -1, -1, -1 };
+short battleplan_index = 6;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
@@ -74,8 +70,8 @@ short fmvIndex = 7;
 short attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	true,  //music on/off
-	true,  //sound on/off
+	false,  //music on/off
+	false,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -6791,12 +6787,12 @@ void basicmain()
 							sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 							sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 							sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-							sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							//sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
 							sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
 							sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
 
-							sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+							//sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
@@ -6955,34 +6951,7 @@ void basicmain()
 				fighterButtonCheck(&fighterCage);
 				fighterButtonCheck(&fighterCage2);
 				playerinputUpdate(&fighterCage, &fighterCage2);
-
-				if (!kasumiUnlocked && (playerinputContains(&fighterCage, secrets_Unlock_Kasumi_Inputs, 3) || playerinputContains(&fighterCage2, secrets_Unlock_Kasumi_Inputs, 3)))
-				{
-					kasumiUnlocked = true;
-					sprite[CHOOSE_KASUMI].active = R_is_active;
-					sfxThud(&soundHandler);
-					titleShaking = true;
-					titleShakeCount = 0;
-					titleShakeDirection = 1;
-					titleShakeTicks = rapTicks;
-				}
-
-				if (titleShaking && rapTicks >= titleShakeTicks + 2)
-				{
-					titleShakeDirection = titleShakeDirection * -1;
-					sprite[BACKGROUND].y_ += (titleShakeDirection * 8);
-					sprite[CHOOSE_KASUMI].y_ += (titleShakeDirection * 8);
-					titleShakeCount++;
-					titleShakeTicks = rapTicks;
-
-					if (titleShakeCount > 8)
-					{
-						sfxAnnouncerShowNoMercy(&soundHandler);
-						titleShaking = false;
-						sprite[BACKGROUND].y_ = 0;
-						sprite[CHOOSE_KASUMI].y_ = 40;
-					}
-				}
+				sprite[CHOOSE_KASUMI].active = R_is_active;
 
 				bool p1CursorChanged = false;
 
@@ -7749,7 +7718,7 @@ void basicmain()
 						stageSetNext();
 						battleplan_index--;  //move up the ladder.  TODO check for -1 and goto Fighter's ending
 
-						if (battleplan_index < 0)
+						if (battleplan_index < 6)
 						{
 							switchScreenFighterEnding(fighter1Ptr->fighterIndex);
 							continue;
@@ -8911,7 +8880,6 @@ void switchScreenFighterEndingPage2(int fighterIndex)
 void switchScreenFighterEnding(int fighterIndex)
 {
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;		// Set Background colour.
-
 	menuIndex = 0;  //keep track of what page we're on...
 	sprite[FMV].active = R_is_inactive;
 	rapUnpack(BMP_ENDINGS_PORTRAITS,(int)(int*)imageBuffer);
@@ -8937,6 +8905,7 @@ void switchScreenFighterEnding(int fighterIndex)
 	sprite[P2_FIGHTER].active = R_is_inactive;
 	musicStageGoro(&soundHandler);
 	fmvIndex = fighterIndex;  //try this, then the next line to see what fixes it...	
+	rapSetActiveList(0);
 	rapParticleClear();
 
 	char* name = "JOHNNY CAGE";
@@ -9131,7 +9100,6 @@ void switchScreenFighterEnding(int fighterIndex)
 	onScreenFight = false;
 	onScreenFighterEnding = true;
 	myTicks = rapTicks;
-	rapSetActiveList(0);
 }
 
 void switchScreenBattlePlan(int fighterIndex)
@@ -9291,9 +9259,9 @@ void switchScreenBattlePlan(int fighterIndex)
 	sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
 	sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
 
-	sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
+	//sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
 
-	sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+	//sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
@@ -9328,6 +9296,7 @@ void switchScreenBattlePlan(int fighterIndex)
 	sprite[BATTLEPLAN_TOP+14].active = sprite[BATTLEPLAN_TOP+14].y_ > -32 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_PLAYER_MARKER].active = sprite[BATTLEPLAN_PLAYER_MARKER].y_ > -32 ? R_is_active : R_is_inactive;
 	battlePlanYOffset = 0;
+
 	printBattlePlan();
 	onScreenFighterIntro = false;
 	onScreenFighterEnding = false;
@@ -9356,35 +9325,75 @@ void printBattlePlan()
 	jsfSetFontSize(0);
 	jsfSetFontIndx(0);
 
-	rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60 + FIGHTER_BATTLEPLAN_STEP_Y);
-	js_r_textbuffer = "           ";
-	rapPrint();	
-	rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60);
-	js_r_textbuffer = "SHANG TSUNG";
-	rapPrint();
+	// rapLocate(190 - (5 * 8), 60);
+	// js_r_textbuffer = "SHANG TSUNG";
+	// rapPrint();
 
-	rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116 + FIGHTER_BATTLEPLAN_STEP_Y);
-	js_r_textbuffer = "    ";
-	rapPrint();
-	rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116);
-	js_r_textbuffer = "GORO";
-	rapPrint();
+	// rapLocate(190 - (3 * 8), 116);
+	// js_r_textbuffer = "GORO";
+	// rapPrint();
 
-	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
-	js_r_textbuffer = "          ";
-	rapPrint();
-	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12);
-	js_r_textbuffer = "ENDURANCE3";
-	rapPrint();
+	// rapLocate(190 - (4 * 8), 180);
+	// js_r_textbuffer = "ENDURANCE3";
+	// rapPrint();
 
-	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
-	js_r_textbuffer = "          ";
-	rapPrint();
-	rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12);
-	js_r_textbuffer = "ENDURANCE2";
-	rapPrint();
+	// rapLocate(190 - (4 * 8), 212);
+	// js_r_textbuffer = "ENDURANCE2";
+	// rapPrint();
 
-	if (sprite[BATTLEPLAN_TOP+4].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y <= 240)
+	// rapLocate(190 - (4 * 8), 212);
+	// js_r_textbuffer = "ENDURANCE2";
+	// rapPrint();
+
+	// rapLocate(190 - (4 * 8), 244);
+	// js_r_textbuffer = "ENDURANCE1";
+	// rapPrint();
+
+	// rapLocate(190 - (6 * 8), 300);
+	// js_r_textbuffer = "MIRROR MATCH";
+	// rapPrint();
+
+	if (sprite[BATTLEPLAN_TOP].y_ + 60 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP].y_ + 60 > -4)
+	{
+		rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60 + FIGHTER_BATTLEPLAN_STEP_Y);
+		js_r_textbuffer = "           ";
+		rapPrint();	
+		rapLocate(190 - (5 * 8), sprite[BATTLEPLAN_TOP].y_ + 60);
+		js_r_textbuffer = "SHANG TSUNG";
+		rapPrint();
+	}
+
+	if (sprite[BATTLEPLAN_TOP].y_ + 116 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP].y_ + 116 > -4)
+	{
+		rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116 + FIGHTER_BATTLEPLAN_STEP_Y);
+		js_r_textbuffer = "    ";
+		rapPrint();
+		rapLocate(190 - (2 * 8), sprite[BATTLEPLAN_TOP].y_ + 116);
+		js_r_textbuffer = "GORO";
+		rapPrint();
+	}
+
+	if (sprite[BATTLEPLAN_TOP+2].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP+2].y_ + 12 > -4)
+	{
+		rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+		js_r_textbuffer = "          ";
+		rapPrint();
+		rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+2].y_ + 12);
+		js_r_textbuffer = "ENDURANCE3";
+		rapPrint();
+	}
+
+	if (sprite[BATTLEPLAN_TOP+3].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP+3].y_ + 12 > -4)
+	{
+		rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
+		js_r_textbuffer = "          ";
+		rapPrint();
+		rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+3].y_ + 12);
+		js_r_textbuffer = "ENDURANCE2";
+		rapPrint();
+	}
+
+	if (sprite[BATTLEPLAN_TOP+4].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP+4].y_ + 12 > -4)
 	{
 		rapLocate(190 - (4 * 8), sprite[BATTLEPLAN_TOP+4].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
 		js_r_textbuffer = "          ";
@@ -9394,7 +9403,7 @@ void printBattlePlan()
 		rapPrint();
 	}
 
-	if (sprite[BATTLEPLAN_TOP+6].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y < 240)
+	if (sprite[BATTLEPLAN_TOP+6].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y < 234 && sprite[BATTLEPLAN_TOP+6].y_ + 12 > -4)
 	{
 		rapLocate(190 - (6 * 8), sprite[BATTLEPLAN_TOP+6].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
 		js_r_textbuffer = "            ";
@@ -9406,7 +9415,7 @@ void printBattlePlan()
 
 	for (short i = 0; i < 7; i++)
 	{
-		if (sprite[BATTLEPLAN_TOP+7+i].y_ + 12 > 0 && sprite[BATTLEPLAN_TOP+7+i].y_ + 12 < 240)
+		if (sprite[BATTLEPLAN_TOP+7+i].y_ + 12 < 234 && sprite[BATTLEPLAN_TOP+7+i].y_ + 12 > -4)
 		{
 			rapLocate(190 - (getFighterNameOffset(battleplan_lineup[i]) * 8), sprite[BATTLEPLAN_TOP+7+i].y_ + 12 + FIGHTER_BATTLEPLAN_STEP_Y);
 			setFighterNameSpaces(battleplan_lineup[i]);

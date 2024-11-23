@@ -3713,7 +3713,7 @@ raptor_init_table:
 	dc.w	0,0																; sprite_xadd		; 16.16 x addition for sprite movement
 	dc.w	0,0																; sprite_yadd		; 16.16 y addition for sprite movement
 	dc.l	raptor_particle_buffer_width									; sprite_width		; width of sprite (in pixels)
-	dc.l	240;38									; sprite_height		; height of sprite (in pixels)
+	dc.l	raptor_particle_buffer_height															; sprite_height		; height of sprite (in pixels)
 	dc.l	is_normal														; sprite_flip		; flag for mirroring data left<>right
 	dc.l	0																; sprite_coffx		; x offset from center for collision box center
 	dc.l	0																; sprite_coffy		; y offset from center for collision box center	
@@ -3723,12 +3723,12 @@ raptor_init_table:
 	dc.l	4																; (BIT DEPTH)		; bitmap depth (1/2/4/8/16/24)
 	dc.l	is_RGB															; (CRY/RGB)			; bitmap GFX type
 	dc.l	is_trans														; (TRANSPARENCY)	; bitmap TRANS flag
-	dc.l	(raptor_particle_buffer_width/2)*240;38	; sprite_framesz	; size per frame in bytes of sprite data
+	dc.l	(raptor_particle_buffer_width/2)*raptor_particle_buffer_height						; sprite_framesz	; size per frame in bytes of sprite data
 	dc.l	raptor_particle_buffer_width/2									; sprite_bytewid	; width in bytes of one line of sprite data
 	dc.l	0																; sprite_animspd	; frame delay between animation changes
 	dc.l	0																; sprite_maxframe	; number of frames in animation chain
 	dc.l	ani_rept														; sprite_animloop	; repeat or play once
-	dc.l	edge_wrap														; sprite_wrap		; wrap on screen exit, or remove
+	dc.l	edge_ignore														; sprite_wrap		; wrap on screen exit, or remove
 	dc.l	spr_inf															; sprite_timer		; frames sprite is active for (or spr_inf)
 	dc.l	spr_linear														; sprite_track		; use 16.16 xadd/yadd or point to 16.16 x/y table
 	dc.l	0																; sprite_tracktop	; pointer to loop point in track table (if used)
