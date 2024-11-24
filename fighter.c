@@ -1318,6 +1318,16 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                         fighter2->IsBeingPushed = true;
                         fighter2->touchTicks = rapTicks;
                     }
+                    else
+                    {
+                        //TODO the fighter's are touching, so push them back until they aren't touching anymore
+                        if (fighter1->currentState->Name != STATE_BEING_THROWN && fighter2->currentState->Name != STATE_BEING_THROWN)
+                        {
+                            fighterPositionXAdd(fighter1, fighter1->direction * -1 * 4);
+                            fighterPositionXAdd(fighter2, fighter2->direction * -1 * 4);
+                        }
+                    }
+
                     // else
                     // {
                     //     //align the fighter hitboxes, so they don't overlap

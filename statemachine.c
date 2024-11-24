@@ -2400,8 +2400,12 @@ void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* 
                 sfxThud(fighter->soundHandler);
                 fighter->IsBeingDamaged = false;
                 fighter->IsBeingTripped = false;
-                fighter->IsLayingDown = true;
-                stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+
+                if (fighter->hitPoints > 0)
+                {
+                    fighter->IsLayingDown = true;
+                    stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+                }
                 return;
             }
             

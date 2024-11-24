@@ -12,7 +12,7 @@ __Z10cameraInitiiiij:
 	tst.l 8(%fp)
 	seq %d3
 	ext.w %d3
-	move.w #50,%a0
+	move.w #49,%a0
 	sub.w %d3,%a0
 	move.l %a0,_backgroundSpriteIndex
 	move.w %d0,%d3
@@ -145,7 +145,7 @@ __Z12cameraUpdateP7FighterS0_:
 	jeq .L50
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
-	subq.w #8,14412(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
@@ -303,8 +303,8 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
-	move.l %d2,14404(%a3)
-	subq.w #8,14412(%a3)
+	move.l %d2,14212(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0
@@ -321,7 +321,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.w #8,286(%a1)
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
-	subq.w #8,14412(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
@@ -335,8 +335,8 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
-	move.l %d2,14404(%a3)
-	subq.w #8,14412(%a3)
+	move.l %d2,14212(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0
@@ -345,7 +345,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.w #8,286(%a0)
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
-	subq.w #8,14412(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
@@ -355,8 +355,8 @@ __Z12cameraUpdateP7FighterS0_:
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
-	move.l %d2,14404(%a3)
-	subq.w #8,14412(%a3)
+	move.l %d2,14212(%a3)
+	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0

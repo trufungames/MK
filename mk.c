@@ -39,7 +39,6 @@ bool onScreenFighterEnding = false;
 bool onScreenBattlePlan = false;
 bool fadedIn = false;
 bool fadedOut = false;
-bool kasumiUnlocked = true;
 short gameStartTicks = rapTicks;
 short ticksPerSec = 60;
 short lastTicks = 0;
@@ -6951,7 +6950,6 @@ void basicmain()
 				fighterButtonCheck(&fighterCage);
 				fighterButtonCheck(&fighterCage2);
 				playerinputUpdate(&fighterCage, &fighterCage2);
-				sprite[CHOOSE_KASUMI].active = R_is_active;
 
 				bool p1CursorChanged = false;
 
@@ -6961,9 +6959,9 @@ void basicmain()
 					{
 						p1CursorChanged = true;
 						
-						if (kasumiUnlocked && p1Cursor == 2)
+						if (true && p1Cursor == 2)
 							p1Cursor = 7;
-						else if (kasumiUnlocked && p1Cursor == 7)
+						else if (true && p1Cursor == 7)
 							p1Cursor = 1;
 						else
 						{
@@ -6978,9 +6976,9 @@ void basicmain()
 					{
 						p1CursorChanged = true;
 
-						if (kasumiUnlocked && p1Cursor == 1)
+						if (true && p1Cursor == 1)
 							p1Cursor = 7;
-						else if (kasumiUnlocked && p1Cursor == 7)
+						else if (true && p1Cursor == 7)
 							p1Cursor = 2;
 						else
 						{
@@ -6996,7 +6994,7 @@ void basicmain()
 					{
 						p1CursorChanged = true;
 
-						if (kasumiUnlocked && p1Cursor == 5)
+						if (true && p1Cursor == 5)
 							p1Cursor = 7;
 						else
 						{
@@ -7010,7 +7008,7 @@ void basicmain()
 					{
 						p1CursorChanged = true;
 
-						if (kasumiUnlocked && p1Cursor == 7)
+						if (true && p1Cursor == 7)
 							p1Cursor = 5;
 						else
 						{
@@ -7188,9 +7186,9 @@ void basicmain()
 						{
 							p2CursorChanged = true;
 							
-							if (kasumiUnlocked && p2Cursor == 2)
+							if (true && p2Cursor == 2)
 								p2Cursor = 7;
-							else if (kasumiUnlocked && p2Cursor == 7)
+							else if (true && p2Cursor == 7)
 								p2Cursor = 1;
 							else
 							{
@@ -7205,9 +7203,9 @@ void basicmain()
 						{
 							p2CursorChanged = true;
 
-							if (kasumiUnlocked && p2Cursor == 1)
+							if (true && p2Cursor == 1)
 								p2Cursor = 7;
-							else if (kasumiUnlocked && p2Cursor == 7)
+							else if (true && p2Cursor == 7)
 								p2Cursor = 2;
 							else
 							{
@@ -7222,7 +7220,7 @@ void basicmain()
 						else if (pad2 & JAGPAD_UP)
 						{
 							p2CursorChanged = true;
-							if (kasumiUnlocked && p2Cursor == 5)
+							if (true && p2Cursor == 5)
 								p2Cursor = 7;
 							else
 							{
@@ -7235,7 +7233,7 @@ void basicmain()
 						else if (pad2 & JAGPAD_DOWN)
 						{
 							p2CursorChanged = true;
-							if (kasumiUnlocked && p2Cursor == 7)
+							if (true && p2Cursor == 7)
 								p2Cursor = 5;
 							else
 							{
@@ -7585,9 +7583,7 @@ void basicmain()
 				}
 				
 				if (chooseFighterDone && rapTicks > myTicks + 120)
-				{
-					sprite[CHOOSE_KASUMI].active = R_is_inactive;
-					
+				{	
 					for (int i = 0; i < 60; i++)
 					{
 						rapFadeClut(0,256,BLACKPAL);
@@ -7718,7 +7714,7 @@ void basicmain()
 						stageSetNext();
 						battleplan_index--;  //move up the ladder.  TODO check for -1 and goto Fighter's ending
 
-						if (battleplan_index < 6)
+						if (battleplan_index < 0)
 						{
 							switchScreenFighterEnding(fighter1Ptr->fighterIndex);
 							continue;
@@ -8646,11 +8642,6 @@ void switchScreenChooseFighter()
 	sprite[BACKGROUND].active = R_is_active;
 	sprite[P1_CURSOR].active = R_is_active;
 	sprite[P2_CURSOR].active = R_is_inactive;
-
-	if (kasumiUnlocked)
-	{
-		sprite[CHOOSE_KASUMI].active = R_is_active;
-	}
 	
 	onTitleScreen = false;
 	onMenuScreen = false;
@@ -8660,9 +8651,9 @@ void switchScreenChooseFighter()
 	inAttractMode = false;
 	
 	rapSetActiveList(0);
-	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,96);
-	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),6,16);
-	jsfLoadClut((unsigned short *)(void *)(BMP_P1_SELECTOR_clut),7,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_CHOOSEFIGHTER_clut),0,112);
+	jsfLoadClut((unsigned short *)(void *)(BMP_P2_SELECTOR_FLASH_clut),7,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_P1_SELECTOR_clut),8,16);
 	jsfLoadClut((unsigned short *)(void *)(BLACKPALx16),9,16);
 	jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
 	
