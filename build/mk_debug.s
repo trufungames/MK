@@ -35,6 +35,8 @@ __Z15showMessageBoolPcb:
 	lea (12,%sp),%sp
 	unlk %fp
 	jra _jsfDebugMessage
+.LC1:
+	.ascii "%s %d\0"
 	.even
 	.globl	__Z15printMessageIntPciii
 __Z15printMessageIntPciii:
@@ -55,7 +57,7 @@ __Z15printMessageIntPciii:
 	addq.l #4,%sp
 	move.l %d3,(%sp)
 	move.l %d2,-(%sp)
-	pea .LC0
+	pea .LC1
 	jsr ee_printf
 	move.l %d0,_js_r_textbuffer
 	lea (12,%sp),%sp

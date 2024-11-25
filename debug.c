@@ -24,6 +24,6 @@ void printMessageInt(char* msg, int intMessage, int x, int y)
 	jsfSetFontSize(0);
 	jsfSetFontIndx(1);
 	rapLocate(x, y);
-	js_r_textbuffer=ee_printf("%s: %d", msg, intMessage);
+	js_r_textbuffer=ee_printf("%s %d", msg, intMessage);
 	rapPrint();
 }

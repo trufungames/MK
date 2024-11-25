@@ -59,6 +59,7 @@ short battleTicks = 0;
 short battleplan_endurance[] = { CAGE, KANO, SCORPION, SONYA, KASUMI, RAIDEN };
 short battleplan_lineup[] = { -1, -1, -1, -1, -1, -1, -1 };
 short battleplan_index = 6;
+short lastFpsTicks = 0;
 //0 = Leaderboard
 //1 = SHANG TSUNG ISLAND
 //2 = FMV profile
@@ -7976,6 +7977,7 @@ void basicmain()
 				bloodUpdate(&soundHandler);
 				spriteDelayUpdate();
 				fighterDrawScores(fighter1Ptr, fighter2Ptr);
+				printMessageInt("FPS", xdivs(rapNTSCFlag > 0 ? 60 : 50, rapTicks - lastFpsTicks), 16, 224);
 				
 				if (debugMode)
 				{
@@ -8023,6 +8025,8 @@ void basicmain()
 					// rapPrint();
 				}
 			}
+
+			lastFpsTicks = rapTicks;
 			jsfVsync(0);
 		}
 	}
