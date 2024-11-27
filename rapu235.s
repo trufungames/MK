@@ -535,8 +535,8 @@ sample57:	dc.l	trufun_sam		; start of sample
 s57_vol:		dc.b	163				; volume
 			dc.l	8000			; default play rate
 
-sample58:	dc.l	title_rise_sam		; start of sample
-			dc.l	title_rise_sam_end	; end of sample
+sample58:	dc.l	title_thud_sam		; start of sample
+			dc.l	title_thud_sam_end	; end of sample
 			dc.l	0				; repeat offset
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>
@@ -742,8 +742,8 @@ sample80:	dc.l	kasumi_sam		; start of sample
 s80_vol:		dc.b	255				; volume
 			dc.l	8000			; default play rate
 
-sample81:	dc.l	shownomercy_sam		; start of sample
-			dc.l	shownomercy_sam_end	; end of sample
+sample81:	dc.l	kasumi_sam		; start of sample
+			dc.l	kasumi_sam_end	; end of sample
 			dc.l	0				; repeat offset
 			dc.l	0				; repeat length
 			dc.w	0				; <NULL>

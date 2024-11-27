@@ -365,17 +365,6 @@ void sfxTruFun(struct SoundHandler* soundHandler)
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_TRUFUN, 8000);
 }
 
-void sfxTitleRise(struct SoundHandler* soundHandler)
-{
-	if (!soundHandler->EnableSFX)
-		return;
-	
-	soundNextChannel(soundHandler);
-
-	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_TITLE_RISE, 8000);
-	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_TITLE_RISE, 8000);
-}
-
 void sfxTitleThud(struct SoundHandler* soundHandler)
 {
 	if (!soundHandler->EnableSFX)
@@ -940,17 +929,6 @@ void sfxAnnouncerLaugh(struct SoundHandler* soundHandler)
 
 	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_ANNOUNCER_LAUGH, 8000);
 	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_ANNOUNCER_LAUGH, 8000);
-}
-
-void sfxAnnouncerShowNoMercy(struct SoundHandler* soundHandler)
-{
-	if (!soundHandler->EnableSFX)
-		return;
-
-	soundNextChannel(soundHandler);
-
-	u235PlaySampleFreq(soundGetChannel(soundHandler), SOUND_SHOWNOMERCY, 8000);
-	u235PlaySampleFreq(soundGetChannel(soundHandler) + 1, SOUND_SHOWNOMERCY, 8000);
 }
 
 void sfxFinishHer(struct SoundHandler* soundHandler)

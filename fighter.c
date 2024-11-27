@@ -1320,7 +1320,7 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                     }
                     else
                     {
-                        //TODO the fighter's are touching, so push them back until they aren't touching anymore
+                        //the fighter's are touching, so push them back until they aren't touching anymore
                         if (fighter1->currentState->Name != STATE_BEING_THROWN && fighter2->currentState->Name != STATE_BEING_THROWN)
                         {
                             fighterPositionXAdd(fighter1, fighter1->direction * -1 * 4);
@@ -1795,7 +1795,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
-        && fighter1->currentState->Name != STATE_KASUMI_ROLL)
+        && fighter1->currentState->Name != STATE_KASUMI_ROLL
+        && fighter1->currentState->Name != STATE_BEING_THROWN)
     {
         fighter1->IsTurning = true;
     }
@@ -1812,7 +1813,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter1->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
-        && fighter1->currentState->Name != STATE_KASUMI_ROLL)
+        && fighter1->currentState->Name != STATE_KASUMI_ROLL
+        && fighter1->currentState->Name != STATE_BEING_THROWN)
     {
         fighter1->IsTurning = true;
     }
@@ -1829,7 +1831,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
-        && fighter2->currentState->Name != STATE_KASUMI_ROLL)
+        && fighter2->currentState->Name != STATE_KASUMI_ROLL
+        && fighter2->currentState->Name != STATE_BEING_THROWN)
     {
         fighter2->IsTurning = true;
     }
@@ -1846,7 +1849,8 @@ void fighterTurnCheck(struct Fighter* fighter1, struct Fighter* fighter2)
         && fighter1->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_HIT_LEG_GRAB
         && fighter2->currentState->Name != STATE_SONYA_SQUARE_FLIGHT
-        && fighter2->currentState->Name != STATE_KASUMI_ROLL)
+        && fighter2->currentState->Name != STATE_KASUMI_ROLL
+        && fighter2->currentState->Name != STATE_BEING_THROWN)
     {
         fighter2->IsTurning = true;
     }

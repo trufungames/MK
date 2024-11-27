@@ -54,10 +54,10 @@ __Z17stageLoadVsBattlev:
 .L14:
 	pea 16.w
 	pea 1.w
-	move.l #8503040,-(%sp)
+	move.l #8502000,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8501600,4844(%a0)
+	move.l #8500560,4844(%a0)
 	lea (12,%sp),%sp
 .L7:
 	unlk %fp
@@ -65,50 +65,50 @@ __Z17stageLoadVsBattlev:
 .L13:
 	pea 16.w
 	pea 1.w
-	move.l #8501568,-(%sp)
+	move.l #8500528,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8500128,4844(%a0)
+	move.l #8499088,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
 .L9:
 	pea 16.w
 	pea 1.w
-	move.l #8495680,-(%sp)
+	move.l #8494640,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8494240,4844(%a0)
+	move.l #8493200,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
 .L10:
 	pea 16.w
 	pea 1.w
-	move.l #8497152,-(%sp)
+	move.l #8496112,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8495712,4844(%a0)
+	move.l #8494672,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
 .L11:
 	pea 16.w
 	pea 1.w
-	move.l #8500096,-(%sp)
+	move.l #8499056,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8498656,4844(%a0)
+	move.l #8497616,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
 .L12:
 	pea 16.w
 	pea 1.w
-	move.l #8498624,-(%sp)
+	move.l #8497584,-(%sp)
 	jsr jsfLoadClut
 	move.l sprite,%a0
-	move.l #8497184,4844(%a0)
+	move.l #8496144,4844(%a0)
 	lea (12,%sp),%sp
 	unlk %fp
 	rts
@@ -592,7 +592,7 @@ sprite:
 __ZL13monksAnimator:
 	.long	48
 	.long	1056964608
-	.long	12549936
+	.long	12404704
 	.word	0
 	.word	0
 	.word	0

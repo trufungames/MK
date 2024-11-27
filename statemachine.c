@@ -2398,15 +2398,19 @@ void StateBeingThrown_Update(struct StateMachine* stateMachine, struct Fighter* 
                 fighterSetOnFloor(fighter);
                 bgShake(false);
                 sfxThud(fighter->soundHandler);
+
                 fighter->IsBeingDamaged = false;
                 fighter->IsBeingTripped = false;
+                fighter->IsLayingDown = true;
+                fighter->IsDefeated = false;
+                fighter->TookFinalBlow = false;
 
                 if (fighter->hitPoints > 0)
                 {
-                    fighter->IsLayingDown = true;
+                    fighter->vars[0] = 0;
                     stateMachineGoto(stateMachine, STATE_LAYDOWN, fighter, spriteAnimator);
+                    return;
                 }
-                return;
             }
             
             fighter->lastTicks = rapTicks;
@@ -4261,8 +4265,8 @@ void StateKasumiRoll_Update(struct StateMachine* stateMachine, struct Fighter* f
         fighterSetOnFloor(fighter);
         impactFrameReset(fighter);
         stateMachineGoto(stateMachine, STATE_IDLE, fighter, spriteAnimator);
-        return;    }
-
+        return;
+    }
     else if (fighter->MadeContact)
     {
         //Made Contact - follow the jump pattern along the Y to bounce up, then land back in IDLE
@@ -4398,6 +4402,7 @@ void StateIsWinner_HandleInput(struct StateMachine* stateMachine, struct Fighter
 
 void StateFinishHim_Enter(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
+    fighterFaceOpponent(fighter);
     if (fighter->IsDefeated && fighter->TookFinalBlow)
     {
         fighter->IsActive = false;
@@ -4410,6 +4415,8 @@ void StateFinishHim_Enter(struct StateMachine* stateMachine, struct Fighter* fig
     fighter->lastTicks = rapTicks;
     fighter->IsDefeated = true;
     fighter->IsLayingDown = false;
+    fighter->TookFinalBlow = false;
+    fighter->vars[0] = 0;
 }
 
 void StateFinishHim_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)

@@ -51,7 +51,7 @@ ROM,BMPRAIDEN,gfx_clut,ASSETS\GFX\raiden.BMP
 ROM,BMPSUBZERO,gfx_clut,ASSETS\GFX\subzero.BMP
 ROM,BMPSONYA,gfx_clut,ASSETS\GFX\sonya.BMP
 ROM,BMPKANO,gfx_clut,ASSETS\GFX\kano.BMP
-ROM,BMPGORO,gfx_clut_pack,ASSETS\GFX\goro_placeholder.BMP
+'ROM,BMPGORO,gfx_clut_pack,ASSETS\GFX\goro_placeholder.BMP
 ROM,PAL_SCORPION,gfx_clut,ASSETS\GFX\pal_scorpion.BMP
 ROM,PAL_REPTILE,gfx_clut,ASSETS\GFX\pal_reptile.BMP
 ROM,PAL_KASUMI,gfx_clut,ASSETS\GFX\pal_kasumi.BMP
@@ -178,7 +178,6 @@ ROM,subzero_sam,sfx_raw8000,ASSETS\SFX\subzero.wav
 ROM,kasumi_sam,sfx_raw8000,ASSETS\SFX\kasumi.wav
 ROM,sonya_sam,sfx_raw8000,ASSETS\SFX\sonya.wav
 ROM,fight_sam,sfx_raw8000,ASSETS\SFX\fight_16.wav
-'ROM,gong_sam,sfx_raw8000,ASSETS\SFX\gong.wav
 ROM,intro_sam,sfx_raw8000,ASSETS\SFX\intro.wav
 ROM,hiya_female1_sam,sfx_raw8000,ASSETS\SFX\hiya_female1.wav
 ROM,hiya_female2_sam,sfx_raw8000,ASSETS\SFX\hiya_female2.wav
@@ -233,7 +232,6 @@ ROM,throw_male_sam,sfx_raw8000,ASSETS\SFX\throw_male.wav
 ROM,throw_female_sam,sfx_raw8000,ASSETS\SFX\throw_female.wav
 ROM,throw_ninja_sam,sfx_raw8000,ASSETS\SFX\throw_ninja.wav
 ROM,trufun_sam,sfx_raw8000,ASSETS\SFX\trufun.wav
-ROM,title_rise_sam,sfx_raw8000,ASSETS\SFX\title_rise.wav
 ROM,title_thud_sam,sfx_raw8000,ASSETS\SFX\title_thud.wav
 ROM,title_start_sam,sfx_raw8000,ASSETS\SFX\title_start.wav
 ROM,crowd_clap_sam,sfx_raw8000,ASSETS\SFX\crowd_clap.wav
@@ -246,7 +244,6 @@ ROM,raiden_idle_zap_sam,sfx_raw8000,ASSETS\SFX\raiden_idle_zap.wav
 ROM,kang_flyingkick_sam,sfx_raw8000,ASSETS\SFX\kang_flyingkick.wav
 ROM,scorpion_teleport_sam,sfx_raw8000,ASSETS\SFX\scorpion_teleport.wav
 ROM,subzero_slide_sam,sfx_raw8000,ASSETS\SFX\subzero_slide.wav
-ROM,shownomercy_sam,sfx_raw8000,ASSETS\SFX\shownomercy.wav
 ROM,kasumi_fireball_sam,sfx_raw8000,ASSETS\SFX\kasumi_fireball.wav
 ROM,fatality_gong_sam,sfx_raw8000,ASSETS\SFX\fatality_gong.wav
 ROM,fatality_groan_male_sam,sfx_raw8000,ASSETS\SFX\fatality_groan_male.wav

@@ -70,8 +70,8 @@ short fmvIndex = 7;
 short attractSlideIndex = 0;
 
 static SoundHandler soundHandler = {
-	false,  //music on/off
-	false,  //sound on/off
+	true,  //music on/off
+	true,  //sound on/off
 	163,  //sound volume
 	120   //music volume
 };
@@ -6169,11 +6169,13 @@ void basicmain()
 				{
 					fadedIn = true;
 
-					for (int i = 0; i < 80; i++)
-					{
-						rapFadeClut(0,256,(int *)(int)(void *)(BMP_PREALPHA_clut));
-						jsfVsync(0); 
-					}
+					jsfLoadClut((unsigned short *)(void *)(BMP_PREALPHA_clut),0,255);
+
+					// for (int i = 0; i < 80; i++)
+					// {
+					// 	rapFadeClut(0,256,(int *)(int)(void *)(BMP_PREALPHA_clut));
+					// 	jsfVsync(0); 
+					// }
 
 					sfxAnnouncerExcellent(&soundHandler);
 					
@@ -6226,61 +6228,83 @@ void basicmain()
 					if (rapTicks > gameStartTicks + (60*4) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
 						|| rapTicks > gameStartTicks + (60*20))
 					{
+						//showMessage("8");
 						for (int i = 0; i < 90; i++)
 						{
 							rapFadeClut(0,256,BLACKPAL);
 							jsfVsync(0);
 						}
-
+						//showMessage("88");
+						fadedIn = false;
 						fadedOut = true;
 						onAlphaScreen = false;		
+						//showMessage("888");
 						initTruFunScreen();
+						//showMessage("8888");
+						continue;
 					}
 				}
 			}
 			else if (onTruFunScreen)
 			{
+				showMessage("1");
 				if (!fadedIn)
 				{
+					//showMessage("2");
 					fadedIn = true;
-
+					//showMessage("3");
 					sfxTruFun(&soundHandler);
-
+					//showMessage("4");
 					for (int i = 0; i < 80; i++)
 					{
-						rapFadeClut(0,256,(int *)(int)(void *)(BMP_TRUFUN_clut));
-						jsfVsync(0); 
+						showMessage("4.1");
+						//rapFadeClut(0,256,(int *)(int)(void *)(BMP_TRUFUN_clut));
+						//jsfVsync(0);
+						showMessage("4.2");
+						
+						//showMessage("4.3");
 					}
+					
+					//showMessage("5");
 				}
+
+				//showMessage("5.1");
+				//showMessageInt("fin", fadedIn);
 
 				if (fadedIn && !fadedOut)
 				{
 					if (rapTicks > gameStartTicks + (60*5))
 					{
-						for (int i = 0; i < 90; i++)
-						{
-							rapFadeClut(0,256,BLACKPAL);
-							jsfVsync(0);
-						}
+						//showMessage("6");
+						// for (int i = 0; i < 90; i++)
+						// {
+						// 	rapFadeClut(0,256,BLACKPAL);
+						// 	jsfVsync(0);
+						// }
 
 						fadedOut = true;
 						onTruFunScreen = false;		
+						//showMessage("7");
 						initTitleScreen();
+						//showMessage("8");
 					}
 				}
 			}
 			else if (onTitleScreen)
 			{
+				//howMessage("9");
 				if (!fadedIn)
 				{
 					fadedIn = true;
+					showMessage("10");
 					for (int i = 0; i < 80; i++)
 					{
 						rapFadeClut(0,256,(int *)(int)(void *)(BMP_TITLESCREEN_clut));
 						jsfVsync(0); 
 					}
-					
+					showMessage("11");
 					sfxIntro(&soundHandler);
+					//showMessage("12");
 				}
 
 				if (fadedIn && !fadedOut)
@@ -8094,13 +8118,14 @@ void initTruFunScreen()
 {
 	rapParticleClear();
 	rapUnpack(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
-	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
-	sprite[BACKGROUND].active=R_is_active;
-	sprite[BACKGROUND16].active=R_is_inactive;
+	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
+	sprite[BACKGROUND16].active=R_is_active;
+	sprite[BACKGROUND].active=R_is_inactive;
 
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
+	onAlphaScreen = false;
 	onTruFunScreen = true;
 }
 
@@ -8110,6 +8135,7 @@ void initTitleScreen()
 	rapUnpack(BMP_TITLESCREEN,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
+	sprite[BACKGROUND16].active = R_is_inactive;
 	
 	jsfLoadClut((unsigned short *)(void *)(BLACKPAL),0,32);
 
@@ -8220,7 +8246,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line4Offset = 20;
 			line5 = "GROUP OF CUT-THROAT MADMEN FEARED";
 			line5Offset = 24;
-			line6 = "AND RESPECTED THROUGHTOUT ALL OF";
+			line6 = "AND RESPECTED THROUGHOUT ALL OF";
 			line6Offset = 28;
 			line7 = "CRIME'S INNER CIRCLES.";
 			line7Offset = 60;
