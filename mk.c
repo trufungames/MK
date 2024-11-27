@@ -6228,83 +6228,59 @@ void basicmain()
 					if (rapTicks > gameStartTicks + (60*4) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
 						|| rapTicks > gameStartTicks + (60*20))
 					{
-						//showMessage("8");
 						for (int i = 0; i < 90; i++)
 						{
 							rapFadeClut(0,256,BLACKPAL);
 							jsfVsync(0);
 						}
-						//showMessage("88");
 						fadedIn = false;
 						fadedOut = true;
-						onAlphaScreen = false;		
-						//showMessage("888");
+						onAlphaScreen = false;
 						initTruFunScreen();
-						//showMessage("8888");
 						continue;
 					}
 				}
 			}
 			else if (onTruFunScreen)
 			{
-				showMessage("1");
 				if (!fadedIn)
 				{
-					//showMessage("2");
 					fadedIn = true;
-					//showMessage("3");
 					sfxTruFun(&soundHandler);
-					//showMessage("4");
 					for (int i = 0; i < 80; i++)
 					{
-						showMessage("4.1");
-						//rapFadeClut(0,256,(int *)(int)(void *)(BMP_TRUFUN_clut));
-						//jsfVsync(0);
-						showMessage("4.2");
-						
-						//showMessage("4.3");
+						rapFadeClut(0,256,(int *)(int)(void *)(BMP_TRUFUN_clut));
+						jsfVsync(0);
 					}
-					
-					//showMessage("5");
 				}
-
-				//showMessage("5.1");
-				//showMessageInt("fin", fadedIn);
 
 				if (fadedIn && !fadedOut)
 				{
 					if (rapTicks > gameStartTicks + (60*5))
 					{
-						//showMessage("6");
-						// for (int i = 0; i < 90; i++)
-						// {
-						// 	rapFadeClut(0,256,BLACKPAL);
-						// 	jsfVsync(0);
-						// }
+						for (int i = 0; i < 90; i++)
+						{
+							rapFadeClut(0,256,BLACKPAL);
+							jsfVsync(0);
+						}
 
 						fadedOut = true;
-						onTruFunScreen = false;		
-						//showMessage("7");
+						onTruFunScreen = false;
 						initTitleScreen();
-						//showMessage("8");
 					}
 				}
 			}
 			else if (onTitleScreen)
 			{
-				//howMessage("9");
 				if (!fadedIn)
 				{
 					fadedIn = true;
-					showMessage("10");
 					for (int i = 0; i < 80; i++)
 					{
 						rapFadeClut(0,256,(int *)(int)(void *)(BMP_TITLESCREEN_clut));
 						jsfVsync(0); 
 					}
-					showMessage("11");
 					sfxIntro(&soundHandler);
-					//showMessage("12");
 				}
 
 				if (fadedIn && !fadedOut)
