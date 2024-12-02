@@ -18,6 +18,7 @@ bool movingCamera = false;
 short panDirection = 1;
 unsigned int backgroundSpriteIndex;
 unsigned int backgroundGfxBase;
+unsigned int pitSpikesGfxBase = 0;
 short targetCameraX = 0;
 bool isScrollingPit = false;
 short xStep = 8;
@@ -43,6 +44,17 @@ void cameraInit(int stage, int startX, int startY, int xMax, unsigned int gfxBas
     backgroundGfxBase = gfxBase;
 
     setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+
+    if ((stageGet() == STAGE_PIT || stageGet() == STAGE_PIT_BOTTOM) && pitSpikesGfxBase == 0)
+    {
+        pitSpikesGfxBase = sprite[FOREGROUND_SPIKES].gfxbase;
+        setFrame(FOREGROUND_SPIKES, 352, 58, cameraX, 0, 1.0f, pitSpikesGfxBase);
+    }
+    else if (stageGet() == STAGE_PIT || stageGet() == STAGE_PIT_BOTTOM)
+    {
+        setFrame(FOREGROUND_SPIKES, 352, 58, cameraX, 0, 1.0f, pitSpikesGfxBase);
+    }
+
     sprite[backgroundSpriteIndex].x_ = xOffset;
     cameraTicks = rapTicks;
 }
@@ -118,6 +130,11 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                 }       
 
                 setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+                
+                if (stageGet() == STAGE_PIT || stageGet() == STAGE_PIT_BOTTOM)
+                {
+                    setFrame(FOREGROUND_SPIKES, 352, 58, cameraX, 0, 1.0f, pitSpikesGfxBase);
+                }
             //}
 
             sprite[backgroundSpriteIndex].x_ = xOffset;

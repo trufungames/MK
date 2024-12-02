@@ -4,7 +4,7 @@
 #include "spriteanimator.h"
 #include "match.h"
 
-static short currentStage = STAGE_GORO;
+static short currentStage = STAGE_WARRIOR;// STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;
@@ -223,7 +223,7 @@ int stageGetStartY()
     switch (currentStage)
     {
         case STAGE_PIT_BOTTOM:
-            return 400;
+            return 0;
         default:
             return 0;
     }
@@ -249,7 +249,7 @@ void stageMove(int direction, int offset)
             break;
         case STAGE_PIT:
         case STAGE_PIT_BOTTOM:
-            sprite[FOREGROUND_SPIKES].x_ += 2 * direction;
+            //sprite[FOREGROUND_SPIKES].x_ += 2 * direction;
             break;
         case STAGE_WARRIOR:
             sprite[STAGE_WARRIOR_BUSH].x_ += 1 * direction;
@@ -315,7 +315,7 @@ void stagePositionAssets()
             break;
         case STAGE_PIT:
         case STAGE_PIT_BOTTOM:
-            sprite[FOREGROUND_SPIKES].x_ = STAGE_PITBOTTOM_SPIKES_X - cameraGetX();
+            //sprite[FOREGROUND_SPIKES].x_ = STAGE_PITBOTTOM_SPIKES_X - cameraGetX();
             break;
         case STAGE_THRONE:
             sprite[THRONE_SHANG_TSUNG].x_ = STAGE_THRONE_SHANGTSUNG_X - cameraGetX();

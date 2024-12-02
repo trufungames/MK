@@ -6237,6 +6237,7 @@ void basicmain()
 						fadedOut = true;
 						onAlphaScreen = false;
 						initTruFunScreen();
+						//initTitleScreen();
 						continue;
 					}
 				}
@@ -7977,7 +7978,7 @@ void basicmain()
 				bloodUpdate(&soundHandler);
 				spriteDelayUpdate();
 				fighterDrawScores(fighter1Ptr, fighter2Ptr);
-				printMessageInt("FPS", xdivs(rapNTSCFlag > 0 ? 60 : 50, rapTicks - lastFpsTicks), 16, 224);
+				printMessageInt("FPS", xdivs(rapNTSCFlag > 0 ? 60 : 50, rapTicks - lastFpsTicks), 16, 216);
 				
 				if (debugMode)
 				{
@@ -8094,6 +8095,7 @@ void initTruFunScreen()
 {
 	rapParticleClear();
 	rapUnpack(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
+	//jsfUnpack68k(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND16].active=R_is_active;
 	sprite[BACKGROUND].active=R_is_inactive;
@@ -8118,6 +8120,7 @@ void initTitleScreen()
 	fadedIn = false;
 	fadedOut = false;
 	gameStartTicks = rapTicks;
+	onTruFunScreen = false;
 	onTitleScreen = true;
 }
 
@@ -9840,7 +9843,7 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             }
 
 			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
-			sprite[FOREGROUND_SPIKES].x_ = -256;
+			sprite[FOREGROUND_SPIKES].x_ = 0;
 			sprite[FOREGROUND_SPIKES].y_ = 645;
 
             sprite[STAGE_PIT_MOON].gfxbase=(int)imageBuffer320x240;
@@ -9888,10 +9891,10 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].active = R_is_inactive;
 			sprite[THRONE_SHANG_TSUNG].active = R_is_inactive;
 
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,80);
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),5,16);
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),6,16);
-			jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,96);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_MOON_clut),7,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_CLOUDS1_clut),8,16);
+			//jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
 
             musicStagePit(&soundHandler);
             break;
@@ -9901,18 +9904,18 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
+                rapUnpack(BMP_PIT_BOTTOM,(int)(int*)imageBuffer);
             }
 
 			sprite[FOREGROUND_SPIKES].active = R_is_active;
-			sprite[FOREGROUND_SPIKES].x_ = -256;
+			sprite[FOREGROUND_SPIKES].x_ = 0;
 			sprite[FOREGROUND_SPIKES].y_ = 150;
 
             sprite[STAGE_PIT_MOON].active=R_is_inactive;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
-            sprite[STAGE_PRIMARY_BACKGROUND].active=R_is_active;
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ = 0;
 			sprite[STAGE_PRIMARY_BACKGROUND].height = 240;
+            sprite[STAGE_PRIMARY_BACKGROUND].active=R_is_active;
             sprite[STAGE_PIT_CLOUDS1].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+1].active = R_is_inactive;
 			sprite[STAGE_PIT_CLOUDS1+2].active = R_is_inactive;
@@ -9943,8 +9946,8 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].active = R_is_inactive;
 			sprite[THRONE_SHANG_TSUNG].active = R_is_inactive;
 
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,80);
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,96);
+            //jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
 
             musicStagePit(&soundHandler);
             break;

@@ -353,62 +353,55 @@ __Z14stageGetStartXv:
 	.globl	__Z14stageGetStartYv
 __Z14stageGetStartYv:
 	link.w %fp,#0
-	cmp.w #4,__ZL12currentStage.l
-	seq %d0
-	ext.w %d0
-	and.l #400,%d0
+	moveq #0,%d0
 	unlk %fp
 	rts
 	.even
 	.globl	__Z9stageMoveii
 __Z9stageMoveii:
 	link.w %fp,#0
-	move.l 8(%fp),%d0
-	cmp.w #5,__ZL12currentStage.l
-	jhi .L42
-	moveq #0,%d1
-	move.w __ZL12currentStage,%d1
-	add.l %d1,%d1
-	move.w .L49(%pc,%d1.l),%d1
-	move.l sprite,%a0
-	jmp %pc@(2,%d1:w)
-.L49:
-	.word .L44-.L49
-	.word .L45-.L49
-	.word .L46-.L49
-	.word .L47-.L49
-	.word .L47-.L49
-	.word .L48-.L49
-.L48:
-	add.w %d0,%d0
-	add.w %d0,10568(%a0)
-.L42:
-	unlk %fp
-	rts
-.L47:
-	add.w %d0,%d0
-	add.w %d0,14216(%a0)
+	move.l 8(%fp),%d1
+	move.w __ZL12currentStage,%d0
+	cmp.w #1,%d0
+	jeq .L43
+	jle .L48
+	cmp.w #2,%d0
+	jeq .L44
+	cmp.w #5,%d0
+	jeq .L49
+.L40:
 	unlk %fp
 	rts
 .L44:
-	add.w %d0,9224(%a0)
+	move.l sprite,%a0
+	add.w %d1,7688(%a0)
+	add.w %d1,7880(%a0)
+	add.w %d1,8072(%a0)
+	add.w %d1,8264(%a0)
+	add.w %d1,%d1
+	add.w %d1,13832(%a0)
+	add.w %d1,14024(%a0)
 	unlk %fp
 	rts
-.L45:
-	add.w %d0,%d0
-	add.w %d0,13832(%a0)
-	add.w %d0,9800(%a0)
-	add.w %d0,9992(%a0)
+.L49:
+	move.l sprite,%a0
+	add.w %d1,%d1
+	add.w %d1,10568(%a0)
 	unlk %fp
 	rts
-.L46:
-	add.w %d0,7688(%a0)
-	add.w %d0,7880(%a0)
-	add.w %d0,8072(%a0)
-	add.w %d0,8264(%a0)
-	add.w %d0,%d0
-	add.w %d0,13832(%a0)
-	add.w %d0,14024(%a0)
+.L43:
+	move.l sprite,%a0
+	add.w %d1,%d1
+	add.w %d1,13832(%a0)
+	add.w %d1,9800(%a0)
+	add.w %d1,9992(%a0)
+	unlk %fp
+	rts
+.L48:
+	tst.w %d0
+	jne .L40
+	move.l sprite,%a0
+	add.w %d1,9224(%a0)
 	unlk %fp
 	rts
 	.even
@@ -435,72 +428,20 @@ __Z19stagePositionAssetsv:
 	link.w %fp,#0
 	move.l %a3,-(%sp)
 	move.l %a2,-(%sp)
-	cmp.w #5,__ZL12currentStage.l
-	jhi .L54
-	moveq #0,%d0
 	move.w __ZL12currentStage,%d0
-	add.l %d0,%d0
-	move.w .L61(%pc,%d0.l),%d0
-	jmp %pc@(2,%d0:w)
-.L61:
-	.word .L56-.L61
-	.word .L57-.L61
-	.word .L58-.L61
-	.word .L59-.L61
-	.word .L59-.L61
-	.word .L60-.L61
-.L60:
-	move.l sprite,%a2
-	jsr __Z10cameraGetXv
-	move.w #352,%d1
-	sub.w %d0,%d1
-	move.w %d1,10568(%a2)
-.L54:
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L59:
-	move.l sprite,%a2
-	jsr __Z10cameraGetXv
-	moveq #4,%d1
-	sub.w %d0,%d1
-	move.w %d1,14216(%a2)
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L56:
-	move.l sprite,%a2
-	jsr __Z17cameraGetParalaxXv
-	neg.w %d0
-	move.w %d0,9224(%a2)
+	cmp.w #1,%d0
+	jeq .L56
+	jle .L61
+	cmp.w #2,%d0
+	jeq .L57
+	cmp.w #5,%d0
+	jeq .L62
+.L53:
 	move.l -8(%fp),%a2
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
 .L57:
-	move.l sprite,%a3
-	lea __Z10cameraGetXv,%a2
-	jsr (%a2)
-	moveq #10,%d1
-	sub.w %d0,%d1
-	move.w %d1,13832(%a3)
-	move.l sprite,%a3
-	jsr (%a2)
-	move.w #137,%d1
-	sub.w %d0,%d1
-	move.w %d1,9800(%a3)
-	move.l sprite,%a3
-	jsr (%a2)
-	move.w #660,%d1
-	sub.w %d0,%d1
-	move.w %d1,9992(%a3)
-	move.l -8(%fp),%a2
-	move.l -4(%fp),%a3
-	unlk %fp
-	rts
-.L58:
 	move.l sprite,%a3
 	lea __Z17cameraGetParalaxXv,%a2
 	jsr (%a2)
@@ -557,6 +498,48 @@ __Z19stagePositionAssetsv:
 	move.l -4(%fp),%a3
 	unlk %fp
 	rts
+.L62:
+	move.l sprite,%a2
+	jsr __Z10cameraGetXv
+	move.w #352,%d1
+	sub.w %d0,%d1
+	move.w %d1,10568(%a2)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L56:
+	move.l sprite,%a3
+	lea __Z10cameraGetXv,%a2
+	jsr (%a2)
+	moveq #10,%d1
+	sub.w %d0,%d1
+	move.w %d1,13832(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #137,%d1
+	sub.w %d0,%d1
+	move.w %d1,9800(%a3)
+	move.l sprite,%a3
+	jsr (%a2)
+	move.w #660,%d1
+	sub.w %d0,%d1
+	move.w %d1,9992(%a3)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
+.L61:
+	tst.w %d0
+	jne .L53
+	move.l sprite,%a2
+	jsr __Z17cameraGetParalaxXv
+	neg.w %d0
+	move.w %d0,9224(%a2)
+	move.l -8(%fp),%a2
+	move.l -4(%fp),%a3
+	unlk %fp
+	rts
 	.even
 	.globl	__Z23stageGetFatalityPalettev
 __Z23stageGetFatalityPalettev:
@@ -568,7 +551,7 @@ __Z23stageGetFatalityPalettev:
 	move.l %d0,%a0
 	add.l %d0,%a0
 	move.l %a0,%a1
-	add.l #_CSWTCH.30,%a1
+	add.l #_CSWTCH.29,%a1
 	move.l (%a1,%a0.l),%d0
 	unlk %fp
 	rts
@@ -592,14 +575,14 @@ sprite:
 __ZL13monksAnimator:
 	.long	48
 	.long	1056964608
-	.long	12404704
+	.long	12500080
 	.word	0
 	.word	0
 	.word	0
 	.skip 4
 	.even
 __ZL12currentStage:
-	.word	6
+	.word	2
 	.even
 __ZL14monkClapFrames:
 	.word	576
@@ -690,7 +673,7 @@ _CSWTCH.27:
 	.long	224
 	.long	144
 	.even
-_CSWTCH.30:
+_CSWTCH.29:
 	.long	128
 	.long	96
 	.long	96
