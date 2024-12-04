@@ -123,7 +123,10 @@ void bgUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
 		if (IsScrollingUp || IsScrollingDown || IsShaking)
 		{
 			sprite[STAGE_PRIMARY_BACKGROUND].y_ += bgYInc;
+			sprite[STAGE_PRIMARY_BACKGROUND_4BIT].y_ += bgYInc;
 			sprite[STAGE_SECONDARY_BACKGROUND].y_ += bgYInc;
+			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].y_ += bgYInc;
+			sprite[STAGE_MONKS].y_ += bgYInc;
 			sprite[STAGE_GATES_MOUNTAIN].y_ += bgYInc;
 			sprite[STAGE_GATES_TEMPLE].y_ += bgYInc;
 			sprite[STAGE_GATES_FLAME].y_ += bgYInc;

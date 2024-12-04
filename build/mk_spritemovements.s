@@ -71,7 +71,10 @@ __Z8bgUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.w _bgYInc+2,%d0
 	add.w %d0,9420(%a0)
+	add.w %d0,9612(%a0)
 	add.w %d0,8460(%a0)
+	add.w %d0,8652(%a0)
+	add.w %d0,9228(%a0)
 	add.w %d0,5388(%a0)
 	add.w %d0,7500(%a0)
 	add.w %d0,9804(%a0)
@@ -80,8 +83,8 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,14028(%a0)
 	add.w %d0,14220(%a0)
 	add.w %d0,10572(%a0)
-	add.w %d0,244(%a3)
-	add.w %d0,244(%a2)
+	add.w %d0,246(%a3)
+	add.w %d0,246(%a2)
 .L14:
 	move.l %a1,_LastTicks
 .L6:
@@ -133,7 +136,10 @@ __Z8bgUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.w _bgYInc+2,%d0
 	add.w %d0,9420(%a0)
+	add.w %d0,9612(%a0)
 	add.w %d0,8460(%a0)
+	add.w %d0,8652(%a0)
+	add.w %d0,9228(%a0)
 	add.w %d0,5388(%a0)
 	add.w %d0,7500(%a0)
 	add.w %d0,9804(%a0)
@@ -142,8 +148,8 @@ __Z8bgUpdateP7FighterS0_:
 	add.w %d0,14028(%a0)
 	add.w %d0,14220(%a0)
 	add.w %d0,10572(%a0)
-	add.w %d0,244(%a3)
-	add.w %d0,244(%a2)
+	add.w %d0,246(%a3)
+	add.w %d0,246(%a2)
 	jra .L14
 	.even
 	.globl	__Z10bgScrollUpv

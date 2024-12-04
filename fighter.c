@@ -129,8 +129,8 @@ void fighterInitialize(struct Fighter *fighter, bool isPlayer1, struct SoundHand
     fighter->IsTurning = false;
     fighter->ButtonReleased = true;
     fighter->DPadReleased = true;
-    fighter->DPadWasRecorded = false;
     fighter->DPadUpReleased = true;
+    fighter->DPadLastRecorded = 0;
     fighter->AcceptingInput = true;
     fighter->airAttackPerformed = false;
     fighter->IsClose = false;
@@ -953,27 +953,35 @@ void fighterCaptureDpadInputs(struct Fighter* fighter)
         // rapPrint();
     }
 
-    if (fighter->pad & JAGPAD_LEFT && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    if (fighter->pad & JAGPAD_LEFT && fighter->DPadLastRecorded != JAGPAD_LEFT
+        || fighter->pad & JAGPAD_LEFT && fighter->DPadReleased)
     {
-        fighter->DPadWasRecorded = true;
+        fighter->DPadReleased = false;
+        fighter->DPadLastRecorded = JAGPAD_LEFT;
         playerinputPush(fighter, JAGPAD_LEFT);
     }
     
-    if (fighter->pad & JAGPAD_RIGHT && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    if (fighter->pad & JAGPAD_RIGHT && fighter->DPadLastRecorded != JAGPAD_RIGHT
+        || fighter->pad & JAGPAD_RIGHT && fighter->DPadReleased)
     {
-        fighter->DPadWasRecorded = true;
+        fighter->DPadReleased = false;
+        fighter->DPadLastRecorded = JAGPAD_RIGHT;
         playerinputPush(fighter, JAGPAD_RIGHT);
     }
 
-    if (fighter->pad & JAGPAD_DOWN && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    if (fighter->pad & JAGPAD_DOWN && fighter->DPadLastRecorded != JAGPAD_DOWN
+        || fighter->pad & JAGPAD_DOWN && fighter->DPadReleased)
     {
-        fighter->DPadWasRecorded = true;
+        fighter->DPadReleased = false;
+        fighter->DPadLastRecorded = JAGPAD_DOWN;
         playerinputPush(fighter, JAGPAD_DOWN);
     }
 
-    if (fighter->pad & JAGPAD_UP && fighter->DPadReleased && !fighter->DPadWasRecorded)
+    if (fighter->pad & JAGPAD_UP && fighter->DPadLastRecorded != JAGPAD_UP
+        || fighter->pad & JAGPAD_UP && fighter->DPadReleased)
     {
-        fighter->DPadWasRecorded = true;
+        fighter->DPadReleased = false;
+        fighter->DPadLastRecorded = JAGPAD_UP;
         playerinputPush(fighter, JAGPAD_UP);
     }
 }
@@ -1079,7 +1087,6 @@ void fighterButtonCheck(struct Fighter* fighter)
         && !(fighter->pad & JAGPAD_RIGHT))
     {
         fighter->DPadReleased = true;
-        fighter->DPadWasRecorded = false;
     }
 
     if (!(fighter->pad & JAGPAD_UP))
@@ -1321,7 +1328,9 @@ void fighterImpactCheck(struct StateMachine* stateMachine, struct Fighter* fight
                     else
                     {
                         //the fighter's are touching, so push them back until they aren't touching anymore
-                        if (fighter1->currentState->Name != STATE_BEING_THROWN && fighter2->currentState->Name != STATE_BEING_THROWN)
+                        if (fighter1->currentState->Name != STATE_BEING_THROWN && fighter2->currentState->Name != STATE_BEING_THROWN
+                            && fighter1->currentState->Name != STATE_SONYA_LEG_GRAB && fighter2->currentState->Name != STATE_SONYA_LEG_GRAB
+                            && !fighter1->isDoingFatality && !fighter2->isDoingFatality)
                         {
                             fighterPositionXAdd(fighter1, fighter1->direction * -1 * 4);
                             fighterPositionXAdd(fighter2, fighter2->direction * -1 * 4);
@@ -2220,7 +2229,7 @@ void fighterResetRaidenLightning(struct Fighter* fighter)
     fighter->projectileAnimator->base = BMP_LIGHTNING;
     sprite[fighter->lightningSpriteIndex].gfxbase = BMP_LIGHTNING;
     sprite[fighter->lightningSpriteIndex].gwidth = 320;
-    jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),13,3);
+    jsfLoadClut((unsigned short *)(void *)(BMP_LIGHTNING_clut),fighter->isPlayer1 ? 9 : 13,3);
 }
 
 void fighterFreeze(struct Fighter* fighter)

@@ -460,7 +460,7 @@ struct ImpactFrame cageImpactFrameHighKick = {
 	4, 42, 10, false, 99
 };
 struct ImpactFrame cageImpactFrameUppercut = {
-	3, 20, 30, false, 99
+	3, 30, 30, false, 99
 };
 struct ImpactFrame cageImpactFrameSweep = {
 	4, 56, 50, false, 99
@@ -1387,7 +1387,7 @@ static AnimationFrame cageUppercutFrames[] = {
 	{ 80, 64, 944, 288, 0, 48, 4 },
 	{ 80, 96, 96, 416, 0, 16, 4 },
 	{ 64, 112, 176, 368, 15, 2, 4 },
-	{ 48, 128, 240, 352, 21, -14, 50 },
+	{ 48, 128, 240, 352, 21, -14, 12 },
 	{ 64, 112, 288, 368, 4, 0, 4 },
 	{ 64, 112, 288, 368, 4, 0, 4 }
 };
@@ -1644,7 +1644,7 @@ struct ImpactFrame kangImpactFrameHighKick = {
 	4, 40, 10, false, 99
 };
 struct ImpactFrame kangImpactFrameUppercut = {
-	3, 20, 30, false, 99
+	3, 30, 30, false, 99
 };
 struct ImpactFrame kangImpactFrameSweep = {
 	4, 50, 20, false, 99
@@ -2005,7 +2005,7 @@ static AnimationFrame kangUppercutFrames[] = {
 	{ 64, 96, 0, 224, 0, 16, 4 },
 	{ 80, 112, 64, 224, 4, 0, 4 },
 	{ 80, 112, 144, 224, 8, 2, 4 },
-	{ 48, 128, 224, 224, 18, -13, 50 },
+	{ 48, 128, 224, 224, 18, -13, 12 },
 	{ 64, 112, 272, 224, 0, 0, 4 },
 	{ 64, 112, 272, 224, 0, 0, 4 }
 };
@@ -2050,7 +2050,7 @@ struct ImpactFrame raidenImpactFrameHighKick = {
 	3, 48, 10, false, 99
 };
 struct ImpactFrame raidenImpactFrameUppercut = {
-	3, 20, 30, false, 99
+	3, 30, 30, false, 99
 };
 struct ImpactFrame raidenImpactFrameSweep = {
 	4, 52, 30, false, 99
@@ -2408,7 +2408,7 @@ static AnimationFrame raidenUppercutFrames[] = {
 	{ 64, 80, 192, 592, 0, 32, 4 },
 	{ 64, 96, 256, 592, 1, 16, 4 },
 	{ 80, 112, 320, 608, 1, 0, 4 },
-	{ 48, 112, 400, 576, 18, 0, 50 },
+	{ 48, 112, 400, 576, 18, 0, 12 },
 	{ 64, 96, 448, 592, 8, 16, 4 },
 	{ 64, 96, 448, 592, 8, 16, 4 }
 };
@@ -2420,11 +2420,11 @@ static AnimationFrame raidenKipUpFrames[] = {
 	{ 64, 112, 832, 0, 0, 0, 5 }
 };
 static AnimationFrame raidenTeleportFrames[] = {
-	{ 64, 64, 576, 0, 0, 56, 5 },
-	{ 64, 80, 640, 0, 0, 32, 5 },
-	{ 64, 96, 704, 0, 0, 16, 5 },
-	{ 64, 112, 768, 0, 0, 0, 5 },
-	{ 64, 112, 832, 0, 0, 0, 5 },
+	{ 64, 64, 576, 0, 0, 56, 3 },
+	{ 64, 80, 640, 0, 0, 32, 3 },
+	{ 64, 96, 704, 0, 0, 16, 3 },
+	{ 64, 112, 768, 0, 0, 0, 3 },
+	{ 64, 112, 832, 0, 0, 0, 3 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
 	{ 0, 0, 0, 0, 0, 0, 0 },
@@ -2466,7 +2466,7 @@ struct ImpactFrame subzeroImpactFrameHighKick = {
 	4, 48, 10, false, 99
 };
 struct ImpactFrame subzeroImpactFrameUppercut = {
-	3, 34, 30, false, 99
+	3, 40, 30, false, 99
 };
 struct ImpactFrame subzeroImpactFrameSweep = {
 	4, 54, 20, false, 99
@@ -2645,7 +2645,7 @@ static AnimationFrame subzeroUppercutFrames[] = {
 	{ 64, 112, 528, 112, 0, 0, 4 },
 	{ 80, 112, 592, 112, 5, 0, 4 },	
 	{ 48, 128, 672, 112, 6, -16, 4 },
-	{ 48, 128, 784, 112, 2, -16, 50 },
+	{ 48, 128, 784, 112, 2, -16, 12 },
 	{ 64, 112, 720, 112, 0, 0, 4 },
 	{ 64, 112, 720, 112, 0, 0, 4 }
 };
@@ -3097,7 +3097,7 @@ static AnimationFrame sonyaUppercutFrames[] = {
 	{ 48, 80, 0, 112, 0, 32, 4 },
 	{ 80, 80, 48, 112, 0, 32, 4 },
 	{ 80, 112, 128, 112, 0, 0, 4 },
-	{ 48, 128, 208, 112, 6, -16, 50 },
+	{ 48, 128, 208, 112, 6, -16, 12 },
 	{ 48, 112, 256, 112, 0, 0, 4 },
 	{ 48, 112, 256, 112, 0, 0, 4 }
 };
@@ -3374,7 +3374,7 @@ struct ImpactFrame kanoImpactFrameHighKick = {
 	3, 50, 10, false, 99
 };
 struct ImpactFrame kanoImpactFrameUppercut = {
-	3, 20, 30, false, 99
+	3, 30, 30, false, 99
 };
 struct ImpactFrame kanoImpactFrameSweep = {
 	4, 54, 35, false, 99
@@ -3729,7 +3729,7 @@ static AnimationFrame kanoUppercutFrames[] = {
 	{ 64, 112, 800, 224, -9, 0, 4 },
 	{ 48, 112, 864, 224, 3, 1, 4 },
 	{ 80, 112, 912, 224, 6, 3, 4 },
-	{ 64, 128, 0, 320, 12, -14, 50 },
+	{ 64, 128, 0, 320, 12, -14, 12 },
 	{ 64, 112, 64, 304, -9, 0, 4 },
 	{ 64, 112, 64, 304, -9, 0, 4 }
 };
@@ -6186,8 +6186,8 @@ void basicmain()
 					js_r_textbuffer="MORTAL KOMBAT";
 					rapPrint();
 					jsfSetFontIndx(0);
-					rapLocate(94,24);
-					js_r_textbuffer="PRE-ALPHA V0.1.0";
+					rapLocate(108,24);
+					js_r_textbuffer="ALPHA V0.2.0";
 					rapPrint();
 					jsfSetFontIndx(1);
 					rapLocate(88, 110);
@@ -6198,22 +6198,22 @@ void basicmain()
 					jsfSetFontSize(0);
 					jsfSetFontIndx(0);
 					rapLocate(10, 128);
-					js_r_textbuffer="PATREON SUPPORTERS, THIS PRE-ALPHA";
+					js_r_textbuffer="PATREON SUPPORTERS, THIS BUILD HAS 8";
 					rapPrint();
 					rapLocate(10, 138);
-					js_r_textbuffer="BUILD INCLUDES THE 7 ORIGINAL FIGHTERS";
+					js_r_textbuffer="FIGHTERS - EACH HAVING SPECIAL MOVES";
 					rapPrint();
 					rapLocate(10, 148);
-					js_r_textbuffer="AND A BASIC MOVESET - NO SPECIAL MOVES";
+					js_r_textbuffer="AND 1 FATALITY. THERE IS NO CPU AI YET";
 					rapPrint();
 					rapLocate(10, 158);
-					js_r_textbuffer="OR FATALITIES. YES, THERE ARE BUGS AND";
+					js_r_textbuffer="PLAYER 2 CONTROLS THE OPPOSING FIGHTER";
 					rapPrint();
 					rapLocate(10, 168);
-					js_r_textbuffer="SOME THINGS ARE A LITTLE ROUGH AROUND";
+					js_r_textbuffer="GORO AND SHANG TSUNG ARE NOT IN THIS";
 					rapPrint();
 					rapLocate(10, 178);
-					js_r_textbuffer="THE EDGES. PLEASE USE THE LINKS ABOVE";
+					js_r_textbuffer="BUILD. PLEASE USE THE LINKS ABOVE";
 					rapPrint();
 					rapLocate(10, 188);
 					js_r_textbuffer="TO REPORT BUGS AND PROVIDE FEEDBACK.";
@@ -6547,68 +6547,6 @@ void basicmain()
 			}
 			else if (onScreenFighterEnding)
 			{
-				if (menuIndex == 0)
-				{
-					switch (fmvIndex)
-					{
-						case CAGE:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[0], 120, 43, 1);
-							break;
-						case KANO:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[2], 120, 43, 1);
-							break;
-						case RAIDEN:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
-							break;
-						case KANG:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[6], 120, 43, 1);
-							break;
-						case SCORPION:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[8], 120, 43, 1);
-							break;
-						case SUBZERO:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[10], 120, 43, 1);
-							break;
-						case SONYA:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[12], 120, 43, 1);
-							break;
-						case KASUMI:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[14], 120, 43, 1);
-							break;
-					}
-				}
-				else
-				{
-					switch (fmvIndex)
-					{
-						case CAGE:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[1], 120, 43, 1);
-							break;
-						case KANO:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[3], 120, 43, 1);
-							break;
-						case RAIDEN:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
-							break;
-						case KANG:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[7], 120, 43, 1);
-							break;
-						case SCORPION:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[9], 120, 43, 1);
-							break;
-						case SUBZERO:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[11], 120, 43, 1);
-							break;
-						case SONYA:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[13], 120, 43, 1);
-							break;
-						case KASUMI:
-							setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[15], 120, 43, 1);
-							break;
-					}
-				}
-				
-
 				if (rapTicks > myTicks + (60*1) && ((pad1 & JAGPAD_C) || (pad1 & JAGPAD_B) || (pad1 & JAGPAD_A) || (pad1 & JAGPAD_OPTION) || (pad2 & JAGPAD_C) || (pad2 & JAGPAD_B) || (pad2 & JAGPAD_A) || (pad2 & JAGPAD_OPTION))
 					|| rapTicks > myTicks + (60*8))
 				{
@@ -6788,12 +6726,12 @@ void basicmain()
 							sprite[BATTLEPLAN_TOP+12].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 							sprite[BATTLEPLAN_TOP+13].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 							sprite[BATTLEPLAN_TOP+14].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
-							//sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
+							sprite[BATTLEPLAN].y_ -= FIGHTER_BATTLEPLAN_STEP_Y;
 
 							sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
 							sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
 
-							//sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+							sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
 							sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
@@ -6871,7 +6809,8 @@ void basicmain()
 							sprite[BATTLEPLAN_PLAYER_MARKER].y_ -= 2;
 							battleTicks = rapTicks;
 						}
-						else if (rapTicks >= battleTicks + 60 && sprite[BATTLEPLAN_PORTRAITS+14].y_ <= sprite[BATTLEPLAN_TOP+13].y_ + 3 - ((5 - battleplan_index + 1) * 32))
+						
+						if (rapTicks >= battleTicks + 60 && sprite[BATTLEPLAN_PORTRAITS+14].y_ <= sprite[BATTLEPLAN_TOP+13].y_ + 3 - ((5 - battleplan_index + 1) * 32))
 						{
 							for (int i = 0; i < 80; i++)
 							{
@@ -8140,8 +8079,8 @@ void initMenuScreen()
 	sprite[TITLE_STONE].active = R_is_active;
 	sprite[ENDING].active = R_is_inactive;
 	
-	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,64);
-	jsfLoadClut((unsigned short *)(void *)(BMP_TS_MENU1_clut),4,16);
+	jsfLoadClut((unsigned short *)(void *)(BMP_TS_BACKGROUND_clut),0,160);
+	jsfLoadClut((unsigned short *)(void *)(BMP_TS_MENU1_clut),12,16);
 
 	musicStageGoro(&soundHandler);
 
@@ -8874,6 +8813,34 @@ void switchScreenFighterEndingPage2(int fighterIndex)
 	js_r_textbuffer=line7;
 	rapPrint();
 
+	switch (fmvIndex)
+	{
+		case CAGE:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[1], 120, 43, 1);
+			break;
+		case KANO:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[3], 120, 43, 1);
+			break;
+		case RAIDEN:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
+			break;
+		case KANG:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[7], 120, 43, 1);
+			break;
+		case SCORPION:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[9], 120, 43, 1);
+			break;
+		case SUBZERO:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[11], 120, 43, 1);
+			break;
+		case SONYA:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[13], 120, 43, 1);
+			break;
+		case KASUMI:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[15], 120, 43, 1);
+			break;
+	}
+
 	myTicks = rapTicks;
 }
 
@@ -9089,6 +9056,34 @@ void switchScreenFighterEnding(int fighterIndex)
 	js_r_textbuffer=line7;
 	rapPrint();
 
+	switch (fmvIndex)
+	{
+		case CAGE:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[0], 120, 43, 1);
+			break;
+		case KANO:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[2], 120, 43, 1);
+			break;
+		case RAIDEN:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[4], 120, 43, 1);
+			break;
+		case KANG:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[6], 120, 43, 1);
+			break;
+		case SCORPION:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[8], 120, 43, 1);
+			break;
+		case SUBZERO:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[10], 120, 43, 1);
+			break;
+		case SONYA:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[12], 120, 43, 1);
+			break;
+		case KASUMI:
+			setAnimationFrame(ENDING, &fmvAnimator, &fighterEndingFrames[14], 120, 43, 1);
+			break;
+	}
+
 	onAlphaScreen = false;
 	onTruFunScreen = false;
 	onTitleScreen = false;
@@ -9259,9 +9254,9 @@ void switchScreenBattlePlan(int fighterIndex)
 	sprite[BATTLEPLAN_PLAYER_MARKER].x_ = sprite[BATTLEPLAN_PORTRAITS+14].x_ - 2;
 	sprite[BATTLEPLAN_PLAYER_MARKER].y_ = sprite[BATTLEPLAN_PORTRAITS+14].y_ - 2;
 
-	//sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
+	sprite[BATTLEPLAN].y_ = sprite[BATTLEPLAN_TOP].y_ + 11;
 
-	//sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
+	sprite[BATTLEPLAN].active = sprite[BATTLEPLAN].y_ > -16 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_SHANGTSUNG].active = sprite[BATTLEPLAN_SHANGTSUNG].y_ > -48 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_GORO].active = sprite[BATTLEPLAN_GORO].y_ > -48 ? R_is_active : R_is_inactive;
 	sprite[BATTLEPLAN_PORTRAITS].active = sprite[BATTLEPLAN_PORTRAITS].y_ > -32 ? R_is_active : R_is_inactive;
@@ -9610,6 +9605,8 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 
 void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackground)
 {
+	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+	
 	sprite[P1_FIGHTER].active = R_is_active;
 	sprite[P2_FIGHTER].active = R_is_active;
 	sprite[FMV].active = R_is_inactive;
@@ -9623,11 +9620,9 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 	matchResetTicks();
 	lightningAnimator.lastTick = rapTicks;
 	lightning2Animator.lastTick = rapTicks;
+	shangTsungAnimator.lastTick = rapTicks;
 
-	int currentStage = stageGet();
-	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
-
-	switch (currentStage)
+	switch (stageGet())
     {
 		case STAGE_COURTYARD:
 			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
@@ -9844,7 +9839,7 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 
 			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
 			sprite[FOREGROUND_SPIKES].x_ = 0;
-			sprite[FOREGROUND_SPIKES].y_ = 645;
+			sprite[FOREGROUND_SPIKES].y_ = 665;
 
             sprite[STAGE_PIT_MOON].gfxbase=(int)imageBuffer320x240;
             sprite[STAGE_PIT_MOON].active=R_is_active;
@@ -9909,7 +9904,7 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 
 			sprite[FOREGROUND_SPIKES].active = R_is_active;
 			sprite[FOREGROUND_SPIKES].x_ = 0;
-			sprite[FOREGROUND_SPIKES].y_ = 150;
+			sprite[FOREGROUND_SPIKES].y_ = 170;
 
             sprite[STAGE_PIT_MOON].active=R_is_inactive;
             sprite[STAGE_PRIMARY_BACKGROUND].gfxbase=(int)imageBuffer;
@@ -10005,7 +10000,7 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             musicStageThrone(&soundHandler);
 			break;
         case STAGE_GORO:
-			bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+			bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
             *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)

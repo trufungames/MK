@@ -112,48 +112,63 @@ __Z12cameraUpdateP7FighterS0_:
 	movem.l #12348,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%a1
-	move.w 252(%a0),%a3
+	move.w 254(%a0),%a3
 	move.w _cameraX,%d1
 	move.w %d1,%a2
 	move.w _xOffset,%d0
 	add.w %a2,%d0
 	move.w %a3,%d2
 	sub.w %d0,%d2
-	move.w %d2,242(%a0)
-	move.w 252(%a1),%a4
+	move.w %d2,244(%a0)
+	move.w 254(%a1),%a4
 	move.w %a4,%d2
 	sub.w %d0,%d2
-	move.w %d2,242(%a1)
-	move.w 250(%a0),%d2
+	move.w %d2,244(%a1)
+	move.w 252(%a0),%d2
 	sub.w %d0,%d2
-	move.w %d2,246(%a0)
-	move.w 250(%a1),%d2
+	move.w %d2,248(%a0)
+	move.w 252(%a1),%d2
 	sub.w %d0,%d2
-	move.w %d2,246(%a1)
+	move.w %d2,248(%a1)
+	move.w 244(%a0),%d0
+	jle .L61
+	move.w %d0,244(%a0)
+	move.w 244(%a1),%d0
+	jle .L62
+.L17:
+	move.w %d0,244(%a1)
+	move.w 248(%a0),%d0
+	jle .L63
+.L18:
+	move.w %d0,248(%a0)
+	move.w 248(%a1),%d0
+	jle .L64
+.L19:
+	move.w %d0,248(%a1)
 	move.w raptor_ticks,%d0
 	ext.l %d0
 	move.w _cameraTicks,%a5
 	addq.l #1,%a5
 	cmp.l %d0,%a5
 	jge .L15
-	move.w 266(%a0),%d0
+	move.w 268(%a0),%d0
 	cmp.w #1,%d0
-	jeq .L57
-.L17:
-	move.w 266(%a1),%d2
+	jeq .L65
+.L21:
+	move.w 268(%a1),%d2
 	cmp.w #1,%d2
-	jeq .L58
-.L19:
+	jeq .L66
+.L23:
 	cmp.w #-1,%d0
-	jeq .L59
-.L20:
+	jeq .L67
+.L24:
 	cmp.w #-1,%d2
-	jeq .L21
-.L52:
+	jeq .L25
+.L56:
 	move.w _targetCameraX,%a3
-.L18:
+.L22:
 	cmp.w %a3,%d1
-	jge .L23
+	jge .L27
 	move.w #1,_panDirection
 	move.w %a3,%a5
 	move.w _xStep,%d0
@@ -161,18 +176,39 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %a5,%a3
 	sub.l %a2,%a3
 	cmp.l %a3,%a4
-	jle .L48
-.L46:
+	jle .L52
+.L50:
 	move.w %d1,_targetCameraX
-.L26:
+.L30:
 	tst.b _isScrollingPit
-	jne .L27
+	jne .L31
 	move.w raptor_ticks,_cameraTicks
 .L15:
 	movem.l -24(%fp),#15372
 	unlk %fp
 	rts
-.L23:
+.L64:
+	moveq #1,%d0
+	jra .L19
+.L62:
+	moveq #1,%d0
+	move.w %d0,244(%a1)
+	move.w 248(%a0),%d0
+	jgt .L18
+	jra .L63
+.L61:
+	moveq #1,%d0
+	move.w %d0,244(%a0)
+	move.w 244(%a1),%d0
+	jgt .L17
+	jra .L62
+.L63:
+	moveq #1,%d0
+	move.w %d0,248(%a0)
+	move.w 248(%a1),%d0
+	jgt .L19
+	jra .L64
+.L27:
 	move.w #-1,_panDirection
 	move.w %a3,%a5
 	move.w _xStep,%d0
@@ -180,14 +216,14 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %a2,%d2
 	sub.l %a5,%d2
 	cmp.l %d2,%a4
-	jgt .L46
+	jgt .L50
 	cmp.w %a3,%d1
-	jeq .L26
+	jeq .L30
 	moveq #-1,%d3
 	moveq #-1,%d2
 	tst.b _isScrollingPit
-	jeq .L60
-.L27:
+	jeq .L68
+.L31:
 	move.l sprite,%a3
 	move.l _backgroundSpriteIndex,%d0
 	move.l %d0,%d1
@@ -196,20 +232,20 @@ __Z12cameraUpdateP7FighterS0_:
 	lsl.l #6,%d1
 	lea (%a3,%d1.l),%a4
 	move.w 12(%a4),%d1
-	jle .L40
-	move.l 296(%a0),%a5
+	jle .L44
+	move.l 298(%a0),%a5
 	cmp.w #83,(%a5)
-	jeq .L61
-	move.l 296(%a1),%a0
+	jeq .L69
+	move.l 298(%a1),%a0
 	cmp.w #83,(%a0)
-	jeq .L62
+	jeq .L70
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
 	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
-.L55:
+.L59:
 	move.l %a0,-(%sp)
 	move.l %a2,-(%sp)
 	pea 240.w
@@ -217,18 +253,18 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,-(%sp)
 	jsr __Z8setFramejssssfj
 	lea (28,%sp),%sp
-.L67:
+.L75:
 	move.w raptor_ticks,_cameraTicks
 	jra .L15
-.L60:
+.L68:
 	muls.w %d3,%d0
 	add.w %d1,%d0
 	move.w %d0,_cameraX
 	cmp.w #1,%d2
-	jeq .L63
+	jeq .L71
 	cmp.w #-1,%d2
-	jeq .L35
-.L54:
+	jeq .L39
+.L58:
 	move.w %d0,%a4
 	move.l _backgroundGfxBase,%a3
 	move.w _cameraY,%a2
@@ -239,7 +275,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %a4,-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	pea 352.w
+	pea 320.w
 	move.l _backgroundSpriteIndex,-(%sp)
 	lea __Z8setFramejssssfj,%a3
 	jsr (%a3)
@@ -248,12 +284,12 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a2)
 	moveq #3,%d1
 	cmp.l %d0,%d1
-	jeq .L37
-.L64:
+	jeq .L41
+.L72:
 	jsr (%a2)
 	moveq #4,%d2
 	cmp.l %d0,%d2
-	jeq .L37
+	jeq .L41
 	move.l _backgroundSpriteIndex,%d0
 	move.l %d0,%d1
 	add.l %d0,%d1
@@ -262,53 +298,53 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.w _xOffset,8(%a0,%d0.l)
 	jsr __Z19stagePositionAssetsv
-.L68:
+.L76:
 	move.w raptor_ticks,_cameraTicks
 	jra .L15
-.L57:
+.L65:
 	move.w %a3,%a5
 	lea (-15,%a5),%a5
 	cmp.l %a5,%a2
-	jlt .L17
+	jlt .L21
 	lea (-16,%a3),%a3
 	move.w %a3,_targetCameraX
-	jra .L18
-.L48:
+	jra .L22
+.L52:
 	moveq #1,%d3
 	moveq #1,%d2
 	tst.b _isScrollingPit
-	jne .L27
-	jra .L60
-.L58:
+	jne .L31
+	jra .L68
+.L66:
 	move.w %a4,%a5
 	lea (-15,%a5),%a5
 	cmp.l %a5,%a2
-	jlt .L19
+	jlt .L23
 	move.w %a4,%a3
 	lea (-16,%a3),%a3
 	move.w %a3,_targetCameraX
-	jra .L18
-.L59:
+	jra .L22
+.L67:
 	move.w %a3,%d0
 	ext.l %d0
 	lea (284,%a2),%a5
 	cmp.l %d0,%a5
-	jge .L20
+	jge .L24
 	lea (-284,%a3),%a3
 	move.w %a3,_targetCameraX
-	jra .L18
-.L21:
+	jra .L22
+.L25:
 	move.w %a4,%a5
 	lea (284,%a2),%a3
 	cmp.l %a5,%a3
-	jge .L52
+	jge .L56
 	move.w %a4,%a3
 	lea (-284,%a3),%a3
 	move.w %a3,_targetCameraX
-	jra .L18
-.L63:
+	jra .L22
+.L71:
 	cmp.w #716,%d0
-	jle .L54
+	jle .L58
 	move.w #-1,_panDirection
 	move.w #716,_cameraX
 	move.w #716,%a4
@@ -321,7 +357,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %a4,-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	pea 352.w
+	pea 320.w
 	move.l _backgroundSpriteIndex,-(%sp)
 	lea __Z8setFramejssssfj,%a3
 	jsr (%a3)
@@ -330,11 +366,11 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a2)
 	moveq #3,%d1
 	cmp.l %d0,%d1
-	jne .L64
-	jra .L37
-.L35:
+	jne .L72
+	jra .L41
+.L39:
 	cmp.w #15,%d0
-	jgt .L54
+	jgt .L58
 	move.w #1,_panDirection
 	move.w #16,_cameraX
 	move.w #16,%a4
@@ -347,7 +383,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %a4,-(%sp)
 	move.w %d0,%a0
 	move.l %a0,-(%sp)
-	pea 352.w
+	pea 320.w
 	move.l _backgroundSpriteIndex,-(%sp)
 	lea __Z8setFramejssssfj,%a3
 	jsr (%a3)
@@ -356,18 +392,18 @@ __Z12cameraUpdateP7FighterS0_:
 	jsr (%a2)
 	moveq #3,%d1
 	cmp.l %d0,%d1
-	jne .L64
-	jra .L37
-.L40:
+	jne .L72
+	jra .L41
+.L44:
 	move.w _cameraY,%d1
 	cmp.w #399,%d1
-	jgt .L43
-	move.l 296(%a0),%a4
+	jgt .L47
+	move.l 298(%a0),%a4
 	cmp.w #83,(%a4)
-	jeq .L65
-	move.l 296(%a1),%a0
+	jeq .L73
+	move.l 298(%a1),%a0
 	cmp.w #83,(%a0)
-	jeq .L66
+	jeq .L74
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
@@ -376,7 +412,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0
-.L69:
+.L77:
 	move.l %a0,-(%sp)
 	move.l %a2,-(%sp)
 	pea 240.w
@@ -384,15 +420,15 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l %d0,-(%sp)
 	jsr __Z8setFramejssssfj
 	lea (28,%sp),%sp
-	jra .L67
-.L37:
+	jra .L75
+.L41:
 	move.l _pitSpikesGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	clr.l -(%sp)
 	move.w _cameraX,%a0
 	move.l %a0,-(%sp)
 	pea 58.w
-	pea 352.w
+	pea 320.w
 	pea 74.w
 	jsr (%a3)
 	lea (28,%sp),%sp
@@ -404,22 +440,22 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l sprite,%a0
 	move.w _xOffset,8(%a0,%d0.l)
 	jsr __Z19stagePositionAssetsv
-	jra .L68
-.L62:
-	move.w #8,286(%a1)
+	jra .L76
+.L70:
+	move.w #8,288(%a1)
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
 	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
-	jra .L55
-.L43:
+	jra .L59
+.L47:
 	clr.b _isScrollingPit
 	move.w raptor_ticks,_cameraTicks
 	jra .L15
-.L66:
-	move.w #8,286(%a1)
+.L74:
+	move.w #8,288(%a1)
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
@@ -428,18 +464,18 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0
-	jra .L69
-.L61:
-	move.w #8,286(%a0)
+	jra .L77
+.L69:
+	move.w #8,288(%a0)
 	subq.w #8,%d1
 	move.w %d1,12(%a4)
 	subq.w #8,14220(%a3)
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w _cameraY,%a0
-	jra .L55
-.L65:
-	move.w #8,286(%a0)
+	jra .L59
+.L73:
+	move.w #8,288(%a0)
 	addq.w #8,%d1
 	move.w %d1,_cameraY
 	moveq #1,%d2
@@ -448,7 +484,7 @@ __Z12cameraUpdateP7FighterS0_:
 	move.l _backgroundGfxBase,-(%sp)
 	move.l #0x3f800000,-(%sp)
 	move.w %d1,%a0
-	jra .L69
+	jra .L77
 	.even
 	.globl	__Z21cameraCheckBoundsLeftP7FighterS0_
 __Z21cameraCheckBoundsLeftP7FighterS0_:
@@ -469,13 +505,13 @@ __Z13cameraCanMovev:
 	link.w %fp,#0
 	move.w _cameraX,%d0
 	cmp.w #10,%d0
-	jle .L75
+	jle .L83
 	cmp.w _cameraXMax.l,%d0
 	slt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L75:
+.L83:
 	clr.b %d0
 	unlk %fp
 	rts
@@ -549,36 +585,29 @@ __Z16cameraResetTicksv:
 	unlk %fp
 	rts
 	.even
-	.globl	__Z28cameraFighterIsAtBoundsRightP7Fighter
-__Z28cameraFighterIsAtBoundsRightP7Fighter:
+	.globl	__Z28cameraFighterIsAtBoundsRightP7Fighteri
+__Z28cameraFighterIsAtBoundsRightP7Fighteri:
 	link.w %fp,#0
-	move.w _cameraXMax,%d0
-	cmp.w _cameraX.l,%d0
-	jgt .L87
 	move.l 8(%fp),%a0
-	cmp.w #261,242(%a0)
+	move.w 254(%a0),%a0
+	lea (48,%a0),%a0
+	add.l 12(%fp),%a0
+	cmp.w #715,%a0
 	sgt %d0
 	neg.b %d0
 	unlk %fp
 	rts
-.L87:
-	clr.b %d0
-	unlk %fp
-	rts
 	.even
-	.globl	__Z27cameraFighterIsAtBoundsLeftP7Fighter
-__Z27cameraFighterIsAtBoundsLeftP7Fighter:
+	.globl	__Z27cameraFighterIsAtBoundsLeftP7Fighteri
+__Z27cameraFighterIsAtBoundsLeftP7Fighteri:
 	link.w %fp,#0
-	cmp.w #10,_cameraX.l
-	jgt .L92
 	move.l 8(%fp),%a0
-	cmp.w #10,242(%a0)
-	sle %d0
+	move.w 254(%a0),%a0
+	moveq #64,%d0
+	add.l 12(%fp),%d0
+	cmp.l %a0,%d0
+	sge %d0
 	neg.b %d0
-	unlk %fp
-	rts
-.L92:
-	clr.b %d0
 	unlk %fp
 	rts
 	.even

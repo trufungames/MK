@@ -1,0 +1,22 @@
+[T] Raiden Torpedo too slow
+
+[ ] Still have slowdown at Pit Bottom
+
+[x] Shang Tsung clap freezes after 2nd round
+[x] Goro's Lair has white dots in the background.  (What's the bg color set to?)
+[x] Ending sequence is glitchy
+[ ] Restarting at the Main Menu after Beating the game has a glitchy title screen.  And the game doesn't work.  :P
+
+
+[x] "push-back" logic is breaking the fatalities
+[x] Courtyard "bgShake" doesn't work on the background layers
+[x] fix titlescreen graphic to remove the empty line scroll
+[ ] FinishHim opponent not on floor.
+[x] Inputs to handle QCF
+[x] If Raiden Torpedo against RIGHT or LEFT wall, then end it.  Don't keep pushing them.
+[x] Sonya crab throw doesn't work because of player knock-back
+[x] Sonya rings too slow
+[x] Show "Battle Plan" text at the top
+[x] Raiden's idle lightning goes black after throwing projectile
+[x] subzero ice too slow
+[x] subzero fatality - spine disappears

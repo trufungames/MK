@@ -69,6 +69,12 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
     fighter1->projectilePositionX = fighter1->projectileWorldPositionX - cameraGetX();
     fighter2->projectilePositionX = fighter2->projectileWorldPositionX - cameraGetX();
     
+    //bound the positionX to 1 so it displays correctly in animateFrame()
+    fighter1->positionX = fighter1->positionX > 0 ? fighter1->positionX : 1;
+    fighter2->positionX = fighter2->positionX > 0 ? fighter2->positionX : 1;
+    fighter1->projectilePositionX = fighter1->projectilePositionX > 0 ? fighter1->projectilePositionX : 1;
+    fighter2->projectilePositionX = fighter2->projectilePositionX > 0 ? fighter2->projectilePositionX : 1;
+
     if (rapTicks > cameraTicks + 1)
     {
         if (fighter1->direction == 1 && fighter1->worldPositionX - 16 < cameraX)
@@ -129,11 +135,11 @@ void cameraUpdate(struct Fighter* fighter1, struct Fighter* fighter2)
                     cameraX = FIGHTER_MIN_WORLD_POSITION_X;
                 }       
 
-                setFrame(backgroundSpriteIndex, 352, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
+                setFrame(backgroundSpriteIndex, 320, stageGetHeight(), cameraX, cameraY, 1.0f, backgroundGfxBase);
                 
                 if (stageGet() == STAGE_PIT || stageGet() == STAGE_PIT_BOTTOM)
                 {
-                    setFrame(FOREGROUND_SPIKES, 352, 58, cameraX, 0, 1.0f, pitSpikesGfxBase);
+                    setFrame(FOREGROUND_SPIKES, 320, 58, cameraX, 0, 1.0f, pitSpikesGfxBase);
                 }
             //}
 
@@ -272,14 +278,16 @@ void cameraResetTicks()
     cameraTicks = rapTicks;
 }
 
-bool cameraFighterIsAtBoundsRight(struct Fighter* fighter)
+bool cameraFighterIsAtBoundsRight(struct Fighter* fighter, int additionalOffset)
 {
-    return cameraIsAtRightWall() && fighter->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT;
+    return fighter->worldPositionX + FIGHTER_WIDTH + additionalOffset >= FIGHTER_MAX_WORLD_POSITION_X;
+    //return cameraIsAtRightWall() && fighter->positionX + FIGHTER_WIDTH >= CAMERA_BOUND_RIGHT;
 }
 
-bool cameraFighterIsAtBoundsLeft(struct Fighter* fighter)
+bool cameraFighterIsAtBoundsLeft(struct Fighter* fighter, int additionalOffset)
 {
-    return cameraIsAtLeftWall() && fighter->positionX <= CAMERA_BOUND_LEFT;
+    return fighter->worldPositionX <= FIGHTER_MIN_WORLD_POSITION_X + FIGHTER_WIDTH + additionalOffset;
+    //return cameraIsAtLeftWall() && fighter->positionX <= CAMERA_BOUND_LEFT;
 }
 
 void cameraScrollPit()

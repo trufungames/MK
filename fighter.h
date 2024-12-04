@@ -49,7 +49,7 @@ struct Fighter {
     bool DPadReleased;
     bool DPadUpReleased;
     bool ButtonReleased;
-    bool DPadWasRecorded;
+    int DPadLastRecorded;
     bool NoBlood;
     bool NoSound;
     short HarpoonKnockbackDistance;

@@ -172,10 +172,9 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         if (fighterHandleFatality(stateMachine, fighter, spriteAnimator))
             return;
     }
-    else //TODO if match started...
+    else if (fighter->AcceptingInput)
     {
-        if (fighterHandleSpecialMoves(stateMachine, fighter, spriteAnimator))
-            return;
+        fighterHandleSpecialMoves(stateMachine, fighter, spriteAnimator);
     }
 
     if (fighter->DoImpaleBloodSequence)
@@ -202,7 +201,12 @@ void stateMachineGoto(struct StateMachine* stateMachine, short newState, struct 
     if (fighter->currentState->Name == newState)
         return;
 
-    //sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    //we're changing states, so hide the projectile layer, as long as we're not throwing a projectile...
+    if (fighter->currentState->Name != STATE_THROWING_PROJECTILE && !fighter->isDoingFatality)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
+    }
+
     fighter->currentState = stateMachine->states[newState];
     fighter->currentState->enter(stateMachine, fighter, spriteAnimator);
 }
@@ -1232,7 +1236,7 @@ void StateUppercutting_Update(struct StateMachine* stateMachine, struct Fighter*
 
 void StateUppercutting_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
 {
-    updateSpriteAnimator(spriteAnimator, *fighter->uppercutFrames, fighter->UPPERCUT_FRAME_COUNT, true, false, fighter->positionX, fighter->positionY, fighter->direction);
+    animateFrame(spriteAnimator, spriteAnimator->spriteIndex, 3, *fighter->uppercutFrames, spriteAnimator->mulFactor, spriteAnimator->base, spriteAnimator->idleFrameWidth, fighter->positionX, fighter->positionY, fighter->direction);
 }
 
 void StateUppercutting_HandleInput(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -2955,8 +2959,8 @@ void StateRaidenTorpedo_Update(struct StateMachine* stateMachine, struct Fighter
     }
 
     if (fighter->vars[2] >= FIGHTER_RAIDEN_TORPEDO_MAX_DISTANCE
-         || fighter->direction == 1 && cameraFighterIsAtBoundsRight(fighter)
-         || fighter->direction == -1 && cameraFighterIsAtBoundsLeft(fighter)
+         || fighter->direction == 1 && cameraFighterIsAtBoundsRight(fighter, 64)
+         || fighter->direction == -1 && cameraFighterIsAtBoundsLeft(fighter, 64)
          || fighter->vars[0] == 1)
     {
         if (fighter->vars[0] == 0)
@@ -3018,8 +3022,8 @@ void StateHitTorpedo_Enter(struct StateMachine* stateMachine, struct Fighter* fi
 
 void StateHitTorpedo_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
 {    
-    if ((fighter->direction == 1 && !cameraFighterIsAtBoundsLeft(fighter))
-        || (fighter->direction == -1 && !cameraFighterIsAtBoundsRight(fighter)))
+    if ((fighter->direction == 1 && !cameraFighterIsAtBoundsLeft(fighter, 0))
+        || (fighter->direction == -1 && !cameraFighterIsAtBoundsRight(fighter, 0)))
     {
         //Fighter is being knocked back by Raiden's torpedo
         fighterPositionXAdd(fighter, FIGHTER_RAIDEN_TORPEDO_X_SPEED * fighter->direction * -1);
@@ -3058,9 +3062,9 @@ void StateRaidenTeleport_Update(struct StateMachine* stateMachine, struct Fighte
     {
         if (fighter->direction == 1)
         {
-            if (!cameraFighterIsAtBoundsRight(opponent))
+            if (!cameraFighterIsAtBoundsRight(opponent, 0))
             {
-                fighter->positionX = opponent->positionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                fighter->worldPositionX = opponent->worldPositionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
                 //Turn Raiden Around
                 fighter->direction *= -1;
                 sprite[fighter->spriteIndex].flip = R_is_flipped;
@@ -3070,14 +3074,14 @@ void StateRaidenTeleport_Update(struct StateMachine* stateMachine, struct Fighte
             }
             else
             {
-                fighter->positionX = opponent->positionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                fighter->worldPositionX = opponent->worldPositionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
             }
         }
         else if (fighter->direction == -1)
         {
-            if (!cameraFighterIsAtBoundsLeft(opponent))
+            if (!cameraFighterIsAtBoundsLeft(opponent, 0))
             {
-                fighter->positionX = opponent->positionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                fighter->worldPositionX = opponent->worldPositionX - FIGHTER_WIDTH - FIGHTER_RAIDEN_TELEPORT_DISTANCE;
                 //Turn Raiden Around
                 fighter->direction *= -1;
                 sprite[fighter->spriteIndex].flip = R_is_normal;
@@ -3087,7 +3091,7 @@ void StateRaidenTeleport_Update(struct StateMachine* stateMachine, struct Fighte
             }
             else
             {
-                fighter->positionX = opponent->positionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
+                fighter->worldPositionX = opponent->worldPositionX + FIGHTER_WIDTH + FIGHTER_RAIDEN_TELEPORT_DISTANCE;
             }
         }
         
@@ -3681,7 +3685,7 @@ void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter
 	{
 		if (animationIsComplete(fighter->projectileAnimator, 9))
 		{
-			fighter->projectileWorldPositionX += (8 * fighter->direction);
+			fighter->projectileWorldPositionX += (FIGHTER_PROJECTILE_X_SPEED * fighter->direction);
 
 			if (fighter->direction == 1 && fighter->projectilePositionX > 320
 				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
@@ -4358,6 +4362,7 @@ void StateIsWinner_Enter(struct StateMachine* stateMachine, struct Fighter* figh
     fighter->lastTicks = rapTicks;
     fighter->vars[0] = 0;
     fighter->IsWinner = true;
+    fighter->AcceptingInput = false;
     fighterSetOnFloor(fighter);
 
     if (fighter->vars[2] != 123)

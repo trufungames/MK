@@ -145,8 +145,8 @@ __Z16hudUpdateFighterP7Fighter:
 	move.l %a2,-(%sp)
 	move.l %d2,-(%sp)
 	move.l 8(%fp),%a0
-	move.w 256(%a0),%a2
-	move.b 270(%a0),%d2
+	move.w 258(%a0),%a2
+	move.b 272(%a0),%d2
 	pea 10.w
 	jsr rapUse8x8fontPalette
 	clr.l _jsfFontSize
@@ -205,8 +205,8 @@ __Z9hudUpdateP7FighterS0_:
 	movem.l #8252,-(%sp)
 	move.l 8(%fp),%a0
 	move.l 12(%fp),%a4
-	move.w 256(%a0),%a5
-	move.b 270(%a0),%d2
+	move.w 258(%a0),%a5
+	move.b 272(%a0),%d2
 	pea 10.w
 	lea rapUse8x8fontPalette,%a3
 	jsr (%a3)
@@ -230,8 +230,8 @@ __Z9hudUpdateP7FighterS0_:
 .L29:
 	move.l %d0,_js_r_textbuffer
 	jsr _rapPrint
-	move.w 256(%a4),%a5
-	move.b 270(%a4),%d2
+	move.w 258(%a4),%a5
+	move.b 272(%a4),%d2
 	pea 10.w
 	jsr (%a3)
 	clr.l _jsfFontSize
@@ -273,8 +273,8 @@ __Z9hudUpdateP7FighterS0_:
 	move.l (%a0,%a5.l),%d0
 	move.l %d0,_js_r_textbuffer
 	jsr _rapPrint
-	move.w 256(%a4),%a5
-	move.b 270(%a4),%d2
+	move.w 258(%a4),%a5
+	move.b 272(%a4),%d2
 	pea 10.w
 	jsr (%a3)
 	clr.l _jsfFontSize
