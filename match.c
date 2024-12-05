@@ -451,12 +451,14 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 			if (fighter1->currentState->Name == STATE_FINISH_HIM)
 			{
 				//fighter1->DoDefeatedSequence = true;
+				fighter1->vars[1] = 0;  //hide the projectile layer
 				stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter1, fighter1->spriteAnimator);
 				matchState = 2;
 			}
 			else if (fighter2->currentState->Name == STATE_FINISH_HIM)
 			{
 				//fighter2->DoDefeatedSequence = true;
+				fighter2->vars[1] = 0;  //hide the projectile layer
 				stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter2, fighter2->spriteAnimator);
 				matchState = 2;
 			}
@@ -489,6 +491,7 @@ int matchGetFighter2Wins()
 void matchResetTicks()
 {
 	fightAnimator.lastTick = rapTicks;
+	matchTicks = rapTicks;
 }
 
 void matchPrepForFatality()

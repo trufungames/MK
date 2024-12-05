@@ -2766,7 +2766,7 @@ __Z22switchScreenBattlePlani:
 	clr.b _fadedIn
 	clr.b _fadedOut
 	pea __ZL12soundHandler
-	jsr __Z10musicTitleP12SoundHandler
+	jsr __Z15musicBattlePlanP12SoundHandler
 	moveq #3,%d1
 	move.l %d1,(%sp)
 	jsr rapSetActiveList
@@ -7457,7 +7457,7 @@ __Z9basicmainv:
 	move.l #__ZL15kanoDecapFrames,__ZL11fighterKano+638
 	move.l #__ZL20frontDecapKanoFrames,__ZL11fighterKano+646
 	move.l #__ZL26fatality_Kano_Heart_Inputs,__ZL11fighterKano+344
-	move.w #4,__ZL11fighterKano+354
+	move.w #3,__ZL11fighterKano+354
 	move.l #__Z24doFatality_Kano_HeartripP12StateMachineP7FighterP14SpriteAnimator,__ZL11fighterKano+374
 	move.l #__ZL19kanoFatality1Frames,__ZL11fighterKano+634
 	move.b #1,__ZL11fighterKano+356
@@ -7519,7 +7519,7 @@ __Z9basicmainv:
 	move.l #__ZL15kanoDecapFrames,__ZL12fighterKano2+638
 	move.l #__ZL20frontDecapKanoFrames,__ZL12fighterKano2+646
 	move.l #__ZL26fatality_Kano_Heart_Inputs,__ZL12fighterKano2+344
-	move.w #4,__ZL12fighterKano2+354
+	move.w #3,__ZL12fighterKano2+354
 	move.l #__Z24doFatality_Kano_HeartripP12StateMachineP7FighterP14SpriteAnimator,__ZL12fighterKano2+374
 	move.l #__ZL19kanoFatality1Frames,__ZL12fighterKano2+634
 	move.b #1,__ZL12fighterKano2+356
@@ -16595,9 +16595,9 @@ __ZL20frontDecapKanoFrames:
 	.even
 __ZL26fatality_Kano_Heart_Inputs:
 	.long	6
-	.long	2
-	.long	4
 	.long	1
+	.long	1
+	.long	0
 	.long	0
 	.long	0
 	.even

@@ -1016,6 +1016,7 @@ bool fighterHandleFatality(struct StateMachine* stateMachine, struct Fighter* fi
             || (!fighter->fatality1IsCloseRange && distance >= FIGHTER_FATALITY_MID_RANGE_MIN_X && distance <= FIGHTER_FATALITY_MID_RANGE_MAX_X)))
     {        
         (fighter->doFatality1)(stateMachine, fighter, animator);
+        matchResetTicks(); //reset the match timer, so they don't fall over as the fatality is starting
         return true;
     }
 

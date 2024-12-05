@@ -687,6 +687,7 @@ __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 374(%a2),%a0
 	jsr (%a0)
 	lea (12,%sp),%sp
+	jsr __Z15matchResetTicksv
 	moveq #1,%d0
 .L77:
 	movem.l -12(%fp),#1036
@@ -732,6 +733,7 @@ __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator:
 	move.l 374(%a2),%a0
 	jsr (%a0)
 	lea (12,%sp),%sp
+	jsr __Z15matchResetTicksv
 	moveq #1,%d0
 	jra .L77
 	.even

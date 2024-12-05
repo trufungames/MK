@@ -122,6 +122,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	move.l 298(%a3),%a0
 	cmp.w #68,(%a0)
 	jne .L58
+	clr.w 288(%a3)
 	move.l 434(%a3),-(%sp)
 	move.l %a3,-(%sp)
 	pea 66.w
@@ -744,6 +745,7 @@ __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_:
 	unlk %fp
 	rts
 .L86:
+	clr.w 288(%a2)
 	move.l 434(%a2),-(%sp)
 	move.l %a2,-(%sp)
 	pea 66.w
@@ -780,7 +782,10 @@ __Z20matchGetFighter2Winsv:
 	.globl	__Z15matchResetTicksv
 __Z15matchResetTicksv:
 	link.w %fp,#0
-	move.w raptor_ticks,__ZL13fightAnimator+12
+	move.w raptor_ticks,%d0
+	move.w %d0,__ZL13fightAnimator+12
+	move.w %d0,%a0
+	move.l %a0,_matchTicks
 	unlk %fp
 	rts
 	.even

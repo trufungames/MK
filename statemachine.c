@@ -121,6 +121,7 @@ void stateMachineUpdate(struct StateMachine* stateMachine, struct Fighter* fight
         {
             fighter->vars[0] = fighter->IsLayingDown ? 1 : 0;
             fighter->roundsLost++;
+            fighter->vars[1] = 0; //hide the projectile layer
             stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
         }
     }
@@ -228,6 +229,7 @@ void StateIdle_Enter(struct StateMachine* stateMachine, struct Fighter* fighter,
     {
         fighter->IsActive = false;
         fighter->TookFinalBlow = true;
+        fighter->vars[1] = 0; //hide the projectile layer
         stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
     }
 
@@ -1734,6 +1736,7 @@ void StateGetUp_Enter(struct StateMachine* stateMachine, struct Fighter* fighter
     {
         fighter->IsActive = false;
         fighter->TookFinalBlow = true;
+        fighter->vars[1] = 0; //hide the projectile layer
         stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
     }
 
@@ -1961,6 +1964,7 @@ void StateLaydown_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     {
         fighter->IsActive = false;
         fighter->TookFinalBlow = true;
+        fighter->vars[1] = 0; //hide the projectile layer
         stateMachineGoto(stateMachine, STATE_IS_LOSER, fighter, spriteAnimator);
     }    
 
@@ -3202,8 +3206,8 @@ void StateScorpionHarpoon_Enter(struct StateMachine* stateMachine, struct Fighte
     sprite[fighter->lightningSpriteIndex].hbox = 16;
     sprite[fighter->lightningSpriteIndex].vbox = 16;
     sprite[fighter->lightningSpriteIndex].flip = fighter->direction == -1 ? R_is_flipped : R_is_normal;
-    sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;
-    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->lightningSpriteIndex].scaled = R_spr_unscale;    
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     sprite[fighter->lightningSpriteIndex].x_ = fighter->projectileWorldPositionX - cameraGetX();
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
     sfxScorpionHarpoon(fighter->soundHandler);
@@ -3222,7 +3226,12 @@ void StateScorpionHarpoon_Update(struct StateMachine* stateMachine, struct Fight
 				sfxScorpionHarpoon(fighter->soundHandler);
 			}
 
-			fighter->projectileWorldPositionX += (6 * fighter->direction);
+            if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+            {
+                sprite[fighter->lightningSpriteIndex].active = R_is_active;
+            }
+
+			fighter->projectileWorldPositionX += (12 * fighter->direction);
 
 			if (fighter->direction == 1 && fighter->projectilePositionX > 320
 				|| fighter->direction == -1 && fighter->projectilePositionX < 0)
@@ -3432,7 +3441,7 @@ void StateScorpionReelingIn_Enter(struct StateMachine* stateMachine, struct Figh
     sprite[fighter->lightningSpriteIndex].gwidth = 104;
     sprite[fighter->lightningSpriteIndex].hbox = 16;
     sprite[fighter->lightningSpriteIndex].vbox = 16;
-    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
     sprite[fighter->lightningSpriteIndex].scaled = R_spr_scale;
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SCORPION_clut),fighter->isPlayer1 ? 9: 13,16);
 }
@@ -3469,11 +3478,6 @@ void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fig
         updateSpriteAnimator(spriteAnimator, *fighter->special1EndFrames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
     }
 
-    if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
-    {
-        sprite[fighter->lightningSpriteIndex].active = R_is_active;
-    }
-
     if (fighter->direction == -1)
     {
         fighter->HarpoonDistance = opponent->positionX - fighter->positionX + FIGHTER_WIDTH;
@@ -3497,6 +3501,11 @@ void StateScorpionReelingIn_Update(struct StateMachine* stateMachine, struct Fig
     //fighter->HarpoonCenterX += (32 * fighter->direction);
 
     updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileEndFrames, 1, true, false, fighter->HarpoonCenterX, fighter->positionY + fighter->HarpoonOffsetY, fighter->direction);
+
+    if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+    {
+        sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    }
 }
 
 void StateScorpionReelingIn_Sleep(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator)
@@ -3676,7 +3685,7 @@ void StateSubzeroFreeze_Enter(struct StateMachine* stateMachine, struct Fighter*
     jsfLoadClut((unsigned short *)(void *)(BMP_PAL_PROJ_SUBZERO_clut),fighter->isPlayer1 ? 9: 13,16);
     sfxSubzeroFreeze(fighter->soundHandler);
     fighter->lastTicks = rapTicks;
-    sprite[fighter->lightningSpriteIndex].active = R_is_active;
+    sprite[fighter->lightningSpriteIndex].active = R_is_inactive;
 }
 
 void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)
@@ -3699,6 +3708,11 @@ void StateSubzeroFreeze_Update(struct StateMachine* stateMachine, struct Fighter
 
 		updateSpriteAnimator(spriteAnimator, *fighter->special1Frames, 6, true, false, fighter->positionX, fighter->positionY, fighter->direction);
 		updateSpriteAnimator(fighter->projectileAnimator, *fighter->projectileFrames, 10, true, false, fighter->projectilePositionX, fighter->projectilePositionY, fighter->direction);
+
+        if (sprite[fighter->lightningSpriteIndex].active == R_is_inactive)
+        {
+            sprite[fighter->lightningSpriteIndex].active = R_is_active;
+        }
 	}
 	else
 	{
@@ -3746,7 +3760,6 @@ void StateHitFreeze_Enter(struct StateMachine* stateMachine, struct Fighter* fig
     fighter->vars[2] = 0;
     fighter->exitingState = false;
     fighter->lastTicks = rapTicks;
-    fighter->IsFrozen = true;
     fighter->IsFrozen = true;
     fighter->AcceptingInput = false;
     fighter->FrozenShakeTicks = rapTicks;
@@ -4315,10 +4328,7 @@ void StateIsLoser_Enter(struct StateMachine* stateMachine, struct Fighter* fight
     spriteAnimator->currentFrame = 0;
     spriteAnimator->lastTick = rapTicks;
     fighter->lastTicks = rapTicks;
-    if (fighter->vars[1] == 1)
-    {
-        sprite[fighter->lightningSpriteIndex].active = R_is_active;
-    }
+    sprite[fighter->lightningSpriteIndex].active = fighter->vars[1] == 1 ? R_is_active : R_is_inactive;
 }
 
 void StateIsLoser_Update(struct StateMachine* stateMachine, struct Fighter* fighter, struct SpriteAnimator* spriteAnimator, struct Fighter* opponent)

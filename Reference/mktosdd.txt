@@ -1,6 +1,6 @@
 [T] Raiden Torpedo too slow
 
-[ ] Still have slowdown at Pit Bottom
+[X] Still have slowdown at Pit Bottom
 
 [x] Shang Tsung clap freezes after 2nd round
 [x] Goro's Lair has white dots in the background.  (What's the bg color set to?)
@@ -20,3 +20,6 @@
 [x] Raiden's idle lightning goes black after throwing projectile
 [x] subzero ice too slow
 [x] subzero fatality - spine disappears
+[ ] game crashes on real hardware when selecting Johnny Cage
+[x] Scorpion slow harpoon and sprite flicker
+[ ] What happens if P2 wins the fight?  It should restart the fight (I guess....)

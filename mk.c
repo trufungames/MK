@@ -3826,7 +3826,7 @@ static int specials_Kasumi_Fireball_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FOR
 static int specials_Kasumi_Roll_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 
 static int fatality_Cage_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
-static int fatality_Kano_Heart_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_BACK, 0, 0 };
+static int fatality_Kano_Heart_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
 //static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, INPUT_BACK, INPUT_FORWARD, 0 };
 static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 static int fatality_Kang_Flip_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
@@ -3866,6 +3866,7 @@ static AnimationFrame fmvAllFrames[] = {
 // *************************************************
 //               User Prototypes
 // *************************************************
+void resetGame();
 void shuffleLineup(int fighterIndex);
 bool lineupContains(int fighterIndex);
 void initBlackPalettes();
@@ -5271,7 +5272,7 @@ void basicmain()
 		fighterKano.decapFrames = &kanoDecapFrames;
 		fighterKano.frontDecapFrames = &frontDecapKanoFrames;
 		fighterKano.fatality1Inputs = &fatality_Kano_Heart_Inputs;
-		fighterKano.fatality1InputCount = 4;
+		fighterKano.fatality1InputCount = 3;
 		fighterKano.doFatality1 = &doFatality_Kano_Heartrip;
 		fighterKano.fatality1Frames = &kanoFatality1Frames;
 		fighterKano.fatality1IsCloseRange = true;
@@ -5333,7 +5334,7 @@ void basicmain()
 		fighterKano2.decapFrames = &kanoDecapFrames;
 		fighterKano2.frontDecapFrames = &frontDecapKanoFrames;
 		fighterKano2.fatality1Inputs = &fatality_Kano_Heart_Inputs;
-		fighterKano2.fatality1InputCount = 4;
+		fighterKano2.fatality1InputCount = 3;
 		fighterKano2.doFatality1 = &doFatality_Kano_Heartrip;
 		fighterKano2.fatality1Frames = &kanoFatality1Frames;
 		fighterKano2.fatality1IsCloseRange = true;
@@ -8063,8 +8064,15 @@ void initTitleScreen()
 	onTitleScreen = true;
 }
 
+void resetGame()
+{
+	battleplan_index = 6;
+
+}
+
 void initMenuScreen()
 {
+	resetGame();
 	rapParticleClear();
 	rapUnpack(BMP_TS_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
@@ -9161,7 +9169,7 @@ void switchScreenBattlePlan(int fighterIndex)
 	fadedIn = false;
 	fadedOut = false;
 	
-	musicTitle(&soundHandler);
+	musicBattlePlan(&soundHandler);
 	rapSetActiveList(3);
 	rapParticleClear();
 	
