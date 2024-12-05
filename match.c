@@ -13,8 +13,8 @@ int matchState = 0;  //0 = Round #, FIGHT!, 1 = {fighting}, 2 = {fighter} WINS /
 int matchTicks = 0;
 bool fightZoomed = false;
 int fightScale = 0;
-int winner = 0;
-int loser = 0;
+int winner = -1;
+int loser = -1;
 bool matchComplete = false;
 int fighter1Wins = 0;
 int fighter2Wins = 0;
@@ -112,8 +112,8 @@ void matchReset()
     matchTicks = 0;
     fightZoomed = false;
 	fightScale = 0;
-	winner = 0;
-	loser = 0;
+	winner = -1;
+	loser = -1;
 	matchComplete = false;
 	winsTicks = 0;
 	playedName = false;
@@ -258,7 +258,7 @@ bool matchUpdate(struct SoundHandler* soundHandler, struct StateMachine* stateMa
 			}
 		}
 
-		if (winner != 0)
+		if (winner != -1)
 		{
 			rapClockMode = Clock_Freeze;
 			matchState = 3;  //XXXXX WINS!

@@ -20,6 +20,6 @@
 [x] Raiden's idle lightning goes black after throwing projectile
 [x] subzero ice too slow
 [x] subzero fatality - spine disappears
-[ ] game crashes on real hardware when selecting Johnny Cage
+[x] game crashes on real hardware when selecting Johnny Cage
 [x] Scorpion slow harpoon and sprite flicker
 [ ] What happens if P2 wins the fight?  It should restart the fight (I guess....)

@@ -10494,7 +10494,6 @@ void displayWinnerMedals()
 	//rapUse16x16fontPalette(10);
 	jsfSetFontSize(1);
 	jsfSetFontIndx(0);
-
 	switch(matchGetFighter1Wins())
 	{
 		case 1:
