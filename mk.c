@@ -6668,6 +6668,14 @@ void basicmain()
 					fighter2Ptr->opponentIndex = fighter1Ptr->fighterIndex;
 					fighter1Ptr->Opponent = fighter2Ptr;
 					fighter2Ptr->Opponent = fighter1Ptr;
+
+					fighter2Ptr->input1 = &p2Input1;
+					fighter2Ptr->input2 = &p2Input2;
+					fighter2Ptr->input3 = &p2Input3;
+					fighter2Ptr->input4 = &p2Input4;
+					fighter2Ptr->input5 = &p2Input5;
+					fighter2Ptr->input6 = &p2Input6;
+					playerinputInit(fighter2Ptr);
 					
 					switchScreenBattlePlan(fighter1Ptr->fighterIndex);
 					// roundFightSequenceComplete = false;
@@ -7538,6 +7546,14 @@ void basicmain()
 						fighterShow(&fighterSubzero2);
 						fighter2Ptr = &fighterSubzero2;						
 						spriteAnimator2Ptr = &subzeroAnimator2;
+						fighter2Ptr->spriteAnimator->currentFrame = 0;
+						fighter2Ptr->input1 = &p2Input1;
+						fighter2Ptr->input2 = &p2Input2;
+						fighter2Ptr->input3 = &p2Input3;
+						fighter2Ptr->input4 = &p2Input4;
+						fighter2Ptr->input5 = &p2Input5;
+						fighter2Ptr->input6 = &p2Input6;
+						playerinputInit(fighter2Ptr);						
 					}
 					
 					fighter1Ptr->opponentIndex = fighter2Ptr->fighterIndex;

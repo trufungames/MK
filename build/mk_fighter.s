@@ -736,6 +736,8 @@ __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator:
 	jsr __Z15matchResetTicksv
 	moveq #1,%d0
 	jra .L77
+.LC0:
+	.ascii "move 1\0"
 	.even
 	.globl	__Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator
 __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
@@ -821,7 +823,9 @@ __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator:
 	unlk %fp
 	rts
 .L89:
-	move.l 16(%fp),-(%sp)
+	pea .LC0
+	jsr __Z11showMessagePc
+	move.l 16(%fp),(%sp)
 	move.l %a2,-(%sp)
 	move.l 8(%fp),-(%sp)
 	move.l 358(%a2),%a0
@@ -3158,7 +3162,7 @@ __Z17fighterResetTicksP7Fighter:
 	move.b #1,169(%a0)
 	unlk %fp
 	rts
-.LC0:
+.LC1:
 	.ascii "%02ld00\0"
 	.even
 	.globl	__Z17fighterDrawScoresP7FighterS0_
@@ -3195,7 +3199,7 @@ __Z17fighterDrawScoresP7FighterS0_:
 	jsr rapLocate
 	addq.l #4,%sp
 	move.l 200(%a2),(%sp)
-	pea .LC0
+	pea .LC1
 	jsr ee_printf
 	move.l %d0,_js_r_textbuffer
 	addq.l #8,%sp
@@ -3212,7 +3216,7 @@ __Z17fighterDrawScoresP7FighterS0_:
 	jsr rapLocate
 	addq.l #4,%sp
 	move.l 200(%a3),(%sp)
-	pea .LC0
+	pea .LC1
 	jsr ee_printf
 	move.l %d0,_js_r_textbuffer
 	addq.l #8,%sp
@@ -3245,7 +3249,7 @@ __Z17fighterDrawScoresP7FighterS0_:
 	jsr rapLocate
 	addq.l #4,%sp
 	move.l 200(%a2),(%sp)
-	pea .LC0
+	pea .LC1
 	jsr ee_printf
 	move.l %d0,_js_r_textbuffer
 	addq.l #8,%sp
@@ -3261,7 +3265,7 @@ __Z17fighterDrawScoresP7FighterS0_:
 	jsr rapLocate
 	addq.l #4,%sp
 	move.l 200(%a2),(%sp)
-	pea .LC0
+	pea .LC1
 	jsr ee_printf
 	move.l %d0,_js_r_textbuffer
 	addq.l #8,%sp

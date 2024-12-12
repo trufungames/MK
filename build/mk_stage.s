@@ -582,7 +582,7 @@ __ZL13monksAnimator:
 	.skip 4
 	.even
 __ZL12currentStage:
-	.word	2
+	.word	6
 	.even
 __ZL14monkClapFrames:
 	.word	576
