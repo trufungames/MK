@@ -1274,8 +1274,6 @@ Buildlink finished - everything went fine!
 Assembling raptor skeleton... 
  
 Compiling C code to O... 
-C:\gamedev\JAGSTU~1\projects\c\mk\fighter.c: In function 'bool fighterHandleSpecialMoves(StateMachine*, Fighter*, SpriteAnimator*)':
-C:\gamedev\JAGSTU~1\projects\c\mk\fighter.c:1046:29: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:395:43: warning: extended initializer lists only available with -std=c++0x or -std=gnu++0x [enabled by default]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4663:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4663:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
@@ -1557,8 +1555,6 @@ C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:9530:22: warning: deprecated conversion f
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:9533:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:9536:22: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 Compiling C code to S... 
-C:\gamedev\JAGSTU~1\projects\c\mk\fighter.c: In function 'bool fighterHandleSpecialMoves(StateMachine*, Fighter*, SpriteAnimator*)':
-C:\gamedev\JAGSTU~1\projects\c\mk\fighter.c:1046:29: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:395:43: warning: extended initializer lists only available with -std=c++0x or -std=gnu++0x [enabled by default]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4663:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
 C:\gamedev\JAGSTU~1\projects\c\mk\mk.c:4663:1: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
@@ -1939,34 +1935,34 @@ jsfLoadClut G  0005919E   __Z16impactFrameResetP7Fighter G  00028CC0   __Z15play
 __Z19fighterRestartMatchP7Fighter G  00025384   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025394   __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  000253F2   
 __Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  0002544E   __Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator G  000254AA   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  000254B2   
 __Z24fighterCaptureDpadInputsP7Fighter G  000254BA   __Z15playerinputPushP7Fighteri G  00039482   __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator G  00025606   
-__Z19playerinputContainsP7FighterPii G  00038F68   __Z15matchResetTicksv G  00029996   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  0002578C   
-__Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000258A8   __Z18fighterButtonCheckP7Fighter G  000258B0   __Z15fighterPlayHiyaiP12SoundHandlerb G  0002596A   
+__Z19playerinputContainsP7FighterPii G  00038F68   __Z15matchResetTicksv G  00029996   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025784   
+__Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00025896   __Z18fighterButtonCheckP7Fighter G  0002589E   __Z15fighterPlayHiyaiP12SoundHandlerb G  00025958   
 __Z11sfxHiyaMaleP12SoundHandler G  00039D20   __Z11sfxHiyaKangP12SoundHandler G  00039EEC   __Z13sfxHiyaFemaleP12SoundHandler G  00039E06   
-__Z12sfxHiyaNinjaP12SoundHandler G  00039FD2   __Z16fighterPlayGroaniP12SoundHandlerb G  000259C6   __Z12sfxGroanMaleP12SoundHandler G  0003A19E   
-__Z14sfxGroanFemaleP12SoundHandler G  0003A284   __Z15fighterPlayYelliP12SoundHandlerb G  000259EE   __Z11sfxYellMaleP12SoundHandler G  0003A8D8   
-__Z11sfxYellKangP12SoundHandler G  0003AA4A   __Z13sfxYellFemaleP12SoundHandler G  0003A9BE   __Z18fighterPlayPitFalliP12SoundHandlerb G  00025A30   
-__Z10sfxPitFallP12SoundHandler G  00039C08   __Z23sfxFatalityScreamFemaleP12SoundHandler G  0003C084   __Z18fighterPlayPitLandiP12SoundHandlerb G  00025A58   
-__Z10sfxPitLandP12SoundHandler G  00039C94   __Z22sfxFatalityGroanFemaleP12SoundHandler G  0003C19C   __Z15fighterPlayJumpiP12SoundHandlerb G  00025A80   
+__Z12sfxHiyaNinjaP12SoundHandler G  00039FD2   __Z16fighterPlayGroaniP12SoundHandlerb G  000259B4   __Z12sfxGroanMaleP12SoundHandler G  0003A19E   
+__Z14sfxGroanFemaleP12SoundHandler G  0003A284   __Z15fighterPlayYelliP12SoundHandlerb G  000259DC   __Z11sfxYellMaleP12SoundHandler G  0003A8D8   
+__Z11sfxYellKangP12SoundHandler G  0003AA4A   __Z13sfxYellFemaleP12SoundHandler G  0003A9BE   __Z18fighterPlayPitFalliP12SoundHandlerb G  00025A1E   
+__Z10sfxPitFallP12SoundHandler G  00039C08   __Z23sfxFatalityScreamFemaleP12SoundHandler G  0003C084   __Z18fighterPlayPitLandiP12SoundHandlerb G  00025A46   
+__Z10sfxPitLandP12SoundHandler G  00039C94   __Z22sfxFatalityGroanFemaleP12SoundHandler G  0003C19C   __Z15fighterPlayJumpiP12SoundHandlerb G  00025A6E   
 __Z11sfxJumpMaleP12SoundHandler G  0003AAD6   __Z12sfxJumpNinjaP12SoundHandler G  0003ABEE   __Z13sfxJumpFemaleP12SoundHandler G  0003AB62   
-__Z24fighterPlayFatalityGroaniP12SoundHandlerb G  00025ACE   __Z20sfxFatalityGroanMaleP12SoundHandler G  0003C110   __Z20sfxFatalityGroanKangP12SoundHandler G  0003C228   
-__Z25fighterPlayFatalityScreamiP12SoundHandlerb G  00025B10   __Z21sfxFatalityScreamMaleP12SoundHandler G  0003BFF8   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B52   
+__Z24fighterPlayFatalityGroaniP12SoundHandlerb G  00025ABC   __Z20sfxFatalityGroanMaleP12SoundHandler G  0003C110   __Z20sfxFatalityGroanKangP12SoundHandler G  0003C228   
+__Z25fighterPlayFatalityScreamiP12SoundHandlerb G  00025AFE   __Z21sfxFatalityScreamMaleP12SoundHandler G  0003BFF8   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B40   
 __Z17sfxAnnouncerLaughP12SoundHandler G  0003C340   __Z21sfxAnnouncerExcellentP12SoundHandler G  0003C2B4   __Z11sfxCrowdAwwP12SoundHandler G  0003BE54   
-__Z16fighterMakeDizzyP7Fighter G  00025BAC   __Z20fighterResetFlagsAllP7FighterS0_ G  00025C5C   __Z17fighterResetFlagsP7Fighter G  00025EBE   
-__Z23fighterHandleProjectileP12StateMachineP7FighterS2_ G  00025F5C   __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator G  0003E2D4   __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator G  0003E606   
-__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  000262A0   __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  00026AAA   __Z26stageGetFighterHitboxIndexv G  0003DF6A   
-rapCollide G  000595F0   __Z16fighterTurnCheckP7FighterS0_ G  00026E7C   __Z17fighterCloseCheckP7FighterS0_ G  00026FF4   
-__Z23fighterUpdateHealthbarsP7FighterS0_ G  00027088   __Z9hudUpdateP7FighterS0_ G  00028020   __Z23fighterAddPendingDamageP7FighteribS0_i G  00027094   
-__Z17fighterTakeDamageP7Fighteri G  000270BE   __Z16hudUpdateFighterP7Fighter G  00027F5A   __Z7bgShakeb G  0003DAE6   
-__Z17fighterShiftRightP7Fighter G  00027124   __Z16fighterShiftLeftP7Fighter G  0002717E   __Z21fighterLockBoundariesP7Fighter G  000271D0   
-__Z27fighterAlignSpriteAndHitboxP7Fighter G  000271D8   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000271E0   __Z17fighterSetOnFloorP7Fighter G  0002721A   
-__Z20fighterHasRoomToMoveP7FighterS0_ G  0002722C   __Z19fighterPositionXAddP7Fighteri G  000272B8   __Z17fighterCastShadowP7Fighterb G  00027346   
-__Z25fighterShadowHeightLookupi G  0002736C   __Z20fighterIsMaxDistanceP7FighterS0_ G  000273DA   __Z19fighterTorpedoCheckP12StateMachineP7FighterS2_ G  0002742C   
-__Z17fighterResetTicksP7Fighter G  000274C6   __Z17fighterDrawScoresP7FighterS0_ G  000274E0   ___udivsi3 G  00057B40   
-__Z14fighterLaydownP7FighterP14SpriteAnimator G  0002765E   __Z12animateFrameP14SpriteAnimatorjjP14AnimationFramefjiiii G  0003C960   __Z27fighterResetRaidenLightningP7Fighter G  000276DA   
-__Z13fighterFreezeP7Fighter G  00027756   __Z19sfxSubzeroFreezeEndP12SoundHandler G  0003B4AE   __Z15fighterUnfreezeP7Fighter G  000277F4   
-__Z14fighterHarpoonP7FighterS0_ G  00027840   __Z23fighterSlideToPositionXP7Fighteri G  000279BA   __Z19fighterHarpoonCheckP7FighterS0_ G  000279D8   
-__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027B8E   __Z17fighterIsBlockingP12StateMachineP7Fighter G  00027BA2   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  00027BC8   
-__Z16fighterIsJumpingP12StateMachineP7Fighter G  00027BE0   __Z19fighterFaceOpponentP7Fighter G  00027C30   __Z20fighterTurnInstantlyP7Fighter G  00027D14   
+__Z16fighterMakeDizzyP7Fighter G  00025B9A   __Z20fighterResetFlagsAllP7FighterS0_ G  00025C4A   __Z17fighterResetFlagsP7Fighter G  00025EAC   
+__Z23fighterHandleProjectileP12StateMachineP7FighterS2_ G  00025F4A   __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator G  0003E2D4   __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator G  0003E606   
+__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  0002628E   __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  00026A98   __Z26stageGetFighterHitboxIndexv G  0003DF6A   
+rapCollide G  000595F0   __Z16fighterTurnCheckP7FighterS0_ G  00026E6A   __Z17fighterCloseCheckP7FighterS0_ G  00026FE2   
+__Z23fighterUpdateHealthbarsP7FighterS0_ G  00027076   __Z9hudUpdateP7FighterS0_ G  00028020   __Z23fighterAddPendingDamageP7FighteribS0_i G  00027082   
+__Z17fighterTakeDamageP7Fighteri G  000270AC   __Z16hudUpdateFighterP7Fighter G  00027F5A   __Z7bgShakeb G  0003DAE6   
+__Z17fighterShiftRightP7Fighter G  00027112   __Z16fighterShiftLeftP7Fighter G  0002716C   __Z21fighterLockBoundariesP7Fighter G  000271BE   
+__Z27fighterAlignSpriteAndHitboxP7Fighter G  000271C6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000271CE   __Z17fighterSetOnFloorP7Fighter G  00027208   
+__Z20fighterHasRoomToMoveP7FighterS0_ G  0002721A   __Z19fighterPositionXAddP7Fighteri G  000272A6   __Z17fighterCastShadowP7Fighterb G  00027334   
+__Z25fighterShadowHeightLookupi G  0002735A   __Z20fighterIsMaxDistanceP7FighterS0_ G  000273C8   __Z19fighterTorpedoCheckP12StateMachineP7FighterS2_ G  0002741A   
+__Z17fighterResetTicksP7Fighter G  000274B4   __Z17fighterDrawScoresP7FighterS0_ G  000274CE   ___udivsi3 G  00057B40   
+__Z14fighterLaydownP7FighterP14SpriteAnimator G  0002764C   __Z12animateFrameP14SpriteAnimatorjjP14AnimationFramefjiiii G  0003C960   __Z27fighterResetRaidenLightningP7Fighter G  000276C8   
+__Z13fighterFreezeP7Fighter G  00027744   __Z19sfxSubzeroFreezeEndP12SoundHandler G  0003B4AE   __Z15fighterUnfreezeP7Fighter G  000277E2   
+__Z14fighterHarpoonP7FighterS0_ G  0002782E   __Z23fighterSlideToPositionXP7Fighteri G  000279A8   __Z19fighterHarpoonCheckP7FighterS0_ G  000279C6   
+__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027B7C   __Z17fighterIsBlockingP12StateMachineP7Fighter G  00027B90   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  00027BB6   
+__Z16fighterIsJumpingP12StateMachineP7Fighter G  00027BCE   __Z19fighterFaceOpponentP7Fighter G  00027C1E   __Z20fighterTurnInstantlyP7Fighter G  00027D02   
 __Z12hudGetStringbi G  00027DB0   __Z18hudUpdateHealthbarbi G  00027E06   __Z7hudInitv G  00027EDC   
 __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00028D0C   __Z15leaderboardInitv G  00028E20   __Z10matchResetv G  00028E40   
 rapSetClock G  0005974E   __Z9matchInitv G  00028EB0   __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_ G  00028F38   
@@ -2404,34 +2400,34 @@ jsfLoadClut G  0005919E   __Z16impactFrameResetP7Fighter G  00028CC0   __Z15play
 __Z19fighterRestartMatchP7Fighter G  00025384   __Z17fighterUpdateIdlefP7FighterP14SpriteAnimatorP14AnimationFrame G  00025394   __Z24fighterUpdateVictoryPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  000253F2   
 __Z24fighterUpdateSpecialPosefP7FighterP14SpriteAnimatorP14AnimationFrame G  0002544E   __Z13fighterUpdateP12StateMachineP7FighterP14SpriteAnimator G  000254AA   __Z19fighterHandleDamagefP7FighterP14SpriteAnimatorb G  000254B2   
 __Z24fighterCaptureDpadInputsP7Fighter G  000254BA   __Z15playerinputPushP7Fighteri G  00039482   __Z21fighterHandleFatalityP12StateMachineP7FighterP14SpriteAnimator G  00025606   
-__Z19playerinputContainsP7FighterPii G  00038F68   __Z15matchResetTicksv G  00029996   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  0002578C   
-__Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  000258A8   __Z18fighterButtonCheckP7Fighter G  000258B0   __Z15fighterPlayHiyaiP12SoundHandlerb G  0002596A   
+__Z19playerinputContainsP7FighterPii G  00038F68   __Z15matchResetTicksv G  00029996   __Z25fighterHandleSpecialMovesP12StateMachineP7FighterP14SpriteAnimator G  00025784   
+__Z18fighterHandleInputP12StateMachineP7FighterP14SpriteAnimator G  00025896   __Z18fighterButtonCheckP7Fighter G  0002589E   __Z15fighterPlayHiyaiP12SoundHandlerb G  00025958   
 __Z11sfxHiyaMaleP12SoundHandler G  00039D20   __Z11sfxHiyaKangP12SoundHandler G  00039EEC   __Z13sfxHiyaFemaleP12SoundHandler G  00039E06   
-__Z12sfxHiyaNinjaP12SoundHandler G  00039FD2   __Z16fighterPlayGroaniP12SoundHandlerb G  000259C6   __Z12sfxGroanMaleP12SoundHandler G  0003A19E   
-__Z14sfxGroanFemaleP12SoundHandler G  0003A284   __Z15fighterPlayYelliP12SoundHandlerb G  000259EE   __Z11sfxYellMaleP12SoundHandler G  0003A8D8   
-__Z11sfxYellKangP12SoundHandler G  0003AA4A   __Z13sfxYellFemaleP12SoundHandler G  0003A9BE   __Z18fighterPlayPitFalliP12SoundHandlerb G  00025A30   
-__Z10sfxPitFallP12SoundHandler G  00039C08   __Z23sfxFatalityScreamFemaleP12SoundHandler G  0003C084   __Z18fighterPlayPitLandiP12SoundHandlerb G  00025A58   
-__Z10sfxPitLandP12SoundHandler G  00039C94   __Z22sfxFatalityGroanFemaleP12SoundHandler G  0003C19C   __Z15fighterPlayJumpiP12SoundHandlerb G  00025A80   
+__Z12sfxHiyaNinjaP12SoundHandler G  00039FD2   __Z16fighterPlayGroaniP12SoundHandlerb G  000259B4   __Z12sfxGroanMaleP12SoundHandler G  0003A19E   
+__Z14sfxGroanFemaleP12SoundHandler G  0003A284   __Z15fighterPlayYelliP12SoundHandlerb G  000259DC   __Z11sfxYellMaleP12SoundHandler G  0003A8D8   
+__Z11sfxYellKangP12SoundHandler G  0003AA4A   __Z13sfxYellFemaleP12SoundHandler G  0003A9BE   __Z18fighterPlayPitFalliP12SoundHandlerb G  00025A1E   
+__Z10sfxPitFallP12SoundHandler G  00039C08   __Z23sfxFatalityScreamFemaleP12SoundHandler G  0003C084   __Z18fighterPlayPitLandiP12SoundHandlerb G  00025A46   
+__Z10sfxPitLandP12SoundHandler G  00039C94   __Z22sfxFatalityGroanFemaleP12SoundHandler G  0003C19C   __Z15fighterPlayJumpiP12SoundHandlerb G  00025A6E   
 __Z11sfxJumpMaleP12SoundHandler G  0003AAD6   __Z12sfxJumpNinjaP12SoundHandler G  0003ABEE   __Z13sfxJumpFemaleP12SoundHandler G  0003AB62   
-__Z24fighterPlayFatalityGroaniP12SoundHandlerb G  00025ACE   __Z20sfxFatalityGroanMaleP12SoundHandler G  0003C110   __Z20sfxFatalityGroanKangP12SoundHandler G  0003C228   
-__Z25fighterPlayFatalityScreamiP12SoundHandlerb G  00025B10   __Z21sfxFatalityScreamMaleP12SoundHandler G  0003BFF8   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B52   
+__Z24fighterPlayFatalityGroaniP12SoundHandlerb G  00025ABC   __Z20sfxFatalityGroanMaleP12SoundHandler G  0003C110   __Z20sfxFatalityGroanKangP12SoundHandler G  0003C228   
+__Z25fighterPlayFatalityScreamiP12SoundHandlerb G  00025AFE   __Z21sfxFatalityScreamMaleP12SoundHandler G  0003BFF8   __Z27fighterPlayUppercutReactionP12SoundHandler G  00025B40   
 __Z17sfxAnnouncerLaughP12SoundHandler G  0003C340   __Z21sfxAnnouncerExcellentP12SoundHandler G  0003C2B4   __Z11sfxCrowdAwwP12SoundHandler G  0003BE54   
-__Z16fighterMakeDizzyP7Fighter G  00025BAC   __Z20fighterResetFlagsAllP7FighterS0_ G  00025C5C   __Z17fighterResetFlagsP7Fighter G  00025EBE   
-__Z23fighterHandleProjectileP12StateMachineP7FighterS2_ G  00025F5C   __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator G  0003E2D4   __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator G  0003E606   
-__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  000262A0   __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  00026AAA   __Z26stageGetFighterHitboxIndexv G  0003DF6A   
-rapCollide G  000595F0   __Z16fighterTurnCheckP7FighterS0_ G  00026E7C   __Z17fighterCloseCheckP7FighterS0_ G  00026FF4   
-__Z23fighterUpdateHealthbarsP7FighterS0_ G  00027088   __Z9hudUpdateP7FighterS0_ G  00028020   __Z23fighterAddPendingDamageP7FighteribS0_i G  00027094   
-__Z17fighterTakeDamageP7Fighteri G  000270BE   __Z16hudUpdateFighterP7Fighter G  00027F5A   __Z7bgShakeb G  0003DAE6   
-__Z17fighterShiftRightP7Fighter G  00027124   __Z16fighterShiftLeftP7Fighter G  0002717E   __Z21fighterLockBoundariesP7Fighter G  000271D0   
-__Z27fighterAlignSpriteAndHitboxP7Fighter G  000271D8   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000271E0   __Z17fighterSetOnFloorP7Fighter G  0002721A   
-__Z20fighterHasRoomToMoveP7FighterS0_ G  0002722C   __Z19fighterPositionXAddP7Fighteri G  000272B8   __Z17fighterCastShadowP7Fighterb G  00027346   
-__Z25fighterShadowHeightLookupi G  0002736C   __Z20fighterIsMaxDistanceP7FighterS0_ G  000273DA   __Z19fighterTorpedoCheckP12StateMachineP7FighterS2_ G  0002742C   
-__Z17fighterResetTicksP7Fighter G  000274C6   __Z17fighterDrawScoresP7FighterS0_ G  000274E0   ___udivsi3 G  00057B40   
-__Z14fighterLaydownP7FighterP14SpriteAnimator G  0002765E   __Z12animateFrameP14SpriteAnimatorjjP14AnimationFramefjiiii G  0003C960   __Z27fighterResetRaidenLightningP7Fighter G  000276DA   
-__Z13fighterFreezeP7Fighter G  00027756   __Z19sfxSubzeroFreezeEndP12SoundHandler G  0003B4AE   __Z15fighterUnfreezeP7Fighter G  000277F4   
-__Z14fighterHarpoonP7FighterS0_ G  00027840   __Z23fighterSlideToPositionXP7Fighteri G  000279BA   __Z19fighterHarpoonCheckP7FighterS0_ G  000279D8   
-__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027B8E   __Z17fighterIsBlockingP12StateMachineP7Fighter G  00027BA2   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  00027BC8   
-__Z16fighterIsJumpingP12StateMachineP7Fighter G  00027BE0   __Z19fighterFaceOpponentP7Fighter G  00027C30   __Z20fighterTurnInstantlyP7Fighter G  00027D14   
+__Z16fighterMakeDizzyP7Fighter G  00025B9A   __Z20fighterResetFlagsAllP7FighterS0_ G  00025C4A   __Z17fighterResetFlagsP7Fighter G  00025EAC   
+__Z23fighterHandleProjectileP12StateMachineP7FighterS2_ G  00025F4A   __Z16stateMachineGotoP12StateMachinesP7FighterP14SpriteAnimator G  0003E2D4   __Z17stateMachineSleepP12StateMachinesP7FighterP14SpriteAnimator G  0003E606   
+__Z19fighterHandleImpactP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  0002628E   __Z18fighterImpactCheckP12StateMachineP7FighterP14SpriteAnimatorS2_S4_ G  00026A98   __Z26stageGetFighterHitboxIndexv G  0003DF6A   
+rapCollide G  000595F0   __Z16fighterTurnCheckP7FighterS0_ G  00026E6A   __Z17fighterCloseCheckP7FighterS0_ G  00026FE2   
+__Z23fighterUpdateHealthbarsP7FighterS0_ G  00027076   __Z9hudUpdateP7FighterS0_ G  00028020   __Z23fighterAddPendingDamageP7FighteribS0_i G  00027082   
+__Z17fighterTakeDamageP7Fighteri G  000270AC   __Z16hudUpdateFighterP7Fighter G  00027F5A   __Z7bgShakeb G  0003DAE6   
+__Z17fighterShiftRightP7Fighter G  00027112   __Z16fighterShiftLeftP7Fighter G  0002716C   __Z21fighterLockBoundariesP7Fighter G  000271BE   
+__Z27fighterAlignSpriteAndHitboxP7Fighter G  000271C6   __Z23fighterResetSpriteIndexP7FighterP14SpriteAnimatorb G  000271CE   __Z17fighterSetOnFloorP7Fighter G  00027208   
+__Z20fighterHasRoomToMoveP7FighterS0_ G  0002721A   __Z19fighterPositionXAddP7Fighteri G  000272A6   __Z17fighterCastShadowP7Fighterb G  00027334   
+__Z25fighterShadowHeightLookupi G  0002735A   __Z20fighterIsMaxDistanceP7FighterS0_ G  000273C8   __Z19fighterTorpedoCheckP12StateMachineP7FighterS2_ G  0002741A   
+__Z17fighterResetTicksP7Fighter G  000274B4   __Z17fighterDrawScoresP7FighterS0_ G  000274CE   ___udivsi3 G  00057B40   
+__Z14fighterLaydownP7FighterP14SpriteAnimator G  0002764C   __Z12animateFrameP14SpriteAnimatorjjP14AnimationFramefjiiii G  0003C960   __Z27fighterResetRaidenLightningP7Fighter G  000276C8   
+__Z13fighterFreezeP7Fighter G  00027744   __Z19sfxSubzeroFreezeEndP12SoundHandler G  0003B4AE   __Z15fighterUnfreezeP7Fighter G  000277E2   
+__Z14fighterHarpoonP7FighterS0_ G  0002782E   __Z23fighterSlideToPositionXP7Fighteri G  000279A8   __Z19fighterHarpoonCheckP7FighterS0_ G  000279C6   
+__Z20fighterCanTakeDamageP12StateMachineP7Fighter G  00027B7C   __Z17fighterIsBlockingP12StateMachineP7Fighter G  00027B90   __Z21fighterIsDuckBlockingP12StateMachineP7Fighter G  00027BB6   
+__Z16fighterIsJumpingP12StateMachineP7Fighter G  00027BCE   __Z19fighterFaceOpponentP7Fighter G  00027C1E   __Z20fighterTurnInstantlyP7Fighter G  00027D02   
 __Z12hudGetStringbi G  00027DB0   __Z18hudUpdateHealthbarbi G  00027E06   __Z7hudInitv G  00027EDC   
 __Z17impactFrameUpdateP14SpriteAnimatorP7FighterP11ImpactFrame G  00028D0C   __Z15leaderboardInitv G  00028E20   __Z10matchResetv G  00028E40   
 rapSetClock G  0005974E   __Z9matchInitv G  00028EB0   __Z11matchUpdateP12SoundHandlerP12StateMachineP7FighterS4_ G  00028F38   

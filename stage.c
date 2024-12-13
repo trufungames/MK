@@ -4,7 +4,7 @@
 #include "spriteanimator.h"
 #include "match.h"
 
-static short currentStage = STAGE_GORO;
+static short currentStage = STAGE_PIT;//STAGE_GORO;
 static int cloudTicks1 = 0;
 static int cloudTicks2 = 0;
 static int cloudTicks3 = 0;

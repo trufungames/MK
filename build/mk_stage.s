@@ -575,14 +575,14 @@ sprite:
 __ZL13monksAnimator:
 	.long	48
 	.long	1056964608
-	.long	12500080
+	.long	12499584
 	.word	0
 	.word	0
 	.word	0
 	.skip 4
 	.even
 __ZL12currentStage:
-	.word	6
+	.word	3
 	.even
 __ZL14monkClapFrames:
 	.word	576
