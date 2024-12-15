@@ -42,6 +42,26 @@ __Z8sleepAddi:
 	move.l 8(%fp),_totalSleepTicks
 	unlk %fp
 	rts
+	.even
+	.globl	__Z5sleepi
+__Z5sleepi:
+	link.w %fp,#0
+	movem.l #12320,-(%sp)
+	move.l 8(%fp),%d3
+	jle .L9
+	moveq #0,%d2
+	lea _jsfVsync,%a2
+.L11:
+	clr.l -(%sp)
+	jsr (%a2)
+	addq.l #1,%d2
+	addq.l #4,%sp
+	cmp.l %d2,%d3
+	jne .L11
+.L9:
+	movem.l -12(%fp),#1036
+	unlk %fp
+	rts
 	.globl	_totalSleepTicks
 	.bss
 	.even

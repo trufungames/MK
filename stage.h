@@ -4,6 +4,7 @@ void stageSetNext();
 void stageLoadVsBattle();
 void stageUpdate();
 int stageGetFighterHitboxIndex();
+void stageReset();
 int stageGetHeight();
 int stageGetStartX();
 int stageGetStartY();

@@ -305,6 +305,11 @@ void StateIdle_HandleInput(struct StateMachine* stateMachine, struct Fighter* fi
             stateMachineGoto(stateMachine, STATE_ROUNDHOUSE_KICKING, fighter, spriteAnimator);
             return;
         }
+        else if (((fighter->pad & JAGPAD_LEFT && fighter->direction == 1) || (fighter->pad & JAGPAD_RIGHT && fighter->direction == -1)) && fighter->pad & JAGPAD_9 && fighter->ButtonReleased)
+        {
+            stateMachineGoto(stateMachine, STATE_ROUNDHOUSE_KICKING, fighter, spriteAnimator);
+            return;
+        }
         else if (((fighter->pad & JAGPAD_LEFT && fighter->direction == 1) || (fighter->pad & JAGPAD_RIGHT && fighter->direction == -1)) && fighter->pad & JAGPAD_A && fighter->ButtonReleased)
         {
             stateMachineGoto(stateMachine, STATE_SWEEPING, fighter, spriteAnimator);
@@ -555,6 +560,11 @@ void StateWalkingForward_HandleInput(struct StateMachine* stateMachine, struct F
         stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
         return;
     }
+    else if (fighter->pad & JAGPAD_9 && fighter->ButtonReleased)
+    {
+        stateMachineGoto(stateMachine, STATE_HIGH_KICKING, fighter, spriteAnimator);
+        return;
+    }
     else if (fighter->pad & JAGPAD_A && fighter->ButtonReleased)
     {
         stateMachineGoto(stateMachine, STATE_HIGH_KICKING, fighter, spriteAnimator);
@@ -617,6 +627,11 @@ void StateWalkingBackward_HandleInput(struct StateMachine* stateMachine, struct 
     else if ((fighter->pad & JAGPAD_7 || fighter->pad & JAGPAD_C) && fighter->ButtonReleased)
     {
         stateMachineGoto(stateMachine, STATE_HIGH_PUNCHING, fighter, spriteAnimator);
+        return;
+    }
+    else if (fighter->pad & JAGPAD_9 && fighter->ButtonReleased)
+    {
+        stateMachineGoto(stateMachine, STATE_ROUNDHOUSE_KICKING, fighter, spriteAnimator);
         return;
     }
     else if (fighter->pad & JAGPAD_A && fighter->ButtonReleased)

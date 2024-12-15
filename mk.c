@@ -24,7 +24,7 @@ short p1Cursor = 1;
 short p2Cursor = 2;
 short p1Selected = -1;
 short p2Selected = -1;
-short battlePlanYOffset = 0;
+short battlePlanYOffset = 0; 
 bool chooseFighterDone = false;
 bool onAlphaScreen = true;
 bool onTruFunScreen = false;
@@ -3826,10 +3826,10 @@ static int specials_Kasumi_Fireball_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_FOR
 static int specials_Kasumi_Roll_Inputs[] = { INPUT_LK, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 
 static int fatality_Cage_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_FORWARD, 0, 0, 0 };
-static int fatality_Kano_Heart_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, 0, 0, 0 };
+static int fatality_Kano_Heart_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
 //static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_BACK, INPUT_BACK, INPUT_BACK, INPUT_FORWARD, 0 };
 static int fatality_Raiden_HeadZap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_BACK, 0, 0, 0 };
-static int fatality_Kang_Flip_Inputs[] = { INPUT_UP, INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
+static int fatality_Kang_Flip_Inputs[] = { INPUT_BACK, INPUT_DOWN, INPUT_FORWARD, 0, 0, 0 };
 static int fatality_Scorpion_Toasty_Inputs[] = { INPUT_UP, INPUT_UP, 0, 0, 0, INPUT_BLK };
 static int fatality_Subzero_Decap_Inputs[] = { INPUT_LP, INPUT_FORWARD, INPUT_DOWN, INPUT_FORWARD, 0, 0 };
 static int fatality_Sonya_Kiss_Inputs[] = { INPUT_BLK, INPUT_BACK, INPUT_FORWARD, 0, 0, 0 };
@@ -5530,7 +5530,7 @@ void basicmain()
 		fighterKang.decapFrames = &kangDecapFrames;
 		fighterKang.frontDecapFrames = &frontDecapKangFrames;
 		fighterKang.fatality1Inputs = &fatality_Kang_Flip_Inputs;
-		fighterKang.fatality1InputCount = 4;
+		fighterKang.fatality1InputCount = 3;
 		fighterKang.doFatality1 = &doFatality_Kang_Flip;
 		fighterKang.fatality1Frames = &kangFatality1Frames;
 		fighterKang.fatality1IsCloseRange = false;
@@ -5591,7 +5591,7 @@ void basicmain()
 		fighterKang2.decapFrames = &kangDecapFrames;
 		fighterKang2.frontDecapFrames = &frontDecapKangFrames;
 		fighterKang2.fatality1Inputs = &fatality_Kang_Flip_Inputs;
-		fighterKang2.fatality1InputCount = 4;
+		fighterKang2.fatality1InputCount = 3;
 		fighterKang2.doFatality1 = &doFatality_Kang_Flip;
 		fighterKang2.fatality1Frames = &kangFatality1Frames;
 		fighterKang2.fatality1IsCloseRange = false;
@@ -7637,17 +7637,6 @@ void basicmain()
 				stateMachineHandleInput(&fighterStateMachine, fighter2Ptr, spriteAnimator2Ptr);
 
 				displayWinnerMedals();
-
-				if (pad1 & JAGPAD_5)
-				{
-					showMessageInt("Black Palette", BLACKPALx16[3]);
-				}
-				else if (pad1 & JAGPAD_6)
-				{
-					sfxPitFall(&soundHandler);
-					cameraScrollPit();
-				}
-
 				//match progression
 				if (!matchUpdate(&soundHandler, &fighterStateMachine, fighter1Ptr, fighter2Ptr))
 				{
@@ -7934,7 +7923,7 @@ void basicmain()
 				bloodUpdate(&soundHandler);
 				spriteDelayUpdate();
 				fighterDrawScores(fighter1Ptr, fighter2Ptr);
-				printMessageInt("FPS", xdivs(rapNTSCFlag > 0 ? 60 : 50, rapTicks - lastFpsTicks), 16, 216);
+				//printMessageInt("", xdivs(rapNTSCFlag > 0 ? 60 : 50, rapTicks - lastFpsTicks), 148, 21);
 				
 				if (debugMode)
 				{
@@ -8036,7 +8025,7 @@ void initBlackPalettes()
 void initAlphaScreen()
 {
 	rapParticleClear();
-	rapUnpack(BMP_PREALPHA,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_PREALPHA,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND16].active=R_is_active;
 	sprite[BACKGROUND].active=R_is_inactive;
@@ -8050,7 +8039,7 @@ void initAlphaScreen()
 void initTruFunScreen()
 {
 	rapParticleClear();
-	rapUnpack(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
 	//jsfUnpack68k(BMP_TRUFUN,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND16].active=R_is_active;
@@ -8066,7 +8055,7 @@ void initTruFunScreen()
 void initTitleScreen()
 {
 	rapParticleClear();
-	rapUnpack(BMP_TITLESCREEN,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_TITLESCREEN,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 	sprite[BACKGROUND16].active = R_is_inactive;
@@ -8083,14 +8072,14 @@ void initTitleScreen()
 void resetGame()
 {
 	battleplan_index = 6;
-
+	stageReset();	
 }
 
 void initMenuScreen()
 {
 	resetGame();
 	rapParticleClear();
-	rapUnpack(BMP_TS_BACKGROUND,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_TS_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 	sprite[BACKGROUND16].active = R_is_inactive;
@@ -8144,7 +8133,7 @@ void switchAttractFMV()
 void switchAttractFMV(int fighterIndex, bool sayFighterName)
 {
 	rapParticleClear();
-	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_inactive;
 	sprite[BACKGROUND16].active = R_is_active;
@@ -8170,11 +8159,11 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 	switch (fighterIndex)
 	{
 		case CAGE:
-			rapUnpack(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_CAGE,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_CAGE_clut),0,128);
 			break;
 		case KANO:
-			rapUnpack(BMP_FMV_KANO,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_KANO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANO_clut),0,128);
 			name = "KANO";
 			nameOffset = 148;
@@ -8194,7 +8183,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 60;
 			break;
 		case RAIDEN:
-			rapUnpack(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_RAIDEN,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_RAIDEN_clut),0,128);
 			name = "RAIDEN";
 			nameOffset = 136;
@@ -8214,7 +8203,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 0;
 			break;
 		case KANG:
-			rapUnpack(BMP_FMV_KANG,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_KANG,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KANG_clut),0,128);
 			name = "LIU KANG";
 			nameOffset = 135;
@@ -8234,7 +8223,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 0;
 			break;
 		case SCORPION:
-			rapUnpack(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_SCORPION,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SCORPION_clut),0,128);
 			name = "SCORPION";
 			nameOffset = 135;
@@ -8254,7 +8243,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 0;
 			break;
 		case SUBZERO:
-			rapUnpack(BMP_FMV_SUBZERO,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_SUBZERO,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SUBZERO_clut),0,128);
 			name = "SUB-ZERO";
 			nameOffset = 135;
@@ -8274,7 +8263,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 0;
 			break;
 		case SONYA:
-			rapUnpack(BMP_FMV_SONYA,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_SONYA,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_SONYA_clut),0,128);
 			name = "SONYA";
 			nameOffset = 144;
@@ -8294,7 +8283,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 			line7Offset = 28;
 			break;
 		case KASUMI:
-			rapUnpack(BMP_FMV_KASUMI,(int)(int*)imageBufferFMV);
+			jsfUnpack68k(BMP_FMV_KASUMI,(int)(int*)imageBufferFMV);
 			jsfLoadClut((unsigned short *)(void *)(BMP_FMV_KASUMI_clut),0,128);
 			name = "KASUMI";
 			nameOffset = 136;
@@ -8402,7 +8391,7 @@ void switchAttractFMV(int fighterIndex, bool sayFighterName)
 void initLeaderboard()
 {
 	rapParticleClear();
-	rapUnpack(BMP_ATTRACT_LEADERBOARD,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_ATTRACT_LEADERBOARD,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_inactive;
 	sprite[FMV].active = R_is_inactive;
@@ -8455,7 +8444,7 @@ void initGoroLives()
 void initGoroProfile()
 {
 	rapParticleClear();
-	rapUnpack(BMP_ATTRACT_GORO,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_ATTRACT_GORO,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active=R_is_active;
 	sprite[BACKGROUND16].active=R_is_inactive;
@@ -8471,7 +8460,7 @@ void initGoroProfile()
 void initShangTsungIsland()
 {
 	rapParticleClear();
-	rapUnpack(BMP_ATTRACT_SHANGTSUNG,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_ATTRACT_SHANGTSUNG,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND].active=R_is_active;
 	sprite[BACKGROUND16].active=R_is_inactive;
@@ -8524,7 +8513,7 @@ void initWinners()
 		attractSlideIndex = 0;
 	}
 
-	rapUnpack(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND16].active=R_is_active;
 	sprite[BACKGROUND].active=R_is_inactive;
@@ -8533,7 +8522,7 @@ void initWinners()
 
 	// if (attractSlideIndex == 0)
 	// {
-	// 	rapUnpack(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
+	// 	jsfUnpack68k(BMP_ATTRACT_WINNERS,(int)(int*)imageBuffer320x240);
 	// 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	// 	sprite[BACKGROUND16].active=R_is_active;
 	// 	sprite[BACKGROUND].active=R_is_inactive;
@@ -8542,7 +8531,7 @@ void initWinners()
 	// }
 	// else if (attractSlideIndex == 1)
 	// {
-	// 	rapUnpack(BMP_ATTRACT_REAL,(int)(int*)imageBuffer320x240);
+	// 	jsfUnpack68k(BMP_ATTRACT_REAL,(int)(int*)imageBuffer320x240);
 	// 	sprite[BACKGROUND].gfxbase=(int)imageBuffer320x240;
 	// 	sprite[BACKGROUND].active=R_is_active;
 	// 	sprite[BACKGROUND16].active=R_is_inactive;
@@ -8609,7 +8598,7 @@ void switchScreenChooseFighter()
 	p1FlashCount = 0;
 	p2FlashCount = 99; //disable to flash for player 2 since defaulting to single player mode
 	chooseFighterDone = false;
-	rapUnpack(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);	
+	jsfUnpack68k(BMP_CHOOSEFIGHTER,(int)(int*)imageBuffer320x240);	
 	sprite[BACKGROUND].gfxbase = (int)imageBuffer320x240;
 	sprite[BACKGROUND].active = R_is_active;
 	sprite[P1_CURSOR].active = R_is_active;
@@ -8639,6 +8628,9 @@ void switchScreenChooseFighter()
 
 void switchScreenFighterIntro(int fighterIndex)
 {
+	rapSetActiveList(4);
+	unsigned short bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
+	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;
 	sprite[P1_FIGHTER].active = R_is_inactive;
 	sprite[P2_FIGHTER].active = R_is_inactive;
 	sfxIntro(&soundHandler);
@@ -8873,7 +8865,7 @@ void switchScreenFighterEnding(int fighterIndex)
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;		// Set Background colour.
 	menuIndex = 0;  //keep track of what page we're on...
 	sprite[FMV].active = R_is_inactive;
-	rapUnpack(BMP_ENDINGS_PORTRAITS,(int)(int*)imageBuffer);
+	jsfUnpack68k(BMP_ENDINGS_PORTRAITS,(int)(int*)imageBuffer);
 	sprite[ENDING].gfxbase=(int)imageBuffer;
 	sprite[ENDING].active = R_is_active;
 	fmvAnimator.base = (int)imageBuffer;
@@ -8884,7 +8876,7 @@ void switchScreenFighterEnding(int fighterIndex)
 
 	jsfLoadClut((unsigned short *)(void *)(BMP_ENDINGS_PORTRAITS_clut),0,224);
 
-	rapUnpack(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_FMV_BACKGROUND,(int)(int*)imageBuffer320x240);
 	sprite[BACKGROUND16].gfxbase=(int)imageBuffer320x240;
 	sprite[BACKGROUND16].active = R_is_active;
 	sprite[BACKGROUND16].CLUT = 14;
@@ -9124,7 +9116,7 @@ void switchScreenFighterEnding(int fighterIndex)
 void switchScreenBattlePlan(int fighterIndex)
 {
 	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;		// Set Background colour.
-	rapUnpack(BMP_BATTLEPLAN_PORTRAITS,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_BATTLEPLAN_PORTRAITS,(int)(int*)imageBuffer320x240);
 	sprite[BATTLEPLAN_PORTRAITS].gfxbase=(int)imageBuffer320x240;
 	sprite[BATTLEPLAN_PORTRAITS+1].gfxbase=(int)imageBuffer320x240;
 	sprite[BATTLEPLAN_PORTRAITS+2].gfxbase=(int)imageBuffer320x240;
@@ -9542,7 +9534,7 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 {
 	chooseTicks = rapTicks;
 	rapParticleClear();
-	rapUnpack(BMP_BATTLESCREEN,(int)(int*)imageBuffer320x240);
+	jsfUnpack68k(BMP_BATTLESCREEN,(int)(int*)imageBuffer320x240);
 	sprite[BATTLE_SCREEN].gfxbase=(int)imageBuffer320x240;
 	sprite[BATTLE_SCREEN].active=R_is_active;
 
@@ -9629,12 +9621,13 @@ void switchScreenVsBattle(int p1Cursor, int p2Cursor)
 
 void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackground)
 {
-	unsigned short bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
-	
+	rapSetActiveList(4);
+	unsigned short bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
+	*(volatile unsigned short*)(BG)=(volatile unsigned short)0;
 	sprite[P1_FIGHTER].active = R_is_active;
 	sprite[P2_FIGHTER].active = R_is_active;
 	sprite[FMV].active = R_is_inactive;
-	rapParticleClear();
+	rapParticleClear();	
 	rapTicks = 0;
 	lastTicks = rapTicks;
 	bgResetTicks();
@@ -9649,20 +9642,18 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 	switch (stageGet())
     {
 		case STAGE_COURTYARD:
-			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
-			*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
-
+			//bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+			//*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 			if (unpackBackground)
             {
-                rapUnpack(BMP_COURTYARD_PARALAX,(int)(int*)imageBuffer320x240);
-                rapUnpack(BMP_COURTYARD_BACKGROUND,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_COURTYARD_PARALAX,(int)(int*)imageBuffer320x240);
+                jsfUnpack68k(BMP_COURTYARD_BACKGROUND,(int)(int*)imageBuffer);
             }
 
 			//active sprites
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].gfxbase=(int)imageBuffer320x240;
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].active = R_is_active;
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].y_ = 0;
-			
 			sprite[STAGE_PRIMARY_BACKGROUND_4BIT].gfxbase=(int)imageBuffer;
 			sprite[STAGE_PRIMARY_BACKGROUND_4BIT].y_ = 0;
 			sprite[STAGE_PRIMARY_BACKGROUND_4BIT].height = 240;
@@ -9703,19 +9694,16 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 			jsfLoadClut((unsigned short *)(void *)(BMP_COURTYARD_PARALAX_clut),0,96);
 			//jsfLoadClut((unsigned short *)(void *)(BMP_COURTYARD_BACKGROUND_clut),0,16);
 			jsfLoadClut((unsigned short *)(void *)(BMP_COURTYARD_MONKS_clut),7,16);
-
 			musicStageCourtyard(&soundHandler);
 			break;
 		case STAGE_GATES:			
-            bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
-			
+            //bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+            //*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
             if (unpackBackground)
             {
-                rapUnpack(BMP_PALACE_PARALAX,(int)(int*)imageBuffer320x240);
-                rapUnpack(BMP_PALACE_BACKGROUND,(int)(int*)imageBuffer);
+				jsfUnpack68k(BMP_PALACE_PARALAX,(int)(int*)imageBuffer320x240);
+				jsfUnpack68k(BMP_PALACE_BACKGROUND,(int)(int*)imageBuffer);
             }
-
 			sprite[STAGE_SECONDARY_BACKGROUND].active = R_is_inactive;
 			
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].gfxbase=(int)imageBuffer320x240;
@@ -9774,13 +9762,13 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             musicStageGates(&soundHandler);
             break;
         case STAGE_WARRIOR:			
-            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+            // bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            // *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_PIT_MOON,(int)(int*)imageBuffer320x240);
-                rapUnpack(BMP_WARRIOR_BACKGROUND,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_PIT_MOON,(int)(int*)imageBuffer320x240);
+                jsfUnpack68k(BMP_WARRIOR_BACKGROUND,(int)(int*)imageBuffer);
             }
 
 			sprite[STAGE_GATES_FLAME].active = R_is_active;
@@ -9852,13 +9840,13 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             musicStageWarrior(&soundHandler);
             break;
         case STAGE_PIT:
-            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+            //bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            //*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_PIT_MOON,(int)(int*)imageBuffer320x240);
-                rapUnpack(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_PIT_MOON,(int)(int*)imageBuffer320x240);
+                jsfUnpack68k(BMP_PIT_BACKGROUND,(int)(int*)imageBuffer);
             }
 
 			sprite[FOREGROUND_SPIKES].active = R_is_inactive;
@@ -9918,12 +9906,12 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             musicStagePit(&soundHandler);
             break;
 		case STAGE_PIT_BOTTOM:
-            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+            //bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            //*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_PIT_BOTTOM,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_PIT_BOTTOM,(int)(int*)imageBuffer);
             }
 
 			sprite[FOREGROUND_SPIKES].active = R_is_active;
@@ -9965,18 +9953,18 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 			sprite[STAGE_SECONDARY_BACKGROUND_8BIT].active = R_is_inactive;
 			sprite[THRONE_SHANG_TSUNG].active = R_is_inactive;
 
-            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BACKGROUND_clut),0,96);
+            jsfLoadClut((unsigned short *)(void *)(BMP_PIT_BOTTOM_clut),0,96);
             //jsfLoadClut((unsigned short *)(void *)(BMP_PIT_SPIKES_clut),7,16);
 
             musicStagePit(&soundHandler);
             break;
 		case STAGE_THRONE:
-			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			//bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+            //*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_THRONE_BACKGROUND,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_THRONE_BACKGROUND,(int)(int*)imageBuffer);
             }
 
 			sprite[THRONE_SHANG_TSUNG].active = R_is_active;
@@ -10024,13 +10012,13 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
             musicStageThrone(&soundHandler);
 			break;
         case STAGE_GORO:
-			bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
-            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			//bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            //*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
 
             if (unpackBackground)
             {
-                rapUnpack(BMP_GORO_PARALAX,(int)(int*)imageBuffer320x240);
-                rapUnpack(BMP_GORO_BACKGROUND,(int)(int*)imageBuffer);
+                jsfUnpack68k(BMP_GORO_PARALAX,(int)(int*)imageBuffer320x240);
+                jsfUnpack68k(BMP_GORO_BACKGROUND,(int)(int*)imageBuffer);
             }
 
             sprite[STAGE_SECONDARY_BACKGROUND].gfxbase=(int)imageBuffer320x240;
@@ -10276,13 +10264,7 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 	}
 
 	setFighterAlternatePalette(fighter1Index, fighter2Index);
-	hudInit();
-	//sprite[P1_HEALTHBAR].scale_x = MAX_HEALTH;
-	//sprite[P2_HEALTHBAR].scale_x = MAX_HEALTH;
-	//sprite[P2_HEALTHBAR].x_ = 176;
-
-	rapSetActiveList(2);
-
+	hudInit();	
 	cameraInit(stageGet(), stageGetStartX(), stageGetStartY(), 214, (int)imageBuffer);
 	stagePositionAssets();
 
@@ -10291,6 +10273,41 @@ void switchScreenFight(int fighter1Index, int fighter2Index, bool unpackBackgrou
 	onScreenFighterIntro = false;
 	onScreenBattlePlan = false;
 	onScreenFight = true;
+
+	switch (stageGet())
+    {
+		case STAGE_COURTYARD:
+			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+			*(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_GATES:			
+            bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_WARRIOR:			
+            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_PIT:
+            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_PIT_BOTTOM:
+            bg_color = (0 << 11) + (8 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_THRONE:
+			bg_color = (21 << 11) + (57 << 5) + 31;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		case STAGE_GORO:
+			bg_color = (0 << 11) + (0 << 5) + 0;  //(red << 11) + (blue << 5) + green
+            *(volatile unsigned short*)(BG)=(volatile unsigned short)bg_color;		// Set Background colour.
+			break;
+		default:
+			break;
+	}
+	rapSetActiveList(2);
 }
 
 void SetPlayerPalettes()

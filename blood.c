@@ -561,10 +561,10 @@ void bloodImpale(short x, short y, short direction)
         //bloodSpray(x - 15, y + 10, direction * -1);
         //bloodDrop(x + (20 * direction), y + 20, direction * -1);
         bloodDrop(x + (22 * direction), y + 25, direction * -1);
-        bloodDrop(x + (18 * direction), y + 15, direction * -1);
+        //bloodDrop(x + (18 * direction), y + 15, direction * -1);
         //bloodBall(x + (18 * direction), y + 20, direction * -1);
         //bloodBall(x + (22 * direction), y + 25, direction * -1);
-        bloodBall(x + (20 * direction), y + 10, direction * -1);
+        //bloodBall(x + (20 * direction), y + 10, direction * -1);
         bloodBall(x + (16 * direction), y + 5, direction * -1);
 
         impaled = true;

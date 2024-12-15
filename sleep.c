@@ -27,3 +27,11 @@ void sleepAdd(int totalTicks)
     lastTick = rapTicks;
     totalSleepTicks = totalTicks;
 }
+
+void sleep(int ticks)
+{
+    for (int i = 0; i < ticks; i++)
+    {
+        jsfVsync(0);
+    }
+}
