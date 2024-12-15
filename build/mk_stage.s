@@ -15,7 +15,7 @@ __Z9stageInitv:
 	.globl	__Z10stageResetv
 __Z10stageResetv:
 	link.w %fp,#0
-	move.w #6,__ZL12currentStage
+	move.w #2,__ZL12currentStage
 	unlk %fp
 	rts
 	.even
@@ -582,14 +582,14 @@ sprite:
 __ZL13monksAnimator:
 	.long	48
 	.long	1056964608
-	.long	12499456
+	.long	12499376
 	.word	0
 	.word	0
 	.word	0
 	.skip 4
 	.even
 __ZL12currentStage:
-	.word	6
+	.word	2
 	.even
 __ZL14monkClapFrames:
 	.word	576
